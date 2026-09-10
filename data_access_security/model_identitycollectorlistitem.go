@@ -23,10 +23,12 @@ type Identitycollectorlistitem struct {
 	Id *string `json:"id,omitempty"`
 	// The display name of the identity collector.
 	Name *string `json:"name,omitempty"`
-	// The identity collector type, derived from its underlying source. Possible values include \"Active Directory\", \"Azure Active Directory\", \"Google Drive\", \"Dropbox\", \"Box\", \"Microsoft Entra SaaS\", \"Snowflake\", and \"Databricks\".
+	// The identity collector type, derived from its underlying source.
 	Type *string `json:"type,omitempty"`
 	// The identifier of the source the identity collector is associated with, represented as a UUID. Both hyphenated and non-hyphenated formats are accepted.
 	SourceId *string `json:"sourceId,omitempty"`
+	Users *Identitycollectorcollectionsettings `json:"users,omitempty"`
+	Groups *Identitycollectorcollectionsettings `json:"groups,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -177,6 +179,70 @@ func (o *Identitycollectorlistitem) SetSourceId(v string) {
 	o.SourceId = &v
 }
 
+// GetUsers returns the Users field value if set, zero value otherwise.
+func (o *Identitycollectorlistitem) GetUsers() Identitycollectorcollectionsettings {
+	if o == nil || IsNil(o.Users) {
+		var ret Identitycollectorcollectionsettings
+		return ret
+	}
+	return *o.Users
+}
+
+// GetUsersOk returns a tuple with the Users field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Identitycollectorlistitem) GetUsersOk() (*Identitycollectorcollectionsettings, bool) {
+	if o == nil || IsNil(o.Users) {
+		return nil, false
+	}
+	return o.Users, true
+}
+
+// HasUsers returns a boolean if a field has been set.
+func (o *Identitycollectorlistitem) HasUsers() bool {
+	if o != nil && !IsNil(o.Users) {
+		return true
+	}
+
+	return false
+}
+
+// SetUsers gets a reference to the given Identitycollectorcollectionsettings and assigns it to the Users field.
+func (o *Identitycollectorlistitem) SetUsers(v Identitycollectorcollectionsettings) {
+	o.Users = &v
+}
+
+// GetGroups returns the Groups field value if set, zero value otherwise.
+func (o *Identitycollectorlistitem) GetGroups() Identitycollectorcollectionsettings {
+	if o == nil || IsNil(o.Groups) {
+		var ret Identitycollectorcollectionsettings
+		return ret
+	}
+	return *o.Groups
+}
+
+// GetGroupsOk returns a tuple with the Groups field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Identitycollectorlistitem) GetGroupsOk() (*Identitycollectorcollectionsettings, bool) {
+	if o == nil || IsNil(o.Groups) {
+		return nil, false
+	}
+	return o.Groups, true
+}
+
+// HasGroups returns a boolean if a field has been set.
+func (o *Identitycollectorlistitem) HasGroups() bool {
+	if o != nil && !IsNil(o.Groups) {
+		return true
+	}
+
+	return false
+}
+
+// SetGroups gets a reference to the given Identitycollectorcollectionsettings and assigns it to the Groups field.
+func (o *Identitycollectorlistitem) SetGroups(v Identitycollectorcollectionsettings) {
+	o.Groups = &v
+}
+
 func (o Identitycollectorlistitem) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -198,6 +264,12 @@ func (o Identitycollectorlistitem) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.SourceId) {
 		toSerialize["sourceId"] = o.SourceId
+	}
+	if !IsNil(o.Users) {
+		toSerialize["users"] = o.Users
+	}
+	if !IsNil(o.Groups) {
+		toSerialize["groups"] = o.Groups
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -225,6 +297,8 @@ func (o *Identitycollectorlistitem) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "sourceId")
+		delete(additionalProperties, "users")
+		delete(additionalProperties, "groups")
 		o.AdditionalProperties = additionalProperties
 	}
 

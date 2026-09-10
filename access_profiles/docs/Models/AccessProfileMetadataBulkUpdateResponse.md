@@ -1,15 +1,15 @@
 ---
-id: v1-accessprofilemetadatabulkupdateresponse
-title: Accessprofilemetadatabulkupdateresponse
-pagination_label: Accessprofilemetadatabulkupdateresponse
-sidebar_label: Accessprofilemetadatabulkupdateresponse
+id: v1-access-profile-metadata-bulk-update-response
+title: AccessProfileMetadataBulkUpdateResponse
+pagination_label: AccessProfileMetadataBulkUpdateResponse
+sidebar_label: AccessProfileMetadataBulkUpdateResponse
 sidebar_class_name: gosdk
-keywords: ['go', 'Golang', 'sdk', 'Accessprofilemetadatabulkupdateresponse', 'V1Accessprofilemetadatabulkupdateresponse'] 
-slug: /tools/sdk/go/accessprofiles/models/accessprofilemetadatabulkupdateresponse
-tags: ['SDK', 'Software Development Kit', 'Accessprofilemetadatabulkupdateresponse', 'V1Accessprofilemetadatabulkupdateresponse']
+keywords: ['go', 'Golang', 'sdk', 'AccessProfileMetadataBulkUpdateResponse', 'V1AccessProfileMetadataBulkUpdateResponse'] 
+slug: /tools/sdk/go/accessprofiles/models/access-profile-metadata-bulk-update-response
+tags: ['SDK', 'Software Development Kit', 'AccessProfileMetadataBulkUpdateResponse', 'V1AccessProfileMetadataBulkUpdateResponse']
 ---
 
-# Accessprofilemetadatabulkupdateresponse
+# AccessProfileMetadataBulkUpdateResponse
 
 ## Properties
 
@@ -22,120 +22,120 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewAccessprofilemetadatabulkupdateresponse
+### NewAccessProfileMetadataBulkUpdateResponse
 
-`func NewAccessprofilemetadatabulkupdateresponse() *Accessprofilemetadatabulkupdateresponse`
+`func NewAccessProfileMetadataBulkUpdateResponse() *AccessProfileMetadataBulkUpdateResponse`
 
-NewAccessprofilemetadatabulkupdateresponse instantiates a new Accessprofilemetadatabulkupdateresponse object
+NewAccessProfileMetadataBulkUpdateResponse instantiates a new AccessProfileMetadataBulkUpdateResponse object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewAccessprofilemetadatabulkupdateresponseWithDefaults
+### NewAccessProfileMetadataBulkUpdateResponseWithDefaults
 
-`func NewAccessprofilemetadatabulkupdateresponseWithDefaults() *Accessprofilemetadatabulkupdateresponse`
+`func NewAccessProfileMetadataBulkUpdateResponseWithDefaults() *AccessProfileMetadataBulkUpdateResponse`
 
-NewAccessprofilemetadatabulkupdateresponseWithDefaults instantiates a new Accessprofilemetadatabulkupdateresponse object
+NewAccessProfileMetadataBulkUpdateResponseWithDefaults instantiates a new AccessProfileMetadataBulkUpdateResponse object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetId
 
-`func (o *Accessprofilemetadatabulkupdateresponse) GetId() string`
+`func (o *AccessProfileMetadataBulkUpdateResponse) GetId() string`
 
 GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *Accessprofilemetadatabulkupdateresponse) GetIdOk() (*string, bool)`
+`func (o *AccessProfileMetadataBulkUpdateResponse) GetIdOk() (*string, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetId
 
-`func (o *Accessprofilemetadatabulkupdateresponse) SetId(v string)`
+`func (o *AccessProfileMetadataBulkUpdateResponse) SetId(v string)`
 
 SetId sets Id field to given value.
 
 ### HasId
 
-`func (o *Accessprofilemetadatabulkupdateresponse) HasId() bool`
+`func (o *AccessProfileMetadataBulkUpdateResponse) HasId() bool`
 
 HasId returns a boolean if a field has been set.
 
 ### GetType
 
-`func (o *Accessprofilemetadatabulkupdateresponse) GetType() string`
+`func (o *AccessProfileMetadataBulkUpdateResponse) GetType() string`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *Accessprofilemetadatabulkupdateresponse) GetTypeOk() (*string, bool)`
+`func (o *AccessProfileMetadataBulkUpdateResponse) GetTypeOk() (*string, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *Accessprofilemetadatabulkupdateresponse) SetType(v string)`
+`func (o *AccessProfileMetadataBulkUpdateResponse) SetType(v string)`
 
 SetType sets Type field to given value.
 
 ### HasType
 
-`func (o *Accessprofilemetadatabulkupdateresponse) HasType() bool`
+`func (o *AccessProfileMetadataBulkUpdateResponse) HasType() bool`
 
 HasType returns a boolean if a field has been set.
 
 ### GetStatus
 
-`func (o *Accessprofilemetadatabulkupdateresponse) GetStatus() string`
+`func (o *AccessProfileMetadataBulkUpdateResponse) GetStatus() string`
 
 GetStatus returns the Status field if non-nil, zero value otherwise.
 
 ### GetStatusOk
 
-`func (o *Accessprofilemetadatabulkupdateresponse) GetStatusOk() (*string, bool)`
+`func (o *AccessProfileMetadataBulkUpdateResponse) GetStatusOk() (*string, bool)`
 
 GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStatus
 
-`func (o *Accessprofilemetadatabulkupdateresponse) SetStatus(v string)`
+`func (o *AccessProfileMetadataBulkUpdateResponse) SetStatus(v string)`
 
 SetStatus sets Status field to given value.
 
 ### HasStatus
 
-`func (o *Accessprofilemetadatabulkupdateresponse) HasStatus() bool`
+`func (o *AccessProfileMetadataBulkUpdateResponse) HasStatus() bool`
 
 HasStatus returns a boolean if a field has been set.
 
 ### GetCreated
 
-`func (o *Accessprofilemetadatabulkupdateresponse) GetCreated() SailPointTime`
+`func (o *AccessProfileMetadataBulkUpdateResponse) GetCreated() SailPointTime`
 
 GetCreated returns the Created field if non-nil, zero value otherwise.
 
 ### GetCreatedOk
 
-`func (o *Accessprofilemetadatabulkupdateresponse) GetCreatedOk() (*SailPointTime, bool)`
+`func (o *AccessProfileMetadataBulkUpdateResponse) GetCreatedOk() (*SailPointTime, bool)`
 
 GetCreatedOk returns a tuple with the Created field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreated
 
-`func (o *Accessprofilemetadatabulkupdateresponse) SetCreated(v SailPointTime)`
+`func (o *AccessProfileMetadataBulkUpdateResponse) SetCreated(v SailPointTime)`
 
 SetCreated sets Created field to given value.
 
 ### HasCreated
 
-`func (o *Accessprofilemetadatabulkupdateresponse) HasCreated() bool`
+`func (o *AccessProfileMetadataBulkUpdateResponse) HasCreated() bool`
 
 HasCreated returns a boolean if a field has been set.
 

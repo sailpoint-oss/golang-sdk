@@ -57,6 +57,7 @@ Method | HTTP request | Description
 [**get-access-profile-v1**](#get-access-profile-v1) | **Get** `/access-profiles/v1/{id}` | Get an access profile
 [**list-access-profiles-v1**](#list-access-profiles-v1) | **Get** `/access-profiles/v1` | List access profiles
 [**patch-access-profile-v1**](#patch-access-profile-v1) | **Patch** `/access-profiles/v1/{id}` | Patch a specified access profile
+[**search-access-profiles-by-filter-v1**](#search-access-profiles-by-filter-v1) | **Post** `/access-profiles/v1/filter` | Filter access profiles by metadata
 [**update-access-profiles-in-bulk-v1**](#update-access-profiles-in-bulk-v1) | **Post** `/access-profiles/v1/bulk-update-requestable` | Update access profile(s) requestable field.
 [**update-access-profiles-metadata-by-filter-v1**](#update-access-profiles-metadata-by-filter-v1) | **Post** `/access-profiles/v1/access-model-metadata/bulk-update/filter` | Bulk-update metadata by filter
 [**update-access-profiles-metadata-by-ids-v1**](#update-access-profiles-metadata-by-ids-v1) | **Post** `/access-profiles/v1/access-model-metadata/bulk-update/ids` | Bulk-update metadata by ids
@@ -793,6 +794,93 @@ func main() {
 
 [[Back to top]](#)
 
+## search-access-profiles-by-filter-v1
+Filter access profiles by metadata
+Get a list of access profiles filtered by Access Model Metadata and by filter expression. Filtering is supported by filter expression, by metadata attribute key and values, or by both together.
+
+[API Spec](https://developer.sailpoint.com/docs/api/search-access-profiles-by-filter-v-1)
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSearchAccessProfilesByFilterV1Request struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **accessProfileListFilterDTO** | [**AccessProfileListFilterDTO**](../models/access-profile-list-filter-dto) |  | 
+ **forSubadmin** | **string** | Filters the returned list according to what is visible to the indicated ROLE_SUBADMIN or SOURCE_SUBADMIN identity. The value of the parameter is either an identity ID or the special value **me**, which is shorthand for the calling identity&#39;s ID.  If you specify an identity that isn&#39;t a subadmin, the API returns a 400 Bad Request error. | 
+ **limit** | **int32** | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 50]
+ **offset** | **int32** | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 0]
+ **count** | **bool** | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to false]
+ **sorters** | **string** | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified** | 
+ **forSegmentIds** | **string** | Filters the returned list to those access profiles assigned to the specified segment IDs. | 
+ **includeUnsegmented** | **bool** | Whether the returned list includes unsegmented access profiles. | [default to true]
+
+### Return type
+
+[**[]AccessProfile**](../models/access-profile)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+  "encoding/json"
+    access_profiles "github.com/sailpoint-oss/golang-sdk/v3/access_profiles"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+)
+
+func main() {
+    accessprofilelistfilterdtoJson := []byte(`{
+          "ammKeyValues" : [ {
+            "attribute" : "iscFederalClassifications",
+            "values" : [ "secret" ]
+          } ],
+          "filters" : "requestable eq false"
+        }`) // AccessProfileListFilterDTO | 
+    forSubadmin := `8c190e6787aa4ed9a90bd9d5344523fb` // string | Filters the returned list according to what is visible to the indicated ROLE_SUBADMIN or SOURCE_SUBADMIN identity. The value of the parameter is either an identity ID or the special value **me**, which is shorthand for the calling identity's ID.  If you specify an identity that isn't a subadmin, the API returns a 400 Bad Request error. (optional) # string | Filters the returned list according to what is visible to the indicated ROLE_SUBADMIN or SOURCE_SUBADMIN identity. The value of the parameter is either an identity ID or the special value **me**, which is shorthand for the calling identity's ID.  If you specify an identity that isn't a subadmin, the API returns a 400 Bad Request error. (optional)
+    limit := 50 // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 50) # int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 50)
+    offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+    count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
+    sorters := `name` // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified** (optional) # string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified** (optional)
+    forSegmentIds := `0b5c9f2d-1e1b-4b2f-9b1a-0e7f4a6c2d3e` // string | Filters the returned list to those access profiles assigned to the specified segment IDs. (optional) # string | Filters the returned list to those access profiles assigned to the specified segment IDs. (optional)
+    includeUnsegmented := true // bool | Whether the returned list includes unsegmented access profiles. (optional) (default to true) # bool | Whether the returned list includes unsegmented access profiles. (optional) (default to true)
+
+    var accessProfileListFilterDTO access_profiles.AccessProfileListFilterDTO
+    if err := json.Unmarshal(accessprofilelistfilterdtoJson, &accessProfileListFilterDTO); err != nil {
+      fmt.Println("Error:", err)
+      return
+    }
+    
+
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.AccessProfilesAPI.SearchAccessProfilesByFilterV1(context.Background()).AccessProfileListFilterDTO(accessProfileListFilterDTO).Execute()
+	  //resp, r, err := apiClient.AccessProfilesAPI.SearchAccessProfilesByFilterV1(context.Background()).AccessProfileListFilterDTO(accessProfileListFilterDTO).ForSubadmin(forSubadmin).Limit(limit).Offset(offset).Count(count).Sorters(sorters).ForSegmentIds(forSegmentIds).IncludeUnsegmented(includeUnsegmented).Execute()
+    if err != nil {
+	    fmt.Fprintf(os.Stderr, "Error when calling `AccessProfilesAPI.SearchAccessProfilesByFilterV1``: %v\n", err)
+	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SearchAccessProfilesByFilterV1`: []AccessProfile
+    fmt.Fprintf(os.Stdout, "Response from `AccessProfilesAPI.SearchAccessProfilesByFilterV1`: %v\n", resp)
+}
+```
+
+[[Back to top]](#)
+
 ## update-access-profiles-in-bulk-v1
 Update access profile(s) requestable field.
 This API initiates a bulk update of field requestable for one or more Access Profiles.
@@ -887,11 +975,11 @@ Other parameters are passed through a pointer to a apiUpdateAccessProfilesMetada
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **accessprofilemetadatabulkupdatebyfilterrequest** | [**Accessprofilemetadatabulkupdatebyfilterrequest**](../models/accessprofilemetadatabulkupdatebyfilterrequest) |  | 
+ **accessProfileMetadataBulkUpdateByFilterRequest** | [**AccessProfileMetadataBulkUpdateByFilterRequest**](../models/access-profile-metadata-bulk-update-by-filter-request) |  | 
 
 ### Return type
 
-[**Accessprofilemetadatabulkupdateresponse**](../models/accessprofilemetadatabulkupdateresponse)
+[**AccessProfileMetadataBulkUpdateResponse**](../models/access-profile-metadata-bulk-update-response)
 
 ### HTTP request headers
 
@@ -921,10 +1009,10 @@ func main() {
           "filters" : "requestable eq false",
           "replaceScope" : "ATTRIBUTE",
           "operation" : "REPLACE"
-        }`) // Accessprofilemetadatabulkupdatebyfilterrequest | 
+        }`) // AccessProfileMetadataBulkUpdateByFilterRequest | 
 
-    var accessprofilemetadatabulkupdatebyfilterrequest access_profiles.Accessprofilemetadatabulkupdatebyfilterrequest
-    if err := json.Unmarshal(accessprofilemetadatabulkupdatebyfilterrequestJson, &accessprofilemetadatabulkupdatebyfilterrequest); err != nil {
+    var accessProfileMetadataBulkUpdateByFilterRequest access_profiles.AccessProfileMetadataBulkUpdateByFilterRequest
+    if err := json.Unmarshal(accessprofilemetadatabulkupdatebyfilterrequestJson, &accessProfileMetadataBulkUpdateByFilterRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -932,13 +1020,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccessProfilesAPI.UpdateAccessProfilesMetadataByFilterV1(context.Background()).Accessprofilemetadatabulkupdatebyfilterrequest(accessprofilemetadatabulkupdatebyfilterrequest).Execute()
-	  //resp, r, err := apiClient.AccessProfilesAPI.UpdateAccessProfilesMetadataByFilterV1(context.Background()).Accessprofilemetadatabulkupdatebyfilterrequest(accessprofilemetadatabulkupdatebyfilterrequest).Execute()
+    resp, r, err := apiClient.AccessProfilesAPI.UpdateAccessProfilesMetadataByFilterV1(context.Background()).AccessProfileMetadataBulkUpdateByFilterRequest(accessProfileMetadataBulkUpdateByFilterRequest).Execute()
+	  //resp, r, err := apiClient.AccessProfilesAPI.UpdateAccessProfilesMetadataByFilterV1(context.Background()).AccessProfileMetadataBulkUpdateByFilterRequest(accessProfileMetadataBulkUpdateByFilterRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AccessProfilesAPI.UpdateAccessProfilesMetadataByFilterV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `UpdateAccessProfilesMetadataByFilterV1`: Accessprofilemetadatabulkupdateresponse
+    // response from `UpdateAccessProfilesMetadataByFilterV1`: AccessProfileMetadataBulkUpdateResponse
     fmt.Fprintf(os.Stdout, "Response from `AccessProfilesAPI.UpdateAccessProfilesMetadataByFilterV1`: %v\n", resp)
 }
 ```
@@ -966,11 +1054,11 @@ Other parameters are passed through a pointer to a apiUpdateAccessProfilesMetada
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **accessprofilemetadatabulkupdatebyidrequest** | [**Accessprofilemetadatabulkupdatebyidrequest**](../models/accessprofilemetadatabulkupdatebyidrequest) |  | 
+ **accessProfileMetadataBulkUpdateByIdRequest** | [**AccessProfileMetadataBulkUpdateByIdRequest**](../models/access-profile-metadata-bulk-update-by-id-request) |  | 
 
 ### Return type
 
-[**Accessprofilemetadatabulkupdateresponse**](../models/accessprofilemetadatabulkupdateresponse)
+[**AccessProfileMetadataBulkUpdateResponse**](../models/access-profile-metadata-bulk-update-response)
 
 ### HTTP request headers
 
@@ -1000,10 +1088,10 @@ func main() {
           } ],
           "replaceScope" : "ATTRIBUTE",
           "operation" : "REPLACE"
-        }`) // Accessprofilemetadatabulkupdatebyidrequest | 
+        }`) // AccessProfileMetadataBulkUpdateByIdRequest | 
 
-    var accessprofilemetadatabulkupdatebyidrequest access_profiles.Accessprofilemetadatabulkupdatebyidrequest
-    if err := json.Unmarshal(accessprofilemetadatabulkupdatebyidrequestJson, &accessprofilemetadatabulkupdatebyidrequest); err != nil {
+    var accessProfileMetadataBulkUpdateByIdRequest access_profiles.AccessProfileMetadataBulkUpdateByIdRequest
+    if err := json.Unmarshal(accessprofilemetadatabulkupdatebyidrequestJson, &accessProfileMetadataBulkUpdateByIdRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -1011,13 +1099,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccessProfilesAPI.UpdateAccessProfilesMetadataByIdsV1(context.Background()).Accessprofilemetadatabulkupdatebyidrequest(accessprofilemetadatabulkupdatebyidrequest).Execute()
-	  //resp, r, err := apiClient.AccessProfilesAPI.UpdateAccessProfilesMetadataByIdsV1(context.Background()).Accessprofilemetadatabulkupdatebyidrequest(accessprofilemetadatabulkupdatebyidrequest).Execute()
+    resp, r, err := apiClient.AccessProfilesAPI.UpdateAccessProfilesMetadataByIdsV1(context.Background()).AccessProfileMetadataBulkUpdateByIdRequest(accessProfileMetadataBulkUpdateByIdRequest).Execute()
+	  //resp, r, err := apiClient.AccessProfilesAPI.UpdateAccessProfilesMetadataByIdsV1(context.Background()).AccessProfileMetadataBulkUpdateByIdRequest(accessProfileMetadataBulkUpdateByIdRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AccessProfilesAPI.UpdateAccessProfilesMetadataByIdsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `UpdateAccessProfilesMetadataByIdsV1`: Accessprofilemetadatabulkupdateresponse
+    // response from `UpdateAccessProfilesMetadataByIdsV1`: AccessProfileMetadataBulkUpdateResponse
     fmt.Fprintf(os.Stdout, "Response from `AccessProfilesAPI.UpdateAccessProfilesMetadataByIdsV1`: %v\n", resp)
 }
 ```
@@ -1045,11 +1133,11 @@ Other parameters are passed through a pointer to a apiUpdateAccessProfilesMetada
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **accessprofilemetadatabulkupdatebyqueryrequest** | [**Accessprofilemetadatabulkupdatebyqueryrequest**](../models/accessprofilemetadatabulkupdatebyqueryrequest) |  | 
+ **accessProfileMetadataBulkUpdateByQueryRequest** | [**AccessProfileMetadataBulkUpdateByQueryRequest**](../models/access-profile-metadata-bulk-update-by-query-request) |  | 
 
 ### Return type
 
-[**Accessprofilemetadatabulkupdateresponse**](../models/accessprofilemetadatabulkupdateresponse)
+[**AccessProfileMetadataBulkUpdateResponse**](../models/access-profile-metadata-bulk-update-response)
 
 ### HTTP request headers
 
@@ -1089,10 +1177,10 @@ func main() {
           } ],
           "replaceScope" : "ATTRIBUTE",
           "operation" : "REPLACE"
-        }`) // Accessprofilemetadatabulkupdatebyqueryrequest | 
+        }`) // AccessProfileMetadataBulkUpdateByQueryRequest | 
 
-    var accessprofilemetadatabulkupdatebyqueryrequest access_profiles.Accessprofilemetadatabulkupdatebyqueryrequest
-    if err := json.Unmarshal(accessprofilemetadatabulkupdatebyqueryrequestJson, &accessprofilemetadatabulkupdatebyqueryrequest); err != nil {
+    var accessProfileMetadataBulkUpdateByQueryRequest access_profiles.AccessProfileMetadataBulkUpdateByQueryRequest
+    if err := json.Unmarshal(accessprofilemetadatabulkupdatebyqueryrequestJson, &accessProfileMetadataBulkUpdateByQueryRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -1100,13 +1188,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccessProfilesAPI.UpdateAccessProfilesMetadataByQueryV1(context.Background()).Accessprofilemetadatabulkupdatebyqueryrequest(accessprofilemetadatabulkupdatebyqueryrequest).Execute()
-	  //resp, r, err := apiClient.AccessProfilesAPI.UpdateAccessProfilesMetadataByQueryV1(context.Background()).Accessprofilemetadatabulkupdatebyqueryrequest(accessprofilemetadatabulkupdatebyqueryrequest).Execute()
+    resp, r, err := apiClient.AccessProfilesAPI.UpdateAccessProfilesMetadataByQueryV1(context.Background()).AccessProfileMetadataBulkUpdateByQueryRequest(accessProfileMetadataBulkUpdateByQueryRequest).Execute()
+	  //resp, r, err := apiClient.AccessProfilesAPI.UpdateAccessProfilesMetadataByQueryV1(context.Background()).AccessProfileMetadataBulkUpdateByQueryRequest(accessProfileMetadataBulkUpdateByQueryRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AccessProfilesAPI.UpdateAccessProfilesMetadataByQueryV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `UpdateAccessProfilesMetadataByQueryV1`: Accessprofilemetadatabulkupdateresponse
+    // response from `UpdateAccessProfilesMetadataByQueryV1`: AccessProfileMetadataBulkUpdateResponse
     fmt.Fprintf(os.Stdout, "Response from `AccessProfilesAPI.UpdateAccessProfilesMetadataByQueryV1`: %v\n", resp)
 }
 ```

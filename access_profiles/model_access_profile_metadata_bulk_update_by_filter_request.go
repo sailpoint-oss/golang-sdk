@@ -15,11 +15,11 @@ import (
 	"fmt"
 )
 
-// checks if the Accessprofilemetadatabulkupdatebyfilterrequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &Accessprofilemetadatabulkupdatebyfilterrequest{}
+// checks if the AccessProfileMetadataBulkUpdateByFilterRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AccessProfileMetadataBulkUpdateByFilterRequest{}
 
-// Accessprofilemetadatabulkupdatebyfilterrequest Request to bulk update Access Model Metadata on every access profile matching a filter expression. A single access profile cannot be assigned more than 25 metadata values. Adding or replacing custom metadata requires a suite license.
-type Accessprofilemetadatabulkupdatebyfilterrequest struct {
+// AccessProfileMetadataBulkUpdateByFilterRequest Request to bulk update Access Model Metadata on every access profile matching a filter expression. A single access profile cannot be assigned more than 25 metadata values. Adding or replacing custom metadata requires a suite license.
+type AccessProfileMetadataBulkUpdateByFilterRequest struct {
 	// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, sw*  **created**: *gt, ge, le*  **modified**: *gt, lt, ge, le*  **owner.id**: *eq, in*  **requestable**: *eq*  **source.id**: *eq, in*  Supported composite operators are *and, or*
 	Filters string `json:"filters"`
 	// The operation to be performed
@@ -27,18 +27,18 @@ type Accessprofilemetadatabulkupdatebyfilterrequest struct {
 	// The choice of update scope. **ATTRIBUTE** replaces only the values of the attributes named in `values`, and **ALL** replaces every metadata attribute on the access profile.
 	ReplaceScope string `json:"replaceScope"`
 	// The metadata to be updated, including attribute key and value.
-	Values []AccessprofilemetadatabulkupdatebyidrequestValuesInner `json:"values"`
+	Values []AccessProfileMetadataBulkUpdateByIdRequestValuesInner `json:"values"`
 	AdditionalProperties map[string]interface{}
 }
 
-type _Accessprofilemetadatabulkupdatebyfilterrequest Accessprofilemetadatabulkupdatebyfilterrequest
+type _AccessProfileMetadataBulkUpdateByFilterRequest AccessProfileMetadataBulkUpdateByFilterRequest
 
-// NewAccessprofilemetadatabulkupdatebyfilterrequest instantiates a new Accessprofilemetadatabulkupdatebyfilterrequest object
+// NewAccessProfileMetadataBulkUpdateByFilterRequest instantiates a new AccessProfileMetadataBulkUpdateByFilterRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAccessprofilemetadatabulkupdatebyfilterrequest(filters string, operation string, replaceScope string, values []AccessprofilemetadatabulkupdatebyidrequestValuesInner) *Accessprofilemetadatabulkupdatebyfilterrequest {
-	this := Accessprofilemetadatabulkupdatebyfilterrequest{}
+func NewAccessProfileMetadataBulkUpdateByFilterRequest(filters string, operation string, replaceScope string, values []AccessProfileMetadataBulkUpdateByIdRequestValuesInner) *AccessProfileMetadataBulkUpdateByFilterRequest {
+	this := AccessProfileMetadataBulkUpdateByFilterRequest{}
 	this.Filters = filters
 	this.Operation = operation
 	this.ReplaceScope = replaceScope
@@ -46,16 +46,16 @@ func NewAccessprofilemetadatabulkupdatebyfilterrequest(filters string, operation
 	return &this
 }
 
-// NewAccessprofilemetadatabulkupdatebyfilterrequestWithDefaults instantiates a new Accessprofilemetadatabulkupdatebyfilterrequest object
+// NewAccessProfileMetadataBulkUpdateByFilterRequestWithDefaults instantiates a new AccessProfileMetadataBulkUpdateByFilterRequest object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewAccessprofilemetadatabulkupdatebyfilterrequestWithDefaults() *Accessprofilemetadatabulkupdatebyfilterrequest {
-	this := Accessprofilemetadatabulkupdatebyfilterrequest{}
+func NewAccessProfileMetadataBulkUpdateByFilterRequestWithDefaults() *AccessProfileMetadataBulkUpdateByFilterRequest {
+	this := AccessProfileMetadataBulkUpdateByFilterRequest{}
 	return &this
 }
 
 // GetFilters returns the Filters field value
-func (o *Accessprofilemetadatabulkupdatebyfilterrequest) GetFilters() string {
+func (o *AccessProfileMetadataBulkUpdateByFilterRequest) GetFilters() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -66,7 +66,7 @@ func (o *Accessprofilemetadatabulkupdatebyfilterrequest) GetFilters() string {
 
 // GetFiltersOk returns a tuple with the Filters field value
 // and a boolean to check if the value has been set.
-func (o *Accessprofilemetadatabulkupdatebyfilterrequest) GetFiltersOk() (*string, bool) {
+func (o *AccessProfileMetadataBulkUpdateByFilterRequest) GetFiltersOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -74,12 +74,12 @@ func (o *Accessprofilemetadatabulkupdatebyfilterrequest) GetFiltersOk() (*string
 }
 
 // SetFilters sets field value
-func (o *Accessprofilemetadatabulkupdatebyfilterrequest) SetFilters(v string) {
+func (o *AccessProfileMetadataBulkUpdateByFilterRequest) SetFilters(v string) {
 	o.Filters = v
 }
 
 // GetOperation returns the Operation field value
-func (o *Accessprofilemetadatabulkupdatebyfilterrequest) GetOperation() string {
+func (o *AccessProfileMetadataBulkUpdateByFilterRequest) GetOperation() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -90,7 +90,7 @@ func (o *Accessprofilemetadatabulkupdatebyfilterrequest) GetOperation() string {
 
 // GetOperationOk returns a tuple with the Operation field value
 // and a boolean to check if the value has been set.
-func (o *Accessprofilemetadatabulkupdatebyfilterrequest) GetOperationOk() (*string, bool) {
+func (o *AccessProfileMetadataBulkUpdateByFilterRequest) GetOperationOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -98,12 +98,12 @@ func (o *Accessprofilemetadatabulkupdatebyfilterrequest) GetOperationOk() (*stri
 }
 
 // SetOperation sets field value
-func (o *Accessprofilemetadatabulkupdatebyfilterrequest) SetOperation(v string) {
+func (o *AccessProfileMetadataBulkUpdateByFilterRequest) SetOperation(v string) {
 	o.Operation = v
 }
 
 // GetReplaceScope returns the ReplaceScope field value
-func (o *Accessprofilemetadatabulkupdatebyfilterrequest) GetReplaceScope() string {
+func (o *AccessProfileMetadataBulkUpdateByFilterRequest) GetReplaceScope() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -114,7 +114,7 @@ func (o *Accessprofilemetadatabulkupdatebyfilterrequest) GetReplaceScope() strin
 
 // GetReplaceScopeOk returns a tuple with the ReplaceScope field value
 // and a boolean to check if the value has been set.
-func (o *Accessprofilemetadatabulkupdatebyfilterrequest) GetReplaceScopeOk() (*string, bool) {
+func (o *AccessProfileMetadataBulkUpdateByFilterRequest) GetReplaceScopeOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -122,14 +122,14 @@ func (o *Accessprofilemetadatabulkupdatebyfilterrequest) GetReplaceScopeOk() (*s
 }
 
 // SetReplaceScope sets field value
-func (o *Accessprofilemetadatabulkupdatebyfilterrequest) SetReplaceScope(v string) {
+func (o *AccessProfileMetadataBulkUpdateByFilterRequest) SetReplaceScope(v string) {
 	o.ReplaceScope = v
 }
 
 // GetValues returns the Values field value
-func (o *Accessprofilemetadatabulkupdatebyfilterrequest) GetValues() []AccessprofilemetadatabulkupdatebyidrequestValuesInner {
+func (o *AccessProfileMetadataBulkUpdateByFilterRequest) GetValues() []AccessProfileMetadataBulkUpdateByIdRequestValuesInner {
 	if o == nil {
-		var ret []AccessprofilemetadatabulkupdatebyidrequestValuesInner
+		var ret []AccessProfileMetadataBulkUpdateByIdRequestValuesInner
 		return ret
 	}
 
@@ -138,7 +138,7 @@ func (o *Accessprofilemetadatabulkupdatebyfilterrequest) GetValues() []Accesspro
 
 // GetValuesOk returns a tuple with the Values field value
 // and a boolean to check if the value has been set.
-func (o *Accessprofilemetadatabulkupdatebyfilterrequest) GetValuesOk() ([]AccessprofilemetadatabulkupdatebyidrequestValuesInner, bool) {
+func (o *AccessProfileMetadataBulkUpdateByFilterRequest) GetValuesOk() ([]AccessProfileMetadataBulkUpdateByIdRequestValuesInner, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -146,11 +146,11 @@ func (o *Accessprofilemetadatabulkupdatebyfilterrequest) GetValuesOk() ([]Access
 }
 
 // SetValues sets field value
-func (o *Accessprofilemetadatabulkupdatebyfilterrequest) SetValues(v []AccessprofilemetadatabulkupdatebyidrequestValuesInner) {
+func (o *AccessProfileMetadataBulkUpdateByFilterRequest) SetValues(v []AccessProfileMetadataBulkUpdateByIdRequestValuesInner) {
 	o.Values = v
 }
 
-func (o Accessprofilemetadatabulkupdatebyfilterrequest) MarshalJSON() ([]byte, error) {
+func (o AccessProfileMetadataBulkUpdateByFilterRequest) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -158,7 +158,7 @@ func (o Accessprofilemetadatabulkupdatebyfilterrequest) MarshalJSON() ([]byte, e
 	return json.Marshal(toSerialize)
 }
 
-func (o Accessprofilemetadatabulkupdatebyfilterrequest) ToMap() (map[string]interface{}, error) {
+func (o AccessProfileMetadataBulkUpdateByFilterRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["filters"] = o.Filters
 	toSerialize["operation"] = o.Operation
@@ -172,7 +172,7 @@ func (o Accessprofilemetadatabulkupdatebyfilterrequest) ToMap() (map[string]inte
 	return toSerialize, nil
 }
 
-func (o *Accessprofilemetadatabulkupdatebyfilterrequest) UnmarshalJSON(data []byte) (err error) {
+func (o *AccessProfileMetadataBulkUpdateByFilterRequest) UnmarshalJSON(data []byte) (err error) {
 	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
@@ -197,15 +197,15 @@ func (o *Accessprofilemetadatabulkupdatebyfilterrequest) UnmarshalJSON(data []by
 		}
 	}
 
-	varAccessprofilemetadatabulkupdatebyfilterrequest := _Accessprofilemetadatabulkupdatebyfilterrequest{}
+	varAccessProfileMetadataBulkUpdateByFilterRequest := _AccessProfileMetadataBulkUpdateByFilterRequest{}
 
-	err = json.Unmarshal(data, &varAccessprofilemetadatabulkupdatebyfilterrequest)
+	err = json.Unmarshal(data, &varAccessProfileMetadataBulkUpdateByFilterRequest)
 
 	if err != nil {
 		return err
 	}
 
-	*o = Accessprofilemetadatabulkupdatebyfilterrequest(varAccessprofilemetadatabulkupdatebyfilterrequest)
+	*o = AccessProfileMetadataBulkUpdateByFilterRequest(varAccessProfileMetadataBulkUpdateByFilterRequest)
 
 	additionalProperties := make(map[string]interface{})
 
@@ -220,38 +220,38 @@ func (o *Accessprofilemetadatabulkupdatebyfilterrequest) UnmarshalJSON(data []by
 	return err
 }
 
-type NullableAccessprofilemetadatabulkupdatebyfilterrequest struct {
-	value *Accessprofilemetadatabulkupdatebyfilterrequest
+type NullableAccessProfileMetadataBulkUpdateByFilterRequest struct {
+	value *AccessProfileMetadataBulkUpdateByFilterRequest
 	isSet bool
 }
 
-func (v NullableAccessprofilemetadatabulkupdatebyfilterrequest) Get() *Accessprofilemetadatabulkupdatebyfilterrequest {
+func (v NullableAccessProfileMetadataBulkUpdateByFilterRequest) Get() *AccessProfileMetadataBulkUpdateByFilterRequest {
 	return v.value
 }
 
-func (v *NullableAccessprofilemetadatabulkupdatebyfilterrequest) Set(val *Accessprofilemetadatabulkupdatebyfilterrequest) {
+func (v *NullableAccessProfileMetadataBulkUpdateByFilterRequest) Set(val *AccessProfileMetadataBulkUpdateByFilterRequest) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableAccessprofilemetadatabulkupdatebyfilterrequest) IsSet() bool {
+func (v NullableAccessProfileMetadataBulkUpdateByFilterRequest) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableAccessprofilemetadatabulkupdatebyfilterrequest) Unset() {
+func (v *NullableAccessProfileMetadataBulkUpdateByFilterRequest) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableAccessprofilemetadatabulkupdatebyfilterrequest(val *Accessprofilemetadatabulkupdatebyfilterrequest) *NullableAccessprofilemetadatabulkupdatebyfilterrequest {
-	return &NullableAccessprofilemetadatabulkupdatebyfilterrequest{value: val, isSet: true}
+func NewNullableAccessProfileMetadataBulkUpdateByFilterRequest(val *AccessProfileMetadataBulkUpdateByFilterRequest) *NullableAccessProfileMetadataBulkUpdateByFilterRequest {
+	return &NullableAccessProfileMetadataBulkUpdateByFilterRequest{value: val, isSet: true}
 }
 
-func (v NullableAccessprofilemetadatabulkupdatebyfilterrequest) MarshalJSON() ([]byte, error) {
+func (v NullableAccessProfileMetadataBulkUpdateByFilterRequest) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableAccessprofilemetadatabulkupdatebyfilterrequest) UnmarshalJSON(src []byte) error {
+func (v *NullableAccessProfileMetadataBulkUpdateByFilterRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

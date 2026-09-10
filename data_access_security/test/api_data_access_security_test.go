@@ -46,6 +46,18 @@ func Test_data_access_security_DataAccessSecurityAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test DataAccessSecurityAPIService CreateDataDictionaryFieldV1", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.DataAccessSecurityAPI.CreateDataDictionaryFieldV1(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test DataAccessSecurityAPIService CreateIdentityCollectorV1", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -150,6 +162,19 @@ func Test_data_access_security_DataAccessSecurityAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test DataAccessSecurityAPIService DeleteDataDictionaryFieldV1", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var name string
+
+		httpRes, err := apiClient.DataAccessSecurityAPI.DeleteDataDictionaryFieldV1(context.Background(), name).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test DataAccessSecurityAPIService DeleteIdentityCollectorV1", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -208,6 +233,30 @@ func Test_data_access_security_DataAccessSecurityAPIService(t *testing.T) {
 		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DataAccessSecurityAPI.GetApplicationsV1(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test DataAccessSecurityAPIService GetIdentityCollectorBuiltinPropertiesV1", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.DataAccessSecurityAPI.GetIdentityCollectorBuiltinPropertiesV1(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test DataAccessSecurityAPIService GetIdentityCollectorTypesV1", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.DataAccessSecurityAPI.GetIdentityCollectorTypesV1(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -281,6 +330,18 @@ func Test_data_access_security_DataAccessSecurityAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test DataAccessSecurityAPIService ListDataDictionaryFieldsV1", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.DataAccessSecurityAPI.ListDataDictionaryFieldsV1(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test DataAccessSecurityAPIService ListIdentityCollectorsV1", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -302,6 +363,20 @@ func Test_data_access_security_DataAccessSecurityAPIService(t *testing.T) {
 		httpRes, err := apiClient.DataAccessSecurityAPI.PutApplicationV1(context.Background(), id).Execute()
 
 		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test DataAccessSecurityAPIService PutDataDictionaryFieldV1", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var name string
+
+		resp, httpRes, err := apiClient.DataAccessSecurityAPI.PutDataDictionaryFieldV1(context.Background(), name).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})

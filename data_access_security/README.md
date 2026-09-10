@@ -81,7 +81,8 @@ Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *DataAccessSecurityAPI* | [**CancelTaskV1**](docs/DataAccessSecurityAPI.md#canceltaskv1) | **Post** /das/v1/tasks/cancel/{id} | Cancel a DAS task.
 *DataAccessSecurityAPI* | [**CreateApplicationV1**](docs/DataAccessSecurityAPI.md#createapplicationv1) | **Post** /das/v1/applications | Create application
-*DataAccessSecurityAPI* | [**CreateIdentityCollectorV1**](docs/DataAccessSecurityAPI.md#createidentitycollectorv1) | **Post** /das/identity-collectors/v1 | Create identity collector
+*DataAccessSecurityAPI* | [**CreateDataDictionaryFieldV1**](docs/DataAccessSecurityAPI.md#createdatadictionaryfieldv1) | **Post** /das/v1/permissions/fields | Create data dictionary field
+*DataAccessSecurityAPI* | [**CreateIdentityCollectorV1**](docs/DataAccessSecurityAPI.md#createidentitycollectorv1) | **Post** /das/v1/identity-collectors | Create identity collector
 *DataAccessSecurityAPI* | [**CreateScheduleV1**](docs/DataAccessSecurityAPI.md#createschedulev1) | **Post** /das/v1/tasks/schedules | Create a new schedule.
 *DataAccessSecurityAPI* | [**DasV1OwnersAssignPost**](docs/DataAccessSecurityAPI.md#dasv1ownersassignpost) | **Post** /das/v1/owners/assign | Assign owner to application resource.
 *DataAccessSecurityAPI* | [**DasV1OwnersOwnerIdentityIdResourcesGet**](docs/DataAccessSecurityAPI.md#dasv1ownersowneridentityidresourcesget) | **Get** /das/v1/owners/{ownerIdentityId}/resources | List resources for owner.
@@ -89,19 +90,24 @@ Class | Method | HTTP request | Description
 *DataAccessSecurityAPI* | [**DasV1OwnersResourcesResourceIdGet**](docs/DataAccessSecurityAPI.md#dasv1ownersresourcesresourceidget) | **Get** /das/v1/owners/resources/{resourceId} | List owners for resource.
 *DataAccessSecurityAPI* | [**DasV1OwnersSourceIdentityIdReassignDestinationIdentityIdPost**](docs/DataAccessSecurityAPI.md#dasv1ownerssourceidentityidreassigndestinationidentityidpost) | **Post** /das/v1/owners/{sourceIdentityId}/reassign/{destinationIdentityId} | Reassign resource owner.
 *DataAccessSecurityAPI* | [**DeleteApplicationV1**](docs/DataAccessSecurityAPI.md#deleteapplicationv1) | **Delete** /das/v1/applications/{id} | Delete an application by identifier.
-*DataAccessSecurityAPI* | [**DeleteIdentityCollectorV1**](docs/DataAccessSecurityAPI.md#deleteidentitycollectorv1) | **Delete** /das/identity-collectors/v1/{id} | Delete identity collector by identifier
+*DataAccessSecurityAPI* | [**DeleteDataDictionaryFieldV1**](docs/DataAccessSecurityAPI.md#deletedatadictionaryfieldv1) | **Delete** /das/v1/permissions/fields/{name} | Delete data dictionary field
+*DataAccessSecurityAPI* | [**DeleteIdentityCollectorV1**](docs/DataAccessSecurityAPI.md#deleteidentitycollectorv1) | **Delete** /das/v1/identity-collectors/{id} | Delete identity collector by identifier
 *DataAccessSecurityAPI* | [**DeleteScheduleV1**](docs/DataAccessSecurityAPI.md#deleteschedulev1) | **Delete** /das/v1/tasks/schedules/{id} | Delete a DAS schedule.
 *DataAccessSecurityAPI* | [**DeleteTaskV1**](docs/DataAccessSecurityAPI.md#deletetaskv1) | **Delete** /das/v1/tasks/{id} | Delete a DAS task.
 *DataAccessSecurityAPI* | [**GetApplicationV1**](docs/DataAccessSecurityAPI.md#getapplicationv1) | **Get** /das/v1/applications/{id} | Retrieve application details by identifier.
 *DataAccessSecurityAPI* | [**GetApplicationsV1**](docs/DataAccessSecurityAPI.md#getapplicationsv1) | **Get** /das/v1/applications | Search applications in DAS.
+*DataAccessSecurityAPI* | [**GetIdentityCollectorBuiltinPropertiesV1**](docs/DataAccessSecurityAPI.md#getidentitycollectorbuiltinpropertiesv1) | **Get** /das/v1/identity-collectors/properties | List built-in identity collector properties
+*DataAccessSecurityAPI* | [**GetIdentityCollectorTypesV1**](docs/DataAccessSecurityAPI.md#getidentitycollectortypesv1) | **Get** /das/v1/identity-collectors/types | List identity collector types
 *DataAccessSecurityAPI* | [**GetOwnersV1**](docs/DataAccessSecurityAPI.md#getownersv1) | **Get** /das/v1/owners/applications/{appId} | Retrieve owners per application.
 *DataAccessSecurityAPI* | [**GetScheduleV1**](docs/DataAccessSecurityAPI.md#getschedulev1) | **Get** /das/v1/tasks/schedules/{id} | Get a DAS schedule.
 *DataAccessSecurityAPI* | [**GetSchedulesV1**](docs/DataAccessSecurityAPI.md#getschedulesv1) | **Get** /das/v1/tasks/schedules | List all schedules.
 *DataAccessSecurityAPI* | [**GetTaskV1**](docs/DataAccessSecurityAPI.md#gettaskv1) | **Get** /das/v1/tasks/{id} | Get a DAS task.
 *DataAccessSecurityAPI* | [**GetTasksV1**](docs/DataAccessSecurityAPI.md#gettasksv1) | **Get** /das/v1/tasks | Lists all DAS tasks.
-*DataAccessSecurityAPI* | [**ListIdentityCollectorsV1**](docs/DataAccessSecurityAPI.md#listidentitycollectorsv1) | **Get** /das/identity-collectors/v1 | List identity collectors
+*DataAccessSecurityAPI* | [**ListDataDictionaryFieldsV1**](docs/DataAccessSecurityAPI.md#listdatadictionaryfieldsv1) | **Get** /das/v1/permissions/fields | List data dictionary fields
+*DataAccessSecurityAPI* | [**ListIdentityCollectorsV1**](docs/DataAccessSecurityAPI.md#listidentitycollectorsv1) | **Get** /das/v1/identity-collectors | List identity collectors
 *DataAccessSecurityAPI* | [**PutApplicationV1**](docs/DataAccessSecurityAPI.md#putapplicationv1) | **Put** /das/v1/applications/{id} | Update application by identifier.
-*DataAccessSecurityAPI* | [**PutIdentityCollectorV1**](docs/DataAccessSecurityAPI.md#putidentitycollectorv1) | **Put** /das/identity-collectors/v1/{id} | Update identity collector by identifier
+*DataAccessSecurityAPI* | [**PutDataDictionaryFieldV1**](docs/DataAccessSecurityAPI.md#putdatadictionaryfieldv1) | **Put** /das/v1/permissions/fields/{name} | Replace data dictionary field
+*DataAccessSecurityAPI* | [**PutIdentityCollectorV1**](docs/DataAccessSecurityAPI.md#putidentitycollectorv1) | **Put** /das/v1/identity-collectors/{id} | Replace identity collector
 *DataAccessSecurityAPI* | [**PutScheduleV1**](docs/DataAccessSecurityAPI.md#putschedulev1) | **Put** /das/v1/tasks/schedules/{id} | Update a schedule.
 *DataAccessSecurityAPI* | [**StartTaskRerunV1**](docs/DataAccessSecurityAPI.md#starttaskrerunv1) | **Post** /das/v1/tasks/rerun/{id} | Rerun a DAS task.
 
@@ -119,13 +125,19 @@ Class | Method | HTTP request | Description
  - [CrawlResourcesSizesOptions](docs/CrawlResourcesSizesOptions.md)
  - [CreateIdentityCollectorV1200Response](docs/CreateIdentityCollectorV1200Response.md)
  - [CreateScheduleRequest](docs/CreateScheduleRequest.md)
+ - [Createdatadictionaryfieldrequest](docs/Createdatadictionaryfieldrequest.md)
  - [Createidentitycollectorrequest](docs/Createidentitycollectorrequest.md)
  - [DataClassificationSettings](docs/DataClassificationSettings.md)
  - [DataOwnerModel](docs/DataOwnerModel.md)
+ - [Datadictionaryfieldlistitem](docs/Datadictionaryfieldlistitem.md)
  - [ErrorMessageDto](docs/ErrorMessageDto.md)
  - [ErrorResponseDto](docs/ErrorResponseDto.md)
  - [GetTasksV1401Response](docs/GetTasksV1401Response.md)
  - [GetTasksV1429Response](docs/GetTasksV1429Response.md)
+ - [Identitycollectorbuiltinpropertiesbytype](docs/Identitycollectorbuiltinpropertiesbytype.md)
+ - [Identitycollectorbuiltinpropertiesresponse](docs/Identitycollectorbuiltinpropertiesresponse.md)
+ - [Identitycollectorcollectionsettings](docs/Identitycollectorcollectionsettings.md)
+ - [Identitycollectorfieldmapping](docs/Identitycollectorfieldmapping.md)
  - [Identitycollectorlistitem](docs/Identitycollectorlistitem.md)
  - [Int64StringKeyValuePair](docs/Int64StringKeyValuePair.md)
  - [LocaleOrigin](docs/LocaleOrigin.md)
@@ -138,6 +150,7 @@ Class | Method | HTTP request | Description
  - [Tag](docs/Tag.md)
  - [TaskInfo](docs/TaskInfo.md)
  - [UpdateScheduleRequest](docs/UpdateScheduleRequest.md)
+ - [Updatedatadictionaryfieldrequest](docs/Updatedatadictionaryfieldrequest.md)
  - [Updateidentitycollectorrequest](docs/Updateidentitycollectorrequest.md)
 
 

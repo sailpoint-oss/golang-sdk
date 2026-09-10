@@ -1403,7 +1403,7 @@ paths:
                 values:
                 - topSecret
             schema:
-              $ref: '#/components/schemas/Accessprofilemetadatabulkupdatebyidrequest'
+              $ref: '#/components/schemas/AccessProfileMetadataBulkUpdateByIdRequest'
         required: true
       responses:
         "202":
@@ -1417,7 +1417,7 @@ paths:
                     status: CREATED
                     created: 2024-09-16T18:59:06.871594Z
               schema:
-                $ref: '#/components/schemas/Accessprofilemetadatabulkupdateresponse'
+                $ref: '#/components/schemas/AccessProfileMetadataBulkUpdateResponse'
           description: Returned if the bulk update request was created.
         "400":
           content:
@@ -1508,7 +1508,7 @@ paths:
                 values:
                 - topSecret
             schema:
-              $ref: '#/components/schemas/Accessprofilemetadatabulkupdatebyfilterrequest'
+              $ref: '#/components/schemas/AccessProfileMetadataBulkUpdateByFilterRequest'
         required: true
       responses:
         "202":
@@ -1522,7 +1522,7 @@ paths:
                     status: CHUNK_PENDING
                     created: 2024-09-16T18:59:06.871594Z
               schema:
-                $ref: '#/components/schemas/Accessprofilemetadatabulkupdateresponse'
+                $ref: '#/components/schemas/AccessProfileMetadataBulkUpdateResponse'
           description: Returned if the bulk update request was created.
         "400":
           content:
@@ -1624,7 +1624,7 @@ paths:
                 values:
                 - topSecret
             schema:
-              $ref: '#/components/schemas/Accessprofilemetadatabulkupdatebyqueryrequest'
+              $ref: '#/components/schemas/AccessProfileMetadataBulkUpdateByQueryRequest'
         required: true
       responses:
         "202":
@@ -1638,7 +1638,7 @@ paths:
                     status: CREATED
                     created: 2024-09-16T18:59:06.871594Z
               schema:
-                $ref: '#/components/schemas/Accessprofilemetadatabulkupdateresponse'
+                $ref: '#/components/schemas/AccessProfileMetadataBulkUpdateResponse'
           description: Returned if the bulk update request was created.
         "400":
           content:
@@ -1700,6 +1700,193 @@ paths:
       - userAuth:
         - idn:access-profile:manage
       summary: Bulk-update metadata by query
+      tags:
+      - Access Profiles
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - ROLE_ADMIN
+      - ROLE_SUBADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+  /access-profiles/v1/filter:
+    post:
+      description: "Get a list of access profiles filtered by Access Model Metadata\
+        \ and by filter expression. Filtering is supported by filter expression, by\
+        \ metadata attribute key and values, or by both together."
+      operationId: searchAccessProfilesByFilterV1
+      parameters:
+      - description: |-
+          Filters the returned list according to what is visible to the indicated ROLE_SUBADMIN or SOURCE_SUBADMIN identity. The value of the parameter is either an identity ID or the special value **me**, which is shorthand for the calling identity's ID.
+
+          If you specify an identity that isn't a subadmin, the API returns a 400 Bad Request error.
+        example: 8c190e6787aa4ed9a90bd9d5344523fb
+        explode: true
+        in: query
+        name: for-subadmin
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: |-
+          Max number of results to return.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 50
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 50
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          Offset into the full result set. Usually specified with *limit* to paginate through the results.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 0
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+          Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: true
+        explode: true
+        in: query
+        name: count
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+      - description: |-
+          Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
+
+          Sorting is supported for the following fields: **name, created, modified**
+        example: name
+        explode: true
+        in: query
+        name: sorters
+        required: false
+        schema:
+          format: comma-separated
+          type: string
+        style: form
+      - description: Filters the returned list to those access profiles assigned to
+          the specified segment IDs.
+        example: 0b5c9f2d-1e1b-4b2f-9b1a-0e7f4a6c2d3e
+        explode: true
+        in: query
+        name: for-segment-ids
+        required: false
+        schema:
+          format: comma-separated
+          type: string
+        style: form
+      - description: Whether the returned list includes unsegmented access profiles.
+        example: true
+        explode: true
+        in: query
+        name: include-unsegmented
+        required: false
+        schema:
+          default: true
+          type: boolean
+        style: form
+      requestBody:
+        content:
+          application/json:
+            example:
+              filters: requestable eq false
+              ammKeyValues:
+              - attribute: iscFederalClassifications
+                values:
+                - secret
+            schema:
+              $ref: '#/components/schemas/AccessProfileListFilterDTO'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/AccessProfile'
+                type: array
+          description: List of access profiles matching the filter criteria.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfilesV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfilesV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:access-profile:read
+        - idn:access-profile-checked:read
+      summary: Filter access profiles by metadata
       tags:
       - Access Profiles
       x-sailpoint-userLevels:
@@ -3060,7 +3247,7 @@ components:
       items:
         $ref: '#/components/schemas/AccessProfileUpdateItem'
       type: array
-    Accessprofilemetadatabulkupdatebyidrequest:
+    AccessProfileMetadataBulkUpdateByIdRequest:
       description: Request to bulk update Access Model Metadata on a list of access
         profiles identified by ID. The maximum access profile count in a single request
         is 3000. A single access profile cannot be assigned more than 25 metadata
@@ -3107,7 +3294,7 @@ components:
             values:
             - topSecret
           items:
-            $ref: '#/components/schemas/Accessprofilemetadatabulkupdatebyidrequest_values_inner'
+            $ref: '#/components/schemas/AccessProfileMetadataBulkUpdateByIdRequest_values_inner'
           nullable: false
           type: array
       required:
@@ -3116,7 +3303,7 @@ components:
       - replaceScope
       - values
       type: object
-    Accessprofilemetadatabulkupdateresponse:
+    AccessProfileMetadataBulkUpdateResponse:
       example:
         created: 2020-10-08T18:33:52.029Z
         id: 2d82ac17-eb0d-4ba6-9918-dcad6ee0294d
@@ -3152,7 +3339,7 @@ components:
           format: date-time
           type: string
       type: object
-    Accessprofilemetadatabulkupdatebyfilterrequest:
+    AccessProfileMetadataBulkUpdateByFilterRequest:
       description: Request to bulk update Access Model Metadata on every access profile
         matching a filter expression. A single access profile cannot be assigned more
         than 25 metadata values. Adding or replacing custom metadata requires a suite
@@ -3213,7 +3400,7 @@ components:
             values:
             - topSecret
           items:
-            $ref: '#/components/schemas/Accessprofilemetadatabulkupdatebyidrequest_values_inner'
+            $ref: '#/components/schemas/AccessProfileMetadataBulkUpdateByIdRequest_values_inner'
           nullable: false
           type: array
       required:
@@ -3222,7 +3409,7 @@ components:
       - replaceScope
       - values
       type: object
-    Accessprofilemetadatabulkupdatebyqueryrequest:
+    AccessProfileMetadataBulkUpdateByQueryRequest:
       description: |-
         Request to bulk update Access Model Metadata on every access profile matching a search query. A single access profile cannot be assigned more than 25 metadata values. Adding or replacing custom metadata requires a suite license.
 
@@ -3286,7 +3473,7 @@ components:
             values:
             - topSecret
           items:
-            $ref: '#/components/schemas/Accessprofilemetadatabulkupdatebyidrequest_values_inner'
+            $ref: '#/components/schemas/AccessProfileMetadataBulkUpdateByIdRequest_values_inner'
           nullable: false
           type: array
       required:
@@ -3294,6 +3481,52 @@ components:
       - query
       - replaceScope
       - values
+      type: object
+    AccessProfileListFilterDTO:
+      description: Filter criteria and Access Model Metadata key/values used to select
+        access profiles.
+      example:
+        ammKeyValues:
+        - attribute: iscFederalClassifications
+          values:
+          - secret
+        filters: requestable eq false
+      properties:
+        filters:
+          description: |-
+            Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
+
+            Filtering is supported for the following fields and operators:
+
+            **id**: *eq, in*
+
+            **name**: *eq, sw*
+
+            **created**: *gt, ge, le*
+
+            **modified**: *gt, lt, ge, le*
+
+            **owner.id**: *eq, in*
+
+            **requestable**: *eq*
+
+            **source.id**: *eq, in*
+
+            Supported composite operators are *and, or*
+          example: requestable eq false
+          nullable: true
+          type: string
+        ammKeyValues:
+          description: The Access Model Metadata attributes and values used to filter
+            the results.
+          example:
+          - attribute: iscFederalClassifications
+            values:
+            - secret
+          items:
+            $ref: '#/components/schemas/AccessProfileListFilterDTO_ammKeyValues_inner'
+          nullable: true
+          type: array
       type: object
     listAccessProfilesV1_401_response:
       example:
@@ -3487,7 +3720,7 @@ components:
           example: false
           type: boolean
       type: object
-    Accessprofilemetadatabulkupdatebyidrequest_values_inner:
+    AccessProfileMetadataBulkUpdateByIdRequest_values_inner:
       properties:
         attribute:
           description: The technical name of the metadata attribute.
@@ -3510,4 +3743,21 @@ components:
       required:
       - attribute
       - values
+      type: object
+    AccessProfileListFilterDTO_ammKeyValues_inner:
+      properties:
+        attribute:
+          description: The technical name of the metadata attribute. A blank or missing
+            value is rejected with a 400 error.
+          example: iscFederalClassifications
+          type: string
+        values:
+          description: "The attribute values used to filter access profiles. If the\
+            \ list is empty, results are filtered by attribute key only."
+          example:
+          - secret
+          items:
+            example: secret
+            type: string
+          type: array
       type: object

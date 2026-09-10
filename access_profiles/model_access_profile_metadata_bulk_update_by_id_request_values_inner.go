@@ -15,11 +15,11 @@ import (
 	"fmt"
 )
 
-// checks if the AccessprofilemetadatabulkupdatebyidrequestValuesInner type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &AccessprofilemetadatabulkupdatebyidrequestValuesInner{}
+// checks if the AccessProfileMetadataBulkUpdateByIdRequestValuesInner type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AccessProfileMetadataBulkUpdateByIdRequestValuesInner{}
 
-// AccessprofilemetadatabulkupdatebyidrequestValuesInner struct for AccessprofilemetadatabulkupdatebyidrequestValuesInner
-type AccessprofilemetadatabulkupdatebyidrequestValuesInner struct {
+// AccessProfileMetadataBulkUpdateByIdRequestValuesInner struct for AccessProfileMetadataBulkUpdateByIdRequestValuesInner
+type AccessProfileMetadataBulkUpdateByIdRequestValuesInner struct {
 	// The technical name of the metadata attribute.
 	Attribute string `json:"attribute"`
 	// The values of the attribute to be updated.
@@ -29,29 +29,29 @@ type AccessprofilemetadatabulkupdatebyidrequestValuesInner struct {
 	AdditionalProperties map[string]interface{}
 }
 
-type _AccessprofilemetadatabulkupdatebyidrequestValuesInner AccessprofilemetadatabulkupdatebyidrequestValuesInner
+type _AccessProfileMetadataBulkUpdateByIdRequestValuesInner AccessProfileMetadataBulkUpdateByIdRequestValuesInner
 
-// NewAccessprofilemetadatabulkupdatebyidrequestValuesInner instantiates a new AccessprofilemetadatabulkupdatebyidrequestValuesInner object
+// NewAccessProfileMetadataBulkUpdateByIdRequestValuesInner instantiates a new AccessProfileMetadataBulkUpdateByIdRequestValuesInner object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAccessprofilemetadatabulkupdatebyidrequestValuesInner(attribute string, values []string) *AccessprofilemetadatabulkupdatebyidrequestValuesInner {
-	this := AccessprofilemetadatabulkupdatebyidrequestValuesInner{}
+func NewAccessProfileMetadataBulkUpdateByIdRequestValuesInner(attribute string, values []string) *AccessProfileMetadataBulkUpdateByIdRequestValuesInner {
+	this := AccessProfileMetadataBulkUpdateByIdRequestValuesInner{}
 	this.Attribute = attribute
 	this.Values = values
 	return &this
 }
 
-// NewAccessprofilemetadatabulkupdatebyidrequestValuesInnerWithDefaults instantiates a new AccessprofilemetadatabulkupdatebyidrequestValuesInner object
+// NewAccessProfileMetadataBulkUpdateByIdRequestValuesInnerWithDefaults instantiates a new AccessProfileMetadataBulkUpdateByIdRequestValuesInner object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewAccessprofilemetadatabulkupdatebyidrequestValuesInnerWithDefaults() *AccessprofilemetadatabulkupdatebyidrequestValuesInner {
-	this := AccessprofilemetadatabulkupdatebyidrequestValuesInner{}
+func NewAccessProfileMetadataBulkUpdateByIdRequestValuesInnerWithDefaults() *AccessProfileMetadataBulkUpdateByIdRequestValuesInner {
+	this := AccessProfileMetadataBulkUpdateByIdRequestValuesInner{}
 	return &this
 }
 
 // GetAttribute returns the Attribute field value
-func (o *AccessprofilemetadatabulkupdatebyidrequestValuesInner) GetAttribute() string {
+func (o *AccessProfileMetadataBulkUpdateByIdRequestValuesInner) GetAttribute() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -62,7 +62,7 @@ func (o *AccessprofilemetadatabulkupdatebyidrequestValuesInner) GetAttribute() s
 
 // GetAttributeOk returns a tuple with the Attribute field value
 // and a boolean to check if the value has been set.
-func (o *AccessprofilemetadatabulkupdatebyidrequestValuesInner) GetAttributeOk() (*string, bool) {
+func (o *AccessProfileMetadataBulkUpdateByIdRequestValuesInner) GetAttributeOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -70,13 +70,13 @@ func (o *AccessprofilemetadatabulkupdatebyidrequestValuesInner) GetAttributeOk()
 }
 
 // SetAttribute sets field value
-func (o *AccessprofilemetadatabulkupdatebyidrequestValuesInner) SetAttribute(v string) {
+func (o *AccessProfileMetadataBulkUpdateByIdRequestValuesInner) SetAttribute(v string) {
 	o.Attribute = v
 }
 
 // GetValues returns the Values field value
 // If the value is explicit nil, the zero value for []string will be returned
-func (o *AccessprofilemetadatabulkupdatebyidrequestValuesInner) GetValues() []string {
+func (o *AccessProfileMetadataBulkUpdateByIdRequestValuesInner) GetValues() []string {
 	if o == nil {
 		var ret []string
 		return ret
@@ -88,7 +88,7 @@ func (o *AccessprofilemetadatabulkupdatebyidrequestValuesInner) GetValues() []st
 // GetValuesOk returns a tuple with the Values field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AccessprofilemetadatabulkupdatebyidrequestValuesInner) GetValuesOk() ([]string, bool) {
+func (o *AccessProfileMetadataBulkUpdateByIdRequestValuesInner) GetValuesOk() ([]string, bool) {
 	if o == nil || IsNil(o.Values) {
 		return nil, false
 	}
@@ -96,12 +96,12 @@ func (o *AccessprofilemetadatabulkupdatebyidrequestValuesInner) GetValuesOk() ([
 }
 
 // SetValues sets field value
-func (o *AccessprofilemetadatabulkupdatebyidrequestValuesInner) SetValues(v []string) {
+func (o *AccessProfileMetadataBulkUpdateByIdRequestValuesInner) SetValues(v []string) {
 	o.Values = v
 }
 
 // GetObjectType returns the ObjectType field value if set, zero value otherwise.
-func (o *AccessprofilemetadatabulkupdatebyidrequestValuesInner) GetObjectType() string {
+func (o *AccessProfileMetadataBulkUpdateByIdRequestValuesInner) GetObjectType() string {
 	if o == nil || IsNil(o.ObjectType) {
 		var ret string
 		return ret
@@ -111,7 +111,7 @@ func (o *AccessprofilemetadatabulkupdatebyidrequestValuesInner) GetObjectType() 
 
 // GetObjectTypeOk returns a tuple with the ObjectType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AccessprofilemetadatabulkupdatebyidrequestValuesInner) GetObjectTypeOk() (*string, bool) {
+func (o *AccessProfileMetadataBulkUpdateByIdRequestValuesInner) GetObjectTypeOk() (*string, bool) {
 	if o == nil || IsNil(o.ObjectType) {
 		return nil, false
 	}
@@ -119,7 +119,7 @@ func (o *AccessprofilemetadatabulkupdatebyidrequestValuesInner) GetObjectTypeOk(
 }
 
 // HasObjectType returns a boolean if a field has been set.
-func (o *AccessprofilemetadatabulkupdatebyidrequestValuesInner) HasObjectType() bool {
+func (o *AccessProfileMetadataBulkUpdateByIdRequestValuesInner) HasObjectType() bool {
 	if o != nil && !IsNil(o.ObjectType) {
 		return true
 	}
@@ -128,11 +128,11 @@ func (o *AccessprofilemetadatabulkupdatebyidrequestValuesInner) HasObjectType() 
 }
 
 // SetObjectType gets a reference to the given string and assigns it to the ObjectType field.
-func (o *AccessprofilemetadatabulkupdatebyidrequestValuesInner) SetObjectType(v string) {
+func (o *AccessProfileMetadataBulkUpdateByIdRequestValuesInner) SetObjectType(v string) {
 	o.ObjectType = &v
 }
 
-func (o AccessprofilemetadatabulkupdatebyidrequestValuesInner) MarshalJSON() ([]byte, error) {
+func (o AccessProfileMetadataBulkUpdateByIdRequestValuesInner) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -140,7 +140,7 @@ func (o AccessprofilemetadatabulkupdatebyidrequestValuesInner) MarshalJSON() ([]
 	return json.Marshal(toSerialize)
 }
 
-func (o AccessprofilemetadatabulkupdatebyidrequestValuesInner) ToMap() (map[string]interface{}, error) {
+func (o AccessProfileMetadataBulkUpdateByIdRequestValuesInner) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["attribute"] = o.Attribute
 	if o.Values != nil {
@@ -157,7 +157,7 @@ func (o AccessprofilemetadatabulkupdatebyidrequestValuesInner) ToMap() (map[stri
 	return toSerialize, nil
 }
 
-func (o *AccessprofilemetadatabulkupdatebyidrequestValuesInner) UnmarshalJSON(data []byte) (err error) {
+func (o *AccessProfileMetadataBulkUpdateByIdRequestValuesInner) UnmarshalJSON(data []byte) (err error) {
 	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
@@ -180,15 +180,15 @@ func (o *AccessprofilemetadatabulkupdatebyidrequestValuesInner) UnmarshalJSON(da
 		}
 	}
 
-	varAccessprofilemetadatabulkupdatebyidrequestValuesInner := _AccessprofilemetadatabulkupdatebyidrequestValuesInner{}
+	varAccessProfileMetadataBulkUpdateByIdRequestValuesInner := _AccessProfileMetadataBulkUpdateByIdRequestValuesInner{}
 
-	err = json.Unmarshal(data, &varAccessprofilemetadatabulkupdatebyidrequestValuesInner)
+	err = json.Unmarshal(data, &varAccessProfileMetadataBulkUpdateByIdRequestValuesInner)
 
 	if err != nil {
 		return err
 	}
 
-	*o = AccessprofilemetadatabulkupdatebyidrequestValuesInner(varAccessprofilemetadatabulkupdatebyidrequestValuesInner)
+	*o = AccessProfileMetadataBulkUpdateByIdRequestValuesInner(varAccessProfileMetadataBulkUpdateByIdRequestValuesInner)
 
 	additionalProperties := make(map[string]interface{})
 
@@ -202,38 +202,38 @@ func (o *AccessprofilemetadatabulkupdatebyidrequestValuesInner) UnmarshalJSON(da
 	return err
 }
 
-type NullableAccessprofilemetadatabulkupdatebyidrequestValuesInner struct {
-	value *AccessprofilemetadatabulkupdatebyidrequestValuesInner
+type NullableAccessProfileMetadataBulkUpdateByIdRequestValuesInner struct {
+	value *AccessProfileMetadataBulkUpdateByIdRequestValuesInner
 	isSet bool
 }
 
-func (v NullableAccessprofilemetadatabulkupdatebyidrequestValuesInner) Get() *AccessprofilemetadatabulkupdatebyidrequestValuesInner {
+func (v NullableAccessProfileMetadataBulkUpdateByIdRequestValuesInner) Get() *AccessProfileMetadataBulkUpdateByIdRequestValuesInner {
 	return v.value
 }
 
-func (v *NullableAccessprofilemetadatabulkupdatebyidrequestValuesInner) Set(val *AccessprofilemetadatabulkupdatebyidrequestValuesInner) {
+func (v *NullableAccessProfileMetadataBulkUpdateByIdRequestValuesInner) Set(val *AccessProfileMetadataBulkUpdateByIdRequestValuesInner) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableAccessprofilemetadatabulkupdatebyidrequestValuesInner) IsSet() bool {
+func (v NullableAccessProfileMetadataBulkUpdateByIdRequestValuesInner) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableAccessprofilemetadatabulkupdatebyidrequestValuesInner) Unset() {
+func (v *NullableAccessProfileMetadataBulkUpdateByIdRequestValuesInner) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableAccessprofilemetadatabulkupdatebyidrequestValuesInner(val *AccessprofilemetadatabulkupdatebyidrequestValuesInner) *NullableAccessprofilemetadatabulkupdatebyidrequestValuesInner {
-	return &NullableAccessprofilemetadatabulkupdatebyidrequestValuesInner{value: val, isSet: true}
+func NewNullableAccessProfileMetadataBulkUpdateByIdRequestValuesInner(val *AccessProfileMetadataBulkUpdateByIdRequestValuesInner) *NullableAccessProfileMetadataBulkUpdateByIdRequestValuesInner {
+	return &NullableAccessProfileMetadataBulkUpdateByIdRequestValuesInner{value: val, isSet: true}
 }
 
-func (v NullableAccessprofilemetadatabulkupdatebyidrequestValuesInner) MarshalJSON() ([]byte, error) {
+func (v NullableAccessProfileMetadataBulkUpdateByIdRequestValuesInner) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableAccessprofilemetadatabulkupdatebyidrequestValuesInner) UnmarshalJSON(src []byte) error {
+func (v *NullableAccessProfileMetadataBulkUpdateByIdRequestValuesInner) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

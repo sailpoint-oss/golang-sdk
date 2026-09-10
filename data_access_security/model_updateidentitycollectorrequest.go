@@ -18,7 +18,7 @@ import (
 // checks if the Updateidentitycollectorrequest type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &Updateidentitycollectorrequest{}
 
-// Updateidentitycollectorrequest struct for Updateidentitycollectorrequest
+// Updateidentitycollectorrequest Complete identity collector representation for [Replace Identity Collector](https://developer.sailpoint.com/docs/api/put-identity-collector-v-1). The server fully replaces the existing resource with this payload. Partial updates are not supported; `users` and `groups` must always be supplied and replace the current collection settings in their entirety.
 type Updateidentitycollectorrequest struct {
 	// The display name of the identity collector. Must be unique within the tenant.
 	Name string `json:"name"`
@@ -26,6 +26,8 @@ type Updateidentitycollectorrequest struct {
 	SourceId string `json:"sourceId"`
 	// The identity collector type. This value cannot be modified for an existing identity collector and must match the current value.
 	Type string `json:"type"`
+	Users Identitycollectorcollectionsettings `json:"users"`
+	Groups Identitycollectorcollectionsettings `json:"groups"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -35,11 +37,13 @@ type _Updateidentitycollectorrequest Updateidentitycollectorrequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUpdateidentitycollectorrequest(name string, sourceId string, type_ string) *Updateidentitycollectorrequest {
+func NewUpdateidentitycollectorrequest(name string, sourceId string, type_ string, users Identitycollectorcollectionsettings, groups Identitycollectorcollectionsettings) *Updateidentitycollectorrequest {
 	this := Updateidentitycollectorrequest{}
 	this.Name = name
 	this.SourceId = sourceId
 	this.Type = type_
+	this.Users = users
+	this.Groups = groups
 	return &this
 }
 
@@ -123,6 +127,54 @@ func (o *Updateidentitycollectorrequest) SetType(v string) {
 	o.Type = v
 }
 
+// GetUsers returns the Users field value
+func (o *Updateidentitycollectorrequest) GetUsers() Identitycollectorcollectionsettings {
+	if o == nil {
+		var ret Identitycollectorcollectionsettings
+		return ret
+	}
+
+	return o.Users
+}
+
+// GetUsersOk returns a tuple with the Users field value
+// and a boolean to check if the value has been set.
+func (o *Updateidentitycollectorrequest) GetUsersOk() (*Identitycollectorcollectionsettings, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Users, true
+}
+
+// SetUsers sets field value
+func (o *Updateidentitycollectorrequest) SetUsers(v Identitycollectorcollectionsettings) {
+	o.Users = v
+}
+
+// GetGroups returns the Groups field value
+func (o *Updateidentitycollectorrequest) GetGroups() Identitycollectorcollectionsettings {
+	if o == nil {
+		var ret Identitycollectorcollectionsettings
+		return ret
+	}
+
+	return o.Groups
+}
+
+// GetGroupsOk returns a tuple with the Groups field value
+// and a boolean to check if the value has been set.
+func (o *Updateidentitycollectorrequest) GetGroupsOk() (*Identitycollectorcollectionsettings, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Groups, true
+}
+
+// SetGroups sets field value
+func (o *Updateidentitycollectorrequest) SetGroups(v Identitycollectorcollectionsettings) {
+	o.Groups = v
+}
+
 func (o Updateidentitycollectorrequest) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -136,6 +188,8 @@ func (o Updateidentitycollectorrequest) ToMap() (map[string]interface{}, error) 
 	toSerialize["name"] = o.Name
 	toSerialize["sourceId"] = o.SourceId
 	toSerialize["type"] = o.Type
+	toSerialize["users"] = o.Users
+	toSerialize["groups"] = o.Groups
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -152,6 +206,8 @@ func (o *Updateidentitycollectorrequest) UnmarshalJSON(data []byte) (err error) 
 		"name",
 		"sourceId",
 		"type",
+		"users",
+		"groups",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -184,6 +240,8 @@ func (o *Updateidentitycollectorrequest) UnmarshalJSON(data []byte) (err error) 
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "sourceId")
 		delete(additionalProperties, "type")
+		delete(additionalProperties, "users")
+		delete(additionalProperties, "groups")
 		o.AdditionalProperties = additionalProperties
 	}
 

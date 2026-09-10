@@ -1801,7 +1801,7 @@ paths:
       - Data Access Security
       x-sailpoint-userLevels:
       - ORG_ADMIN
-  /das/identity-collectors/v1:
+  /das/v1/identity-collectors:
     get:
       description: |-
         This endpoint lists the identity collectors in Data Access Security with optional filtering and pagination.
@@ -1978,9 +1978,10 @@ paths:
       x-sailpoint-userLevels:
       - ORG_ADMIN
     post:
-      description: This endpoint creates a new identity collector in Data Access Security
-        for the specified source. The identity collector type is derived from the
-        source.
+      description: |-
+        This endpoint creates a new identity collector in Data Access Security for the specified source. The identity collector type is derived from the source.
+
+        Optionally configure `users` and `groups` to register source attributes (`properties`) and map them to data dictionary fields by name (`fieldMappings.fieldDictionaryName`). When omitted, both collections are created with fixed columns only.
       operationId: createIdentityCollectorV1
       requestBody:
         content:
@@ -2081,7 +2082,228 @@ paths:
       - Data Access Security
       x-sailpoint-userLevels:
       - ORG_ADMIN
-  /das/identity-collectors/v1/{id}:
+  /das/v1/identity-collectors/types:
+    get:
+      description: |-
+        Returns the public identity collector type display names exposed for metadata and UI discovery. This endpoint lists base types only (for example, `Box` rather than `Box SaaS`). SaaS variants are not listed here; the identity collector type is derived from `sourceId` when creating an identity collector. Existing identity collectors may still report SaaS variant types in list and update responses.
+
+        Pagination is not supported for this endpoint; the full set of public types is always returned.
+      operationId: getIdentityCollectorTypesV1
+      parameters:
+      - description: |-
+          Max number of results to return.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 250
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          Offset into the full result set. Usually specified with *limit* to paginate through the results.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 0
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                example:
+                - Active Directory
+                - AWS
+                - Azure Active Directory
+                - Box
+                - Databricks
+                - Dropbox
+                - Google Drive
+                - Microsoft Entra SaaS
+                - Snowflake
+                items:
+                  type: string
+                type: array
+          description: Supported identity collector type display names.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getTasksV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getTasksV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - das:identity-collectors:read
+        - das:identity-collectors:manage
+      - applicationAuth:
+        - das:identity-collectors:read
+        - das:identity-collectors:manage
+      summary: List identity collector types
+      tags:
+      - Data Access Security
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+  /das/v1/identity-collectors/properties:
+    get:
+      description: |-
+        Returns the built-in source attribute names for users and groups collections. When no filter is provided, built-in properties for all public identity collector types are returned (the same base types listed by [List Identity Collector Types](https://developer.sailpoint.com/docs/api/get-identity-collector-types-v-1)). When filtered by `type`, only the matching type is returned; the filter accepts any supported type display name, including SaaS variants such as `Box SaaS` or `AWS SaaS`.
+
+        These attributes are always available for field mapping without being listed in `properties`.
+      operationId: getIdentityCollectorBuiltinPropertiesV1
+      parameters:
+      - description: |-
+          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
+
+          Filtering is supported for the following fields and operators:
+
+          **type**: *eq*
+        example: type eq "Azure Active Directory"
+        explode: true
+        in: query
+        name: filters
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Identitycollectorbuiltinpropertiesresponse'
+          description: Built-in source attribute names for users and groups collections.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getTasksV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getTasksV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - das:identity-collectors:read
+        - das:identity-collectors:manage
+      - applicationAuth:
+        - das:identity-collectors:read
+        - das:identity-collectors:manage
+      summary: List built-in identity collector properties
+      tags:
+      - Data Access Security
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+  /das/v1/identity-collectors/{id}:
     delete:
       description: This endpoint deletes an identity collector from Data Access Security
         by its unique identifier.
@@ -2097,6 +2319,7 @@ paths:
           format: int64
           type: integer
         style: simple
+        x-sailpoint-resource-operation-id: listIdentityCollectorsV1
       responses:
         "204":
           description: No Content
@@ -2185,12 +2408,13 @@ paths:
       x-sailpoint-userLevels:
       - ORG_ADMIN
     put:
-      description: This endpoint updates the name of an existing identity collector
-        in Data Access Security. The `sourceId` and `type` cannot be changed and must
-        match the current values.
+      description: |-
+        Fully replaces an existing identity collector in Data Access Security. This is a PUT operation, not a partial update: the request body must contain the complete resource representation. Omitted or null top-level properties are rejected. After a successful request, a subsequent list request returns exactly the configuration that was sent.
+
+        Retrieve the current configuration with [List Identity Collectors](https://developer.sailpoint.com/docs/api/list-identity-collectors-v-1) before replacing it. The `sourceId` and `type` cannot be changed and must match the current values.
       operationId: putIdentityCollectorV1
       parameters:
-      - description: The unique identifier of the identity collector to update.
+      - description: The unique identifier of the identity collector to replace.
         example: 12345
         explode: false
         in: path
@@ -2200,17 +2424,18 @@ paths:
           format: int64
           type: integer
         style: simple
+        x-sailpoint-resource-operation-id: listIdentityCollectorsV1
       requestBody:
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/Updateidentitycollectorrequest'
-        description: Request body containing the updated details for the identity
-          collector.
+        description: Complete identity collector representation used to fully replace
+          the existing resource. Partial updates are not supported.
         required: true
       responses:
         "204":
-          description: No Content
+          description: The identity collector was fully replaced.
         "400":
           content:
             application/json:
@@ -2297,7 +2522,496 @@ paths:
         - das:identity-collectors:manage
       - applicationAuth:
         - das:identity-collectors:manage
-      summary: Update identity collector by identifier
+      summary: Replace identity collector
+      tags:
+      - Data Access Security
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+  /das/v1/permissions/fields:
+    get:
+      description: "Returns custom data dictionary fields that can be used when configuring\
+        \ identity collector field mappings and other permission-related settings.\
+        \ Built-in fields are not included in list responses; only custom fields created\
+        \ via [Create Data Dictionary Field](https://developer.sailpoint.com/docs/api/create-data-dictionary-field-v-1)\
+        \ are returned. All listed fields have `required: false`."
+      operationId: listDataDictionaryFieldsV1
+      parameters:
+      - description: |-
+          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
+
+          Filtering is supported for the following fields and operators:
+
+          **dataDictionaryType**: *eq*
+
+          **name**: *eq*
+
+          Supported composite operators are *and*
+        example: dataDictionaryType eq "Users" and name eq "Department"
+        explode: true
+        in: query
+        name: filters
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: |-
+          Max number of results to return.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 250
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          Offset into the full result set. Usually specified with *limit* to paginate through the results.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 0
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+          Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: true
+        explode: true
+        in: query
+        name: count
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Datadictionaryfieldlistitem'
+                type: array
+          description: Data dictionary fields matching the filter criteria.
+          headers:
+            X-Total-Count:
+              description: "The total number of results matching the filter criteria,\
+                \ regardless of paging limits."
+              explode: false
+              schema:
+                format: int64
+                type: integer
+              style: simple
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getTasksV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getTasksV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - das:permissions:read
+        - das:permissions:manage
+      - applicationAuth:
+        - das:permissions:read
+        - das:permissions:manage
+      summary: List data dictionary fields
+      tags:
+      - Data Access Security
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+    post:
+      description: Creates a custom data dictionary field. The server assigns fieldType
+        String and required false; callers do not supply those values.
+      operationId: createDataDictionaryFieldV1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Createdatadictionaryfieldrequest'
+        description: Custom data dictionary field to create.
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Datadictionaryfieldlistitem'
+          description: The data dictionary field was created.
+          headers:
+            Location:
+              description: URL of the created data dictionary field.
+              example: /das/v1/permissions/fields/Department
+              explode: false
+              schema:
+                type: string
+              style: simple
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getTasksV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/putIdentityCollectorV1_409_response'
+          description: Conflict - Returned if an identity collector with the same
+            name already exists.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getTasksV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - das:permissions:manage
+      - applicationAuth:
+        - das:permissions:manage
+      summary: Create data dictionary field
+      tags:
+      - Data Access Security
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+  /das/v1/permissions/fields/{name}:
+    delete:
+      description: Deletes a custom data dictionary field. Built-in fields where required
+        is true cannot be deleted.
+      operationId: deleteDataDictionaryFieldV1
+      parameters:
+      - description: The field name to delete.
+        example: Department
+        explode: false
+        in: path
+        name: name
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listDataDictionaryFieldsV1
+      responses:
+        "204":
+          description: No Content
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getTasksV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/putIdentityCollectorV1_409_response'
+          description: Conflict - Returned if an identity collector with the same
+            name already exists.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getTasksV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - das:permissions:manage
+      - applicationAuth:
+        - das:permissions:manage
+      summary: Delete data dictionary field
+      tags:
+      - Data Access Security
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+    put:
+      description: |-
+        Fully replaces a custom data dictionary field. This is a PUT operation, not a partial update: the request body must contain the complete resource representation. Omitted properties are rejected. For custom fields, `fieldType`, `dataDictionaryType`, and `required` must match the current values; only `name` may change. Built-in fields where `required` is true cannot be updated.
+
+        List the field first with [List Data Dictionary Fields](https://developer.sailpoint.com/docs/api/list-data-dictionary-fields-v-1) to obtain the current representation before replacing it.
+      operationId: putDataDictionaryFieldV1
+      parameters:
+      - description: The current field name.
+        example: Department
+        explode: false
+        in: path
+        name: name
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listDataDictionaryFieldsV1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Updatedatadictionaryfieldrequest'
+        description: Complete data dictionary field representation used to fully replace
+          the existing field.
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Datadictionaryfieldlistitem'
+          description: The data dictionary field was fully replaced.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getTasksV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/putIdentityCollectorV1_409_response'
+          description: Conflict - Returned if an identity collector with the same
+            name already exists.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getTasksV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - das:permissions:manage
+      - applicationAuth:
+        - das:permissions:manage
+      summary: Replace data dictionary field
       tags:
       - Data Access Security
       x-sailpoint-userLevels:
@@ -4077,12 +4791,85 @@ components:
       - applicationType
       - name
       type: object
+    Identitycollectorfieldmapping:
+      example:
+        sourceAttributeName: department
+        fieldDictionaryName: UPTF-1
+      properties:
+        fieldDictionaryName:
+          description: The name of the data dictionary field to map to. Dictionary
+            fields of type Users apply to the users collection; dictionary fields
+            of type Roles apply to the groups collection.
+          example: UPTF-1
+          type: string
+        sourceAttributeName:
+          description: The source attribute name to read at runtime. This may be a
+            built-in attribute for the identity collector type or a custom attribute
+            listed in `properties` for the same collection. Built-in attributes can
+            be discovered using the identity collector properties metadata endpoint.
+          example: department
+          type: string
+      required:
+      - fieldDictionaryName
+      - sourceAttributeName
+      type: object
+    Identitycollectorcollectionsettings:
+      example:
+        fieldMappings:
+        - sourceAttributeName: department
+          fieldDictionaryName: UPTF-1
+        - sourceAttributeName: department
+          fieldDictionaryName: UPTF-1
+        properties:
+        - UserAddress
+        - department
+      properties:
+        properties:
+          description: Source attribute names to register as datasource columns for
+            this collection. These names must match the attributes sent by Identity
+            Security Cloud. Use an empty array when no custom attributes are required.
+          example:
+          - UserAddress
+          - department
+          items:
+            type: string
+          type: array
+        fieldMappings:
+          description: Maps source attributes to data dictionary fields and DAS custom
+            field slots. Each `sourceAttributeName` must be either a built-in attribute
+            for the identity collector type or listed in `properties`. Use an empty
+            array when no dynamic field mappings are configured.
+          items:
+            $ref: '#/components/schemas/Identitycollectorfieldmapping'
+          type: array
+      required:
+      - fieldMappings
+      - properties
+      type: object
     Identitycollectorlistitem:
       example:
         sourceId: 2c9180835d2e5168015d32f890ca1581
         name: Active Directory Identity Collector
+        groups:
+          fieldMappings:
+          - sourceAttributeName: department
+            fieldDictionaryName: UPTF-1
+          - sourceAttributeName: department
+            fieldDictionaryName: UPTF-1
+          properties:
+          - UserAddress
+          - department
         id: "12345"
         type: Active Directory
+        users:
+          fieldMappings:
+          - sourceAttributeName: department
+            fieldDictionaryName: UPTF-1
+          - sourceAttributeName: department
+            fieldDictionaryName: UPTF-1
+          properties:
+          - UserAddress
+          - department
       properties:
         id:
           description: The unique identifier of the identity collector.
@@ -4093,23 +4880,56 @@ components:
           example: Active Directory Identity Collector
           type: string
         type:
-          description: "The identity collector type, derived from its underlying source.\
-            \ Possible values include \"Active Directory\", \"Azure Active Directory\"\
-            , \"Google Drive\", \"Dropbox\", \"Box\", \"Microsoft Entra SaaS\", \"\
-            Snowflake\", and \"Databricks\"."
+          description: "The identity collector type, derived from its underlying source."
           example: Active Directory
           type: string
+          x-extensible-enum:
+          - Active Directory
+          - Azure Active Directory
+          - Google Drive
+          - Dropbox
+          - Dropbox SaaS
+          - Box
+          - Box SaaS
+          - Microsoft Entra SaaS
+          - Snowflake
+          - Snowflake SaaS
+          - Databricks
+          - AWS
+          - AWS SaaS
         sourceId:
           description: "The identifier of the source the identity collector is associated\
             \ with, represented as a UUID. Both hyphenated and non-hyphenated formats\
             \ are accepted."
           example: 2c9180835d2e5168015d32f890ca1581
           type: string
+        users:
+          $ref: '#/components/schemas/Identitycollectorcollectionsettings'
+        groups:
+          $ref: '#/components/schemas/Identitycollectorcollectionsettings'
       type: object
     Createidentitycollectorrequest:
       example:
         sourceId: 2c9180835d2e5168015d32f890ca1581
         name: Active Directory Identity Collector
+        groups:
+          fieldMappings:
+          - sourceAttributeName: department
+            fieldDictionaryName: UPTF-1
+          - sourceAttributeName: department
+            fieldDictionaryName: UPTF-1
+          properties:
+          - UserAddress
+          - department
+        users:
+          fieldMappings:
+          - sourceAttributeName: department
+            fieldDictionaryName: UPTF-1
+          - sourceAttributeName: department
+            fieldDictionaryName: UPTF-1
+          properties:
+          - UserAddress
+          - department
       properties:
         name:
           description: The display name for the new identity collector. Must be unique
@@ -4122,15 +4942,114 @@ components:
             \ are accepted. The identity collector type is derived from this source."
           example: 2c9180835d2e5168015d32f890ca1581
           type: string
+        users:
+          $ref: '#/components/schemas/Identitycollectorcollectionsettings'
+        groups:
+          $ref: '#/components/schemas/Identitycollectorcollectionsettings'
       required:
       - name
       - sourceId
       type: object
+    Identitycollectorbuiltinpropertiesbytype:
+      example:
+        groups:
+        - displayName
+        - mailEnabled
+        - objectId
+        type: Azure Active Directory
+        users:
+        - userPrincipalName
+        - displayName
+        - department
+      properties:
+        type:
+          description: Identity collector type display name.
+          example: Azure Active Directory
+          type: string
+        users:
+          description: Built-in user source attribute names that can be used in field
+            mappings for the identity collector type.
+          example:
+          - userPrincipalName
+          - displayName
+          - department
+          items:
+            type: string
+          type: array
+        groups:
+          description: Built-in group source attribute names that can be used in field
+            mappings for the identity collector type.
+          example:
+          - displayName
+          - mailEnabled
+          - objectId
+          items:
+            type: string
+          type: array
+      required:
+      - groups
+      - type
+      - users
+      type: object
+    Identitycollectorbuiltinpropertiesresponse:
+      example:
+        types:
+        - groups:
+          - displayName
+          - mailEnabled
+          - objectId
+          type: Azure Active Directory
+          users:
+          - userPrincipalName
+          - displayName
+          - department
+        - groups:
+          - displayName
+          - mailEnabled
+          - objectId
+          type: Azure Active Directory
+          users:
+          - userPrincipalName
+          - displayName
+          - department
+      properties:
+        types:
+          description: Built-in source attribute names grouped by identity collector
+            type.
+          items:
+            $ref: '#/components/schemas/Identitycollectorbuiltinpropertiesbytype'
+          type: array
+      required:
+      - types
+      type: object
     Updateidentitycollectorrequest:
+      description: "Complete identity collector representation for [Replace Identity\
+        \ Collector](https://developer.sailpoint.com/docs/api/put-identity-collector-v-1).\
+        \ The server fully replaces the existing resource with this payload. Partial\
+        \ updates are not supported; `users` and `groups` must always be supplied\
+        \ and replace the current collection settings in their entirety."
       example:
         sourceId: 2c9180835d2e5168015d32f890ca1581
         name: Active Directory Identity Collector
+        groups:
+          fieldMappings:
+          - sourceAttributeName: department
+            fieldDictionaryName: UPTF-1
+          - sourceAttributeName: department
+            fieldDictionaryName: UPTF-1
+          properties:
+          - UserAddress
+          - department
         type: Active Directory
+        users:
+          fieldMappings:
+          - sourceAttributeName: department
+            fieldDictionaryName: UPTF-1
+          - sourceAttributeName: department
+            fieldDictionaryName: UPTF-1
+          properties:
+          - UserAddress
+          - department
       properties:
         name:
           description: The display name of the identity collector. Must be unique
@@ -4149,10 +5068,131 @@ components:
             for an existing identity collector and must match the current value.
           example: Active Directory
           type: string
+          x-extensible-enum:
+          - Active Directory
+          - Azure Active Directory
+          - Google Drive
+          - Dropbox
+          - Dropbox SaaS
+          - Box
+          - Box SaaS
+          - Microsoft Entra SaaS
+          - Snowflake
+          - Snowflake SaaS
+          - Databricks
+          - AWS
+          - AWS SaaS
+        users:
+          $ref: '#/components/schemas/Identitycollectorcollectionsettings'
+        groups:
+          $ref: '#/components/schemas/Identitycollectorcollectionsettings'
       required:
+      - groups
       - name
       - sourceId
       - type
+      - users
+      type: object
+    Datadictionaryfieldlistitem:
+      description: A custom data dictionary field used for permission and identity
+        collector mappings.
+      example:
+        name: Department
+        dataDictionaryType: Users
+        fieldType: String
+        required: false
+      properties:
+        name:
+          description: The unique field name.
+          example: Department
+          type: string
+        fieldType:
+          description: The field data type. Custom fields are always String.
+          example: String
+          type: string
+        dataDictionaryType:
+          description: The data dictionary that owns this field.
+          enum:
+          - Users
+          - Roles
+          - Permission Types
+          - Business Resources
+          example: Users
+          type: string
+        required:
+          description: Whether the field is required. Custom fields returned by list
+            are always false.
+          example: false
+          type: boolean
+      required:
+      - dataDictionaryType
+      - fieldType
+      - name
+      - required
+      type: object
+    Createdatadictionaryfieldrequest:
+      description: Request body for creating a custom data dictionary field.
+      example:
+        name: Department
+        dataDictionaryType: Users
+      properties:
+        name:
+          description: The unique field name to create.
+          example: Department
+          type: string
+        dataDictionaryType:
+          description: The data dictionary that owns this field.
+          enum:
+          - Users
+          - Roles
+          - Permission Types
+          - Business Resources
+          example: Users
+          type: string
+      required:
+      - dataDictionaryType
+      - name
+      type: object
+    Updatedatadictionaryfieldrequest:
+      description: "Complete data dictionary field representation for [Replace Data\
+        \ Dictionary Field](https://developer.sailpoint.com/docs/api/put-data-dictionary-field-v-1).\
+        \ The server fully replaces the field using this body. For custom fields,\
+        \ `fieldType`, `dataDictionaryType`, and `required` must match the current\
+        \ values; only `name` may change. Built-in fields where `required` is true\
+        \ cannot be updated."
+      example:
+        name: Cost Center
+        dataDictionaryType: Users
+        fieldType: String
+        required: false
+      properties:
+        name:
+          description: The field name.
+          example: Cost Center
+          type: string
+        fieldType:
+          description: The field data type. Must match the current value.
+          example: String
+          type: string
+        dataDictionaryType:
+          description: The data dictionary that owns this field. Must match the current
+            value.
+          enum:
+          - Users
+          - Roles
+          - Permission Types
+          - Business Resources
+          example: Users
+          type: string
+        required:
+          description: Must match the current value. Custom fields must be false.
+          example: false
+          type: boolean
+      required:
+      - dataDictionaryType
+      - fieldType
+      - name
+      - required
       type: object
     DataOwnerModel:
       example:

@@ -1497,6 +1497,252 @@ func (a *AccessProfilesAPIService) PatchAccessProfileV1Execute(r ApiPatchAccessP
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiSearchAccessProfilesByFilterV1Request struct {
+	ctx context.Context
+	ApiService *AccessProfilesAPIService
+	accessProfileListFilterDTO *AccessProfileListFilterDTO
+	forSubadmin *string
+	limit *int32
+	offset *int32
+	count *bool
+	sorters *string
+	forSegmentIds *string
+	includeUnsegmented *bool
+}
+
+func (r ApiSearchAccessProfilesByFilterV1Request) AccessProfileListFilterDTO(accessProfileListFilterDTO AccessProfileListFilterDTO) ApiSearchAccessProfilesByFilterV1Request {
+	r.accessProfileListFilterDTO = &accessProfileListFilterDTO
+	return r
+}
+
+// Filters the returned list according to what is visible to the indicated ROLE_SUBADMIN or SOURCE_SUBADMIN identity. The value of the parameter is either an identity ID or the special value **me**, which is shorthand for the calling identity&#39;s ID.  If you specify an identity that isn&#39;t a subadmin, the API returns a 400 Bad Request error.
+func (r ApiSearchAccessProfilesByFilterV1Request) ForSubadmin(forSubadmin string) ApiSearchAccessProfilesByFilterV1Request {
+	r.forSubadmin = &forSubadmin
+	return r
+}
+
+// Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+func (r ApiSearchAccessProfilesByFilterV1Request) Limit(limit int32) ApiSearchAccessProfilesByFilterV1Request {
+	r.limit = &limit
+	return r
+}
+
+// Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+func (r ApiSearchAccessProfilesByFilterV1Request) Offset(offset int32) ApiSearchAccessProfilesByFilterV1Request {
+	r.offset = &offset
+	return r
+}
+
+// If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+func (r ApiSearchAccessProfilesByFilterV1Request) Count(count bool) ApiSearchAccessProfilesByFilterV1Request {
+	r.count = &count
+	return r
+}
+
+// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified**
+func (r ApiSearchAccessProfilesByFilterV1Request) Sorters(sorters string) ApiSearchAccessProfilesByFilterV1Request {
+	r.sorters = &sorters
+	return r
+}
+
+// Filters the returned list to those access profiles assigned to the specified segment IDs.
+func (r ApiSearchAccessProfilesByFilterV1Request) ForSegmentIds(forSegmentIds string) ApiSearchAccessProfilesByFilterV1Request {
+	r.forSegmentIds = &forSegmentIds
+	return r
+}
+
+// Whether the returned list includes unsegmented access profiles.
+func (r ApiSearchAccessProfilesByFilterV1Request) IncludeUnsegmented(includeUnsegmented bool) ApiSearchAccessProfilesByFilterV1Request {
+	r.includeUnsegmented = &includeUnsegmented
+	return r
+}
+
+func (r ApiSearchAccessProfilesByFilterV1Request) Execute() ([]AccessProfile, *http.Response, error) {
+	return r.ApiService.SearchAccessProfilesByFilterV1Execute(r)
+}
+
+/*
+SearchAccessProfilesByFilterV1 Filter access profiles by metadata
+
+Get a list of access profiles filtered by Access Model Metadata and by filter expression. Filtering is supported by filter expression, by metadata attribute key and values, or by both together.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiSearchAccessProfilesByFilterV1Request
+*/
+func (a *AccessProfilesAPIService) SearchAccessProfilesByFilterV1(ctx context.Context) ApiSearchAccessProfilesByFilterV1Request {
+	return ApiSearchAccessProfilesByFilterV1Request{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return []AccessProfile
+func (a *AccessProfilesAPIService) SearchAccessProfilesByFilterV1Execute(r ApiSearchAccessProfilesByFilterV1Request) ([]AccessProfile, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []AccessProfile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccessProfilesAPIService.SearchAccessProfilesByFilterV1")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/access-profiles/v1/filter"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.accessProfileListFilterDTO == nil {
+		return localVarReturnValue, nil, reportError("accessProfileListFilterDTO is required and must be specified")
+	}
+
+	if r.forSubadmin != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "for-subadmin", r.forSubadmin, "form", "")
+	}
+	if r.limit != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
+	} else {
+		var defaultValue int32 = 50
+		r.limit = &defaultValue
+	}
+	if r.offset != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
+	}
+	if r.count != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "count", r.count, "form", "")
+	} else {
+		var defaultValue bool = false
+		r.count = &defaultValue
+	}
+	if r.sorters != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sorters", r.sorters, "form", "")
+	}
+	if r.forSegmentIds != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "for-segment-ids", r.forSegmentIds, "form", "")
+	}
+	if r.includeUnsegmented != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include-unsegmented", r.includeUnsegmented, "form", "")
+	} else {
+		var defaultValue bool = true
+		r.includeUnsegmented = &defaultValue
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.accessProfileListFilterDTO
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v ListAccessProfilesV1401Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v ListAccessProfilesV1429Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiUpdateAccessProfilesInBulkV1Request struct {
 	ctx context.Context
 	ApiService *AccessProfilesAPIService
@@ -1681,15 +1927,15 @@ func (a *AccessProfilesAPIService) UpdateAccessProfilesInBulkV1Execute(r ApiUpda
 type ApiUpdateAccessProfilesMetadataByFilterV1Request struct {
 	ctx context.Context
 	ApiService *AccessProfilesAPIService
-	accessprofilemetadatabulkupdatebyfilterrequest *Accessprofilemetadatabulkupdatebyfilterrequest
+	accessProfileMetadataBulkUpdateByFilterRequest *AccessProfileMetadataBulkUpdateByFilterRequest
 }
 
-func (r ApiUpdateAccessProfilesMetadataByFilterV1Request) Accessprofilemetadatabulkupdatebyfilterrequest(accessprofilemetadatabulkupdatebyfilterrequest Accessprofilemetadatabulkupdatebyfilterrequest) ApiUpdateAccessProfilesMetadataByFilterV1Request {
-	r.accessprofilemetadatabulkupdatebyfilterrequest = &accessprofilemetadatabulkupdatebyfilterrequest
+func (r ApiUpdateAccessProfilesMetadataByFilterV1Request) AccessProfileMetadataBulkUpdateByFilterRequest(accessProfileMetadataBulkUpdateByFilterRequest AccessProfileMetadataBulkUpdateByFilterRequest) ApiUpdateAccessProfilesMetadataByFilterV1Request {
+	r.accessProfileMetadataBulkUpdateByFilterRequest = &accessProfileMetadataBulkUpdateByFilterRequest
 	return r
 }
 
-func (r ApiUpdateAccessProfilesMetadataByFilterV1Request) Execute() (*Accessprofilemetadatabulkupdateresponse, *http.Response, error) {
+func (r ApiUpdateAccessProfilesMetadataByFilterV1Request) Execute() (*AccessProfileMetadataBulkUpdateResponse, *http.Response, error) {
 	return r.ApiService.UpdateAccessProfilesMetadataByFilterV1Execute(r)
 }
 
@@ -1713,13 +1959,13 @@ func (a *AccessProfilesAPIService) UpdateAccessProfilesMetadataByFilterV1(ctx co
 }
 
 // Execute executes the request
-//  @return Accessprofilemetadatabulkupdateresponse
-func (a *AccessProfilesAPIService) UpdateAccessProfilesMetadataByFilterV1Execute(r ApiUpdateAccessProfilesMetadataByFilterV1Request) (*Accessprofilemetadatabulkupdateresponse, *http.Response, error) {
+//  @return AccessProfileMetadataBulkUpdateResponse
+func (a *AccessProfilesAPIService) UpdateAccessProfilesMetadataByFilterV1Execute(r ApiUpdateAccessProfilesMetadataByFilterV1Request) (*AccessProfileMetadataBulkUpdateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Accessprofilemetadatabulkupdateresponse
+		localVarReturnValue  *AccessProfileMetadataBulkUpdateResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccessProfilesAPIService.UpdateAccessProfilesMetadataByFilterV1")
@@ -1732,8 +1978,8 @@ func (a *AccessProfilesAPIService) UpdateAccessProfilesMetadataByFilterV1Execute
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.accessprofilemetadatabulkupdatebyfilterrequest == nil {
-		return localVarReturnValue, nil, reportError("accessprofilemetadatabulkupdatebyfilterrequest is required and must be specified")
+	if r.accessProfileMetadataBulkUpdateByFilterRequest == nil {
+		return localVarReturnValue, nil, reportError("accessProfileMetadataBulkUpdateByFilterRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -1754,7 +2000,7 @@ func (a *AccessProfilesAPIService) UpdateAccessProfilesMetadataByFilterV1Execute
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.accessprofilemetadatabulkupdatebyfilterrequest
+	localVarPostBody = r.accessProfileMetadataBulkUpdateByFilterRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1849,15 +2095,15 @@ func (a *AccessProfilesAPIService) UpdateAccessProfilesMetadataByFilterV1Execute
 type ApiUpdateAccessProfilesMetadataByIdsV1Request struct {
 	ctx context.Context
 	ApiService *AccessProfilesAPIService
-	accessprofilemetadatabulkupdatebyidrequest *Accessprofilemetadatabulkupdatebyidrequest
+	accessProfileMetadataBulkUpdateByIdRequest *AccessProfileMetadataBulkUpdateByIdRequest
 }
 
-func (r ApiUpdateAccessProfilesMetadataByIdsV1Request) Accessprofilemetadatabulkupdatebyidrequest(accessprofilemetadatabulkupdatebyidrequest Accessprofilemetadatabulkupdatebyidrequest) ApiUpdateAccessProfilesMetadataByIdsV1Request {
-	r.accessprofilemetadatabulkupdatebyidrequest = &accessprofilemetadatabulkupdatebyidrequest
+func (r ApiUpdateAccessProfilesMetadataByIdsV1Request) AccessProfileMetadataBulkUpdateByIdRequest(accessProfileMetadataBulkUpdateByIdRequest AccessProfileMetadataBulkUpdateByIdRequest) ApiUpdateAccessProfilesMetadataByIdsV1Request {
+	r.accessProfileMetadataBulkUpdateByIdRequest = &accessProfileMetadataBulkUpdateByIdRequest
 	return r
 }
 
-func (r ApiUpdateAccessProfilesMetadataByIdsV1Request) Execute() (*Accessprofilemetadatabulkupdateresponse, *http.Response, error) {
+func (r ApiUpdateAccessProfilesMetadataByIdsV1Request) Execute() (*AccessProfileMetadataBulkUpdateResponse, *http.Response, error) {
 	return r.ApiService.UpdateAccessProfilesMetadataByIdsV1Execute(r)
 }
 
@@ -1881,13 +2127,13 @@ func (a *AccessProfilesAPIService) UpdateAccessProfilesMetadataByIdsV1(ctx conte
 }
 
 // Execute executes the request
-//  @return Accessprofilemetadatabulkupdateresponse
-func (a *AccessProfilesAPIService) UpdateAccessProfilesMetadataByIdsV1Execute(r ApiUpdateAccessProfilesMetadataByIdsV1Request) (*Accessprofilemetadatabulkupdateresponse, *http.Response, error) {
+//  @return AccessProfileMetadataBulkUpdateResponse
+func (a *AccessProfilesAPIService) UpdateAccessProfilesMetadataByIdsV1Execute(r ApiUpdateAccessProfilesMetadataByIdsV1Request) (*AccessProfileMetadataBulkUpdateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Accessprofilemetadatabulkupdateresponse
+		localVarReturnValue  *AccessProfileMetadataBulkUpdateResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccessProfilesAPIService.UpdateAccessProfilesMetadataByIdsV1")
@@ -1900,8 +2146,8 @@ func (a *AccessProfilesAPIService) UpdateAccessProfilesMetadataByIdsV1Execute(r 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.accessprofilemetadatabulkupdatebyidrequest == nil {
-		return localVarReturnValue, nil, reportError("accessprofilemetadatabulkupdatebyidrequest is required and must be specified")
+	if r.accessProfileMetadataBulkUpdateByIdRequest == nil {
+		return localVarReturnValue, nil, reportError("accessProfileMetadataBulkUpdateByIdRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -1922,7 +2168,7 @@ func (a *AccessProfilesAPIService) UpdateAccessProfilesMetadataByIdsV1Execute(r 
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.accessprofilemetadatabulkupdatebyidrequest
+	localVarPostBody = r.accessProfileMetadataBulkUpdateByIdRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -2017,15 +2263,15 @@ func (a *AccessProfilesAPIService) UpdateAccessProfilesMetadataByIdsV1Execute(r 
 type ApiUpdateAccessProfilesMetadataByQueryV1Request struct {
 	ctx context.Context
 	ApiService *AccessProfilesAPIService
-	accessprofilemetadatabulkupdatebyqueryrequest *Accessprofilemetadatabulkupdatebyqueryrequest
+	accessProfileMetadataBulkUpdateByQueryRequest *AccessProfileMetadataBulkUpdateByQueryRequest
 }
 
-func (r ApiUpdateAccessProfilesMetadataByQueryV1Request) Accessprofilemetadatabulkupdatebyqueryrequest(accessprofilemetadatabulkupdatebyqueryrequest Accessprofilemetadatabulkupdatebyqueryrequest) ApiUpdateAccessProfilesMetadataByQueryV1Request {
-	r.accessprofilemetadatabulkupdatebyqueryrequest = &accessprofilemetadatabulkupdatebyqueryrequest
+func (r ApiUpdateAccessProfilesMetadataByQueryV1Request) AccessProfileMetadataBulkUpdateByQueryRequest(accessProfileMetadataBulkUpdateByQueryRequest AccessProfileMetadataBulkUpdateByQueryRequest) ApiUpdateAccessProfilesMetadataByQueryV1Request {
+	r.accessProfileMetadataBulkUpdateByQueryRequest = &accessProfileMetadataBulkUpdateByQueryRequest
 	return r
 }
 
-func (r ApiUpdateAccessProfilesMetadataByQueryV1Request) Execute() (*Accessprofilemetadatabulkupdateresponse, *http.Response, error) {
+func (r ApiUpdateAccessProfilesMetadataByQueryV1Request) Execute() (*AccessProfileMetadataBulkUpdateResponse, *http.Response, error) {
 	return r.ApiService.UpdateAccessProfilesMetadataByQueryV1Execute(r)
 }
 
@@ -2049,13 +2295,13 @@ func (a *AccessProfilesAPIService) UpdateAccessProfilesMetadataByQueryV1(ctx con
 }
 
 // Execute executes the request
-//  @return Accessprofilemetadatabulkupdateresponse
-func (a *AccessProfilesAPIService) UpdateAccessProfilesMetadataByQueryV1Execute(r ApiUpdateAccessProfilesMetadataByQueryV1Request) (*Accessprofilemetadatabulkupdateresponse, *http.Response, error) {
+//  @return AccessProfileMetadataBulkUpdateResponse
+func (a *AccessProfilesAPIService) UpdateAccessProfilesMetadataByQueryV1Execute(r ApiUpdateAccessProfilesMetadataByQueryV1Request) (*AccessProfileMetadataBulkUpdateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Accessprofilemetadatabulkupdateresponse
+		localVarReturnValue  *AccessProfileMetadataBulkUpdateResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccessProfilesAPIService.UpdateAccessProfilesMetadataByQueryV1")
@@ -2068,8 +2314,8 @@ func (a *AccessProfilesAPIService) UpdateAccessProfilesMetadataByQueryV1Execute(
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.accessprofilemetadatabulkupdatebyqueryrequest == nil {
-		return localVarReturnValue, nil, reportError("accessprofilemetadatabulkupdatebyqueryrequest is required and must be specified")
+	if r.accessProfileMetadataBulkUpdateByQueryRequest == nil {
+		return localVarReturnValue, nil, reportError("accessProfileMetadataBulkUpdateByQueryRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -2090,7 +2336,7 @@ func (a *AccessProfilesAPIService) UpdateAccessProfilesMetadataByQueryV1Execute(
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.accessprofilemetadatabulkupdatebyqueryrequest
+	localVarPostBody = r.accessProfileMetadataBulkUpdateByQueryRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

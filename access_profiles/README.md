@@ -87,6 +87,7 @@ Class | Method | HTTP request | Description
 *AccessProfilesAPI* | [**GetAccessProfileV1**](docs/AccessProfilesAPI.md#getaccessprofilev1) | **Get** /access-profiles/v1/{id} | Get an access profile
 *AccessProfilesAPI* | [**ListAccessProfilesV1**](docs/AccessProfilesAPI.md#listaccessprofilesv1) | **Get** /access-profiles/v1 | List access profiles
 *AccessProfilesAPI* | [**PatchAccessProfileV1**](docs/AccessProfilesAPI.md#patchaccessprofilev1) | **Patch** /access-profiles/v1/{id} | Patch a specified access profile
+*AccessProfilesAPI* | [**SearchAccessProfilesByFilterV1**](docs/AccessProfilesAPI.md#searchaccessprofilesbyfilterv1) | **Post** /access-profiles/v1/filter | Filter access profiles by metadata
 *AccessProfilesAPI* | [**UpdateAccessProfilesInBulkV1**](docs/AccessProfilesAPI.md#updateaccessprofilesinbulkv1) | **Post** /access-profiles/v1/bulk-update-requestable | Update access profile(s) requestable field.
 *AccessProfilesAPI* | [**UpdateAccessProfilesMetadataByFilterV1**](docs/AccessProfilesAPI.md#updateaccessprofilesmetadatabyfilterv1) | **Post** /access-profiles/v1/access-model-metadata/bulk-update/filter | Bulk-update metadata by filter
 *AccessProfilesAPI* | [**UpdateAccessProfilesMetadataByIdsV1**](docs/AccessProfilesAPI.md#updateaccessprofilesmetadatabyidsv1) | **Post** /access-profiles/v1/access-model-metadata/bulk-update/ids | Bulk-update metadata by ids
@@ -104,15 +105,17 @@ Class | Method | HTTP request | Description
  - [AccessProfileBulkDeleteRequest](docs/AccessProfileBulkDeleteRequest.md)
  - [AccessProfileBulkDeleteResponse](docs/AccessProfileBulkDeleteResponse.md)
  - [AccessProfileBulkUpdateRequestInner](docs/AccessProfileBulkUpdateRequestInner.md)
+ - [AccessProfileListFilterDTO](docs/AccessProfileListFilterDTO.md)
+ - [AccessProfileListFilterDTOAmmKeyValuesInner](docs/AccessProfileListFilterDTOAmmKeyValuesInner.md)
+ - [AccessProfileMetadataBulkUpdateByFilterRequest](docs/AccessProfileMetadataBulkUpdateByFilterRequest.md)
+ - [AccessProfileMetadataBulkUpdateByIdRequest](docs/AccessProfileMetadataBulkUpdateByIdRequest.md)
+ - [AccessProfileMetadataBulkUpdateByIdRequestValuesInner](docs/AccessProfileMetadataBulkUpdateByIdRequestValuesInner.md)
+ - [AccessProfileMetadataBulkUpdateByQueryRequest](docs/AccessProfileMetadataBulkUpdateByQueryRequest.md)
+ - [AccessProfileMetadataBulkUpdateResponse](docs/AccessProfileMetadataBulkUpdateResponse.md)
  - [AccessProfileSourceRef](docs/AccessProfileSourceRef.md)
  - [AccessProfileUpdateItem](docs/AccessProfileUpdateItem.md)
  - [AccessProfileUsage](docs/AccessProfileUsage.md)
  - [AccessProfileUsageUsedByInner](docs/AccessProfileUsageUsedByInner.md)
- - [Accessprofilemetadatabulkupdatebyfilterrequest](docs/Accessprofilemetadatabulkupdatebyfilterrequest.md)
- - [Accessprofilemetadatabulkupdatebyidrequest](docs/Accessprofilemetadatabulkupdatebyidrequest.md)
- - [AccessprofilemetadatabulkupdatebyidrequestValuesInner](docs/AccessprofilemetadatabulkupdatebyidrequestValuesInner.md)
- - [Accessprofilemetadatabulkupdatebyqueryrequest](docs/Accessprofilemetadatabulkupdatebyqueryrequest.md)
- - [Accessprofilemetadatabulkupdateresponse](docs/Accessprofilemetadatabulkupdateresponse.md)
  - [AdditionalOwnerRef](docs/AdditionalOwnerRef.md)
  - [ArrayInner](docs/ArrayInner.md)
  - [AttributeDTO](docs/AttributeDTO.md)

@@ -15,11 +15,11 @@ import (
 	
 )
 
-// checks if the Accessprofilemetadatabulkupdateresponse type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &Accessprofilemetadatabulkupdateresponse{}
+// checks if the AccessProfileMetadataBulkUpdateResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AccessProfileMetadataBulkUpdateResponse{}
 
-// Accessprofilemetadatabulkupdateresponse struct for Accessprofilemetadatabulkupdateresponse
-type Accessprofilemetadatabulkupdateresponse struct {
+// AccessProfileMetadataBulkUpdateResponse struct for AccessProfileMetadataBulkUpdateResponse
+type AccessProfileMetadataBulkUpdateResponse struct {
 	// ID of the task that is processing the bulk update.
 	Id *string `json:"id,omitempty"`
 	// Type of the object the bulk update applies to.
@@ -31,27 +31,27 @@ type Accessprofilemetadatabulkupdateresponse struct {
 	AdditionalProperties map[string]interface{}
 }
 
-type _Accessprofilemetadatabulkupdateresponse Accessprofilemetadatabulkupdateresponse
+type _AccessProfileMetadataBulkUpdateResponse AccessProfileMetadataBulkUpdateResponse
 
-// NewAccessprofilemetadatabulkupdateresponse instantiates a new Accessprofilemetadatabulkupdateresponse object
+// NewAccessProfileMetadataBulkUpdateResponse instantiates a new AccessProfileMetadataBulkUpdateResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAccessprofilemetadatabulkupdateresponse() *Accessprofilemetadatabulkupdateresponse {
-	this := Accessprofilemetadatabulkupdateresponse{}
+func NewAccessProfileMetadataBulkUpdateResponse() *AccessProfileMetadataBulkUpdateResponse {
+	this := AccessProfileMetadataBulkUpdateResponse{}
 	return &this
 }
 
-// NewAccessprofilemetadatabulkupdateresponseWithDefaults instantiates a new Accessprofilemetadatabulkupdateresponse object
+// NewAccessProfileMetadataBulkUpdateResponseWithDefaults instantiates a new AccessProfileMetadataBulkUpdateResponse object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewAccessprofilemetadatabulkupdateresponseWithDefaults() *Accessprofilemetadatabulkupdateresponse {
-	this := Accessprofilemetadatabulkupdateresponse{}
+func NewAccessProfileMetadataBulkUpdateResponseWithDefaults() *AccessProfileMetadataBulkUpdateResponse {
+	this := AccessProfileMetadataBulkUpdateResponse{}
 	return &this
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
-func (o *Accessprofilemetadatabulkupdateresponse) GetId() string {
+func (o *AccessProfileMetadataBulkUpdateResponse) GetId() string {
 	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
@@ -61,7 +61,7 @@ func (o *Accessprofilemetadatabulkupdateresponse) GetId() string {
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Accessprofilemetadatabulkupdateresponse) GetIdOk() (*string, bool) {
+func (o *AccessProfileMetadataBulkUpdateResponse) GetIdOk() (*string, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
@@ -69,7 +69,7 @@ func (o *Accessprofilemetadatabulkupdateresponse) GetIdOk() (*string, bool) {
 }
 
 // HasId returns a boolean if a field has been set.
-func (o *Accessprofilemetadatabulkupdateresponse) HasId() bool {
+func (o *AccessProfileMetadataBulkUpdateResponse) HasId() bool {
 	if o != nil && !IsNil(o.Id) {
 		return true
 	}
@@ -78,12 +78,12 @@ func (o *Accessprofilemetadatabulkupdateresponse) HasId() bool {
 }
 
 // SetId gets a reference to the given string and assigns it to the Id field.
-func (o *Accessprofilemetadatabulkupdateresponse) SetId(v string) {
+func (o *AccessProfileMetadataBulkUpdateResponse) SetId(v string) {
 	o.Id = &v
 }
 
 // GetType returns the Type field value if set, zero value otherwise.
-func (o *Accessprofilemetadatabulkupdateresponse) GetType() string {
+func (o *AccessProfileMetadataBulkUpdateResponse) GetType() string {
 	if o == nil || IsNil(o.Type) {
 		var ret string
 		return ret
@@ -93,7 +93,7 @@ func (o *Accessprofilemetadatabulkupdateresponse) GetType() string {
 
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Accessprofilemetadatabulkupdateresponse) GetTypeOk() (*string, bool) {
+func (o *AccessProfileMetadataBulkUpdateResponse) GetTypeOk() (*string, bool) {
 	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
@@ -101,7 +101,7 @@ func (o *Accessprofilemetadatabulkupdateresponse) GetTypeOk() (*string, bool) {
 }
 
 // HasType returns a boolean if a field has been set.
-func (o *Accessprofilemetadatabulkupdateresponse) HasType() bool {
+func (o *AccessProfileMetadataBulkUpdateResponse) HasType() bool {
 	if o != nil && !IsNil(o.Type) {
 		return true
 	}
@@ -110,12 +110,12 @@ func (o *Accessprofilemetadatabulkupdateresponse) HasType() bool {
 }
 
 // SetType gets a reference to the given string and assigns it to the Type field.
-func (o *Accessprofilemetadatabulkupdateresponse) SetType(v string) {
+func (o *AccessProfileMetadataBulkUpdateResponse) SetType(v string) {
 	o.Type = &v
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise.
-func (o *Accessprofilemetadatabulkupdateresponse) GetStatus() string {
+func (o *AccessProfileMetadataBulkUpdateResponse) GetStatus() string {
 	if o == nil || IsNil(o.Status) {
 		var ret string
 		return ret
@@ -125,7 +125,7 @@ func (o *Accessprofilemetadatabulkupdateresponse) GetStatus() string {
 
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Accessprofilemetadatabulkupdateresponse) GetStatusOk() (*string, bool) {
+func (o *AccessProfileMetadataBulkUpdateResponse) GetStatusOk() (*string, bool) {
 	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
@@ -133,7 +133,7 @@ func (o *Accessprofilemetadatabulkupdateresponse) GetStatusOk() (*string, bool) 
 }
 
 // HasStatus returns a boolean if a field has been set.
-func (o *Accessprofilemetadatabulkupdateresponse) HasStatus() bool {
+func (o *AccessProfileMetadataBulkUpdateResponse) HasStatus() bool {
 	if o != nil && !IsNil(o.Status) {
 		return true
 	}
@@ -142,12 +142,12 @@ func (o *Accessprofilemetadatabulkupdateresponse) HasStatus() bool {
 }
 
 // SetStatus gets a reference to the given string and assigns it to the Status field.
-func (o *Accessprofilemetadatabulkupdateresponse) SetStatus(v string) {
+func (o *AccessProfileMetadataBulkUpdateResponse) SetStatus(v string) {
 	o.Status = &v
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise.
-func (o *Accessprofilemetadatabulkupdateresponse) GetCreated() SailPointTime {
+func (o *AccessProfileMetadataBulkUpdateResponse) GetCreated() SailPointTime {
 	if o == nil || IsNil(o.Created) {
 		var ret SailPointTime
 		return ret
@@ -157,7 +157,7 @@ func (o *Accessprofilemetadatabulkupdateresponse) GetCreated() SailPointTime {
 
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Accessprofilemetadatabulkupdateresponse) GetCreatedOk() (*SailPointTime, bool) {
+func (o *AccessProfileMetadataBulkUpdateResponse) GetCreatedOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
@@ -165,7 +165,7 @@ func (o *Accessprofilemetadatabulkupdateresponse) GetCreatedOk() (*SailPointTime
 }
 
 // HasCreated returns a boolean if a field has been set.
-func (o *Accessprofilemetadatabulkupdateresponse) HasCreated() bool {
+func (o *AccessProfileMetadataBulkUpdateResponse) HasCreated() bool {
 	if o != nil && !IsNil(o.Created) {
 		return true
 	}
@@ -174,11 +174,11 @@ func (o *Accessprofilemetadatabulkupdateresponse) HasCreated() bool {
 }
 
 // SetCreated gets a reference to the given SailPointTime and assigns it to the Created field.
-func (o *Accessprofilemetadatabulkupdateresponse) SetCreated(v SailPointTime) {
+func (o *AccessProfileMetadataBulkUpdateResponse) SetCreated(v SailPointTime) {
 	o.Created = &v
 }
 
-func (o Accessprofilemetadatabulkupdateresponse) MarshalJSON() ([]byte, error) {
+func (o AccessProfileMetadataBulkUpdateResponse) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -186,7 +186,7 @@ func (o Accessprofilemetadatabulkupdateresponse) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o Accessprofilemetadatabulkupdateresponse) ToMap() (map[string]interface{}, error) {
+func (o AccessProfileMetadataBulkUpdateResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
@@ -208,16 +208,16 @@ func (o Accessprofilemetadatabulkupdateresponse) ToMap() (map[string]interface{}
 	return toSerialize, nil
 }
 
-func (o *Accessprofilemetadatabulkupdateresponse) UnmarshalJSON(data []byte) (err error) {
-	varAccessprofilemetadatabulkupdateresponse := _Accessprofilemetadatabulkupdateresponse{}
+func (o *AccessProfileMetadataBulkUpdateResponse) UnmarshalJSON(data []byte) (err error) {
+	varAccessProfileMetadataBulkUpdateResponse := _AccessProfileMetadataBulkUpdateResponse{}
 
-	err = json.Unmarshal(data, &varAccessprofilemetadatabulkupdateresponse)
+	err = json.Unmarshal(data, &varAccessProfileMetadataBulkUpdateResponse)
 
 	if err != nil {
 		return err
 	}
 
-	*o = Accessprofilemetadatabulkupdateresponse(varAccessprofilemetadatabulkupdateresponse)
+	*o = AccessProfileMetadataBulkUpdateResponse(varAccessProfileMetadataBulkUpdateResponse)
 
 	additionalProperties := make(map[string]interface{})
 
@@ -232,38 +232,38 @@ func (o *Accessprofilemetadatabulkupdateresponse) UnmarshalJSON(data []byte) (er
 	return err
 }
 
-type NullableAccessprofilemetadatabulkupdateresponse struct {
-	value *Accessprofilemetadatabulkupdateresponse
+type NullableAccessProfileMetadataBulkUpdateResponse struct {
+	value *AccessProfileMetadataBulkUpdateResponse
 	isSet bool
 }
 
-func (v NullableAccessprofilemetadatabulkupdateresponse) Get() *Accessprofilemetadatabulkupdateresponse {
+func (v NullableAccessProfileMetadataBulkUpdateResponse) Get() *AccessProfileMetadataBulkUpdateResponse {
 	return v.value
 }
 
-func (v *NullableAccessprofilemetadatabulkupdateresponse) Set(val *Accessprofilemetadatabulkupdateresponse) {
+func (v *NullableAccessProfileMetadataBulkUpdateResponse) Set(val *AccessProfileMetadataBulkUpdateResponse) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableAccessprofilemetadatabulkupdateresponse) IsSet() bool {
+func (v NullableAccessProfileMetadataBulkUpdateResponse) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableAccessprofilemetadatabulkupdateresponse) Unset() {
+func (v *NullableAccessProfileMetadataBulkUpdateResponse) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableAccessprofilemetadatabulkupdateresponse(val *Accessprofilemetadatabulkupdateresponse) *NullableAccessprofilemetadatabulkupdateresponse {
-	return &NullableAccessprofilemetadatabulkupdateresponse{value: val, isSet: true}
+func NewNullableAccessProfileMetadataBulkUpdateResponse(val *AccessProfileMetadataBulkUpdateResponse) *NullableAccessProfileMetadataBulkUpdateResponse {
+	return &NullableAccessProfileMetadataBulkUpdateResponse{value: val, isSet: true}
 }
 
-func (v NullableAccessprofilemetadatabulkupdateresponse) MarshalJSON() ([]byte, error) {
+func (v NullableAccessProfileMetadataBulkUpdateResponse) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableAccessprofilemetadatabulkupdateresponse) UnmarshalJSON(src []byte) error {
+func (v *NullableAccessProfileMetadataBulkUpdateResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

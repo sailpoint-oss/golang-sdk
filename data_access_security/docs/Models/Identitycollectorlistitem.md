@@ -17,8 +17,10 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** | The unique identifier of the identity collector. | [optional] 
 **Name** | Pointer to **string** | The display name of the identity collector. | [optional] 
-**Type** | Pointer to **string** | The identity collector type, derived from its underlying source. Possible values include \"Active Directory\", \"Azure Active Directory\", \"Google Drive\", \"Dropbox\", \"Box\", \"Microsoft Entra SaaS\", \"Snowflake\", and \"Databricks\". | [optional] 
+**Type** | Pointer to **string** | The identity collector type, derived from its underlying source. | [optional] 
 **SourceId** | Pointer to **string** | The identifier of the source the identity collector is associated with, represented as a UUID. Both hyphenated and non-hyphenated formats are accepted. | [optional] 
+**Users** | Pointer to [**Identitycollectorcollectionsettings**](identitycollectorcollectionsettings) |  | [optional] 
+**Groups** | Pointer to [**Identitycollectorcollectionsettings**](identitycollectorcollectionsettings) |  | [optional] 
 
 ## Methods
 
@@ -138,5 +140,55 @@ SetSourceId sets SourceId field to given value.
 `func (o *Identitycollectorlistitem) HasSourceId() bool`
 
 HasSourceId returns a boolean if a field has been set.
+
+### GetUsers
+
+`func (o *Identitycollectorlistitem) GetUsers() Identitycollectorcollectionsettings`
+
+GetUsers returns the Users field if non-nil, zero value otherwise.
+
+### GetUsersOk
+
+`func (o *Identitycollectorlistitem) GetUsersOk() (*Identitycollectorcollectionsettings, bool)`
+
+GetUsersOk returns a tuple with the Users field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUsers
+
+`func (o *Identitycollectorlistitem) SetUsers(v Identitycollectorcollectionsettings)`
+
+SetUsers sets Users field to given value.
+
+### HasUsers
+
+`func (o *Identitycollectorlistitem) HasUsers() bool`
+
+HasUsers returns a boolean if a field has been set.
+
+### GetGroups
+
+`func (o *Identitycollectorlistitem) GetGroups() Identitycollectorcollectionsettings`
+
+GetGroups returns the Groups field if non-nil, zero value otherwise.
+
+### GetGroupsOk
+
+`func (o *Identitycollectorlistitem) GetGroupsOk() (*Identitycollectorcollectionsettings, bool)`
+
+GetGroupsOk returns a tuple with the Groups field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGroups
+
+`func (o *Identitycollectorlistitem) SetGroups(v Identitycollectorcollectionsettings)`
+
+SetGroups sets Groups field to given value.
+
+### HasGroups
+
+`func (o *Identitycollectorlistitem) HasGroups() bool`
+
+HasGroups returns a boolean if a field has been set.
 
 

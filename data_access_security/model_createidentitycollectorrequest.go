@@ -24,6 +24,8 @@ type Createidentitycollectorrequest struct {
 	Name string `json:"name"`
 	// The identifier of the source to create the identity collector for, represented as a UUID. Both hyphenated and non-hyphenated formats are accepted. The identity collector type is derived from this source.
 	SourceId string `json:"sourceId"`
+	Users *Identitycollectorcollectionsettings `json:"users,omitempty"`
+	Groups *Identitycollectorcollectionsettings `json:"groups,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -96,6 +98,70 @@ func (o *Createidentitycollectorrequest) SetSourceId(v string) {
 	o.SourceId = v
 }
 
+// GetUsers returns the Users field value if set, zero value otherwise.
+func (o *Createidentitycollectorrequest) GetUsers() Identitycollectorcollectionsettings {
+	if o == nil || IsNil(o.Users) {
+		var ret Identitycollectorcollectionsettings
+		return ret
+	}
+	return *o.Users
+}
+
+// GetUsersOk returns a tuple with the Users field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Createidentitycollectorrequest) GetUsersOk() (*Identitycollectorcollectionsettings, bool) {
+	if o == nil || IsNil(o.Users) {
+		return nil, false
+	}
+	return o.Users, true
+}
+
+// HasUsers returns a boolean if a field has been set.
+func (o *Createidentitycollectorrequest) HasUsers() bool {
+	if o != nil && !IsNil(o.Users) {
+		return true
+	}
+
+	return false
+}
+
+// SetUsers gets a reference to the given Identitycollectorcollectionsettings and assigns it to the Users field.
+func (o *Createidentitycollectorrequest) SetUsers(v Identitycollectorcollectionsettings) {
+	o.Users = &v
+}
+
+// GetGroups returns the Groups field value if set, zero value otherwise.
+func (o *Createidentitycollectorrequest) GetGroups() Identitycollectorcollectionsettings {
+	if o == nil || IsNil(o.Groups) {
+		var ret Identitycollectorcollectionsettings
+		return ret
+	}
+	return *o.Groups
+}
+
+// GetGroupsOk returns a tuple with the Groups field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Createidentitycollectorrequest) GetGroupsOk() (*Identitycollectorcollectionsettings, bool) {
+	if o == nil || IsNil(o.Groups) {
+		return nil, false
+	}
+	return o.Groups, true
+}
+
+// HasGroups returns a boolean if a field has been set.
+func (o *Createidentitycollectorrequest) HasGroups() bool {
+	if o != nil && !IsNil(o.Groups) {
+		return true
+	}
+
+	return false
+}
+
+// SetGroups gets a reference to the given Identitycollectorcollectionsettings and assigns it to the Groups field.
+func (o *Createidentitycollectorrequest) SetGroups(v Identitycollectorcollectionsettings) {
+	o.Groups = &v
+}
+
 func (o Createidentitycollectorrequest) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -108,6 +174,12 @@ func (o Createidentitycollectorrequest) ToMap() (map[string]interface{}, error) 
 	toSerialize := map[string]interface{}{}
 	toSerialize["name"] = o.Name
 	toSerialize["sourceId"] = o.SourceId
+	if !IsNil(o.Users) {
+		toSerialize["users"] = o.Users
+	}
+	if !IsNil(o.Groups) {
+		toSerialize["groups"] = o.Groups
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -154,6 +226,8 @@ func (o *Createidentitycollectorrequest) UnmarshalJSON(data []byte) (err error) 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "sourceId")
+		delete(additionalProperties, "users")
+		delete(additionalProperties, "groups")
 		o.AdditionalProperties = additionalProperties
 	}
 

@@ -18,12 +18,14 @@ Name | Type | Description | Notes
 **Name** | **string** | The display name of the identity collector. Must be unique within the tenant. | 
 **SourceId** | **string** | The identifier of the associated source, represented as a UUID. Both hyphenated and non-hyphenated formats are accepted. This value cannot be modified for an existing identity collector and must match the current value. | 
 **Type** | **string** | The identity collector type. This value cannot be modified for an existing identity collector and must match the current value. | 
+**Users** | [**Identitycollectorcollectionsettings**](identitycollectorcollectionsettings) |  | 
+**Groups** | [**Identitycollectorcollectionsettings**](identitycollectorcollectionsettings) |  | 
 
 ## Methods
 
 ### NewUpdateidentitycollectorrequest
 
-`func NewUpdateidentitycollectorrequest(name string, sourceId string, type_ string, ) *Updateidentitycollectorrequest`
+`func NewUpdateidentitycollectorrequest(name string, sourceId string, type_ string, users Identitycollectorcollectionsettings, groups Identitycollectorcollectionsettings, ) *Updateidentitycollectorrequest`
 
 NewUpdateidentitycollectorrequest instantiates a new Updateidentitycollectorrequest object
 This constructor will assign default values to properties that have it defined,
@@ -96,6 +98,46 @@ and a boolean to check if the value has been set.
 `func (o *Updateidentitycollectorrequest) SetType(v string)`
 
 SetType sets Type field to given value.
+
+
+### GetUsers
+
+`func (o *Updateidentitycollectorrequest) GetUsers() Identitycollectorcollectionsettings`
+
+GetUsers returns the Users field if non-nil, zero value otherwise.
+
+### GetUsersOk
+
+`func (o *Updateidentitycollectorrequest) GetUsersOk() (*Identitycollectorcollectionsettings, bool)`
+
+GetUsersOk returns a tuple with the Users field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUsers
+
+`func (o *Updateidentitycollectorrequest) SetUsers(v Identitycollectorcollectionsettings)`
+
+SetUsers sets Users field to given value.
+
+
+### GetGroups
+
+`func (o *Updateidentitycollectorrequest) GetGroups() Identitycollectorcollectionsettings`
+
+GetGroups returns the Groups field if non-nil, zero value otherwise.
+
+### GetGroupsOk
+
+`func (o *Updateidentitycollectorrequest) GetGroupsOk() (*Identitycollectorcollectionsettings, bool)`
+
+GetGroupsOk returns a tuple with the Groups field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGroups
+
+`func (o *Updateidentitycollectorrequest) SetGroups(v Identitycollectorcollectionsettings)`
+
+SetGroups sets Groups field to given value.
 
 
 
