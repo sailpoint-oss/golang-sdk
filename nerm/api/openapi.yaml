@@ -4006,11 +4006,13 @@ paths:
           minimum: 1
           type: integer
       - description: How records should be sorted
+        explode: false
         in: query
         name: sort
         required: false
         schema:
           $ref: '#/components/schemas/getProfileTypeAttributes_sort_parameter'
+        style: form
       responses:
         "200":
           content:
@@ -7936,11 +7938,13 @@ components:
         type: integer
     sort:
       description: How records should be sorted
+      explode: false
       in: query
       name: sort
       required: false
       schema:
         $ref: '#/components/schemas/getProfileTypeAttributes_sort_parameter'
+      style: form
     object_id:
       description: ID of an object for filtering. Used along with object_type
       in: query
