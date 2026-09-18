@@ -14,11 +14,11 @@ import (
 	"encoding/json"
 )
 
-// checks if the PutIdentityCollectorV1409ResponseMessagesInner type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &PutIdentityCollectorV1409ResponseMessagesInner{}
+// checks if the IdentitycollectordependenciesconflicterrorMessagesInner type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &IdentitycollectordependenciesconflicterrorMessagesInner{}
 
-// PutIdentityCollectorV1409ResponseMessagesInner struct for PutIdentityCollectorV1409ResponseMessagesInner
-type PutIdentityCollectorV1409ResponseMessagesInner struct {
+// IdentitycollectordependenciesconflicterrorMessagesInner struct for IdentitycollectordependenciesconflicterrorMessagesInner
+type IdentitycollectordependenciesconflicterrorMessagesInner struct {
 	// The locale for the message text, a BCP 47 language tag.
 	Locale *string `json:"locale,omitempty"`
 	// An indicator of how the locale was selected.
@@ -28,27 +28,27 @@ type PutIdentityCollectorV1409ResponseMessagesInner struct {
 	AdditionalProperties map[string]interface{}
 }
 
-type _PutIdentityCollectorV1409ResponseMessagesInner PutIdentityCollectorV1409ResponseMessagesInner
+type _IdentitycollectordependenciesconflicterrorMessagesInner IdentitycollectordependenciesconflicterrorMessagesInner
 
-// NewPutIdentityCollectorV1409ResponseMessagesInner instantiates a new PutIdentityCollectorV1409ResponseMessagesInner object
+// NewIdentitycollectordependenciesconflicterrorMessagesInner instantiates a new IdentitycollectordependenciesconflicterrorMessagesInner object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPutIdentityCollectorV1409ResponseMessagesInner() *PutIdentityCollectorV1409ResponseMessagesInner {
-	this := PutIdentityCollectorV1409ResponseMessagesInner{}
+func NewIdentitycollectordependenciesconflicterrorMessagesInner() *IdentitycollectordependenciesconflicterrorMessagesInner {
+	this := IdentitycollectordependenciesconflicterrorMessagesInner{}
 	return &this
 }
 
-// NewPutIdentityCollectorV1409ResponseMessagesInnerWithDefaults instantiates a new PutIdentityCollectorV1409ResponseMessagesInner object
+// NewIdentitycollectordependenciesconflicterrorMessagesInnerWithDefaults instantiates a new IdentitycollectordependenciesconflicterrorMessagesInner object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewPutIdentityCollectorV1409ResponseMessagesInnerWithDefaults() *PutIdentityCollectorV1409ResponseMessagesInner {
-	this := PutIdentityCollectorV1409ResponseMessagesInner{}
+func NewIdentitycollectordependenciesconflicterrorMessagesInnerWithDefaults() *IdentitycollectordependenciesconflicterrorMessagesInner {
+	this := IdentitycollectordependenciesconflicterrorMessagesInner{}
 	return &this
 }
 
 // GetLocale returns the Locale field value if set, zero value otherwise.
-func (o *PutIdentityCollectorV1409ResponseMessagesInner) GetLocale() string {
+func (o *IdentitycollectordependenciesconflicterrorMessagesInner) GetLocale() string {
 	if o == nil || IsNil(o.Locale) {
 		var ret string
 		return ret
@@ -58,7 +58,7 @@ func (o *PutIdentityCollectorV1409ResponseMessagesInner) GetLocale() string {
 
 // GetLocaleOk returns a tuple with the Locale field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PutIdentityCollectorV1409ResponseMessagesInner) GetLocaleOk() (*string, bool) {
+func (o *IdentitycollectordependenciesconflicterrorMessagesInner) GetLocaleOk() (*string, bool) {
 	if o == nil || IsNil(o.Locale) {
 		return nil, false
 	}
@@ -66,7 +66,7 @@ func (o *PutIdentityCollectorV1409ResponseMessagesInner) GetLocaleOk() (*string,
 }
 
 // HasLocale returns a boolean if a field has been set.
-func (o *PutIdentityCollectorV1409ResponseMessagesInner) HasLocale() bool {
+func (o *IdentitycollectordependenciesconflicterrorMessagesInner) HasLocale() bool {
 	if o != nil && !IsNil(o.Locale) {
 		return true
 	}
@@ -75,12 +75,12 @@ func (o *PutIdentityCollectorV1409ResponseMessagesInner) HasLocale() bool {
 }
 
 // SetLocale gets a reference to the given string and assigns it to the Locale field.
-func (o *PutIdentityCollectorV1409ResponseMessagesInner) SetLocale(v string) {
+func (o *IdentitycollectordependenciesconflicterrorMessagesInner) SetLocale(v string) {
 	o.Locale = &v
 }
 
 // GetLocaleOrigin returns the LocaleOrigin field value if set, zero value otherwise.
-func (o *PutIdentityCollectorV1409ResponseMessagesInner) GetLocaleOrigin() string {
+func (o *IdentitycollectordependenciesconflicterrorMessagesInner) GetLocaleOrigin() string {
 	if o == nil || IsNil(o.LocaleOrigin) {
 		var ret string
 		return ret
@@ -90,7 +90,7 @@ func (o *PutIdentityCollectorV1409ResponseMessagesInner) GetLocaleOrigin() strin
 
 // GetLocaleOriginOk returns a tuple with the LocaleOrigin field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PutIdentityCollectorV1409ResponseMessagesInner) GetLocaleOriginOk() (*string, bool) {
+func (o *IdentitycollectordependenciesconflicterrorMessagesInner) GetLocaleOriginOk() (*string, bool) {
 	if o == nil || IsNil(o.LocaleOrigin) {
 		return nil, false
 	}
@@ -98,7 +98,7 @@ func (o *PutIdentityCollectorV1409ResponseMessagesInner) GetLocaleOriginOk() (*s
 }
 
 // HasLocaleOrigin returns a boolean if a field has been set.
-func (o *PutIdentityCollectorV1409ResponseMessagesInner) HasLocaleOrigin() bool {
+func (o *IdentitycollectordependenciesconflicterrorMessagesInner) HasLocaleOrigin() bool {
 	if o != nil && !IsNil(o.LocaleOrigin) {
 		return true
 	}
@@ -107,12 +107,12 @@ func (o *PutIdentityCollectorV1409ResponseMessagesInner) HasLocaleOrigin() bool 
 }
 
 // SetLocaleOrigin gets a reference to the given string and assigns it to the LocaleOrigin field.
-func (o *PutIdentityCollectorV1409ResponseMessagesInner) SetLocaleOrigin(v string) {
+func (o *IdentitycollectordependenciesconflicterrorMessagesInner) SetLocaleOrigin(v string) {
 	o.LocaleOrigin = &v
 }
 
 // GetText returns the Text field value if set, zero value otherwise.
-func (o *PutIdentityCollectorV1409ResponseMessagesInner) GetText() string {
+func (o *IdentitycollectordependenciesconflicterrorMessagesInner) GetText() string {
 	if o == nil || IsNil(o.Text) {
 		var ret string
 		return ret
@@ -122,7 +122,7 @@ func (o *PutIdentityCollectorV1409ResponseMessagesInner) GetText() string {
 
 // GetTextOk returns a tuple with the Text field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PutIdentityCollectorV1409ResponseMessagesInner) GetTextOk() (*string, bool) {
+func (o *IdentitycollectordependenciesconflicterrorMessagesInner) GetTextOk() (*string, bool) {
 	if o == nil || IsNil(o.Text) {
 		return nil, false
 	}
@@ -130,7 +130,7 @@ func (o *PutIdentityCollectorV1409ResponseMessagesInner) GetTextOk() (*string, b
 }
 
 // HasText returns a boolean if a field has been set.
-func (o *PutIdentityCollectorV1409ResponseMessagesInner) HasText() bool {
+func (o *IdentitycollectordependenciesconflicterrorMessagesInner) HasText() bool {
 	if o != nil && !IsNil(o.Text) {
 		return true
 	}
@@ -139,11 +139,11 @@ func (o *PutIdentityCollectorV1409ResponseMessagesInner) HasText() bool {
 }
 
 // SetText gets a reference to the given string and assigns it to the Text field.
-func (o *PutIdentityCollectorV1409ResponseMessagesInner) SetText(v string) {
+func (o *IdentitycollectordependenciesconflicterrorMessagesInner) SetText(v string) {
 	o.Text = &v
 }
 
-func (o PutIdentityCollectorV1409ResponseMessagesInner) MarshalJSON() ([]byte, error) {
+func (o IdentitycollectordependenciesconflicterrorMessagesInner) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -151,7 +151,7 @@ func (o PutIdentityCollectorV1409ResponseMessagesInner) MarshalJSON() ([]byte, e
 	return json.Marshal(toSerialize)
 }
 
-func (o PutIdentityCollectorV1409ResponseMessagesInner) ToMap() (map[string]interface{}, error) {
+func (o IdentitycollectordependenciesconflicterrorMessagesInner) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Locale) {
 		toSerialize["locale"] = o.Locale
@@ -170,16 +170,16 @@ func (o PutIdentityCollectorV1409ResponseMessagesInner) ToMap() (map[string]inte
 	return toSerialize, nil
 }
 
-func (o *PutIdentityCollectorV1409ResponseMessagesInner) UnmarshalJSON(data []byte) (err error) {
-	varPutIdentityCollectorV1409ResponseMessagesInner := _PutIdentityCollectorV1409ResponseMessagesInner{}
+func (o *IdentitycollectordependenciesconflicterrorMessagesInner) UnmarshalJSON(data []byte) (err error) {
+	varIdentitycollectordependenciesconflicterrorMessagesInner := _IdentitycollectordependenciesconflicterrorMessagesInner{}
 
-	err = json.Unmarshal(data, &varPutIdentityCollectorV1409ResponseMessagesInner)
+	err = json.Unmarshal(data, &varIdentitycollectordependenciesconflicterrorMessagesInner)
 
 	if err != nil {
 		return err
 	}
 
-	*o = PutIdentityCollectorV1409ResponseMessagesInner(varPutIdentityCollectorV1409ResponseMessagesInner)
+	*o = IdentitycollectordependenciesconflicterrorMessagesInner(varIdentitycollectordependenciesconflicterrorMessagesInner)
 
 	additionalProperties := make(map[string]interface{})
 
@@ -193,38 +193,38 @@ func (o *PutIdentityCollectorV1409ResponseMessagesInner) UnmarshalJSON(data []by
 	return err
 }
 
-type NullablePutIdentityCollectorV1409ResponseMessagesInner struct {
-	value *PutIdentityCollectorV1409ResponseMessagesInner
+type NullableIdentitycollectordependenciesconflicterrorMessagesInner struct {
+	value *IdentitycollectordependenciesconflicterrorMessagesInner
 	isSet bool
 }
 
-func (v NullablePutIdentityCollectorV1409ResponseMessagesInner) Get() *PutIdentityCollectorV1409ResponseMessagesInner {
+func (v NullableIdentitycollectordependenciesconflicterrorMessagesInner) Get() *IdentitycollectordependenciesconflicterrorMessagesInner {
 	return v.value
 }
 
-func (v *NullablePutIdentityCollectorV1409ResponseMessagesInner) Set(val *PutIdentityCollectorV1409ResponseMessagesInner) {
+func (v *NullableIdentitycollectordependenciesconflicterrorMessagesInner) Set(val *IdentitycollectordependenciesconflicterrorMessagesInner) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullablePutIdentityCollectorV1409ResponseMessagesInner) IsSet() bool {
+func (v NullableIdentitycollectordependenciesconflicterrorMessagesInner) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullablePutIdentityCollectorV1409ResponseMessagesInner) Unset() {
+func (v *NullableIdentitycollectordependenciesconflicterrorMessagesInner) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullablePutIdentityCollectorV1409ResponseMessagesInner(val *PutIdentityCollectorV1409ResponseMessagesInner) *NullablePutIdentityCollectorV1409ResponseMessagesInner {
-	return &NullablePutIdentityCollectorV1409ResponseMessagesInner{value: val, isSet: true}
+func NewNullableIdentitycollectordependenciesconflicterrorMessagesInner(val *IdentitycollectordependenciesconflicterrorMessagesInner) *NullableIdentitycollectordependenciesconflicterrorMessagesInner {
+	return &NullableIdentitycollectordependenciesconflicterrorMessagesInner{value: val, isSet: true}
 }
 
-func (v NullablePutIdentityCollectorV1409ResponseMessagesInner) MarshalJSON() ([]byte, error) {
+func (v NullableIdentitycollectordependenciesconflicterrorMessagesInner) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullablePutIdentityCollectorV1409ResponseMessagesInner) UnmarshalJSON(src []byte) error {
+func (v *NullableIdentitycollectordependenciesconflicterrorMessagesInner) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

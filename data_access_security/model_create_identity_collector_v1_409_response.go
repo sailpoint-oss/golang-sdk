@@ -14,41 +14,41 @@ import (
 	"encoding/json"
 )
 
-// checks if the PutIdentityCollectorV1409Response type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &PutIdentityCollectorV1409Response{}
+// checks if the CreateIdentityCollectorV1409Response type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CreateIdentityCollectorV1409Response{}
 
-// PutIdentityCollectorV1409Response struct for PutIdentityCollectorV1409Response
-type PutIdentityCollectorV1409Response struct {
+// CreateIdentityCollectorV1409Response struct for CreateIdentityCollectorV1409Response
+type CreateIdentityCollectorV1409Response struct {
 	// Fine-grained error code providing more detail of the error.
 	DetailCode *string `json:"detailCode,omitempty"`
 	// Unique tracking id for the error.
 	TrackingId *string `json:"trackingId,omitempty"`
 	// Generic localized reason for error.
-	Messages []PutIdentityCollectorV1409ResponseMessagesInner `json:"messages,omitempty"`
+	Messages []CreateIdentityCollectorV1409ResponseMessagesInner `json:"messages,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
-type _PutIdentityCollectorV1409Response PutIdentityCollectorV1409Response
+type _CreateIdentityCollectorV1409Response CreateIdentityCollectorV1409Response
 
-// NewPutIdentityCollectorV1409Response instantiates a new PutIdentityCollectorV1409Response object
+// NewCreateIdentityCollectorV1409Response instantiates a new CreateIdentityCollectorV1409Response object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPutIdentityCollectorV1409Response() *PutIdentityCollectorV1409Response {
-	this := PutIdentityCollectorV1409Response{}
+func NewCreateIdentityCollectorV1409Response() *CreateIdentityCollectorV1409Response {
+	this := CreateIdentityCollectorV1409Response{}
 	return &this
 }
 
-// NewPutIdentityCollectorV1409ResponseWithDefaults instantiates a new PutIdentityCollectorV1409Response object
+// NewCreateIdentityCollectorV1409ResponseWithDefaults instantiates a new CreateIdentityCollectorV1409Response object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewPutIdentityCollectorV1409ResponseWithDefaults() *PutIdentityCollectorV1409Response {
-	this := PutIdentityCollectorV1409Response{}
+func NewCreateIdentityCollectorV1409ResponseWithDefaults() *CreateIdentityCollectorV1409Response {
+	this := CreateIdentityCollectorV1409Response{}
 	return &this
 }
 
 // GetDetailCode returns the DetailCode field value if set, zero value otherwise.
-func (o *PutIdentityCollectorV1409Response) GetDetailCode() string {
+func (o *CreateIdentityCollectorV1409Response) GetDetailCode() string {
 	if o == nil || IsNil(o.DetailCode) {
 		var ret string
 		return ret
@@ -58,7 +58,7 @@ func (o *PutIdentityCollectorV1409Response) GetDetailCode() string {
 
 // GetDetailCodeOk returns a tuple with the DetailCode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PutIdentityCollectorV1409Response) GetDetailCodeOk() (*string, bool) {
+func (o *CreateIdentityCollectorV1409Response) GetDetailCodeOk() (*string, bool) {
 	if o == nil || IsNil(o.DetailCode) {
 		return nil, false
 	}
@@ -66,7 +66,7 @@ func (o *PutIdentityCollectorV1409Response) GetDetailCodeOk() (*string, bool) {
 }
 
 // HasDetailCode returns a boolean if a field has been set.
-func (o *PutIdentityCollectorV1409Response) HasDetailCode() bool {
+func (o *CreateIdentityCollectorV1409Response) HasDetailCode() bool {
 	if o != nil && !IsNil(o.DetailCode) {
 		return true
 	}
@@ -75,12 +75,12 @@ func (o *PutIdentityCollectorV1409Response) HasDetailCode() bool {
 }
 
 // SetDetailCode gets a reference to the given string and assigns it to the DetailCode field.
-func (o *PutIdentityCollectorV1409Response) SetDetailCode(v string) {
+func (o *CreateIdentityCollectorV1409Response) SetDetailCode(v string) {
 	o.DetailCode = &v
 }
 
 // GetTrackingId returns the TrackingId field value if set, zero value otherwise.
-func (o *PutIdentityCollectorV1409Response) GetTrackingId() string {
+func (o *CreateIdentityCollectorV1409Response) GetTrackingId() string {
 	if o == nil || IsNil(o.TrackingId) {
 		var ret string
 		return ret
@@ -90,7 +90,7 @@ func (o *PutIdentityCollectorV1409Response) GetTrackingId() string {
 
 // GetTrackingIdOk returns a tuple with the TrackingId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PutIdentityCollectorV1409Response) GetTrackingIdOk() (*string, bool) {
+func (o *CreateIdentityCollectorV1409Response) GetTrackingIdOk() (*string, bool) {
 	if o == nil || IsNil(o.TrackingId) {
 		return nil, false
 	}
@@ -98,7 +98,7 @@ func (o *PutIdentityCollectorV1409Response) GetTrackingIdOk() (*string, bool) {
 }
 
 // HasTrackingId returns a boolean if a field has been set.
-func (o *PutIdentityCollectorV1409Response) HasTrackingId() bool {
+func (o *CreateIdentityCollectorV1409Response) HasTrackingId() bool {
 	if o != nil && !IsNil(o.TrackingId) {
 		return true
 	}
@@ -107,14 +107,14 @@ func (o *PutIdentityCollectorV1409Response) HasTrackingId() bool {
 }
 
 // SetTrackingId gets a reference to the given string and assigns it to the TrackingId field.
-func (o *PutIdentityCollectorV1409Response) SetTrackingId(v string) {
+func (o *CreateIdentityCollectorV1409Response) SetTrackingId(v string) {
 	o.TrackingId = &v
 }
 
 // GetMessages returns the Messages field value if set, zero value otherwise.
-func (o *PutIdentityCollectorV1409Response) GetMessages() []PutIdentityCollectorV1409ResponseMessagesInner {
+func (o *CreateIdentityCollectorV1409Response) GetMessages() []CreateIdentityCollectorV1409ResponseMessagesInner {
 	if o == nil || IsNil(o.Messages) {
-		var ret []PutIdentityCollectorV1409ResponseMessagesInner
+		var ret []CreateIdentityCollectorV1409ResponseMessagesInner
 		return ret
 	}
 	return o.Messages
@@ -122,7 +122,7 @@ func (o *PutIdentityCollectorV1409Response) GetMessages() []PutIdentityCollector
 
 // GetMessagesOk returns a tuple with the Messages field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PutIdentityCollectorV1409Response) GetMessagesOk() ([]PutIdentityCollectorV1409ResponseMessagesInner, bool) {
+func (o *CreateIdentityCollectorV1409Response) GetMessagesOk() ([]CreateIdentityCollectorV1409ResponseMessagesInner, bool) {
 	if o == nil || IsNil(o.Messages) {
 		return nil, false
 	}
@@ -130,7 +130,7 @@ func (o *PutIdentityCollectorV1409Response) GetMessagesOk() ([]PutIdentityCollec
 }
 
 // HasMessages returns a boolean if a field has been set.
-func (o *PutIdentityCollectorV1409Response) HasMessages() bool {
+func (o *CreateIdentityCollectorV1409Response) HasMessages() bool {
 	if o != nil && !IsNil(o.Messages) {
 		return true
 	}
@@ -138,12 +138,12 @@ func (o *PutIdentityCollectorV1409Response) HasMessages() bool {
 	return false
 }
 
-// SetMessages gets a reference to the given []PutIdentityCollectorV1409ResponseMessagesInner and assigns it to the Messages field.
-func (o *PutIdentityCollectorV1409Response) SetMessages(v []PutIdentityCollectorV1409ResponseMessagesInner) {
+// SetMessages gets a reference to the given []CreateIdentityCollectorV1409ResponseMessagesInner and assigns it to the Messages field.
+func (o *CreateIdentityCollectorV1409Response) SetMessages(v []CreateIdentityCollectorV1409ResponseMessagesInner) {
 	o.Messages = v
 }
 
-func (o PutIdentityCollectorV1409Response) MarshalJSON() ([]byte, error) {
+func (o CreateIdentityCollectorV1409Response) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -151,7 +151,7 @@ func (o PutIdentityCollectorV1409Response) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o PutIdentityCollectorV1409Response) ToMap() (map[string]interface{}, error) {
+func (o CreateIdentityCollectorV1409Response) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.DetailCode) {
 		toSerialize["detailCode"] = o.DetailCode
@@ -170,16 +170,16 @@ func (o PutIdentityCollectorV1409Response) ToMap() (map[string]interface{}, erro
 	return toSerialize, nil
 }
 
-func (o *PutIdentityCollectorV1409Response) UnmarshalJSON(data []byte) (err error) {
-	varPutIdentityCollectorV1409Response := _PutIdentityCollectorV1409Response{}
+func (o *CreateIdentityCollectorV1409Response) UnmarshalJSON(data []byte) (err error) {
+	varCreateIdentityCollectorV1409Response := _CreateIdentityCollectorV1409Response{}
 
-	err = json.Unmarshal(data, &varPutIdentityCollectorV1409Response)
+	err = json.Unmarshal(data, &varCreateIdentityCollectorV1409Response)
 
 	if err != nil {
 		return err
 	}
 
-	*o = PutIdentityCollectorV1409Response(varPutIdentityCollectorV1409Response)
+	*o = CreateIdentityCollectorV1409Response(varCreateIdentityCollectorV1409Response)
 
 	additionalProperties := make(map[string]interface{})
 
@@ -193,38 +193,38 @@ func (o *PutIdentityCollectorV1409Response) UnmarshalJSON(data []byte) (err erro
 	return err
 }
 
-type NullablePutIdentityCollectorV1409Response struct {
-	value *PutIdentityCollectorV1409Response
+type NullableCreateIdentityCollectorV1409Response struct {
+	value *CreateIdentityCollectorV1409Response
 	isSet bool
 }
 
-func (v NullablePutIdentityCollectorV1409Response) Get() *PutIdentityCollectorV1409Response {
+func (v NullableCreateIdentityCollectorV1409Response) Get() *CreateIdentityCollectorV1409Response {
 	return v.value
 }
 
-func (v *NullablePutIdentityCollectorV1409Response) Set(val *PutIdentityCollectorV1409Response) {
+func (v *NullableCreateIdentityCollectorV1409Response) Set(val *CreateIdentityCollectorV1409Response) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullablePutIdentityCollectorV1409Response) IsSet() bool {
+func (v NullableCreateIdentityCollectorV1409Response) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullablePutIdentityCollectorV1409Response) Unset() {
+func (v *NullableCreateIdentityCollectorV1409Response) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullablePutIdentityCollectorV1409Response(val *PutIdentityCollectorV1409Response) *NullablePutIdentityCollectorV1409Response {
-	return &NullablePutIdentityCollectorV1409Response{value: val, isSet: true}
+func NewNullableCreateIdentityCollectorV1409Response(val *CreateIdentityCollectorV1409Response) *NullableCreateIdentityCollectorV1409Response {
+	return &NullableCreateIdentityCollectorV1409Response{value: val, isSet: true}
 }
 
-func (v NullablePutIdentityCollectorV1409Response) MarshalJSON() ([]byte, error) {
+func (v NullableCreateIdentityCollectorV1409Response) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullablePutIdentityCollectorV1409Response) UnmarshalJSON(src []byte) error {
+func (v *NullableCreateIdentityCollectorV1409Response) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
