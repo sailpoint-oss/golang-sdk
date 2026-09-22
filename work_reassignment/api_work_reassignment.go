@@ -1116,6 +1116,7 @@ type ApiListReassignmentConfigurationsV1Request struct {
 	xSailPointExperimental *string
 	limit *int32
 	offset *int32
+	count *bool
 }
 
 // Use this header to enable this experimental API.
@@ -1133,6 +1134,12 @@ func (r ApiListReassignmentConfigurationsV1Request) Limit(limit int32) ApiListRe
 // Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
 func (r ApiListReassignmentConfigurationsV1Request) Offset(offset int32) ApiListReassignmentConfigurationsV1Request {
 	r.offset = &offset
+	return r
+}
+
+// If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+func (r ApiListReassignmentConfigurationsV1Request) Count(count bool) ApiListReassignmentConfigurationsV1Request {
+	r.count = &count
 	return r
 }
 
@@ -1196,6 +1203,12 @@ func (a *WorkReassignmentAPIService) ListReassignmentConfigurationsV1Execute(r A
 	} else {
 		var defaultValue int32 = 0
 		r.offset = &defaultValue
+	}
+	if r.count != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "count", r.count, "form", "")
+	} else {
+		var defaultValue bool = false
+		r.count = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

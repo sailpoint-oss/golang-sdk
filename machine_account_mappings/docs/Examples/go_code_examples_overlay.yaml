@@ -130,7 +130,7 @@
           // response from `ListMachineAccountMappingsV1`: []AttributeMappings
           fmt.Fprintf(os.Stdout, "Response from `MachineAccountMappingsAPI.ListMachineAccountMappingsV1`: %v\n", resp)
         }
-- path: /sources/v1/{sourceId}/machine-mappings
+- path: /sources/v1/{sourceId}/machine-account-mappings
   method: Put
   xCodeSample:
     - lang: Go

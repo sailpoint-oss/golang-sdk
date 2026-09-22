@@ -649,7 +649,7 @@ func (a *MachineAccountMappingsAPIService) SetMachineAccountMappingsV1Execute(r 
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/sources/v1/{sourceId}/machine-mappings"
+	localVarPath := localBasePath + "/sources/v1/{sourceId}/machine-account-mappings"
 	localVarPath = strings.Replace(localVarPath, "{"+"sourceId"+"}", url.PathEscape(parameterValueToString(r.sourceId, "sourceId")), -1)
 
 	localVarHeaderParams := make(map[string]string)

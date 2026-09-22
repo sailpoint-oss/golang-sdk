@@ -82,7 +82,7 @@ Class | Method | HTTP request | Description
 *MachineAccountMappingsAPI* | [**CreateMachineAccountMappingsV1**](docs/MachineAccountMappingsAPI.md#createmachineaccountmappingsv1) | **Post** /sources/v1/{sourceId}/machine-account-mappings | Create machine account mappings
 *MachineAccountMappingsAPI* | [**DeleteMachineAccountMappingsV1**](docs/MachineAccountMappingsAPI.md#deletemachineaccountmappingsv1) | **Delete** /sources/v1/{sourceId}/machine-account-mappings | Delete source&#39;s machine account mappings
 *MachineAccountMappingsAPI* | [**ListMachineAccountMappingsV1**](docs/MachineAccountMappingsAPI.md#listmachineaccountmappingsv1) | **Get** /sources/v1/{sourceId}/machine-account-mappings | Machine account mapping for source
-*MachineAccountMappingsAPI* | [**SetMachineAccountMappingsV1**](docs/MachineAccountMappingsAPI.md#setmachineaccountmappingsv1) | **Put** /sources/v1/{sourceId}/machine-mappings | Update source&#39;s machine account mappings
+*MachineAccountMappingsAPI* | [**SetMachineAccountMappingsV1**](docs/MachineAccountMappingsAPI.md#setmachineaccountmappingsv1) | **Put** /sources/v1/{sourceId}/machine-account-mappings | Update source&#39;s machine account mappings
 
 
 ## Documentation For Models

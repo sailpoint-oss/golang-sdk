@@ -411,7 +411,6 @@ paths:
       - ROLE_ADMIN
       - ROLE_SUBADMIN
       - SOURCE_SUBADMIN
-  /sources/v1/{sourceId}/machine-mappings:
     put:
       description: "Use this API to update Machine Account Attribute Mapping for a\
         \ Source. A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority\
