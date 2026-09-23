@@ -20,15 +20,14 @@ concurrency:
   group: release-${{ github.repository }}
   cancel-in-progress: false
 
-env:
-  SAIL_CLIENT_ID: ${{ secrets.SDK_TEST_TENANT_CLIENT_ID }}
-  SAIL_CLIENT_SECRET: ${{ secrets.SDK_TEST_TENANT_CLIENT_SECRET }}
-  SAIL_BASE_URL: ${{ secrets.SDK_TEST_TENANT_BASE_URL }}
+permissions: {}
 
 jobs:
   check-changes:
     name: Check for spec changes
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     outputs:
       proceed: ${{ steps.check.outputs.proceed }}
     steps:
@@ -49,13 +48,15 @@ jobs:
       - name: Determine whether to proceed
         id: check
         shell: bash
+        env:
+          EVENT_NAME: ${{ github.event_name }}
         run: |
-          if [ "${{ github.event_name }}" != "schedule" ]; then
+          if [ "$EVENT_NAME" != "schedule" ]; then
             echo "proceed=true" >> "$GITHUB_OUTPUT"
             exit 0
           fi
 
-          LATEST_TAG=$(git describe --tags $(git rev-list --tags --max-count=1) 2>/dev/null || echo "v0.0.0")
+          LATEST_TAG=$(git describe --tags "$(git rev-list --tags --max-count=1)" 2>/dev/null || echo "v0.0.0")
           TAG_DATE=$(git log -1 --format=%aI "$LATEST_TAG" 2>/dev/null || echo "1970-01-01")
           TAG_COMMIT=$(cd api-specs && git rev-list -1 --before="$TAG_DATE" HEAD 2>/dev/null || echo "")
 
@@ -82,6 +83,10 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+    env:
+      SAIL_CLIENT_ID: ${{ secrets.SDK_TEST_TENANT_CLIENT_ID }}
+      SAIL_CLIENT_SECRET: ${{ secrets.SDK_TEST_TENANT_CLIENT_SECRET }}
+      SAIL_BASE_URL: ${{ secrets.SDK_TEST_TENANT_BASE_URL }}
     steps:
       - name: Checkout
         uses: actions/checkout@v6
@@ -98,18 +103,36 @@ jobs:
           ref: main
 
       - name: Set up yq
-        uses: frenck/action-setup-yq@v1
+        uses: frenck/action-setup-yq@c4b5be8b4a215c536a41d436757d9feb92836d4f # v1.0.2
 
       - name: Determine version
         id: version
         shell: bash
+        env:
+          INPUT_VERSION: ${{ github.event.inputs.version }}
         run: |
-          LATEST_TAG=$(git describe --tags $(git rev-list --tags --max-count=1) 2>/dev/null || echo "v0.0.0")
+          # Dispatch inputs are read from the environment, never interpolated into this
+          # script, and must parse as MAJOR.MINOR.PATCH before they reach any command.
+          SEMVER_RE='^(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)$'
+
+          LATEST_TAG=$(git describe --tags "$(git rev-list --tags --max-count=1)" 2>/dev/null || echo "v0.0.0")
           LATEST_VERSION="${LATEST_TAG#v}"
+
+          if [[ ! "$LATEST_VERSION" =~ $SEMVER_RE ]]; then
+            echo "::error::Latest tag does not parse as MAJOR.MINOR.PATCH"
+            exit 1
+          fi
+
           echo "latest=$LATEST_VERSION" >> "$GITHUB_OUTPUT"
 
-          if [ -n "${{ github.event.inputs.version }}" ]; then
-            NEW_VERSION="${{ github.event.inputs.version }}"
+          if [ -n "$INPUT_VERSION" ]; then
+            NEW_VERSION="${INPUT_VERSION#v}"
+            if [[ ! "$NEW_VERSION" =~ $SEMVER_RE ]]; then
+              # The rejected value is deliberately not echoed: it is untrusted and could
+              # otherwise be parsed out of the log as a workflow command.
+              echo "::error::Version input must be MAJOR.MINOR.PATCH (e.g. 3.0.0)"
+              exit 1
+            fi
           else
             IFS='.' read -r MAJOR MINOR PATCH <<< "$LATEST_VERSION"
             PATCH=$((PATCH + 1))
@@ -127,8 +150,9 @@ jobs:
 
       - name: Update config files with new version
         shell: bash
+        env:
+          VERSION: ${{ steps.version.outputs.new }}
         run: |
-          VERSION="${{ steps.version.outputs.new }}"
           yq -i ".packageVersion = \"$VERSION\"" sdk-resources/versioned-config.yaml
           yq -i ".packageVersion = \"$VERSION\"" sdk-resources/generic-config.yaml
           yq -i ".packageVersion = \"$VERSION\"" sdk-resources/nerm-config.yaml
@@ -148,7 +172,7 @@ jobs:
           go mod tidy
 
       - name: Commit changes and tag
-        uses: stefanzweifel/git-auto-commit-action@v7
+        uses: stefanzweifel/git-auto-commit-action@4a55954c782fc1ea30b9056cd3e7a2b40ca8887d # v7.2.0
         with:
           commit_message: "Bump version to v${{ steps.version.outputs.new }}"
           tagging_message: "v${{ steps.version.outputs.new }}"
@@ -156,7 +180,7 @@ jobs:
           commit_user_email: devrel-service@sailpoint.com
 
       - name: Create GitHub Release
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@3bb12739c298aeb8a4eeaf626c5b8d85266b0e65 # v2.6.2
         with:
           token: ${{ secrets.DEVREL_SERVICE_TOKEN }}
           tag_name: "v${{ steps.version.outputs.new }}"
