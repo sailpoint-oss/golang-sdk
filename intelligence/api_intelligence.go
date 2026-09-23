@@ -216,61 +216,14 @@ GetIdentityIntelligenceV1 Get identity by filter
 
 Requires tenant license idn:response-and-remediation.
 
-**Authentication and data segmentation**
-
-Intelligence forwards the caller JWT to downstream identity and search services (context client).
-Enriched results, including non-human identity resolution, are filtered to the caller's Data
-Segmentation visibility.
-
-**Caution:** Generic API Management API keys are not tied to a user identity. When Data
-Segmentation is enabled, API key authentication may fail or return incomplete data because
-downstream calls require a user context. Use a [personal access token](https://developer.sailpoint.com/docs/api/authentication/#generate-a-personal-access-token)
+**Caution:** When Data Segmentation is enabled, generic API Management API keys are not tied to
+a user identity and may fail or return incomplete data. Use a [personal access token](https://developer.sailpoint.com/docs/api/authentication/#generate-a-personal-access-token)
 or other user-scoped OAuth token. See [API keys](https://documentation.sailpoint.com/saas/help/common/api_keys.html)
 and [Data Segmentation](https://documentation.sailpoint.com/saas/help/segmentation/index.html).
 
-Resolves exactly one identity using a single SCIM-style filters expression.
-
-**Supported filters**
-
-| Filter field | Lookup mode | Notes |
-|---|---|---|
-| id eq | Human (+ optional non-human identity when feature-flagged) | Resolves human identities by id; when non-human resolution is enabled, a parallel non-human lookup runs. If both match different identities, returns HTTP 409. |
-| email eq | Human only | Human identity lookup by email only. |
-| opaqueIdentifier eq | Non-human identity only | Parallel nativeIdentity eq on machine-identities and machine-accounts, then name-prefix fallback on machine-accounts. Requires feature flag ISCRR-1905_NHI_TYPE_MACHINE_FILTER_ENABLED; when disabled, returns HTTP 400. |
-
-Single-clause filters only; composite and or expressions are rejected with HTTP 400.
-
-**identityGraph deep link**
-
-When the tenant has the idg:base license, Human and NHI aggregate responses may include
-`identityGraph.href`, a deep link into the Identity Graph UI for the resolved identity.
-Opening the link requires the **Identity Graph Read Only** user level. The link is omitted
-when the tenant lacks idg:base.
-
-**Human envelope (type Human)**
-
-Embeds the first page (10 items) of each enrichment slice. Each paged slice includes totalCount
-from upstream X-Total-Count when items is non-empty, and carries a next continuation URL when
-totalCount exceeds the items returned on this page. Slices are always present (empty uses
-items [] with no totalCount). privilegedAccess returns the full privileged-access result and never carries
-next or totalCount. When the tenant has idn:machine-identity-security, nonHumanIdentityOwnership
-is included with agents and applications categories; each category is a flat object with
-independently paged primaryOwned and secondaryOwned buckets, and optional message/reason when
-upstream ownership fetch fails for that category (reason UPSTREAM_UNAVAILABLE). When the tenant
-lacks that license, nonHumanIdentityOwnership is omitted. Continue ownership paging with
-GET .../non-human-identity-ownership/{category} and optional ownershipRole=primary|secondary
-(defaults to primary). If any enrichment upstream fails, the whole request fails with HTTP 500,
-except outliers (omitted when the tenant lacks the IDA-outliers license) and
-nonHumanIdentityOwnership category-level degrade (aggregate still returns HTTP 200).
-
-**Non-human identity envelope (type NHI)**
-
-Returns flat non-human identity fields at the top level plus correlated machine accounts on the
-aggregate and a derived block (isOrphaned, authorizedHumanIdentities, blastRadiusSummary).
-Omits Human-only slices (privilegedAccess, outliers, accessHistory, nonHumanIdentityOwnership).
-Account paging via child routes is not yet released. Opaque prefix resolution that deduplicates
-to one parent identity returns HTTP 200 with matchConfidence partial; multiple distinct parent
-identities return HTTP 409 with IDC_IDENTITY_AMBIGUOUS and candidate id and displayName values.
+Resolves exactly one identity using a single SCIM-style filters expression. Returns an enriched
+Human or non-human identity (NHI) envelope. Single-clause filters only; unsupported fields or
+operators return HTTP 400.
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -654,6 +607,7 @@ type ApiGetIntelIdentityAccountsV1Request struct {
 	limit *int32
 	offset *int32
 	count *bool
+	isNHI *bool
 }
 
 // Page size. Defaults to 250; values above 250 are rejected with 400.
@@ -674,18 +628,23 @@ func (r ApiGetIntelIdentityAccountsV1Request) Count(count bool) ApiGetIntelIdent
 	return r
 }
 
-func (r ApiGetIntelIdentityAccountsV1Request) Execute() ([]IntelAccessAccountWire, *http.Response, error) {
+// NHI accounts when &#x60;true&#x60; (bare array). Human accounts when omitted or &#x60;false&#x60; (slice object). 
+func (r ApiGetIntelIdentityAccountsV1Request) IsNHI(isNHI bool) ApiGetIntelIdentityAccountsV1Request {
+	r.isNHI = &isNHI
+	return r
+}
+
+func (r ApiGetIntelIdentityAccountsV1Request) Execute() (*GetIntelIdentityAccountsV1200Response, *http.Response, error) {
 	return r.ApiService.GetIntelIdentityAccountsV1Execute(r)
 }
 
 /*
 GetIntelIdentityAccountsV1 List identity accounts
 
-Continuation endpoint for a Human identity's `accounts.next` link.
-Returns one page of account rows for the supplied limit and offset values.
-Pass `count=true` to receive `X-Total-Count` (including `0` on empty pages).
-Not applicable to non-human identities (NHI accounts are returned on the NHI aggregate only).
-Requires tenant license idn:response-and-remediation.
+Continuation endpoint for `accounts.next`. Pass `count=true` for `X-Total-Count`.
+
+- Human (default): omit `isNHI` or set it to `false`. Slice object (`items`).
+- Non-human identity (NHI): set `isNHI=true` (required for NHI aggregate `accounts.next` links). Bare JSON array.
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -701,13 +660,13 @@ func (a *IntelligenceAPIService) GetIntelIdentityAccountsV1(ctx context.Context,
 }
 
 // Execute executes the request
-//  @return []IntelAccessAccountWire
-func (a *IntelligenceAPIService) GetIntelIdentityAccountsV1Execute(r ApiGetIntelIdentityAccountsV1Request) ([]IntelAccessAccountWire, *http.Response, error) {
+//  @return GetIntelIdentityAccountsV1200Response
+func (a *IntelligenceAPIService) GetIntelIdentityAccountsV1Execute(r ApiGetIntelIdentityAccountsV1Request) (*GetIntelIdentityAccountsV1200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []IntelAccessAccountWire
+		localVarReturnValue  *GetIntelIdentityAccountsV1200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IntelligenceAPIService.GetIntelIdentityAccountsV1")
@@ -745,6 +704,12 @@ func (a *IntelligenceAPIService) GetIntelIdentityAccountsV1Execute(r ApiGetIntel
 	} else {
 		var defaultValue bool = false
 		r.count = &defaultValue
+	}
+	if r.isNHI != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "isNHI", r.isNHI, "form", "")
+	} else {
+		var defaultValue bool = false
+		r.isNHI = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

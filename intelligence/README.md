@@ -95,6 +95,7 @@ Class | Method | HTTP request | Description
  - [ErrorResponseDto](docs/ErrorResponseDto.md)
  - [GetIdentityIntelligenceV1401Response](docs/GetIdentityIntelligenceV1401Response.md)
  - [GetIdentityIntelligenceV1429Response](docs/GetIdentityIntelligenceV1429Response.md)
+ - [GetIntelIdentityAccountsV1200Response](docs/GetIntelIdentityAccountsV1200Response.md)
  - [IntelAccessAccountWire](docs/IntelAccessAccountWire.md)
  - [IntelAccessHistory](docs/IntelAccessHistory.md)
  - [IntelAccessHistoryAccessItemsSlice](docs/IntelAccessHistoryAccessItemsSlice.md)

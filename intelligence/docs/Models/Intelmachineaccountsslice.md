@@ -15,7 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'Intelmachineaccountsslice', 'V1Intelm
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Items** | [**[]Intelmachineaccountwire**](intelmachineaccountwire) | Machine account rows correlated to the non-human identity. | 
+**Items** | [**[]Intelmachineaccountwire**](intelmachineaccountwire) | Machine accounts correlated to the non-human identity. | 
+**TotalCount** | Pointer to **int32** | Correlated machine account count from aggregation; omitted when items is empty. | [optional] 
+**Next** | Pointer to **string** | Next page URL when totalCount exceeds items returned. Includes isNHI=true. | [optional] 
 
 ## Methods
 
@@ -55,5 +57,55 @@ and a boolean to check if the value has been set.
 
 SetItems sets Items field to given value.
 
+
+### GetTotalCount
+
+`func (o *Intelmachineaccountsslice) GetTotalCount() int32`
+
+GetTotalCount returns the TotalCount field if non-nil, zero value otherwise.
+
+### GetTotalCountOk
+
+`func (o *Intelmachineaccountsslice) GetTotalCountOk() (*int32, bool)`
+
+GetTotalCountOk returns a tuple with the TotalCount field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTotalCount
+
+`func (o *Intelmachineaccountsslice) SetTotalCount(v int32)`
+
+SetTotalCount sets TotalCount field to given value.
+
+### HasTotalCount
+
+`func (o *Intelmachineaccountsslice) HasTotalCount() bool`
+
+HasTotalCount returns a boolean if a field has been set.
+
+### GetNext
+
+`func (o *Intelmachineaccountsslice) GetNext() string`
+
+GetNext returns the Next field if non-nil, zero value otherwise.
+
+### GetNextOk
+
+`func (o *Intelmachineaccountsslice) GetNextOk() (*string, bool)`
+
+GetNextOk returns a tuple with the Next field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNext
+
+`func (o *Intelmachineaccountsslice) SetNext(v string)`
+
+SetNext sets Next field to given value.
+
+### HasNext
+
+`func (o *Intelmachineaccountsslice) HasNext() bool`
+
+HasNext returns a boolean if a field has been set.
 
 

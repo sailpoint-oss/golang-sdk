@@ -18,10 +18,14 @@ import (
 // checks if the Intelmachineaccountsslice type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &Intelmachineaccountsslice{}
 
-// Intelmachineaccountsslice Correlated machine accounts embedded on the non-human identity aggregate. Returns the correlated account set on the wire today (account paging via child routes is not yet released). 
+// Intelmachineaccountsslice Machine accounts embedded on the non-human identity aggregate (first page).
 type Intelmachineaccountsslice struct {
-	// Machine account rows correlated to the non-human identity.
+	// Machine accounts correlated to the non-human identity.
 	Items []Intelmachineaccountwire `json:"items"`
+	// Correlated machine account count from aggregation; omitted when items is empty.
+	TotalCount *int32 `json:"totalCount,omitempty"`
+	// Next page URL when totalCount exceeds items returned. Includes isNHI=true.
+	Next *string `json:"next,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -69,6 +73,70 @@ func (o *Intelmachineaccountsslice) SetItems(v []Intelmachineaccountwire) {
 	o.Items = v
 }
 
+// GetTotalCount returns the TotalCount field value if set, zero value otherwise.
+func (o *Intelmachineaccountsslice) GetTotalCount() int32 {
+	if o == nil || IsNil(o.TotalCount) {
+		var ret int32
+		return ret
+	}
+	return *o.TotalCount
+}
+
+// GetTotalCountOk returns a tuple with the TotalCount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Intelmachineaccountsslice) GetTotalCountOk() (*int32, bool) {
+	if o == nil || IsNil(o.TotalCount) {
+		return nil, false
+	}
+	return o.TotalCount, true
+}
+
+// HasTotalCount returns a boolean if a field has been set.
+func (o *Intelmachineaccountsslice) HasTotalCount() bool {
+	if o != nil && !IsNil(o.TotalCount) {
+		return true
+	}
+
+	return false
+}
+
+// SetTotalCount gets a reference to the given int32 and assigns it to the TotalCount field.
+func (o *Intelmachineaccountsslice) SetTotalCount(v int32) {
+	o.TotalCount = &v
+}
+
+// GetNext returns the Next field value if set, zero value otherwise.
+func (o *Intelmachineaccountsslice) GetNext() string {
+	if o == nil || IsNil(o.Next) {
+		var ret string
+		return ret
+	}
+	return *o.Next
+}
+
+// GetNextOk returns a tuple with the Next field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Intelmachineaccountsslice) GetNextOk() (*string, bool) {
+	if o == nil || IsNil(o.Next) {
+		return nil, false
+	}
+	return o.Next, true
+}
+
+// HasNext returns a boolean if a field has been set.
+func (o *Intelmachineaccountsslice) HasNext() bool {
+	if o != nil && !IsNil(o.Next) {
+		return true
+	}
+
+	return false
+}
+
+// SetNext gets a reference to the given string and assigns it to the Next field.
+func (o *Intelmachineaccountsslice) SetNext(v string) {
+	o.Next = &v
+}
+
 func (o Intelmachineaccountsslice) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -80,6 +148,12 @@ func (o Intelmachineaccountsslice) MarshalJSON() ([]byte, error) {
 func (o Intelmachineaccountsslice) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["items"] = o.Items
+	if !IsNil(o.TotalCount) {
+		toSerialize["totalCount"] = o.TotalCount
+	}
+	if !IsNil(o.Next) {
+		toSerialize["next"] = o.Next
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -124,6 +198,8 @@ func (o *Intelmachineaccountsslice) UnmarshalJSON(data []byte) (err error) {
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "items")
+		delete(additionalProperties, "totalCount")
+		delete(additionalProperties, "next")
 		o.AdditionalProperties = additionalProperties
 	}
 
