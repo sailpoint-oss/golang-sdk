@@ -36,9 +36,11 @@ runs:
 
     - name: Build Versioned SDK (per-partition)
       shell: bash
+      env:
+        API_SPECS_PATH: ${{ inputs.api-specs-path }}
       run: |
         node sdk-resources/build-versioned-sdk.js \
-          ${{ inputs.api-specs-path }}/idn/apis
+          "$API_SPECS_PATH/idn/apis"
 
     - name: Build Generic SDK
       shell: bash
@@ -53,10 +55,12 @@ runs:
 
     - name: Build NERM SDK
       shell: bash
+      env:
+        API_SPECS_PATH: ${{ inputs.api-specs-path }}
       run: |
         rm -rf ./nerm
         java -jar openapi-generator-cli.jar generate \
-          -i ${{ inputs.api-specs-path }}/nerm/openapi.yaml \
+          -i "$API_SPECS_PATH/nerm/openapi.yaml" \
           -g go -o nerm \
           --global-property skipFormModel=false,apiDocs=true,modelDocs=true \
           --config sdk-resources/nerm-config.yaml
@@ -64,10 +68,12 @@ runs:
 
     - name: Build NERM V2025 SDK
       shell: bash
+      env:
+        API_SPECS_PATH: ${{ inputs.api-specs-path }}
       run: |
         rm -rf ./nerm_v2025
         java -jar openapi-generator-cli.jar generate \
-          -i ${{ inputs.api-specs-path }}/nerm/v2025/v2025.yaml \
+          -i "$API_SPECS_PATH/nerm/v2025/v2025.yaml" \
           -g go -o nerm_v2025 \
           --global-property skipFormModel=false,apiDocs=true,modelDocs=true \
           --config sdk-resources/v2025-nerm-config.yaml
@@ -82,8 +88,10 @@ runs:
 
     - name: Build and Test
       shell: bash
+      env:
+        SKIP_TESTS: ${{ inputs.skip-tests }}
       run: |
         go build -o /dev/null .
-        if [ "${{ inputs.skip-tests }}" != "true" ]; then
+        if [ "$SKIP_TESTS" != "true" ]; then
           go test $(go list ./... | grep -v '/test$')
         fi
