@@ -113,7 +113,7 @@ tags:
 paths:
   /sources/v1:
     get:
-      description: This end-point lists all the sources in IdentityNow.
+      description: This end-point lists all the sources.
       operationId: listSourcesV1
       parameters:
       - description: |-
@@ -326,7 +326,7 @@ paths:
       - applicationAuth:
         - idn:sources:read
         - idn:sources:manage
-      summary: Lists all sources in identitynow.
+      summary: List sources
       tags:
       - Sources
       x-sailpoint-userLevels:
@@ -336,7 +336,7 @@ paths:
       - ROLE_SUBADMIN
     post:
       description: This creates a specific source with a full source JSON representation.
-        Any passwords are submitted as plain-text and encrypted upon receipt in IdentityNow.
+        Any passwords are submitted as plain-text and encrypted upon receipt.
       operationId: createSourceV1
       parameters:
       - description: "If this parameter is `true`, it configures the source as a Delimited\
@@ -351,6 +351,7 @@ paths:
         name: provisionAsCsv
         required: false
         schema:
+          default: false
           type: boolean
         style: form
       requestBody:
@@ -429,7 +430,7 @@ paths:
         - idn:sources:manage
       - applicationAuth:
         - idn:sources:manage
-      summary: Creates a source in identitynow.
+      summary: Create source
       tags:
       - Sources
       x-sailpoint-userLevels:

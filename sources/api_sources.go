@@ -1203,9 +1203,9 @@ func (r ApiCreateSourceV1Request) Execute() (*Source, *http.Response, error) {
 }
 
 /*
-CreateSourceV1 Creates a source in identitynow.
+CreateSourceV1 Create source
 
-This creates a specific source with a full source JSON representation. Any passwords are submitted as plain-text and encrypted upon receipt in IdentityNow.
+This creates a specific source with a full source JSON representation. Any passwords are submitted as plain-text and encrypted upon receipt.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateSourceV1Request
@@ -1243,6 +1243,9 @@ func (a *SourcesAPIService) CreateSourceV1Execute(r ApiCreateSourceV1Request) (*
 
 	if r.provisionAsCsv != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "provisionAsCsv", r.provisionAsCsv, "form", "")
+	} else {
+		var defaultValue bool = false
+		r.provisionAsCsv = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -9166,9 +9169,9 @@ func (r ApiListSourcesV1Request) Execute() ([]Source, *http.Response, error) {
 }
 
 /*
-ListSourcesV1 Lists all sources in identitynow.
+ListSourcesV1 List sources
 
-This end-point lists all the sources in IdentityNow.
+This end-point lists all the sources.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListSourcesV1Request

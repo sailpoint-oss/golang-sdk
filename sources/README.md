@@ -85,7 +85,7 @@ Class | Method | HTTP request | Description
 *SourcesAPI* | [**CreateSourceResourceV1**](docs/SourcesAPI.md#createsourceresourcev1) | **Post** /sources/v1/{sourceId}/resources | Create resource on source
 *SourcesAPI* | [**CreateSourceScheduleV1**](docs/SourcesAPI.md#createsourceschedulev1) | **Post** /sources/v1/{sourceId}/schedules | Create schedule on source
 *SourcesAPI* | [**CreateSourceSchemaV1**](docs/SourcesAPI.md#createsourceschemav1) | **Post** /sources/v1/{sourceId}/schemas | Create schema on source
-*SourcesAPI* | [**CreateSourceV1**](docs/SourcesAPI.md#createsourcev1) | **Post** /sources/v1 | Creates a source in identitynow.
+*SourcesAPI* | [**CreateSourceV1**](docs/SourcesAPI.md#createsourcev1) | **Post** /sources/v1 | Create source
 *SourcesAPI* | [**DeleteAccountsAsyncV1**](docs/SourcesAPI.md#deleteaccountsasyncv1) | **Post** /sources/v1/{id}/remove-accounts | Remove all accounts in source
 *SourcesAPI* | [**DeleteNativeChangeDetectionConfigV1**](docs/SourcesAPI.md#deletenativechangedetectionconfigv1) | **Delete** /sources/v1/{sourceId}/native-change-detection-config | Delete native change detection configuration
 *SourcesAPI* | [**DeleteProvisioningPolicyV1**](docs/SourcesAPI.md#deleteprovisioningpolicyv1) | **Delete** /sources/v1/{sourceId}/provisioning-policies/{usageType} | Delete provisioning policy by usagetype
@@ -129,7 +129,7 @@ Class | Method | HTTP request | Description
 *SourcesAPI* | [**ListPasswordPolicyHoldersOnSourceV1**](docs/SourcesAPI.md#listpasswordpolicyholdersonsourcev1) | **Get** /sources/v1/{sourceId}/password-policies | Get Password Policy for source
 *SourcesAPI* | [**ListProvisioningPoliciesV1**](docs/SourcesAPI.md#listprovisioningpoliciesv1) | **Get** /sources/v1/{sourceId}/provisioning-policies | Lists provisioningpolicies
 *SourcesAPI* | [**ListProvisioningPoliciesV2**](docs/SourcesAPI.md#listprovisioningpoliciesv2) | **Get** /sources/v2/{sourceId}/provisioning-policies | Lists Provisioning Policies
-*SourcesAPI* | [**ListSourcesV1**](docs/SourcesAPI.md#listsourcesv1) | **Get** /sources/v1 | Lists all sources in identitynow.
+*SourcesAPI* | [**ListSourcesV1**](docs/SourcesAPI.md#listsourcesv1) | **Get** /sources/v1 | List sources
 *SourcesAPI* | [**PingClusterV1**](docs/SourcesAPI.md#pingclusterv1) | **Post** /sources/v1/{sourceId}/connector/ping-cluster | Ping cluster for source connector
 *SourcesAPI* | [**PutCorrelationConfigV1**](docs/SourcesAPI.md#putcorrelationconfigv1) | **Put** /sources/v1/{id}/correlation-config | Update source correlation configuration
 *SourcesAPI* | [**PutNativeChangeDetectionConfigV1**](docs/SourcesAPI.md#putnativechangedetectionconfigv1) | **Put** /sources/v1/{sourceId}/native-change-detection-config | Update native change detection configuration
