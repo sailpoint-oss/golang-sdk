@@ -40,6 +40,41 @@
           // response from `CreateMachineAccountSubtypeV1`: SourceSubtype
           fmt.Fprintf(os.Stdout, "Response from `MachineAccountsAPI.CreateMachineAccountSubtypeV1`: %v\n", resp)
         }
+- path: /machine-accounts/v1/{id}/remove
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/machineaccounts/methods/machine-accounts#delete-machine-account-async-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          id := `ef38f94347e94562b5bb8424a56397d8` // string | Machine Account ID. # string | Machine Account ID.
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.MachineAccountsAPI.DeleteMachineAccountAsyncV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+          //resp, r, err := apiClient.MachineAccountsAPI.DeleteMachineAccountAsyncV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountsAPI.DeleteMachineAccountAsyncV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `DeleteMachineAccountAsyncV1`: MachineAccountsAsyncResult
+          fmt.Fprintf(os.Stdout, "Response from `MachineAccountsAPI.DeleteMachineAccountAsyncV1`: %v\n", resp)
+        }
 - path: /sources/v1/{sourceId}/subtypes/{technicalName}
   method: Delete
   xCodeSample:
@@ -73,6 +108,76 @@
             fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountsAPI.DeleteMachineAccountSubtypeByTechnicalNameV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
           }
+        }
+- path: /machine-accounts/v1/{id}/disable
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/machineaccounts/methods/machine-accounts#disable-machine-account-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          id := `ef38f94347e94562b5bb8424a56397d8` // string | Machine Account ID. # string | Machine Account ID.
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.MachineAccountsAPI.DisableMachineAccountV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+          //resp, r, err := apiClient.MachineAccountsAPI.DisableMachineAccountV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountsAPI.DisableMachineAccountV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `DisableMachineAccountV1`: MachineAccountsAsyncResult
+          fmt.Fprintf(os.Stdout, "Response from `MachineAccountsAPI.DisableMachineAccountV1`: %v\n", resp)
+        }
+- path: /machine-accounts/v1/{id}/enable
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/machineaccounts/methods/machine-accounts#enable-machine-account-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          id := `ef38f94347e94562b5bb8424a56397d8` // string | Machine Account ID. # string | Machine Account ID.
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.MachineAccountsAPI.EnableMachineAccountV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+          //resp, r, err := apiClient.MachineAccountsAPI.EnableMachineAccountV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountsAPI.EnableMachineAccountV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `EnableMachineAccountV1`: MachineAccountsAsyncResult
+          fmt.Fprintf(os.Stdout, "Response from `MachineAccountsAPI.EnableMachineAccountV1`: %v\n", resp)
         }
 - path: /sources/v1/subtypes/{subtypeId}
   method: Get
@@ -301,6 +406,76 @@
           }
           // response from `PatchMachineAccountSubtypeByTechnicalNameV1`: SourceSubtype
           fmt.Fprintf(os.Stdout, "Response from `MachineAccountsAPI.PatchMachineAccountSubtypeByTechnicalNameV1`: %v\n", resp)
+        }
+- path: /machine-accounts/v1/{id}/reload
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/machineaccounts/methods/machine-accounts#reload-machine-account-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          id := `ef38f94347e94562b5bb8424a56397d8` // string | Machine Account ID. # string | Machine Account ID.
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.MachineAccountsAPI.ReloadMachineAccountV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+          //resp, r, err := apiClient.MachineAccountsAPI.ReloadMachineAccountV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountsAPI.ReloadMachineAccountV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `ReloadMachineAccountV1`: MachineAccountsAsyncResult
+          fmt.Fprintf(os.Stdout, "Response from `MachineAccountsAPI.ReloadMachineAccountV1`: %v\n", resp)
+        }
+- path: /machine-accounts/v1/{id}/unlock
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/machineaccounts/methods/machine-accounts#unlock-machine-account-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          id := `ef38f94347e94562b5bb8424a56397d8` // string | Machine Account ID. # string | Machine Account ID.
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.MachineAccountsAPI.UnlockMachineAccountV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+          //resp, r, err := apiClient.MachineAccountsAPI.UnlockMachineAccountV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountsAPI.UnlockMachineAccountV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `UnlockMachineAccountV1`: MachineAccountsAsyncResult
+          fmt.Fprintf(os.Stdout, "Response from `MachineAccountsAPI.UnlockMachineAccountV1`: %v\n", resp)
         }
 - path: /machine-accounts/v1/{id}
   method: Patch

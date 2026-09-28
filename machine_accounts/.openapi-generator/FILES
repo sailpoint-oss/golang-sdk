@@ -17,6 +17,7 @@ docs/LocaleOrigin.md
 docs/MachineAccount.md
 docs/MachineAccountsAPI.md
 docs/MachineAccountsAPIdeveloperSite_code_examples.yaml
+docs/MachineAccountsAsyncResult.md
 docs/Methods/Index.md
 docs/SourceSubtype.md
 git_push.sh
@@ -30,6 +31,7 @@ model_list_machine_accounts_v1_401_response.go
 model_list_machine_accounts_v1_429_response.go
 model_locale_origin.go
 model_machine_account.go
+model_machine_accounts_async_result.go
 model_source_subtype.go
 response.go
 test/api_machine_accounts_test.go

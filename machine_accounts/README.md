@@ -80,13 +80,18 @@ All URIs are relative to *https://sailpoint.api.identitynow.com*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *MachineAccountsAPI* | [**CreateMachineAccountSubtypeV1**](docs/MachineAccountsAPI.md#createmachineaccountsubtypev1) | **Post** /sources/v1/{sourceId}/subtypes | Create subtype
+*MachineAccountsAPI* | [**DeleteMachineAccountAsyncV1**](docs/MachineAccountsAPI.md#deletemachineaccountasyncv1) | **Post** /machine-accounts/v1/{id}/remove | Remove machine account
 *MachineAccountsAPI* | [**DeleteMachineAccountSubtypeByTechnicalNameV1**](docs/MachineAccountsAPI.md#deletemachineaccountsubtypebytechnicalnamev1) | **Delete** /sources/v1/{sourceId}/subtypes/{technicalName} | Delete subtype
+*MachineAccountsAPI* | [**DisableMachineAccountV1**](docs/MachineAccountsAPI.md#disablemachineaccountv1) | **Post** /machine-accounts/v1/{id}/disable | Disable machine account
+*MachineAccountsAPI* | [**EnableMachineAccountV1**](docs/MachineAccountsAPI.md#enablemachineaccountv1) | **Post** /machine-accounts/v1/{id}/enable | Enable machine account
 *MachineAccountsAPI* | [**GetMachineAccountSubtypeByIdV1**](docs/MachineAccountsAPI.md#getmachineaccountsubtypebyidv1) | **Get** /sources/v1/subtypes/{subtypeId} | Retrieve subtype by subtype id
 *MachineAccountsAPI* | [**GetMachineAccountSubtypeByTechnicalNameV1**](docs/MachineAccountsAPI.md#getmachineaccountsubtypebytechnicalnamev1) | **Get** /sources/v1/{sourceId}/subtypes/{technicalName} | Retrieve subtype by source and technicalName
 *MachineAccountsAPI* | [**GetMachineAccountV1**](docs/MachineAccountsAPI.md#getmachineaccountv1) | **Get** /machine-accounts/v1/{id} | Get machine account details
 *MachineAccountsAPI* | [**ListMachineAccountSubtypesV1**](docs/MachineAccountsAPI.md#listmachineaccountsubtypesv1) | **Get** /sources/v1/{sourceId}/subtypes | Retrieve all subtypes by source
 *MachineAccountsAPI* | [**ListMachineAccountsV1**](docs/MachineAccountsAPI.md#listmachineaccountsv1) | **Get** /machine-accounts/v1 | List machine accounts
 *MachineAccountsAPI* | [**PatchMachineAccountSubtypeByTechnicalNameV1**](docs/MachineAccountsAPI.md#patchmachineaccountsubtypebytechnicalnamev1) | **Patch** /sources/v1/{sourceId}/subtypes/{technicalName} | Patch subtype
+*MachineAccountsAPI* | [**ReloadMachineAccountV1**](docs/MachineAccountsAPI.md#reloadmachineaccountv1) | **Post** /machine-accounts/v1/{id}/reload | Reload machine account
+*MachineAccountsAPI* | [**UnlockMachineAccountV1**](docs/MachineAccountsAPI.md#unlockmachineaccountv1) | **Post** /machine-accounts/v1/{id}/unlock | Unlock machine account
 *MachineAccountsAPI* | [**UpdateMachineAccountV1**](docs/MachineAccountsAPI.md#updatemachineaccountv1) | **Patch** /machine-accounts/v1/{id} | Update machine account details
 
 
@@ -100,6 +105,7 @@ Class | Method | HTTP request | Description
  - [ListMachineAccountsV1429Response](docs/ListMachineAccountsV1429Response.md)
  - [LocaleOrigin](docs/LocaleOrigin.md)
  - [MachineAccount](docs/MachineAccount.md)
+ - [MachineAccountsAsyncResult](docs/MachineAccountsAsyncResult.md)
  - [SourceSubtype](docs/SourceSubtype.md)
 
 
