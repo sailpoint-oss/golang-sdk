@@ -1052,9 +1052,9 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:workgroup:write
+        - idn:workgroup:manage
       - applicationAuth:
-        - idn:workgroup:write
+        - idn:workgroup:manage
       summary: Add members to governance group
       tags:
       - Governance Groups
@@ -1153,9 +1153,9 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:workgroup:write
+        - idn:workgroup:manage
       - applicationAuth:
-        - idn:workgroup:write
+        - idn:workgroup:manage
       summary: Remove members from governance group
       tags:
       - Governance Groups

@@ -225,7 +225,14 @@ func (a *MachineIdentitiesAPIService) CreateMachineIdentityV1Execute(r ApiCreate
 type ApiCreateMachineIdentityV2Request struct {
 	ctx context.Context
 	ApiService *MachineIdentitiesAPIService
+	xSailPointExperimental *string
 	machineidentityv2 *Machineidentityv2
+}
+
+// Use this header to enable this experimental API.
+func (r ApiCreateMachineIdentityV2Request) XSailPointExperimental(xSailPointExperimental string) ApiCreateMachineIdentityV2Request {
+	r.xSailPointExperimental = &xSailPointExperimental
+	return r
 }
 
 func (r ApiCreateMachineIdentityV2Request) Machineidentityv2(machineidentityv2 Machineidentityv2) ApiCreateMachineIdentityV2Request {
@@ -274,6 +281,21 @@ func (a *MachineIdentitiesAPIService) CreateMachineIdentityV2Execute(r ApiCreate
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	
+	if r.xSailPointExperimental == nil {
+		headerxSailPointExperimental := "true"
+		r.xSailPointExperimental = &headerxSailPointExperimental
+	}
+	
+	if r.xSailPointExperimental == nil {
+		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
+	}
+	
+	if r.xSailPointExperimental == nil {
+		headerxSailPointExperimental := "true"
+		r.xSailPointExperimental = &headerxSailPointExperimental
+	}
+	
 	if r.machineidentityv2 == nil {
 		return localVarReturnValue, nil, reportError("machineidentityv2 is required and must be specified")
 	}
@@ -295,6 +317,7 @@ func (a *MachineIdentitiesAPIService) CreateMachineIdentityV2Execute(r ApiCreate
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	// body params
 	localVarPostBody = r.machineidentityv2
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
@@ -577,6 +600,13 @@ type ApiDeleteMachineIdentityV2Request struct {
 	ctx context.Context
 	ApiService *MachineIdentitiesAPIService
 	id string
+	xSailPointExperimental *string
+}
+
+// Use this header to enable this experimental API.
+func (r ApiDeleteMachineIdentityV2Request) XSailPointExperimental(xSailPointExperimental string) ApiDeleteMachineIdentityV2Request {
+	r.xSailPointExperimental = &xSailPointExperimental
+	return r
 }
 
 func (r ApiDeleteMachineIdentityV2Request) Execute() (*http.Response, error) {
@@ -619,6 +649,15 @@ func (a *MachineIdentitiesAPIService) DeleteMachineIdentityV2Execute(r ApiDelete
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	
+	if r.xSailPointExperimental == nil {
+		headerxSailPointExperimental := "true"
+		r.xSailPointExperimental = &headerxSailPointExperimental
+	}
+	
+	if r.xSailPointExperimental == nil {
+		return nil, reportError("xSailPointExperimental is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -637,6 +676,7 @@ func (a *MachineIdentitiesAPIService) DeleteMachineIdentityV2Execute(r ApiDelete
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
@@ -736,6 +776,13 @@ type ApiDeleteOwnershipCorrelationConfigV1Request struct {
 	sourceId string
 	resourceId string
 	configId string
+	xSailPointExperimental *string
+}
+
+// Use this header to enable this experimental API.
+func (r ApiDeleteOwnershipCorrelationConfigV1Request) XSailPointExperimental(xSailPointExperimental string) ApiDeleteOwnershipCorrelationConfigV1Request {
+	r.xSailPointExperimental = &xSailPointExperimental
+	return r
 }
 
 func (r ApiDeleteOwnershipCorrelationConfigV1Request) Execute() (*http.Response, error) {
@@ -784,6 +831,15 @@ func (a *MachineIdentitiesAPIService) DeleteOwnershipCorrelationConfigV1Execute(
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	
+	if r.xSailPointExperimental == nil {
+		headerxSailPointExperimental := "true"
+		r.xSailPointExperimental = &headerxSailPointExperimental
+	}
+	
+	if r.xSailPointExperimental == nil {
+		return nil, reportError("xSailPointExperimental is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -802,6 +858,7 @@ func (a *MachineIdentitiesAPIService) DeleteOwnershipCorrelationConfigV1Execute(
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
@@ -1084,6 +1141,13 @@ type ApiGetMachineIdentityV2Request struct {
 	ctx context.Context
 	ApiService *MachineIdentitiesAPIService
 	id string
+	xSailPointExperimental *string
+}
+
+// Use this header to enable this experimental API.
+func (r ApiGetMachineIdentityV2Request) XSailPointExperimental(xSailPointExperimental string) ApiGetMachineIdentityV2Request {
+	r.xSailPointExperimental = &xSailPointExperimental
+	return r
 }
 
 func (r ApiGetMachineIdentityV2Request) Execute() (*Machineidentityv2, *http.Response, error) {
@@ -1128,6 +1192,15 @@ func (a *MachineIdentitiesAPIService) GetMachineIdentityV2Execute(r ApiGetMachin
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	
+	if r.xSailPointExperimental == nil {
+		headerxSailPointExperimental := "true"
+		r.xSailPointExperimental = &headerxSailPointExperimental
+	}
+	
+	if r.xSailPointExperimental == nil {
+		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1146,6 +1219,7 @@ func (a *MachineIdentitiesAPIService) GetMachineIdentityV2Execute(r ApiGetMachin
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1254,6 +1328,13 @@ type ApiGetOwnershipCorrelationConfigV1Request struct {
 	sourceId string
 	resourceId string
 	configId string
+	xSailPointExperimental *string
+}
+
+// Use this header to enable this experimental API.
+func (r ApiGetOwnershipCorrelationConfigV1Request) XSailPointExperimental(xSailPointExperimental string) ApiGetOwnershipCorrelationConfigV1Request {
+	r.xSailPointExperimental = &xSailPointExperimental
+	return r
 }
 
 func (r ApiGetOwnershipCorrelationConfigV1Request) Execute() (*CorrelationConfig, *http.Response, error) {
@@ -1304,6 +1385,15 @@ func (a *MachineIdentitiesAPIService) GetOwnershipCorrelationConfigV1Execute(r A
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	
+	if r.xSailPointExperimental == nil {
+		headerxSailPointExperimental := "true"
+		r.xSailPointExperimental = &headerxSailPointExperimental
+	}
+	
+	if r.xSailPointExperimental == nil {
+		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1322,6 +1412,7 @@ func (a *MachineIdentitiesAPIService) GetOwnershipCorrelationConfigV1Execute(r A
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1848,11 +1939,18 @@ func (a *MachineIdentitiesAPIService) ListMachineIdentitiesV1Execute(r ApiListMa
 type ApiListMachineIdentitiesV2Request struct {
 	ctx context.Context
 	ApiService *MachineIdentitiesAPIService
+	xSailPointExperimental *string
 	filters *string
 	sorters *string
 	count *bool
 	limit *int32
 	offset *int32
+}
+
+// Use this header to enable this experimental API.
+func (r ApiListMachineIdentitiesV2Request) XSailPointExperimental(xSailPointExperimental string) ApiListMachineIdentitiesV2Request {
+	r.xSailPointExperimental = &xSailPointExperimental
+	return r
 }
 
 // Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in, sw*  **displayName**: *eq, in, sw*  **nativeIdentity**: *eq, in, sw*  **attributes**: *eq*  **manuallyEdited**: *eq*  **subtype**: *eq, in*  **owners.primaryIdentity.id**: *eq, in, sw*  **owners.primaryIdentity.name**: *eq, in, isnull, pr*  **owners.secondaryIdentity.id**: *eq, in, sw*  **owners.secondaryIdentity.name**: *eq, in, isnull, pr*  **owners.secondaryGovernanceGroup.id**: *eq, in*  **owners.secondaryGovernanceGroup.name**: *eq, in, isnull, pr*  **source.id**: *eq, in*  **source.name**: *eq, in, sw*  **entitlement.id**: *eq, in*  **entitlement.name**: *eq, in, sw*  **risk.severity**: *eq, in*  **businessApplicationRefs.id**: *eq*  **effectiveSanctionedStatus**: *eq*  Business Application filters require Business Applications to be enabled for the tenant. Filter values are case-sensitive. When Business Applications is not enabled, these filters are not allowed and return &#x60;400&#x60;.
@@ -1924,6 +2022,15 @@ func (a *MachineIdentitiesAPIService) ListMachineIdentitiesV2Execute(r ApiListMa
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	
+	if r.xSailPointExperimental == nil {
+		headerxSailPointExperimental := "true"
+		r.xSailPointExperimental = &headerxSailPointExperimental
+	}
+	
+	if r.xSailPointExperimental == nil {
+		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
+	}
 
 	if r.filters != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "form", "")
@@ -1966,6 +2073,7 @@ func (a *MachineIdentitiesAPIService) ListMachineIdentitiesV2Execute(r ApiListMa
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -2549,10 +2657,17 @@ type ApiListOwnershipCorrelationConfigsV1Request struct {
 	ApiService *MachineIdentitiesAPIService
 	sourceId string
 	resourceId string
+	xSailPointExperimental *string
 	type_ *string
 	count *bool
 	limit *int32
 	offset *int32
+}
+
+// Use this header to enable this experimental API.
+func (r ApiListOwnershipCorrelationConfigsV1Request) XSailPointExperimental(xSailPointExperimental string) ApiListOwnershipCorrelationConfigsV1Request {
+	r.xSailPointExperimental = &xSailPointExperimental
+	return r
 }
 
 // When set, filters to the given config type.
@@ -2624,6 +2739,15 @@ func (a *MachineIdentitiesAPIService) ListOwnershipCorrelationConfigsV1Execute(r
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	
+	if r.xSailPointExperimental == nil {
+		headerxSailPointExperimental := "true"
+		r.xSailPointExperimental = &headerxSailPointExperimental
+	}
+	
+	if r.xSailPointExperimental == nil {
+		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
+	}
 
 	if r.type_ != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "type", r.type_, "form", "")
@@ -2663,6 +2787,7 @@ func (a *MachineIdentitiesAPIService) ListOwnershipCorrelationConfigsV1Execute(r
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -2760,7 +2885,14 @@ type ApiPatchOwnershipCorrelationConfigV1Request struct {
 	sourceId string
 	resourceId string
 	configId string
+	xSailPointExperimental *string
 	jsonPatchOperation *[]JsonPatchOperation
+}
+
+// Use this header to enable this experimental API.
+func (r ApiPatchOwnershipCorrelationConfigV1Request) XSailPointExperimental(xSailPointExperimental string) ApiPatchOwnershipCorrelationConfigV1Request {
+	r.xSailPointExperimental = &xSailPointExperimental
+	return r
 }
 
 // The JSONPatch payload used to update the correlation config.
@@ -2817,6 +2949,21 @@ func (a *MachineIdentitiesAPIService) PatchOwnershipCorrelationConfigV1Execute(r
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	
+	if r.xSailPointExperimental == nil {
+		headerxSailPointExperimental := "true"
+		r.xSailPointExperimental = &headerxSailPointExperimental
+	}
+	
+	if r.xSailPointExperimental == nil {
+		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
+	}
+	
+	if r.xSailPointExperimental == nil {
+		headerxSailPointExperimental := "true"
+		r.xSailPointExperimental = &headerxSailPointExperimental
+	}
+	
 	if r.jsonPatchOperation == nil {
 		return localVarReturnValue, nil, reportError("jsonPatchOperation is required and must be specified")
 	}
@@ -2838,6 +2985,7 @@ func (a *MachineIdentitiesAPIService) PatchOwnershipCorrelationConfigV1Execute(r
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	// body params
 	localVarPostBody = r.jsonPatchOperation
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
@@ -3352,7 +3500,14 @@ type ApiUpdateMachineIdentityV2Request struct {
 	ctx context.Context
 	ApiService *MachineIdentitiesAPIService
 	id string
+	xSailPointExperimental *string
 	jsonPatchOperation *[]JsonPatchOperation
+}
+
+// Use this header to enable this experimental API.
+func (r ApiUpdateMachineIdentityV2Request) XSailPointExperimental(xSailPointExperimental string) ApiUpdateMachineIdentityV2Request {
+	r.xSailPointExperimental = &xSailPointExperimental
+	return r
 }
 
 // A JSON of updated values [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
@@ -3411,6 +3566,21 @@ func (a *MachineIdentitiesAPIService) UpdateMachineIdentityV2Execute(r ApiUpdate
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	
+	if r.xSailPointExperimental == nil {
+		headerxSailPointExperimental := "true"
+		r.xSailPointExperimental = &headerxSailPointExperimental
+	}
+	
+	if r.xSailPointExperimental == nil {
+		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
+	}
+	
+	if r.xSailPointExperimental == nil {
+		headerxSailPointExperimental := "true"
+		r.xSailPointExperimental = &headerxSailPointExperimental
+	}
+	
 	if r.jsonPatchOperation == nil {
 		return localVarReturnValue, nil, reportError("jsonPatchOperation is required and must be specified")
 	}
@@ -3432,6 +3602,7 @@ func (a *MachineIdentitiesAPIService) UpdateMachineIdentityV2Execute(r ApiUpdate
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	// body params
 	localVarPostBody = r.jsonPatchOperation
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)

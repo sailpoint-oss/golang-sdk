@@ -147,6 +147,17 @@ func main() {
 [[Back to top]](#)
 
 ## create-machine-identity-v2
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```go
+   configuration = Configuration()
+   configuration.Experimental = true
+ ```
+:::
 Create machine identity
 Use this API to create a machine identity. Additional owners may be either up to ten human (IDENTITY) references or exactly one GOVERNANCE_GROUP reference - not both. The maximum supported length for the description field is 2000 characters.
 
@@ -165,6 +176,7 @@ Other parameters are passed through a pointer to a apiCreateMachineIdentityV2Req
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
  **machineidentityv2** | [**Machineidentityv2**](../models/machineidentityv2) |  | 
 
 ### Return type
@@ -191,6 +203,7 @@ import (
 )
 
 func main() {
+    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
     machineidentityv2Json := []byte(`{
           "sourceId" : "6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa",
           "resource" : {
@@ -279,8 +292,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.MachineIdentitiesAPI.CreateMachineIdentityV2(context.Background()).Machineidentityv2(machineidentityv2).Execute()
-	  //resp, r, err := apiClient.MachineIdentitiesAPI.CreateMachineIdentityV2(context.Background()).Machineidentityv2(machineidentityv2).Execute()
+    resp, r, err := apiClient.MachineIdentitiesAPI.CreateMachineIdentityV2(context.Background()).XSailPointExperimental(xSailPointExperimental).Machineidentityv2(machineidentityv2).Execute()
+	  //resp, r, err := apiClient.MachineIdentitiesAPI.CreateMachineIdentityV2(context.Background()).XSailPointExperimental(xSailPointExperimental).Machineidentityv2(machineidentityv2).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `MachineIdentitiesAPI.CreateMachineIdentityV2``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -371,6 +384,17 @@ func main() {
 [[Back to top]](#)
 
 ## delete-machine-identity-v2
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```go
+   configuration = Configuration()
+   configuration.Experimental = true
+ ```
+:::
 Delete machine identity
 The API returns a successful response if the requested machine identity was deleted.
 
@@ -392,6 +416,7 @@ Other parameters are passed through a pointer to a apiDeleteMachineIdentityV2Req
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
 
 ### Return type
 
@@ -418,13 +443,14 @@ import (
 
 func main() {
     id := `ef38f94347e94562b5bb8424a56397d8` // string | Machine Identity ID. # string | Machine Identity ID.
+    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
 
     
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.MachineIdentitiesAPI.DeleteMachineIdentityV2(context.Background(), id).Execute()
-	  //r, err := apiClient.MachineIdentitiesAPI.DeleteMachineIdentityV2(context.Background(), id).Execute()
+    r, err := apiClient.MachineIdentitiesAPI.DeleteMachineIdentityV2(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //r, err := apiClient.MachineIdentitiesAPI.DeleteMachineIdentityV2(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `MachineIdentitiesAPI.DeleteMachineIdentityV2``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -436,6 +462,17 @@ func main() {
 [[Back to top]](#)
 
 ## delete-ownership-correlation-config-v1
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```go
+   configuration = Configuration()
+   configuration.Experimental = true
+ ```
+:::
 Delete ownership correlation config
 Deletes the ownership correlation config with the specified ID for the given source resource.
 
@@ -461,6 +498,7 @@ Name | Type | Description  | Notes
 
 
 
+ **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
 
 ### Return type
 
@@ -489,13 +527,14 @@ func main() {
     sourceId := `2c9180835d191a86015d28455b4a2329` // string | The Source ID. # string | The Source ID.
     resourceId := `aws:iam-role` // string | The source resource ID (for example, account or aws:iam-role). # string | The source resource ID (for example, account or aws:iam-role).
     configId := `f5dd23fe-3414-42b7-bb1c-869400ad7a10` // string | The correlation config ID. # string | The correlation config ID.
+    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
 
     
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.MachineIdentitiesAPI.DeleteOwnershipCorrelationConfigV1(context.Background(), sourceId, resourceId, configId).Execute()
-	  //r, err := apiClient.MachineIdentitiesAPI.DeleteOwnershipCorrelationConfigV1(context.Background(), sourceId, resourceId, configId).Execute()
+    r, err := apiClient.MachineIdentitiesAPI.DeleteOwnershipCorrelationConfigV1(context.Background(), sourceId, resourceId, configId).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //r, err := apiClient.MachineIdentitiesAPI.DeleteOwnershipCorrelationConfigV1(context.Background(), sourceId, resourceId, configId).XSailPointExperimental(xSailPointExperimental).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `MachineIdentitiesAPI.DeleteOwnershipCorrelationConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -586,6 +625,17 @@ func main() {
 [[Back to top]](#)
 
 ## get-machine-identity-v2
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```go
+   configuration = Configuration()
+   configuration.Experimental = true
+ ```
+:::
 Get machine identity details
 This API returns a single machine identity using the Machine Identity ID.
 
@@ -607,6 +657,7 @@ Other parameters are passed through a pointer to a apiGetMachineIdentityV2Reques
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
 
 ### Return type
 
@@ -633,13 +684,14 @@ import (
 
 func main() {
     id := `ef38f94347e94562b5bb8424a56397d8` // string | Machine Identity ID. # string | Machine Identity ID.
+    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
 
     
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.MachineIdentitiesAPI.GetMachineIdentityV2(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.MachineIdentitiesAPI.GetMachineIdentityV2(context.Background(), id).Execute()
+    resp, r, err := apiClient.MachineIdentitiesAPI.GetMachineIdentityV2(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.MachineIdentitiesAPI.GetMachineIdentityV2(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `MachineIdentitiesAPI.GetMachineIdentityV2``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -652,6 +704,17 @@ func main() {
 [[Back to top]](#)
 
 ## get-ownership-correlation-config-v1
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```go
+   configuration = Configuration()
+   configuration.Experimental = true
+ ```
+:::
 Get ownership correlation config
 This end-point retrieves a single ownership correlation config by ID for the specified source resource.
 
@@ -677,6 +740,7 @@ Name | Type | Description  | Notes
 
 
 
+ **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
 
 ### Return type
 
@@ -705,13 +769,14 @@ func main() {
     sourceId := `2c9180835d191a86015d28455b4a2329` // string | The Source ID. # string | The Source ID.
     resourceId := `aws:iam-role` // string | The source resource ID (for example, account or aws:iam-role). # string | The source resource ID (for example, account or aws:iam-role).
     configId := `f5dd23fe-3414-42b7-bb1c-869400ad7a10` // string | The correlation config ID. # string | The correlation config ID.
+    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
 
     
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.MachineIdentitiesAPI.GetOwnershipCorrelationConfigV1(context.Background(), sourceId, resourceId, configId).Execute()
-	  //resp, r, err := apiClient.MachineIdentitiesAPI.GetOwnershipCorrelationConfigV1(context.Background(), sourceId, resourceId, configId).Execute()
+    resp, r, err := apiClient.MachineIdentitiesAPI.GetOwnershipCorrelationConfigV1(context.Background(), sourceId, resourceId, configId).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.MachineIdentitiesAPI.GetOwnershipCorrelationConfigV1(context.Background(), sourceId, resourceId, configId).XSailPointExperimental(xSailPointExperimental).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `MachineIdentitiesAPI.GetOwnershipCorrelationConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -880,6 +945,17 @@ func main() {
 [[Back to top]](#)
 
 ## list-machine-identities-v2
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```go
+   configuration = Configuration()
+   configuration.Experimental = true
+ ```
+:::
 List machine identities
 This API returns a list of machine identities.
 
@@ -896,6 +972,7 @@ Other parameters are passed through a pointer to a apiListMachineIdentitiesV2Req
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
  **filters** | **string** | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in, sw*  **displayName**: *eq, in, sw*  **nativeIdentity**: *eq, in, sw*  **attributes**: *eq*  **manuallyEdited**: *eq*  **subtype**: *eq, in*  **owners.primaryIdentity.id**: *eq, in, sw*  **owners.primaryIdentity.name**: *eq, in, isnull, pr*  **owners.secondaryIdentity.id**: *eq, in, sw*  **owners.secondaryIdentity.name**: *eq, in, isnull, pr*  **owners.secondaryGovernanceGroup.id**: *eq, in*  **owners.secondaryGovernanceGroup.name**: *eq, in, isnull, pr*  **source.id**: *eq, in*  **source.name**: *eq, in, sw*  **entitlement.id**: *eq, in*  **entitlement.name**: *eq, in, sw*  **risk.severity**: *eq, in*  **businessApplicationRefs.id**: *eq*  **effectiveSanctionedStatus**: *eq*  Business Application filters require Business Applications to be enabled for the tenant. Filter values are case-sensitive. When Business Applications is not enabled, these filters are not allowed and return &#x60;400&#x60;. | 
  **sorters** | **string** | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **nativeIdentity, name, owners.primaryIdentity.name, source.name, created, modified** | 
  **count** | **bool** | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to false]
@@ -926,6 +1003,7 @@ import (
 )
 
 func main() {
+    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
     filters := `identityId eq "2c9180858082150f0180893dbaf44201"` // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in, sw*  **displayName**: *eq, in, sw*  **nativeIdentity**: *eq, in, sw*  **attributes**: *eq*  **manuallyEdited**: *eq*  **subtype**: *eq, in*  **owners.primaryIdentity.id**: *eq, in, sw*  **owners.primaryIdentity.name**: *eq, in, isnull, pr*  **owners.secondaryIdentity.id**: *eq, in, sw*  **owners.secondaryIdentity.name**: *eq, in, isnull, pr*  **owners.secondaryGovernanceGroup.id**: *eq, in*  **owners.secondaryGovernanceGroup.name**: *eq, in, isnull, pr*  **source.id**: *eq, in*  **source.name**: *eq, in, sw*  **entitlement.id**: *eq, in*  **entitlement.name**: *eq, in, sw*  **risk.severity**: *eq, in*  **businessApplicationRefs.id**: *eq*  **effectiveSanctionedStatus**: *eq*  Business Application filters require Business Applications to be enabled for the tenant. Filter values are case-sensitive. When Business Applications is not enabled, these filters are not allowed and return `400`. (optional) # string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in, sw*  **displayName**: *eq, in, sw*  **nativeIdentity**: *eq, in, sw*  **attributes**: *eq*  **manuallyEdited**: *eq*  **subtype**: *eq, in*  **owners.primaryIdentity.id**: *eq, in, sw*  **owners.primaryIdentity.name**: *eq, in, isnull, pr*  **owners.secondaryIdentity.id**: *eq, in, sw*  **owners.secondaryIdentity.name**: *eq, in, isnull, pr*  **owners.secondaryGovernanceGroup.id**: *eq, in*  **owners.secondaryGovernanceGroup.name**: *eq, in, isnull, pr*  **source.id**: *eq, in*  **source.name**: *eq, in, sw*  **entitlement.id**: *eq, in*  **entitlement.name**: *eq, in, sw*  **risk.severity**: *eq, in*  **businessApplicationRefs.id**: *eq*  **effectiveSanctionedStatus**: *eq*  Business Application filters require Business Applications to be enabled for the tenant. Filter values are case-sensitive. When Business Applications is not enabled, these filters are not allowed and return `400`. (optional)
     sorters := `nativeIdentity` // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **nativeIdentity, name, owners.primaryIdentity.name, source.name, created, modified** (optional) # string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **nativeIdentity, name, owners.primaryIdentity.name, source.name, created, modified** (optional)
     count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
@@ -936,8 +1014,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.MachineIdentitiesAPI.ListMachineIdentitiesV2(context.Background()).Execute()
-	  //resp, r, err := apiClient.MachineIdentitiesAPI.ListMachineIdentitiesV2(context.Background()).Filters(filters).Sorters(sorters).Count(count).Limit(limit).Offset(offset).Execute()
+    resp, r, err := apiClient.MachineIdentitiesAPI.ListMachineIdentitiesV2(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.MachineIdentitiesAPI.ListMachineIdentitiesV2(context.Background()).XSailPointExperimental(xSailPointExperimental).Filters(filters).Sorters(sorters).Count(count).Limit(limit).Offset(offset).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `MachineIdentitiesAPI.ListMachineIdentitiesV2``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1122,6 +1200,17 @@ func main() {
 [[Back to top]](#)
 
 ## list-ownership-correlation-configs-v1
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```go
+   configuration = Configuration()
+   configuration.Experimental = true
+ ```
+:::
 List ownership correlation configs
 Returns the OWNER_PRIMARY and OWNER_SECONDARY correlation configs for the specified source resource, creating default rows if they are missing. Use the optional type query parameter to return a single matching config.
 
@@ -1145,6 +1234,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
+ **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
  **type_** | **string** | When set, filters to the given config type. | 
  **count** | **bool** | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to false]
  **limit** | **int32** | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 250]
@@ -1176,6 +1266,7 @@ import (
 func main() {
     sourceId := `2c9180835d191a86015d28455b4a2329` // string | The Source ID. # string | The Source ID.
     resourceId := `aws:iam-role` // string | The source resource ID (for example, account or aws:iam-role). # string | The source resource ID (for example, account or aws:iam-role).
+    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
     type_ := `OWNER_PRIMARY` // string | When set, filters to the given config type. (optional) # string | When set, filters to the given config type. (optional)
     count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
     limit := 250 // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
@@ -1185,8 +1276,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.MachineIdentitiesAPI.ListOwnershipCorrelationConfigsV1(context.Background(), sourceId, resourceId).Execute()
-	  //resp, r, err := apiClient.MachineIdentitiesAPI.ListOwnershipCorrelationConfigsV1(context.Background(), sourceId, resourceId).Type_(type_).Count(count).Limit(limit).Offset(offset).Execute()
+    resp, r, err := apiClient.MachineIdentitiesAPI.ListOwnershipCorrelationConfigsV1(context.Background(), sourceId, resourceId).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.MachineIdentitiesAPI.ListOwnershipCorrelationConfigsV1(context.Background(), sourceId, resourceId).XSailPointExperimental(xSailPointExperimental).Type_(type_).Count(count).Limit(limit).Offset(offset).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `MachineIdentitiesAPI.ListOwnershipCorrelationConfigsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1199,6 +1290,17 @@ func main() {
 [[Back to top]](#)
 
 ## patch-ownership-correlation-config-v1
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```go
+   configuration = Configuration()
+   configuration.Experimental = true
+ ```
+:::
 Patch ownership correlation config
 Selectively updates an ownership correlation config using an RFC 6902 JSONPatch payload. Only replace on /attributes (full object) and replace on /rules (full array; merge by stable rule id, remove rules omitted from the array) are allowed.
 
@@ -1224,6 +1326,7 @@ Name | Type | Description  | Notes
 
 
 
+ **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
  **jsonPatchOperation** | [**[]JsonPatchOperation**](../models/json-patch-operation) | The JSONPatch payload used to update the correlation config. | 
 
 ### Return type
@@ -1253,6 +1356,7 @@ func main() {
     sourceId := `2c9180835d191a86015d28455b4a2329` // string | The Source ID. # string | The Source ID.
     resourceId := `aws:iam-role` // string | The source resource ID (for example, account or aws:iam-role). # string | The source resource ID (for example, account or aws:iam-role).
     configId := `f5dd23fe-3414-42b7-bb1c-869400ad7a10` // string | The correlation config ID. # string | The correlation config ID.
+    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
     jsonpatchoperationJson := []byte(`[{"op":"replace","path":"/attributes","value":{"syncPrimaryToMachineAccounts":true}}]`) // []JsonPatchOperation | The JSONPatch payload used to update the correlation config.
 
     var jsonPatchOperation []machine_identities.JsonPatchOperation
@@ -1264,8 +1368,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.MachineIdentitiesAPI.PatchOwnershipCorrelationConfigV1(context.Background(), sourceId, resourceId, configId).JsonPatchOperation(jsonPatchOperation).Execute()
-	  //resp, r, err := apiClient.MachineIdentitiesAPI.PatchOwnershipCorrelationConfigV1(context.Background(), sourceId, resourceId, configId).JsonPatchOperation(jsonPatchOperation).Execute()
+    resp, r, err := apiClient.MachineIdentitiesAPI.PatchOwnershipCorrelationConfigV1(context.Background(), sourceId, resourceId, configId).XSailPointExperimental(xSailPointExperimental).JsonPatchOperation(jsonPatchOperation).Execute()
+	  //resp, r, err := apiClient.MachineIdentitiesAPI.PatchOwnershipCorrelationConfigV1(context.Background(), sourceId, resourceId, configId).XSailPointExperimental(xSailPointExperimental).JsonPatchOperation(jsonPatchOperation).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `MachineIdentitiesAPI.PatchOwnershipCorrelationConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1454,6 +1558,17 @@ func main() {
 [[Back to top]](#)
 
 ## update-machine-identity-v2
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```go
+   configuration = Configuration()
+   configuration.Experimental = true
+ ```
+:::
 Partial update of machine identity
 Use this API to selectively update machine identity details using a JSONPatch payload.
 
@@ -1483,6 +1598,7 @@ Other parameters are passed through a pointer to a apiUpdateMachineIdentityV2Req
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
  **jsonPatchOperation** | [**[]JsonPatchOperation**](../models/json-patch-operation) | A JSON of updated values [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. | 
 
 ### Return type
@@ -1510,6 +1626,7 @@ import (
 
 func main() {
     id := `ef38f94347e94562b5bb8424a56397d8` // string | Machine Identity ID. # string | Machine Identity ID.
+    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
     jsonpatchoperationJson := []byte(`[{"op":"add","path":"/attributes/securityRisk","value":"medium"}]`) // []JsonPatchOperation | A JSON of updated values [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 
     var jsonPatchOperation []machine_identities.JsonPatchOperation
@@ -1521,8 +1638,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.MachineIdentitiesAPI.UpdateMachineIdentityV2(context.Background(), id).JsonPatchOperation(jsonPatchOperation).Execute()
-	  //resp, r, err := apiClient.MachineIdentitiesAPI.UpdateMachineIdentityV2(context.Background(), id).JsonPatchOperation(jsonPatchOperation).Execute()
+    resp, r, err := apiClient.MachineIdentitiesAPI.UpdateMachineIdentityV2(context.Background(), id).XSailPointExperimental(xSailPointExperimental).JsonPatchOperation(jsonPatchOperation).Execute()
+	  //resp, r, err := apiClient.MachineIdentitiesAPI.UpdateMachineIdentityV2(context.Background(), id).XSailPointExperimental(xSailPointExperimental).JsonPatchOperation(jsonPatchOperation).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `MachineIdentitiesAPI.UpdateMachineIdentityV2``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

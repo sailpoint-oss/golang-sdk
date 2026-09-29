@@ -149,6 +149,7 @@
 
         func main() {
           sourceId := `ef38f94347e94562b5bb8424a56397d8` // string | Source ID. # string | Source ID.
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
            attributemappingsJson := []byte(`{
           "transformDefinition" : {
             "attributes" : {
@@ -182,8 +183,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.MachineAccountMappingsAPI.SetMachineAccountMappingsV1(context.Background(), sourceId).AttributeMappings(attributeMappings).Execute()
-          //resp, r, err := apiClient.MachineAccountMappingsAPI.SetMachineAccountMappingsV1(context.Background(), sourceId).AttributeMappings(attributeMappings).Execute()
+          resp, r, err := apiClient.MachineAccountMappingsAPI.SetMachineAccountMappingsV1(context.Background(), sourceId).XSailPointExperimental(xSailPointExperimental).AttributeMappings(attributeMappings).Execute()
+          //resp, r, err := apiClient.MachineAccountMappingsAPI.SetMachineAccountMappingsV1(context.Background(), sourceId).XSailPointExperimental(xSailPointExperimental).AttributeMappings(attributeMappings).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountMappingsAPI.SetMachineAccountMappingsV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

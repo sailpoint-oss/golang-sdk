@@ -430,14 +430,15 @@
         )
 
         func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
 
           
 
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.AccessRequestsAPI.GetAccessRequestConfigV2(context.Background()).Execute()
-          //resp, r, err := apiClient.AccessRequestsAPI.GetAccessRequestConfigV2(context.Background()).Execute()
+          resp, r, err := apiClient.AccessRequestsAPI.GetAccessRequestConfigV2(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+          //resp, r, err := apiClient.AccessRequestsAPI.GetAccessRequestConfigV2(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestsAPI.GetAccessRequestConfigV2``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -922,6 +923,7 @@
         )
 
         func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
            accessrequestconfig2Json := []byte(``) // AccessRequestConfig2 | 
 
           
@@ -935,8 +937,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.AccessRequestsAPI.SetAccessRequestConfigV2(context.Background()).AccessRequestConfig2(accessRequestConfig2).Execute()
-          //resp, r, err := apiClient.AccessRequestsAPI.SetAccessRequestConfigV2(context.Background()).AccessRequestConfig2(accessRequestConfig2).Execute()
+          resp, r, err := apiClient.AccessRequestsAPI.SetAccessRequestConfigV2(context.Background()).XSailPointExperimental(xSailPointExperimental).AccessRequestConfig2(accessRequestConfig2).Execute()
+          //resp, r, err := apiClient.AccessRequestsAPI.SetAccessRequestConfigV2(context.Background()).XSailPointExperimental(xSailPointExperimental).AccessRequestConfig2(accessRequestConfig2).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestsAPI.SetAccessRequestConfigV2``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

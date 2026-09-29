@@ -605,7 +605,14 @@ type ApiSetMachineAccountMappingsV1Request struct {
 	ctx context.Context
 	ApiService *MachineAccountMappingsAPIService
 	sourceId string
+	xSailPointExperimental *string
 	attributeMappings *AttributeMappings
+}
+
+// Use this header to enable this experimental API.
+func (r ApiSetMachineAccountMappingsV1Request) XSailPointExperimental(xSailPointExperimental string) ApiSetMachineAccountMappingsV1Request {
+	r.xSailPointExperimental = &xSailPointExperimental
+	return r
 }
 
 func (r ApiSetMachineAccountMappingsV1Request) AttributeMappings(attributeMappings AttributeMappings) ApiSetMachineAccountMappingsV1Request {
@@ -655,6 +662,21 @@ func (a *MachineAccountMappingsAPIService) SetMachineAccountMappingsV1Execute(r 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	
+	if r.xSailPointExperimental == nil {
+		headerxSailPointExperimental := "true"
+		r.xSailPointExperimental = &headerxSailPointExperimental
+	}
+	
+	if r.xSailPointExperimental == nil {
+		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
+	}
+	
+	if r.xSailPointExperimental == nil {
+		headerxSailPointExperimental := "true"
+		r.xSailPointExperimental = &headerxSailPointExperimental
+	}
+	
 	if r.attributeMappings == nil {
 		return localVarReturnValue, nil, reportError("attributeMappings is required and must be specified")
 	}
@@ -676,6 +698,7 @@ func (a *MachineAccountMappingsAPIService) SetMachineAccountMappingsV1Execute(r 
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	// body params
 	localVarPostBody = r.attributeMappings
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)

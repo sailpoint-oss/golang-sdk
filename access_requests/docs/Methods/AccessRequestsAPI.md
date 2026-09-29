@@ -696,6 +696,17 @@ func main() {
 [[Back to top]](#)
 
 ## get-access-request-config-v2
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```go
+   configuration = Configuration()
+   configuration.Experimental = true
+ ```
+:::
 Get access request configuration
 This endpoint returns the current access-request configuration.
 
@@ -705,12 +716,16 @@ To manage approval configurations, use the [Put approval config](https://develop
 
 ### Path Parameters
 
-This endpoint does not need any parameter.
+
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiGetAccessRequestConfigV2Request struct via the builder pattern
 
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
 
 ### Return type
 
@@ -736,13 +751,14 @@ import (
 )
 
 func main() {
+    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
 
     
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccessRequestsAPI.GetAccessRequestConfigV2(context.Background()).Execute()
-	  //resp, r, err := apiClient.AccessRequestsAPI.GetAccessRequestConfigV2(context.Background()).Execute()
+    resp, r, err := apiClient.AccessRequestsAPI.GetAccessRequestConfigV2(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.AccessRequestsAPI.GetAccessRequestConfigV2(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestsAPI.GetAccessRequestConfigV2``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1433,6 +1449,17 @@ func main() {
 [[Back to top]](#)
 
 ## set-access-request-config-v2
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```go
+   configuration = Configuration()
+   configuration.Experimental = true
+ ```
+:::
 Update access request configuration
 This endpoint replaces the current access-request configuration.
 
@@ -1451,6 +1478,7 @@ Other parameters are passed through a pointer to a apiSetAccessRequestConfigV2Re
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
  **accessRequestConfig2** | [**AccessRequestConfig2**](../models/access-request-config2) |  | 
 
 ### Return type
@@ -1477,6 +1505,7 @@ import (
 )
 
 func main() {
+    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
     accessrequestconfig2Json := []byte(``) // AccessRequestConfig2 | 
 
     var accessRequestConfig2 access_requests.AccessRequestConfig2
@@ -1488,8 +1517,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccessRequestsAPI.SetAccessRequestConfigV2(context.Background()).AccessRequestConfig2(accessRequestConfig2).Execute()
-	  //resp, r, err := apiClient.AccessRequestsAPI.SetAccessRequestConfigV2(context.Background()).AccessRequestConfig2(accessRequestConfig2).Execute()
+    resp, r, err := apiClient.AccessRequestsAPI.SetAccessRequestConfigV2(context.Background()).XSailPointExperimental(xSailPointExperimental).AccessRequestConfig2(accessRequestConfig2).Execute()
+	  //resp, r, err := apiClient.AccessRequestsAPI.SetAccessRequestConfigV2(context.Background()).XSailPointExperimental(xSailPointExperimental).AccessRequestConfig2(accessRequestConfig2).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestsAPI.SetAccessRequestConfigV2``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

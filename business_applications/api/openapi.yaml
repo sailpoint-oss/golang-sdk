@@ -128,6 +128,16 @@ paths:
           minimum: 0
           type: integer
         style: form
+      - description: Use this header to enable this experimental API.
+        example: true
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
       responses:
         "200":
           content:
@@ -215,6 +225,17 @@ paths:
         \ be unique within the tenant, and any provided `signatures` must not already\
         \ be assigned to another Business Application."
       operationId: createBusinessApplicationV1
+      parameters:
+      - description: Use this header to enable this experimental API.
+        example: true
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
       requestBody:
         content:
           application/json:
@@ -367,6 +388,16 @@ paths:
           type: string
         style: simple
         x-sailpoint-resource-operation-id: listBusinessApplicationsV1
+      - description: Use this header to enable this experimental API.
+        example: true
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
       responses:
         "200":
           content:
@@ -475,6 +506,16 @@ paths:
           type: string
         style: simple
         x-sailpoint-resource-operation-id: listBusinessApplicationsV1
+      - description: Use this header to enable this experimental API.
+        example: true
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
       requestBody:
         content:
           application/json-patch+json:

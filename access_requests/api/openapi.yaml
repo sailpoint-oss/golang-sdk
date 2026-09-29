@@ -209,6 +209,17 @@ paths:
 
         To manage approval configurations, use the [Put approval config](https://developer.sailpoint.com/docs/api/put-approvals-config-v-1/) endpoint.
       operationId: getAccessRequestConfigV2
+      parameters:
+      - description: Use this header to enable this experimental API.
+        example: true
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
       responses:
         "200":
           content:
@@ -289,6 +300,17 @@ paths:
 
         To manage approval configurations, use the [Put approval config](https://developer.sailpoint.com/docs/api/put-approvals-config-v-1/) endpoint.
       operationId: setAccessRequestConfigV2
+      parameters:
+      - description: Use this header to enable this experimental API.
+        example: true
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
       requestBody:
         content:
           application/json:

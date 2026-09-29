@@ -22,6 +22,17 @@ Method | HTTP request | Description
 
 
 ## create-business-application-v1
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```go
+   configuration = Configuration()
+   configuration.Experimental = true
+ ```
+:::
 Create Business Application
 Creates a custom Business Application. Requires the `idn:business-application:create` right, the Machine Identity Security product to be enabled, and the custom Business Application feature to be enabled for the tenant. The `name` must be unique within the tenant, and any provided `signatures` must not already be assigned to another Business Application.
 
@@ -38,6 +49,7 @@ Other parameters are passed through a pointer to a apiCreateBusinessApplicationV
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
  **businessApplication** | [**BusinessApplication**](../models/business-application) |  | 
 
 ### Return type
@@ -64,6 +76,7 @@ import (
 )
 
 func main() {
+    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
     businessapplicationJson := []byte(`{
           "owner" : {
             "name" : "William Wilson",
@@ -110,8 +123,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.BusinessApplicationsAPI.CreateBusinessApplicationV1(context.Background()).BusinessApplication(businessApplication).Execute()
-	  //resp, r, err := apiClient.BusinessApplicationsAPI.CreateBusinessApplicationV1(context.Background()).BusinessApplication(businessApplication).Execute()
+    resp, r, err := apiClient.BusinessApplicationsAPI.CreateBusinessApplicationV1(context.Background()).XSailPointExperimental(xSailPointExperimental).BusinessApplication(businessApplication).Execute()
+	  //resp, r, err := apiClient.BusinessApplicationsAPI.CreateBusinessApplicationV1(context.Background()).XSailPointExperimental(xSailPointExperimental).BusinessApplication(businessApplication).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `BusinessApplicationsAPI.CreateBusinessApplicationV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -124,6 +137,17 @@ func main() {
 [[Back to top]](#)
 
 ## get-business-application-v1
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```go
+   configuration = Configuration()
+   configuration.Experimental = true
+ ```
+:::
 Get Business Application
 Returns a single Business Application by ID for the requesting tenant. Requires the `idn:business-application:read` right and the Machine Identity Security product to be enabled.
 
@@ -145,6 +169,7 @@ Other parameters are passed through a pointer to a apiGetBusinessApplicationV1Re
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
 
 ### Return type
 
@@ -171,13 +196,14 @@ import (
 
 func main() {
     id := `a1b2c3d4-e5f6-7890-abcd-ef1234567890` // string | Business Application ID. # string | Business Application ID.
+    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
 
     
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.BusinessApplicationsAPI.GetBusinessApplicationV1(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.BusinessApplicationsAPI.GetBusinessApplicationV1(context.Background(), id).Execute()
+    resp, r, err := apiClient.BusinessApplicationsAPI.GetBusinessApplicationV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.BusinessApplicationsAPI.GetBusinessApplicationV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `BusinessApplicationsAPI.GetBusinessApplicationV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -190,6 +216,17 @@ func main() {
 [[Back to top]](#)
 
 ## list-business-applications-v1
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```go
+   configuration = Configuration()
+   configuration.Experimental = true
+ ```
+:::
 List Business Applications
 Returns the list of Business Applications defined for the requesting tenant. Requires the `idn:business-application:read` right and the Machine Identity Security product to be enabled for the tenant.
 
@@ -206,6 +243,7 @@ Other parameters are passed through a pointer to a apiListBusinessApplicationsV1
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
  **filters** | **string** | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq*  **name**: *eq, co*  **vendor**: *eq, co*  **signatures.type**: *eq, co*  **signatures.name**: *eq, co*  **source.name**: *eq, co*  **sanctionedStatus**: *eq* | 
  **sorters** | **string** | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, sanctionedStatus** | 
  **count** | **bool** | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to false]
@@ -236,6 +274,7 @@ import (
 )
 
 func main() {
+    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
     filters := `sanctionedStatus eq "SANCTIONED"` // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq*  **name**: *eq, co*  **vendor**: *eq, co*  **signatures.type**: *eq, co*  **signatures.name**: *eq, co*  **source.name**: *eq, co*  **sanctionedStatus**: *eq* (optional) # string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq*  **name**: *eq, co*  **vendor**: *eq, co*  **signatures.type**: *eq, co*  **signatures.name**: *eq, co*  **source.name**: *eq, co*  **sanctionedStatus**: *eq* (optional)
     sorters := `name` // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, sanctionedStatus** (optional) # string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, sanctionedStatus** (optional)
     count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
@@ -246,8 +285,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.BusinessApplicationsAPI.ListBusinessApplicationsV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.BusinessApplicationsAPI.ListBusinessApplicationsV1(context.Background()).Filters(filters).Sorters(sorters).Count(count).Limit(limit).Offset(offset).Execute()
+    resp, r, err := apiClient.BusinessApplicationsAPI.ListBusinessApplicationsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.BusinessApplicationsAPI.ListBusinessApplicationsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Filters(filters).Sorters(sorters).Count(count).Limit(limit).Offset(offset).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `BusinessApplicationsAPI.ListBusinessApplicationsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -260,6 +299,17 @@ func main() {
 [[Back to top]](#)
 
 ## update-business-application-v1
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```go
+   configuration = Configuration()
+   configuration.Experimental = true
+ ```
+:::
 Update Business Application
 Updates a Business Application using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Requires the `idn:business-application:update` right and the Machine Identity Security product to be enabled. Patchable fields: `name`, `description`, `owner`, `additionalOwners`, `sanctionedStatus`, and `signatures`. Modifying `signatures` additionally requires the custom Business Application feature to be enabled.
 
@@ -281,6 +331,7 @@ Other parameters are passed through a pointer to a apiUpdateBusinessApplicationV
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
  **jsonPatchOperation** | [**[]JsonPatchOperation**](../models/json-patch-operation) | A JSON array of patch operations per RFC 6902. | 
 
 ### Return type
@@ -308,6 +359,7 @@ import (
 
 func main() {
     id := `a1b2c3d4-e5f6-7890-abcd-ef1234567890` // string | Business Application ID. # string | Business Application ID.
+    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
     jsonpatchoperationJson := []byte(`[{"op":"replace","path":"/sanctionedStatus","value":"SANCTIONED"}]`) // []JsonPatchOperation | A JSON array of patch operations per RFC 6902.
 
     var jsonPatchOperation []business_applications.JsonPatchOperation
@@ -319,8 +371,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.BusinessApplicationsAPI.UpdateBusinessApplicationV1(context.Background(), id).JsonPatchOperation(jsonPatchOperation).Execute()
-	  //resp, r, err := apiClient.BusinessApplicationsAPI.UpdateBusinessApplicationV1(context.Background(), id).JsonPatchOperation(jsonPatchOperation).Execute()
+    resp, r, err := apiClient.BusinessApplicationsAPI.UpdateBusinessApplicationV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).JsonPatchOperation(jsonPatchOperation).Execute()
+	  //resp, r, err := apiClient.BusinessApplicationsAPI.UpdateBusinessApplicationV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).JsonPatchOperation(jsonPatchOperation).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `BusinessApplicationsAPI.UpdateBusinessApplicationV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

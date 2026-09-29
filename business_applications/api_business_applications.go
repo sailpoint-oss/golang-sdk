@@ -26,7 +26,14 @@ type BusinessApplicationsAPIService service
 type ApiCreateBusinessApplicationV1Request struct {
 	ctx context.Context
 	ApiService *BusinessApplicationsAPIService
+	xSailPointExperimental *string
 	businessApplication *BusinessApplication
+}
+
+// Use this header to enable this experimental API.
+func (r ApiCreateBusinessApplicationV1Request) XSailPointExperimental(xSailPointExperimental string) ApiCreateBusinessApplicationV1Request {
+	r.xSailPointExperimental = &xSailPointExperimental
+	return r
 }
 
 func (r ApiCreateBusinessApplicationV1Request) BusinessApplication(businessApplication BusinessApplication) ApiCreateBusinessApplicationV1Request {
@@ -73,6 +80,21 @@ func (a *BusinessApplicationsAPIService) CreateBusinessApplicationV1Execute(r Ap
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	
+	if r.xSailPointExperimental == nil {
+		headerxSailPointExperimental := "true"
+		r.xSailPointExperimental = &headerxSailPointExperimental
+	}
+	
+	if r.xSailPointExperimental == nil {
+		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
+	}
+	
+	if r.xSailPointExperimental == nil {
+		headerxSailPointExperimental := "true"
+		r.xSailPointExperimental = &headerxSailPointExperimental
+	}
+	
 	if r.businessApplication == nil {
 		return localVarReturnValue, nil, reportError("businessApplication is required and must be specified")
 	}
@@ -94,6 +116,7 @@ func (a *BusinessApplicationsAPIService) CreateBusinessApplicationV1Execute(r Ap
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	// body params
 	localVarPostBody = r.businessApplication
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
@@ -202,6 +225,13 @@ type ApiGetBusinessApplicationV1Request struct {
 	ctx context.Context
 	ApiService *BusinessApplicationsAPIService
 	id string
+	xSailPointExperimental *string
+}
+
+// Use this header to enable this experimental API.
+func (r ApiGetBusinessApplicationV1Request) XSailPointExperimental(xSailPointExperimental string) ApiGetBusinessApplicationV1Request {
+	r.xSailPointExperimental = &xSailPointExperimental
+	return r
 }
 
 func (r ApiGetBusinessApplicationV1Request) Execute() (*BusinessApplication, *http.Response, error) {
@@ -246,6 +276,15 @@ func (a *BusinessApplicationsAPIService) GetBusinessApplicationV1Execute(r ApiGe
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	
+	if r.xSailPointExperimental == nil {
+		headerxSailPointExperimental := "true"
+		r.xSailPointExperimental = &headerxSailPointExperimental
+	}
+	
+	if r.xSailPointExperimental == nil {
+		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -264,6 +303,7 @@ func (a *BusinessApplicationsAPIService) GetBusinessApplicationV1Execute(r ApiGe
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -369,11 +409,18 @@ func (a *BusinessApplicationsAPIService) GetBusinessApplicationV1Execute(r ApiGe
 type ApiListBusinessApplicationsV1Request struct {
 	ctx context.Context
 	ApiService *BusinessApplicationsAPIService
+	xSailPointExperimental *string
 	filters *string
 	sorters *string
 	count *bool
 	limit *int32
 	offset *int32
+}
+
+// Use this header to enable this experimental API.
+func (r ApiListBusinessApplicationsV1Request) XSailPointExperimental(xSailPointExperimental string) ApiListBusinessApplicationsV1Request {
+	r.xSailPointExperimental = &xSailPointExperimental
+	return r
 }
 
 // Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq*  **name**: *eq, co*  **vendor**: *eq, co*  **signatures.type**: *eq, co*  **signatures.name**: *eq, co*  **source.name**: *eq, co*  **sanctionedStatus**: *eq*
@@ -445,6 +492,15 @@ func (a *BusinessApplicationsAPIService) ListBusinessApplicationsV1Execute(r Api
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	
+	if r.xSailPointExperimental == nil {
+		headerxSailPointExperimental := "true"
+		r.xSailPointExperimental = &headerxSailPointExperimental
+	}
+	
+	if r.xSailPointExperimental == nil {
+		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
+	}
 
 	if r.filters != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "form", "")
@@ -487,6 +543,7 @@ func (a *BusinessApplicationsAPIService) ListBusinessApplicationsV1Execute(r Api
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -582,7 +639,14 @@ type ApiUpdateBusinessApplicationV1Request struct {
 	ctx context.Context
 	ApiService *BusinessApplicationsAPIService
 	id string
+	xSailPointExperimental *string
 	jsonPatchOperation *[]JsonPatchOperation
+}
+
+// Use this header to enable this experimental API.
+func (r ApiUpdateBusinessApplicationV1Request) XSailPointExperimental(xSailPointExperimental string) ApiUpdateBusinessApplicationV1Request {
+	r.xSailPointExperimental = &xSailPointExperimental
+	return r
 }
 
 // A JSON array of patch operations per RFC 6902.
@@ -633,6 +697,21 @@ func (a *BusinessApplicationsAPIService) UpdateBusinessApplicationV1Execute(r Ap
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	
+	if r.xSailPointExperimental == nil {
+		headerxSailPointExperimental := "true"
+		r.xSailPointExperimental = &headerxSailPointExperimental
+	}
+	
+	if r.xSailPointExperimental == nil {
+		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
+	}
+	
+	if r.xSailPointExperimental == nil {
+		headerxSailPointExperimental := "true"
+		r.xSailPointExperimental = &headerxSailPointExperimental
+	}
+	
 	if r.jsonPatchOperation == nil {
 		return localVarReturnValue, nil, reportError("jsonPatchOperation is required and must be specified")
 	}
@@ -654,6 +733,7 @@ func (a *BusinessApplicationsAPIService) UpdateBusinessApplicationV1Execute(r Ap
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	// body params
 	localVarPostBody = r.jsonPatchOperation
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
