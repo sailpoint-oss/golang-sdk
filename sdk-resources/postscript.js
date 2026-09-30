@@ -178,6 +178,21 @@ const fixFiles = async function (myArray) {
       continue
     }
 
+    // DEVREL-3468: Add missing "os" import for multipart file arrays
+    // Generator 7.12.0 emits []*os.File for arrays of binary files but only imports "os" for single *os.File fields
+    if (file.endsWith(".go") && rawdata.includes("*os.File") && !/^\s*(\w+\s+)?"os"\s*$/m.test(rawdata)) {
+      for (const line of rawDataArra) {
+        fileOut.push(line);
+        if (!madeChange && line.trim() === "import (") {
+          fileOut.push('\t"os"');
+          madeChange = true;
+          console.log(`Added missing os import to ${file}`);
+        }
+      }
+      rawDataArra = fileOut.slice();
+      fileOut = [];
+    }
+
     // DEVREL-2463: Remove unused fmt import from enum files
     // After making enums forward-compatible, fmt is no longer used
     if (file.includes("model_") && file.endsWith(".go")) {
