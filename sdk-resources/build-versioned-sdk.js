@@ -345,6 +345,56 @@ function normalizeSchemaNames(bundledJsonPath, idnRoot) {
 }
 
 // ---------------------------------------------------------------------------
+// allOf annotation-only member fix
+//
+// Specs often extend a shared object schema in place with an allOf member that
+// carries no structure of its own, e.g.
+//   allOf: [ { required: [name] }, { $ref: ... } ]
+//   allOf: [ { $ref: ... }, { example: {...} } ]
+// openapi-generator <= 7.12 turned these into inline models named after the
+// operation or property (CreateWorkflowV1Request, MachineIdentityOwnersV2Primary).
+// 7.18+ ignores such members and uses the $ref'd schema directly, which renames
+// public types and builder methods. Giving the member `type: object` restores
+// the 7.12 output. Only applied when the allOf also $refs an object schema.
+// ---------------------------------------------------------------------------
+
+const STRUCTURAL_KEYWORDS = [
+  "type", "$ref", "properties", "additionalProperties", "items",
+  "allOf", "oneOf", "anyOf", "not", "enum",
+];
+
+function typeAnnotationOnlyAllOfMembers(bundledJsonPath) {
+  const spec    = JSON.parse(fs.readFileSync(bundledJsonPath, "utf8"));
+  const schemas = (spec.components && spec.components.schemas) || {};
+  let fixed = 0;
+
+  const isAnnotationOnly = m =>
+    m && typeof m === "object" && !Array.isArray(m) &&
+    Object.keys(m).length > 0 && !STRUCTURAL_KEYWORDS.some(k => k in m);
+
+  const refsObjectSchema = m => {
+    if (!m || typeof m.$ref !== "string") return false;
+    const target = schemas[m.$ref.replace("#/components/schemas/", "")];
+    return !!target && (target.type === "object" || !!target.properties || !!target.allOf);
+  };
+
+  const walk = (node) => {
+    if (Array.isArray(node)) { node.forEach(walk); return; }
+    if (!node || typeof node !== "object") return;
+    if (Array.isArray(node.allOf) && node.allOf.some(refsObjectSchema)) {
+      for (const member of node.allOf) {
+        if (isAnnotationOnly(member)) { member.type = "object"; fixed++; }
+      }
+    }
+    for (const k of Object.keys(node)) walk(node[k]);
+  };
+  walk(spec);
+
+  if (fixed > 0) fs.writeFileSync(bundledJsonPath, JSON.stringify(spec, null, 2), "utf8");
+  return { fixed };
+}
+
+// ---------------------------------------------------------------------------
 // Generate per-partition config YAML
 // ---------------------------------------------------------------------------
 
@@ -578,7 +628,7 @@ function main() {
   if (!fs.existsSync(JAR)) {
     console.error(`Error: openapi-generator-cli.jar not found at ${JAR}`);
     console.error("  Download it with:");
-    console.error("  wget -q https://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli/7.12.0/openapi-generator-cli-7.12.0.jar -O openapi-generator-cli.jar");
+    console.error("  wget -q https://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli/7.18.0/openapi-generator-cli-7.18.0.jar -O openapi-generator-cli.jar");
     process.exit(1);
   }
 
@@ -658,6 +708,8 @@ function main() {
     try {
       const norm = normalizeSchemaNames(bundle.outputSpec, path.dirname(apisDir));
       console.log(`         renamed ${norm.renamed} lowercase model name(s)`);
+      const allOfFix = typeAnnotationOnlyAllOfMembers(bundle.outputSpec);
+      console.log(`         typed ${allOfFix.fixed} annotation-only allOf member(s)`);
     } catch (err) {
       console.error(`  ✗ casing normalization failed`);
       const reportPath = writeErrorReport(partition, "normalization", String(err.stack || err), TEMP_DIR, apisDir);

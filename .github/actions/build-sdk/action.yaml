@@ -32,7 +32,7 @@ runs:
     - name: Download OpenAPI Generator
       shell: bash
       run: |
-        wget -q https://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli/7.12.0/openapi-generator-cli-7.12.0.jar -O openapi-generator-cli.jar
+        wget -q https://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli/7.18.0/openapi-generator-cli-7.18.0.jar -O openapi-generator-cli.jar
 
     - name: Build Versioned SDK (per-partition)
       shell: bash
