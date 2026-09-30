@@ -22,6 +22,9 @@ var _ MappedNullable = &JitActivationDeactivateRequest{}
 type JitActivationDeactivateRequest struct {
 	// Entitlement connection identifier for the activation to deactivate.
 	ConnectionId string `json:"connectionId"`
+	// Origin of the request.
+	RequestOrigin *string `json:"requestOrigin,omitempty"`
+	MetaData *JitActivationCallerMetadata `json:"metaData,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -69,6 +72,70 @@ func (o *JitActivationDeactivateRequest) SetConnectionId(v string) {
 	o.ConnectionId = v
 }
 
+// GetRequestOrigin returns the RequestOrigin field value if set, zero value otherwise.
+func (o *JitActivationDeactivateRequest) GetRequestOrigin() string {
+	if o == nil || IsNil(o.RequestOrigin) {
+		var ret string
+		return ret
+	}
+	return *o.RequestOrigin
+}
+
+// GetRequestOriginOk returns a tuple with the RequestOrigin field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *JitActivationDeactivateRequest) GetRequestOriginOk() (*string, bool) {
+	if o == nil || IsNil(o.RequestOrigin) {
+		return nil, false
+	}
+	return o.RequestOrigin, true
+}
+
+// HasRequestOrigin returns a boolean if a field has been set.
+func (o *JitActivationDeactivateRequest) HasRequestOrigin() bool {
+	if o != nil && !IsNil(o.RequestOrigin) {
+		return true
+	}
+
+	return false
+}
+
+// SetRequestOrigin gets a reference to the given string and assigns it to the RequestOrigin field.
+func (o *JitActivationDeactivateRequest) SetRequestOrigin(v string) {
+	o.RequestOrigin = &v
+}
+
+// GetMetaData returns the MetaData field value if set, zero value otherwise.
+func (o *JitActivationDeactivateRequest) GetMetaData() JitActivationCallerMetadata {
+	if o == nil || IsNil(o.MetaData) {
+		var ret JitActivationCallerMetadata
+		return ret
+	}
+	return *o.MetaData
+}
+
+// GetMetaDataOk returns a tuple with the MetaData field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *JitActivationDeactivateRequest) GetMetaDataOk() (*JitActivationCallerMetadata, bool) {
+	if o == nil || IsNil(o.MetaData) {
+		return nil, false
+	}
+	return o.MetaData, true
+}
+
+// HasMetaData returns a boolean if a field has been set.
+func (o *JitActivationDeactivateRequest) HasMetaData() bool {
+	if o != nil && !IsNil(o.MetaData) {
+		return true
+	}
+
+	return false
+}
+
+// SetMetaData gets a reference to the given JitActivationCallerMetadata and assigns it to the MetaData field.
+func (o *JitActivationDeactivateRequest) SetMetaData(v JitActivationCallerMetadata) {
+	o.MetaData = &v
+}
+
 func (o JitActivationDeactivateRequest) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -80,6 +147,12 @@ func (o JitActivationDeactivateRequest) MarshalJSON() ([]byte, error) {
 func (o JitActivationDeactivateRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["connectionId"] = o.ConnectionId
+	if !IsNil(o.RequestOrigin) {
+		toSerialize["requestOrigin"] = o.RequestOrigin
+	}
+	if !IsNil(o.MetaData) {
+		toSerialize["metaData"] = o.MetaData
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -124,6 +197,8 @@ func (o *JitActivationDeactivateRequest) UnmarshalJSON(data []byte) (err error) 
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "connectionId")
+		delete(additionalProperties, "requestOrigin")
+		delete(additionalProperties, "metaData")
 		o.AdditionalProperties = additionalProperties
 	}
 

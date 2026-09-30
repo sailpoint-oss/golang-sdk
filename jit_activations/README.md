@@ -93,6 +93,7 @@ Class | Method | HTTP request | Description
  - [ErrorResponseDto](docs/ErrorResponseDto.md)
  - [JitActivationActivateRequest](docs/JitActivationActivateRequest.md)
  - [JitActivationActivateResponse](docs/JitActivationActivateResponse.md)
+ - [JitActivationCallerMetadata](docs/JitActivationCallerMetadata.md)
  - [JitActivationDeactivateRequest](docs/JitActivationDeactivateRequest.md)
  - [JitActivationDeactivateResponse](docs/JitActivationDeactivateResponse.md)
  - [JitActivationExtendRequest](docs/JitActivationExtendRequest.md)

@@ -17,6 +17,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ConnectionId** | **string** | Entitlement connection identifier for the activation to extend. | 
 **ActivationPeriodExtensionMins** | **int32** | Number of minutes to extend the activation period. | 
+**RequestOrigin** | Pointer to **string** | Origin of the request. | [optional] 
+**MetaData** | Pointer to [**JitActivationCallerMetadata**](jit-activation-caller-metadata) |  | [optional] 
 
 ## Methods
 
@@ -76,5 +78,55 @@ and a boolean to check if the value has been set.
 
 SetActivationPeriodExtensionMins sets ActivationPeriodExtensionMins field to given value.
 
+
+### GetRequestOrigin
+
+`func (o *JitActivationExtendRequest) GetRequestOrigin() string`
+
+GetRequestOrigin returns the RequestOrigin field if non-nil, zero value otherwise.
+
+### GetRequestOriginOk
+
+`func (o *JitActivationExtendRequest) GetRequestOriginOk() (*string, bool)`
+
+GetRequestOriginOk returns a tuple with the RequestOrigin field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRequestOrigin
+
+`func (o *JitActivationExtendRequest) SetRequestOrigin(v string)`
+
+SetRequestOrigin sets RequestOrigin field to given value.
+
+### HasRequestOrigin
+
+`func (o *JitActivationExtendRequest) HasRequestOrigin() bool`
+
+HasRequestOrigin returns a boolean if a field has been set.
+
+### GetMetaData
+
+`func (o *JitActivationExtendRequest) GetMetaData() JitActivationCallerMetadata`
+
+GetMetaData returns the MetaData field if non-nil, zero value otherwise.
+
+### GetMetaDataOk
+
+`func (o *JitActivationExtendRequest) GetMetaDataOk() (*JitActivationCallerMetadata, bool)`
+
+GetMetaDataOk returns a tuple with the MetaData field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMetaData
+
+`func (o *JitActivationExtendRequest) SetMetaData(v JitActivationCallerMetadata)`
+
+SetMetaData sets MetaData field to given value.
+
+### HasMetaData
+
+`func (o *JitActivationExtendRequest) HasMetaData() bool`
+
+HasMetaData returns a boolean if a field has been set.
 
 

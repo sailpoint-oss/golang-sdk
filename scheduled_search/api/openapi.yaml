@@ -749,11 +749,11 @@ paths:
           type: string
         style: simple
         x-sailpoint-resource-operation-id:
-        - listAccessProfiles
-        - listAccountActivities
-        - listEntitlements
-        - listRoles
-        - listIdentities
+        - listAccessProfilesV1
+        - listAccountActivitiesV1
+        - listEntitlementsV1
+        - listRolesV1
+        - listIdentitiesV1
       requestBody:
         content:
           application/json:
@@ -871,11 +871,11 @@ components:
         type: string
       style: simple
       x-sailpoint-resource-operation-id:
-      - listAccessProfiles
-      - listAccountActivities
-      - listEntitlements
-      - listRoles
-      - listIdentities
+      - listAccessProfilesV1
+      - listAccountActivitiesV1
+      - listEntitlementsV1
+      - listRolesV1
+      - listIdentitiesV1
   responses:
     "400":
       content:

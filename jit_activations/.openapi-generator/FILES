@@ -14,6 +14,7 @@ docs/JITActivationsAPI.md
 docs/JITActivationsAPIdeveloperSite_code_examples.yaml
 docs/JitActivationActivateRequest.md
 docs/JitActivationActivateResponse.md
+docs/JitActivationCallerMetadata.md
 docs/JitActivationDeactivateRequest.md
 docs/JitActivationDeactivateResponse.md
 docs/JitActivationExtendRequest.md
@@ -37,6 +38,7 @@ model_error_message_dto.go
 model_error_response_dto.go
 model_jit_activation_activate_request.go
 model_jit_activation_activate_response.go
+model_jit_activation_caller_metadata.go
 model_jit_activation_deactivate_request.go
 model_jit_activation_deactivate_response.go
 model_jit_activation_extend_request.go

@@ -98,7 +98,17 @@
         func main() {
           xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
            jitactivationactivaterequestJson := []byte(`{
+          "metaData" : {
+            "threadId" : "1699887766.123456",
+            "slackUserId" : "U123",
+            "messageId" : "1699887770.654321",
+            "type" : "slack",
+            "commandText" : "/jit activate",
+            "channelId" : "C456",
+            "workspaceId" : "T789"
+          },
           "activationPeriodMins" : 120,
+          "requestOrigin" : "slack",
           "connectionId" : "757fb803-9024-5861-e510-83a56e4c5bd3"
         }`) // JitActivationActivateRequest | 
 
@@ -142,6 +152,16 @@
         func main() {
           xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
            jitactivationdeactivaterequestJson := []byte(`{
+          "metaData" : {
+            "threadId" : "1699887766.123456",
+            "slackUserId" : "U123",
+            "messageId" : "1699887770.654321",
+            "type" : "slack",
+            "commandText" : "/jit activate",
+            "channelId" : "C456",
+            "workspaceId" : "T789"
+          },
+          "requestOrigin" : "slack",
           "connectionId" : "757fb803-9024-5861-e510-83a56e4c5bd3"
         }`) // JitActivationDeactivateRequest | 
 
@@ -185,7 +205,17 @@
         func main() {
           xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
            jitactivationextendrequestJson := []byte(`{
+          "metaData" : {
+            "threadId" : "1699887766.123456",
+            "slackUserId" : "U123",
+            "messageId" : "1699887770.654321",
+            "type" : "slack",
+            "commandText" : "/jit activate",
+            "channelId" : "C456",
+            "workspaceId" : "T789"
+          },
           "activationPeriodExtensionMins" : 120,
+          "requestOrigin" : "slack",
           "connectionId" : "757fb803-9024-5861-e510-83a56e4c5bd3"
         }`) // JitActivationExtendRequest | 
 
