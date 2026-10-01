@@ -58,9 +58,9 @@ tags:
 paths:
   /sod-violations/v1/predict:
     post:
-      description: This API is used to check if granting some additional accesses
-        would cause the subject to be in violation of any SOD policies. Returns the
-        violations that would be caused.
+      description: "This API is used to check if granting some additional accesses\
+        \ (entitlements, access profiles, or roles) would cause the subject to be\
+        \ in violation of any SOD policies. Returns the violations that would be caused."
       operationId: startPredictSodViolationsV1
       requestBody:
         content:
@@ -70,8 +70,10 @@ paths:
               accessRefs:
               - type: ENTITLEMENT
                 id: 2c918087682f9a86016839c050861ab1
-              - type: ENTITLEMENT
+              - type: ACCESS_PROFILE
                 id: 2c918087682f9a86016839c0509c1ab2
+              - type: ROLE
+                id: 2c918087682f9a86016839c050a01ab3
             schema:
               $ref: '#/components/schemas/IdentityWithNewAccess'
         required: true
@@ -180,8 +182,10 @@ paths:
               accessRefs:
               - type: ENTITLEMENT
                 id: 2c918087682f9a86016839c050861ab1
-              - type: ENTITLEMENT
+              - type: ACCESS_PROFILE
                 id: 2c918087682f9a86016839c0509c1ab2
+              - type: ROLE
+                id: 2c918087682f9a86016839c050a01ab3
               clientMetadata:
                 additionalProp1: string
                 additionalProp2: string
@@ -1189,21 +1193,26 @@ components:
         accessRefs:
         - type: ENTITLEMENT
           id: 2c918087682f9a86016839c050861ab1
-        - type: ENTITLEMENT
+        - type: ACCESS_PROFILE
           id: 2c918087682f9a86016839c0509c1ab2
+        - type: ROLE
+          id: 2c918087682f9a86016839c050a01ab3
       properties:
         identityId:
           description: Identity id to be checked.
           example: 2c91808568c529c60168cca6f90c1313
           type: string
         accessRefs:
-          description: The list of entitlements to consider for possible violations
-            in a preventive check.
+          description: "The list of access items to consider for possible violations\
+            \ in a preventive check. Supported types are ENTITLEMENT, ACCESS_PROFILE,\
+            \ and ROLE."
           example:
           - type: ENTITLEMENT
             id: 2c918087682f9a86016839c050861ab1
-          - type: ENTITLEMENT
+          - type: ACCESS_PROFILE
             id: 2c918087682f9a86016839c0509c1ab2
+          - type: ROLE
+            id: 2c918087682f9a86016839c050a01ab3
           items:
             $ref: '#/components/schemas/IdentityWithNewAccess_accessRefs_inner'
           type: array
@@ -1904,17 +1913,19 @@ components:
           example: ' Rate Limit Exceeded '
       type: object
     IdentityWithNewAccess_accessRefs_inner:
-      description: Entitlement including a specific set of access.
+      description: Reference to an access item that may contribute to an SOD violation.
       properties:
         type:
-          description: Entitlement's DTO type.
+          description: Access item DTO type.
           enum:
           - ENTITLEMENT
+          - ACCESS_PROFILE
+          - ROLE
           example: ENTITLEMENT
           nullable: false
           type: string
         id:
-          description: Entitlement's ID.
+          description: Access item ID.
           example: 2c91809773dee32014e13e122092014e
           nullable: false
           type: string

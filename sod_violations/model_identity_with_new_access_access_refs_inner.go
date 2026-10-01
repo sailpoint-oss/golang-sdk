@@ -17,11 +17,11 @@ import (
 // checks if the IdentityWithNewAccessAccessRefsInner type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &IdentityWithNewAccessAccessRefsInner{}
 
-// IdentityWithNewAccessAccessRefsInner Entitlement including a specific set of access.
+// IdentityWithNewAccessAccessRefsInner Reference to an access item that may contribute to an SOD violation.
 type IdentityWithNewAccessAccessRefsInner struct {
-	// Entitlement's DTO type.
+	// Access item DTO type.
 	Type *string `json:"type,omitempty"`
-	// Entitlement's ID.
+	// Access item ID.
 	Id *string `json:"id,omitempty"`
 	AdditionalProperties map[string]interface{}
 }

@@ -16,7 +16,7 @@ tags: ['SDK', 'Software Development Kit', 'IdentityWithNewAccess', 'V1IdentityWi
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **IdentityId** | **string** | Identity id to be checked. | 
-**AccessRefs** | [**[]IdentityWithNewAccessAccessRefsInner**](identity-with-new-access-access-refs-inner) | The list of entitlements to consider for possible violations in a preventive check. | 
+**AccessRefs** | [**[]IdentityWithNewAccessAccessRefsInner**](identity-with-new-access-access-refs-inner) | The list of access items to consider for possible violations in a preventive check. Supported types are ENTITLEMENT, ACCESS_PROFILE, and ROLE. | 
 
 ## Methods
 

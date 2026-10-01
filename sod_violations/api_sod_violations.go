@@ -1122,7 +1122,7 @@ func (r ApiStartPredictSodViolationsV1Request) Execute() (*ViolationPrediction, 
 /*
 StartPredictSodViolationsV1 Predict sod violations for identity.
 
-This API is used to check if granting some additional accesses would cause the subject to be in violation of any SOD policies. Returns the violations that would be caused.
+This API is used to check if granting some additional accesses (entitlements, access profiles, or roles) would cause the subject to be in violation of any SOD policies. Returns the violations that would be caused.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiStartPredictSodViolationsV1Request
