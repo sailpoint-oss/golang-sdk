@@ -9,8 +9,6 @@ client.go
 configuration.go
 docs/ArrayInner.md
 docs/EntitlementConnection.md
-docs/EntitlementConnectionBulkUpdateItem.md
-docs/EntitlementConnectionBulkUpdateResultItem.md
 docs/EntitlementConnectionSearchHit.md
 docs/EntitlementConnectionSearchHitEntitlement.md
 docs/EntitlementConnectionSearchHitEntitlementPrivilegeLevel.md
@@ -30,8 +28,6 @@ go.mod
 go.sum
 model_array_inner.go
 model_entitlement_connection.go
-model_entitlement_connection_bulk_update_item.go
-model_entitlement_connection_bulk_update_result_item.go
 model_entitlement_connection_search_hit.go
 model_entitlement_connection_search_hit_entitlement.go
 model_entitlement_connection_search_hit_entitlement_privilege_level.go

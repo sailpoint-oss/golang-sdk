@@ -82,16 +82,12 @@ Class | Method | HTTP request | Description
 *EntitlementConnectionsAPI* | [**ListEntitlementConnectionsForCurrentIdentityV1**](docs/EntitlementConnectionsAPI.md#listentitlementconnectionsforcurrentidentityv1) | **Get** /entitlement-connections/v1/current-identity | List my entitlement connections
 *EntitlementConnectionsAPI* | [**ListEntitlementConnectionsV1**](docs/EntitlementConnectionsAPI.md#listentitlementconnectionsv1) | **Get** /entitlement-connections/v1 | List entitlement connections
 *EntitlementConnectionsAPI* | [**PatchEntitlementConnectionByIdV1**](docs/EntitlementConnectionsAPI.md#patchentitlementconnectionbyidv1) | **Patch** /entitlement-connections/v1/{connectionId} | Update entitlement connection
-*EntitlementConnectionsAPI* | [**PatchEntitlementConnectionByQueryV1**](docs/EntitlementConnectionsAPI.md#patchentitlementconnectionbyqueryv1) | **Patch** /entitlement-connections/v1 | Update connection by query
-*EntitlementConnectionsAPI* | [**UpdateEntitlementConnectionsBulkV1**](docs/EntitlementConnectionsAPI.md#updateentitlementconnectionsbulkv1) | **Post** /entitlement-connections/v1 | Update connections in bulk
 
 
 ## Documentation For Models
 
  - [ArrayInner](docs/ArrayInner.md)
  - [EntitlementConnection](docs/EntitlementConnection.md)
- - [EntitlementConnectionBulkUpdateItem](docs/EntitlementConnectionBulkUpdateItem.md)
- - [EntitlementConnectionBulkUpdateResultItem](docs/EntitlementConnectionBulkUpdateResultItem.md)
  - [EntitlementConnectionSearchHit](docs/EntitlementConnectionSearchHit.md)
  - [EntitlementConnectionSearchHitEntitlement](docs/EntitlementConnectionSearchHitEntitlement.md)
  - [EntitlementConnectionSearchHitEntitlementPrivilegeLevel](docs/EntitlementConnectionSearchHitEntitlementPrivilegeLevel.md)

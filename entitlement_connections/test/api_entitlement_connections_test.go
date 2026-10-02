@@ -60,28 +60,4 @@ func Test_entitlement_connections_EntitlementConnectionsAPIService(t *testing.T)
 
 	})
 
-	t.Run("Test EntitlementConnectionsAPIService PatchEntitlementConnectionByQueryV1", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		resp, httpRes, err := apiClient.EntitlementConnectionsAPI.PatchEntitlementConnectionByQueryV1(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test EntitlementConnectionsAPIService UpdateEntitlementConnectionsBulkV1", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		resp, httpRes, err := apiClient.EntitlementConnectionsAPI.UpdateEntitlementConnectionsBulkV1(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 }
