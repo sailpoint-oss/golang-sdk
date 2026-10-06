@@ -1,6 +1,6 @@
 templateDir: ./sdk-resources/resources
 packageName: generic
-packageVersion: 3.1.55
+packageVersion: 3.1.56
 generateInterfaces: false
 disallowAdditionalPropertiesIfNotPresent: false
 useOneOfDiscriminatorLookup: false
