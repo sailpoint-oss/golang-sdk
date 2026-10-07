@@ -105,6 +105,8 @@ Class | Method | HTTP request | Description
  - [ListMachineAccountsV1429Response](docs/ListMachineAccountsV1429Response.md)
  - [LocaleOrigin](docs/LocaleOrigin.md)
  - [MachineAccount](docs/MachineAccount.md)
+ - [MachineAccountAllOfCompliance](docs/MachineAccountAllOfCompliance.md)
+ - [MachineAccountAllOfRisk](docs/MachineAccountAllOfRisk.md)
  - [MachineAccountsAsyncResult](docs/MachineAccountsAsyncResult.md)
  - [SourceSubtype](docs/SourceSubtype.md)
 

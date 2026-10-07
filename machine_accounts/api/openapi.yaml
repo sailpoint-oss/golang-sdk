@@ -131,6 +131,14 @@ paths:
           **created**: *eq, gt, lt, ge, le*
 
           **modified**: *eq, gt, lt, ge, le*
+
+          **risk.severity**: *eq, in*
+
+          **permissionLevel**: *eq, in*
+
+          **lastUsedAt**: *gt, lt, ge, le*
+
+          `risk.severity`, `permissionLevel`, and `lastUsedAt` require Entro enrichment to be enabled for the tenant. When it is not, those filters return `400`. `compliance` and `complianceViolationsCount` are not filter fields. With unknown-severity enabled, a null stored severity matches `risk.severity eq "UNKNOWN"`.
         example: hasEntitlements eq true
         explode: true
         in: query
@@ -142,7 +150,9 @@ paths:
       - description: |-
           Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
 
-          Sorting is supported for the following fields: **id, name, nativeIdentity, ownerIdentity, uuid, description, machineIdentity.id, machineIdentity.name, subtype.technicalName, subtype.displayName, accessType, environment, manuallyCorrelated, enabled, locked, hasEntitlements, ownerIdentity.id, ownerIdentity.name, attributes, source.id, source.name, created, modified**
+          Sorting is supported for the following fields: **id, name, nativeIdentity, ownerIdentity, uuid, description, machineIdentity.id, machineIdentity.name, subtype.technicalName, subtype.displayName, accessType, environment, manuallyCorrelated, enabled, locked, hasEntitlements, ownerIdentity.id, ownerIdentity.name, attributes, source.id, source.name, created, modified, risk.severity, permissionLevel, lastUsedAt**
+
+          `risk.severity`, `permissionLevel`, and `lastUsedAt` require Entro enrichment to be enabled; otherwise those sorters return `400`. `risk.severity` sorts by rank (UNKNOWN, LOW, MEDIUM, HIGH, CRITICAL), not alphabetically. Null Entro values sort last. `compliance` is not sortable.
         example: "id,name"
         explode: true
         in: query
@@ -423,21 +433,17 @@ paths:
         description: |-
           A JSON of updated values [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The following fields are patchable:
                     * description
-                    * ownerIdentity
-                    * subType
-                    * accessType
                     * environment
+                    * accessType
                     * attributes
-                    * classificationMethod
                     * manuallyEdited
-                    * nativeIdentity
-                    * uuid
-                    * source
-                    * manuallyCorrelated
-                    * enabled
-                    * locked
-                    * hasEntitlements
-                    * connectorAttributes
+                    * ownerIdentity
+                    * subtype
+                    * machineIdentity
+                    * owners
+
+          Non-dataset accounts may patch ownerIdentity, subtype, and machineIdentity. Dataset accounts may patch owners. When expanded ownership is enabled, non-dataset accounts may also patch owners, and dataset accounts may also patch ownerIdentity.
+          `risk`, `permissionLevel`, `compliance`, and `lastUsedAt` are read-only. Do not patch them; aggregation is the only writer. A patch of other fields still succeeds when those values are present on the account.
         required: true
       responses:
         "200":
@@ -2209,6 +2215,38 @@ components:
               id: 8d3e0094e99445de98eef6c75e25jc04
               type: SOURCE
               name: Active Directory
+          risk:
+            $ref: '#/components/schemas/MachineAccount_allOf_risk'
+          permissionLevel:
+            description: Entro permission level. Null when not enriched. Read-only;
+              written only by aggregation.
+            enum:
+            - PRIVILEGED
+            - ELEVATED
+            - BASIC
+            - UNKNOWN
+            example: PRIVILEGED
+            nullable: true
+            readOnly: true
+            type: string
+          compliance:
+            description: "Entro compliance control ids. Null when absent; empty when\
+              \ Entro recorded no violations. A violations count is the length of\
+              \ this array. There is no `complianceViolationsCount` field, and `compliance`\
+              \ is not a list filter or sort field. Read-only; written only by aggregation."
+            items:
+              $ref: '#/components/schemas/MachineAccount_allOf_compliance'
+            nullable: true
+            readOnly: true
+            type: array
+          lastUsedAt:
+            description: "When the machine account was last used, from Entro. Null\
+              \ when not enriched. Read-only; written only by aggregation."
+            example: 2026-03-10T21:38:25Z
+            format: date-time
+            nullable: true
+            readOnly: true
+            type: string
         required:
         - classificationMethod
         - connectorAttributes
@@ -2220,19 +2258,12 @@ components:
         - source
         type: object
       example:
-        created: 2015-05-28T14:07:17Z
-        connectorAttributes:
-          mail: machine-178@sailpoint.com
-          givenName: Support
-          displayName: SailPoint Support
         description: Service account for Active Directory
         source:
           id: 8d3e0094e99445de98eef6c75e25jc04
           type: SOURCE
           name: Active Directory
-        manuallyCorrelated: true
         uuid: "{b0dce506-d6d4-44d2-8a32-d9a5b21fb175}"
-        nativeIdentity: "552775"
         enabled: false
         machineIdentity:
           id: 1540e5a4-6c2e-4bf1-b88e-c08cae0696e9
@@ -2243,18 +2274,33 @@ components:
           type: IDENTITY
           name: Adam Kennedy
         accessType: direct
-        environment: TEST
         subtype: subtype
-        name: aName
         modified: 2015-05-28T14:07:17Z
+        hasEntitlements: false
+        id: id12345
+        locked: false
+        created: 2015-05-28T14:07:17Z
+        connectorAttributes:
+          mail: machine-178@sailpoint.com
+          givenName: Support
+          displayName: SailPoint Support
+        manuallyCorrelated: true
+        nativeIdentity: "552775"
+        environment: TEST
+        permissionLevel: PRIVILEGED
+        lastUsedAt: 2026-03-10T21:38:25Z
+        compliance:
+        - id: SOC2-CC6.1
+        - id: SOC2-CC6.1
+        name: aName
         attributes:
           firstName: SailPoint
           lastName: Support
           displayName: SailPoint Support
-        hasEntitlements: false
-        id: id12345
+        risk:
+          severity: HIGH
+          score: 72.5
         classificationMethod: SOURCE
-        locked: false
         manuallyEdited: true
     LocaleOrigin:
       description: "An indicator of how the locale was selected. *DEFAULT* means the\
@@ -2437,4 +2483,44 @@ components:
       - description
       - displayName
       - technicalName
+      type: object
+    MachineAccount_allOf_risk:
+      description: Entro risk for this machine account. Present when Entro enrichment
+        is enabled for the tenant. Null when no risk has been recorded. `score` stays
+        null until a risk-engine projection exists. Read-only; written only by aggregation.
+        This is separate from machine-identity SAF risk.
+      example:
+        severity: HIGH
+        score: 72.5
+      nullable: true
+      properties:
+        score:
+          description: Risk score. Null for Entro-only severity.
+          example: 72.5
+          format: double
+          nullable: true
+          type: number
+        severity:
+          description: Risk severity. A null stored severity can render as UNKNOWN
+            when that behavior is enabled.
+          enum:
+          - UNKNOWN
+          - LOW
+          - MEDIUM
+          - HIGH
+          - CRITICAL
+          example: HIGH
+          nullable: true
+          type: string
+      readOnly: true
+      type: object
+    MachineAccount_allOf_compliance:
+      example:
+        id: SOC2-CC6.1
+      properties:
+        id:
+          description: Framework control id.
+          example: SOC2-CC6.1
+          nullable: true
+          type: string
       type: object

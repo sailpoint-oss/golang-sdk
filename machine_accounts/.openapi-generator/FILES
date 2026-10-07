@@ -15,6 +15,8 @@ docs/ListMachineAccountsV1401Response.md
 docs/ListMachineAccountsV1429Response.md
 docs/LocaleOrigin.md
 docs/MachineAccount.md
+docs/MachineAccountAllOfCompliance.md
+docs/MachineAccountAllOfRisk.md
 docs/MachineAccountsAPI.md
 docs/MachineAccountsAPIdeveloperSite_code_examples.yaml
 docs/MachineAccountsAsyncResult.md
@@ -31,6 +33,8 @@ model_list_machine_accounts_v1_401_response.go
 model_list_machine_accounts_v1_429_response.go
 model_locale_origin.go
 model_machine_account.go
+model_machine_account_all_of_compliance.go
+model_machine_account_all_of_risk.go
 model_machine_accounts_async_result.go
 model_source_subtype.go
 response.go

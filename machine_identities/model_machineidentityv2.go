@@ -65,6 +65,14 @@ type Machineidentityv2 struct {
 	// Derived sanctioned status from linked Business Applications; `UNKNOWN` when no refs are present. Available when Business Applications is enabled for the tenant; null when it is not enabled. Read-only on create and patch input.
 	EffectiveSanctionedStatus NullableSanctionedStatus `json:"effectiveSanctionedStatus,omitempty"`
 	Risk *MachineIdentityV2Risk `json:"risk,omitempty"`
+	// Entro back-reference. Present when Entro enrichment is enabled for the tenant. Null means the identity is not Entro-correlated. Read-only; written only by aggregation. Not returned on older machine-identity versions.
+	EntroId NullableString `json:"entroId,omitempty"`
+	// Entro insights. Null means not Entro-correlated; an empty array means enriched with no insights. Read-only; written only by aggregation. Filter matches a whole element, not a substring.
+	Insights []string `json:"insights,omitempty"`
+	// Entro session count. Null means not Entro-correlated and is not the same as 0. Read-only; written only by aggregation.
+	SessionCount NullableInt32 `json:"sessionCount,omitempty"`
+	// Entro suspicious session count. Null means not Entro-correlated and is not the same as 0. Read-only; written only by aggregation.
+	SuspiciousSessionCount NullableInt32 `json:"suspiciousSessionCount,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -879,6 +887,165 @@ func (o *Machineidentityv2) SetRisk(v MachineIdentityV2Risk) {
 	o.Risk = &v
 }
 
+// GetEntroId returns the EntroId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Machineidentityv2) GetEntroId() string {
+	if o == nil || IsNil(o.EntroId.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.EntroId.Get()
+}
+
+// GetEntroIdOk returns a tuple with the EntroId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Machineidentityv2) GetEntroIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.EntroId.Get(), o.EntroId.IsSet()
+}
+
+// HasEntroId returns a boolean if a field has been set.
+func (o *Machineidentityv2) HasEntroId() bool {
+	if o != nil && o.EntroId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetEntroId gets a reference to the given NullableString and assigns it to the EntroId field.
+func (o *Machineidentityv2) SetEntroId(v string) {
+	o.EntroId.Set(&v)
+}
+// SetEntroIdNil sets the value for EntroId to be an explicit nil
+func (o *Machineidentityv2) SetEntroIdNil() {
+	o.EntroId.Set(nil)
+}
+
+// UnsetEntroId ensures that no value is present for EntroId, not even an explicit nil
+func (o *Machineidentityv2) UnsetEntroId() {
+	o.EntroId.Unset()
+}
+
+// GetInsights returns the Insights field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Machineidentityv2) GetInsights() []string {
+	if o == nil {
+		var ret []string
+		return ret
+	}
+	return o.Insights
+}
+
+// GetInsightsOk returns a tuple with the Insights field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Machineidentityv2) GetInsightsOk() ([]string, bool) {
+	if o == nil || IsNil(o.Insights) {
+		return nil, false
+	}
+	return o.Insights, true
+}
+
+// HasInsights returns a boolean if a field has been set.
+func (o *Machineidentityv2) HasInsights() bool {
+	if o != nil && !IsNil(o.Insights) {
+		return true
+	}
+
+	return false
+}
+
+// SetInsights gets a reference to the given []string and assigns it to the Insights field.
+func (o *Machineidentityv2) SetInsights(v []string) {
+	o.Insights = v
+}
+
+// GetSessionCount returns the SessionCount field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Machineidentityv2) GetSessionCount() int32 {
+	if o == nil || IsNil(o.SessionCount.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.SessionCount.Get()
+}
+
+// GetSessionCountOk returns a tuple with the SessionCount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Machineidentityv2) GetSessionCountOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.SessionCount.Get(), o.SessionCount.IsSet()
+}
+
+// HasSessionCount returns a boolean if a field has been set.
+func (o *Machineidentityv2) HasSessionCount() bool {
+	if o != nil && o.SessionCount.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetSessionCount gets a reference to the given NullableInt32 and assigns it to the SessionCount field.
+func (o *Machineidentityv2) SetSessionCount(v int32) {
+	o.SessionCount.Set(&v)
+}
+// SetSessionCountNil sets the value for SessionCount to be an explicit nil
+func (o *Machineidentityv2) SetSessionCountNil() {
+	o.SessionCount.Set(nil)
+}
+
+// UnsetSessionCount ensures that no value is present for SessionCount, not even an explicit nil
+func (o *Machineidentityv2) UnsetSessionCount() {
+	o.SessionCount.Unset()
+}
+
+// GetSuspiciousSessionCount returns the SuspiciousSessionCount field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Machineidentityv2) GetSuspiciousSessionCount() int32 {
+	if o == nil || IsNil(o.SuspiciousSessionCount.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.SuspiciousSessionCount.Get()
+}
+
+// GetSuspiciousSessionCountOk returns a tuple with the SuspiciousSessionCount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Machineidentityv2) GetSuspiciousSessionCountOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.SuspiciousSessionCount.Get(), o.SuspiciousSessionCount.IsSet()
+}
+
+// HasSuspiciousSessionCount returns a boolean if a field has been set.
+func (o *Machineidentityv2) HasSuspiciousSessionCount() bool {
+	if o != nil && o.SuspiciousSessionCount.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetSuspiciousSessionCount gets a reference to the given NullableInt32 and assigns it to the SuspiciousSessionCount field.
+func (o *Machineidentityv2) SetSuspiciousSessionCount(v int32) {
+	o.SuspiciousSessionCount.Set(&v)
+}
+// SetSuspiciousSessionCountNil sets the value for SuspiciousSessionCount to be an explicit nil
+func (o *Machineidentityv2) SetSuspiciousSessionCountNil() {
+	o.SuspiciousSessionCount.Set(nil)
+}
+
+// UnsetSuspiciousSessionCount ensures that no value is present for SuspiciousSessionCount, not even an explicit nil
+func (o *Machineidentityv2) UnsetSuspiciousSessionCount() {
+	o.SuspiciousSessionCount.Unset()
+}
+
 func (o Machineidentityv2) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -959,6 +1126,18 @@ func (o Machineidentityv2) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Risk) {
 		toSerialize["risk"] = o.Risk
 	}
+	if o.EntroId.IsSet() {
+		toSerialize["entroId"] = o.EntroId.Get()
+	}
+	if o.Insights != nil {
+		toSerialize["insights"] = o.Insights
+	}
+	if o.SessionCount.IsSet() {
+		toSerialize["sessionCount"] = o.SessionCount.Get()
+	}
+	if o.SuspiciousSessionCount.IsSet() {
+		toSerialize["suspiciousSessionCount"] = o.SuspiciousSessionCount.Get()
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -1026,6 +1205,10 @@ func (o *Machineidentityv2) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "businessApplicationRefs")
 		delete(additionalProperties, "effectiveSanctionedStatus")
 		delete(additionalProperties, "risk")
+		delete(additionalProperties, "entroId")
+		delete(additionalProperties, "insights")
+		delete(additionalProperties, "sessionCount")
+		delete(additionalProperties, "suspiciousSessionCount")
 		o.AdditionalProperties = additionalProperties
 	}
 

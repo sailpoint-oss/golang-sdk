@@ -63,6 +63,13 @@ type MachineAccount struct {
 	HasEntitlements bool `json:"hasEntitlements"`
 	// The source this machine account belongs to.
 	Source interface{} `json:"source"`
+	Risk NullableMachineAccountAllOfRisk `json:"risk,omitempty"`
+	// Entro permission level. Null when not enriched. Read-only; written only by aggregation.
+	PermissionLevel NullableString `json:"permissionLevel,omitempty"`
+	// Entro compliance control ids. Null when absent; empty when Entro recorded no violations. A violations count is the length of this array. There is no `complianceViolationsCount` field, and `compliance` is not a list filter or sort field. Read-only; written only by aggregation.
+	Compliance []MachineAccountAllOfCompliance `json:"compliance,omitempty"`
+	// When the machine account was last used, from Entro. Null when not enriched. Read-only; written only by aggregation.
+	LastUsedAt NullableTime `json:"lastUsedAt,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -753,6 +760,165 @@ func (o *MachineAccount) SetSource(v interface{}) {
 	o.Source = v
 }
 
+// GetRisk returns the Risk field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *MachineAccount) GetRisk() MachineAccountAllOfRisk {
+	if o == nil || IsNil(o.Risk.Get()) {
+		var ret MachineAccountAllOfRisk
+		return ret
+	}
+	return *o.Risk.Get()
+}
+
+// GetRiskOk returns a tuple with the Risk field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *MachineAccount) GetRiskOk() (*MachineAccountAllOfRisk, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Risk.Get(), o.Risk.IsSet()
+}
+
+// HasRisk returns a boolean if a field has been set.
+func (o *MachineAccount) HasRisk() bool {
+	if o != nil && o.Risk.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetRisk gets a reference to the given NullableMachineAccountAllOfRisk and assigns it to the Risk field.
+func (o *MachineAccount) SetRisk(v MachineAccountAllOfRisk) {
+	o.Risk.Set(&v)
+}
+// SetRiskNil sets the value for Risk to be an explicit nil
+func (o *MachineAccount) SetRiskNil() {
+	o.Risk.Set(nil)
+}
+
+// UnsetRisk ensures that no value is present for Risk, not even an explicit nil
+func (o *MachineAccount) UnsetRisk() {
+	o.Risk.Unset()
+}
+
+// GetPermissionLevel returns the PermissionLevel field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *MachineAccount) GetPermissionLevel() string {
+	if o == nil || IsNil(o.PermissionLevel.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.PermissionLevel.Get()
+}
+
+// GetPermissionLevelOk returns a tuple with the PermissionLevel field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *MachineAccount) GetPermissionLevelOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.PermissionLevel.Get(), o.PermissionLevel.IsSet()
+}
+
+// HasPermissionLevel returns a boolean if a field has been set.
+func (o *MachineAccount) HasPermissionLevel() bool {
+	if o != nil && o.PermissionLevel.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetPermissionLevel gets a reference to the given NullableString and assigns it to the PermissionLevel field.
+func (o *MachineAccount) SetPermissionLevel(v string) {
+	o.PermissionLevel.Set(&v)
+}
+// SetPermissionLevelNil sets the value for PermissionLevel to be an explicit nil
+func (o *MachineAccount) SetPermissionLevelNil() {
+	o.PermissionLevel.Set(nil)
+}
+
+// UnsetPermissionLevel ensures that no value is present for PermissionLevel, not even an explicit nil
+func (o *MachineAccount) UnsetPermissionLevel() {
+	o.PermissionLevel.Unset()
+}
+
+// GetCompliance returns the Compliance field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *MachineAccount) GetCompliance() []MachineAccountAllOfCompliance {
+	if o == nil {
+		var ret []MachineAccountAllOfCompliance
+		return ret
+	}
+	return o.Compliance
+}
+
+// GetComplianceOk returns a tuple with the Compliance field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *MachineAccount) GetComplianceOk() ([]MachineAccountAllOfCompliance, bool) {
+	if o == nil || IsNil(o.Compliance) {
+		return nil, false
+	}
+	return o.Compliance, true
+}
+
+// HasCompliance returns a boolean if a field has been set.
+func (o *MachineAccount) HasCompliance() bool {
+	if o != nil && !IsNil(o.Compliance) {
+		return true
+	}
+
+	return false
+}
+
+// SetCompliance gets a reference to the given []MachineAccountAllOfCompliance and assigns it to the Compliance field.
+func (o *MachineAccount) SetCompliance(v []MachineAccountAllOfCompliance) {
+	o.Compliance = v
+}
+
+// GetLastUsedAt returns the LastUsedAt field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *MachineAccount) GetLastUsedAt() SailPointTime {
+	if o == nil || IsNil(o.LastUsedAt.Get()) {
+		var ret SailPointTime
+		return ret
+	}
+	return *o.LastUsedAt.Get()
+}
+
+// GetLastUsedAtOk returns a tuple with the LastUsedAt field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *MachineAccount) GetLastUsedAtOk() (*SailPointTime, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.LastUsedAt.Get(), o.LastUsedAt.IsSet()
+}
+
+// HasLastUsedAt returns a boolean if a field has been set.
+func (o *MachineAccount) HasLastUsedAt() bool {
+	if o != nil && o.LastUsedAt.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetLastUsedAt gets a reference to the given NullableTime and assigns it to the LastUsedAt field.
+func (o *MachineAccount) SetLastUsedAt(v SailPointTime) {
+	o.LastUsedAt.Set(&v)
+}
+// SetLastUsedAtNil sets the value for LastUsedAt to be an explicit nil
+func (o *MachineAccount) SetLastUsedAtNil() {
+	o.LastUsedAt.Set(nil)
+}
+
+// UnsetLastUsedAt ensures that no value is present for LastUsedAt, not even an explicit nil
+func (o *MachineAccount) UnsetLastUsedAt() {
+	o.LastUsedAt.Unset()
+}
+
 func (o MachineAccount) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -811,6 +977,18 @@ func (o MachineAccount) ToMap() (map[string]interface{}, error) {
 	toSerialize["hasEntitlements"] = o.HasEntitlements
 	if o.Source != nil {
 		toSerialize["source"] = o.Source
+	}
+	if o.Risk.IsSet() {
+		toSerialize["risk"] = o.Risk.Get()
+	}
+	if o.PermissionLevel.IsSet() {
+		toSerialize["permissionLevel"] = o.PermissionLevel.Get()
+	}
+	if o.Compliance != nil {
+		toSerialize["compliance"] = o.Compliance
+	}
+	if o.LastUsedAt.IsSet() {
+		toSerialize["lastUsedAt"] = o.LastUsedAt.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -884,6 +1062,10 @@ func (o *MachineAccount) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "enabled")
 		delete(additionalProperties, "hasEntitlements")
 		delete(additionalProperties, "source")
+		delete(additionalProperties, "risk")
+		delete(additionalProperties, "permissionLevel")
+		delete(additionalProperties, "compliance")
+		delete(additionalProperties, "lastUsedAt")
 		o.AdditionalProperties = additionalProperties
 	}
 

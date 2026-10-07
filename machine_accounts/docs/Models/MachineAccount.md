@@ -36,6 +36,10 @@ Name | Type | Description | Notes
 **Enabled** | **bool** | Indicates if the account is enabled | [default to false]
 **HasEntitlements** | **bool** | Indicates if the account has entitlements | [default to true]
 **Source** | **interface{}** | The source this machine account belongs to. | 
+**Risk** | Pointer to [**NullableMachineAccountAllOfRisk**](machine-account-all-of-risk) |  | [optional] 
+**PermissionLevel** | Pointer to **NullableString** | Entro permission level. Null when not enriched. Read-only; written only by aggregation. | [optional] [readonly] 
+**Compliance** | Pointer to [**[]MachineAccountAllOfCompliance**](machine-account-all-of-compliance) | Entro compliance control ids. Null when absent; empty when Entro recorded no violations. A violations count is the length of this array. There is no `complianceViolationsCount` field, and `compliance` is not a list filter or sort field. Read-only; written only by aggregation. | [optional] [readonly] 
+**LastUsedAt** | Pointer to **NullableTime** | When the machine account was last used, from Entro. Null when not enriched. Read-only; written only by aggregation. | [optional] [readonly] 
 
 ## Methods
 
@@ -636,4 +640,144 @@ SetSource sets Source field to given value.
 `func (o *MachineAccount) UnsetSource()`
 
 UnsetSource ensures that no value is present for Source, not even an explicit nil
+### GetRisk
+
+`func (o *MachineAccount) GetRisk() MachineAccountAllOfRisk`
+
+GetRisk returns the Risk field if non-nil, zero value otherwise.
+
+### GetRiskOk
+
+`func (o *MachineAccount) GetRiskOk() (*MachineAccountAllOfRisk, bool)`
+
+GetRiskOk returns a tuple with the Risk field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRisk
+
+`func (o *MachineAccount) SetRisk(v MachineAccountAllOfRisk)`
+
+SetRisk sets Risk field to given value.
+
+### HasRisk
+
+`func (o *MachineAccount) HasRisk() bool`
+
+HasRisk returns a boolean if a field has been set.
+
+### SetRiskNil
+
+`func (o *MachineAccount) SetRiskNil(b bool)`
+
+ SetRiskNil sets the value for Risk to be an explicit nil
+
+### UnsetRisk
+`func (o *MachineAccount) UnsetRisk()`
+
+UnsetRisk ensures that no value is present for Risk, not even an explicit nil
+### GetPermissionLevel
+
+`func (o *MachineAccount) GetPermissionLevel() string`
+
+GetPermissionLevel returns the PermissionLevel field if non-nil, zero value otherwise.
+
+### GetPermissionLevelOk
+
+`func (o *MachineAccount) GetPermissionLevelOk() (*string, bool)`
+
+GetPermissionLevelOk returns a tuple with the PermissionLevel field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPermissionLevel
+
+`func (o *MachineAccount) SetPermissionLevel(v string)`
+
+SetPermissionLevel sets PermissionLevel field to given value.
+
+### HasPermissionLevel
+
+`func (o *MachineAccount) HasPermissionLevel() bool`
+
+HasPermissionLevel returns a boolean if a field has been set.
+
+### SetPermissionLevelNil
+
+`func (o *MachineAccount) SetPermissionLevelNil(b bool)`
+
+ SetPermissionLevelNil sets the value for PermissionLevel to be an explicit nil
+
+### UnsetPermissionLevel
+`func (o *MachineAccount) UnsetPermissionLevel()`
+
+UnsetPermissionLevel ensures that no value is present for PermissionLevel, not even an explicit nil
+### GetCompliance
+
+`func (o *MachineAccount) GetCompliance() []MachineAccountAllOfCompliance`
+
+GetCompliance returns the Compliance field if non-nil, zero value otherwise.
+
+### GetComplianceOk
+
+`func (o *MachineAccount) GetComplianceOk() (*[]MachineAccountAllOfCompliance, bool)`
+
+GetComplianceOk returns a tuple with the Compliance field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCompliance
+
+`func (o *MachineAccount) SetCompliance(v []MachineAccountAllOfCompliance)`
+
+SetCompliance sets Compliance field to given value.
+
+### HasCompliance
+
+`func (o *MachineAccount) HasCompliance() bool`
+
+HasCompliance returns a boolean if a field has been set.
+
+### SetComplianceNil
+
+`func (o *MachineAccount) SetComplianceNil(b bool)`
+
+ SetComplianceNil sets the value for Compliance to be an explicit nil
+
+### UnsetCompliance
+`func (o *MachineAccount) UnsetCompliance()`
+
+UnsetCompliance ensures that no value is present for Compliance, not even an explicit nil
+### GetLastUsedAt
+
+`func (o *MachineAccount) GetLastUsedAt() SailPointTime`
+
+GetLastUsedAt returns the LastUsedAt field if non-nil, zero value otherwise.
+
+### GetLastUsedAtOk
+
+`func (o *MachineAccount) GetLastUsedAtOk() (*SailPointTime, bool)`
+
+GetLastUsedAtOk returns a tuple with the LastUsedAt field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLastUsedAt
+
+`func (o *MachineAccount) SetLastUsedAt(v SailPointTime)`
+
+SetLastUsedAt sets LastUsedAt field to given value.
+
+### HasLastUsedAt
+
+`func (o *MachineAccount) HasLastUsedAt() bool`
+
+HasLastUsedAt returns a boolean if a field has been set.
+
+### SetLastUsedAtNil
+
+`func (o *MachineAccount) SetLastUsedAtNil(b bool)`
+
+ SetLastUsedAtNil sets the value for LastUsedAt to be an explicit nil
+
+### UnsetLastUsedAt
+`func (o *MachineAccount) UnsetLastUsedAt()`
+
+UnsetLastUsedAt ensures that no value is present for LastUsedAt, not even an explicit nil
 

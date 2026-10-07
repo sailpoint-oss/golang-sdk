@@ -39,6 +39,10 @@ Name | Type | Description | Notes
 **BusinessApplicationRefs** | Pointer to [**[]BusinessApplicationRef**](business-application-ref) | Optional Business Application references associated with this machine identity. Available when Business Applications is enabled for the tenant. On create and patch, at most one reference is allowed and is persisted as a `MANUAL` correlation. When Business Applications is not enabled, this field is null on responses and is rejected (`400`) if supplied on write. | [optional] 
 **EffectiveSanctionedStatus** | Pointer to **NullableSanctionedStatus** | Derived sanctioned status from linked Business Applications; `UNKNOWN` when no refs are present. Available when Business Applications is enabled for the tenant; null when it is not enabled. Read-only on create and patch input. | [optional] [readonly] 
 **Risk** | Pointer to [**MachineIdentityV2Risk**](machine-identity-v2-risk) |  | [optional] 
+**EntroId** | Pointer to **NullableString** | Entro back-reference. Present when Entro enrichment is enabled for the tenant. Null means the identity is not Entro-correlated. Read-only; written only by aggregation. Not returned on older machine-identity versions. | [optional] [readonly] 
+**Insights** | Pointer to **[]string** | Entro insights. Null means not Entro-correlated; an empty array means enriched with no insights. Read-only; written only by aggregation. Filter matches a whole element, not a substring. | [optional] [readonly] 
+**SessionCount** | Pointer to **NullableInt32** | Entro session count. Null means not Entro-correlated and is not the same as 0. Read-only; written only by aggregation. | [optional] [readonly] 
+**SuspiciousSessionCount** | Pointer to **NullableInt32** | Entro suspicious session count. Null means not Entro-correlated and is not the same as 0. Read-only; written only by aggregation. | [optional] [readonly] 
 
 ## Methods
 
@@ -694,4 +698,144 @@ SetRisk sets Risk field to given value.
 
 HasRisk returns a boolean if a field has been set.
 
+### GetEntroId
+
+`func (o *Machineidentityv2) GetEntroId() string`
+
+GetEntroId returns the EntroId field if non-nil, zero value otherwise.
+
+### GetEntroIdOk
+
+`func (o *Machineidentityv2) GetEntroIdOk() (*string, bool)`
+
+GetEntroIdOk returns a tuple with the EntroId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEntroId
+
+`func (o *Machineidentityv2) SetEntroId(v string)`
+
+SetEntroId sets EntroId field to given value.
+
+### HasEntroId
+
+`func (o *Machineidentityv2) HasEntroId() bool`
+
+HasEntroId returns a boolean if a field has been set.
+
+### SetEntroIdNil
+
+`func (o *Machineidentityv2) SetEntroIdNil(b bool)`
+
+ SetEntroIdNil sets the value for EntroId to be an explicit nil
+
+### UnsetEntroId
+`func (o *Machineidentityv2) UnsetEntroId()`
+
+UnsetEntroId ensures that no value is present for EntroId, not even an explicit nil
+### GetInsights
+
+`func (o *Machineidentityv2) GetInsights() []string`
+
+GetInsights returns the Insights field if non-nil, zero value otherwise.
+
+### GetInsightsOk
+
+`func (o *Machineidentityv2) GetInsightsOk() (*[]string, bool)`
+
+GetInsightsOk returns a tuple with the Insights field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInsights
+
+`func (o *Machineidentityv2) SetInsights(v []string)`
+
+SetInsights sets Insights field to given value.
+
+### HasInsights
+
+`func (o *Machineidentityv2) HasInsights() bool`
+
+HasInsights returns a boolean if a field has been set.
+
+### SetInsightsNil
+
+`func (o *Machineidentityv2) SetInsightsNil(b bool)`
+
+ SetInsightsNil sets the value for Insights to be an explicit nil
+
+### UnsetInsights
+`func (o *Machineidentityv2) UnsetInsights()`
+
+UnsetInsights ensures that no value is present for Insights, not even an explicit nil
+### GetSessionCount
+
+`func (o *Machineidentityv2) GetSessionCount() int32`
+
+GetSessionCount returns the SessionCount field if non-nil, zero value otherwise.
+
+### GetSessionCountOk
+
+`func (o *Machineidentityv2) GetSessionCountOk() (*int32, bool)`
+
+GetSessionCountOk returns a tuple with the SessionCount field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSessionCount
+
+`func (o *Machineidentityv2) SetSessionCount(v int32)`
+
+SetSessionCount sets SessionCount field to given value.
+
+### HasSessionCount
+
+`func (o *Machineidentityv2) HasSessionCount() bool`
+
+HasSessionCount returns a boolean if a field has been set.
+
+### SetSessionCountNil
+
+`func (o *Machineidentityv2) SetSessionCountNil(b bool)`
+
+ SetSessionCountNil sets the value for SessionCount to be an explicit nil
+
+### UnsetSessionCount
+`func (o *Machineidentityv2) UnsetSessionCount()`
+
+UnsetSessionCount ensures that no value is present for SessionCount, not even an explicit nil
+### GetSuspiciousSessionCount
+
+`func (o *Machineidentityv2) GetSuspiciousSessionCount() int32`
+
+GetSuspiciousSessionCount returns the SuspiciousSessionCount field if non-nil, zero value otherwise.
+
+### GetSuspiciousSessionCountOk
+
+`func (o *Machineidentityv2) GetSuspiciousSessionCountOk() (*int32, bool)`
+
+GetSuspiciousSessionCountOk returns a tuple with the SuspiciousSessionCount field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSuspiciousSessionCount
+
+`func (o *Machineidentityv2) SetSuspiciousSessionCount(v int32)`
+
+SetSuspiciousSessionCount sets SuspiciousSessionCount field to given value.
+
+### HasSuspiciousSessionCount
+
+`func (o *Machineidentityv2) HasSuspiciousSessionCount() bool`
+
+HasSuspiciousSessionCount returns a boolean if a field has been set.
+
+### SetSuspiciousSessionCountNil
+
+`func (o *Machineidentityv2) SetSuspiciousSessionCountNil(b bool)`
+
+ SetSuspiciousSessionCountNil sets the value for SuspiciousSessionCount to be an explicit nil
+
+### UnsetSuspiciousSessionCount
+`func (o *Machineidentityv2) UnsetSuspiciousSessionCount()`
+
+UnsetSuspiciousSessionCount ensures that no value is present for SuspiciousSessionCount, not even an explicit nil
 
