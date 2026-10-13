@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'AttributeValueDTO', 'V1AttributeValue
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Value** | Pointer to **string** | Technical name of the Attribute value. This is unique and cannot be changed after creation. Allowed characters are letters, numbers, dashes (-), and underscores (_); the value cannot start or end with a dash or underscore. | [optional] 
+**Value** | Pointer to **string** | Technical name of the Attribute value. This is unique and cannot be changed after creation. Allowed characters are letters, numbers, dashes (-), and underscores (_). Spaces are not supported. The value cannot start or end with a dash or underscore. | [optional] 
 **Name** | Pointer to **string** | The display name of the Attribute value. Allowed characters are letters, numbers, whitespace, and the following special characters: . / | , ( ) & _ - | [optional] 
 **Status** | Pointer to **string** | The status of the Attribute value. | [optional] 
 **Type** | Pointer to **NullableString** | Indicates how this Attribute value was created. static values are pre-defined and created directly through this API. adhoc values are created dynamically through an internal service-to-service flow when the parent Attribute has isAdhoc set to true, and cannot be created directly through the public create-value API. | [optional] 
