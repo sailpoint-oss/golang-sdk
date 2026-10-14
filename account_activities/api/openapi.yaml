@@ -28,7 +28,7 @@ servers:
       description: This is the api url of your tenant
 security:
 - userAuth:
-  - sp:scopes:all
+  - idn:account-activity:read
 tags:
 - description: "Use this API to implement account activity tracking functionality.\n\
     With this functionality in place, users can track source account activity in Identity\
@@ -247,9 +247,15 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth:
+        - idn:account-activity:read
       summary: List account activities
       tags:
       - Account Activities
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - API
   /account-activities/v1/{id}:
     get:
       description: This gets a single account activity by its id.
@@ -346,9 +352,15 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth:
+        - idn:account-activity:read
       summary: Get an account activity
       tags:
       - Account Activities
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - API
 components:
   parameters:
     limit:
