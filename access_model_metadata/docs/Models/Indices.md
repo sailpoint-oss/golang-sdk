@@ -26,6 +26,8 @@ tags: ['SDK', 'Software Development Kit', 'Index', 'V1Index']
 
 * `ROLES` (value: `"roles"`)
 
+* `WORKFLOWSUMMARIES` (value: `"workflowsummaries"`)
+
 * `STAR` (value: `"*"`)
 
 

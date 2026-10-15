@@ -84,7 +84,7 @@ Class | Method | HTTP request | Description
 *CustomFormsAPI* | [**CreateFormDefinitionV1**](docs/CustomFormsAPI.md#createformdefinitionv1) | **Post** /form-definitions/v1 | Creates a form definition.
 *CustomFormsAPI* | [**CreateFormInstanceV1**](docs/CustomFormsAPI.md#createforminstancev1) | **Post** /form-instances/v1 | Creates a form instance.
 *CustomFormsAPI* | [**DeleteFormDefinitionV1**](docs/CustomFormsAPI.md#deleteformdefinitionv1) | **Delete** /form-definitions/v1/{formDefinitionID} | Deletes a form definition.
-*CustomFormsAPI* | [**ExportFormDefinitionsByTenantV1**](docs/CustomFormsAPI.md#exportformdefinitionsbytenantv1) | **Get** /form-definitions/v1/export | List form definitions by tenant.
+*CustomFormsAPI* | [**ExportFormDefinitionsByTenantV1**](docs/CustomFormsAPI.md#exportformdefinitionsbytenantv1) | **Get** /form-definitions/v1/export | Export form definitions by tenant.
 *CustomFormsAPI* | [**GetFileFromS3V1**](docs/CustomFormsAPI.md#getfilefroms3v1) | **Get** /form-definitions/v1/{formDefinitionID}/file/{fileID} | Download definition file by fileid.
 *CustomFormsAPI* | [**GetFormDefinitionByKeyV1**](docs/CustomFormsAPI.md#getformdefinitionbykeyv1) | **Get** /form-definitions/v1/{formDefinitionID} | Return a form definition.
 *CustomFormsAPI* | [**GetFormInstanceByKeyV1**](docs/CustomFormsAPI.md#getforminstancebykeyv1) | **Get** /form-instances/v1/{formInstanceID} | Returns a form instance.
@@ -92,7 +92,7 @@ Class | Method | HTTP request | Description
 *CustomFormsAPI* | [**ImportFormDefinitionsV1**](docs/CustomFormsAPI.md#importformdefinitionsv1) | **Post** /form-definitions/v1/import | Import form definitions from export.
 *CustomFormsAPI* | [**PatchFormDefinitionV1**](docs/CustomFormsAPI.md#patchformdefinitionv1) | **Patch** /form-definitions/v1/{formDefinitionID} | Patch a form definition.
 *CustomFormsAPI* | [**PatchFormInstanceV1**](docs/CustomFormsAPI.md#patchforminstancev1) | **Patch** /form-instances/v1/{formInstanceID} | Patch a form instance.
-*CustomFormsAPI* | [**SearchFormDefinitionsByTenantV1**](docs/CustomFormsAPI.md#searchformdefinitionsbytenantv1) | **Get** /form-definitions/v1 | Export form definitions by tenant.
+*CustomFormsAPI* | [**SearchFormDefinitionsByTenantV1**](docs/CustomFormsAPI.md#searchformdefinitionsbytenantv1) | **Get** /form-definitions/v1 | List form definitions by tenant.
 *CustomFormsAPI* | [**SearchFormElementDataByElementIDV1**](docs/CustomFormsAPI.md#searchformelementdatabyelementidv1) | **Get** /form-instances/v1/{formInstanceID}/data-source/{formElementID} | Retrieves dynamic data by element.
 *CustomFormsAPI* | [**SearchFormInstancesByTenantV1**](docs/CustomFormsAPI.md#searchforminstancesbytenantv1) | **Get** /form-instances/v1 | List form instances by tenant.
 *CustomFormsAPI* | [**SearchPreDefinedSelectOptionsV1**](docs/CustomFormsAPI.md#searchpredefinedselectoptionsv1) | **Get** /form-definitions/v1/predefined-select-options | List predefined select options.

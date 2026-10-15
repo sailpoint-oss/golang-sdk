@@ -79,8 +79,10 @@ All URIs are relative to *https://sailpoint.api.identitynow.com*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*JITActivationsAPI* | [**GetJitActivationFrictionsV1**](docs/JITActivationsAPI.md#getjitactivationfrictionsv1) | **Get** /jit-activations/v1/{activationId}/frictions | Get JIT activation frictions
 *JITActivationsAPI* | [**ListJitActivationHistoryForCurrentIdentityV1**](docs/JITActivationsAPI.md#listjitactivationhistoryforcurrentidentityv1) | **Get** /jit-activation-history/v1/current-identity | List JIT activation history (self)
 *JITActivationsAPI* | [**ListJitActivationHistoryV1**](docs/JITActivationsAPI.md#listjitactivationhistoryv1) | **Get** /jit-activation-history/v1 | List JIT activation history (admin)
+*JITActivationsAPI* | [**PatchJitActivationFrictionsV1**](docs/JITActivationsAPI.md#patchjitactivationfrictionsv1) | **Patch** /jit-activations/v1/{activationId}/frictions | Submit JIT activation friction
 *JITActivationsAPI* | [**StartActivateWorkflowV1**](docs/JITActivationsAPI.md#startactivateworkflowv1) | **Post** /jit-activations/v1/activate | Start JIT activation workflow
 *JITActivationsAPI* | [**StartDeactivateWorkflowV1**](docs/JITActivationsAPI.md#startdeactivateworkflowv1) | **Post** /jit-activations/v1/deactivate | Deactivate JIT activation workflow
 *JITActivationsAPI* | [**StartExtendWorkflowV1**](docs/JITActivationsAPI.md#startextendworkflowv1) | **Post** /jit-activations/v1/extend | Extend JIT activation workflow
@@ -91,6 +93,13 @@ Class | Method | HTTP request | Description
  - [ActivationWorkflowStatus](docs/ActivationWorkflowStatus.md)
  - [ErrorMessageDto](docs/ErrorMessageDto.md)
  - [ErrorResponseDto](docs/ErrorResponseDto.md)
+ - [FrictionSubmittedData](docs/FrictionSubmittedData.md)
+ - [JITActivationFrictionPatchRequest](docs/JITActivationFrictionPatchRequest.md)
+ - [JITActivationFrictionResponse](docs/JITActivationFrictionResponse.md)
+ - [JITActivationFrictionState](docs/JITActivationFrictionState.md)
+ - [JITActivationFrictionStatus](docs/JITActivationFrictionStatus.md)
+ - [JITActivationFrictionType](docs/JITActivationFrictionType.md)
+ - [JITActivationFrictionsResponse](docs/JITActivationFrictionsResponse.md)
  - [JitActivationActivateRequest](docs/JitActivationActivateRequest.md)
  - [JitActivationActivateResponse](docs/JitActivationActivateResponse.md)
  - [JitActivationCallerMetadata](docs/JitActivationCallerMetadata.md)

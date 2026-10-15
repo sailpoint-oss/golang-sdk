@@ -10,6 +10,13 @@ configuration.go
 docs/ActivationWorkflowStatus.md
 docs/ErrorMessageDto.md
 docs/ErrorResponseDto.md
+docs/FrictionSubmittedData.md
+docs/JITActivationFrictionPatchRequest.md
+docs/JITActivationFrictionResponse.md
+docs/JITActivationFrictionState.md
+docs/JITActivationFrictionStatus.md
+docs/JITActivationFrictionType.md
+docs/JITActivationFrictionsResponse.md
 docs/JITActivationsAPI.md
 docs/JITActivationsAPIdeveloperSite_code_examples.yaml
 docs/JitActivationActivateRequest.md
@@ -36,6 +43,7 @@ go.sum
 model_activation_workflow_status.go
 model_error_message_dto.go
 model_error_response_dto.go
+model_friction_submitted_data.go
 model_jit_activation_activate_request.go
 model_jit_activation_activate_response.go
 model_jit_activation_caller_metadata.go
@@ -43,6 +51,12 @@ model_jit_activation_deactivate_request.go
 model_jit_activation_deactivate_response.go
 model_jit_activation_extend_request.go
 model_jit_activation_extend_response.go
+model_jit_activation_friction_patch_request.go
+model_jit_activation_friction_response.go
+model_jit_activation_friction_state.go
+model_jit_activation_friction_status.go
+model_jit_activation_friction_type.go
+model_jit_activation_frictions_response.go
 model_jitactivationhistorydocument.go
 model_jitactivationhistorydocument_frictions_inner.go
 model_jitactivationhistorydocument_summary.go

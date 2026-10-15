@@ -1,3 +1,38 @@
+- path: /jit-activations/v1/{activationId}/frictions
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/jitactivations/methods/jit-activations#get-jit-activation-frictions-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          activationId := `857fb802-1034-786a-151e-d3a56e4c5bd9` // string | Identifier of the activation. # string | Identifier of the activation.
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.JITActivationsAPI.GetJitActivationFrictionsV1(context.Background(), activationId).XSailPointExperimental(xSailPointExperimental).Execute()
+          //resp, r, err := apiClient.JITActivationsAPI.GetJitActivationFrictionsV1(context.Background(), activationId).XSailPointExperimental(xSailPointExperimental).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `JITActivationsAPI.GetJitActivationFrictionsV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetJitActivationFrictionsV1`: JITActivationFrictionsResponse
+          fmt.Fprintf(os.Stdout, "Response from `JITActivationsAPI.GetJitActivationFrictionsV1`: %v\n", resp)
+        }
 - path: /jit-activation-history/v1/current-identity
   method: Get
   xCodeSample:
@@ -77,6 +112,52 @@
           }
           // response from `ListJitActivationHistoryV1`: []Jitactivationhistorydocument
           fmt.Fprintf(os.Stdout, "Response from `JITActivationsAPI.ListJitActivationHistoryV1`: %v\n", resp)
+        }
+- path: /jit-activations/v1/{activationId}/frictions
+  method: Patch
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/jitactivations/methods/jit-activations#patch-jit-activation-frictions-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            jit_activations "github.com/sailpoint-oss/golang-sdk/v3/jit_activations"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          activationId := `857fb802-1034-786a-151e-d3a56e4c5bd9` // string | Identifier of the activation. # string | Identifier of the activation.
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+           jitactivationfrictionpatchrequestJson := []byte(`{
+          "submittedData" : "",
+          "bypass" : false,
+          "type" : ""
+        }`) // JITActivationFrictionPatchRequest | Submission for the current friction step.
+
+          
+          var jITActivationFrictionPatchRequest jit_activations.JITActivationFrictionPatchRequest
+          if err := json.Unmarshal(jitactivationfrictionpatchrequestJson, &jITActivationFrictionPatchRequest); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.JITActivationsAPI.PatchJitActivationFrictionsV1(context.Background(), activationId).XSailPointExperimental(xSailPointExperimental).JITActivationFrictionPatchRequest(jITActivationFrictionPatchRequest).Execute()
+          //resp, r, err := apiClient.JITActivationsAPI.PatchJitActivationFrictionsV1(context.Background(), activationId).XSailPointExperimental(xSailPointExperimental).JITActivationFrictionPatchRequest(jITActivationFrictionPatchRequest).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `JITActivationsAPI.PatchJitActivationFrictionsV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `PatchJitActivationFrictionsV1`: JITActivationFrictionsResponse
+          fmt.Fprintf(os.Stdout, "Response from `JITActivationsAPI.PatchJitActivationFrictionsV1`: %v\n", resp)
         }
 - path: /jit-activations/v1/activate
   method: Post

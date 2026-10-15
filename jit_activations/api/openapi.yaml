@@ -32,7 +32,7 @@ security:
 tags:
 - description: |
     Use this API to start and manage Just-In-Time (JIT) Privileged activation workflows for entitlement connections,
-    and to search activation history.
+    to read and submit activation frictions, and to search activation history.
 
     OAuth scopes: **idn:jit-activation-workflow:*** (activate, extend, deactivate, manage) for workflow APIs.
     **idn:jit-activation-history:read** (admin history view) and **idn:jit-activation-history-self:read** (self history view).
@@ -369,6 +369,398 @@ paths:
         - idn:jit-activation-workflow:extend
         - idn:jit-activation-workflow:manage
       summary: Extend JIT activation workflow
+      tags:
+      - JIT Activations
+      x-sailpoint-userLevels:
+      - USER
+  /jit-activations/v1/{activationId}/frictions:
+    get:
+      description: |
+        Returns evaluated frictions for a JIT Privileged (JIT P) activation.
+
+        Requires OAuth scope **idn:jit-activation-workflow:activate** or
+        **idn:jit-activation-workflow:manage**. The JWT identity id must match the
+        activation identity.
+
+        Returns HTTP 403 when **PSPM_JIT_ACCESS_ACTIVATION** or
+        **PSPM_JIT_ACCESS_ACTIVATION_15** is disabled.
+
+        Returns HTTP 404 when the activation does not exist.
+      operationId: getJitActivationFrictionsV1
+      parameters:
+      - description: Identifier of the activation.
+        example: 857fb802-1034-786a-151e-d3a56e4c5bd9
+        explode: false
+        in: path
+        name: activationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: startActivateWorkflowV1
+      - description: Use this header to enable this experimental API.
+        example: true
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                pendingPopulation:
+                  summary: Policy still evaluating
+                  value:
+                    activationId: 857fb802-1034-786a-151e-d3a56e4c5bd9
+                    frictionState: PENDING
+                    connectionId: 757fb803-9024-5861-e510-83a56e4c5bd3
+                    activationInitTime: 2026-05-08T18:33:52.029Z
+                    expiryMins: "5"
+                    frictions: []
+                inProgress:
+                  summary: Ticket step active
+                  value:
+                    activationId: 857fb802-1034-786a-151e-d3a56e4c5bd9
+                    frictionState: IN_PROGRESS
+                    connectionId: 757fb803-9024-5861-e510-83a56e4c5bd3
+                    activationInitTime: 2026-05-08T18:33:52.029Z
+                    expiryMins: "5"
+                    frictions:
+                    - type: TICKET
+                      status: ACTIVE
+                      bypassAllowed: false
+                      submittedData: null
+                    - type: JUSTIFICATION
+                      status: PENDING
+                      bypassAllowed: false
+                      minWords: 5
+                      submittedData: null
+                    - type: REAUTHENTICATION
+                      status: PENDING
+                      bypassAllowed: false
+                      submittedData: null
+                notApplicable:
+                  summary: No frictions required
+                  value:
+                    activationId: 857fb802-1034-786a-151e-d3a56e4c5bd9
+                    frictionState: NOT_APPLICABLE
+                    connectionId: 757fb803-9024-5861-e510-83a56e4c5bd3
+                    activationInitTime: 2026-05-08T18:33:52.029Z
+                    expiryMins: "5"
+                    frictions: []
+                complete:
+                  summary: Every friction step complete
+                  value:
+                    activationId: 857fb802-1034-786a-151e-d3a56e4c5bd9
+                    frictionState: COMPLETE
+                    connectionId: 757fb803-9024-5861-e510-83a56e4c5bd3
+                    activationInitTime: 2026-05-08T18:33:52.029Z
+                    expiryMins: "5"
+                    frictions:
+                    - type: TICKET
+                      status: COMPLETE
+                      bypassAllowed: false
+                      submittedData:
+                        ticketId: SN-123
+                        isValidTicket: true
+                        bypass: false
+                    - type: JUSTIFICATION
+                      status: COMPLETE
+                      bypassAllowed: false
+                      minWords: 5
+                      submittedData:
+                        justification: Current P1 requires activation to mitigate
+                        bypass: false
+                    - type: REAUTHENTICATION
+                      status: COMPLETE
+                      bypassAllowed: false
+                      submittedData:
+                        reauthSuccessful: true
+                        reauthDate: 2026-05-08T18:40:00.000Z
+                        bypass: false
+              schema:
+                $ref: '#/components/schemas/JITActivationFrictionsResponse'
+          description: Friction state for the activation.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: |
+            Frictions could not be loaded within 30 seconds after activation start, or the activation
+            was denied or failed.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/startActivateWorkflowV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/startActivateWorkflowV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:jit-activation-workflow:activate
+        - idn:jit-activation-workflow:manage
+      summary: Get JIT activation frictions
+      tags:
+      - JIT Activations
+      x-sailpoint-userLevels:
+      - USER
+    patch:
+      description: |
+        Submits the current friction step for a JIT Privileged (JIT P) activation.
+
+        Requires OAuth scope **idn:jit-activation-workflow:activate** or
+        **idn:jit-activation-workflow:manage**. The JWT identity id must match the
+        activation identity.
+
+        Returns HTTP 403 when **PSPM_JIT_ACCESS_ACTIVATION** or
+        **PSPM_JIT_ACCESS_ACTIVATION_15** is disabled.
+
+        Request bodies larger than 16 KB return HTTP 413.
+      operationId: patchJitActivationFrictionsV1
+      parameters:
+      - description: Identifier of the activation.
+        example: 857fb802-1034-786a-151e-d3a56e4c5bd9
+        explode: false
+        in: path
+        name: activationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: startActivateWorkflowV1
+      - description: Use this header to enable this experimental API.
+        example: true
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            examples:
+              submitJustification:
+                summary: Submit the active justification step
+                value:
+                  type: JUSTIFICATION
+                  submittedData:
+                    justification: Current P1 requires activation to mitigate
+                  bypass: false
+              submitTicket:
+                summary: Submit the active ticket step
+                value:
+                  type: TICKET
+                  submittedData:
+                    ticketId: SN-123
+              submitReauthentication:
+                summary: Submit the active reauthentication step
+                value:
+                  type: REAUTHENTICATION
+                  submittedData:
+                    reauthSuccessful: true
+                    reauthDate: 2026-05-08T18:40:00.000Z
+              bypassActiveStep:
+                summary: Bypass the active step
+                value:
+                  type: TICKET
+                  bypass: true
+            schema:
+              $ref: '#/components/schemas/JITActivationFrictionPatchRequest'
+        description: Submission for the current friction step.
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                ticketSubmitted:
+                  summary: Ticket submitted
+                  value:
+                    activationId: 857fb802-1034-786a-151e-d3a56e4c5bd9
+                    frictionState: IN_PROGRESS
+                    connectionId: 757fb803-9024-5861-e510-83a56e4c5bd3
+                    activationInitTime: 2026-05-08T18:33:52.029Z
+                    expiryMins: "5"
+                    frictions:
+                    - type: TICKET
+                      status: COMPLETE
+                      bypassAllowed: false
+                      submittedData:
+                        ticketId: SN-123
+                        isValidTicket: true
+                        bypass: false
+                    - type: JUSTIFICATION
+                      status: ACTIVE
+                      bypassAllowed: false
+                      minWords: 5
+                      submittedData: null
+                    - type: REAUTHENTICATION
+                      status: PENDING
+                      bypassAllowed: false
+                      submittedData: null
+              schema:
+                $ref: '#/components/schemas/JITActivationFrictionsResponse'
+          description: Updated friction state for the activation.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: |
+            Invalid friction submission, or the activation is not awaiting frictions. This includes
+            frictions that are not loaded yet, a type that is not the active step, and ticket or
+            justification validation failures.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/startActivateWorkflowV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "413":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Request body exceeds the 16 KB limit.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/startActivateWorkflowV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:jit-activation-workflow:activate
+        - idn:jit-activation-workflow:manage
+      summary: Submit JIT activation friction
       tags:
       - JIT Activations
       x-sailpoint-userLevels:
@@ -1263,6 +1655,215 @@ components:
       - startTime
       - status
       title: JIT Activation Extend Response
+      type: object
+    JITActivationFrictionState:
+      description: Aggregate friction state of an activation.
+      enum:
+      - PENDING
+      - IN_PROGRESS
+      - TIMED_OUT
+      - COMPLETE
+      - NOT_APPLICABLE
+      example: IN_PROGRESS
+      title: JIT Activation Friction State
+      type: string
+    JITActivationFrictionType:
+      description: Kind of friction step.
+      enum:
+      - TICKET
+      - JUSTIFICATION
+      - REAUTHENTICATION
+      example: JUSTIFICATION
+      title: JIT Activation Friction Type
+      type: string
+    JITActivationFrictionStatus:
+      description: Lifecycle of one friction step.
+      enum:
+      - PENDING
+      - ACTIVE
+      - TIMED_OUT
+      - COMPLETE
+      - NOT_APPLICABLE
+      - CANCELLED
+      - FAILED
+      example: ACTIVE
+      title: JIT Activation Friction Status
+      type: string
+    FrictionSubmittedData:
+      description: Data submitted for a friction step.
+      properties:
+        justification:
+          description: Justification text.
+          example: Current P1 requires activation to mitigate
+          maxLength: 2000
+          type: string
+        bypass:
+          default: false
+          description: Whether this step was bypassed.
+          example: false
+          type: boolean
+        ticketId:
+          description: Ticketing system identifier.
+          example: SN-123
+          maxLength: 128
+          type: string
+        isValidTicket:
+          default: false
+          description: Whether the ticket is valid. Set by the server.
+          example: true
+          readOnly: true
+          type: boolean
+        attempts:
+          description: Count of failed submissions for this step. The server sets
+            this value and ignores it on PATCH.
+          example: 1
+          format: int32
+          readOnly: true
+          type: integer
+        reauthSuccessful:
+          default: false
+          description: Whether reauthentication succeeded.
+          example: true
+          type: boolean
+        reauthDate:
+          description: Time of reauthentication.
+          example: 2026-05-08T18:40:00.000Z
+          pattern: "^$|^\\d{4}-\\d{2}-\\d{2}(T\\d{2}:\\d{2}(:\\d{2})?(\\.\\d+)?(Z|[+-]\\\
+            d{2}(:?\\d{2})?)?)?$"
+          type: string
+        integrationDisabled:
+          default: false
+          description: Whether the ticketing integration is disabled. Set by the server.
+          example: false
+          readOnly: true
+          type: boolean
+      title: Friction Submitted Data
+      type: object
+    JITActivationFrictionResponse:
+      description: One friction step on an activation.
+      example:
+        submittedData: ""
+        minWords: 5
+        type: ""
+        bypassAllowed: false
+        status: ""
+      properties:
+        type:
+          allOf:
+          - $ref: '#/components/schemas/JITActivationFrictionType'
+          description: Kind of friction step.
+          nullable: true
+        status:
+          allOf:
+          - $ref: '#/components/schemas/JITActivationFrictionStatus'
+          description: Lifecycle of this friction step.
+          nullable: true
+        submittedData:
+          allOf:
+          - $ref: '#/components/schemas/FrictionSubmittedData'
+          description: Data submitted for this friction step.
+          nullable: true
+        bypassAllowed:
+          description: Whether this step may be bypassed.
+          example: false
+          type: boolean
+        minWords:
+          description: Minimum word count for a justification step.
+          example: 5
+          format: int32
+          type: integer
+      required:
+      - bypassAllowed
+      - status
+      - submittedData
+      - type
+      title: JIT Activation Friction Response
+      type: object
+    JITActivationFrictionsResponse:
+      description: Friction state for an activation.
+      example:
+        expiryMins: "5"
+        frictionState: ""
+        frictions:
+        - submittedData: ""
+          minWords: 5
+          type: ""
+          bypassAllowed: false
+          status: ""
+        - submittedData: ""
+          minWords: 5
+          type: ""
+          bypassAllowed: false
+          status: ""
+        activationInitTime: 2026-05-08T18:33:52.029Z
+        connectionId: 757fb803-9024-5861-e510-83a56e4c5bd3
+        activationId: 857fb802-1034-786a-151e-d3a56e4c5bd9
+      properties:
+        activationId:
+          description: Identifier of the activation.
+          example: 857fb802-1034-786a-151e-d3a56e4c5bd9
+          format: uuid
+          nullable: true
+          type: string
+        frictionState:
+          allOf:
+          - $ref: '#/components/schemas/JITActivationFrictionState'
+          description: Aggregate friction state of the activation.
+          nullable: true
+        connectionId:
+          description: Identifier of the entitlement connection.
+          example: 757fb803-9024-5861-e510-83a56e4c5bd3
+          nullable: true
+          type: string
+        activationInitTime:
+          description: Time the activation started.
+          example: 2026-05-08T18:33:52.029Z
+          format: date-time
+          nullable: true
+          type: string
+        expiryMins:
+          description: Minutes allowed to complete all frictions.
+          example: "5"
+          type: string
+        frictions:
+          description: Friction steps for the activation.
+          items:
+            $ref: '#/components/schemas/JITActivationFrictionResponse'
+          type: array
+      required:
+      - activationId
+      - activationInitTime
+      - connectionId
+      - expiryMins
+      - frictionState
+      - frictions
+      title: JIT Activation Frictions Response
+      type: object
+    JITActivationFrictionPatchRequest:
+      description: Submission for the current friction step.
+      example:
+        submittedData: ""
+        bypass: false
+        type: ""
+      properties:
+        type:
+          allOf:
+          - $ref: '#/components/schemas/JITActivationFrictionType'
+          description: Kind of friction step being submitted.
+        submittedData:
+          allOf:
+          - $ref: '#/components/schemas/FrictionSubmittedData'
+          description: Data submitted for this friction step. Omit when bypassing
+            a step that allows bypass.
+        bypass:
+          default: false
+          description: Whether to bypass this friction step.
+          example: false
+          nullable: true
+          type: boolean
+      required:
+      - type
+      title: JIT Activation Friction Patch Request
       type: object
     Jitactivationhistorydocument:
       description: A single JIT activation history record.

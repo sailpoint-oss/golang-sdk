@@ -14,7 +14,7 @@ import (
 	"encoding/json"
 )
 
-// Index Enum representing the currently supported indices. Additional values may be added in the future without notice.
+// Index Enum representing the currently supported indices. Additional values may be added in the future without notice.  The `*` value does not include the `workflowsummaries` index. To search workflow summaries, specify `workflowsummaries` explicitly.
 type Index string
 
 // List of Index
@@ -25,6 +25,7 @@ const (
 	INDEX_EVENTS Index = "events"
 	INDEX_IDENTITIES Index = "identities"
 	INDEX_ROLES Index = "roles"
+	INDEX_WORKFLOWSUMMARIES Index = "workflowsummaries"
 	INDEX_STAR Index = "*"
 )
 
@@ -36,6 +37,7 @@ var AllowedIndexEnumValues = []Index{
 	"events",
 	"identities",
 	"roles",
+	"workflowsummaries",
 	"*",
 }
 

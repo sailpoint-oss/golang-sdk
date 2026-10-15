@@ -22,6 +22,20 @@ func Test_jit_activations_JITActivationsAPIService(t *testing.T) {
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
+	t.Run("Test JITActivationsAPIService GetJitActivationFrictionsV1", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var activationId string
+
+		resp, httpRes, err := apiClient.JITActivationsAPI.GetJitActivationFrictionsV1(context.Background(), activationId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test JITActivationsAPIService ListJitActivationHistoryForCurrentIdentityV1", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -39,6 +53,20 @@ func Test_jit_activations_JITActivationsAPIService(t *testing.T) {
 		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.JITActivationsAPI.ListJitActivationHistoryV1(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test JITActivationsAPIService PatchJitActivationFrictionsV1", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var activationId string
+
+		resp, httpRes, err := apiClient.JITActivationsAPI.PatchJitActivationFrictionsV1(context.Background(), activationId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

@@ -947,7 +947,7 @@ func (r ApiExportFormDefinitionsByTenantV1Request) Execute() ([]ExportFormDefini
 }
 
 /*
-ExportFormDefinitionsByTenantV1 List form definitions by tenant.
+ExportFormDefinitionsByTenantV1 Export form definitions by tenant.
 
 No parameters required.
 
@@ -2376,7 +2376,7 @@ func (r ApiSearchFormDefinitionsByTenantV1Request) Execute() (*ListFormDefinitio
 }
 
 /*
-SearchFormDefinitionsByTenantV1 Export form definitions by tenant.
+SearchFormDefinitionsByTenantV1 List form definitions by tenant.
 
 No parameters required.
 
@@ -2749,15 +2749,8 @@ func (a *CustomFormsAPIService) SearchFormElementDataByElementIDV1Execute(r ApiS
 type ApiSearchFormInstancesByTenantV1Request struct {
 	ctx context.Context
 	ApiService *CustomFormsAPIService
-	offset *int64
 	limit *int64
 	filters *string
-}
-
-// Offset  Integer specifying the offset of the first result from the beginning of the collection. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). The offset value is record-based, not page-based, and the index starts at 0.
-func (r ApiSearchFormInstancesByTenantV1Request) Offset(offset int64) ApiSearchFormInstancesByTenantV1Request {
-	r.offset = &offset
-	return r
 }
 
 // Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used.
@@ -2812,12 +2805,6 @@ func (a *CustomFormsAPIService) SearchFormInstancesByTenantV1Execute(r ApiSearch
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
-	} else {
-		var defaultValue int64 = 0
-		r.offset = &defaultValue
-	}
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
 	} else {

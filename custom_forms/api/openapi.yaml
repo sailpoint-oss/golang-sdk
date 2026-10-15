@@ -160,7 +160,7 @@ paths:
       - userAuth:
         - sp:forms:read
         - sp:forms:manage
-      summary: Export form definitions by tenant.
+      summary: List form definitions by tenant.
       tags:
       - Custom Forms
       x-sailpoint-userLevels:
@@ -712,7 +712,7 @@ paths:
         - sp:config:read
         - sp:forms:manage
         - sp:config:manage
-      summary: List form definitions by tenant.
+      summary: Export form definitions by tenant.
       tags:
       - Custom Forms
       x-sailpoint-userLevels:
@@ -1161,23 +1161,6 @@ paths:
         by form definition ID.
       operationId: searchFormInstancesByTenantV1
       parameters:
-      - description: |-
-          Offset
-
-          Integer specifying the offset of the first result from the beginning of the collection. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results).
-          The offset value is record-based, not page-based, and the index starts at 0.
-        example: 0
-        explode: true
-        in: query
-        name: offset
-        required: false
-        schema:
-          default: 0
-          format: int64
-          type: integer
-          x-go-name: Offset
-        style: form
-        x-go-name: Offset
       - description: |-
           Limit
 

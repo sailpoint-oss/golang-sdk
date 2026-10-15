@@ -11,7 +11,7 @@ tags: ['SDK', 'Software Development Kit', 'JITActivations', 'V1JITActivations']
 
 # JITActivationsAPI
   Use this API to start and manage Just-In-Time (JIT) Privileged activation workflows for entitlement connections,
-and to search activation history.
+to read and submit activation frictions, and to search activation history.
 
 OAuth scopes: **idn:jit-activation-workflow:*** (activate, extend, deactivate, manage) for workflow APIs.
 **idn:jit-activation-history:read** (admin history view) and **idn:jit-activation-history-self:read** (self history view).
@@ -20,12 +20,103 @@ All URIs are relative to *https://sailpoint.api.identitynow.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**get-jit-activation-frictions-v1**](#get-jit-activation-frictions-v1) | **Get** `/jit-activations/v1/{activationId}/frictions` | Get JIT activation frictions
 [**list-jit-activation-history-for-current-identity-v1**](#list-jit-activation-history-for-current-identity-v1) | **Get** `/jit-activation-history/v1/current-identity` | List JIT activation history (self)
 [**list-jit-activation-history-v1**](#list-jit-activation-history-v1) | **Get** `/jit-activation-history/v1` | List JIT activation history (admin)
+[**patch-jit-activation-frictions-v1**](#patch-jit-activation-frictions-v1) | **Patch** `/jit-activations/v1/{activationId}/frictions` | Submit JIT activation friction
 [**start-activate-workflow-v1**](#start-activate-workflow-v1) | **Post** `/jit-activations/v1/activate` | Start JIT activation workflow
 [**start-deactivate-workflow-v1**](#start-deactivate-workflow-v1) | **Post** `/jit-activations/v1/deactivate` | Deactivate JIT activation workflow
 [**start-extend-workflow-v1**](#start-extend-workflow-v1) | **Post** `/jit-activations/v1/extend` | Extend JIT activation workflow
 
+
+## get-jit-activation-frictions-v1
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```go
+   configuration = Configuration()
+   configuration.Experimental = true
+ ```
+:::
+Get JIT activation frictions
+Returns evaluated frictions for a JIT Privileged (JIT P) activation.
+
+Requires OAuth scope **idn:jit-activation-workflow:activate** or
+**idn:jit-activation-workflow:manage**. The JWT identity id must match the
+activation identity.
+
+Returns HTTP 403 when **PSPM_JIT_ACCESS_ACTIVATION** or
+**PSPM_JIT_ACCESS_ACTIVATION_15** is disabled.
+
+Returns HTTP 404 when the activation does not exist.
+
+
+[API Spec](https://developer.sailpoint.com/docs/api/get-jit-activation-frictions-v-1)
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**activationId** | **string** | Identifier of the activation. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetJitActivationFrictionsV1Request struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
+
+### Return type
+
+[**JITActivationFrictionsResponse**](../models/jit-activation-frictions-response)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+  
+    
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+)
+
+func main() {
+    activationId := `857fb802-1034-786a-151e-d3a56e4c5bd9` // string | Identifier of the activation. # string | Identifier of the activation.
+    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+
+    
+
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.JITActivationsAPI.GetJitActivationFrictionsV1(context.Background(), activationId).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.JITActivationsAPI.GetJitActivationFrictionsV1(context.Background(), activationId).XSailPointExperimental(xSailPointExperimental).Execute()
+    if err != nil {
+	    fmt.Fprintf(os.Stderr, "Error when calling `JITActivationsAPI.GetJitActivationFrictionsV1``: %v\n", err)
+	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetJitActivationFrictionsV1`: JITActivationFrictionsResponse
+    fmt.Fprintf(os.Stdout, "Response from `JITActivationsAPI.GetJitActivationFrictionsV1`: %v\n", resp)
+}
+```
+
+[[Back to top]](#)
 
 ## list-jit-activation-history-for-current-identity-v1
 :::warning experimental 
@@ -204,6 +295,106 @@ func main() {
     }
     // response from `ListJitActivationHistoryV1`: []Jitactivationhistorydocument
     fmt.Fprintf(os.Stdout, "Response from `JITActivationsAPI.ListJitActivationHistoryV1`: %v\n", resp)
+}
+```
+
+[[Back to top]](#)
+
+## patch-jit-activation-frictions-v1
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```go
+   configuration = Configuration()
+   configuration.Experimental = true
+ ```
+:::
+Submit JIT activation friction
+Submits the current friction step for a JIT Privileged (JIT P) activation.
+
+Requires OAuth scope **idn:jit-activation-workflow:activate** or
+**idn:jit-activation-workflow:manage**. The JWT identity id must match the
+activation identity.
+
+Returns HTTP 403 when **PSPM_JIT_ACCESS_ACTIVATION** or
+**PSPM_JIT_ACCESS_ACTIVATION_15** is disabled.
+
+Request bodies larger than 16 KB return HTTP 413.
+
+
+[API Spec](https://developer.sailpoint.com/docs/api/patch-jit-activation-frictions-v-1)
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**activationId** | **string** | Identifier of the activation. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPatchJitActivationFrictionsV1Request struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
+ **jITActivationFrictionPatchRequest** | [**JITActivationFrictionPatchRequest**](../models/jit-activation-friction-patch-request) | Submission for the current friction step. | 
+
+### Return type
+
+[**JITActivationFrictionsResponse**](../models/jit-activation-frictions-response)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+  "encoding/json"
+    jit_activations "github.com/sailpoint-oss/golang-sdk/v3/jit_activations"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+)
+
+func main() {
+    activationId := `857fb802-1034-786a-151e-d3a56e4c5bd9` // string | Identifier of the activation. # string | Identifier of the activation.
+    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+    jitactivationfrictionpatchrequestJson := []byte(`{
+          "submittedData" : "",
+          "bypass" : false,
+          "type" : ""
+        }`) // JITActivationFrictionPatchRequest | Submission for the current friction step.
+
+    var jITActivationFrictionPatchRequest jit_activations.JITActivationFrictionPatchRequest
+    if err := json.Unmarshal(jitactivationfrictionpatchrequestJson, &jITActivationFrictionPatchRequest); err != nil {
+      fmt.Println("Error:", err)
+      return
+    }
+    
+
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.JITActivationsAPI.PatchJitActivationFrictionsV1(context.Background(), activationId).XSailPointExperimental(xSailPointExperimental).JITActivationFrictionPatchRequest(jITActivationFrictionPatchRequest).Execute()
+	  //resp, r, err := apiClient.JITActivationsAPI.PatchJitActivationFrictionsV1(context.Background(), activationId).XSailPointExperimental(xSailPointExperimental).JITActivationFrictionPatchRequest(jITActivationFrictionPatchRequest).Execute()
+    if err != nil {
+	    fmt.Fprintf(os.Stderr, "Error when calling `JITActivationsAPI.PatchJitActivationFrictionsV1``: %v\n", err)
+	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `PatchJitActivationFrictionsV1`: JITActivationFrictionsResponse
+    fmt.Fprintf(os.Stdout, "Response from `JITActivationsAPI.PatchJitActivationFrictionsV1`: %v\n", resp)
 }
 ```
 

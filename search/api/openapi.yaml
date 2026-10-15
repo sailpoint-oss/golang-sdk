@@ -128,6 +128,8 @@ paths:
                 $ref: '#/components/examples/query-identities'
               roles:
                 $ref: '#/components/examples/query-roles'
+              workflowSummaries:
+                $ref: '#/components/examples/query-workflowsummaries'
               query-fields:
                 $ref: '#/components/examples/query-fields'
               query-timeZone:
@@ -164,6 +166,8 @@ paths:
                   $ref: '#/components/examples/identities'
                 roles:
                   $ref: '#/components/examples/roles'
+                workflowSummaries:
+                  $ref: '#/components/examples/workflowsummaries'
                 query-fields:
                   $ref: '#/components/examples/queryfields'
                 query-timeZone:
@@ -529,7 +533,7 @@ paths:
       - description: |
           The index from which to fetch the specified document.
 
-          The currently supported index names are: *accessprofiles*, *accountactivities*, *entitlements*, *events*, *identities*, and *roles*.
+          The currently supported index names are: *accessprofiles*, *accountactivities*, *entitlements*, *events*, *identities*, *roles*, and *workflowsummaries*.
         example: identities
         explode: false
         in: path
@@ -543,6 +547,7 @@ paths:
           - events
           - identities
           - roles
+          - workflowsummaries
           type: string
         style: simple
       - description: ID of the requested document.
@@ -577,6 +582,8 @@ paths:
                   $ref: '#/components/examples/identity'
                 role:
                   $ref: '#/components/examples/role'
+                workflowSummary:
+                  $ref: '#/components/examples/workflowsummary'
               schema:
                 $ref: '#/components/schemas/SearchDocument'
           description: The requested document.
@@ -714,6 +721,15 @@ components:
         - roles
         query:
           query: enabled:true
+    query-workflowsummaries:
+      summary: Query for workflow summaries
+      value:
+        indices:
+        - workflowsummaries
+        query:
+          query: workflowId:"61c90819-2922-421a-bdfc-384cae2e4606"
+        sort:
+        - -created
     query-fields:
       summary: Query with fields
       value:
@@ -1340,6 +1356,53 @@ components:
         org: org-name
         _type: role
         type: role
+    workflowsummaries:
+      summary: A collection of workflow summaries
+      value:
+      - id: b393f4e2-4785-4d7f-ab27-3a6b8ded4c81-3
+        workflowExecutionId: b393f4e2-4785-4d7f-ab27-3a6b8ded4c81
+        eventId: 3
+        workflowName: Send Email
+        workflowId: d201c5d9-d37b-4a2f-af14-66414f39d568
+        status: Completed
+        workflowTest: false
+        owner:
+          type: IDENTITY
+          id: 2c9180844d5c0ab5014d5fb5bc6c0bc8
+          name: William Wilson
+        requestId: 41e12a74fa7b4a6a98ae47887b64acdb
+        created: 2022-02-07T20:13:31.640618296Z
+        synced: 2022-02-07T20:13:32.104Z
+        type: ActivityTaskCompleted
+        attributes:
+          task: sp:send-email
+          stepName: sendEmail
+          displayName: Send Email
+          technicalName: sendEmail
+          result: "{\"status\":\"sent\"}"
+        pod: pod01-useast1
+        org: org-name
+        _type: workflowsummary
+      - id: b393f4e2-4785-4d7f-ab27-3a6b8ded4c81-1
+        workflowExecutionId: b393f4e2-4785-4d7f-ab27-3a6b8ded4c81
+        eventId: 1
+        workflowName: Send Email
+        workflowId: d201c5d9-d37b-4a2f-af14-66414f39d568
+        status: Completed
+        workflowTest: false
+        owner:
+          type: IDENTITY
+          id: 2c9180844d5c0ab5014d5fb5bc6c0bc8
+          name: William Wilson
+        requestId: 41e12a74fa7b4a6a98ae47887b64acdb
+        created: 2022-02-07T20:13:29.356648026Z
+        synced: 2022-02-07T20:13:32.104Z
+        type: WorkflowExecutionStarted
+        attributes:
+          trigger: idn:identity-created
+        pod: pod01-useast1
+        org: org-name
+        _type: workflowsummary
     queryfields:
       summary: Query with fields
       value:
@@ -3301,6 +3364,30 @@ components:
         tags:
         - TAG_1
         - TAG_2
+    workflowsummary:
+      summary: Workflow summary
+      value:
+        id: b393f4e2-4785-4d7f-ab27-3a6b8ded4c81-3
+        workflowExecutionId: b393f4e2-4785-4d7f-ab27-3a6b8ded4c81
+        eventId: 3
+        workflowName: Send Email
+        workflowId: d201c5d9-d37b-4a2f-af14-66414f39d568
+        status: Completed
+        workflowTest: false
+        owner:
+          type: IDENTITY
+          id: 2c9180844d5c0ab5014d5fb5bc6c0bc8
+          name: William Wilson
+        requestId: 41e12a74fa7b4a6a98ae47887b64acdb
+        created: 2022-02-07T20:13:31.640618296Z
+        synced: 2022-02-07T20:13:32.104Z
+        type: ActivityTaskCompleted
+        attributes:
+          task: sp:send-email
+          stepName: sendEmail
+          displayName: Send Email
+          technicalName: sendEmail
+          result: "{\"status\":\"sent\"}"
   parameters:
     offset:
       description: |-
@@ -3369,7 +3456,7 @@ components:
       description: |
         The index from which to fetch the specified document.
 
-        The currently supported index names are: *accessprofiles*, *accountactivities*, *entitlements*, *events*, *identities*, and *roles*.
+        The currently supported index names are: *accessprofiles*, *accountactivities*, *entitlements*, *events*, *identities*, *roles*, and *workflowsummaries*.
       example: identities
       explode: false
       in: path
@@ -3383,6 +3470,7 @@ components:
         - events
         - identities
         - roles
+        - workflowsummaries
         type: string
       style: simple
     id:
@@ -3480,6 +3568,8 @@ components:
       description: |-
         Enum representing the currently supported indices.
         Additional values may be added in the future without notice.
+
+        The `*` value does not include the `workflowsummaries` index. To search workflow summaries, specify `workflowsummaries` explicitly.
       enum:
       - accessprofiles
       - accountactivities
@@ -3487,6 +3577,7 @@ components:
       - events
       - identities
       - roles
+      - workflowsummaries
       - '*'
       example: identities
       type: string
