@@ -32,6 +32,8 @@ type AccessRequestAdminItemStatus struct {
 	State *RequestedItemStatusRequestState `json:"state,omitempty"`
 	// Approval details for each item.
 	ApprovalDetails []ApprovalStatusDto `json:"approvalDetails,omitempty"`
+	// List of approval IDs associated with the request.
+	ApprovalIds []string `json:"approvalIds,omitempty"`
 	// Manual work items created for provisioning the item.
 	ManualWorkItemDetails []ManualWorkItemDetails `json:"manualWorkItemDetails,omitempty"`
 	// Id of associated account activity item.
@@ -349,6 +351,39 @@ func (o *AccessRequestAdminItemStatus) HasApprovalDetails() bool {
 // SetApprovalDetails gets a reference to the given []ApprovalStatusDto and assigns it to the ApprovalDetails field.
 func (o *AccessRequestAdminItemStatus) SetApprovalDetails(v []ApprovalStatusDto) {
 	o.ApprovalDetails = v
+}
+
+// GetApprovalIds returns the ApprovalIds field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AccessRequestAdminItemStatus) GetApprovalIds() []string {
+	if o == nil {
+		var ret []string
+		return ret
+	}
+	return o.ApprovalIds
+}
+
+// GetApprovalIdsOk returns a tuple with the ApprovalIds field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AccessRequestAdminItemStatus) GetApprovalIdsOk() ([]string, bool) {
+	if o == nil || IsNil(o.ApprovalIds) {
+		return nil, false
+	}
+	return o.ApprovalIds, true
+}
+
+// HasApprovalIds returns a boolean if a field has been set.
+func (o *AccessRequestAdminItemStatus) HasApprovalIds() bool {
+	if o != nil && !IsNil(o.ApprovalIds) {
+		return true
+	}
+
+	return false
+}
+
+// SetApprovalIds gets a reference to the given []string and assigns it to the ApprovalIds field.
+func (o *AccessRequestAdminItemStatus) SetApprovalIds(v []string) {
+	o.ApprovalIds = v
 }
 
 // GetManualWorkItemDetails returns the ManualWorkItemDetails field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -1107,6 +1142,9 @@ func (o AccessRequestAdminItemStatus) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ApprovalDetails) {
 		toSerialize["approvalDetails"] = o.ApprovalDetails
 	}
+	if o.ApprovalIds != nil {
+		toSerialize["approvalIds"] = o.ApprovalIds
+	}
 	if o.ManualWorkItemDetails != nil {
 		toSerialize["manualWorkItemDetails"] = o.ManualWorkItemDetails
 	}
@@ -1199,6 +1237,7 @@ func (o *AccessRequestAdminItemStatus) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "errorMessages")
 		delete(additionalProperties, "state")
 		delete(additionalProperties, "approvalDetails")
+		delete(additionalProperties, "approvalIds")
 		delete(additionalProperties, "manualWorkItemDetails")
 		delete(additionalProperties, "accountActivityItemId")
 		delete(additionalProperties, "requestType")

@@ -320,7 +320,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CreateIdentityCollectorV1200Response**](../models/create-identity-collector-v1200-response)
+[**CreateIdentityCollectorV1201Response**](../models/create-identity-collector-v1201-response)
 
 ### HTTP request headers
 
@@ -382,7 +382,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `DataAccessSecurityAPI.CreateIdentityCollectorV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateIdentityCollectorV1`: CreateIdentityCollectorV1200Response
+    // response from `CreateIdentityCollectorV1`: CreateIdentityCollectorV1201Response
     fmt.Fprintf(os.Stdout, "Response from `DataAccessSecurityAPI.CreateIdentityCollectorV1`: %v\n", resp)
 }
 ```
@@ -1344,9 +1344,11 @@ func main() {
 
 ## get-identity-collector-types-v1
 List identity collector types
-Returns the public identity collector type display names exposed for metadata and UI discovery. This endpoint lists base types only (for example, `Box` rather than `Box SaaS`). SaaS variants are not listed here; the identity collector type is derived from `sourceId` when creating an identity collector. Existing identity collectors may still report SaaS variant types in list and update responses.
+Returns the public identity collector types exposed for metadata and UI discovery, including the ISC `connectorName` values to use when listing sources for each type. This endpoint lists base types only (for example, `Box` rather than `Box SaaS`). SaaS variants are not listed as separate types; create derives the identity collector type from `sourceId`. Existing identity collectors may still report SaaS variant types in list and update responses.
 
-Pagination is not supported for this endpoint; the full set of public types is always returned.
+Flagged types (Snowflake, Databricks, Atlassian Suite) are included only when the corresponding tenant feature flag is enabled.
+
+Pagination is not supported for this endpoint; the full set of enabled public types is always returned.
 
 [API Spec](https://developer.sailpoint.com/docs/api/get-identity-collector-types-v-1)
 
@@ -1366,7 +1368,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**[]string**
+[**Identitycollectortypesresponse**](../models/identitycollectortypesresponse)
 
 ### HTTP request headers
 
@@ -1401,7 +1403,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `DataAccessSecurityAPI.GetIdentityCollectorTypesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetIdentityCollectorTypesV1`: []string
+    // response from `GetIdentityCollectorTypesV1`: Identitycollectortypesresponse
     fmt.Fprintf(os.Stdout, "Response from `DataAccessSecurityAPI.GetIdentityCollectorTypesV1`: %v\n", resp)
 }
 ```

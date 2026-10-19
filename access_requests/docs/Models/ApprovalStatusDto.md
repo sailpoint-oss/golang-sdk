@@ -15,6 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'ApprovalStatusDto', 'V1ApprovalStatus
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**ApprovalId** | Pointer to **NullableString** | Unique identifier for the approval. May be null; use the `approvalIds` list on the item status to get the populated approval IDs. | [optional] 
 **Forwarded** | Pointer to **bool** | True if the request for this item was forwarded from one owner to another. | [optional] [default to false]
 **OriginalOwner** | Pointer to [**ApprovalStatusDtoOriginalOwner**](approval-status-dto-original-owner) |  | [optional] 
 **CurrentOwner** | Pointer to [**ApprovalStatusDtoCurrentOwner**](approval-status-dto-current-owner) |  | [optional] 
@@ -44,6 +45,41 @@ NewApprovalStatusDtoWithDefaults instantiates a new ApprovalStatusDto object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
+### GetApprovalId
+
+`func (o *ApprovalStatusDto) GetApprovalId() string`
+
+GetApprovalId returns the ApprovalId field if non-nil, zero value otherwise.
+
+### GetApprovalIdOk
+
+`func (o *ApprovalStatusDto) GetApprovalIdOk() (*string, bool)`
+
+GetApprovalIdOk returns a tuple with the ApprovalId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetApprovalId
+
+`func (o *ApprovalStatusDto) SetApprovalId(v string)`
+
+SetApprovalId sets ApprovalId field to given value.
+
+### HasApprovalId
+
+`func (o *ApprovalStatusDto) HasApprovalId() bool`
+
+HasApprovalId returns a boolean if a field has been set.
+
+### SetApprovalIdNil
+
+`func (o *ApprovalStatusDto) SetApprovalIdNil(b bool)`
+
+ SetApprovalIdNil sets the value for ApprovalId to be an explicit nil
+
+### UnsetApprovalId
+`func (o *ApprovalStatusDto) UnsetApprovalId()`
+
+UnsetApprovalId ensures that no value is present for ApprovalId, not even an explicit nil
 ### GetForwarded
 
 `func (o *ApprovalStatusDto) GetForwarded() bool`

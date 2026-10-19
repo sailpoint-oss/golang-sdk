@@ -14,11 +14,11 @@ import (
 	"encoding/json"
 )
 
-// checks if the CreateIdentityCollectorV1200Response type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &CreateIdentityCollectorV1200Response{}
+// checks if the CreateIdentityCollectorV1201Response type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CreateIdentityCollectorV1201Response{}
 
-// CreateIdentityCollectorV1200Response struct for CreateIdentityCollectorV1200Response
-type CreateIdentityCollectorV1200Response struct {
+// CreateIdentityCollectorV1201Response struct for CreateIdentityCollectorV1201Response
+type CreateIdentityCollectorV1201Response struct {
 	// The unique identifier of the created identity collector.
 	Id *int64 `json:"id,omitempty"`
 	// The display name of the created identity collector.
@@ -26,27 +26,27 @@ type CreateIdentityCollectorV1200Response struct {
 	AdditionalProperties map[string]interface{}
 }
 
-type _CreateIdentityCollectorV1200Response CreateIdentityCollectorV1200Response
+type _CreateIdentityCollectorV1201Response CreateIdentityCollectorV1201Response
 
-// NewCreateIdentityCollectorV1200Response instantiates a new CreateIdentityCollectorV1200Response object
+// NewCreateIdentityCollectorV1201Response instantiates a new CreateIdentityCollectorV1201Response object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateIdentityCollectorV1200Response() *CreateIdentityCollectorV1200Response {
-	this := CreateIdentityCollectorV1200Response{}
+func NewCreateIdentityCollectorV1201Response() *CreateIdentityCollectorV1201Response {
+	this := CreateIdentityCollectorV1201Response{}
 	return &this
 }
 
-// NewCreateIdentityCollectorV1200ResponseWithDefaults instantiates a new CreateIdentityCollectorV1200Response object
+// NewCreateIdentityCollectorV1201ResponseWithDefaults instantiates a new CreateIdentityCollectorV1201Response object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewCreateIdentityCollectorV1200ResponseWithDefaults() *CreateIdentityCollectorV1200Response {
-	this := CreateIdentityCollectorV1200Response{}
+func NewCreateIdentityCollectorV1201ResponseWithDefaults() *CreateIdentityCollectorV1201Response {
+	this := CreateIdentityCollectorV1201Response{}
 	return &this
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
-func (o *CreateIdentityCollectorV1200Response) GetId() int64 {
+func (o *CreateIdentityCollectorV1201Response) GetId() int64 {
 	if o == nil || IsNil(o.Id) {
 		var ret int64
 		return ret
@@ -56,7 +56,7 @@ func (o *CreateIdentityCollectorV1200Response) GetId() int64 {
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateIdentityCollectorV1200Response) GetIdOk() (*int64, bool) {
+func (o *CreateIdentityCollectorV1201Response) GetIdOk() (*int64, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
@@ -64,7 +64,7 @@ func (o *CreateIdentityCollectorV1200Response) GetIdOk() (*int64, bool) {
 }
 
 // HasId returns a boolean if a field has been set.
-func (o *CreateIdentityCollectorV1200Response) HasId() bool {
+func (o *CreateIdentityCollectorV1201Response) HasId() bool {
 	if o != nil && !IsNil(o.Id) {
 		return true
 	}
@@ -73,12 +73,12 @@ func (o *CreateIdentityCollectorV1200Response) HasId() bool {
 }
 
 // SetId gets a reference to the given int64 and assigns it to the Id field.
-func (o *CreateIdentityCollectorV1200Response) SetId(v int64) {
+func (o *CreateIdentityCollectorV1201Response) SetId(v int64) {
 	o.Id = &v
 }
 
 // GetName returns the Name field value if set, zero value otherwise.
-func (o *CreateIdentityCollectorV1200Response) GetName() string {
+func (o *CreateIdentityCollectorV1201Response) GetName() string {
 	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
@@ -88,7 +88,7 @@ func (o *CreateIdentityCollectorV1200Response) GetName() string {
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateIdentityCollectorV1200Response) GetNameOk() (*string, bool) {
+func (o *CreateIdentityCollectorV1201Response) GetNameOk() (*string, bool) {
 	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
@@ -96,7 +96,7 @@ func (o *CreateIdentityCollectorV1200Response) GetNameOk() (*string, bool) {
 }
 
 // HasName returns a boolean if a field has been set.
-func (o *CreateIdentityCollectorV1200Response) HasName() bool {
+func (o *CreateIdentityCollectorV1201Response) HasName() bool {
 	if o != nil && !IsNil(o.Name) {
 		return true
 	}
@@ -105,11 +105,11 @@ func (o *CreateIdentityCollectorV1200Response) HasName() bool {
 }
 
 // SetName gets a reference to the given string and assigns it to the Name field.
-func (o *CreateIdentityCollectorV1200Response) SetName(v string) {
+func (o *CreateIdentityCollectorV1201Response) SetName(v string) {
 	o.Name = &v
 }
 
-func (o CreateIdentityCollectorV1200Response) MarshalJSON() ([]byte, error) {
+func (o CreateIdentityCollectorV1201Response) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -117,7 +117,7 @@ func (o CreateIdentityCollectorV1200Response) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o CreateIdentityCollectorV1200Response) ToMap() (map[string]interface{}, error) {
+func (o CreateIdentityCollectorV1201Response) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
@@ -133,16 +133,16 @@ func (o CreateIdentityCollectorV1200Response) ToMap() (map[string]interface{}, e
 	return toSerialize, nil
 }
 
-func (o *CreateIdentityCollectorV1200Response) UnmarshalJSON(data []byte) (err error) {
-	varCreateIdentityCollectorV1200Response := _CreateIdentityCollectorV1200Response{}
+func (o *CreateIdentityCollectorV1201Response) UnmarshalJSON(data []byte) (err error) {
+	varCreateIdentityCollectorV1201Response := _CreateIdentityCollectorV1201Response{}
 
-	err = json.Unmarshal(data, &varCreateIdentityCollectorV1200Response)
+	err = json.Unmarshal(data, &varCreateIdentityCollectorV1201Response)
 
 	if err != nil {
 		return err
 	}
 
-	*o = CreateIdentityCollectorV1200Response(varCreateIdentityCollectorV1200Response)
+	*o = CreateIdentityCollectorV1201Response(varCreateIdentityCollectorV1201Response)
 
 	additionalProperties := make(map[string]interface{})
 
@@ -155,38 +155,38 @@ func (o *CreateIdentityCollectorV1200Response) UnmarshalJSON(data []byte) (err e
 	return err
 }
 
-type NullableCreateIdentityCollectorV1200Response struct {
-	value *CreateIdentityCollectorV1200Response
+type NullableCreateIdentityCollectorV1201Response struct {
+	value *CreateIdentityCollectorV1201Response
 	isSet bool
 }
 
-func (v NullableCreateIdentityCollectorV1200Response) Get() *CreateIdentityCollectorV1200Response {
+func (v NullableCreateIdentityCollectorV1201Response) Get() *CreateIdentityCollectorV1201Response {
 	return v.value
 }
 
-func (v *NullableCreateIdentityCollectorV1200Response) Set(val *CreateIdentityCollectorV1200Response) {
+func (v *NullableCreateIdentityCollectorV1201Response) Set(val *CreateIdentityCollectorV1201Response) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableCreateIdentityCollectorV1200Response) IsSet() bool {
+func (v NullableCreateIdentityCollectorV1201Response) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableCreateIdentityCollectorV1200Response) Unset() {
+func (v *NullableCreateIdentityCollectorV1201Response) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableCreateIdentityCollectorV1200Response(val *CreateIdentityCollectorV1200Response) *NullableCreateIdentityCollectorV1200Response {
-	return &NullableCreateIdentityCollectorV1200Response{value: val, isSet: true}
+func NewNullableCreateIdentityCollectorV1201Response(val *CreateIdentityCollectorV1201Response) *NullableCreateIdentityCollectorV1201Response {
+	return &NullableCreateIdentityCollectorV1201Response{value: val, isSet: true}
 }
 
-func (v NullableCreateIdentityCollectorV1200Response) MarshalJSON() ([]byte, error) {
+func (v NullableCreateIdentityCollectorV1201Response) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableCreateIdentityCollectorV1200Response) UnmarshalJSON(src []byte) error {
+func (v *NullableCreateIdentityCollectorV1201Response) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

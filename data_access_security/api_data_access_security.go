@@ -533,7 +533,7 @@ func (r ApiCreateIdentityCollectorV1Request) Createidentitycollectorrequest(crea
 	return r
 }
 
-func (r ApiCreateIdentityCollectorV1Request) Execute() (*CreateIdentityCollectorV1200Response, *http.Response, error) {
+func (r ApiCreateIdentityCollectorV1Request) Execute() (*CreateIdentityCollectorV1201Response, *http.Response, error) {
 	return r.ApiService.CreateIdentityCollectorV1Execute(r)
 }
 
@@ -555,13 +555,13 @@ func (a *DataAccessSecurityAPIService) CreateIdentityCollectorV1(ctx context.Con
 }
 
 // Execute executes the request
-//  @return CreateIdentityCollectorV1200Response
-func (a *DataAccessSecurityAPIService) CreateIdentityCollectorV1Execute(r ApiCreateIdentityCollectorV1Request) (*CreateIdentityCollectorV1200Response, *http.Response, error) {
+//  @return CreateIdentityCollectorV1201Response
+func (a *DataAccessSecurityAPIService) CreateIdentityCollectorV1Execute(r ApiCreateIdentityCollectorV1Request) (*CreateIdentityCollectorV1201Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *CreateIdentityCollectorV1200Response
+		localVarReturnValue  *CreateIdentityCollectorV1201Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataAccessSecurityAPIService.CreateIdentityCollectorV1")
@@ -3158,16 +3158,18 @@ func (r ApiGetIdentityCollectorTypesV1Request) Offset(offset int32) ApiGetIdenti
 	return r
 }
 
-func (r ApiGetIdentityCollectorTypesV1Request) Execute() ([]string, *http.Response, error) {
+func (r ApiGetIdentityCollectorTypesV1Request) Execute() (*Identitycollectortypesresponse, *http.Response, error) {
 	return r.ApiService.GetIdentityCollectorTypesV1Execute(r)
 }
 
 /*
 GetIdentityCollectorTypesV1 List identity collector types
 
-Returns the public identity collector type display names exposed for metadata and UI discovery. This endpoint lists base types only (for example, `Box` rather than `Box SaaS`). SaaS variants are not listed here; the identity collector type is derived from `sourceId` when creating an identity collector. Existing identity collectors may still report SaaS variant types in list and update responses.
+Returns the public identity collector types exposed for metadata and UI discovery, including the ISC `connectorName` values to use when listing sources for each type. This endpoint lists base types only (for example, `Box` rather than `Box SaaS`). SaaS variants are not listed as separate types; create derives the identity collector type from `sourceId`. Existing identity collectors may still report SaaS variant types in list and update responses.
 
-Pagination is not supported for this endpoint; the full set of public types is always returned.
+Flagged types (Snowflake, Databricks, Atlassian Suite) are included only when the corresponding tenant feature flag is enabled.
+
+Pagination is not supported for this endpoint; the full set of enabled public types is always returned.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetIdentityCollectorTypesV1Request
@@ -3180,13 +3182,13 @@ func (a *DataAccessSecurityAPIService) GetIdentityCollectorTypesV1(ctx context.C
 }
 
 // Execute executes the request
-//  @return []string
-func (a *DataAccessSecurityAPIService) GetIdentityCollectorTypesV1Execute(r ApiGetIdentityCollectorTypesV1Request) ([]string, *http.Response, error) {
+//  @return Identitycollectortypesresponse
+func (a *DataAccessSecurityAPIService) GetIdentityCollectorTypesV1Execute(r ApiGetIdentityCollectorTypesV1Request) (*Identitycollectortypesresponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []string
+		localVarReturnValue  *Identitycollectortypesresponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataAccessSecurityAPIService.GetIdentityCollectorTypesV1")

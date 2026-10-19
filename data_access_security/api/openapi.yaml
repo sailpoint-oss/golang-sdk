@@ -1996,12 +1996,20 @@ paths:
           identity collector.
         required: true
       responses:
-        "200":
+        "201":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/createIdentityCollectorV1_200_response'
+                $ref: '#/components/schemas/createIdentityCollectorV1_201_response'
           description: The identity collector was created successfully.
+          headers:
+            Location:
+              description: URL of the created identity collector.
+              example: /das/v1/identity-collectors/12345
+              explode: false
+              schema:
+                type: string
+              style: simple
         "400":
           content:
             application/json:
@@ -2096,9 +2104,11 @@ paths:
   /das/v1/identity-collectors/types:
     get:
       description: |-
-        Returns the public identity collector type display names exposed for metadata and UI discovery. This endpoint lists base types only (for example, `Box` rather than `Box SaaS`). SaaS variants are not listed here; the identity collector type is derived from `sourceId` when creating an identity collector. Existing identity collectors may still report SaaS variant types in list and update responses.
+        Returns the public identity collector types exposed for metadata and UI discovery, including the ISC `connectorName` values to use when listing sources for each type. This endpoint lists base types only (for example, `Box` rather than `Box SaaS`). SaaS variants are not listed as separate types; create derives the identity collector type from `sourceId`. Existing identity collectors may still report SaaS variant types in list and update responses.
 
-        Pagination is not supported for this endpoint; the full set of public types is always returned.
+        Flagged types (Snowflake, Databricks, Atlassian Suite) are included only when the corresponding tenant feature flag is enabled.
+
+        Pagination is not supported for this endpoint; the full set of enabled public types is always returned.
       operationId: getIdentityCollectorTypesV1
       parameters:
       - description: |-
@@ -2134,21 +2144,47 @@ paths:
         "200":
           content:
             application/json:
+              example:
+                types:
+                - type: Active Directory
+                  iscConnectorNames:
+                  - Active Directory
+                - type: Atlassian Suite
+                  iscConnectorNames:
+                  - Atlassian Suite - Cloud
+                  - Atlassian Suite SaaS
+                - type: AWS
+                  iscConnectorNames:
+                  - AWS
+                  - AWS SaaS
+                - type: Azure Active Directory
+                  iscConnectorNames:
+                  - Azure Active Directory
+                - type: Box
+                  iscConnectorNames:
+                  - Box
+                  - Box SaaS
+                - type: Databricks
+                  iscConnectorNames:
+                  - Databricks
+                - type: Dropbox
+                  iscConnectorNames:
+                  - Dropbox
+                  - Dropbox SaaS
+                - type: Google Drive
+                  iscConnectorNames:
+                  - G Suite
+                  - Google Workspace SaaS
+                - type: Microsoft Entra SaaS
+                  iscConnectorNames:
+                  - Microsoft Entra
+                - type: Snowflake
+                  iscConnectorNames:
+                  - Snowflake
+                  - Snowflake SaaS
               schema:
-                example:
-                - Active Directory
-                - AWS
-                - Azure Active Directory
-                - Box
-                - Databricks
-                - Dropbox
-                - Google Drive
-                - Microsoft Entra SaaS
-                - Snowflake
-                items:
-                  type: string
-                type: array
-          description: Supported identity collector type display names.
+                $ref: '#/components/schemas/Identitycollectortypesresponse'
+          description: Supported identity collector types with ISC connector names.
         "400":
           content:
             application/json:
@@ -4853,9 +4889,10 @@ components:
           type: array
         fieldMappings:
           description: Maps source attributes to data dictionary fields and DAS custom
-            field slots. Each `sourceAttributeName` must be either a built-in attribute
-            for the identity collector type or listed in `properties`. Use an empty
-            array when no dynamic field mappings are configured.
+            field slots. The same `sourceAttributeName` may be mapped to multiple
+            dictionary fields. Each `sourceAttributeName` must be either a built-in
+            attribute for the identity collector type or listed in `properties`. Use
+            an empty array when no dynamic field mappings are configured.
           items:
             $ref: '#/components/schemas/Identitycollectorfieldmapping'
           type: array
@@ -4914,6 +4951,8 @@ components:
           - Databricks
           - AWS
           - AWS SaaS
+          - Atlassian Suite
+          - Atlassian Suite SaaS
         sourceId:
           description: "The identifier of the source the identity collector is associated\
             \ with, represented as a UUID. Both hyphenated and non-hyphenated formats\
@@ -4966,6 +5005,60 @@ components:
       required:
       - name
       - sourceId
+      type: object
+    Identitycollectortype:
+      description: A public identity collector type and the ISC `connectorName` values
+        the UI should use when querying `GET /v3/sources` for sources that can back
+        that type.
+      example:
+        iscConnectorNames:
+        - G Suite
+        - Google Workspace SaaS
+        type: Google Drive
+      properties:
+        type:
+          description: "Identity collector type display name. Matches the `type` values\
+            \ returned by list and used by create/update metadata. Base types only\
+            \ (for example `Box`, not `Box SaaS`)."
+          example: Google Drive
+          type: string
+        iscConnectorNames:
+          description: Exact ISC `connectorName` values to use in `GET /v3/sources`
+            filters (`connectorName eq "..."`). These are not always equal to `type`
+            (for example Google Drive maps to `G Suite` and `Google Workspace SaaS`).
+          example:
+          - G Suite
+          - Google Workspace SaaS
+          items:
+            type: string
+          type: array
+      required:
+      - iscConnectorNames
+      - type
+      type: object
+    Identitycollectortypesresponse:
+      description: Public identity collector types available for discovery and create
+        flows.
+      example:
+        types:
+        - iscConnectorNames:
+          - G Suite
+          - Google Workspace SaaS
+          type: Google Drive
+        - iscConnectorNames:
+          - G Suite
+          - Google Workspace SaaS
+          type: Google Drive
+      properties:
+        types:
+          description: "Enabled public identity collector types. Flagged types (Snowflake,\
+            \ Databricks, Atlassian Suite) are omitted when their feature flags are\
+            \ disabled."
+          items:
+            $ref: '#/components/schemas/Identitycollectortype'
+          type: array
+      required:
+      - types
       type: object
     Identitycollectorbuiltinpropertiesbytype:
       example:
@@ -5099,6 +5192,8 @@ components:
           - Databricks
           - AWS
           - AWS SaaS
+          - Atlassian Suite
+          - Atlassian Suite SaaS
         users:
           $ref: '#/components/schemas/Identitycollectorcollectionsettings'
         groups:
@@ -5568,7 +5663,7 @@ components:
           description: A message describing the error
           example: ' Rate Limit Exceeded '
       type: object
-    createIdentityCollectorV1_200_response:
+    createIdentityCollectorV1_201_response:
       example:
         name: Active Directory Identity Collector
         id: 12345

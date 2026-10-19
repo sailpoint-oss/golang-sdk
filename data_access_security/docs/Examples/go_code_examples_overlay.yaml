@@ -217,7 +217,7 @@
             fmt.Fprintf(os.Stderr, "Error when calling `DataAccessSecurityAPI.CreateIdentityCollectorV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
           }
-          // response from `CreateIdentityCollectorV1`: CreateIdentityCollectorV1200Response
+          // response from `CreateIdentityCollectorV1`: CreateIdentityCollectorV1201Response
           fmt.Fprintf(os.Stdout, "Response from `DataAccessSecurityAPI.CreateIdentityCollectorV1`: %v\n", resp)
         }
 - path: /das/v1/tasks/schedules
@@ -763,7 +763,7 @@
             fmt.Fprintf(os.Stderr, "Error when calling `DataAccessSecurityAPI.GetIdentityCollectorTypesV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
           }
-          // response from `GetIdentityCollectorTypesV1`: []string
+          // response from `GetIdentityCollectorTypesV1`: Identitycollectortypesresponse
           fmt.Fprintf(os.Stdout, "Response from `DataAccessSecurityAPI.GetIdentityCollectorTypesV1`: %v\n", resp)
         }
 - path: /das/v1/owners/applications/{appId}

@@ -16,7 +16,7 @@ docs/BaseCreateApplicationRequest.md
 docs/BaseSettings.md
 docs/BusinessServiceType.md
 docs/CrawlResourcesSizesOptions.md
-docs/CreateIdentityCollectorV1200Response.md
+docs/CreateIdentityCollectorV1201Response.md
 docs/CreateIdentityCollectorV1409Response.md
 docs/CreateIdentityCollectorV1409ResponseMessagesInner.md
 docs/CreateScheduleRequest.md
@@ -39,6 +39,8 @@ docs/IdentitycollectordependenciesconflicterrorMessagesInner.md
 docs/Identitycollectordependency.md
 docs/Identitycollectorfieldmapping.md
 docs/Identitycollectorlistitem.md
+docs/Identitycollectortype.md
+docs/Identitycollectortypesresponse.md
 docs/Int64StringKeyValuePair.md
 docs/LocaleOrigin.md
 docs/Methods/Index.md
@@ -63,7 +65,7 @@ model_base_create_application_request.go
 model_base_settings.go
 model_business_service_type.go
 model_crawl_resources_sizes_options.go
-model_create_identity_collector_v1_200_response.go
+model_create_identity_collector_v1_201_response.go
 model_create_identity_collector_v1_409_response.go
 model_create_identity_collector_v1_409_response_messages_inner.go
 model_create_schedule_request.go
@@ -84,6 +86,8 @@ model_identitycollectordependenciesconflicterror_messages_inner.go
 model_identitycollectordependency.go
 model_identitycollectorfieldmapping.go
 model_identitycollectorlistitem.go
+model_identitycollectortype.go
+model_identitycollectortypesresponse.go
 model_int64_string_key_value_pair.go
 model_locale_origin.go
 model_permission_collector_settings.go
