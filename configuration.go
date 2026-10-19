@@ -1,7 +1,7 @@
 /*
-SailPoint Identity Security Cloud API
+SailPoint Identity Security API
 
-Use these APIs to interact with the SailPoint Identity Security Cloud platform.
+Use these APIs to interact with the SailPoint Identity Security platform.
 We encourage you to join the SailPoint Developer Community forum at
 https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 */

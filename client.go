@@ -1,7 +1,7 @@
 /*
-SailPoint Identity Security Cloud API
+SailPoint Identity Security API
 
-Use these APIs to interact with the SailPoint Identity Security Cloud platform.
+Use these APIs to interact with the SailPoint Identity Security platform.
 We encourage you to join the SailPoint Developer Community forum at
 https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
@@ -142,7 +142,7 @@ var (
 	xmlCheck  = regexp.MustCompile(`(?i:(?:application|text)/xml)`)
 )
 
-// APIClient manages communication with the SailPoint Identity Security Cloud API.
+// APIClient manages communication with the SailPoint Identity Security API.
 // In most cases there should be only one, shared, APIClient.
 //
 // Per-resource API services are available as fields (e.g. c.AccountsAPI, c.RolesAPI).
