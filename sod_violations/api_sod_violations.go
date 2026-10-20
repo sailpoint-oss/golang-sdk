@@ -26,14 +26,7 @@ type SODViolationsAPIService service
 type ApiGetViolationV1Request struct {
 	ctx context.Context
 	ApiService *SODViolationsAPIService
-	xSailPointExperimental *string
 	id string
-}
-
-// Use this header to enable this experimental API.
-func (r ApiGetViolationV1Request) XSailPointExperimental(xSailPointExperimental string) ApiGetViolationV1Request {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 func (r ApiGetViolationV1Request) Execute() (*Policyviolationresponse, *http.Response, error) {
@@ -80,15 +73,6 @@ func (a *SODViolationsAPIService) GetViolationV1Execute(r ApiGetViolationV1Reque
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -107,7 +91,6 @@ func (a *SODViolationsAPIService) GetViolationV1Execute(r ApiGetViolationV1Reque
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -213,18 +196,11 @@ func (a *SODViolationsAPIService) GetViolationV1Execute(r ApiGetViolationV1Reque
 type ApiListMyViolationsV1Request struct {
 	ctx context.Context
 	ApiService *SODViolationsAPIService
-	xSailPointExperimental *string
 	limit *int32
 	offset *int32
 	count *bool
 	filters *string
 	sorters *string
-}
-
-// Use this header to enable this experimental API.
-func (r ApiListMyViolationsV1Request) XSailPointExperimental(xSailPointExperimental string) ApiListMyViolationsV1Request {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 // Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -299,15 +275,6 @@ func (a *SODViolationsAPIService) ListMyViolationsV1Execute(r ApiListMyViolation
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
 
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
@@ -350,7 +317,6 @@ func (a *SODViolationsAPIService) ListMyViolationsV1Execute(r ApiListMyViolation
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -456,18 +422,11 @@ func (a *SODViolationsAPIService) ListMyViolationsV1Execute(r ApiListMyViolation
 type ApiListViolationsV1Request struct {
 	ctx context.Context
 	ApiService *SODViolationsAPIService
-	xSailPointExperimental *string
 	limit *int32
 	offset *int32
 	count *bool
 	filters *string
 	sorters *string
-}
-
-// Use this header to enable this experimental API.
-func (r ApiListViolationsV1Request) XSailPointExperimental(xSailPointExperimental string) ApiListViolationsV1Request {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 // Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -544,15 +503,6 @@ func (a *SODViolationsAPIService) ListViolationsV1Execute(r ApiListViolationsV1R
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
 
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
@@ -595,7 +545,6 @@ func (a *SODViolationsAPIService) ListViolationsV1Execute(r ApiListViolationsV1R
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -701,15 +650,8 @@ func (a *SODViolationsAPIService) ListViolationsV1Execute(r ApiListViolationsV1R
 type ApiMoveViolationV1Request struct {
 	ctx context.Context
 	ApiService *SODViolationsAPIService
-	xSailPointExperimental *string
 	id string
 	violationreassigninput *Violationreassigninput
-}
-
-// Use this header to enable this experimental API.
-func (r ApiMoveViolationV1Request) XSailPointExperimental(xSailPointExperimental string) ApiMoveViolationV1Request {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 // Data needed to reassign a Policy Violation
@@ -760,21 +702,6 @@ func (a *SODViolationsAPIService) MoveViolationV1Execute(r ApiMoveViolationV1Req
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
 	if r.violationreassigninput == nil {
 		return localVarReturnValue, nil, reportError("violationreassigninput is required and must be specified")
 	}
@@ -796,7 +723,6 @@ func (a *SODViolationsAPIService) MoveViolationV1Execute(r ApiMoveViolationV1Req
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	// body params
 	localVarPostBody = r.violationreassigninput
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
@@ -904,15 +830,8 @@ func (a *SODViolationsAPIService) MoveViolationV1Execute(r ApiMoveViolationV1Req
 type ApiStartApplyControlV1Request struct {
 	ctx context.Context
 	ApiService *SODViolationsAPIService
-	xSailPointExperimental *string
 	id string
 	appliedcontrolcreate *Appliedcontrolcreate
-}
-
-// Use this header to enable this experimental API.
-func (r ApiStartApplyControlV1Request) XSailPointExperimental(xSailPointExperimental string) ApiStartApplyControlV1Request {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 // Data needed to apply a control to a Policy Violation
@@ -963,21 +882,6 @@ func (a *SODViolationsAPIService) StartApplyControlV1Execute(r ApiStartApplyCont
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
 	if r.appliedcontrolcreate == nil {
 		return localVarReturnValue, nil, reportError("appliedcontrolcreate is required and must be specified")
 	}
@@ -999,7 +903,6 @@ func (a *SODViolationsAPIService) StartApplyControlV1Execute(r ApiStartApplyCont
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	// body params
 	localVarPostBody = r.appliedcontrolcreate
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)

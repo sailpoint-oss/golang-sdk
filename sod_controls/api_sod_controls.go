@@ -26,14 +26,7 @@ type SODControlsAPIService service
 type ApiCreateControlV1Request struct {
 	ctx context.Context
 	ApiService *SODControlsAPIService
-	xSailPointExperimental *string
 	compensatingcontrolcreate *Compensatingcontrolcreate
-}
-
-// Use this header to enable this experimental API.
-func (r ApiCreateControlV1Request) XSailPointExperimental(xSailPointExperimental string) ApiCreateControlV1Request {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 // Data needed to create a Compensating Control
@@ -81,21 +74,6 @@ func (a *SODControlsAPIService) CreateControlV1Execute(r ApiCreateControlV1Reque
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
 	if r.compensatingcontrolcreate == nil {
 		return localVarReturnValue, nil, reportError("compensatingcontrolcreate is required and must be specified")
 	}
@@ -117,7 +95,6 @@ func (a *SODControlsAPIService) CreateControlV1Execute(r ApiCreateControlV1Reque
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	// body params
 	localVarPostBody = r.compensatingcontrolcreate
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
@@ -225,14 +202,7 @@ func (a *SODControlsAPIService) CreateControlV1Execute(r ApiCreateControlV1Reque
 type ApiDeleteControlV1Request struct {
 	ctx context.Context
 	ApiService *SODControlsAPIService
-	xSailPointExperimental *string
 	id string
-}
-
-// Use this header to enable this experimental API.
-func (r ApiDeleteControlV1Request) XSailPointExperimental(xSailPointExperimental string) ApiDeleteControlV1Request {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 func (r ApiDeleteControlV1Request) Execute() (*http.Response, error) {
@@ -275,15 +245,6 @@ func (a *SODControlsAPIService) DeleteControlV1Execute(r ApiDeleteControlV1Reque
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return nil, reportError("xSailPointExperimental is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -302,7 +263,6 @@ func (a *SODControlsAPIService) DeleteControlV1Execute(r ApiDeleteControlV1Reque
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
@@ -399,14 +359,7 @@ func (a *SODControlsAPIService) DeleteControlV1Execute(r ApiDeleteControlV1Reque
 type ApiGetControlV1Request struct {
 	ctx context.Context
 	ApiService *SODControlsAPIService
-	xSailPointExperimental *string
 	id string
-}
-
-// Use this header to enable this experimental API.
-func (r ApiGetControlV1Request) XSailPointExperimental(xSailPointExperimental string) ApiGetControlV1Request {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 func (r ApiGetControlV1Request) Execute() (*Compensatingcontrolresponse, *http.Response, error) {
@@ -451,15 +404,6 @@ func (a *SODControlsAPIService) GetControlV1Execute(r ApiGetControlV1Request) (*
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -478,7 +422,6 @@ func (a *SODControlsAPIService) GetControlV1Execute(r ApiGetControlV1Request) (*
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -584,18 +527,11 @@ func (a *SODControlsAPIService) GetControlV1Execute(r ApiGetControlV1Request) (*
 type ApiListControlsV1Request struct {
 	ctx context.Context
 	ApiService *SODControlsAPIService
-	xSailPointExperimental *string
 	limit *int32
 	offset *int32
 	count *bool
 	filters *string
 	sort *string
-}
-
-// Use this header to enable this experimental API.
-func (r ApiListControlsV1Request) XSailPointExperimental(xSailPointExperimental string) ApiListControlsV1Request {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 // Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -667,15 +603,6 @@ func (a *SODControlsAPIService) ListControlsV1Execute(r ApiListControlsV1Request
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
 
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
@@ -718,7 +645,6 @@ func (a *SODControlsAPIService) ListControlsV1Execute(r ApiListControlsV1Request
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -824,15 +750,8 @@ func (a *SODControlsAPIService) ListControlsV1Execute(r ApiListControlsV1Request
 type ApiPutControlV1Request struct {
 	ctx context.Context
 	ApiService *SODControlsAPIService
-	xSailPointExperimental *string
 	id string
 	compensatingcontrolupdate *Compensatingcontrolupdate
-}
-
-// Use this header to enable this experimental API.
-func (r ApiPutControlV1Request) XSailPointExperimental(xSailPointExperimental string) ApiPutControlV1Request {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 // Data needed to put a Compensating Control
@@ -883,21 +802,6 @@ func (a *SODControlsAPIService) PutControlV1Execute(r ApiPutControlV1Request) (*
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
 	if r.compensatingcontrolupdate == nil {
 		return localVarReturnValue, nil, reportError("compensatingcontrolupdate is required and must be specified")
 	}
@@ -919,7 +823,6 @@ func (a *SODControlsAPIService) PutControlV1Execute(r ApiPutControlV1Request) (*
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	// body params
 	localVarPostBody = r.compensatingcontrolupdate
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)

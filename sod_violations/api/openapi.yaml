@@ -296,16 +296,6 @@ paths:
         Filters and sorters are validated against a fixed whitelist of fields to ensure safe queries and to align with underlying database indexes.
       operationId: listViolationsV1
       parameters:
-      - description: Use this header to enable this experimental API.
-        example: true
-        explode: false
-        in: header
-        name: X-SailPoint-Experimental
-        required: true
-        schema:
-          default: "true"
-          type: string
-        style: simple
       - description: |-
           Max number of results to return.
           See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -500,16 +490,6 @@ paths:
         Embedded references in each violation follow `ReferenceResponse` (`id`, `type`, and optional `name` when metadata resolves).
       operationId: listMyViolationsV1
       parameters:
-      - description: Use this header to enable this experimental API.
-        example: true
-        explode: false
-        in: header
-        name: X-SailPoint-Experimental
-        required: true
-        schema:
-          default: "true"
-          type: string
-        style: simple
       - description: |-
           Max number of results to return.
           See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -699,16 +679,6 @@ paths:
         Embedded references (`owner`, `target`, `policy`, and references inside `appliedControls`) use `ReferenceResponse`: `id` and `type` are always present; `name` is included when display metadata resolves.
       operationId: getViolationV1
       parameters:
-      - description: Use this header to enable this experimental API.
-        example: true
-        explode: false
-        in: header
-        name: X-SailPoint-Experimental
-        required: true
-        schema:
-          default: "true"
-          type: string
-        style: simple
       - description: The ID of the policy violation to fetch
         explode: false
         in: path
@@ -817,16 +787,6 @@ paths:
         \ to)."
       operationId: startApplyControlV1
       parameters:
-      - description: Use this header to enable this experimental API.
-        example: true
-        explode: false
-        in: header
-        name: X-SailPoint-Experimental
-        required: true
-        schema:
-          default: "true"
-          type: string
-        style: simple
       - description: The ID of the policy violation to fetch
         explode: false
         in: path
@@ -941,16 +901,6 @@ paths:
         \ they own (directly, or via a governance group they belong to)."
       operationId: moveViolationV1
       parameters:
-      - description: Use this header to enable this experimental API.
-        example: true
-        explode: false
-        in: header
-        name: X-SailPoint-Experimental
-        required: true
-        schema:
-          default: "true"
-          type: string
-        style: simple
       - description: The ID of the policy violation to fetch
         explode: false
         in: path

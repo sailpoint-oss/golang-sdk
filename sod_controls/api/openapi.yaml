@@ -40,16 +40,6 @@ paths:
         policies.
       operationId: listControlsV1
       parameters:
-      - description: Use this header to enable this experimental API.
-        example: true
-        explode: false
-        in: header
-        name: X-SailPoint-Experimental
-        required: true
-        schema:
-          default: "true"
-          type: string
-        style: simple
       - description: |-
           Max number of results to return.
           See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -251,17 +241,6 @@ paths:
       description: Creates a compensating control associated with separation-of-duties
         policies.
       operationId: createControlV1
-      parameters:
-      - description: Use this header to enable this experimental API.
-        example: true
-        explode: false
-        in: header
-        name: X-SailPoint-Experimental
-        required: true
-        schema:
-          default: "true"
-          type: string
-        style: simple
       requestBody:
         content:
           application/json:
@@ -392,16 +371,6 @@ paths:
       description: Deletes the specified compensating control from the data store.
       operationId: deleteControlV1
       parameters:
-      - description: Use this header to enable this experimental API.
-        example: true
-        explode: false
-        in: header
-        name: X-SailPoint-Experimental
-        required: true
-        schema:
-          default: "true"
-          type: string
-        style: simple
       - description: the ID (UUID) of the compensating control to delete.
         example: 3e078865-55ed-43cf-b83c-85c58d2016e6
         explode: false
@@ -503,16 +472,6 @@ paths:
       description: Returns a single compensating control by ID.
       operationId: getControlV1
       parameters:
-      - description: Use this header to enable this experimental API.
-        example: true
-        explode: false
-        in: header
-        name: X-SailPoint-Experimental
-        required: true
-        schema:
-          default: "true"
-          type: string
-        style: simple
       - description: The ID of the compensating control to fetch
         example: 3e078865-55ed-43cf-b83c-85c58d2016e6
         explode: false
@@ -633,16 +592,6 @@ paths:
       description: Updates the specified compensating control.
       operationId: putControlV1
       parameters:
-      - description: Use this header to enable this experimental API.
-        example: true
-        explode: false
-        in: header
-        name: X-SailPoint-Experimental
-        required: true
-        schema:
-          default: "true"
-          type: string
-        style: simple
       - description: The unique identifier of the Compensating Control to be updated.
         example: 3e078865-55ed-43cf-b83c-85c58d2016e6
         explode: false

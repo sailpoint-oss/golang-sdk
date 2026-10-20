@@ -16,7 +16,6 @@
         )
 
         func main() {
-          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
           id := `3e078865-55ed-43cf-b83c-85c58d2016e6` // string | The ID of the policy violation to fetch # string | The ID of the policy violation to fetch
 
           
@@ -24,8 +23,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.SODViolationsAPI.GetViolationV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
-          //resp, r, err := apiClient.SODViolationsAPI.GetViolationV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+          resp, r, err := apiClient.SODViolationsAPI.GetViolationV1(context.Background(), id).Execute()
+          //resp, r, err := apiClient.SODViolationsAPI.GetViolationV1(context.Background(), id).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `SODViolationsAPI.GetViolationV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -51,7 +50,6 @@
         )
 
         func main() {
-          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
           limit := 250 // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
           offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
           count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
@@ -63,8 +61,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.SODViolationsAPI.ListMyViolationsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
-          //resp, r, err := apiClient.SODViolationsAPI.ListMyViolationsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
+          resp, r, err := apiClient.SODViolationsAPI.ListMyViolationsV1(context.Background()).Execute()
+          //resp, r, err := apiClient.SODViolationsAPI.ListMyViolationsV1(context.Background()).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `SODViolationsAPI.ListMyViolationsV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -90,7 +88,6 @@
         )
 
         func main() {
-          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
           limit := 250 // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
           offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
           count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
@@ -102,8 +99,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.SODViolationsAPI.ListViolationsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
-          //resp, r, err := apiClient.SODViolationsAPI.ListViolationsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
+          resp, r, err := apiClient.SODViolationsAPI.ListViolationsV1(context.Background()).Execute()
+          //resp, r, err := apiClient.SODViolationsAPI.ListViolationsV1(context.Background()).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `SODViolationsAPI.ListViolationsV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -129,7 +126,6 @@
         )
 
         func main() {
-          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
           id := `3e078865-55ed-43cf-b83c-85c58d2016e6` // string | The ID of the policy violation to fetch # string | The ID of the policy violation to fetch
            violationreassigninputJson := []byte(`{
           "comments" : "some comments about the reassignment",
@@ -150,8 +146,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.SODViolationsAPI.MoveViolationV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Violationreassigninput(violationreassigninput).Execute()
-          //resp, r, err := apiClient.SODViolationsAPI.MoveViolationV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Violationreassigninput(violationreassigninput).Execute()
+          resp, r, err := apiClient.SODViolationsAPI.MoveViolationV1(context.Background(), id).Violationreassigninput(violationreassigninput).Execute()
+          //resp, r, err := apiClient.SODViolationsAPI.MoveViolationV1(context.Background(), id).Violationreassigninput(violationreassigninput).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `SODViolationsAPI.MoveViolationV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -177,7 +173,6 @@
         )
 
         func main() {
-          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
           id := `3e078865-55ed-43cf-b83c-85c58d2016e6` // string | The ID of the policy violation to fetch # string | The ID of the policy violation to fetch
            appliedcontrolcreateJson := []byte(`{
           "comments" : "Some comments about the applied control",
@@ -195,8 +190,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.SODViolationsAPI.StartApplyControlV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Appliedcontrolcreate(appliedcontrolcreate).Execute()
-          //resp, r, err := apiClient.SODViolationsAPI.StartApplyControlV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Appliedcontrolcreate(appliedcontrolcreate).Execute()
+          resp, r, err := apiClient.SODViolationsAPI.StartApplyControlV1(context.Background(), id).Appliedcontrolcreate(appliedcontrolcreate).Execute()
+          //resp, r, err := apiClient.SODViolationsAPI.StartApplyControlV1(context.Background(), id).Appliedcontrolcreate(appliedcontrolcreate).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `SODViolationsAPI.StartApplyControlV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

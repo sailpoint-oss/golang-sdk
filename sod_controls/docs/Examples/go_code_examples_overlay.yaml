@@ -16,7 +16,6 @@
         )
 
         func main() {
-          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
            compensatingcontrolcreateJson := []byte(`{
           "owner" : {
             "id" : "3e07886555ed43cfb83c85c58d2016e6",
@@ -46,8 +45,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.SODControlsAPI.CreateControlV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Compensatingcontrolcreate(compensatingcontrolcreate).Execute()
-          //resp, r, err := apiClient.SODControlsAPI.CreateControlV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Compensatingcontrolcreate(compensatingcontrolcreate).Execute()
+          resp, r, err := apiClient.SODControlsAPI.CreateControlV1(context.Background()).Compensatingcontrolcreate(compensatingcontrolcreate).Execute()
+          //resp, r, err := apiClient.SODControlsAPI.CreateControlV1(context.Background()).Compensatingcontrolcreate(compensatingcontrolcreate).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `SODControlsAPI.CreateControlV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -73,7 +72,6 @@
         )
 
         func main() {
-          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
           id := `3e078865-55ed-43cf-b83c-85c58d2016e6` // string | the ID (UUID) of the compensating control to delete. # string | the ID (UUID) of the compensating control to delete.
 
           
@@ -81,8 +79,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          r, err := apiClient.SODControlsAPI.DeleteControlV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
-          //r, err := apiClient.SODControlsAPI.DeleteControlV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+          r, err := apiClient.SODControlsAPI.DeleteControlV1(context.Background(), id).Execute()
+          //r, err := apiClient.SODControlsAPI.DeleteControlV1(context.Background(), id).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `SODControlsAPI.DeleteControlV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -106,7 +104,6 @@
         )
 
         func main() {
-          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
           id := `3e078865-55ed-43cf-b83c-85c58d2016e6` // string | The ID of the compensating control to fetch # string | The ID of the compensating control to fetch
 
           
@@ -114,8 +111,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.SODControlsAPI.GetControlV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
-          //resp, r, err := apiClient.SODControlsAPI.GetControlV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+          resp, r, err := apiClient.SODControlsAPI.GetControlV1(context.Background(), id).Execute()
+          //resp, r, err := apiClient.SODControlsAPI.GetControlV1(context.Background(), id).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `SODControlsAPI.GetControlV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -141,7 +138,6 @@
         )
 
         func main() {
-          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
           limit := 250 // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
           offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
           count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
@@ -153,8 +149,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.SODControlsAPI.ListControlsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
-          //resp, r, err := apiClient.SODControlsAPI.ListControlsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Limit(limit).Offset(offset).Count(count).Filters(filters).Sort(sort).Execute()
+          resp, r, err := apiClient.SODControlsAPI.ListControlsV1(context.Background()).Execute()
+          //resp, r, err := apiClient.SODControlsAPI.ListControlsV1(context.Background()).Limit(limit).Offset(offset).Count(count).Filters(filters).Sort(sort).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `SODControlsAPI.ListControlsV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -180,7 +176,6 @@
         )
 
         func main() {
-          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
           id := `3e078865-55ed-43cf-b83c-85c58d2016e6` // string | The unique identifier of the Compensating Control to be updated. # string | The unique identifier of the Compensating Control to be updated.
            compensatingcontrolupdateJson := []byte(`{
           "owner" : {
@@ -211,8 +206,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.SODControlsAPI.PutControlV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Compensatingcontrolupdate(compensatingcontrolupdate).Execute()
-          //resp, r, err := apiClient.SODControlsAPI.PutControlV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Compensatingcontrolupdate(compensatingcontrolupdate).Execute()
+          resp, r, err := apiClient.SODControlsAPI.PutControlV1(context.Background(), id).Compensatingcontrolupdate(compensatingcontrolupdate).Execute()
+          //resp, r, err := apiClient.SODControlsAPI.PutControlV1(context.Background(), id).Compensatingcontrolupdate(compensatingcontrolupdate).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `SODControlsAPI.PutControlV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

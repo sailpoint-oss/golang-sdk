@@ -1238,16 +1238,6 @@ paths:
         When a requested object has an associated form, each status item may include a `form` object with the form definition ID, instance ID, and answers (`formData`).
       operationId: listAdministratorsAccessRequestStatusV1
       parameters:
-      - description: Use this header to enable this experimental API.
-        example: true
-        explode: false
-        in: header
-        name: X-SailPoint-Experimental
-        required: true
-        schema:
-          default: "true"
-          type: string
-        style: simple
       - description: Filter the results by the identity the requests were made for.
           *me* indicates the current user. Mutually exclusive with *regarding-identity*.
         example: 2c9180877b2b6ea4017b2c545f971429
@@ -1369,6 +1359,16 @@ paths:
         schema:
           type: string
         style: form
+      - description: Use this header to enable this experimental API.
+        example: true
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
       responses:
         "200":
           content:
