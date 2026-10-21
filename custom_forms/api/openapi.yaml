@@ -43,6 +43,7 @@ tags:
 paths:
   /form-definitions/v1:
     get:
+      deprecated: true
       description: No parameters required.
       operationId: searchFormDefinitionsByTenantV1
       parameters:
@@ -163,6 +164,8 @@ paths:
       summary: List form definitions by tenant.
       tags:
       - Custom Forms
+      x-deprecated-description: |
+        This API has been deprecated, please refer to [Export form definitions by tenant](https://developer.sailpoint.com/docs/api/export-form-definitions-by-tenant-v-1) for the latest API. The export API supports the standard `count` query parameter and returns the total count in the *X-Total-Count* response header.
       x-sailpoint-userLevels:
       - ORG_ADMIN
     post:
@@ -503,7 +506,7 @@ paths:
 
           **value**: *eq, ne, in*
 
-          Supported composite operators: *not*
+          Supported composite operators are *not*
 
           Only a single *not* may be used, and it can only be used with the `in` operator. The `not` composite operator must be used in front of the field. For example, the following is valid: `not value in ("ID01")`
         example: value eq "ID01"
@@ -588,6 +591,8 @@ paths:
       summary: Preview form definition data source.
       tags:
       - Custom Forms
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /form-definitions/v1/export:
     get:
       description: No parameters required.
@@ -667,6 +672,21 @@ paths:
           x-go-name: Sorters
         style: form
         x-go-name: Sorters
+      - description: |-
+          If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+          Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: true
+        explode: true
+        in: query
+        name: count
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
       responses:
         "200":
           content:
@@ -1529,7 +1549,7 @@ paths:
 
           **value**: *eq, ne, in*
 
-          Supported composite operators: *not*
+          Supported composite operators are *not*
 
           Only a single *not* may be used, and it can only be used with the `in` operator. The `not` composite operator must be used in front of the field. For example, the following is valid: `not value in ("ID01")`
         example: value eq "ID01"
@@ -1605,6 +1625,8 @@ paths:
       summary: Retrieves dynamic data by element.
       tags:
       - Custom Forms
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /form-instances/v1/{formInstanceID}/file/{fileID}:
     get:
       operationId: getFormInstanceFileV1
@@ -1812,6 +1834,23 @@ paths:
       tags:
       - Custom Forms
 components:
+  parameters:
+    count:
+      description: |-
+        If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+        Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+      example: true
+      explode: true
+      in: query
+      name: count
+      required: false
+      schema:
+        default: false
+        type: boolean
+      style: form
   schemas:
     FormOwner:
       example:

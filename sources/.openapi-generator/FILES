@@ -93,6 +93,7 @@ docs/SourceOwner.md
 docs/SourcePasswordPoliciesInner.md
 docs/SourceResourceMappingValue.md
 docs/SourceSchemasInner.md
+docs/SourceServiceDeskIntegrationDto.md
 docs/SourceSyncJob.md
 docs/SourceSyncPayload.md
 docs/SourcesAPI.md
@@ -192,6 +193,7 @@ model_source_owner.go
 model_source_password_policies_inner.go
 model_source_resource_mapping_value.go
 model_source_schemas_inner.go
+model_source_service_desk_integration_dto.go
 model_source_sync_job.go
 model_source_sync_payload.go
 model_status_response.go

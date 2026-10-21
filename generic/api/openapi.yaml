@@ -3,12 +3,12 @@ info:
   contact:
     name: Developer Relations
     url: https://developer.sailpoint.com/discuss/api-help
-  description: Generic API specification for the Identity Security Cloud platform
+  description: Generic API specification for the SailPoint Identity Security platform
   license:
     name: MIT
     url: https://opensource.org/licenses/MIT
   termsOfService: https://developer.sailpoint.com/discuss/tos
-  title: Generic Identity Security Cloud V2024 API
+  title: Generic SailPoint Identity Security V2024 API
   version: v2024
 servers:
 - description: This is the production API server.

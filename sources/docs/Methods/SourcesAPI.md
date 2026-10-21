@@ -111,6 +111,7 @@ Method | HTTP request | Description
 [**get-source-schedules-v1**](#get-source-schedules-v1) | **Get** `/sources/v1/{sourceId}/schedules` | List schedules on source
 [**get-source-schema-v1**](#get-source-schema-v1) | **Get** `/sources/v1/{sourceId}/schemas/{schemaId}` | Get source schema by id
 [**get-source-schemas-v1**](#get-source-schemas-v1) | **Get** `/sources/v1/{sourceId}/schemas` | List schemas on source
+[**get-source-service-desk-integrations-v1**](#get-source-service-desk-integrations-v1) | **Get** `/sources/v1/{sourceId}/service-desk-integrations` | List source service desk integrations
 [**get-source-v1**](#get-source-v1) | **Get** `/sources/v1/{id}` | Get source by id
 [**import-accounts-schema-v1**](#import-accounts-schema-v1) | **Post** `/sources/v1/{id}/schemas/accounts` | Uploads source accounts schema template
 [**import-accounts-v1**](#import-accounts-v1) | **Post** `/sources/v1/{id}/load-accounts` | Account aggregation
@@ -3317,6 +3318,80 @@ func main() {
     }
     // response from `GetSourceSchemasV1`: []Schema
     fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.GetSourceSchemasV1`: %v\n", resp)
+}
+```
+
+[[Back to top]](#)
+
+## get-source-service-desk-integrations-v1
+List source service desk integrations
+Use this API to list the Service Desk Integrations that carry out provisioning for a source in Identity Security Cloud (ISC).
+
+A source is provisioned either entirely through its own connector or entirely through a Service Desk Integration; provisioning is never split between the two. An empty list therefore means the source's own connector handles provisioning, and a non-empty list means every provisioning request for the source is routed to the integrations named in the response.
+
+Use this API to determine why provisioning settings on the source itself have no effect, and to identify the integration an administrator must change instead.
+
+[API Spec](https://developer.sailpoint.com/docs/api/get-source-service-desk-integrations-v-1)
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**sourceId** | **string** | Source ID. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetSourceServiceDeskIntegrationsV1Request struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **limit** | **int32** | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 250]
+ **offset** | **int32** | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 0]
+
+### Return type
+
+[**[]SourceServiceDeskIntegrationDto**](../models/source-service-desk-integration-dto)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+  
+    
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+)
+
+func main() {
+    sourceId := `2c9180835d191a86015d28455b4a2329` // string | Source ID. # string | Source ID.
+    limit := 250 // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+    offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+
+    
+
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesAPI.GetSourceServiceDeskIntegrationsV1(context.Background(), sourceId).Execute()
+	  //resp, r, err := apiClient.SourcesAPI.GetSourceServiceDeskIntegrationsV1(context.Background(), sourceId).Limit(limit).Offset(offset).Execute()
+    if err != nil {
+	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.GetSourceServiceDeskIntegrationsV1``: %v\n", err)
+	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetSourceServiceDeskIntegrationsV1`: []SourceServiceDeskIntegrationDto
+    fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.GetSourceServiceDeskIntegrationsV1`: %v\n", resp)
 }
 ```
 

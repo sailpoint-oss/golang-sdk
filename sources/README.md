@@ -118,6 +118,7 @@ Class | Method | HTTP request | Description
 *SourcesAPI* | [**GetSourceSchedulesV1**](docs/SourcesAPI.md#getsourceschedulesv1) | **Get** /sources/v1/{sourceId}/schedules | List schedules on source
 *SourcesAPI* | [**GetSourceSchemaV1**](docs/SourcesAPI.md#getsourceschemav1) | **Get** /sources/v1/{sourceId}/schemas/{schemaId} | Get source schema by id
 *SourcesAPI* | [**GetSourceSchemasV1**](docs/SourcesAPI.md#getsourceschemasv1) | **Get** /sources/v1/{sourceId}/schemas | List schemas on source
+*SourcesAPI* | [**GetSourceServiceDeskIntegrationsV1**](docs/SourcesAPI.md#getsourceservicedeskintegrationsv1) | **Get** /sources/v1/{sourceId}/service-desk-integrations | List source service desk integrations
 *SourcesAPI* | [**GetSourceV1**](docs/SourcesAPI.md#getsourcev1) | **Get** /sources/v1/{id} | Get source by id
 *SourcesAPI* | [**ImportAccountsSchemaV1**](docs/SourcesAPI.md#importaccountsschemav1) | **Post** /sources/v1/{id}/schemas/accounts | Uploads source accounts schema template
 *SourcesAPI* | [**ImportAccountsV1**](docs/SourcesAPI.md#importaccountsv1) | **Post** /sources/v1/{id}/load-accounts | Account aggregation
@@ -245,6 +246,7 @@ Class | Method | HTTP request | Description
  - [SourcePasswordPoliciesInner](docs/SourcePasswordPoliciesInner.md)
  - [SourceResourceMappingValue](docs/SourceResourceMappingValue.md)
  - [SourceSchemasInner](docs/SourceSchemasInner.md)
+ - [SourceServiceDeskIntegrationDto](docs/SourceServiceDeskIntegrationDto.md)
  - [SourceSyncJob](docs/SourceSyncJob.md)
  - [SourceSyncPayload](docs/SourceSyncPayload.md)
  - [StatusResponse](docs/StatusResponse.md)

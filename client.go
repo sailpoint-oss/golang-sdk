@@ -55,6 +55,7 @@ import (
 	entitlement_connections "github.com/sailpoint-oss/golang-sdk/v3/entitlement_connections"
 	entitlements "github.com/sailpoint-oss/golang-sdk/v3/entitlements"
 	global_tenant_security_settings "github.com/sailpoint-oss/golang-sdk/v3/global_tenant_security_settings"
+	gov_certification "github.com/sailpoint-oss/golang-sdk/v3/gov_certification"
 	governance_groups "github.com/sailpoint-oss/golang-sdk/v3/governance_groups"
 	iai_access_request_recommendations "github.com/sailpoint-oss/golang-sdk/v3/iai_access_request_recommendations"
 	iai_common_access "github.com/sailpoint-oss/golang-sdk/v3/iai_common_access"
@@ -69,6 +70,7 @@ import (
 	identity_profiles "github.com/sailpoint-oss/golang-sdk/v3/identity_profiles"
 	intelligence "github.com/sailpoint-oss/golang-sdk/v3/intelligence"
 	jit_access "github.com/sailpoint-oss/golang-sdk/v3/jit_access"
+	jit_activation_convert "github.com/sailpoint-oss/golang-sdk/v3/jit_activation_convert"
 	jit_activations "github.com/sailpoint-oss/golang-sdk/v3/jit_activations"
 	launchers "github.com/sailpoint-oss/golang-sdk/v3/launchers"
 	lifecycle_states "github.com/sailpoint-oss/golang-sdk/v3/lifecycle_states"
@@ -194,6 +196,7 @@ type APIClient struct {
 	EntitlementConnectionsAPI *entitlement_connections.EntitlementConnectionsAPIService
 	EntitlementsAPI *entitlements.EntitlementsAPIService
 	GlobalTenantSecuritySettingsAPI *global_tenant_security_settings.GlobalTenantSecuritySettingsAPIService
+	NextGenerationCertificationCampaignsAPI *gov_certification.NextGenerationCertificationCampaignsAPIService
 	GovernanceGroupsAPI *governance_groups.GovernanceGroupsAPIService
 	IAIAccessRequestRecommendationsAPI *iai_access_request_recommendations.IAIAccessRequestRecommendationsAPIService
 	IAICommonAccessAPI *iai_common_access.IAICommonAccessAPIService
@@ -208,6 +211,7 @@ type APIClient struct {
 	IdentityProfilesAPI *identity_profiles.IdentityProfilesAPIService
 	IntelligenceAPI *intelligence.IntelligenceAPIService
 	JITAccessAPI *jit_access.JITAccessAPIService
+	JITActivationConvertAPI *jit_activation_convert.JITActivationConvertAPIService
 	JITActivationsAPI *jit_activations.JITActivationsAPIService
 	LaunchersAPI *launchers.LaunchersAPIService
 	LifecycleStatesAPI *lifecycle_states.LifecycleStatesAPIService
@@ -735,6 +739,18 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	_cfgGlobalTenantSecuritySettings.HTTPClient = cfg.HTTPClient
 	c.GlobalTenantSecuritySettingsAPI = global_tenant_security_settings.NewAPIClient(_cfgGlobalTenantSecuritySettings).GlobalTenantSecuritySettingsAPI
 
+	_cfgNextGenerationCertificationCampaigns := gov_certification.NewConfiguration(
+		cfg.ClientConfiguration.ClientId,
+		cfg.ClientConfiguration.ClientSecret,
+		cfg.ClientConfiguration.BaseURL,
+		cfg.ClientConfiguration.TokenURL,
+		cfg.ClientConfiguration.Token,
+		consumerSuffix,
+		cfg.Experimental,
+	)
+	_cfgNextGenerationCertificationCampaigns.HTTPClient = cfg.HTTPClient
+	c.NextGenerationCertificationCampaignsAPI = gov_certification.NewAPIClient(_cfgNextGenerationCertificationCampaigns).NextGenerationCertificationCampaignsAPI
+
 	_cfgGovernanceGroups := governance_groups.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
 		cfg.ClientConfiguration.ClientSecret,
@@ -902,6 +918,18 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	)
 	_cfgJITAccess.HTTPClient = cfg.HTTPClient
 	c.JITAccessAPI = jit_access.NewAPIClient(_cfgJITAccess).JITAccessAPI
+
+	_cfgJITActivationConvert := jit_activation_convert.NewConfiguration(
+		cfg.ClientConfiguration.ClientId,
+		cfg.ClientConfiguration.ClientSecret,
+		cfg.ClientConfiguration.BaseURL,
+		cfg.ClientConfiguration.TokenURL,
+		cfg.ClientConfiguration.Token,
+		consumerSuffix,
+		cfg.Experimental,
+	)
+	_cfgJITActivationConvert.HTTPClient = cfg.HTTPClient
+	c.JITActivationConvertAPI = jit_activation_convert.NewAPIClient(_cfgJITActivationConvert).JITActivationConvertAPI
 
 	_cfgJITActivations := jit_activations.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,

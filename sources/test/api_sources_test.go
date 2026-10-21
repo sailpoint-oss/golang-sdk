@@ -570,6 +570,20 @@ func Test_sources_SourcesAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test SourcesAPIService GetSourceServiceDeskIntegrationsV1", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var sourceId string
+
+		resp, httpRes, err := apiClient.SourcesAPI.GetSourceServiceDeskIntegrationsV1(context.Background(), sourceId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test SourcesAPIService GetSourceV1", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test

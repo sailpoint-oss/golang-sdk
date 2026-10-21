@@ -1,7 +1,7 @@
 /*
-Generic Identity Security Cloud V2024 API
+Generic SailPoint Identity Security V2024 API
 
-Generic API specification for the Identity Security Cloud platform
+Generic API specification for the SailPoint Identity Security platform
 
 API version: v2024
 */

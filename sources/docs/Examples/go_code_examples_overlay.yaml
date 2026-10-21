@@ -1642,6 +1642,42 @@
           // response from `GetSourceSchemasV1`: []Schema
           fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.GetSourceSchemasV1`: %v\n", resp)
         }
+- path: /sources/v1/{sourceId}/service-desk-integrations
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/sources/methods/sources#get-source-service-desk-integrations-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          sourceId := `2c9180835d191a86015d28455b4a2329` // string | Source ID. # string | Source ID.
+          limit := 250 // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.SourcesAPI.GetSourceServiceDeskIntegrationsV1(context.Background(), sourceId).Execute()
+          //resp, r, err := apiClient.SourcesAPI.GetSourceServiceDeskIntegrationsV1(context.Background(), sourceId).Limit(limit).Offset(offset).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.GetSourceServiceDeskIntegrationsV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetSourceServiceDeskIntegrationsV1`: []SourceServiceDeskIntegrationDto
+          fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.GetSourceServiceDeskIntegrationsV1`: %v\n", resp)
+        }
 - path: /sources/v1/{id}
   method: Get
   xCodeSample:

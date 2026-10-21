@@ -916,6 +916,7 @@ type ApiExportFormDefinitionsByTenantV1Request struct {
 	limit *int64
 	filters *string
 	sorters *string
+	count *bool
 }
 
 // Offset  Integer specifying the offset of the first result from the beginning of the collection. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). The offset value is record-based, not page-based, and the index starts at 0.
@@ -939,6 +940,12 @@ func (r ApiExportFormDefinitionsByTenantV1Request) Filters(filters string) ApiEx
 // Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, description, created, modified**
 func (r ApiExportFormDefinitionsByTenantV1Request) Sorters(sorters string) ApiExportFormDefinitionsByTenantV1Request {
 	r.sorters = &sorters
+	return r
+}
+
+// If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+func (r ApiExportFormDefinitionsByTenantV1Request) Count(count bool) ApiExportFormDefinitionsByTenantV1Request {
+	r.count = &count
 	return r
 }
 
@@ -1002,6 +1009,12 @@ func (a *CustomFormsAPIService) ExportFormDefinitionsByTenantV1Execute(r ApiExpo
 	} else {
 		var defaultValue string = "name"
 		r.sorters = &defaultValue
+	}
+	if r.count != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "count", r.count, "form", "")
+	} else {
+		var defaultValue bool = false
+		r.count = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2382,6 +2395,8 @@ No parameters required.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiSearchFormDefinitionsByTenantV1Request
+
+Deprecated
 */
 func (a *CustomFormsAPIService) SearchFormDefinitionsByTenantV1(ctx context.Context) ApiSearchFormDefinitionsByTenantV1Request {
 	return ApiSearchFormDefinitionsByTenantV1Request{
@@ -2392,6 +2407,7 @@ func (a *CustomFormsAPIService) SearchFormDefinitionsByTenantV1(ctx context.Cont
 
 // Execute executes the request
 //  @return ListFormDefinitionsByTenantResponse
+// Deprecated
 func (a *CustomFormsAPIService) SearchFormDefinitionsByTenantV1Execute(r ApiSearchFormDefinitionsByTenantV1Request) (*ListFormDefinitionsByTenantResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -2556,7 +2572,7 @@ func (r ApiSearchFormElementDataByElementIDV1Request) Limit(limit int64) ApiSear
 	return r
 }
 
-// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **value**: *eq, ne, in*  Supported composite operators: *not*  Only a single *not* may be used, and it can only be used with the &#x60;in&#x60; operator. The &#x60;not&#x60; composite operator must be used in front of the field. For example, the following is valid: &#x60;not value in (\&quot;ID01\&quot;)&#x60;
+// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **value**: *eq, ne, in*  Supported composite operators are *not*  Only a single *not* may be used, and it can only be used with the &#x60;in&#x60; operator. The &#x60;not&#x60; composite operator must be used in front of the field. For example, the following is valid: &#x60;not value in (\&quot;ID01\&quot;)&#x60;
 func (r ApiSearchFormElementDataByElementIDV1Request) Filters(filters string) ApiSearchFormElementDataByElementIDV1Request {
 	r.filters = &filters
 	return r
@@ -3091,7 +3107,7 @@ func (r ApiShowPreviewDataSourceV1Request) Limit(limit int64) ApiShowPreviewData
 	return r
 }
 
-// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **value**: *eq, ne, in*  Supported composite operators: *not*  Only a single *not* may be used, and it can only be used with the &#x60;in&#x60; operator. The &#x60;not&#x60; composite operator must be used in front of the field. For example, the following is valid: &#x60;not value in (\&quot;ID01\&quot;)&#x60;
+// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **value**: *eq, ne, in*  Supported composite operators are *not*  Only a single *not* may be used, and it can only be used with the &#x60;in&#x60; operator. The &#x60;not&#x60; composite operator must be used in front of the field. For example, the following is valid: &#x60;not value in (\&quot;ID01\&quot;)&#x60;
 func (r ApiShowPreviewDataSourceV1Request) Filters(filters string) ApiShowPreviewDataSourceV1Request {
 	r.filters = &filters
 	return r

@@ -1,7 +1,7 @@
 /*
-Generic Identity Security Cloud V2024 API
+Generic SailPoint Identity Security V2024 API
 
-Generic API specification for the Identity Security Cloud platform
+Generic API specification for the SailPoint Identity Security platform
 
 API version: v2024
 */
@@ -45,7 +45,7 @@ var (
 	queryDescape    = strings.NewReplacer( "%5B", "[", "%5D", "]" )
 )
 
-// APIClient manages communication with the Generic Identity Security Cloud V2024 API API vv2024
+// APIClient manages communication with the Generic SailPoint Identity Security V2024 API API vv2024
 // In most cases there should be only one, shared, APIClient.
 type APIClient struct {
 	cfg    *Configuration
@@ -422,7 +422,7 @@ func (c *APIClient) prepareRequest(
 	}
 
 	// Add the user agent to the request.
-	userAgent := "SailPoint-SDK-Go/3.1.66"
+	userAgent := "SailPoint-SDK-Go/3.1.67"
 	if c.cfg.UserAgent != "" {
 		userAgent += " " + c.cfg.UserAgent
 	}

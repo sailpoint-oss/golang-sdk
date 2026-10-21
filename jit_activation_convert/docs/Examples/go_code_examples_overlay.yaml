@@ -1,0 +1,44 @@
+- path: /convert-entitlement-connection/v1
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/jitactivationconvert/methods/jit-activation-convert#start-entitlement-connection-conversion-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            jit_activation_convert "github.com/sailpoint-oss/golang-sdk/v3/jit_activation_convert"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+           convertentitlementconnectionrequestJson := []byte(`{
+          "connectionId" : "757fb803-9024-5861-e510-83a56e4c5bd3",
+          "targetType" : "JIT"
+        }`) // ConvertEntitlementConnectionRequest | 
+
+          
+          var convertEntitlementConnectionRequest jit_activation_convert.ConvertEntitlementConnectionRequest
+          if err := json.Unmarshal(convertentitlementconnectionrequestJson, &convertEntitlementConnectionRequest); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.JITActivationConvertAPI.StartEntitlementConnectionConversionV1(context.Background()).XSailPointExperimental(xSailPointExperimental).ConvertEntitlementConnectionRequest(convertEntitlementConnectionRequest).Execute()
+          //resp, r, err := apiClient.JITActivationConvertAPI.StartEntitlementConnectionConversionV1(context.Background()).XSailPointExperimental(xSailPointExperimental).ConvertEntitlementConnectionRequest(convertEntitlementConnectionRequest).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `JITActivationConvertAPI.StartEntitlementConnectionConversionV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `StartEntitlementConnectionConversionV1`: ConvertEntitlementConnectionResponse
+          fmt.Fprintf(os.Stdout, "Response from `JITActivationConvertAPI.StartEntitlementConnectionConversionV1`: %v\n", resp)
+        }

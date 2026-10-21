@@ -1,0 +1,2186 @@
+- path: /certification-campaigns/v1/campaigns/{id}/complete
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/govcertification/methods/next-generation-certification-campaigns#complete-gov-certification-campaign-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+          id := `ef38f943-47e9-4562-b5bb-8424a56397d8` // string | The campaign id # string | The campaign id
+           completecampaignoptionsJson := []byte(`{
+          "autoCompleteAction" : "REVOKE"
+        }`) // CompleteCampaignOptions | Optional. Default behavior is for the campaign to auto-approve upon completion, unless we specify explicitly REVOKE in autoCompleteAction (optional)
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.NextGenerationCertificationCampaignsAPI.CompleteGovCertificationCampaignV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+          //resp, r, err := apiClient.NextGenerationCertificationCampaignsAPI.CompleteGovCertificationCampaignV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).CompleteCampaignOptions(completeCampaignOptions).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `NextGenerationCertificationCampaignsAPI.CompleteGovCertificationCampaignV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `CompleteGovCertificationCampaignV1`: map[string]interface{}
+          fmt.Fprintf(os.Stdout, "Response from `NextGenerationCertificationCampaignsAPI.CompleteGovCertificationCampaignV1`: %v\n", resp)
+        }
+- path: /certification-campaigns/v1/campaign-templates/{id}/generate
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/govcertification/methods/next-generation-certification-campaigns#create-campaign-from-template-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+          id := `2c918083-5d19-1a86-a15d-28455b4a2329` // string | The desired campaign template's ID. # string | The desired campaign template's ID.
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.NextGenerationCertificationCampaignsAPI.CreateCampaignFromTemplateV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+          //resp, r, err := apiClient.NextGenerationCertificationCampaignsAPI.CreateCampaignFromTemplateV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `NextGenerationCertificationCampaignsAPI.CreateCampaignFromTemplateV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `CreateCampaignFromTemplateV1`: CampaignGet
+          fmt.Fprintf(os.Stdout, "Response from `NextGenerationCertificationCampaignsAPI.CreateCampaignFromTemplateV1`: %v\n", resp)
+        }
+- path: /certification-campaigns/v1/campaign-filters
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/govcertification/methods/next-generation-certification-campaigns#create-gov-certification-campaign-filter-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            gov_certification "github.com/sailpoint-oss/golang-sdk/v3/gov_certification"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+           campaignfiltercreateJson := []byte(`{
+          "mode" : "INCLUSION",
+          "name" : "Identity Attribute Campaign Filter",
+          "description" : "Campaign filter to certify data based on specified property of Identity Attribute.",
+          "criteriaList" : [ {
+            "criteriaType" : "IDENTITY",
+            "criteriaProperty" : "DISPLAY_NAME",
+            "criteriaValue" : "support",
+            "operation" : "EQUALS"
+          } ]
+        }`) // CampaignFilterCreate | 
+
+          
+          var campaignFilterCreate gov_certification.CampaignFilterCreate
+          if err := json.Unmarshal(campaignfiltercreateJson, &campaignFilterCreate); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.NextGenerationCertificationCampaignsAPI.CreateGovCertificationCampaignFilterV1(context.Background()).XSailPointExperimental(xSailPointExperimental).CampaignFilterCreate(campaignFilterCreate).Execute()
+          //resp, r, err := apiClient.NextGenerationCertificationCampaignsAPI.CreateGovCertificationCampaignFilterV1(context.Background()).XSailPointExperimental(xSailPointExperimental).CampaignFilterCreate(campaignFilterCreate).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `NextGenerationCertificationCampaignsAPI.CreateGovCertificationCampaignFilterV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `CreateGovCertificationCampaignFilterV1`: CampaignFilterGet
+          fmt.Fprintf(os.Stdout, "Response from `NextGenerationCertificationCampaignsAPI.CreateGovCertificationCampaignFilterV1`: %v\n", resp)
+        }
+- path: /certification-campaigns/v1/campaign-templates
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/govcertification/methods/next-generation-certification-campaigns#create-gov-certification-campaign-template-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            gov_certification "github.com/sailpoint-oss/golang-sdk/v3/gov_certification"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+           campaigntemplatecreateJson := []byte(`{
+          "recommendationsEnabled" : true,
+          "sunsetCommentsRequired" : true,
+          "deadlineDuration" : "P2W",
+          "searchBasedParams" : {
+            "identityIds" : [ "0fbe863c063c4c88a35fd7f17e8a3df5" ],
+            "searchType" : "ACCESS",
+            "query" : "admin",
+            "accessConstraints" : [ {
+              "ids" : [ "2c90ad2a70ace7d50170acf22ca90010" ],
+              "type" : "ENTITLEMENT",
+              "operator" : "SELECTED"
+            }, {
+              "ids" : [ "2c90ad2a70ace7d50170acf22ca90010" ],
+              "type" : "ENTITLEMENT",
+              "operator" : "SELECTED"
+            } ]
+          },
+          "description" : "Template for the annual manager campaign.",
+          "reviewer" : {
+            "name" : "William Wilson",
+            "id" : "0fbe863c063c4c88a35fd7f17e8a3df5",
+            "type" : "IDENTITY"
+          },
+          "type" : "IDENTITY",
+          "filterRef" : {
+            "id" : "e9f9a139-7b84-2fd5-a658-42087040d3ac"
+          },
+          "emailNotificationEnabled" : false,
+          "remediatorRef" : {
+            "name" : "Role Admin",
+            "id" : "2c90ad2a70ace7d50170acf22ca90010"
+          },
+          "autoRevokeAllowed" : false,
+          "name" : "Manager Campaign Template",
+          "mandatoryCommentRequirement" : "NO_DECISIONS",
+          "campaignDescription" : "Everyone needs to be reviewed by their manager",
+          "campaignName" : "Manager Campaign",
+          "sourceIds" : [ "0fbe863c063c4c88a35fd7f17e8a3df5" ]
+        }`) // CampaignTemplateCreate | 
+
+          
+          var campaignTemplateCreate gov_certification.CampaignTemplateCreate
+          if err := json.Unmarshal(campaigntemplatecreateJson, &campaignTemplateCreate); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.NextGenerationCertificationCampaignsAPI.CreateGovCertificationCampaignTemplateV1(context.Background()).XSailPointExperimental(xSailPointExperimental).CampaignTemplateCreate(campaignTemplateCreate).Execute()
+          //resp, r, err := apiClient.NextGenerationCertificationCampaignsAPI.CreateGovCertificationCampaignTemplateV1(context.Background()).XSailPointExperimental(xSailPointExperimental).CampaignTemplateCreate(campaignTemplateCreate).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `NextGenerationCertificationCampaignsAPI.CreateGovCertificationCampaignTemplateV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `CreateGovCertificationCampaignTemplateV1`: CampaignTemplateGet
+          fmt.Fprintf(os.Stdout, "Response from `NextGenerationCertificationCampaignsAPI.CreateGovCertificationCampaignTemplateV1`: %v\n", resp)
+        }
+- path: /certification-campaigns/v1/campaigns
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/govcertification/methods/next-generation-certification-campaigns#create-gov-certification-campaign-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            gov_certification "github.com/sailpoint-oss/golang-sdk/v3/gov_certification"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+           campaigncreateJson := []byte(`{
+          "inlineFilter" : {
+            "mode" : "INCLUSION",
+            "criteriaList" : [ {
+              "criteriaType" : "IDENTITY",
+              "criteriaProperty" : "DISPLAY_NAME",
+              "criteriaValue" : "support",
+              "operation" : "EQUALS"
+            } ]
+          },
+          "recommendationsEnabled" : true,
+          "sunsetCommentsRequired" : true,
+          "searchBasedParams" : {
+            "identityIds" : [ "0fbe863c063c4c88a35fd7f17e8a3df5" ],
+            "searchType" : "ACCESS",
+            "query" : "admin",
+            "accessConstraints" : [ {
+              "ids" : [ "2c90ad2a70ace7d50170acf22ca90010" ],
+              "type" : "ENTITLEMENT",
+              "operator" : "SELECTED"
+            }, {
+              "ids" : [ "2c90ad2a70ace7d50170acf22ca90010" ],
+              "type" : "ENTITLEMENT",
+              "operator" : "SELECTED"
+            } ]
+          },
+          "description" : "Everyone needs to be reviewed by their manager",
+          "reviewer" : {
+            "name" : "William Wilson",
+            "id" : "0fbe863c063c4c88a35fd7f17e8a3df5",
+            "type" : "IDENTITY"
+          },
+          "autoActivate" : true,
+          "type" : "IDENTITY",
+          "filterRef" : {
+            "id" : "e9f9a139-7b84-2fd5-a658-42087040d3ac"
+          },
+          "emailNotificationEnabled" : false,
+          "remediatorRef" : {
+            "name" : "Role Admin",
+            "id" : "2c90ad2a70ace7d50170acf22ca90010"
+          },
+          "autoRevokeAllowed" : false,
+          "name" : "Manager Campaign",
+          "mandatoryCommentRequirement" : "NO_DECISIONS",
+          "deadlineTimezone" : "-05:00",
+          "deadline" : "2020-03-15",
+          "sourceIds" : [ "0fbe863c063c4c88a35fd7f17e8a3df5" ]
+        }`) // CampaignCreate | 
+
+          
+          var campaignCreate gov_certification.CampaignCreate
+          if err := json.Unmarshal(campaigncreateJson, &campaignCreate); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.NextGenerationCertificationCampaignsAPI.CreateGovCertificationCampaignV1(context.Background()).XSailPointExperimental(xSailPointExperimental).CampaignCreate(campaignCreate).Execute()
+          //resp, r, err := apiClient.NextGenerationCertificationCampaignsAPI.CreateGovCertificationCampaignV1(context.Background()).XSailPointExperimental(xSailPointExperimental).CampaignCreate(campaignCreate).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `NextGenerationCertificationCampaignsAPI.CreateGovCertificationCampaignV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `CreateGovCertificationCampaignV1`: CampaignGet
+          fmt.Fprintf(os.Stdout, "Response from `NextGenerationCertificationCampaignsAPI.CreateGovCertificationCampaignV1`: %v\n", resp)
+        }
+- path: /certification-campaigns/v1/campaigns/{campaignId}/reports
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/govcertification/methods/next-generation-certification-campaigns#create-report-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            gov_certification "github.com/sailpoint-oss/golang-sdk/v3/gov_certification"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+          campaignId := `e1aeb0b6-0021-4f40-8bc7-5c56533214b3` // string | The ID of the campaign to generate a report for # string | The ID of the campaign to generate a report for
+           triggercampaignreportrequestJson := []byte(`{
+          "format" : "PDF",
+          "name" : "My Campaign Report",
+          "type" : "REMEDIATION"
+        }`) // TriggerCampaignReportRequest | 
+
+          
+          var triggerCampaignReportRequest gov_certification.TriggerCampaignReportRequest
+          if err := json.Unmarshal(triggercampaignreportrequestJson, &triggerCampaignReportRequest); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.NextGenerationCertificationCampaignsAPI.CreateReportV1(context.Background(), campaignId).XSailPointExperimental(xSailPointExperimental).TriggerCampaignReportRequest(triggerCampaignReportRequest).Execute()
+          //resp, r, err := apiClient.NextGenerationCertificationCampaignsAPI.CreateReportV1(context.Background(), campaignId).XSailPointExperimental(xSailPointExperimental).TriggerCampaignReportRequest(triggerCampaignReportRequest).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `NextGenerationCertificationCampaignsAPI.CreateReportV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `CreateReportV1`: CampaignReport
+          fmt.Fprintf(os.Stdout, "Response from `NextGenerationCertificationCampaignsAPI.CreateReportV1`: %v\n", resp)
+        }
+- path: /certification-campaigns/v1/campaign-filters/delete
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/govcertification/methods/next-generation-certification-campaigns#delete-gov-certification-campaign-filters-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            gov_certification "github.com/sailpoint-oss/golang-sdk/v3/gov_certification"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+          requestbody := []byte(``) // []string | A JSON list of IDs of campaign filters to delete.
+
+          
+          var requestBody []gov_certification.RequestBody
+          if err := json.Unmarshal(requestbodyJson, &requestBody); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          r, err := apiClient.NextGenerationCertificationCampaignsAPI.DeleteGovCertificationCampaignFiltersV1(context.Background()).XSailPointExperimental(xSailPointExperimental).RequestBody(requestBody).Execute()
+          //r, err := apiClient.NextGenerationCertificationCampaignsAPI.DeleteGovCertificationCampaignFiltersV1(context.Background()).XSailPointExperimental(xSailPointExperimental).RequestBody(requestBody).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `NextGenerationCertificationCampaignsAPI.DeleteGovCertificationCampaignFiltersV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+        }
+- path: /certification-campaigns/v1/campaign-templates/{id}/schedule
+  method: Delete
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/govcertification/methods/next-generation-certification-campaigns#delete-gov-certification-campaign-template-schedule-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+          id := `2c918083-5d19-1a86-a15d-28455b4a2329` // string | The ID of the campaign template whose schedule is being deleted. # string | The ID of the campaign template whose schedule is being deleted.
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          r, err := apiClient.NextGenerationCertificationCampaignsAPI.DeleteGovCertificationCampaignTemplateScheduleV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+          //r, err := apiClient.NextGenerationCertificationCampaignsAPI.DeleteGovCertificationCampaignTemplateScheduleV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `NextGenerationCertificationCampaignsAPI.DeleteGovCertificationCampaignTemplateScheduleV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+        }
+- path: /certification-campaigns/v1/campaign-templates/{id}
+  method: Delete
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/govcertification/methods/next-generation-certification-campaigns#delete-gov-certification-campaign-template-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+          id := `2c918083-5d19-1a86-a15d-28455b4a2329` // string | The ID of the campaign template being deleted. # string | The ID of the campaign template being deleted.
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          r, err := apiClient.NextGenerationCertificationCampaignsAPI.DeleteGovCertificationCampaignTemplateV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+          //r, err := apiClient.NextGenerationCertificationCampaignsAPI.DeleteGovCertificationCampaignTemplateV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `NextGenerationCertificationCampaignsAPI.DeleteGovCertificationCampaignTemplateV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+        }
+- path: /certification-campaigns/v1/campaigns/delete
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/govcertification/methods/next-generation-certification-campaigns#delete-gov-certification-campaigns-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            gov_certification "github.com/sailpoint-oss/golang-sdk/v3/gov_certification"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+           campaignsdeleterequestJson := []byte(`{
+          "ids" : [ "ef38f943-47e9-4562-b5bb-8424a56397d8", "ef38f943-47e9-4562-b5bb-8424a56397d9" ]
+        }`) // CampaignsDeleteRequest | IDs of the campaigns to delete.
+
+          
+          var campaignsDeleteRequest gov_certification.CampaignsDeleteRequest
+          if err := json.Unmarshal(campaignsdeleterequestJson, &campaignsDeleteRequest); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.NextGenerationCertificationCampaignsAPI.DeleteGovCertificationCampaignsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).CampaignsDeleteRequest(campaignsDeleteRequest).Execute()
+          //resp, r, err := apiClient.NextGenerationCertificationCampaignsAPI.DeleteGovCertificationCampaignsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).CampaignsDeleteRequest(campaignsDeleteRequest).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `NextGenerationCertificationCampaignsAPI.DeleteGovCertificationCampaignsV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `DeleteGovCertificationCampaignsV1`: map[string]interface{}
+          fmt.Fprintf(os.Stdout, "Response from `NextGenerationCertificationCampaignsAPI.DeleteGovCertificationCampaignsV1`: %v\n", resp)
+        }
+- path: /certification-campaigns/v1/certifications/{certificationId}/access-summaries/{type}
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/govcertification/methods/next-generation-certification-campaigns#get-access-summaries-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+          certificationId := `ef38f943-47e9-4562-b5bb-8424a56397d8` // string | The certification ID # string | The certification ID
+          type_ := ACCESS_PROFILE // CertificationItemType | The type of review item to retrieve summaries for # CertificationItemType | The type of review item to retrieve summaries for
+          limit := 250 // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
+          filters := `completed eq false and sourceName sw 'AD'` // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **completed**: *eq, ne*  **targetReference.id**: *eq, ne, in*  **targetReference.name**: *eq, sw, co*  **sourceName**: *eq, sw, co* (optional) # string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **completed**: *eq, ne*  **targetReference.id**: *eq, ne, in*  **targetReference.name**: *eq, sw, co*  **sourceName**: *eq, sw, co* (optional)
+          sorters := `targetReference.name` // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **targetReference.name** (optional) # string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **targetReference.name** (optional)
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.NextGenerationCertificationCampaignsAPI.GetAccessSummariesV1(context.Background(), certificationId, type_).XSailPointExperimental(xSailPointExperimental).Execute()
+          //resp, r, err := apiClient.NextGenerationCertificationCampaignsAPI.GetAccessSummariesV1(context.Background(), certificationId, type_).XSailPointExperimental(xSailPointExperimental).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `NextGenerationCertificationCampaignsAPI.GetAccessSummariesV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetAccessSummariesV1`: []ReviewData
+          fmt.Fprintf(os.Stdout, "Response from `NextGenerationCertificationCampaignsAPI.GetAccessSummariesV1`: %v\n", resp)
+        }
+- path: /certification-campaigns/v1/certifications/{certificationId}/review-items/{reviewItemId}/entitlements/{entitlementId}/children
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/govcertification/methods/next-generation-certification-campaigns#get-certification-entitlement-children-details-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+          certificationId := `ef38f943-47e9-4562-b5bb-8424a56397d8` // string | The certification ID # string | The certification ID
+          reviewItemId := `2478b87b-f0d2-4585-b42d-45e4d580c5cf` // string | The certification item ID # string | The certification item ID
+          entitlementId := `ef38f94347e94562b5bb8424a56397d8` // string | The entitlement ID # string | The entitlement ID
+          limit := 250 // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
+          filters := `name eq 'Read Only'` // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, sw*  **type**: *eq, in*  **attribute**: *eq, in*  **value**: *eq, in, sw*  **source.id**: *eq, in*  **requestable**: *eq*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le* (optional) # string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, sw*  **type**: *eq, in*  **attribute**: *eq, in*  **value**: *eq, in, sw*  **source.id**: *eq, in*  **requestable**: *eq*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le* (optional)
+          sorters := `name` // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, created, modified, type, attribute, value, source.id** (optional) # string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, created, modified, type, attribute, value, source.id** (optional)
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.NextGenerationCertificationCampaignsAPI.GetCertificationEntitlementChildrenDetailsV1(context.Background(), certificationId, reviewItemId, entitlementId).XSailPointExperimental(xSailPointExperimental).Execute()
+          //resp, r, err := apiClient.NextGenerationCertificationCampaignsAPI.GetCertificationEntitlementChildrenDetailsV1(context.Background(), certificationId, reviewItemId, entitlementId).XSailPointExperimental(xSailPointExperimental).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `NextGenerationCertificationCampaignsAPI.GetCertificationEntitlementChildrenDetailsV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetCertificationEntitlementChildrenDetailsV1`: []PassThroughEntitlement
+          fmt.Fprintf(os.Stdout, "Response from `NextGenerationCertificationCampaignsAPI.GetCertificationEntitlementChildrenDetailsV1`: %v\n", resp)
+        }
+- path: /certification-campaigns/v1/certifications/{certificationId}/review-items/{reviewItemId}/entitlements/{entitlementId}
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/govcertification/methods/next-generation-certification-campaigns#get-certification-entitlement-details-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+          certificationId := `ef38f943-47e9-4562-b5bb-8424a56397d8` // string | The certification ID # string | The certification ID
+          reviewItemId := `2478b87b-f0d2-4585-b42d-45e4d580c5cf` // string | The certification item ID # string | The certification item ID
+          entitlementId := `ef38f94347e94562b5bb8424a56397d8` // string | The entitlement ID # string | The entitlement ID
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.NextGenerationCertificationCampaignsAPI.GetCertificationEntitlementDetailsV1(context.Background(), certificationId, reviewItemId, entitlementId).XSailPointExperimental(xSailPointExperimental).Execute()
+          //resp, r, err := apiClient.NextGenerationCertificationCampaignsAPI.GetCertificationEntitlementDetailsV1(context.Background(), certificationId, reviewItemId, entitlementId).XSailPointExperimental(xSailPointExperimental).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `NextGenerationCertificationCampaignsAPI.GetCertificationEntitlementDetailsV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetCertificationEntitlementDetailsV1`: PassThroughEntitlement
+          fmt.Fprintf(os.Stdout, "Response from `NextGenerationCertificationCampaignsAPI.GetCertificationEntitlementDetailsV1`: %v\n", resp)
+        }
+- path: /certification-campaigns/v1/certifications/{certificationId}/review-items/{reviewItemId}/entitlements/{entitlementId}/parents
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/govcertification/methods/next-generation-certification-campaigns#get-certification-entitlement-parents-details-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+          certificationId := `ef38f943-47e9-4562-b5bb-8424a56397d8` // string | The certification ID # string | The certification ID
+          reviewItemId := `2478b87b-f0d2-4585-b42d-45e4d580c5cf` // string | The certification item ID # string | The certification item ID
+          entitlementId := `ef38f94347e94562b5bb8424a56397d8` // string | The entitlement ID # string | The entitlement ID
+          limit := 250 // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
+          filters := `attribute eq 'role'` // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, sw*  **type**: *eq, in*  **attribute**: *eq, in*  **value**: *eq, in, sw*  **source.id**: *eq, in*  **requestable**: *eq*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le* (optional) # string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, sw*  **type**: *eq, in*  **attribute**: *eq, in*  **value**: *eq, in, sw*  **source.id**: *eq, in*  **requestable**: *eq*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le* (optional)
+          sorters := `name` // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, created, modified, type, attribute, value, source.id** (optional) # string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, created, modified, type, attribute, value, source.id** (optional)
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.NextGenerationCertificationCampaignsAPI.GetCertificationEntitlementParentsDetailsV1(context.Background(), certificationId, reviewItemId, entitlementId).XSailPointExperimental(xSailPointExperimental).Execute()
+          //resp, r, err := apiClient.NextGenerationCertificationCampaignsAPI.GetCertificationEntitlementParentsDetailsV1(context.Background(), certificationId, reviewItemId, entitlementId).XSailPointExperimental(xSailPointExperimental).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `NextGenerationCertificationCampaignsAPI.GetCertificationEntitlementParentsDetailsV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetCertificationEntitlementParentsDetailsV1`: []PassThroughEntitlement
+          fmt.Fprintf(os.Stdout, "Response from `NextGenerationCertificationCampaignsAPI.GetCertificationEntitlementParentsDetailsV1`: %v\n", resp)
+        }
+- path: /certification-campaigns/v1/certifications/{certificationId}/review-items/{reviewItemId}/entitlements/{entitlementId}/permissions
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/govcertification/methods/next-generation-certification-campaigns#get-certification-entitlement-permissions-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+          certificationId := `ef38f943-47e9-4562-b5bb-8424a56397d8` // string | The certification ID # string | The certification ID
+          reviewItemId := `2478b87b-f0d2-4585-b42d-45e4d580c5cf` // string | The certification item ID # string | The certification item ID
+          entitlementId := `ef38f94347e94562b5bb8424a56397d8` // string | The entitlement ID # string | The entitlement ID
+          limit := 250 // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.NextGenerationCertificationCampaignsAPI.GetCertificationEntitlementPermissionsV1(context.Background(), certificationId, reviewItemId, entitlementId).XSailPointExperimental(xSailPointExperimental).Execute()
+          //resp, r, err := apiClient.NextGenerationCertificationCampaignsAPI.GetCertificationEntitlementPermissionsV1(context.Background(), certificationId, reviewItemId, entitlementId).XSailPointExperimental(xSailPointExperimental).Limit(limit).Offset(offset).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `NextGenerationCertificationCampaignsAPI.GetCertificationEntitlementPermissionsV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetCertificationEntitlementPermissionsV1`: []PermissionDTO
+          fmt.Fprintf(os.Stdout, "Response from `NextGenerationCertificationCampaignsAPI.GetCertificationEntitlementPermissionsV1`: %v\n", resp)
+        }
+- path: /certification-campaigns/v1/certifications/{certificationId}/review-items/{reviewItemId}/item-id/{entitlementId}/cert-account-details
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/govcertification/methods/next-generation-certification-campaigns#get-certification-item-account-details-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+          certificationId := `ef38f943-47e9-4562-b5bb-8424a56397d8` // string | The certification ID # string | The certification ID
+          reviewItemId := `2478b87b-f0d2-4585-b42d-45e4d580c5cf` // string | The certification item ID # string | The certification item ID
+          entitlementId := `ef38f94347e94562b5bb8424a56397d8` // string | The entitlement ID # string | The entitlement ID
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.NextGenerationCertificationCampaignsAPI.GetCertificationItemAccountDetailsV1(context.Background(), certificationId, reviewItemId, entitlementId).XSailPointExperimental(xSailPointExperimental).Execute()
+          //resp, r, err := apiClient.NextGenerationCertificationCampaignsAPI.GetCertificationItemAccountDetailsV1(context.Background(), certificationId, reviewItemId, entitlementId).XSailPointExperimental(xSailPointExperimental).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `NextGenerationCertificationCampaignsAPI.GetCertificationItemAccountDetailsV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetCertificationItemAccountDetailsV1`: AccountDetailsDto
+          fmt.Fprintf(os.Stdout, "Response from `NextGenerationCertificationCampaignsAPI.GetCertificationItemAccountDetailsV1`: %v\n", resp)
+        }
+- path: /certification-campaigns/v1/certifications/{certificationId}
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/govcertification/methods/next-generation-certification-campaigns#get-certification-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+          certificationId := `ef38f943-47e9-4562-b5bb-8424a56397d8` // string | The certification ID # string | The certification ID
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.NextGenerationCertificationCampaignsAPI.GetCertificationV1(context.Background(), certificationId).XSailPointExperimental(xSailPointExperimental).Execute()
+          //resp, r, err := apiClient.NextGenerationCertificationCampaignsAPI.GetCertificationV1(context.Background(), certificationId).XSailPointExperimental(xSailPointExperimental).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `NextGenerationCertificationCampaignsAPI.GetCertificationV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetCertificationV1`: Certification
+          fmt.Fprintf(os.Stdout, "Response from `NextGenerationCertificationCampaignsAPI.GetCertificationV1`: %v\n", resp)
+        }
+- path: /certification-campaigns/v1/certifications/{certificationId}/decision-summary
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/govcertification/methods/next-generation-certification-campaigns#get-decision-summary-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+          certificationId := `ef38f943-47e9-4562-b5bb-8424a56397d8` // string | The certification ID # string | The certification ID
+          filters := `certificationSubjectSummary.id in ('2c918085-71bc-fcf8-0171-c23e4b4221fc','2c918085-71bc-fcf8-0171-c23e4b4221fd')` // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **certificationSubjectSummary.id**: *eq, in* (optional) # string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **certificationSubjectSummary.id**: *eq, in* (optional)
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.NextGenerationCertificationCampaignsAPI.GetDecisionSummaryV1(context.Background(), certificationId).XSailPointExperimental(xSailPointExperimental).Execute()
+          //resp, r, err := apiClient.NextGenerationCertificationCampaignsAPI.GetDecisionSummaryV1(context.Background(), certificationId).XSailPointExperimental(xSailPointExperimental).Filters(filters).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `NextGenerationCertificationCampaignsAPI.GetDecisionSummaryV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetDecisionSummaryV1`: DetailedDecisionSummary
+          fmt.Fprintf(os.Stdout, "Response from `NextGenerationCertificationCampaignsAPI.GetDecisionSummaryV1`: %v\n", resp)
+        }
+- path: /certification-campaigns/v1/campaigns/{campaignId}/reports/{reportId}/download-url
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/govcertification/methods/next-generation-certification-campaigns#get-download-url-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+          campaignId := `e1aeb0b6-0021-4f40-8bc7-5c56533214b3` // string | The ID of the campaign to be retrieved # string | The ID of the campaign to be retrieved
+          reportId := `e1aeb0b6-0021-4f40-8bc7-5c56533214b3` // string | The ID of the report to be retrieved # string | The ID of the report to be retrieved
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.NextGenerationCertificationCampaignsAPI.GetDownloadUrlV1(context.Background(), campaignId, reportId).XSailPointExperimental(xSailPointExperimental).Execute()
+          //resp, r, err := apiClient.NextGenerationCertificationCampaignsAPI.GetDownloadUrlV1(context.Background(), campaignId, reportId).XSailPointExperimental(xSailPointExperimental).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `NextGenerationCertificationCampaignsAPI.GetDownloadUrlV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetDownloadUrlV1`: CampaignReportDownloadResponse
+          fmt.Fprintf(os.Stdout, "Response from `NextGenerationCertificationCampaignsAPI.GetDownloadUrlV1`: %v\n", resp)
+        }
+- path: /certification-campaigns/v1/certifications/{certificationId}/review-items/{reviewItemId}/access-profiles/{accessProfileId}
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/govcertification/methods/next-generation-certification-campaigns#get-gov-certification-access-profile-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+          certificationId := `ef38f943-47e9-4562-b5bb-8424a56397d8` // string | The certification ID # string | The certification ID
+          reviewItemId := `2478b87b-f0d2-4585-b42d-45e4d580c5cf` // string | The certification item ID. This must of review item type either ROLE or ACCESS_PROFILE. # string | The certification item ID. This must of review item type either ROLE or ACCESS_PROFILE.
+          accessProfileId := `2c9180837ca6693d017ca8d097500149` // string | The Access Profile ID # string | The Access Profile ID
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.NextGenerationCertificationCampaignsAPI.GetGovCertificationAccessProfileV1(context.Background(), certificationId, reviewItemId, accessProfileId).XSailPointExperimental(xSailPointExperimental).Execute()
+          //resp, r, err := apiClient.NextGenerationCertificationCampaignsAPI.GetGovCertificationAccessProfileV1(context.Background(), certificationId, reviewItemId, accessProfileId).XSailPointExperimental(xSailPointExperimental).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `NextGenerationCertificationCampaignsAPI.GetGovCertificationAccessProfileV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetGovCertificationAccessProfileV1`: AccessProfile2
+          fmt.Fprintf(os.Stdout, "Response from `NextGenerationCertificationCampaignsAPI.GetGovCertificationAccessProfileV1`: %v\n", resp)
+        }
+- path: /certification-campaigns/v1/campaign-filters/{id}
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/govcertification/methods/next-generation-certification-campaigns#get-gov-certification-campaign-filter-by-id-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+          id := `e9f9a139-7b84-2fd5-a658-42087040d3ac` // string | The ID of the campaign filter to be retrieved. # string | The ID of the campaign filter to be retrieved.
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.NextGenerationCertificationCampaignsAPI.GetGovCertificationCampaignFilterByIdV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+          //resp, r, err := apiClient.NextGenerationCertificationCampaignsAPI.GetGovCertificationCampaignFilterByIdV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `NextGenerationCertificationCampaignsAPI.GetGovCertificationCampaignFilterByIdV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetGovCertificationCampaignFilterByIdV1`: CampaignFilterGet
+          fmt.Fprintf(os.Stdout, "Response from `NextGenerationCertificationCampaignsAPI.GetGovCertificationCampaignFilterByIdV1`: %v\n", resp)
+        }
+- path: /certification-campaigns/v1/campaigns/{campaignId}/reports/{reportId}
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/govcertification/methods/next-generation-certification-campaigns#get-gov-certification-campaign-report-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+          campaignId := `e1aeb0b6-0021-4f40-8bc7-5c56533214b3` // string | The ID of the campaign to be retrieved # string | The ID of the campaign to be retrieved
+          reportId := `e1aeb0b6-0021-4f40-8bc7-5c56533214b3` // string | The ID of the report to be retrieved # string | The ID of the report to be retrieved
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.NextGenerationCertificationCampaignsAPI.GetGovCertificationCampaignReportV1(context.Background(), campaignId, reportId).XSailPointExperimental(xSailPointExperimental).Execute()
+          //resp, r, err := apiClient.NextGenerationCertificationCampaignsAPI.GetGovCertificationCampaignReportV1(context.Background(), campaignId, reportId).XSailPointExperimental(xSailPointExperimental).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `NextGenerationCertificationCampaignsAPI.GetGovCertificationCampaignReportV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetGovCertificationCampaignReportV1`: CampaignReport
+          fmt.Fprintf(os.Stdout, "Response from `NextGenerationCertificationCampaignsAPI.GetGovCertificationCampaignReportV1`: %v\n", resp)
+        }
+- path: /certification-campaigns/v1/campaign-templates/{id}/schedule
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/govcertification/methods/next-generation-certification-campaigns#get-gov-certification-campaign-template-schedule-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+          id := `2c918083-5d19-1a86-a15d-28455b4a2329` // string | The campaign template's ID for the desired campaign template schedule. # string | The campaign template's ID for the desired campaign template schedule.
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.NextGenerationCertificationCampaignsAPI.GetGovCertificationCampaignTemplateScheduleV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+          //resp, r, err := apiClient.NextGenerationCertificationCampaignsAPI.GetGovCertificationCampaignTemplateScheduleV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `NextGenerationCertificationCampaignsAPI.GetGovCertificationCampaignTemplateScheduleV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetGovCertificationCampaignTemplateScheduleV1`: Schedule
+          fmt.Fprintf(os.Stdout, "Response from `NextGenerationCertificationCampaignsAPI.GetGovCertificationCampaignTemplateScheduleV1`: %v\n", resp)
+        }
+- path: /certification-campaigns/v1/campaign-templates/{id}
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/govcertification/methods/next-generation-certification-campaigns#get-gov-certification-campaign-template-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+          id := `2c918083-5d19-1a86-a15d-28455b4a2329` // string | The desired campaign template's ID. # string | The desired campaign template's ID.
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.NextGenerationCertificationCampaignsAPI.GetGovCertificationCampaignTemplateV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+          //resp, r, err := apiClient.NextGenerationCertificationCampaignsAPI.GetGovCertificationCampaignTemplateV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `NextGenerationCertificationCampaignsAPI.GetGovCertificationCampaignTemplateV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetGovCertificationCampaignTemplateV1`: CampaignTemplateGet
+          fmt.Fprintf(os.Stdout, "Response from `NextGenerationCertificationCampaignsAPI.GetGovCertificationCampaignTemplateV1`: %v\n", resp)
+        }
+- path: /certification-campaigns/v1/campaigns/{id}
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/govcertification/methods/next-generation-certification-campaigns#get-gov-certification-campaign-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+          id := `2c918085-71bc-4cf8-a171-c23e4b4221fc` // string | The ID of the campaign to be retrieved # string | The ID of the campaign to be retrieved
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.NextGenerationCertificationCampaignsAPI.GetGovCertificationCampaignV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+          //resp, r, err := apiClient.NextGenerationCertificationCampaignsAPI.GetGovCertificationCampaignV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `NextGenerationCertificationCampaignsAPI.GetGovCertificationCampaignV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetGovCertificationCampaignV1`: CampaignGet
+          fmt.Fprintf(os.Stdout, "Response from `NextGenerationCertificationCampaignsAPI.GetGovCertificationCampaignV1`: %v\n", resp)
+        }
+- path: /certification-campaigns/v1/certification-tasks/{id}
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/govcertification/methods/next-generation-certification-campaigns#get-gov-certification-task-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+          id := `63b32151-26c0-42f4-9299-8898dc1c9daa` // string | The task ID # string | The task ID
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.NextGenerationCertificationCampaignsAPI.GetGovCertificationTaskV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+          //resp, r, err := apiClient.NextGenerationCertificationCampaignsAPI.GetGovCertificationTaskV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `NextGenerationCertificationCampaignsAPI.GetGovCertificationTaskV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetGovCertificationTaskV1`: CertificationTask
+          fmt.Fprintf(os.Stdout, "Response from `NextGenerationCertificationCampaignsAPI.GetGovCertificationTaskV1`: %v\n", resp)
+        }
+- path: /certification-campaigns/v1/certification-tasks
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/govcertification/methods/next-generation-certification-campaigns#get-pending-tasks-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+          reviewerIdentity := `Ada.1de82e55078344` // string | The ID of reviewer identity. *me* indicates the current user. (optional) # string | The ID of reviewer identity. *me* indicates the current user. (optional)
+          limit := 250 // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
+          filters := `type eq "REASSIGN_SUBJECTS_AND_ITEMS"` // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **targetId**: *eq, in*  **type**: *eq, in* (optional) # string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **targetId**: *eq, in*  **type**: *eq, in* (optional)
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.NextGenerationCertificationCampaignsAPI.GetPendingTasksV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+          //resp, r, err := apiClient.NextGenerationCertificationCampaignsAPI.GetPendingTasksV1(context.Background()).XSailPointExperimental(xSailPointExperimental).ReviewerIdentity(reviewerIdentity).Limit(limit).Offset(offset).Count(count).Filters(filters).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `NextGenerationCertificationCampaignsAPI.GetPendingTasksV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetPendingTasksV1`: []CertificationTask
+          fmt.Fprintf(os.Stdout, "Response from `NextGenerationCertificationCampaignsAPI.GetPendingTasksV1`: %v\n", resp)
+        }
+- path: /certification-campaigns/v1/certifications/status-summary
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/govcertification/methods/next-generation-certification-campaigns#get-status-summary-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.NextGenerationCertificationCampaignsAPI.GetStatusSummaryV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+          //resp, r, err := apiClient.NextGenerationCertificationCampaignsAPI.GetStatusSummaryV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `NextGenerationCertificationCampaignsAPI.GetStatusSummaryV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetStatusSummaryV1`: CertificationStatusSummary
+          fmt.Fprintf(os.Stdout, "Response from `NextGenerationCertificationCampaignsAPI.GetStatusSummaryV1`: %v\n", resp)
+        }
+- path: /certification-campaigns/v1/certifications/{certificationId}/subject-summary/{subjectId}
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/govcertification/methods/next-generation-certification-campaigns#get-subject-summary-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+          certificationId := `ef38f943-47e9-4562-b5bb-8424a56397d8` // string | The certification ID # string | The certification ID
+          subjectId := `2c918087-72a5-44f5-a172-a9540e501ba8` // string | The subject summary ID # string | The subject summary ID
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.NextGenerationCertificationCampaignsAPI.GetSubjectSummaryV1(context.Background(), certificationId, subjectId).XSailPointExperimental(xSailPointExperimental).Execute()
+          //resp, r, err := apiClient.NextGenerationCertificationCampaignsAPI.GetSubjectSummaryV1(context.Background(), certificationId, subjectId).XSailPointExperimental(xSailPointExperimental).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `NextGenerationCertificationCampaignsAPI.GetSubjectSummaryV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetSubjectSummaryV1`: CertificationSubjectSummary
+          fmt.Fprintf(os.Stdout, "Response from `NextGenerationCertificationCampaignsAPI.GetSubjectSummaryV1`: %v\n", resp)
+        }
+- path: /certification-campaigns/v1/campaign-templates
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/govcertification/methods/next-generation-certification-campaigns#list-campaign-templates-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+          limit := 250 // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
+          sorters := `name` // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified** (optional) # string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified** (optional)
+          filters := `name eq "Campaign Template"` // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, ne, in, gt, ge, lt, le, sw, co*  **name**: *eq, ne, in, gt, ge, lt, le, sw, co* (optional) # string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, ne, in, gt, ge, lt, le, sw, co*  **name**: *eq, ne, in, gt, ge, lt, le, sw, co* (optional)
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.NextGenerationCertificationCampaignsAPI.ListCampaignTemplatesV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+          //resp, r, err := apiClient.NextGenerationCertificationCampaignsAPI.ListCampaignTemplatesV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Limit(limit).Offset(offset).Count(count).Sorters(sorters).Filters(filters).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `NextGenerationCertificationCampaignsAPI.ListCampaignTemplatesV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `ListCampaignTemplatesV1`: []CampaignTemplateGet
+          fmt.Fprintf(os.Stdout, "Response from `NextGenerationCertificationCampaignsAPI.ListCampaignTemplatesV1`: %v\n", resp)
+        }
+- path: /certification-campaigns/v1/campaigns
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/govcertification/methods/next-generation-certification-campaigns#list-campaigns-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+          limit := 250 // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
+          filters := `name eq "Manager Campaign"` // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, sw, co*  **status**: *eq, in, ne*  Possible values are [PENDING, STAGED, CANCELING, ACTIVATING, ACTIVE, COMPLETING, COMPLETED, ERROR] (optional) # string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, sw, co*  **status**: *eq, in, ne*  Possible values are [PENDING, STAGED, CANCELING, ACTIVATING, ACTIVE, COMPLETING, COMPLETED, ERROR] (optional)
+          sorters := `name,-created` // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified, deadline, status, totalCertifications, completedCertifications** (optional) # string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified, deadline, status, totalCertifications, completedCertifications** (optional)
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.NextGenerationCertificationCampaignsAPI.ListCampaignsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+          //resp, r, err := apiClient.NextGenerationCertificationCampaignsAPI.ListCampaignsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `NextGenerationCertificationCampaignsAPI.ListCampaignsV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `ListCampaignsV1`: []CampaignSummary
+          fmt.Fprintf(os.Stdout, "Response from `NextGenerationCertificationCampaignsAPI.ListCampaignsV1`: %v\n", resp)
+        }
+- path: /certification-campaigns/v1/certifications
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/govcertification/methods/next-generation-certification-campaigns#list-certifications-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+          reviewerIdentity := `me` // string | The ID of reviewer identity. *me* indicates the current user. (optional) # string | The ID of reviewer identity. *me* indicates the current user. (optional)
+          limit := 250 // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
+          filters := `name eq "Bob"` // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **phase**: *eq*  **completed**: *eq*  **campaignRef.campaignType**: *eq, in*  **campaignRef.id**: *eq, in*  **reviewProgress**: *eq, in*  **reviewerDeleted**: *eq*  **reviewerName**: *sw, co* (optional) # string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **phase**: *eq*  **completed**: *eq*  **campaignRef.campaignType**: *eq, in*  **campaignRef.id**: *eq, in*  **reviewProgress**: *eq, in*  **reviewerDeleted**: *eq*  **reviewerName**: *sw, co* (optional)
+          sorters := `name` // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, dueDate, dateSigned** (optional) # string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, dueDate, dateSigned** (optional)
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.NextGenerationCertificationCampaignsAPI.ListCertificationsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+          //resp, r, err := apiClient.NextGenerationCertificationCampaignsAPI.ListCertificationsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).ReviewerIdentity(reviewerIdentity).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `NextGenerationCertificationCampaignsAPI.ListCertificationsV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `ListCertificationsV1`: []Certification
+          fmt.Fprintf(os.Stdout, "Response from `NextGenerationCertificationCampaignsAPI.ListCertificationsV1`: %v\n", resp)
+        }
+- path: /certification-campaigns/v1/campaign-filters
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/govcertification/methods/next-generation-certification-campaigns#list-gov-certification-campaign-filters-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+          limit := 250 // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.NextGenerationCertificationCampaignsAPI.ListGovCertificationCampaignFiltersV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+          //resp, r, err := apiClient.NextGenerationCertificationCampaignsAPI.ListGovCertificationCampaignFiltersV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Limit(limit).Offset(offset).Count(count).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `NextGenerationCertificationCampaignsAPI.ListGovCertificationCampaignFiltersV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `ListGovCertificationCampaignFiltersV1`: []CampaignFilterGet
+          fmt.Fprintf(os.Stdout, "Response from `NextGenerationCertificationCampaignsAPI.ListGovCertificationCampaignFiltersV1`: %v\n", resp)
+        }
+- path: /certification-campaigns/v1/certifications/{certificationId}/reviewers
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/govcertification/methods/next-generation-certification-campaigns#list-gov-certification-reviewers-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+          certificationId := `ef38f943-47e9-4562-b5bb-8424a56397d8` // string | The certification ID # string | The certification ID
+          limit := 250 // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
+          filters := `name eq "Bob"` // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, sw, co*  **email**: *eq, sw, co* (optional) # string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, sw, co*  **email**: *eq, sw, co* (optional)
+          sorters := `name` // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, email** (optional) # string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, email** (optional)
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.NextGenerationCertificationCampaignsAPI.ListGovCertificationReviewersV1(context.Background(), certificationId).XSailPointExperimental(xSailPointExperimental).Execute()
+          //resp, r, err := apiClient.NextGenerationCertificationCampaignsAPI.ListGovCertificationReviewersV1(context.Background(), certificationId).XSailPointExperimental(xSailPointExperimental).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `NextGenerationCertificationCampaignsAPI.ListGovCertificationReviewersV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `ListGovCertificationReviewersV1`: []IdentityReference
+          fmt.Fprintf(os.Stdout, "Response from `NextGenerationCertificationCampaignsAPI.ListGovCertificationReviewersV1`: %v\n", resp)
+        }
+- path: /certification-campaigns/v1/campaigns/{campaignId}/reports
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/govcertification/methods/next-generation-certification-campaigns#list-reports-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+          campaignId := `e1aeb0b6-0021-4f40-8bc7-5c56533214b3` // string | The ID of the campaign to be retrieved # string | The ID of the campaign to be retrieved
+          limit := 250 // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
+          filters := `type eq "SIGN_OFF"` // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, ne, in*  **name**: *eq, sw, co*  **type**: *eq, in, ne*  Possible values are [STATUS, SIGN_OFF, COMPOSITION, REMEDIATION]  **format**: *eq, in, ne*  Possible values are [PDF, CSV]  **status**: *eq, in, ne*  Possible values are [IN_PROGRESS, FAILED, SUCCESS] (optional) # string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, ne, in*  **name**: *eq, sw, co*  **type**: *eq, in, ne*  Possible values are [STATUS, SIGN_OFF, COMPOSITION, REMEDIATION]  **format**: *eq, in, ne*  Possible values are [PDF, CSV]  **status**: *eq, in, ne*  Possible values are [IN_PROGRESS, FAILED, SUCCESS] (optional)
+          sorters := `name,-created` // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, type, format, created, modified** (optional) # string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, type, format, created, modified** (optional)
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.NextGenerationCertificationCampaignsAPI.ListReportsV1(context.Background(), campaignId).XSailPointExperimental(xSailPointExperimental).Execute()
+          //resp, r, err := apiClient.NextGenerationCertificationCampaignsAPI.ListReportsV1(context.Background(), campaignId).XSailPointExperimental(xSailPointExperimental).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `NextGenerationCertificationCampaignsAPI.ListReportsV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `ListReportsV1`: []CampaignReport
+          fmt.Fprintf(os.Stdout, "Response from `NextGenerationCertificationCampaignsAPI.ListReportsV1`: %v\n", resp)
+        }
+- path: /certification-campaigns/v1/certifications/{certificationId}/review-items
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/govcertification/methods/next-generation-certification-campaigns#list-review-items-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+          certificationId := `ef38f943-47e9-4562-b5bb-8424a56397d8` // string | The certification ID # string | The certification ID
+          limit := 250 // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
+          filters := `id eq "ef38f943-47e9-4562-b5bb-8424a56397d8"` // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, ne, in*  **completed**: *eq, ne*  **certificationSubjectSummary.id**: *eq, ne, in*  **certificationSubjectSummary.subjectName**: *eq, sw, co*  **certificationSubjectSummary.subjectManagerName**: *eq, sw, co*  **certificationSubjectSummary.subjectEmail**: *eq, sw, co*  **certificationSubjectSummary.identityState**: *eq, in, ne*  **reviewData.targetReference.id**: *eq, ne, in*  **reviewData.targetReference.name**: *eq, sw, co*  **reviewData.targetReference.type**: *eq*  **reviewData.entitlement.provisioningType**: *eq, ne, in*  **sourceName**: *eq, sw, co*  **accountName**: *eq, sw, co*  **reauthRequired**: *eq, ne* (optional) # string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, ne, in*  **completed**: *eq, ne*  **certificationSubjectSummary.id**: *eq, ne, in*  **certificationSubjectSummary.subjectName**: *eq, sw, co*  **certificationSubjectSummary.subjectManagerName**: *eq, sw, co*  **certificationSubjectSummary.subjectEmail**: *eq, sw, co*  **certificationSubjectSummary.identityState**: *eq, in, ne*  **reviewData.targetReference.id**: *eq, ne, in*  **reviewData.targetReference.name**: *eq, sw, co*  **reviewData.targetReference.type**: *eq*  **reviewData.entitlement.provisioningType**: *eq, ne, in*  **sourceName**: *eq, sw, co*  **accountName**: *eq, sw, co*  **reauthRequired**: *eq, ne* (optional)
+          sorters := `certificationSubjectSummary.subjectName` // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **certificationSubjectSummary.subjectName, certificationSubjectSummary.subjectManagerName, reviewData.targetReference.id, reviewData.targetReference.name, sourceName, accountName** (optional) # string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **certificationSubjectSummary.subjectName, certificationSubjectSummary.subjectManagerName, reviewData.targetReference.id, reviewData.targetReference.name, sourceName, accountName** (optional)
+          activityData := false // bool | If set to true, the response will include HTTP header \"SLPT-Activity-Data-ID\" which will allow the caller to query for certification items activity data in a separate call. (optional) (default to false) # bool | If set to true, the response will include HTTP header \"SLPT-Activity-Data-ID\" which will allow the caller to query for certification items activity data in a separate call. (optional) (default to false)
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.NextGenerationCertificationCampaignsAPI.ListReviewItemsV1(context.Background(), certificationId).XSailPointExperimental(xSailPointExperimental).Execute()
+          //resp, r, err := apiClient.NextGenerationCertificationCampaignsAPI.ListReviewItemsV1(context.Background(), certificationId).XSailPointExperimental(xSailPointExperimental).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).ActivityData(activityData).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `NextGenerationCertificationCampaignsAPI.ListReviewItemsV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `ListReviewItemsV1`: []ReviewItem
+          fmt.Fprintf(os.Stdout, "Response from `NextGenerationCertificationCampaignsAPI.ListReviewItemsV1`: %v\n", resp)
+        }
+- path: /certification-campaigns/v1/certifications/{certificationId}/subject-summaries
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/govcertification/methods/next-generation-certification-campaigns#list-subject-summaries-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+          certificationId := `ef38f943-47e9-4562-b5bb-8424a56397d8` // string | The certification ID # string | The certification ID
+          limit := 250 // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
+          filters := `completed eq false and subjectName sw 'Derek'` // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **targetId**: *eq, ne, in*  **completed**: *eq, ne*  **subjectName**: *eq, sw, co* (optional) # string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **targetId**: *eq, ne, in*  **completed**: *eq, ne*  **subjectName**: *eq, sw, co* (optional)
+          sorters := `subjectName` // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **subjectName, targetDisplayName** (optional) # string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **subjectName, targetDisplayName** (optional)
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.NextGenerationCertificationCampaignsAPI.ListSubjectSummariesV1(context.Background(), certificationId).XSailPointExperimental(xSailPointExperimental).Execute()
+          //resp, r, err := apiClient.NextGenerationCertificationCampaignsAPI.ListSubjectSummariesV1(context.Background(), certificationId).XSailPointExperimental(xSailPointExperimental).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `NextGenerationCertificationCampaignsAPI.ListSubjectSummariesV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `ListSubjectSummariesV1`: []CertificationSubjectSummary
+          fmt.Fprintf(os.Stdout, "Response from `NextGenerationCertificationCampaignsAPI.ListSubjectSummariesV1`: %v\n", resp)
+        }
+- path: /certification-campaigns/v1/campaigns/{campaignId}/reassign
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/govcertification/methods/next-generation-certification-campaigns#move-certifications-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            gov_certification "github.com/sailpoint-oss/golang-sdk/v3/gov_certification"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+          campaignId := `ef38f943-47e9-4562-b5bb-8424a56397d8` // string | The certification campaign ID. # string | The certification campaign ID.
+           reassigncertificationsJson := []byte(`{
+          "certificationIds" : [ "af385946-4779-4712-91bb-8424a563abc1", "af385946-4779-4712-91bb-8424a563abc2", "af385946-4779-4712-91bb-8424a563abc3" ],
+          "reason" : "Reassigning the certifications",
+          "reassignTo" : {
+            "id" : "0fbe863c-063c-4c88-a35f-d7f17e8a3df5",
+            "type" : "IDENTITY"
+          }
+        }`) // ReassignCertifications | A non-empty array of items and identities which reviewer is going to reassign.
+
+          
+          var reassignCertifications gov_certification.ReassignCertifications
+          if err := json.Unmarshal(reassigncertificationsJson, &reassignCertifications); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.NextGenerationCertificationCampaignsAPI.MoveCertificationsV1(context.Background(), campaignId).XSailPointExperimental(xSailPointExperimental).ReassignCertifications(reassignCertifications).Execute()
+          //resp, r, err := apiClient.NextGenerationCertificationCampaignsAPI.MoveCertificationsV1(context.Background(), campaignId).XSailPointExperimental(xSailPointExperimental).ReassignCertifications(reassignCertifications).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `NextGenerationCertificationCampaignsAPI.MoveCertificationsV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `MoveCertificationsV1`: CertificationTask
+          fmt.Fprintf(os.Stdout, "Response from `NextGenerationCertificationCampaignsAPI.MoveCertificationsV1`: %v\n", resp)
+        }
+- path: /certification-campaigns/v1/certifications/{certificationId}/reassign-async
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/govcertification/methods/next-generation-certification-campaigns#move-subject-and-items-async-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            gov_certification "github.com/sailpoint-oss/golang-sdk/v3/gov_certification"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+          certificationId := `ef38f943-47e9-4562-b5bb-8424a56397d8` // string | The ID of the certification which we are going to reassign. # string | The ID of the certification which we are going to reassign.
+           reassignreferenceJson := []byte(`{
+          "reason" : "Reassigning this item to the appropriate reviewer.",
+          "reassignTo" : "ef38f943-47e9-4562-b5bb-8424a56397d8",
+          "reassign" : [ {
+            "id" : "ef38f943-47e9-4562-b5bb-8424a56397d8",
+            "type" : "ITEM"
+          } ]
+        }`) // ReassignReference | A non-empty array of items and identities which reviewer is going to reassign.
+
+          
+          var reassignReference gov_certification.ReassignReference
+          if err := json.Unmarshal(reassignreferenceJson, &reassignReference); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.NextGenerationCertificationCampaignsAPI.MoveSubjectAndItemsAsyncV1(context.Background(), certificationId).XSailPointExperimental(xSailPointExperimental).ReassignReference(reassignReference).Execute()
+          //resp, r, err := apiClient.NextGenerationCertificationCampaignsAPI.MoveSubjectAndItemsAsyncV1(context.Background(), certificationId).XSailPointExperimental(xSailPointExperimental).ReassignReference(reassignReference).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `NextGenerationCertificationCampaignsAPI.MoveSubjectAndItemsAsyncV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `MoveSubjectAndItemsAsyncV1`: CertificationTask
+          fmt.Fprintf(os.Stdout, "Response from `NextGenerationCertificationCampaignsAPI.MoveSubjectAndItemsAsyncV1`: %v\n", resp)
+        }
+- path: /certification-campaigns/v1/certifications/{certificationId}/reassign
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/govcertification/methods/next-generation-certification-campaigns#move-subject-and-items-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            gov_certification "github.com/sailpoint-oss/golang-sdk/v3/gov_certification"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+          certificationId := `ef38f943-47e9-4562-b5bb-8424a56397d8` // string | The ID of the certification which we are going to reassign. # string | The ID of the certification which we are going to reassign.
+           reassignreferenceJson := []byte(`{
+          "reason" : "Reassigning this item to the appropriate reviewer.",
+          "reassignTo" : "ef38f943-47e9-4562-b5bb-8424a56397d8",
+          "reassign" : [ {
+            "id" : "ef38f943-47e9-4562-b5bb-8424a56397d8",
+            "type" : "ITEM"
+          } ]
+        }`) // ReassignReference | A non-empty array of items and identities which reviewer is going to reassign.
+
+          
+          var reassignReference gov_certification.ReassignReference
+          if err := json.Unmarshal(reassignreferenceJson, &reassignReference); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.NextGenerationCertificationCampaignsAPI.MoveSubjectAndItemsV1(context.Background(), certificationId).XSailPointExperimental(xSailPointExperimental).ReassignReference(reassignReference).Execute()
+          //resp, r, err := apiClient.NextGenerationCertificationCampaignsAPI.MoveSubjectAndItemsV1(context.Background(), certificationId).XSailPointExperimental(xSailPointExperimental).ReassignReference(reassignReference).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `NextGenerationCertificationCampaignsAPI.MoveSubjectAndItemsV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `MoveSubjectAndItemsV1`: Certification
+          fmt.Fprintf(os.Stdout, "Response from `NextGenerationCertificationCampaignsAPI.MoveSubjectAndItemsV1`: %v\n", resp)
+        }
+- path: /certification-campaigns/v1/campaigns/{id}
+  method: Patch
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/govcertification/methods/next-generation-certification-campaigns#patch-campaign-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            gov_certification "github.com/sailpoint-oss/golang-sdk/v3/gov_certification"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+          id := `ef38f943-47e9-4562-b5bb-8424a56397d8` // string | ID of the campaign being modified. # string | ID of the campaign being modified.
+          jsonpatchoperationJson := []byte(`[{"op":"replace","path":"/name","value":"This field has been updated!"},{"op":"copy","from":"/name","path":"/description"}]`) // []JsonPatchOperation | A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The fields that can be patched differ based on the status of the campaign.  When the campaign is in the *STAGED* status, you can patch these fields: * name * description * recommendationsEnabled * deadline * emailNotificationEnabled * autoRevokeAllowed  When the campaign is in the *ACTIVE* status, you can patch these fields: * deadline 
+
+          
+          var jsonPatchOperation []gov_certification.JsonPatchOperation
+          if err := json.Unmarshal(jsonpatchoperationJson, &jsonPatchOperation); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.NextGenerationCertificationCampaignsAPI.PatchCampaignV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).JsonPatchOperation(jsonPatchOperation).Execute()
+          //resp, r, err := apiClient.NextGenerationCertificationCampaignsAPI.PatchCampaignV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).JsonPatchOperation(jsonPatchOperation).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `NextGenerationCertificationCampaignsAPI.PatchCampaignV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `PatchCampaignV1`: CampaignGet
+          fmt.Fprintf(os.Stdout, "Response from `NextGenerationCertificationCampaignsAPI.PatchCampaignV1`: %v\n", resp)
+        }
+- path: /certification-campaigns/v1/campaign-templates/{id}
+  method: Patch
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/govcertification/methods/next-generation-certification-campaigns#patch-gov-certification-campaign-template-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            gov_certification "github.com/sailpoint-oss/golang-sdk/v3/gov_certification"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+          id := `2c918083-5d19-1a86-a15d-28455b4a2329` // string | The ID of the campaign template being modified. # string | The ID of the campaign template being modified.
+          jsonpatchoperationJson := []byte(``) // []JsonPatchOperation | A list of campaign template update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: - name - description - campaignName - campaignDescription - remediatorRef - reviewer (id and type only; name is resolved server-side) - mandatoryCommentRequirement - emailNotificationEnabled - autoRevokeAllowed - recommendationsEnabled - sunsetCommentsRequired - deadlineDuration - filterRef - searchBasedParams - sourceIds 
+
+          
+          var jsonPatchOperation []gov_certification.JsonPatchOperation
+          if err := json.Unmarshal(jsonpatchoperationJson, &jsonPatchOperation); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.NextGenerationCertificationCampaignsAPI.PatchGovCertificationCampaignTemplateV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).JsonPatchOperation(jsonPatchOperation).Execute()
+          //resp, r, err := apiClient.NextGenerationCertificationCampaignsAPI.PatchGovCertificationCampaignTemplateV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).JsonPatchOperation(jsonPatchOperation).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `NextGenerationCertificationCampaignsAPI.PatchGovCertificationCampaignTemplateV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `PatchGovCertificationCampaignTemplateV1`: CampaignTemplateGet
+          fmt.Fprintf(os.Stdout, "Response from `NextGenerationCertificationCampaignsAPI.PatchGovCertificationCampaignTemplateV1`: %v\n", resp)
+        }
+- path: /certification-campaigns/v1/certifications/{certificationId}/sign-off
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/govcertification/methods/next-generation-certification-campaigns#process-sign-off-certification-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+          certificationId := `ef38f943-47e9-4562-b5bb-8424a56397d8` // string | The certification ID # string | The certification ID
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.NextGenerationCertificationCampaignsAPI.ProcessSignOffCertificationV1(context.Background(), certificationId).XSailPointExperimental(xSailPointExperimental).Execute()
+          //resp, r, err := apiClient.NextGenerationCertificationCampaignsAPI.ProcessSignOffCertificationV1(context.Background(), certificationId).XSailPointExperimental(xSailPointExperimental).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `NextGenerationCertificationCampaignsAPI.ProcessSignOffCertificationV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `ProcessSignOffCertificationV1`: Certification
+          fmt.Fprintf(os.Stdout, "Response from `NextGenerationCertificationCampaignsAPI.ProcessSignOffCertificationV1`: %v\n", resp)
+        }
+- path: /certification-campaigns/v1/campaign-filters/{id}
+  method: Put
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/govcertification/methods/next-generation-certification-campaigns#put-campaign-filter-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            gov_certification "github.com/sailpoint-oss/golang-sdk/v3/gov_certification"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+          id := `e9f9a139-7b84-2fd5-a658-42087040d3ac` // string | The ID of the campaign filter being modified. # string | The ID of the campaign filter being modified.
+           campaignfilterupdateJson := []byte(`{
+          "mode" : "INCLUSION",
+          "name" : "Identity Attribute Campaign Filter",
+          "description" : "Campaign filter to certify data based on specified property of Identity Attribute.",
+          "criteriaList" : [ {
+            "criteriaType" : "IDENTITY",
+            "criteriaProperty" : "DISPLAY_NAME",
+            "criteriaValue" : "support",
+            "operation" : "EQUALS"
+          } ]
+        }`) // CampaignFilterUpdate | A campaign filter details with updated field values.
+
+          
+          var campaignFilterUpdate gov_certification.CampaignFilterUpdate
+          if err := json.Unmarshal(campaignfilterupdateJson, &campaignFilterUpdate); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.NextGenerationCertificationCampaignsAPI.PutCampaignFilterV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).CampaignFilterUpdate(campaignFilterUpdate).Execute()
+          //resp, r, err := apiClient.NextGenerationCertificationCampaignsAPI.PutCampaignFilterV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).CampaignFilterUpdate(campaignFilterUpdate).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `NextGenerationCertificationCampaignsAPI.PutCampaignFilterV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `PutCampaignFilterV1`: CampaignFilterGet
+          fmt.Fprintf(os.Stdout, "Response from `NextGenerationCertificationCampaignsAPI.PutCampaignFilterV1`: %v\n", resp)
+        }
+- path: /certification-campaigns/v1/campaign-templates/search
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/govcertification/methods/next-generation-certification-campaigns#search-campaign-templates-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            gov_certification "github.com/sailpoint-oss/golang-sdk/v3/gov_certification"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+           searchrequestJson := []byte(`{
+          "queryString" : "identity 2023"
+        }`) // SearchRequest | 
+          limit := 250 // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
+          sorters := `name` // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified** (optional) # string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified** (optional)
+          filters := `name eq "Campaign Template"` // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, ne, in, gt, ge, lt, le, sw, co*  **name**: *eq, ne, in, gt, ge, lt, le, sw, co* (optional) # string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, ne, in, gt, ge, lt, le, sw, co*  **name**: *eq, ne, in, gt, ge, lt, le, sw, co* (optional)
+
+          
+          var searchRequest gov_certification.SearchRequest
+          if err := json.Unmarshal(searchrequestJson, &searchRequest); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.NextGenerationCertificationCampaignsAPI.SearchCampaignTemplatesV1(context.Background()).XSailPointExperimental(xSailPointExperimental).SearchRequest(searchRequest).Execute()
+          //resp, r, err := apiClient.NextGenerationCertificationCampaignsAPI.SearchCampaignTemplatesV1(context.Background()).XSailPointExperimental(xSailPointExperimental).SearchRequest(searchRequest).Limit(limit).Offset(offset).Count(count).Sorters(sorters).Filters(filters).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `NextGenerationCertificationCampaignsAPI.SearchCampaignTemplatesV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `SearchCampaignTemplatesV1`: []CampaignTemplateGet
+          fmt.Fprintf(os.Stdout, "Response from `NextGenerationCertificationCampaignsAPI.SearchCampaignTemplatesV1`: %v\n", resp)
+        }
+- path: /certification-campaigns/v1/certifications/search
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/govcertification/methods/next-generation-certification-campaigns#search-certifications-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+          reviewerIdentity := `me` // string | The ID of reviewer identity. *me* indicates the current user. (optional) # string | The ID of reviewer identity. *me* indicates the current user. (optional)
+          limit := 250 // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
+          filters := `reviewerName sw "Bob"` // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **phase**: *eq*  **completed**: *eq*  **campaignRef.campaignType**: *eq, in*  **campaignRef.id**: *eq, in*  **reviewProgress**: *eq, in*  **reviewerDeleted**: *eq*  **reviewerName**: *sw, co* (optional) # string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **phase**: *eq*  **completed**: *eq*  **campaignRef.campaignType**: *eq, in*  **campaignRef.id**: *eq, in*  **reviewProgress**: *eq, in*  **reviewerDeleted**: *eq*  **reviewerName**: *sw, co* (optional)
+          sorters := `name` // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, dueDate, dateSigned** (optional) # string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, dueDate, dateSigned** (optional)
+           searchrequestJson := []byte(`{
+          "queryString" : "identity 2023"
+        }`) // SearchRequest |  (optional)
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.NextGenerationCertificationCampaignsAPI.SearchCertificationsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+          //resp, r, err := apiClient.NextGenerationCertificationCampaignsAPI.SearchCertificationsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).ReviewerIdentity(reviewerIdentity).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).SearchRequest(searchRequest).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `NextGenerationCertificationCampaignsAPI.SearchCertificationsV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `SearchCertificationsV1`: []Certification
+          fmt.Fprintf(os.Stdout, "Response from `NextGenerationCertificationCampaignsAPI.SearchCertificationsV1`: %v\n", resp)
+        }
+- path: /certification-campaigns/v1/insights/access-summary
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/govcertification/methods/next-generation-certification-campaigns#search-insights-access-summary-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            gov_certification "github.com/sailpoint-oss/golang-sdk/v3/gov_certification"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+           insightdetailsJson := []byte(`{
+          "campaignType" : "IDENTITY",
+          "identityIdFilter" : [ "2c918085718230600171993742c63558" ],
+          "query" : "admin",
+          "type" : "ENTITLEMENT"
+        }`) // InsightDetails | 
+
+          
+          var insightDetails gov_certification.InsightDetails
+          if err := json.Unmarshal(insightdetailsJson, &insightDetails); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.NextGenerationCertificationCampaignsAPI.SearchInsightsAccessSummaryV1(context.Background()).XSailPointExperimental(xSailPointExperimental).InsightDetails(insightDetails).Execute()
+          //resp, r, err := apiClient.NextGenerationCertificationCampaignsAPI.SearchInsightsAccessSummaryV1(context.Background()).XSailPointExperimental(xSailPointExperimental).InsightDetails(insightDetails).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `NextGenerationCertificationCampaignsAPI.SearchInsightsAccessSummaryV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `SearchInsightsAccessSummaryV1`: []ScopedAccess
+          fmt.Fprintf(os.Stdout, "Response from `NextGenerationCertificationCampaignsAPI.SearchInsightsAccessSummaryV1`: %v\n", resp)
+        }
+- path: /certification-campaigns/v1/certifications/{certificationId}/review-items/search
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/govcertification/methods/next-generation-certification-campaigns#search-review-items-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+          certificationId := `ef38f943-47e9-4562-b5bb-8424a56397d8` // string | The certification ID # string | The certification ID
+          limit := 250 // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
+          filters := `id eq "ef38f943-47e9-4562-b5bb-8424a56397d8"` // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, ne, in*  **completed**: *eq, ne*  **certificationSubjectSummary.id**: *eq, ne, in*  **certificationSubjectSummary.subjectName**: *eq, sw, co*  **certificationSubjectSummary.subjectManagerName**: *eq, sw, co*  **certificationSubjectSummary.subjectEmail**: *eq, sw, co*  **certificationSubjectSummary.identityState**: *eq, in, ne*  **reviewData.targetReference.id**: *eq, ne, in*  **reviewData.targetReference.name**: *eq, sw, co*  **reviewData.targetReference.type**: *eq*  **reviewData.entitlement.provisioningType**: *eq, ne, in*  **sourceName**: *eq, sw, co*  **accountName**: *eq, sw, co*  **reauthRequired**: *eq, ne* (optional) # string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, ne, in*  **completed**: *eq, ne*  **certificationSubjectSummary.id**: *eq, ne, in*  **certificationSubjectSummary.subjectName**: *eq, sw, co*  **certificationSubjectSummary.subjectManagerName**: *eq, sw, co*  **certificationSubjectSummary.subjectEmail**: *eq, sw, co*  **certificationSubjectSummary.identityState**: *eq, in, ne*  **reviewData.targetReference.id**: *eq, ne, in*  **reviewData.targetReference.name**: *eq, sw, co*  **reviewData.targetReference.type**: *eq*  **reviewData.entitlement.provisioningType**: *eq, ne, in*  **sourceName**: *eq, sw, co*  **accountName**: *eq, sw, co*  **reauthRequired**: *eq, ne* (optional)
+          sorters := `certificationSubjectSummary.subjectName` // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **certificationSubjectSummary.subjectName, certificationSubjectSummary.subjectManagerName, reviewData.targetReference.id, reviewData.targetReference.name, sourceName, accountName** (optional) # string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **certificationSubjectSummary.subjectName, certificationSubjectSummary.subjectManagerName, reviewData.targetReference.id, reviewData.targetReference.name, sourceName, accountName** (optional)
+          activityData := false // bool | If set to true, the response will include HTTP header \"SLPT-Activity-Data-ID\" which will allow the caller to query for certification items activity data in a separate call. (optional) (default to false) # bool | If set to true, the response will include HTTP header \"SLPT-Activity-Data-ID\" which will allow the caller to query for certification items activity data in a separate call. (optional) (default to false)
+           searchrequestJson := []byte(`{
+          "queryString" : "identity 2023"
+        }`) // SearchRequest |  (optional)
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.NextGenerationCertificationCampaignsAPI.SearchReviewItemsV1(context.Background(), certificationId).XSailPointExperimental(xSailPointExperimental).Execute()
+          //resp, r, err := apiClient.NextGenerationCertificationCampaignsAPI.SearchReviewItemsV1(context.Background(), certificationId).XSailPointExperimental(xSailPointExperimental).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).ActivityData(activityData).SearchRequest(searchRequest).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `NextGenerationCertificationCampaignsAPI.SearchReviewItemsV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `SearchReviewItemsV1`: []ReviewItem
+          fmt.Fprintf(os.Stdout, "Response from `NextGenerationCertificationCampaignsAPI.SearchReviewItemsV1`: %v\n", resp)
+        }
+- path: /certification-campaigns/v1/certifications/{certificationId}/subject-summaries/search
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/govcertification/methods/next-generation-certification-campaigns#search-subject-summaries-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+          certificationId := `ef38f943-47e9-4562-b5bb-8424a56397d8` // string | The certification ID # string | The certification ID
+          limit := 250 // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
+          filters := `completed eq false and subjectName sw 'Derek'` // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **targetId**: *eq, ne, in*  **completed**: *eq, ne*  **subjectName**: *eq, sw, co* (optional) # string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **targetId**: *eq, ne, in*  **completed**: *eq, ne*  **subjectName**: *eq, sw, co* (optional)
+          sorters := `subjectName` // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **subjectName, targetDisplayName** (optional) # string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **subjectName, targetDisplayName** (optional)
+           searchrequestJson := []byte(`{
+          "queryString" : "identity 2023"
+        }`) // SearchRequest |  (optional)
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.NextGenerationCertificationCampaignsAPI.SearchSubjectSummariesV1(context.Background(), certificationId).XSailPointExperimental(xSailPointExperimental).Execute()
+          //resp, r, err := apiClient.NextGenerationCertificationCampaignsAPI.SearchSubjectSummariesV1(context.Background(), certificationId).XSailPointExperimental(xSailPointExperimental).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).SearchRequest(searchRequest).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `NextGenerationCertificationCampaignsAPI.SearchSubjectSummariesV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `SearchSubjectSummariesV1`: []CertificationSubjectSummary
+          fmt.Fprintf(os.Stdout, "Response from `NextGenerationCertificationCampaignsAPI.SearchSubjectSummariesV1`: %v\n", resp)
+        }
+- path: /certification-campaigns/v1/campaign-templates/{id}/schedule
+  method: Put
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/govcertification/methods/next-generation-certification-campaigns#set-or-update-campaign-template-schedule-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            gov_certification "github.com/sailpoint-oss/golang-sdk/v3/gov_certification"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+          id := `2c918083-5d19-1a86-a15d-28455b4a2329` // string | The ID of the campaign template whose schedule is being modified or created. # string | The ID of the campaign template whose schedule is being modified or created.
+           scheduleJson := []byte(`{
+          "hours" : {
+            "values" : [ "1", "2", "3" ],
+            "interval" : 2,
+            "type" : "LIST"
+          },
+          "months" : {
+            "values" : [ "1", "2", "3" ],
+            "interval" : 2,
+            "type" : "LIST"
+          },
+          "timeZoneId" : "America/Chicago",
+          "days" : {
+            "values" : [ "1", "2", "3" ],
+            "interval" : 2,
+            "type" : "LIST"
+          },
+          "expiration" : "2025-09-15T16:00:00Z",
+          "type" : "DAILY"
+        }`) // Schedule | The data for the schedule for the given campaign template ID.
+
+          
+          var schedule gov_certification.Schedule
+          if err := json.Unmarshal(scheduleJson, &schedule); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          r, err := apiClient.NextGenerationCertificationCampaignsAPI.SetOrUpdateCampaignTemplateScheduleV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Schedule(schedule).Execute()
+          //r, err := apiClient.NextGenerationCertificationCampaignsAPI.SetOrUpdateCampaignTemplateScheduleV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Schedule(schedule).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `NextGenerationCertificationCampaignsAPI.SetOrUpdateCampaignTemplateScheduleV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+        }
+- path: /certification-campaigns/v1/campaigns/{id}/activate
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/govcertification/methods/next-generation-certification-campaigns#start-gov-certification-campaign-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+          id := `ef38f943-47e9-4562-b5bb-8424a56397d8` // string | The campaign id # string | The campaign id
+           activatecampaignoptionsJson := []byte(`{
+          "timeZone" : "-05:00"
+        }`) // ActivateCampaignOptions | Optional. If the timezone is not specified, we will continue using the campaign's timezone, which was set during campaign creation. The activation time calculated from the given timezone may cause the campaign deadline time to be modified, but it will remain within the original date. The timezone must be in a valid ISO 8601 format. (optional)
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.NextGenerationCertificationCampaignsAPI.StartGovCertificationCampaignV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+          //resp, r, err := apiClient.NextGenerationCertificationCampaignsAPI.StartGovCertificationCampaignV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).ActivateCampaignOptions(activateCampaignOptions).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `NextGenerationCertificationCampaignsAPI.StartGovCertificationCampaignV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `StartGovCertificationCampaignV1`: map[string]interface{}
+          fmt.Fprintf(os.Stdout, "Response from `NextGenerationCertificationCampaignsAPI.StartGovCertificationCampaignV1`: %v\n", resp)
+        }
+- path: /certification-campaigns/v1/certifications/{certificationId}/decide
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/govcertification/methods/next-generation-certification-campaigns#submit-decisions-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            gov_certification "github.com/sailpoint-oss/golang-sdk/v3/gov_certification"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+          certificationId := `ef38f943-47e9-4562-b5bb-8424a56397d8` // string | The ID of the certification on which to make decisions # string | The ID of the certification on which to make decisions
+          reviewdecisionJson := []byte(`[{"id":"ef38f94347e94562b5bb8424a56396b5","decision":"APPROVED","comments":"This user still needs access to this source."},{"id":"ef38f94347e94562b5bb8424a56397d8","decision":"APPROVED","comments":"This user still needs access to this source too."}]`) // []ReviewDecision | A non-empty array of decisions to be made.
+
+          
+          var reviewDecision []gov_certification.ReviewDecision
+          if err := json.Unmarshal(reviewdecisionJson, &reviewDecision); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.NextGenerationCertificationCampaignsAPI.SubmitDecisionsV1(context.Background(), certificationId).XSailPointExperimental(xSailPointExperimental).ReviewDecision(reviewDecision).Execute()
+          //resp, r, err := apiClient.NextGenerationCertificationCampaignsAPI.SubmitDecisionsV1(context.Background(), certificationId).XSailPointExperimental(xSailPointExperimental).ReviewDecision(reviewDecision).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `NextGenerationCertificationCampaignsAPI.SubmitDecisionsV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `SubmitDecisionsV1`: Certification
+          fmt.Fprintf(os.Stdout, "Response from `NextGenerationCertificationCampaignsAPI.SubmitDecisionsV1`: %v\n", resp)
+        }
