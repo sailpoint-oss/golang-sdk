@@ -445,6 +445,436 @@ paths:
       summary: Identity details
       tags:
       - Identities
+  /identities/v2:
+    get:
+      description: |-
+        List identities from the identities search index.
+
+        Use standard collection parameters for paging (`limit`, `offset`, `count`). Default page size is 25 when no collection parameters are sent. Maximum `limit` is 250. Requests that specify a larger `limit` are capped at 250. `offset + limit` cannot exceed 10,000. To page beyond that window, use `searchAfter` instead of a large offset. `searchAfter` cannot be combined with `offset`. Always include `id` in `sorters` when using `searchAfter`. Refer to [Paginating Search Queries](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-search-queries) for more information.
+
+        `privilegeLevel` is returned when the `IDNARC_ENABLE_IDENTITY_EFFECTIVE_PRIVILEGE` feature flag is enabled. When the flag is disabled, `privilegeLevel` is null and a filter or sort on `privilegeLevel.effective` is rejected. When the flag is enabled, an identity with no privilege level is returned as `NONE`. Comparisons on `privilegeLevel.effective` are case-insensitive, and returned values are uppercase: `HIGH`, `MEDIUM`, `LOW`, or `NONE`. An identity with no privilege level matches `privilegeLevel.effective eq "NONE"` and does not match `isnull`.
+      operationId: listIdentitiesV2
+      parameters:
+      - description: |-
+          Max number of results to return.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 250
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          Offset into the full result set. Usually specified with *limit* to paginate through the results.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 0
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+          Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: true
+        explode: true
+        in: query
+        name: count
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+      - description: |-
+          Used to begin the search window at the values specified.
+
+          This parameter consists of the last values of the sorted fields in the current record set.
+
+          searchAfter length must match the number of sorters.
+
+          This is used to page beyond the offset limit of 10,000 records by shifting the search window to begin at this value.
+
+          `searchAfter` cannot be combined with `offset`. When `searchAfter` is provided, `id` must be included in `sorters`.
+
+          It is recommended that you always include the ID of the object in addition to any other sort fields in order to ensure you don't get duplicate results while paging.
+
+          For example, if you are sorting by name you will also want to include ID, for example searchAfter=John Mathews,01f04e428c484542a241dc89c303b178&sorters=name,id.
+
+          Refer to [Paginating Search Queries](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-search-queries) for more information about how to implement `searchAfter` paging.
+        example: "John Mathews,01f04e428c484542a241dc89c303b178"
+        explode: true
+        in: query
+        name: searchAfter
+        required: false
+        schema:
+          format: comma-separated
+          type: string
+        style: form
+      - description: |-
+          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
+
+          Filtering is supported for the following fields and operators:
+
+          **id**: *eq, in, sw*
+
+          **name**: *eq, in, sw, isnull, pr*
+
+          **alias**: *eq, in, sw, isnull, pr*
+
+          **type**: *eq, in, sw, isnull, pr*
+
+          **emailAddress**: *eq, in, sw, isnull, pr*
+
+          **identityStatus**: *eq, in, sw, isnull, pr*
+
+          **processingState**: *eq, in, sw, isnull, pr*
+
+          **protected**: *eq*
+
+          **correlated**: *eq*
+
+          **inactive**: *eq*
+
+          **isManager**: *eq*
+
+          **locked**: *eq*
+
+          **disabled**: *eq*
+
+          **manager.id**: *eq, in, sw*
+
+          **manager.name**: *eq, in, sw, isnull, pr*
+
+          **manager.type**: *eq, in, sw, isnull, pr*
+
+          **lifecycleState.stateName**: *eq, in, sw, isnull, pr*
+
+          **lifecycleState.manuallyUpdated**: *eq*
+
+          **created**: *eq, ge, gt, le, lt*
+
+          **modified**: *eq, ge, gt, le, lt*
+
+          **synced**: *eq, ge, gt, le, lt*
+
+          **lastRefresh**: *eq, ge, gt, le, lt*
+
+          **privilegeLevel.effective**: *eq, in, isnull, pr*
+        example: privilegeLevel.effective eq "HIGH"
+        explode: true
+        in: query
+        name: filters
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: |-
+          Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
+
+          Sorting is supported for the following fields: **id, name, alias, type, emailAddress, identityStatus, processingState, protected, correlated, inactive, isManager, locked, disabled, manager.id, manager.name, manager.type, lifecycleState.stateName, lifecycleState.manuallyUpdated, created, modified, synced, lastRefresh, privilegeLevel.effective**
+
+          Sorting on **privilegeLevel.effective** is case-insensitive and is accepted only when `IDNARC_ENABLE_IDENTITY_EFFECTIVE_PRIVILEGE` is enabled. Returned values are uppercase.
+
+          Default sort is **created** when no collection parameters are sent.
+        example: "privilegeLevel.effective,id"
+        explode: true
+        in: query
+        name: sorters
+        required: false
+        schema:
+          format: comma-separated
+          type: string
+        style: form
+      - description: Use this header to enable this experimental API.
+        example: true
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+              - id: 01f04e428c484542a241dc89c303b178
+                name: John Mathews
+                alias: john.mathews
+                type: HUMAN
+                emailAddress: john.mathews@example.com
+                identityStatus: ACTIVE
+                processingState: OK
+                protected: false
+                correlated: true
+                inactive: false
+                isManager: true
+                locked: false
+                disabled: false
+                manager:
+                  id: 2c4180a46faadee4016fb4e018c20626
+                  name: Robert Robinson
+                  type: IDENTITY
+                lifecycleState:
+                  stateName: active
+                  manuallyUpdated: false
+                created: 2023-01-03T21:16:22.432Z
+                modified: 2023-01-03T21:16:22.432Z
+                synced: 2023-01-03T21:16:22.432Z
+                lastRefresh: 2020-11-22T15:42:31.123Z
+                privilegeLevel:
+                  effective: HIGH
+              schema:
+                items:
+                  $ref: '#/components/schemas/IdentityV2'
+                type: array
+          description: List of identity objects.
+          headers:
+            x-total-count:
+              description: The total result count (returned when count=true is passed).
+              explode: false
+              schema:
+                format: int32
+                type: integer
+              style: simple
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listIdentitiesV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listIdentitiesV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:identity-list:read
+        - idn:identity-self:read
+      - applicationAuth:
+        - idn:identity-list:read
+        - idn:identity-self:read
+      summary: List identities (search)
+      tags:
+      - Identities
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+      - HELPDESK
+  /identities/v2/{id}:
+    get:
+      description: |-
+        This API returns a single identity from the identities search index.
+
+        `privilegeLevel.effective` is `HIGH`, `MEDIUM`, `LOW`, or `NONE`. An identity with no privilege level is returned as `NONE`. `privilegeLevel` is null when the `IDNARC_ENABLE_IDENTITY_EFFECTIVE_PRIVILEGE` feature flag is disabled. Comparisons on `privilegeLevel.effective` are case-insensitive, and returned values are uppercase.
+      operationId: getIdentityV2
+      parameters:
+      - description: Identity Id
+        example: 01f04e428c484542a241dc89c303b178
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listIdentitiesV2
+      - description: Use this header to enable this experimental API.
+        example: true
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                id: 01f04e428c484542a241dc89c303b178
+                name: John Mathews
+                alias: john.mathews
+                type: HUMAN
+                emailAddress: john.mathews@example.com
+                identityStatus: ACTIVE
+                processingState: OK
+                protected: false
+                correlated: true
+                inactive: false
+                isManager: true
+                locked: false
+                disabled: false
+                manager:
+                  id: 2c4180a46faadee4016fb4e018c20626
+                  name: Robert Robinson
+                  type: IDENTITY
+                lifecycleState:
+                  stateName: active
+                  manuallyUpdated: false
+                created: 2023-01-03T21:16:22.432Z
+                modified: 2023-01-03T21:16:22.432Z
+                synced: 2023-01-03T21:16:22.432Z
+                lastRefresh: 2020-11-22T15:42:31.123Z
+                privilegeLevel:
+                  effective: NONE
+              schema:
+                $ref: '#/components/schemas/IdentityV2'
+          description: An identity object
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listIdentitiesV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listIdentitiesV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:identity:read
+        - idn:identity-self:read
+      - applicationAuth:
+        - idn:identity:read
+        - idn:identity-self:read
+      summary: Identity details (search)
+      tags:
+      - Identities
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+      - HELPDESK
   /identities/v1/{identityId}/ownership:
     get:
       description: "Use this API to return an identity's owned objects that will cause\
@@ -1600,6 +2030,32 @@ components:
         minimum: 0
         type: integer
       style: form
+    searchafter:
+      description: |-
+        Used to begin the search window at the values specified.
+
+        This parameter consists of the last values of the sorted fields in the current record set.
+
+        searchAfter length must match the number of sorters.
+
+        This is used to page beyond the offset limit of 10,000 records by shifting the search window to begin at this value.
+
+        `searchAfter` cannot be combined with `offset`. When `searchAfter` is provided, `id` must be included in `sorters`.
+
+        It is recommended that you always include the ID of the object in addition to any other sort fields in order to ensure you don't get duplicate results while paging.
+
+        For example, if you are sorting by name you will also want to include ID, for example searchAfter=John Mathews,01f04e428c484542a241dc89c303b178&sorters=name,id.
+
+        Refer to [Paginating Search Queries](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-search-queries) for more information about how to implement `searchAfter` paging.
+      example: "John Mathews,01f04e428c484542a241dc89c303b178"
+      explode: true
+      in: query
+      name: searchAfter
+      required: false
+      schema:
+        format: comma-separated
+        type: string
+      style: form
   responses:
     "204":
       description: No content - indicates the request was successful but there is
@@ -1916,6 +2372,158 @@ components:
             $ref: '#/components/schemas/IdentityAssociationDetails_associationDetails_inner'
           type: array
       title: Identity Association Details
+      type: object
+    IdentityV2PrivilegeLevel:
+      description: "Effective privilege level of the identity. This object is null\
+        \ when the IDNARC_ENABLE_IDENTITY_EFFECTIVE_PRIVILEGE feature flag is disabled.\
+        \ When the flag is enabled, an identity with no privilege level is returned\
+        \ with effective set to NONE."
+      example:
+        effective: HIGH
+      nullable: true
+      properties:
+        effective:
+          description: The effective privilege level of the identity. Returned values
+            are uppercase. Filter and sort comparisons are case-insensitive. An identity
+            with no privilege level is NONE.
+          enum:
+          - HIGH
+          - MEDIUM
+          - LOW
+          - NONE
+          example: HIGH
+          nullable: true
+          type: string
+      title: IdentityV2PrivilegeLevel
+      type: object
+    IdentityV2:
+      description: Identity record returned by the search-backed identities v2 API.
+      example:
+        lifecycleState:
+          stateName: active
+          manuallyUpdated: true
+        synced: 2023-01-03T21:16:22.432Z
+        manager:
+          name: Robert Robinson
+          id: 2c4180a46faadee4016fb4e018c20626
+          type: IDENTITY
+        privilegeLevel:
+          effective: HIGH
+        lastRefresh: 2020-11-22T15:42:31.123Z
+        created: 2023-01-03T21:16:22.432Z
+        type: HUMAN
+        processingState: OK
+        emailAddress: john.mathews@example.com
+        inactive: false
+        protected: false
+        identityStatus: ACTIVE
+        name: John Mathews
+        alias: john.mathews
+        isManager: true
+        modified: 2023-01-03T21:16:22.432Z
+        disabled: false
+        id: 01f04e428c484542a241dc89c303b178
+        locked: false
+        correlated: true
+      properties:
+        id:
+          description: System-generated unique ID of the identity.
+          example: 01f04e428c484542a241dc89c303b178
+          nullable: true
+          type: string
+        name:
+          description: Display name of the identity.
+          example: John Mathews
+          nullable: true
+          type: string
+        alias:
+          description: Alternate unique identifier of the identity. Equivalent to
+            the account name on the authoritative source.
+          example: john.mathews
+          nullable: true
+          type: string
+        type:
+          description: The identity type.
+          example: HUMAN
+          nullable: true
+          type: string
+        emailAddress:
+          description: Email address of the identity.
+          example: john.mathews@example.com
+          nullable: true
+          type: string
+        identityStatus:
+          description: The identity's status in the system.
+          example: ACTIVE
+          nullable: true
+          type: string
+        processingState:
+          description: The processing state of the identity.
+          example: OK
+          nullable: true
+          type: string
+        protected:
+          default: false
+          description: Whether the identity is protected from accidental deletion
+            or modification.
+          example: false
+          type: boolean
+        correlated:
+          default: false
+          description: Whether the identity is correlated to an authoritative account.
+          example: true
+          type: boolean
+        inactive:
+          default: false
+          description: Whether the identity is inactive.
+          example: false
+          type: boolean
+        isManager:
+          default: false
+          description: Whether this identity is a manager of another identity.
+          example: true
+          type: boolean
+        locked:
+          default: false
+          description: Whether the identity is locked.
+          example: false
+          type: boolean
+        disabled:
+          default: false
+          description: Whether the identity is disabled.
+          example: false
+          type: boolean
+        manager:
+          $ref: '#/components/schemas/IdentityV2_manager'
+        lifecycleState:
+          $ref: '#/components/schemas/IdentityV2_lifecycleState'
+        created:
+          description: Creation date of the identity.
+          example: 2023-01-03T21:16:22.432Z
+          format: date-time
+          nullable: true
+          type: string
+        modified:
+          description: Last modification date of the identity.
+          example: 2023-01-03T21:16:22.432Z
+          format: date-time
+          nullable: true
+          type: string
+        synced:
+          description: Last time the identity was synchronized to search.
+          example: 2023-01-03T21:16:22.432Z
+          format: date-time
+          nullable: true
+          type: string
+        lastRefresh:
+          description: The last time the identity was refreshed by the system.
+          example: 2020-11-22T15:42:31.123Z
+          format: date-time
+          nullable: true
+          type: string
+        privilegeLevel:
+          $ref: '#/components/schemas/IdentityV2PrivilegeLevel'
+      title: IdentityV2
       type: object
     IdentityOwnershipAssociationDetails:
       example:
@@ -2832,6 +3440,38 @@ components:
             $ref: '#/components/schemas/IdentityEntities'
           type: array
       type: object
+    IdentityV2_manager:
+      description: The identity's manager.
+      example:
+        name: Robert Robinson
+        id: 2c4180a46faadee4016fb4e018c20626
+        type: IDENTITY
+      nullable: true
+      properties:
+        id:
+          description: ID of the identity's manager.
+          example: 2c4180a46faadee4016fb4e018c20626
+          nullable: true
+          type: string
+        name:
+          description: Display name of the identity's manager.
+          example: Robert Robinson
+          nullable: true
+          type: string
+        type:
+          description: DTO type of the identity's manager.
+          example: IDENTITY
+          nullable: true
+          type: string
+      type: object
+    IdentityV2_lifecycleState:
+      allOf:
+      - $ref: '#/components/schemas/LifecycleStateDto'
+      - description: Lifecycle state name and whether that state was set manually.
+        nullable: true
+      example:
+        stateName: active
+        manuallyUpdated: true
     IdentityOwnershipAssociationDetails_associationDetails_inner:
       example:
         entities:

@@ -82,10 +82,12 @@ Class | Method | HTTP request | Description
 *IdentitiesAPI* | [**DeleteIdentityV1**](docs/IdentitiesAPI.md#deleteidentityv1) | **Delete** /identities/v1/{id} | Delete identity
 *IdentitiesAPI* | [**GetIdentityOwnershipDetailsV1**](docs/IdentitiesAPI.md#getidentityownershipdetailsv1) | **Get** /identities/v1/{identityId}/ownership | Get ownership details
 *IdentitiesAPI* | [**GetIdentityV1**](docs/IdentitiesAPI.md#getidentityv1) | **Get** /identities/v1/{id} | Identity details
+*IdentitiesAPI* | [**GetIdentityV2**](docs/IdentitiesAPI.md#getidentityv2) | **Get** /identities/v2/{id} | Identity details (search)
 *IdentitiesAPI* | [**GetRoleAssignmentV1**](docs/IdentitiesAPI.md#getroleassignmentv1) | **Get** /identities/v1/{identityId}/role-assignments/{assignmentId} | Role assignment details
 *IdentitiesAPI* | [**GetRoleAssignmentsV1**](docs/IdentitiesAPI.md#getroleassignmentsv1) | **Get** /identities/v1/{identityId}/role-assignments | List role assignments
 *IdentitiesAPI* | [**ListEntitlementsByIdentityV1**](docs/IdentitiesAPI.md#listentitlementsbyidentityv1) | **Get** /entitlements/v1/identities/{id}/entitlements | List of entitlements by identity.
 *IdentitiesAPI* | [**ListIdentitiesV1**](docs/IdentitiesAPI.md#listidentitiesv1) | **Get** /identities/v1 | List identities
+*IdentitiesAPI* | [**ListIdentitiesV2**](docs/IdentitiesAPI.md#listidentitiesv2) | **Get** /identities/v2 | List identities (search)
 *IdentitiesAPI* | [**ResetIdentityV1**](docs/IdentitiesAPI.md#resetidentityv1) | **Post** /identities/v1/{id}/reset | Reset an identity
 *IdentitiesAPI* | [**SendIdentityVerificationAccountTokenV1**](docs/IdentitiesAPI.md#sendidentityverificationaccounttokenv1) | **Post** /identities/v1/{id}/verification/account/send | Send password reset email
 *IdentitiesAPI* | [**StartIdentitiesInviteV1**](docs/IdentitiesAPI.md#startidentitiesinvitev1) | **Post** /identities/v1/invite | Invite identities to register
@@ -117,6 +119,10 @@ Class | Method | HTTP request | Description
  - [IdentityOwnershipAssociationDetailsAssociationDetailsInner](docs/IdentityOwnershipAssociationDetailsAssociationDetailsInner.md)
  - [IdentitySyncJob](docs/IdentitySyncJob.md)
  - [IdentitySyncPayload](docs/IdentitySyncPayload.md)
+ - [IdentityV2](docs/IdentityV2.md)
+ - [IdentityV2LifecycleState](docs/IdentityV2LifecycleState.md)
+ - [IdentityV2Manager](docs/IdentityV2Manager.md)
+ - [IdentityV2PrivilegeLevel](docs/IdentityV2PrivilegeLevel.md)
  - [InviteIdentitiesRequest](docs/InviteIdentitiesRequest.md)
  - [LifecycleStateDto](docs/LifecycleStateDto.md)
  - [ListIdentitiesV1401Response](docs/ListIdentitiesV1401Response.md)

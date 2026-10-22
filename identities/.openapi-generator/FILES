@@ -31,6 +31,10 @@ docs/IdentityOwnershipAssociationDetails.md
 docs/IdentityOwnershipAssociationDetailsAssociationDetailsInner.md
 docs/IdentitySyncJob.md
 docs/IdentitySyncPayload.md
+docs/IdentityV2.md
+docs/IdentityV2LifecycleState.md
+docs/IdentityV2Manager.md
+docs/IdentityV2PrivilegeLevel.md
 docs/InviteIdentitiesRequest.md
 docs/LifecycleStateDto.md
 docs/ListIdentitiesV1401Response.md
@@ -79,6 +83,10 @@ model_identity_ownership_association_details.go
 model_identity_ownership_association_details_association_details_inner.go
 model_identity_sync_job.go
 model_identity_sync_payload.go
+model_identity_v2.go
+model_identity_v2_lifecycle_state.go
+model_identity_v2_manager.go
+model_identity_v2_privilege_level.go
 model_invite_identities_request.go
 model_lifecycle_state_dto.go
 model_list_identities_v1_401_response.go
