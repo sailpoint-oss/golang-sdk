@@ -80,6 +80,8 @@ All URIs are relative to *https://sailpoint.api.identitynow.com*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *PublicIdentitiesAPI* | [**GetPublicIdentitiesV1**](docs/PublicIdentitiesAPI.md#getpublicidentitiesv1) | **Get** /public-identities/v1 | Get list of public identities
+*PublicIdentitiesAPI* | [**GetPublicIdentitiesVisibleAttributesV2**](docs/PublicIdentitiesAPI.md#getpublicidentitiesvisibleattributesv2) | **Get** /public-identities/v2/visible-attributes | Get public identity visible attributes
+*PublicIdentitiesAPI* | [**SearchPublicIdentitiesV2**](docs/PublicIdentitiesAPI.md#searchpublicidentitiesv2) | **Post** /public-identities/v2/search | Search public identities
 
 
 ## Documentation For Models
@@ -91,8 +93,21 @@ Class | Method | HTTP request | Description
  - [GetPublicIdentitiesV1429Response](docs/GetPublicIdentitiesV1429Response.md)
  - [IdentityReference](docs/IdentityReference.md)
  - [LocaleOrigin](docs/LocaleOrigin.md)
+ - [PublicIdentitiesCompositeEntry](docs/PublicIdentitiesCompositeEntry.md)
+ - [PublicIdentitiesNestedCompositeEntry](docs/PublicIdentitiesNestedCompositeEntry.md)
+ - [PublicIdentitiesNestedQuerySet](docs/PublicIdentitiesNestedQuerySet.md)
+ - [PublicIdentitiesQuerySet](docs/PublicIdentitiesQuerySet.md)
+ - [PublicIdentitiesSearchRequest](docs/PublicIdentitiesSearchRequest.md)
+ - [PublicIdentitiesSearchRequestQuerySet](docs/PublicIdentitiesSearchRequestQuerySet.md)
+ - [PublicIdentitiesTextEntry](docs/PublicIdentitiesTextEntry.md)
+ - [PublicIdentitiesTextQuery](docs/PublicIdentitiesTextQuery.md)
+ - [PublicIdentitiesTextQueryTermsInner](docs/PublicIdentitiesTextQueryTermsInner.md)
  - [PublicIdentity](docs/PublicIdentity.md)
+ - [PublicIdentityAttributeConfig](docs/PublicIdentityAttributeConfig.md)
  - [PublicIdentityAttributesInner](docs/PublicIdentityAttributesInner.md)
+ - [PublicIdentityV2](docs/PublicIdentityV2.md)
+ - [PublicIdentityV2Manager](docs/PublicIdentityV2Manager.md)
+ - [PublicIdentityVisibleAttributes](docs/PublicIdentityVisibleAttributes.md)
 
 
 ## Documentation For Authorization
