@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - Identity Attributes
+SailPoint Identity Security API - Identity Attributes
 
 Testing IdentityAttributesAPIService
 

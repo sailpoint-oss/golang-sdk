@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - UI Metadata
+SailPoint Identity Security API - UI Metadata
 
 Testing UIMetadataAPIService
 

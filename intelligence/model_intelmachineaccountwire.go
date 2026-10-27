@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud API - Intelligence
+SailPoint Identity Security API - Intelligence
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the SailPoint Identity Security platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: v1
 */
@@ -21,7 +21,7 @@ var _ MappedNullable = &Intelmachineaccountwire{}
 
 // Intelmachineaccountwire Machine account row on the non-human identity aggregate accounts.items list. Every property in required is always present on the wire. Nullable object refs (source, machineIdentity, ownerIdentity) may be null. String fields may be empty when upstream has no value; booleans, timestamps, attributes, and connectorAttributes are always emitted (empty object when absent).
 type Intelmachineaccountwire struct {
-	// Unique account identifier in Identity Security Cloud.
+	// Unique account identifier in SailPoint Identity Security.
 	Id string `json:"id"`
 	// Account name on the correlated source.
 	Name string `json:"name"`

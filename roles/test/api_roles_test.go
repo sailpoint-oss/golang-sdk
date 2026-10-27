@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - Roles
+SailPoint Identity Security API - Roles
 
 Testing RolesAPIService
 

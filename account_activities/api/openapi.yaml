@@ -3,7 +3,7 @@ info:
   contact:
     name: Developer Relations
     url: https://developer.sailpoint.com/discuss/api-help
-  description: "Use these APIs to interact with the Identity Security Cloud platform\
+  description: "Use these APIs to interact with the SailPoint Identity Security platform\
     \ to achieve repeatable, automated processes with greater scalability. We encourage\
     \ you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss\
     \ to connect with other developers using our APIs."
@@ -11,7 +11,7 @@ info:
     name: MIT
     url: https://opensource.org/licenses/MIT
   termsOfService: https://developer.sailpoint.com/discuss/tos
-  title: Identity Security Cloud API - Account Activities
+  title: SailPoint Identity Security API - Account Activities
   version: v1
 servers:
 - description: This is the production API server.
@@ -31,42 +31,42 @@ security:
   - idn:account-activity:read
 tags:
 - description: "Use this API to implement account activity tracking functionality.\n\
-    With this functionality in place, users can track source account activity in Identity\
-    \ Security Cloud, which greatly improves traceability in the system. \n\nAn account\
-    \ activity refers to a log of each action performed on a source account. This\
-    \ is useful for auditing the changes performed on an account throughout its life.\
-    \ \nIn Identity Security Cloud's Search, users can search for account activities\
-    \ and select the activity's row to get an overview of the activity's account action\
-    \ and view its progress, its involved sources, and its most basic metadata, such\
-    \ as the identity requesting the option and the recipient. \n\nAccount activity\
-    \ includes most actions Identity Security Cloud completes on source accounts.\
-    \ Users can search in Identity Security Cloud for the following account action\
-    \ types: \n\n- Access Request: These include any access requests the source account\
-    \ is involved in. \n\n- Account Attribute Updates: These include updates to a\
-    \ single attribute on an account on a source. \n\n- Account State Update: These\
-    \ include locking or unlocking actions on an account on a source. \n\n- Certification:\
-    \ These include actions removing an entitlement from an account on a source as\
-    \ a result of the entitlement's revocation during a certification.\n\n- Cloud\
-    \ Automated `Lifecyclestate`: These include automated lifecycle state changes\
-    \ that result in a source account's correlated identity being assigned to a different\
-    \ lifecycle state. \nIdentity Security Cloud replaces the `Lifecyclestate` variable\
-    \ with the name of the lifecycle state it has moved the account's identity to.\
-    \ \n\n- Identity Attribute Update: These include updates to a source account's\
+    With this functionality in place, users can track source account activity in SailPoint\
+    \ Identity Security, which greatly improves traceability in the system. \n\nAn\
+    \ account activity refers to a log of each action performed on a source account.\
+    \ This is useful for auditing the changes performed on an account throughout its\
+    \ life. \nIn SailPoint Identity Security's Search, users can search for account\
+    \ activities and select the activity's row to get an overview of the activity's\
+    \ account action and view its progress, its involved sources, and its most basic\
+    \ metadata, such as the identity requesting the option and the recipient. \n\n\
+    Account activity includes most actions SailPoint Identity Security completes on\
+    \ source accounts. Users can search in SailPoint Identity Security for the following\
+    \ account action types: \n\n- Access Request: These include any access requests\
+    \ the source account is involved in. \n\n- Account Attribute Updates: These include\
+    \ updates to a single attribute on an account on a source. \n\n- Account State\
+    \ Update: These include locking or unlocking actions on an account on a source.\
+    \ \n\n- Certification: These include actions removing an entitlement from an account\
+    \ on a source as a result of the entitlement's revocation during a certification.\n\
+    \n- Cloud Automated `Lifecyclestate`: These include automated lifecycle state\
+    \ changes that result in a source account's correlated identity being assigned\
+    \ to a different lifecycle state. \nSailPoint Identity Security replaces the `Lifecyclestate`\
+    \ variable with the name of the lifecycle state it has moved the account's identity\
+    \ to. \n\n- Identity Attribute Update: These include updates to a source account's\
     \ correlated identity attributes as the result of a provisioning action. \nWhen\
     \ you update an identity attribute that also updates an identity's lifecycle state,\
     \ the cloud automated `Lifecyclestate` event also displays.\nAccount Activity\
     \ does not include attribute updates that occur as a result of aggregation.\n\n\
     - Identity Refresh: These include correlated identity refreshes that occur for\
     \ an account on a source whenever the account's correlated identity profile gets\
-    \ a new role or updates. \nThese also include refreshes that occur whenever Identity\
-    \ Security Cloud assigns an application to the account's correlated identity based\
-    \ on the application's being assigned to All Users From Source or Specific Users\
-    \ From Source. \n\n- Lifecycle State Refresh: These include the actions that took\
-    \ place when a lifecycle state changed. This event only occurs after a cloud automated\
-    \ `Lifecyclestate` change or a lifecycle state change. \n\n- Lifecycle State Change:\
-    \ These include the account activities that result from an identity's manual assignment\
-    \ to a null lifecycle state.\n\n- Password Change: These include password changes\
-    \ on sources.\n\nRefer to [Account Activity](https://documentation.sailpoint.com/saas/help/search/index.html#account-activity)\
+    \ a new role or updates. \nThese also include refreshes that occur whenever SailPoint\
+    \ Identity Security assigns an application to the account's correlated identity\
+    \ based on the application's being assigned to All Users From Source or Specific\
+    \ Users From Source. \n\n- Lifecycle State Refresh: These include the actions\
+    \ that took place when a lifecycle state changed. This event only occurs after\
+    \ a cloud automated `Lifecyclestate` change or a lifecycle state change. \n\n\
+    - Lifecycle State Change: These include the account activities that result from\
+    \ an identity's manual assignment to a null lifecycle state.\n\n- Password Change:\
+    \ These include password changes on sources.\n\nRefer to [Account Activity](https://documentation.sailpoint.com/saas/help/search/index.html#account-activity)\
     \ for more information about account activities.\n"
   name: Account Activities
 paths:
@@ -109,7 +109,7 @@ paths:
         style: form
       - description: |-
           Max number of results to return.
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
         example: 250
         explode: true
         in: query
@@ -124,7 +124,7 @@ paths:
         style: form
       - description: |-
           Offset into the full result set. Usually specified with *limit* to paginate through the results.
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
         example: 0
         explode: true
         in: query
@@ -141,7 +141,7 @@ paths:
 
           Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
 
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
         example: true
         explode: true
         in: query
@@ -152,7 +152,7 @@ paths:
           type: boolean
         style: form
       - description: |-
-          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
+          Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)
 
           Filtering is supported for the following fields and operators:
 
@@ -170,7 +170,7 @@ paths:
           type: string
         style: form
       - description: |-
-          Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
+          Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)
 
           Sorting is supported for the following fields: **type, created, modified**
         example: created
@@ -366,7 +366,7 @@ components:
     limit:
       description: |-
         Max number of results to return.
-        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
       example: 250
       explode: true
       in: query
@@ -382,7 +382,7 @@ components:
     offset:
       description: |-
         Offset into the full result set. Usually specified with *limit* to paginate through the results.
-        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
       example: 0
       explode: true
       in: query
@@ -400,7 +400,7 @@ components:
 
         Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
 
-        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
       example: true
       explode: true
       in: query

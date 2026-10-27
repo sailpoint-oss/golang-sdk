@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud API - Identity History
+SailPoint Identity Security API - Identity History
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the SailPoint Identity Security platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: v1
 */
@@ -62,19 +62,19 @@ func (r ApiCompareIdentitySnapshotsAccessTypeV1Request) Snapshot2(snapshot2 stri
 	return r
 }
 
-// Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+// Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
 func (r ApiCompareIdentitySnapshotsAccessTypeV1Request) Limit(limit int32) ApiCompareIdentitySnapshotsAccessTypeV1Request {
 	r.limit = &limit
 	return r
 }
 
-// Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+// Offset into the full result set. Usually specified with *limit* to paginate through the results. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
 func (r ApiCompareIdentitySnapshotsAccessTypeV1Request) Offset(offset int32) ApiCompareIdentitySnapshotsAccessTypeV1Request {
 	r.offset = &offset
 	return r
 }
 
-// If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+// If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
 func (r ApiCompareIdentitySnapshotsAccessTypeV1Request) Count(count bool) ApiCompareIdentitySnapshotsAccessTypeV1Request {
 	r.count = &count
 	return r
@@ -308,19 +308,19 @@ func (r ApiCompareIdentitySnapshotsV1Request) AccessItemTypes(accessItemTypes []
 	return r
 }
 
-// Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+// Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
 func (r ApiCompareIdentitySnapshotsV1Request) Limit(limit int32) ApiCompareIdentitySnapshotsV1Request {
 	r.limit = &limit
 	return r
 }
 
-// Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+// Offset into the full result set. Usually specified with *limit* to paginate through the results. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
 func (r ApiCompareIdentitySnapshotsV1Request) Offset(offset int32) ApiCompareIdentitySnapshotsV1Request {
 	r.offset = &offset
 	return r
 }
 
-// If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+// If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
 func (r ApiCompareIdentitySnapshotsV1Request) Count(count bool) ApiCompareIdentitySnapshotsV1Request {
 	r.count = &count
 	return r
@@ -559,19 +559,19 @@ func (r ApiGetHistoricalIdentityEventsV1Request) AccessItemTypes(accessItemTypes
 	return r
 }
 
-// Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+// Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
 func (r ApiGetHistoricalIdentityEventsV1Request) Limit(limit int32) ApiGetHistoricalIdentityEventsV1Request {
 	r.limit = &limit
 	return r
 }
 
-// Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+// Offset into the full result set. Usually specified with *limit* to paginate through the results. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
 func (r ApiGetHistoricalIdentityEventsV1Request) Offset(offset int32) ApiGetHistoricalIdentityEventsV1Request {
 	r.offset = &offset
 	return r
 }
 
-// If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+// If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
 func (r ApiGetHistoricalIdentityEventsV1Request) Count(count bool) ApiGetHistoricalIdentityEventsV1Request {
 	r.count = &count
 	return r
@@ -1003,19 +1003,19 @@ func (r ApiGetIdentitySnapshotSummaryV1Request) TimeZone(timeZone string) ApiGet
 	return r
 }
 
-// Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+// Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
 func (r ApiGetIdentitySnapshotSummaryV1Request) Limit(limit int32) ApiGetIdentitySnapshotSummaryV1Request {
 	r.limit = &limit
 	return r
 }
 
-// Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+// Offset into the full result set. Usually specified with *limit* to paginate through the results. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
 func (r ApiGetIdentitySnapshotSummaryV1Request) Offset(offset int32) ApiGetIdentitySnapshotSummaryV1Request {
 	r.offset = &offset
 	return r
 }
 
-// If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+// If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
 func (r ApiGetIdentitySnapshotSummaryV1Request) Count(count bool) ApiGetIdentitySnapshotSummaryV1Request {
 	r.count = &count
 	return r
@@ -1596,13 +1596,13 @@ func (r ApiListHistoricalIdentitiesV1Request) IsActive(isActive bool) ApiListHis
 	return r
 }
 
-// Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+// Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
 func (r ApiListHistoricalIdentitiesV1Request) Limit(limit int32) ApiListHistoricalIdentitiesV1Request {
 	r.limit = &limit
 	return r
 }
 
-// Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+// Offset into the full result set. Usually specified with *limit* to paginate through the results. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
 func (r ApiListHistoricalIdentitiesV1Request) Offset(offset int32) ApiListHistoricalIdentitiesV1Request {
 	r.offset = &offset
 	return r
@@ -1810,19 +1810,19 @@ func (r ApiListIdentityAccessItemsV1Request) Type_(type_ string) ApiListIdentity
 	return r
 }
 
-// Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+// Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
 func (r ApiListIdentityAccessItemsV1Request) Limit(limit int32) ApiListIdentityAccessItemsV1Request {
 	r.limit = &limit
 	return r
 }
 
-// If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+// If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
 func (r ApiListIdentityAccessItemsV1Request) Count(count bool) ApiListIdentityAccessItemsV1Request {
 	r.count = &count
 	return r
 }
 
-// Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+// Offset into the full result set. Usually specified with *limit* to paginate through the results. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
 func (r ApiListIdentityAccessItemsV1Request) Offset(offset int32) ApiListIdentityAccessItemsV1Request {
 	r.offset = &offset
 	return r
@@ -2240,19 +2240,19 @@ func (r ApiListIdentitySnapshotsV1Request) Interval(interval string) ApiListIden
 	return r
 }
 
-// Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+// Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
 func (r ApiListIdentitySnapshotsV1Request) Limit(limit int32) ApiListIdentitySnapshotsV1Request {
 	r.limit = &limit
 	return r
 }
 
-// Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+// Offset into the full result set. Usually specified with *limit* to paginate through the results. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
 func (r ApiListIdentitySnapshotsV1Request) Offset(offset int32) ApiListIdentitySnapshotsV1Request {
 	r.offset = &offset
 	return r
 }
 
-// If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+// If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
 func (r ApiListIdentitySnapshotsV1Request) Count(count bool) ApiListIdentitySnapshotsV1Request {
 	r.count = &count
 	return r

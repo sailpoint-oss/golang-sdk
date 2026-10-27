@@ -3,7 +3,7 @@ info:
   contact:
     name: Developer Relations
     url: https://developer.sailpoint.com/discuss/api-help
-  description: "Use these APIs to interact with the Identity Security Cloud platform\
+  description: "Use these APIs to interact with the SailPoint Identity Security platform\
     \ to achieve repeatable, automated processes with greater scalability. We encourage\
     \ you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss\
     \ to connect with other developers using our APIs."
@@ -11,7 +11,7 @@ info:
     name: MIT
     url: https://opensource.org/licenses/MIT
   termsOfService: https://developer.sailpoint.com/discuss/tos
-  title: Identity Security Cloud API - Certifications
+  title: SailPoint Identity Security API - Certifications
   version: v1
 servers:
 - description: This is the production API server.
@@ -36,7 +36,7 @@ tags:
     \ revoke it, or reassign the review to another reviewer. \nImplementing certifications\
     \ improves organizations' data security by reducing inappropriate access through\
     \ a distributed review process and helping them satisfy audit and regulatory requirements.\
-    \ \n\nA certification refers to Identity Security Cloud's mechanism for reviewing\
+    \ \n\nA certification refers to SailPoint Identity Security's mechanism for reviewing\
     \ a user's access to entitlements (sets of permissions) and approving or removing\
     \ that access. \nThese serve as a way of showing that a user's access has been\
     \ reviewed and approved. \nMultiple certifications by different reviewers are\
@@ -45,9 +45,9 @@ tags:
     \ a Manager Certification as a way of showing that a user's access has been reviewed\
     \ and approved by their manager, or if the certification is part of a campaign,\
     \ that the user's access has been reviewed and approved by multiple managers.\
-    \ \nOnce this certification has been completed, Identity Security Cloud  would\
+    \ \nOnce this certification has been completed, SailPoint Identity Security  would\
     \ provision all the access the user needs, nothing more. \n\nOrganization administrators\
-    \ or certification administrators can designate other Identity Security Cloud\
+    \ or certification administrators can designate other SailPoint Identity Security\
     \ users as certification reviewers. \nThose reviewers can select the 'Certifications'\
     \ tab to view any of the certifications they either need to review or have already\
     \ reviewed under the 'Active' and 'Completed' tabs, respectively. \n\nWhen a certification\
@@ -88,7 +88,7 @@ paths:
         style: form
       - description: |-
           Max number of results to return.
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
         example: 250
         explode: true
         in: query
@@ -103,7 +103,7 @@ paths:
         style: form
       - description: |-
           Offset into the full result set. Usually specified with *limit* to paginate through the results.
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
         example: 0
         explode: true
         in: query
@@ -120,7 +120,7 @@ paths:
 
           Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
 
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
         example: true
         explode: true
         in: query
@@ -131,7 +131,7 @@ paths:
           type: boolean
         style: form
       - description: |-
-          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
+          Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)
 
           Filtering is supported for the following fields and operators:
 
@@ -151,7 +151,7 @@ paths:
           type: string
         style: form
       - description: |-
-          Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
+          Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)
 
           Sorting is supported for the following fields: **name, due, signed**
         example: "name,due"
@@ -360,7 +360,7 @@ paths:
         x-sailpoint-resource-operation-id: listIdentityCertificationsV1
       - description: |-
           Max number of results to return.
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
         example: 250
         explode: true
         in: query
@@ -375,7 +375,7 @@ paths:
         style: form
       - description: |-
           Offset into the full result set. Usually specified with *limit* to paginate through the results.
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
         example: 0
         explode: true
         in: query
@@ -392,7 +392,7 @@ paths:
 
           Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
 
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
         example: true
         explode: true
         in: query
@@ -403,7 +403,7 @@ paths:
           type: boolean
         style: form
       - description: |-
-          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
+          Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)
 
           Filtering is supported for the following fields and operators:
 
@@ -435,7 +435,7 @@ paths:
           type: string
         style: form
       - description: |-
-          Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
+          Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)
 
           Sorting is supported for the following fields: **identitySummary.name, access.name, access.type, entitlement.sourceName, accessProfile.sourceName**
         example: "access.name,-accessProfile.sourceName"
@@ -933,7 +933,7 @@ paths:
       operationId: getIdentityCertificationItemPermissionsV1
       parameters:
       - description: |-
-          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
+          Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)
 
           Filtering is supported for the following fields and operators:
 
@@ -980,7 +980,7 @@ paths:
         x-sailpoint-resource-operation-id: listIdentityAccessReviewItemsV1
       - description: |-
           Max number of results to return.
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
         example: 250
         explode: true
         in: query
@@ -995,7 +995,7 @@ paths:
         style: form
       - description: |-
           Offset into the full result set. Usually specified with *limit* to paginate through the results.
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
         example: 0
         explode: true
         in: query
@@ -1012,7 +1012,7 @@ paths:
 
           Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
 
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
         example: true
         explode: true
         in: query
@@ -1132,7 +1132,7 @@ paths:
         x-sailpoint-resource-operation-id: listIdentityCertificationsV1
       - description: |-
           Max number of results to return.
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
         example: 250
         explode: true
         in: query
@@ -1147,7 +1147,7 @@ paths:
         style: form
       - description: |-
           Offset into the full result set. Usually specified with *limit* to paginate through the results.
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
         example: 0
         explode: true
         in: query
@@ -1164,7 +1164,7 @@ paths:
 
           Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
 
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
         example: true
         explode: true
         in: query
@@ -1175,7 +1175,7 @@ paths:
           type: boolean
         style: form
       - description: |-
-          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
+          Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)
 
           Filtering is supported for the following fields and operators:
 
@@ -1193,7 +1193,7 @@ paths:
           type: string
         style: form
       - description: |-
-          Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
+          Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)
 
           Sorting is supported for the following fields: **name, email**
         example: name
@@ -1537,7 +1537,7 @@ paths:
         style: form
       - description: |-
           Max number of results to return.
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
         example: 250
         explode: true
         in: query
@@ -1552,7 +1552,7 @@ paths:
         style: form
       - description: |-
           Offset into the full result set. Usually specified with *limit* to paginate through the results.
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
         example: 0
         explode: true
         in: query
@@ -1569,7 +1569,7 @@ paths:
 
           Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
 
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
         example: true
         explode: true
         in: query
@@ -1580,7 +1580,7 @@ paths:
           type: boolean
         style: form
       - description: |-
-          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
+          Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)
 
           Filtering is supported for the following fields and operators:
 
@@ -1691,7 +1691,7 @@ components:
     limit:
       description: |-
         Max number of results to return.
-        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
       example: 250
       explode: true
       in: query
@@ -1707,7 +1707,7 @@ components:
     offset:
       description: |-
         Offset into the full result set. Usually specified with *limit* to paginate through the results.
-        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
       example: 0
       explode: true
       in: query
@@ -1725,7 +1725,7 @@ components:
 
         Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
 
-        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
       example: true
       explode: true
       in: query

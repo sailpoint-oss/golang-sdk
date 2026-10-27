@@ -3,7 +3,7 @@ info:
   contact:
     name: Developer Relations
     url: https://developer.sailpoint.com/discuss/api-help
-  description: "Use these APIs to interact with the Identity Security Cloud platform\
+  description: "Use these APIs to interact with the SailPoint Identity Security platform\
     \ to achieve repeatable, automated processes with greater scalability. We encourage\
     \ you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss\
     \ to connect with other developers using our APIs."
@@ -11,7 +11,7 @@ info:
     name: MIT
     url: https://opensource.org/licenses/MIT
   termsOfService: https://developer.sailpoint.com/discuss/tos
-  title: Identity Security Cloud API - Lifecycle States
+  title: SailPoint Identity Security API - Lifecycle States
   version: v1
 servers:
 - description: This is the production API server.
@@ -35,7 +35,7 @@ tags:
     \ lifecycle states for use across their organizations, which is key to controlling\
     \ which users have access, when they have access, and the access they have.\n\n\
     A lifecycle state describes a user's status in a company. For example, two lifecycle\
-    \ states come by default with Identity Security Cloud: 'Active' and 'Inactive.'\
+    \ states come by default with SailPoint Identity Security: 'Active' and 'Inactive.'\
     \ \nWhen an active employee takes an extended leave of absence from a company,\
     \ his or her lifecycle state may change to 'Inactive,' for security purposes.\
     \ \nThe inactive employee would lose access to all the applications, sources,\
@@ -46,12 +46,12 @@ tags:
     \nAdministrators can create a variety of custom lifecycle states. Refer to [Planning\
     \ New Lifecycle States](https://documentation.sailpoint.com/saas/help/provisioning/lifecycle.html#planning-new-lifecycle-states)\
     \ for some custom lifecycle state ideas.\n\nAdministrators must define the criteria\
-    \ for being in each lifecycle state, and they must define how Identity Security\
-    \ Cloud manages users' access to apps and sources for each lifecycle state.\n\n\
-    In Identity Security Cloud, administrators can manage lifecycle states by going\
-    \ to Admin > Identities > Identity Profile, selecting the identity profile whose\
-    \ lifecycle states they want to manage, selecting the 'Provisioning' tab, and\
-    \ using the left panel to either select the lifecycle state they want to modify\
+    \ for being in each lifecycle state, and they must define how SailPoint Identity\
+    \ Security manages users' access to apps and sources for each lifecycle state.\n\
+    \nIn SailPoint Identity Security, administrators can manage lifecycle states by\
+    \ going to Admin > Identities > Identity Profile, selecting the identity profile\
+    \ whose lifecycle states they want to manage, selecting the 'Provisioning' tab,\
+    \ and using the left panel to either select the lifecycle state they want to modify\
     \ or create a new lifecycle state. \n\nIn the 'Provisioning' tab, administrators\
     \ can make the following access changes to an identity profile's lifecycle state:\
     \ \n\n- Enable/disable the lifecycle state for the identity profile.\n\n- Enable/disable\
@@ -65,13 +65,13 @@ tags:
     \ the 'HR Employee' identity profile to maintain their building access in both\
     \ the 'Active' and 'Leave of Absence' lifecycle states, the administrator must\
     \ grant the access profile for that building access to both lifecycle states.\n\
-    \nDuring scheduled refreshes, Identity Security Cloud evaluates lifecycle states\
-    \ to determine whether their assigned identities have the access defined in the\
-    \ lifecycle states' access profiles. \nIf the identities are missing access, Identity\
-    \ Security Cloud provisions that access. \n\nAdministrators can also use the 'Provisioning'\
-    \ tab to configure email notifications for Identity Security Cloud to send whenever\
-    \ an identity with that identity profile has a lifecycle state change. \nRefer\
-    \ to [Configuring Lifecycle State Notifications](https://documentation.sailpoint.com/saas/help/provisioning/lifecycle.html#configuring-lifecycle-state-notifications)\
+    \nDuring scheduled refreshes, SailPoint Identity Security evaluates lifecycle\
+    \ states to determine whether their assigned identities have the access defined\
+    \ in the lifecycle states' access profiles. \nIf the identities are missing access,\
+    \ SailPoint Identity Security provisions that access. \n\nAdministrators can also\
+    \ use the 'Provisioning' tab to configure email notifications for SailPoint Identity\
+    \ Security to send whenever an identity with that identity profile has a lifecycle\
+    \ state change. \nRefer to [Configuring Lifecycle State Notifications](https://documentation.sailpoint.com/saas/help/provisioning/lifecycle.html#configuring-lifecycle-state-notifications)\
     \ for more information on how to do so.\n\nAn identity's lifecycle state can have\
     \ four different statuses: the lifecycle state's status can be 'Active,' it can\
     \ be 'Not Set,' it can be 'Not Valid,' or it 'Does Not Match Technical Name Case.'\
@@ -210,7 +210,7 @@ paths:
         x-sailpoint-resource-operation-id: listIdentityProfilesV1
       - description: |-
           Max number of results to return.
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
         example: 250
         explode: true
         in: query
@@ -225,7 +225,7 @@ paths:
         style: form
       - description: |-
           Offset into the full result set. Usually specified with *limit* to paginate through the results.
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
         example: 0
         explode: true
         in: query
@@ -242,7 +242,7 @@ paths:
 
           Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
 
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
         example: true
         explode: true
         in: query
@@ -253,7 +253,7 @@ paths:
           type: boolean
         style: form
       - description: |-
-          Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
+          Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)
 
           Sorting is supported for the following fields: **name, priority, created, modified**
         example: "created,modified"
@@ -846,7 +846,7 @@ components:
     limit:
       description: |-
         Max number of results to return.
-        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
       example: 250
       explode: true
       in: query
@@ -862,7 +862,7 @@ components:
     offset:
       description: |-
         Offset into the full result set. Usually specified with *limit* to paginate through the results.
-        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
       example: 0
       explode: true
       in: query
@@ -880,7 +880,7 @@ components:
 
         Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
 
-        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
       example: true
       explode: true
       in: query

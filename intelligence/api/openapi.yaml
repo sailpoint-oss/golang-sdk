@@ -3,7 +3,7 @@ info:
   contact:
     name: Developer Relations
     url: https://developer.sailpoint.com/discuss/api-help
-  description: "Use these APIs to interact with the Identity Security Cloud platform\
+  description: "Use these APIs to interact with the SailPoint Identity Security platform\
     \ to achieve repeatable, automated processes with greater scalability. We encourage\
     \ you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss\
     \ to connect with other developers using our APIs."
@@ -11,7 +11,7 @@ info:
     name: MIT
     url: https://opensource.org/licenses/MIT
   termsOfService: https://developer.sailpoint.com/discuss/tos
-  title: Identity Security Cloud API - Intelligence
+  title: SailPoint Identity Security API - Intelligence
   version: v1
 servers:
 - description: This is the production API server.
@@ -81,7 +81,7 @@ paths:
       operationId: getIdentityIntelligenceV1
       parameters:
       - description: |-
-          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
+          Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)
 
           Filtering is supported for the following fields and operators:
 
@@ -218,7 +218,7 @@ paths:
 
           Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
 
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
         example: true
         explode: true
         in: query
@@ -399,7 +399,7 @@ paths:
 
           Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
 
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
         example: true
         explode: true
         in: query
@@ -533,7 +533,7 @@ paths:
 
           Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
 
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
         example: true
         explode: true
         in: query
@@ -668,7 +668,7 @@ paths:
 
           Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
 
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
         example: true
         explode: true
         in: query
@@ -838,7 +838,7 @@ paths:
 
           Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
 
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
         example: true
         explode: true
         in: query
@@ -1387,7 +1387,7 @@ components:
 
         Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
 
-        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
       example: true
       explode: true
       in: query
@@ -1522,7 +1522,7 @@ components:
         source: "{}"
       properties:
         id:
-          description: Identity Security Cloud identifier for the owned non-human
+          description: SailPoint Identity Security identifier for the owned non-human
             identity.
           example: 2c91808874ff91550175097daaec161e
           type: string
@@ -1646,7 +1646,7 @@ components:
         isMachine: false
       properties:
         id:
-          description: Unique account identifier in Identity Security Cloud.
+          description: Unique account identifier in SailPoint Identity Security.
           example: 2c91808874ff91550175097daaec161c
           type: string
         name:
@@ -1693,14 +1693,14 @@ components:
           nullable: true
           type: string
         created:
-          description: Timestamp when the account record was created in Identity Security
-            Cloud.
+          description: Timestamp when the account record was created in SailPoint
+            Identity Security.
           example: 2023-11-01T10:00:00Z
           format: date-time
           type: string
         modified:
-          description: Timestamp when the account record was last modified in Identity
-            Security Cloud.
+          description: Timestamp when the account record was last modified in SailPoint
+            Identity Security.
           example: 2024-02-15T16:20:00Z
           format: date-time
           type: string
@@ -2076,7 +2076,7 @@ components:
         email: user@example.com
       properties:
         id:
-          description: Identity Security Cloud identifier for this identity.
+          description: SailPoint Identity Security identifier for this identity.
           example: ef38f94347e94562b5bb8424a56397d8
           type: string
         type:
@@ -2114,14 +2114,14 @@ components:
             region: US
           type: object
         created:
-          description: Timestamp when the identity record was created in Identity
-            Security Cloud.
+          description: Timestamp when the identity record was created in SailPoint
+            Identity Security.
           example: 2026-05-12T08:00:00Z
           format: date-time
           type: string
         modified:
-          description: Timestamp when the identity record was last modified in Identity
-            Security Cloud.
+          description: Timestamp when the identity record was last modified in SailPoint
+            Identity Security.
           example: 2026-05-12T09:15:30Z
           format: date-time
           type: string
@@ -2135,8 +2135,8 @@ components:
           format: email
           type: string
         identityStatus:
-          description: Current identity lifecycle status label from Identity Security
-            Cloud.
+          description: Current identity lifecycle status label from SailPoint Identity
+            Security.
           example: ACTIVE
           type: string
         isManager:
@@ -2219,7 +2219,7 @@ components:
         \ and connectorAttributes are always emitted (empty object when absent)."
       properties:
         id:
-          description: Unique account identifier in Identity Security Cloud.
+          description: Unique account identifier in SailPoint Identity Security.
           example: 2c91808874ff91550175097daaec161c
           type: string
         name:
@@ -2473,7 +2473,7 @@ components:
         matches. The identityGraph deep link is omitted when the tenant lacks the idg:base license.
       properties:
         id:
-          description: Identity Security Cloud identifier for this non-human identity.
+          description: SailPoint Identity Security identifier for this non-human identity.
           example: ef38f94347e94562b5bb8424a56397d8
           type: string
         type:
@@ -2496,14 +2496,14 @@ components:
           nullable: true
           type: string
         created:
-          description: Timestamp when the identity record was created in Identity
-            Security Cloud.
+          description: Timestamp when the identity record was created in SailPoint
+            Identity Security.
           example: 2026-05-12T08:00:00Z
           format: date-time
           type: string
         modified:
-          description: Timestamp when the identity record was last modified in Identity
-            Security Cloud.
+          description: Timestamp when the identity record was last modified in SailPoint
+            Identity Security.
           example: 2026-05-12T09:15:30Z
           format: date-time
           type: string
@@ -2551,8 +2551,8 @@ components:
           type: boolean
         manuallyCreated:
           default: false
-          description: True when the machine identity was created manually in Identity
-            Security Cloud.
+          description: True when the machine identity was created manually in SailPoint
+            Identity Security.
           example: false
           type: boolean
         owners:
@@ -2707,7 +2707,7 @@ components:
         id: ef38f94347e94562b5bb8424a56397d8
       properties:
         id:
-          description: Identity Security Cloud identifier for a matching candidate.
+          description: SailPoint Identity Security identifier for a matching candidate.
           example: ef38f94347e94562b5bb8424a56397d8
           type: string
         displayName:
@@ -2830,8 +2830,8 @@ components:
           example: HUMAN
           type: string
         identityId:
-          description: "ISC identity id, resolved by the caller from a prior intelligence\
-            \ query."
+          description: "SailPoint Identity Security identity id, resolved by the caller\
+            \ from a prior intelligence query."
           example: 2c918085842e69ae018428c919680149
           type: string
         accountIds:

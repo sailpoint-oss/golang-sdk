@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - Custom Password Instructions
+SailPoint Identity Security API - Custom Password Instructions
 
 Testing CustomPasswordInstructionsAPIService
 

@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - Org Config
+SailPoint Identity Security API - Org Config
 
 Testing OrgConfigAPIService
 

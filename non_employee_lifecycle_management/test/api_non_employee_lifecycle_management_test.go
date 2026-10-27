@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - Non-Employee Lifecycle Management
+SailPoint Identity Security API - Non-Employee Lifecycle Management
 
 Testing NonEmployeeLifecycleManagementAPIService
 

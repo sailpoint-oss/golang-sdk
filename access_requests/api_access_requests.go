@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud API - Access Requests
+SailPoint Identity Security API - Access Requests
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the SailPoint Identity Security platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: v1
 */
@@ -743,7 +743,7 @@ func (r ApiCreateAccessRequestV1Request) Execute() (*AccessRequestResponse, *htt
 /*
 CreateAccessRequestV1 Submit access request
 
-Use this API to submit an access request in Identity Security Cloud (ISC), where it follows any ISC approval processes.
+Use this API to submit an access request in SailPoint Identity Security, where it follows any SailPoint Identity Security approval processes.
 
 >**Security:** idn:access-request:manage is for ORG_ADMIN level. idn:access-request-self:manage is for USER level.
 
@@ -751,8 +751,8 @@ Use this API to submit an access request in Identity Security Cloud (ISC), where
 The ability to request access using this API is constrained by the Access Request Segments defined in the API token's user context.
 :::
 
-Access requests are processed asynchronously by ISC. A successful response from this endpoint means that the request
-has been submitted to ISC and is queued for processing. Because this endpoint is asynchronous, it does not return an error
+Access requests are processed asynchronously by SailPoint Identity Security. A successful response from this endpoint means that the request
+has been submitted to SailPoint Identity Security and is queued for processing. Because this endpoint is asynchronous, it does not return an error
 if you submit duplicate access requests in quick succession or submit an access request for access that is already in progress, approved, or rejected.
 
 It is best practice to check for any existing access requests that reference the same access items before submitting a new access request. This can
@@ -1522,13 +1522,13 @@ func (r ApiListAccessRequestStatusV1Request) Offset(offset int32) ApiListAccessR
 	return r
 }
 
-// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **accessRequestId**: *eq, ge, gt, le, lt, ne, sw*  **accountActivityItemId**: *eq, in, ge, gt, le, ne, sw*  **created**: *eq, ge, gt, le, lt, ne*
+// Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **accessRequestId**: *eq, ge, gt, le, lt, ne, sw*  **accountActivityItemId**: *eq, in, ge, gt, le, ne, sw*  **created**: *eq, ge, gt, le, lt, ne*
 func (r ApiListAccessRequestStatusV1Request) Filters(filters string) ApiListAccessRequestStatusV1Request {
 	r.filters = &filters
 	return r
 }
 
-// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified, accountActivityItemId, name**
+// Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified, accountActivityItemId, name**
 func (r ApiListAccessRequestStatusV1Request) Sorters(sorters string) ApiListAccessRequestStatusV1Request {
 	r.sorters = &sorters
 	return r
@@ -1791,13 +1791,13 @@ func (r ApiListAdministratorsAccessRequestStatusV1Request) Offset(offset int32) 
 	return r
 }
 
-// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **accountActivityItemId**: *eq, in, ge, gt, le, lt, ne, isnull, sw*  **accessRequestId**: *in, eq, ne, ge, gt, le, lt, sw*  **status**: *in, eq, ne*  **created**: *eq, in, ge, gt, le, lt, ne, isnull, sw*
+// Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **accountActivityItemId**: *eq, in, ge, gt, le, lt, ne, isnull, sw*  **accessRequestId**: *in, eq, ne, ge, gt, le, lt, sw*  **status**: *in, eq, ne*  **created**: *eq, in, ge, gt, le, lt, ne, isnull, sw*
 func (r ApiListAdministratorsAccessRequestStatusV1Request) Filters(filters string) ApiListAdministratorsAccessRequestStatusV1Request {
 	r.filters = &filters
 	return r
 }
 
-// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified, accountActivityItemId, name, accessRequestId**
+// Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified, accountActivityItemId, name, accessRequestId**
 func (r ApiListAdministratorsAccessRequestStatusV1Request) Sorters(sorters string) ApiListAdministratorsAccessRequestStatusV1Request {
 	r.sorters = &sorters
 	return r

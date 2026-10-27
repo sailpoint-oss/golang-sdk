@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - Approvals
+SailPoint Identity Security API - Approvals
 
 Testing ApprovalsAPIService
 

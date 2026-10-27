@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - Workflows
+SailPoint Identity Security API - Workflows
 
 Testing WorkflowsAPIService
 

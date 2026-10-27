@@ -3,7 +3,7 @@ info:
   contact:
     name: Developer Relations
     url: https://developer.sailpoint.com/discuss/api-help
-  description: "Use these APIs to interact with the Identity Security Cloud platform\
+  description: "Use these APIs to interact with the SailPoint Identity Security platform\
     \ to achieve repeatable, automated processes with greater scalability. We encourage\
     \ you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss\
     \ to connect with other developers using our APIs."
@@ -11,7 +11,7 @@ info:
     name: MIT
     url: https://opensource.org/licenses/MIT
   termsOfService: https://developer.sailpoint.com/discuss/tos
-  title: Identity Security Cloud API - Business Applications
+  title: SailPoint Identity Security API - Business Applications
   version: v1
 servers:
 - description: This is the production API server.
@@ -46,7 +46,7 @@ paths:
       operationId: listBusinessApplicationsV1
       parameters:
       - description: |-
-          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
+          Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)
 
           Filtering is supported for the following fields and operators:
 
@@ -72,7 +72,7 @@ paths:
           type: string
         style: form
       - description: |-
-          Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
+          Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)
 
           Sorting is supported for the following fields: **id, name, sanctionedStatus**
         example: name
@@ -89,7 +89,7 @@ paths:
 
           Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
 
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
         example: true
         explode: true
         in: query
@@ -101,7 +101,7 @@ paths:
         style: form
       - description: |-
           Max number of results to return.
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
         example: 250
         explode: true
         in: query
@@ -116,7 +116,7 @@ paths:
         style: form
       - description: |-
           Offset into the full result set. Usually specified with *limit* to paginate through the results.
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
         example: 0
         explode: true
         in: query
@@ -370,6 +370,603 @@ paths:
       - Business Applications
       x-sailpoint-userLevels:
       - ORG_ADMIN
+  /business-applications/v1/mcp-servers:
+    get:
+      description: Returns the MCP (Model Context Protocol) servers discovered for
+        the requesting tenant. Requires the `idn:business-application:read` right
+        and the Machine Identity Security product to be enabled for the tenant. Returns
+        `404` if MCP server discovery is not enabled for the tenant.
+      operationId: listMcpServersV1
+      parameters:
+      - description: |-
+          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
+
+          Filtering is supported for the following fields and operators:
+
+          **serverName**: *eq, co, sw*
+
+          **description**: *eq, co*
+
+          **sanctionedStatus**: *eq, in*
+
+          **remotes**: *eq*
+
+          Matching on `serverName` and `description` is case-insensitive. For `remotes`, `true` matches MCP servers with at least one remote endpoint.
+        example: serverName sw "io.github"
+        explode: true
+        in: query
+        name: filters
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: |-
+          Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
+
+          Sorting is supported for the following fields: **serverName, description, modified, connectedAgentCount**
+        example: -connectedAgentCount
+        explode: true
+        in: query
+        name: sorters
+        required: false
+        schema:
+          format: comma-separated
+          type: string
+        style: form
+      - description: |-
+          If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+          Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        example: true
+        explode: true
+        in: query
+        name: count
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+      - description: |-
+          Max number of results to return.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        example: 250
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          Offset into the full result set. Usually specified with *limit* to paginate through the results.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        example: 0
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+        style: form
+      - description: Use this header to enable this experimental API.
+        example: true
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/MCPServer'
+                type: array
+          description: A list of MCP servers.
+          headers:
+            X-Total-Count:
+              description: Included when `count=true`.
+              explode: false
+              schema:
+                type: string
+              style: simple
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listBusinessApplicationsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listBusinessApplicationsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:business-application:read
+      summary: List MCP servers
+      tags:
+      - Business Applications
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+      - HELPDESK
+  /business-applications/v1/mcp-servers/count:
+    get:
+      description: "Returns tenant-wide MCP server totals: the number of MCP servers,\
+        \ the number with a remote endpoint, and the number of distinct connected\
+        \ AI agents. Requires the `idn:business-application:read` right and the Machine\
+        \ Identity Security product to be enabled for the tenant. Returns `404` if\
+        \ MCP server discovery is not enabled for the tenant."
+      operationId: getMcpServerCountsV1
+      parameters:
+      - description: Use this header to enable this experimental API.
+        example: true
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MCPServerCounts'
+          description: MCP server counts for the tenant.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listBusinessApplicationsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listBusinessApplicationsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:business-application:read
+      summary: Get MCP server counts
+      tags:
+      - Business Applications
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+      - HELPDESK
+  /business-applications/v1/mcp-servers/{id}:
+    get:
+      description: Returns a single MCP server by ID for the requesting tenant. Requires
+        the `idn:business-application:read` right and the Machine Identity Security
+        product to be enabled for the tenant. Returns `404` if MCP server discovery
+        is not enabled for the tenant.
+      operationId: getMcpServerV1
+      parameters:
+      - description: MCP server ID.
+        example: 2ee5e239-e68c-4d69-93fb-6c7ce4576190
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listMcpServersV1
+      - description: Use this header to enable this experimental API.
+        example: true
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MCPServer'
+          description: An MCP server.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if `id` is not a valid UUID.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listBusinessApplicationsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Not Found - Returned if no MCP server exists for the given\
+            \ ID, or if MCP server discovery is not enabled for the tenant."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listBusinessApplicationsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:business-application:read
+      summary: Get MCP server
+      tags:
+      - Business Applications
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+      - HELPDESK
+  /business-applications/v1/mcp-servers/{id}/connected-agents:
+    get:
+      description: Returns the AI agents connected to an MCP server. Results are sorted
+        by `name` ascending unless `sorters` is provided. Filtering is not supported
+        on this endpoint. Requires the `idn:business-application:read` right and the
+        Machine Identity Security product to be enabled for the tenant. Returns `404`
+        if MCP server discovery is not enabled for the tenant.
+      operationId: listMcpServerConnectedAgentsV1
+      parameters:
+      - description: MCP server ID.
+        example: 2ee5e239-e68c-4d69-93fb-6c7ce4576190
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listMcpServersV1
+      - description: |-
+          Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
+
+          Sorting is supported for the following fields: **created, modified, name, nativeIdentity, owners.primaryIdentity.name, owners.secondaryIdentity.name, source.name, resource.id**
+        example: name
+        explode: true
+        in: query
+        name: sorters
+        required: false
+        schema:
+          format: comma-separated
+          type: string
+        style: form
+      - description: |-
+          If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+          Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        example: true
+        explode: true
+        in: query
+        name: count
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+      - description: |-
+          Max number of results to return.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        example: 250
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          Offset into the full result set. Usually specified with *limit* to paginate through the results.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        example: 0
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+        style: form
+      - description: Use this header to enable this experimental API.
+        example: true
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Mcpconnectedagent'
+                type: array
+          description: A list of AI agents connected to the MCP server.
+          headers:
+            X-Total-Count:
+              description: Included when `count=true`.
+              explode: false
+              schema:
+                type: string
+              style: simple
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Client Error - Returned if `id` is not a valid UUID, if `filters`\
+            \ is provided, or if `sorters` names an unsupported field."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listBusinessApplicationsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Not Found - Returned if no MCP server exists for the given\
+            \ ID, or if MCP server discovery is not enabled for the tenant."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listBusinessApplicationsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:business-application:read
+      summary: List MCP server connected agents
+      tags:
+      - Business Applications
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+      - HELPDESK
   /business-applications/v1/{id}:
     get:
       description: Returns a single Business Application by ID for the requesting
@@ -697,7 +1294,7 @@ components:
 
         Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
 
-        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
       example: true
       explode: true
       in: query
@@ -710,7 +1307,7 @@ components:
     limit:
       description: |-
         Max number of results to return.
-        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
       example: 250
       explode: true
       in: query
@@ -726,7 +1323,7 @@ components:
     offset:
       description: |-
         Offset into the full result set. Usually specified with *limit* to paginate through the results.
-        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
       example: 0
       explode: true
       in: query
@@ -770,6 +1367,24 @@ components:
             $ref: '#/components/schemas/ErrorResponseDto'
       description: "Forbidden - Returned if the user you are running as, doesn't have\
         \ access to this end-point."
+    "404":
+      content:
+        application/json:
+          examples:
+            "404":
+              summary: An example of a 404 response object
+              value:
+                detailCode: 404 Not found
+                trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                messages:
+                - locale: en-US
+                  localeOrigin: DEFAULT
+                  text: The server did not find a current representation for the target
+                    resource.
+          schema:
+            $ref: '#/components/schemas/ErrorResponseDto'
+      description: Not Found - returned if the request URL refers to a resource or
+        object that does not exist
     "429":
       content:
         application/json:
@@ -861,6 +1476,10 @@ components:
       example: IDENTITY
       type: string
     BaseReferenceDto:
+      example:
+        name: William Wilson
+        id: 2c91808568c529c60168cca6f90c1313
+        type: IDENTITY
       properties:
         type:
           $ref: '#/components/schemas/DtoType'
@@ -1068,6 +1687,311 @@ components:
           type: array
       title: Error Response Dto
       type: object
+    MCPPackage:
+      description: A package an MCP server can be installed or launched from. Every
+        property is always present in the response and is `null` when the registry
+        does not supply it.
+      example:
+        registryType: npm
+        args:
+        - -y
+        - '@modelcontextprotocol/server-github'
+        identifier: '@modelcontextprotocol/server-github'
+        command: npx
+      properties:
+        registryType:
+          description: Package registry that hosts the package.
+          example: npm
+          nullable: true
+          type: string
+        identifier:
+          description: Package identifier within the registry.
+          example: '@modelcontextprotocol/server-github'
+          nullable: true
+          type: string
+        command:
+          description: Command used to launch the package.
+          example: npx
+          nullable: true
+          type: string
+        args:
+          description: "Arguments passed to the launch command, in the order they\
+            \ are applied."
+          example:
+          - -y
+          - '@modelcontextprotocol/server-github'
+          items:
+            type: string
+          nullable: true
+          type: array
+      title: MCP Package
+      type: object
+    MCPServer:
+      description: An MCP (Model Context Protocol) server discovered for the tenant
+        and tracked as a Business Application.
+      example:
+        created: 2026-03-01T12:00:00Z
+        serverName: io.github.github/github-mcp-server
+        description: "Connects AI agents to GitHub repositories, issues, and pull\
+          \ requests."
+        remotes:
+        - https://api.githubcopilot.com/mcp/
+        modified: 2026-03-15T08:30:00Z
+        connectedAgentCount: 3
+        id: 2ee5e239-e68c-4d69-93fb-6c7ce4576190
+        packages:
+        - registryType: npm
+          args:
+          - -y
+          - '@modelcontextprotocol/server-github'
+          identifier: '@modelcontextprotocol/server-github'
+          command: npx
+        - registryType: npm
+          args:
+          - -y
+          - '@modelcontextprotocol/server-github'
+          identifier: '@modelcontextprotocol/server-github'
+          command: npx
+        version: 1.0.0
+        sanctionedStatus: UNKNOWN
+      properties:
+        id:
+          description: MCP server ID.
+          example: 2ee5e239-e68c-4d69-93fb-6c7ce4576190
+          format: uuid
+          type: string
+        serverName:
+          description: MCP server name.
+          example: io.github.github/github-mcp-server
+          type: string
+        sanctionedStatus:
+          allOf:
+          - $ref: '#/components/schemas/SanctionedStatus'
+          description: Sanctioned status of the MCP server. MCP servers are currently
+            always `UNKNOWN`.
+          example: UNKNOWN
+        description:
+          description: MCP server description.
+          example: "Connects AI agents to GitHub repositories, issues, and pull requests."
+          nullable: true
+          type: string
+        version:
+          description: MCP server version.
+          example: 1.0.0
+          nullable: true
+          type: string
+        remotes:
+          description: Remote endpoints the MCP server can be reached at.
+          example:
+          - https://api.githubcopilot.com/mcp/
+          items:
+            type: string
+          type: array
+        packages:
+          description: Packages the MCP server can be installed or launched from.
+          items:
+            $ref: '#/components/schemas/MCPPackage'
+          type: array
+        connectedAgentCount:
+          description: Number of AI agents connected to the MCP server.
+          example: 3
+          format: int64
+          type: integer
+        created:
+          description: Date and time the MCP server was created.
+          example: 2026-03-01T12:00:00Z
+          format: date-time
+          type: string
+        modified:
+          description: Date and time the MCP server was last modified.
+          example: 2026-03-15T08:30:00Z
+          format: date-time
+          type: string
+      title: MCP Server
+      type: object
+    MCPServerCounts:
+      description: Tenant-wide MCP server totals. All values are `0` when the tenant
+        has no MCP servers.
+      example:
+        registryEntries: 12
+        connectedAgentCount: 7
+        remote: 4
+      properties:
+        registryEntries:
+          description: Total number of MCP servers in the tenant.
+          example: 12
+          format: int64
+          type: integer
+        remote:
+          description: Number of MCP servers that have at least one remote endpoint.
+          example: 4
+          format: int64
+          type: integer
+        connectedAgentCount:
+          description: "Number of distinct AI agents connected to at least one MCP\
+            \ server. An agent connected to several MCP servers is counted once, so\
+            \ this can be less than the sum of each server's `connectedAgentCount`."
+          example: 7
+          format: int64
+          type: integer
+      title: MCP Server Counts
+      type: object
+    BaseCommonDto:
+      properties:
+        id:
+          description: System-generated unique ID of the Object
+          example: id12345
+          readOnly: true
+          type: string
+        name:
+          description: Name of the Object
+          example: aName
+          nullable: true
+          type: string
+        created:
+          description: Creation date of the Object
+          example: 2015-05-28T14:07:17Z
+          format: date-time
+          readOnly: true
+          type: string
+        modified:
+          description: Last modification date of the Object
+          example: 2015-05-28T14:07:17Z
+          format: date-time
+          readOnly: true
+          type: string
+      required:
+      - name
+      title: Base Common Dto
+      type: object
+    Mcpconnectedagent:
+      allOf:
+      - $ref: '#/components/schemas/BaseCommonDto'
+      - description: A machine identity (AI agent) connected to an MCP server.
+        properties:
+          nativeIdentity:
+            description: "Native identity of the AI agent, as aggregated from the\
+              \ source."
+            example: abc:123:dddd
+            type: string
+          description:
+            description: AI agent description.
+            example: Code review assistant.
+            nullable: true
+            type: string
+          attributes:
+            additionalProperties: true
+            description: Map of custom machine identity attributes.
+            example:
+              Region: EU
+            type: object
+          subtype:
+            description: Machine identity subtype.
+            example: AI Agent
+            type: string
+          owners:
+            $ref: '#/components/schemas/MCP_Connected_Agent_owners'
+          sourceId:
+            description: ID of the source the AI agent was aggregated from.
+            example: 6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa
+            type: string
+          uuid:
+            description: "UUID of the AI agent, as aggregated from the source."
+            example: f5dd23fe-3414-42b7-bb1c-869400ad7a10
+            type: string
+          datasetId:
+            description: Dataset ID of the source the AI agent was aggregated from.
+            example: 8886e5e3-63d0-462f-a195-d98da885b8dc
+            type: string
+          source:
+            $ref: '#/components/schemas/MCP_Connected_Agent_source'
+          manuallyEdited:
+            default: false
+            description: Indicates whether the AI agent has been manually edited.
+            example: false
+            type: boolean
+          manuallyCreated:
+            default: false
+            description: Indicates whether the AI agent was manually created.
+            example: false
+            type: boolean
+          existsOnSource:
+            description: Whether the AI agent still exists on its source.
+            enum:
+            - "TRUE"
+            - "FALSE"
+            - NOT_APPLICABLE
+            example: "TRUE"
+            type: string
+          userEntitlements:
+            description: User entitlements associated with the AI agent.
+            items:
+              $ref: '#/components/schemas/MCP_Connected_Agent_userEntitlements'
+            type: array
+          businessApplicationRefs:
+            description: Business Applications the AI agent is linked to. Omitted
+              when Business Application context is not available for the tenant.
+            items:
+              $ref: '#/components/schemas/MCP_Connected_Agent_businessApplicationRefs'
+            type: array
+          effectiveSanctionedStatus:
+            allOf:
+            - $ref: '#/components/schemas/SanctionedStatus'
+            description: Sanctioned status the AI agent inherits from its linked Business
+              Applications. Omitted when Business Application context is not available
+              for the tenant.
+        title: MCP Connected Agent
+        type: object
+      example:
+        sourceId: 6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa
+        created: 2015-05-28T14:07:17Z
+        description: Code review assistant.
+        owners:
+          primaryIdentity: ""
+          secondaryIdentities:
+          - name: William Wilson
+            id: 2c91808568c529c60168cca6f90c1313
+            type: IDENTITY
+          - name: William Wilson
+            id: 2c91808568c529c60168cca6f90c1313
+            type: IDENTITY
+        source:
+          name: William Wilson
+          id: 2c91808568c529c60168cca6f90c1313
+          type: IDENTITY
+        uuid: f5dd23fe-3414-42b7-bb1c-869400ad7a10
+        nativeIdentity: abc:123:dddd
+        effectiveSanctionedStatus: ""
+        subtype: AI Agent
+        businessApplicationRefs:
+        - name: Cursor
+          correlationType: AUTOMATIC
+          id: 2ee5e239-e68c-4d69-93fb-6c7ce4576190
+          type: BUSINESS_APPLICATION
+          sanctionedStatus: ""
+        - name: Cursor
+          correlationType: AUTOMATIC
+          id: 2ee5e239-e68c-4d69-93fb-6c7ce4576190
+          type: BUSINESS_APPLICATION
+          sanctionedStatus: ""
+        userEntitlements:
+        - sourceId: 5898b7c1-620c-49c6-cccc-cbf81eb4bddd
+          displayName: Entitlement Name
+          entitlementId: 6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa
+          source: ""
+        - sourceId: 5898b7c1-620c-49c6-cccc-cbf81eb4bddd
+          displayName: Entitlement Name
+          entitlementId: 6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa
+          source: ""
+        name: aName
+        modified: 2015-05-28T14:07:17Z
+        datasetId: 8886e5e3-63d0-462f-a195-d98da885b8dc
+        attributes:
+          Region: EU
+        id: id12345
+        manuallyEdited: false
+        manuallyCreated: false
+        existsOnSource: "TRUE"
     JsonPatchOperation:
       description: "A JSONPatch Operation as defined by [RFC 6902 - JSON Patch](https://tools.ietf.org/html/rfc6902)"
       example:
@@ -1155,6 +2079,102 @@ components:
         type: IDENTITY
       nullable: true
       readOnly: true
+      type: object
+    MCP_Connected_Agent_owners:
+      description: Owners of the AI agent.
+      example:
+        primaryIdentity: ""
+        secondaryIdentities:
+        - name: William Wilson
+          id: 2c91808568c529c60168cca6f90c1313
+          type: IDENTITY
+        - name: William Wilson
+          id: 2c91808568c529c60168cca6f90c1313
+          type: IDENTITY
+      nullable: true
+      properties:
+        primaryIdentity:
+          allOf:
+          - $ref: '#/components/schemas/BaseReferenceDto'
+          description: Primary owner.
+          nullable: true
+        secondaryIdentities:
+          description: Secondary owners.
+          items:
+            $ref: '#/components/schemas/BaseReferenceDto'
+          type: array
+      type: object
+    MCP_Connected_Agent_source:
+      allOf:
+      - $ref: '#/components/schemas/BaseReferenceDto'
+      - example:
+          id: 6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa
+          name: Cursor Agents
+          type: SOURCE
+      description: Source the AI agent was aggregated from.
+      example:
+        name: William Wilson
+        id: 2c91808568c529c60168cca6f90c1313
+        type: IDENTITY
+    MCP_Connected_Agent_userEntitlements:
+      example:
+        sourceId: 5898b7c1-620c-49c6-cccc-cbf81eb4bddd
+        displayName: Entitlement Name
+        entitlementId: 6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa
+        source: ""
+      properties:
+        sourceId:
+          description: Source ID of the entitlement.
+          example: 5898b7c1-620c-49c6-cccc-cbf81eb4bddd
+          type: string
+        entitlementId:
+          description: Entitlement ID.
+          example: 6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa
+          type: string
+        displayName:
+          description: Entitlement display name.
+          example: Entitlement Name
+          type: string
+        source:
+          allOf:
+          - $ref: '#/components/schemas/BaseReferenceDto'
+          description: Source of the entitlement.
+      type: object
+    MCP_Connected_Agent_businessApplicationRefs:
+      example:
+        name: Cursor
+        correlationType: AUTOMATIC
+        id: 2ee5e239-e68c-4d69-93fb-6c7ce4576190
+        type: BUSINESS_APPLICATION
+        sanctionedStatus: ""
+      properties:
+        type:
+          description: Reference type.
+          enum:
+          - BUSINESS_APPLICATION
+          example: BUSINESS_APPLICATION
+          type: string
+        id:
+          description: Business Application ID.
+          example: 2ee5e239-e68c-4d69-93fb-6c7ce4576190
+          format: uuid
+          type: string
+        name:
+          description: Business Application name.
+          example: Cursor
+          nullable: true
+          type: string
+        sanctionedStatus:
+          allOf:
+          - $ref: '#/components/schemas/SanctionedStatus'
+          description: Sanctioned status of the linked Business Application.
+        correlationType:
+          description: Whether the link was assigned manually or correlated automatically.
+          enum:
+          - MANUAL
+          - AUTOMATIC
+          example: AUTOMATIC
+          type: string
       type: object
     array_inner:
       anyOf:

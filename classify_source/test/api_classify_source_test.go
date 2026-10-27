@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - Classify Source
+SailPoint Identity Security API - Classify Source
 
 Testing ClassifySourceAPIService
 

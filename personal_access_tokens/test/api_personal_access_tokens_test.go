@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - Personal Access Tokens
+SailPoint Identity Security API - Personal Access Tokens
 
 Testing PersonalAccessTokensAPIService
 

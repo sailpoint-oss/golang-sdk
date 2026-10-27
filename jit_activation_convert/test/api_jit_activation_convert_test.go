@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - JIT Activation Convert
+SailPoint Identity Security API - JIT Activation Convert
 
 Testing JITActivationConvertAPIService
 

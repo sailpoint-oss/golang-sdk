@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - IAI Common Access
+SailPoint Identity Security API - IAI Common Access
 
 Testing IAICommonAccessAPIService
 

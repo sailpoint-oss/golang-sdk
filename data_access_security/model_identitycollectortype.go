@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud API - Data Access Security
+SailPoint Identity Security API - Data Access Security
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the SailPoint Identity Security platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: v1
 */
@@ -18,11 +18,11 @@ import (
 // checks if the Identitycollectortype type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &Identitycollectortype{}
 
-// Identitycollectortype A public identity collector type and the ISC `connectorName` values the UI should use when querying `GET /v3/sources` for sources that can back that type.
+// Identitycollectortype A public identity collector type and the SailPoint Identity Security `connectorName` values the UI should use when querying `GET /v3/sources` for sources that can back that type.
 type Identitycollectortype struct {
 	// Identity collector type display name. Matches the `type` values returned by list and used by create/update metadata. Base types only (for example `Box`, not `Box SaaS`).
 	Type string `json:"type"`
-	// Exact ISC `connectorName` values to use in `GET /v3/sources` filters (`connectorName eq \"...\"`). These are not always equal to `type` (for example Google Drive maps to `G Suite` and `Google Workspace SaaS`).
+	// Exact SailPoint Identity Security `connectorName` values to use in `GET /v3/sources` filters (`connectorName eq \"...\"`). These are not always equal to `type` (for example Google Drive maps to `G Suite` and `Google Workspace SaaS`).
 	IscConnectorNames []string `json:"iscConnectorNames"`
 	AdditionalProperties map[string]interface{}
 }

@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - Work Items
+SailPoint Identity Security API - Work Items
 
 Testing WorkItemsAPIService
 

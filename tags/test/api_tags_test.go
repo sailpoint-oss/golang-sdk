@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - Tags
+SailPoint Identity Security API - Tags
 
 Testing TagsAPIService
 

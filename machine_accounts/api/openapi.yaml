@@ -3,7 +3,7 @@ info:
   contact:
     name: Developer Relations
     url: https://developer.sailpoint.com/discuss/api-help
-  description: "Use these APIs to interact with the Identity Security Cloud platform\
+  description: "Use these APIs to interact with the SailPoint Identity Security platform\
     \ to achieve repeatable, automated processes with greater scalability. We encourage\
     \ you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss\
     \ to connect with other developers using our APIs."
@@ -11,7 +11,7 @@ info:
     name: MIT
     url: https://opensource.org/licenses/MIT
   termsOfService: https://developer.sailpoint.com/discuss/tos
-  title: Identity Security Cloud API - Machine Accounts
+  title: SailPoint Identity Security API - Machine Accounts
   version: v1
 servers:
 - description: This is the production API server.
@@ -39,7 +39,7 @@ paths:
       parameters:
       - description: |-
           Max number of results to return.
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
         example: 250
         explode: true
         in: query
@@ -54,7 +54,7 @@ paths:
         style: form
       - description: |-
           Offset into the full result set. Usually specified with *limit* to paginate through the results.
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
         example: 0
         explode: true
         in: query
@@ -71,7 +71,7 @@ paths:
 
           Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
 
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
         example: true
         explode: true
         in: query
@@ -82,7 +82,7 @@ paths:
           type: boolean
         style: form
       - description: |-
-          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
+          Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)
 
           Filtering is supported for the following fields and operators:
 
@@ -148,7 +148,7 @@ paths:
           type: string
         style: form
       - description: |-
-          Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
+          Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)
 
           Sorting is supported for the following fields: **id, name, nativeIdentity, ownerIdentity, uuid, description, machineIdentity.id, machineIdentity.name, subtype.technicalName, subtype.displayName, accessType, environment, manuallyCorrelated, enabled, locked, hasEntitlements, ownerIdentity.id, ownerIdentity.name, attributes, source.id, source.name, created, modified, risk.severity, permissionLevel, lastUsedAt**
 
@@ -904,7 +904,7 @@ paths:
   /machine-accounts/v1/{id}/remove:
     post:
       description: |
-        Use this API to remove a machine account from Identity Security Cloud. The source account is left unchanged, and a removed machine account can be re-created during the next aggregation. The response returns the task ID.
+        Use this API to remove a machine account from SailPoint Identity Security. The source account is left unchanged, and a removed machine account can be re-created during the next aggregation. The response returns the task ID.
 
         This endpoint is intended for:
 
@@ -1151,6 +1151,1725 @@ paths:
       - ORG_ADMIN
       - SOURCE_ADMIN
       - SOURCE_SUBADMIN
+  /machine-accounts/v1/{id}/delete:
+    post:
+      description: |
+        Use this API to submit a request to delete a machine account from its source. Depending on the tenant's account deletion approval settings, the request can need approval before the account is deleted. The response returns the ID of the account request.
+
+        The machine account must be linked to a machine identity; otherwise this API returns `404`. Machine accounts aggregated from a dataset can be rejected with `400`.
+
+        A caller who owns the machine account can delete it. Other callers need the **idn:mis-account:delete** right.
+      operationId: deleteMachineAccountV1
+      parameters:
+      - description: Machine Account ID.
+        example: ef38f94347e94562b5bb8424a56397d8
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listMachineAccountsV1
+      - description: Use this header to enable this experimental API.
+        example: true
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MachineAccountDeleteRequest'
+        required: true
+      responses:
+        "202":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MachineAccountRequestAsyncResult'
+          description: The deletion request was accepted.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listMachineAccountsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listMachineAccountsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:mis-account:manage
+      - applicationAuth:
+        - idn:mis-account:manage
+      summary: Delete machine account
+      tags:
+      - Machine Accounts
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+  /machine-accounts/v1/{id}/entitlements:
+    get:
+      description: |
+        Use this API to list the entitlements held by a machine account. Use `limit` and `offset` to page through the results.
+
+        This API requires the **idn:mis-account:read** right. Owning the machine account is not enough.
+
+        When this capability is not enabled for the tenant, this API returns `403`.
+      operationId: getMachineAccountEntitlementsV1
+      parameters:
+      - description: Machine Account ID.
+        example: ef38f94347e94562b5bb8424a56397d8
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listMachineAccountsV1
+      - description: |-
+          Max number of results to return.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        example: 250
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          Offset into the full result set. Usually specified with *limit* to paginate through the results.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        example: 0
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+        style: form
+      - description: Use this header to enable this experimental API.
+        example: true
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/MachineAccountEntitlement'
+                type: array
+          description: List of the machine account's entitlements.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listMachineAccountsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listMachineAccountsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:mis-account:read
+      summary: List machine account entitlements
+      tags:
+      - Machine Accounts
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+      - HELPDESK
+  /machine-accounts/v1/{id}/machine-identities:
+    get:
+      description: |
+        Use this API to list the machine identities that are linked to a machine account through source resource links. The response is an empty list when no machine identities are linked.
+
+        This API returns `400` when the machine account has no native identity or source.
+
+        A caller who owns the machine account can list its machine identities. Other callers need the **idn:mis-account:read** right.
+
+        When this capability is not enabled for the tenant, this API returns `403`.
+      operationId: listMachineAccountMachineIdentitiesV1
+      parameters:
+      - description: Machine Account ID.
+        example: ef38f94347e94562b5bb8424a56397d8
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listMachineAccountsV1
+      - description: Use this header to enable this experimental API.
+        example: true
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/MachineAccountLinkedMachineIdentity'
+                type: array
+          description: List of machine identities linked to the machine account.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listMachineAccountsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listMachineAccountsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:mis-account:read
+      summary: List linked machine identities
+      tags:
+      - Machine Accounts
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+      - HELPDESK
+  /machine-accounts/v1/machine-accounts-summary:
+    get:
+      description: |
+        Use this API to count the machine account candidates that are not yet linked to a machine identity, grouped by the classification method that found them. Candidates that are correlated to a human identity are counted in `human`; candidates that are not correlated to any identity are counted in `uncorrelated`.
+
+        This API requires the **idn:mis-account-list:read** right.
+      operationId: getMachineAccountsSummaryV1
+      parameters:
+      - description: |-
+          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
+
+          Filtering is supported for the following fields and operators:
+
+          **source.id**: *eq, in*
+
+          Filtering on any other field returns `400`.
+        example: source.id eq "8d3e0094e99445de98eef6c75e25jc04"
+        explode: true
+        in: query
+        name: filters
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Use this header to enable this experimental API.
+        example: true
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MachineAccountsSummary'
+          description: Machine account candidate counts.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listMachineAccountsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listMachineAccountsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:mis-account:read
+        - idn:mis-account:manage
+      summary: Get machine account candidate summary
+      tags:
+      - Machine Accounts
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+      - HELPDESK
+  /machine-accounts/v1/bulk-update:
+    post:
+      description: |
+        Use this API to apply the same [JSON Patch](https://tools.ietf.org/html/rfc6902) to up to 100 machine accounts. The response has one result per requested machine account, in no particular order. Each result has its own HTTP-style `status`: `200` when the update succeeded, or an error status such as `400` or `404`.
+
+        Each patch operation must target one of these top-level fields:
+          * description
+          * subtype
+          * environment
+          * machineIdentity
+          * ownerIdentity
+          * manuallyEdited
+
+        The request fails with `400` when `ids` is empty or has more than 100 entries, when `jsonPatch` is missing, or when a patch operation targets any other field. A patch that changes `subtype` must only include machine accounts from one source; otherwise every result has status `400`.
+
+        A caller who owns the machine accounts can update them. Other callers need the **idn:mis-account:update** right. For a caller without the right, machine accounts they do not own get a result with status `404`.
+
+        When this capability is not enabled for the tenant, this API returns `403`.
+      operationId: updateMachineAccountsInBulkV1
+      parameters:
+      - description: Use this header to enable this experimental API.
+        example: true
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MachineAccountBulkUpdateRequest'
+        required: true
+      responses:
+        "207":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/MachineAccountBulkResult'
+                type: array
+          description: One result per requested machine account.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listMachineAccountsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listMachineAccountsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:mis-account:manage
+      - applicationAuth:
+        - idn:mis-account:manage
+      summary: Update machine accounts in bulk
+      tags:
+      - Machine Accounts
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+  /machine-accounts/v1/bulk-enable:
+    post:
+      description: |
+        Use this API to submit one task that enables up to 100 machine accounts, and get the task ID. Machine accounts that are already enabled or that can't be enabled are skipped. When none of the machine accounts can be enabled, the task completes with an error.
+
+        The request fails with `400` when `ids` is empty or has more than 100 entries.
+
+        A caller who owns the machine accounts can enable them. Other callers need the **idn:mis-account:enable** right. For a caller without the right, machine accounts they do not own are skipped.
+
+        When this capability is not enabled for the tenant, this API returns `403`.
+      operationId: enableMachineAccountsInBulkV1
+      parameters:
+      - description: Use this header to enable this experimental API.
+        example: true
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MachineAccountBulkRequest'
+        required: true
+      responses:
+        "202":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MachineAccountRequestAsyncResult'
+          description: Async task details.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listMachineAccountsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listMachineAccountsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:mis-account-state:manage
+      - applicationAuth:
+        - idn:mis-account-state:manage
+      summary: Enable machine accounts in bulk
+      tags:
+      - Machine Accounts
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+  /machine-accounts/v1/bulk-disable:
+    post:
+      description: |
+        Use this API to submit one task that disables up to 100 machine accounts, and get the task ID. Machine accounts that are already disabled or that can't be disabled are skipped. When none of the machine accounts can be disabled, the task completes with an error.
+
+        The request fails with `400` when `ids` is empty or has more than 100 entries.
+
+        A caller who owns the machine accounts can disable them. Other callers need the **idn:mis-account:disable** right. For a caller without the right, machine accounts they do not own are skipped.
+
+        When this capability is not enabled for the tenant, this API returns `403`.
+      operationId: disableMachineAccountsInBulkV1
+      parameters:
+      - description: Use this header to enable this experimental API.
+        example: true
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MachineAccountBulkRequest'
+        required: true
+      responses:
+        "202":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MachineAccountRequestAsyncResult'
+          description: Async task details.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listMachineAccountsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listMachineAccountsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:mis-account-state:manage
+      - applicationAuth:
+        - idn:mis-account-state:manage
+      summary: Disable machine accounts in bulk
+      tags:
+      - Machine Accounts
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+  /machine-accounts/v1/bulk-reload:
+    post:
+      description: |
+        Use this API to reload up to 100 machine accounts from their sources. The response has one result per requested machine account, in no particular order. Each result has its own HTTP-style `status`: `200` when the reload was queued, or an error status such as `400`, `404` or `500`.
+
+        To track the whole reload with a single task instead, use the asynchronous bulk reload API.
+
+        The request fails with `400` when `ids` is empty or has more than 100 entries.
+
+        A caller who owns the machine accounts can reload them. Other callers need the **idn:mis-account:reload** right. For a caller without the right, machine accounts they do not own get a result with status `404`.
+
+        When this capability is not enabled for the tenant, this API returns `403`.
+      operationId: reloadMachineAccountsInBulkV1
+      parameters:
+      - description: Use this header to enable this experimental API.
+        example: true
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MachineAccountBulkRequest'
+        required: true
+      responses:
+        "207":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/MachineAccountBulkResult'
+                type: array
+          description: One result per requested machine account.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listMachineAccountsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listMachineAccountsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:mis-account-state:manage
+      - applicationAuth:
+        - idn:mis-account-state:manage
+      summary: Reload machine accounts in bulk
+      tags:
+      - Machine Accounts
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+  /machine-accounts/v1/bulk-reload-async:
+    post:
+      description: |
+        Use this API to submit one task that reloads up to 100 machine accounts from their sources, and get the task ID. Machine accounts that can't be reloaded are skipped. When none of the machine accounts can be reloaded, the task completes with an error.
+
+        The request fails with `400` when `ids` is empty or has more than 100 entries.
+
+        A caller who owns the machine accounts can reload them. Other callers need the **idn:mis-account:reload** right. For a caller without the right, machine accounts they do not own are skipped.
+
+        When this capability is not enabled for the tenant, this API returns `403`.
+      operationId: reloadMachineAccountsInBulkAsyncV1
+      parameters:
+      - description: Use this header to enable this experimental API.
+        example: true
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MachineAccountBulkRequest'
+        required: true
+      responses:
+        "202":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MachineAccountRequestAsyncResult'
+          description: Async task details.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listMachineAccountsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listMachineAccountsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:mis-account-state:manage
+      - applicationAuth:
+        - idn:mis-account-state:manage
+      summary: Bulk reload machine accounts asynchronously
+      tags:
+      - Machine Accounts
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+  /machine-accounts/v2:
+    get:
+      description: |
+        Use this API to get a list of machine accounts. By default, the list includes machine accounts that are linked to a machine identity or to a source resource.
+
+        When the whole filter is a single comparison on `machineIdentity.id` or `machineIdentity.name`, the list also includes machine accounts linked to the matching machine identities through source resource links.
+
+        A caller without the **idn:mis-account-list:read** right can call this API only when every returned machine account is one they own; otherwise this API returns `403`. Use `ownerIdentity=self` to list only the caller's own machine accounts.
+
+        When this capability is not enabled for the tenant, this API returns `403`.
+      operationId: listMachineAccountsV2
+      parameters:
+      - description: |-
+          Max number of results to return.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        example: 250
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          Offset into the full result set. Usually specified with *limit* to paginate through the results.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        example: 0
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+          Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        example: true
+        explode: true
+        in: query
+        name: count
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+      - description: Return only machine accounts whose owner identity is this identity
+          ID. Use `self` for the caller's own identity. This parameter can't be combined
+          with a filter on `ownerIdentity.id`; that combination returns `400`.
+        example: self
+        explode: true
+        in: query
+        name: ownerIdentity
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: |-
+          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
+
+          Filtering is supported for the following fields and operators:
+
+          **id**: *eq, in*
+
+          **name**: *eq, in, sw*
+
+          **nativeIdentity**: *eq, in, sw*
+
+          **uuid**: *eq, in*
+
+          **description**: *eq, in, sw*
+
+          **machineIdentity.id**: *eq, in*
+
+          **machineIdentity.name**: *eq, in, sw*
+
+          **subtype.technicalName**: *eq, in, sw*
+
+          **subtype.displayName**: *eq, in, sw*
+
+          **accessType**: *eq, in, sw*
+
+          **environment**: *eq, in, sw*
+
+          **ownerIdentity**: *eq, in*
+
+          **ownerIdentity.id**: *eq, in*
+
+          **ownerIdentity.name**: *eq, in, sw*
+
+          **owners.primary.id**: *eq, in*
+
+          **owners.primary.name**: *eq, in, sw*
+
+          **owners.secondaryIdentity.id**: *eq, in*
+
+          **owners.secondaryIdentity.name**: *eq, in, sw*
+
+          **owners.governanceGroup.id**: *eq, in*
+
+          **owners.governanceGroup.name**: *eq, in, sw*
+
+          **manuallyCorrelated**: *eq*
+
+          **enabled**: *eq*
+
+          **locked**: *eq*
+
+          **hasEntitlements**: *eq*
+
+          **attributes**: *eq*
+
+          **connectorAttributes**: *eq*
+
+          **source.id**: *eq, in*
+
+          **source.name**: *eq, in, sw*
+
+          **datasetId**: *eq, in*
+
+          **resource.id**: *eq, in*
+
+          **type**: *eq, in*
+
+          **created**: *eq, gt, lt, ge, le*
+
+          **modified**: *eq, gt, lt, ge, le*
+
+          **risk.severity**: *eq, in*
+
+          **permissionLevel**: *eq, in*
+
+          **lastUsedAt**: *gt, lt, ge, le*
+
+          Use `me` as the value of `ownerIdentity.id` to match the caller's own identity.
+
+          The `owners.*` fields are available only when expanded machine account ownership is enabled for the tenant. The `risk.severity`, `permissionLevel` and `lastUsedAt` fields are available only when machine account risk enrichment is enabled for the tenant. Filtering on an unavailable field returns `400`.
+        example: machineIdentity.id eq "2c9180858082150f0180893dbaf44201"
+        explode: true
+        in: query
+        name: filters
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: |-
+          Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
+
+          Sorting is supported for the following fields: **id, name, nativeIdentity, uuid, description, machineIdentity.id, machineIdentity.name, subtype.technicalName, subtype.displayName, accessType, environment, ownerIdentity, ownerIdentity.id, ownerIdentity.name, owners.primary.id, owners.primary.name, owners.secondaryIdentity.id, owners.secondaryIdentity.name, owners.governanceGroup.id, owners.governanceGroup.name, manuallyCorrelated, enabled, locked, hasEntitlements, attributes, connectorAttributes, source.id, source.name, datasetId, resource.id, type, created, modified, risk.severity, permissionLevel, lastUsedAt**
+
+          The same availability rules as for `filters` apply to the `owners.*`, `risk.severity`, `permissionLevel` and `lastUsedAt` fields. `risk.severity` sorts by rank (UNKNOWN, LOW, MEDIUM, HIGH, CRITICAL), not alphabetically.
+        example: "id,name"
+        explode: true
+        in: query
+        name: sorters
+        required: false
+        schema:
+          format: comma-separated
+          type: string
+        style: form
+      - description: Use this header to enable this experimental API.
+        example: true
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/MachineAccountV2'
+                type: array
+          description: List of machine accounts.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listMachineAccountsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listMachineAccountsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:mis-account:read
+        - idn:mis-account:manage
+      summary: List machine accounts
+      tags:
+      - Machine Accounts
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+      - HELPDESK
+  /machine-accounts/v2/{id}:
+    get:
+      description: |
+        Use this API to get the details of a machine account, including all of its linked machine identities.
+
+        A caller who owns the machine account can get it. Other callers need the **idn:mis-account:read** right.
+
+        When this capability is not enabled for the tenant, this API returns `403`.
+      operationId: getMachineAccountV2
+      parameters:
+      - description: Machine Account ID.
+        example: ef38f94347e94562b5bb8424a56397d8
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listMachineAccountsV2
+      - description: Use this header to enable this experimental API.
+        example: true
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MachineAccountV2'
+          description: Machine account object.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listMachineAccountsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listMachineAccountsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:mis-account:read
+      summary: Get machine account details
+      tags:
+      - Machine Accounts
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+      - HELPDESK
+    patch:
+      description: |
+        Use this API to update a machine account with a [JSON Patch](https://tools.ietf.org/html/rfc6902) document. The response is the updated machine account.
+
+        A caller who owns the machine account can update it. Other callers need the **idn:mis-account:update** right.
+
+        When this capability is not enabled for the tenant, this API returns `403`.
+      operationId: updateMachineAccountV2
+      parameters:
+      - description: Machine Account ID.
+        example: ef38f94347e94562b5bb8424a56397d8
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listMachineAccountsV2
+      - description: Use this header to enable this experimental API.
+        example: true
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json-patch+json:
+            examples:
+              Replace environment:
+                value:
+                - op: replace
+                  path: /environment
+                  value: test
+              Remove description:
+                value:
+                - op: remove
+                  path: /description
+              Replace machine identity:
+                value:
+                - op: replace
+                  path: /machineIdentities
+                  value:
+                  - id: 3fa85f6457174562b3fc2c963f66afa6
+            schema:
+              items:
+                $ref: '#/components/schemas/JsonPatchOperation'
+              type: array
+          application/json:
+            schema:
+              items:
+                $ref: '#/components/schemas/JsonPatchOperation'
+              type: array
+        description: |-
+          A JSON of updated values [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The following fields are patchable:
+                    * description
+                    * environment
+                    * accessType
+                    * attributes
+                    * manuallyEdited
+                    * ownerIdentity
+                    * subtype
+                    * machineIdentities
+                    * owners
+
+          Non-dataset accounts may patch ownerIdentity, subtype, and machineIdentities. Dataset accounts may patch owners. When expanded ownership is enabled, non-dataset accounts may also patch owners, and dataset accounts may also patch ownerIdentity. Patching ownerIdentity and owners in the same request returns `400`.
+
+          To change the machine identity, use a single `replace` operation on `/machineIdentities` whose value is a list of exactly one machine identity reference with its `id`. The `/machineIdentity` path, indexed or nested paths such as `/machineIdentities/0`, other operations on `/machineIdentities`, and a value that is not a one-element list all return `400`.
+
+          All other fields, including `risk`, `permissionLevel`, `compliance`, and `lastUsedAt`, are read-only. A patch that changes one of them returns `400`.
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MachineAccountV2'
+          description: Updated machine account object.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listMachineAccountsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listMachineAccountsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:mis-account:manage
+      - applicationAuth:
+        - idn:mis-account:manage
+      summary: Update machine account details
+      tags:
+      - Machine Accounts
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
   /sources/v1/{sourceId}/subtypes:
     get:
       deprecated: true
@@ -1168,7 +2887,7 @@ paths:
         style: simple
         x-sailpoint-resource-operation-id: listSourcesV1
       - description: |-
-          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
+          Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)
 
           Filtering is supported for the following fields and operators:
 
@@ -1184,7 +2903,7 @@ paths:
           type: string
         style: form
       - description: |-
-          Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
+          Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)
 
           Sorting is supported for the following fields: **displayName, technicalName**
         example: displayName
@@ -1211,7 +2930,7 @@ paths:
 
           Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
 
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
         example: true
         explode: true
         in: query
@@ -1223,7 +2942,7 @@ paths:
         style: form
       - description: |-
           Max number of results to return.
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
         example: 250
         explode: true
         in: query
@@ -1238,7 +2957,7 @@ paths:
         style: form
       - description: |-
           Offset into the full result set. Usually specified with *limit* to paginate through the results.
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
         example: 0
         explode: true
         in: query
@@ -1963,7 +3682,7 @@ components:
     limit:
       description: |-
         Max number of results to return.
-        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
       example: 250
       explode: true
       in: query
@@ -1979,7 +3698,7 @@ components:
     offset:
       description: |-
         Offset into the full result set. Usually specified with *limit* to paginate through the results.
-        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
       example: 0
       explode: true
       in: query
@@ -1997,7 +3716,7 @@ components:
 
         Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
 
-        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
       example: true
       explode: true
       in: query
@@ -2393,6 +4112,755 @@ components:
       - id
       title: Machine Accounts Async Result
       type: object
+    MachineAccountDeleteRequest:
+      description: Details for a request to delete a machine account.
+      example:
+        comments: This machine account is no longer used.
+      properties:
+        comments:
+          description: "Comments about the deletion request. Depending on the tenant's\
+            \ account deletion approval settings, comments can be required."
+          example: This machine account is no longer used.
+          nullable: true
+          type: string
+      title: Machine Account Delete Request
+      type: object
+    MachineAccountRequestAsyncResult:
+      description: Response for a machine account request that is processed asynchronously.
+      example:
+        accountRequestId: 2d81808474683da6017468693c260196
+      properties:
+        accountRequestId:
+          description: ID of the task that tracks the account request.
+          example: 2d81808474683da6017468693c260196
+          type: string
+      required:
+      - accountRequestId
+      title: Machine Account Request Async Result
+      type: object
+    DtoType:
+      description: An enumeration of the types of DTOs supported within the IdentityNow
+        infrastructure.
+      enum:
+      - ACCOUNT_CORRELATION_CONFIG
+      - ACCESS_PROFILE
+      - ACCESS_REQUEST_APPROVAL
+      - ACCOUNT
+      - APPLICATION
+      - CAMPAIGN
+      - CAMPAIGN_FILTER
+      - CERTIFICATION
+      - CLUSTER
+      - CONNECTOR_SCHEMA
+      - ENTITLEMENT
+      - GOVERNANCE_GROUP
+      - IDENTITY
+      - IDENTITY_PROFILE
+      - IDENTITY_REQUEST
+      - MACHINE_IDENTITY
+      - LIFECYCLE_STATE
+      - PASSWORD_POLICY
+      - ROLE
+      - RULE
+      - SOD_POLICY
+      - SOURCE
+      - TAG
+      - TAG_CATEGORY
+      - TASK_RESULT
+      - REPORT_RESULT
+      - SOD_VIOLATION
+      - ACCOUNT_ACTIVITY
+      - WORKGROUP
+      example: IDENTITY
+      type: string
+    BaseReferenceDto:
+      properties:
+        type:
+          $ref: '#/components/schemas/DtoType'
+        id:
+          description: ID of the object to which this reference applies
+          example: 2c91808568c529c60168cca6f90c1313
+          type: string
+        name:
+          description: Human-readable display name of the object to which this reference
+            applies
+          example: William Wilson
+          type: string
+      title: Base Reference Dto
+      type: object
+    MachineAccountEntitlement:
+      allOf:
+      - $ref: '#/components/schemas/BaseCommonDto'
+      - properties:
+          attribute:
+            description: The name of the account attribute that holds the entitlement.
+            example: memberOf
+            type: string
+          value:
+            description: The value of the entitlement.
+            example: "CN=Administrators,CN=Builtin,DC=example,DC=com"
+            type: string
+          description:
+            description: The description of the entitlement.
+            example: Members can fully administer the domain.
+            nullable: true
+            type: string
+          sourceSchemaObjectType:
+            description: The source schema object type of the entitlement.
+            example: group
+            type: string
+          privileged:
+            default: false
+            description: Indicates whether the entitlement is privileged.
+            example: true
+            type: boolean
+          cloudGoverned:
+            default: false
+            description: Indicates whether the entitlement is governed in the cloud.
+            example: false
+            type: boolean
+          requestable:
+            default: false
+            description: Indicates whether the entitlement can be requested.
+            example: true
+            type: boolean
+          attributes:
+            additionalProperties: true
+            description: Additional attributes of the entitlement.
+            example:
+              groupType: security
+            nullable: true
+            type: object
+          source:
+            allOf:
+            - $ref: '#/components/schemas/BaseReferenceDto'
+            description: The source the entitlement belongs to.
+            example:
+              id: 8d3e0094e99445de98eef6c75e25jc04
+              type: SOURCE
+              name: Active Directory
+          owner:
+            allOf:
+            - $ref: '#/components/schemas/BaseReferenceDto'
+            description: The owner of the entitlement.
+            example:
+              id: 2c918084660f45d6016617daa9210584
+              type: IDENTITY
+              name: Adam Kennedy
+            nullable: true
+        type: object
+      description: An entitlement held by a machine account.
+      example:
+        owner:
+          id: 2c918084660f45d6016617daa9210584
+          type: IDENTITY
+          name: Adam Kennedy
+        created: 2015-05-28T14:07:17Z
+        description: Members can fully administer the domain.
+        source:
+          id: 8d3e0094e99445de98eef6c75e25jc04
+          type: SOURCE
+          name: Active Directory
+        privileged: true
+        name: aName
+        modified: 2015-05-28T14:07:17Z
+        sourceSchemaObjectType: group
+        attributes:
+          groupType: security
+        id: id12345
+        attribute: memberOf
+        requestable: true
+        value: "CN=Administrators,CN=Builtin,DC=example,DC=com"
+        cloudGoverned: false
+      title: Machine Account Entitlement
+      type: object
+    MachineAccountLinkedMachineIdentity:
+      allOf:
+      - $ref: '#/components/schemas/BaseCommonDto'
+      - properties:
+          description:
+            description: The description of the machine identity.
+            example: Service identity for nightly batch jobs
+            nullable: true
+            type: string
+          attributes:
+            additionalProperties: true
+            description: "The attributes of the machine identity, including the attributes\
+              \ read from the source."
+            example:
+              Region: EU
+            nullable: true
+            type: object
+          manuallyEdited:
+            default: false
+            description: Indicates whether the machine identity has been manually
+              edited.
+            example: false
+            type: boolean
+          manuallyCreated:
+            default: false
+            description: Indicates whether the machine identity was created manually
+              rather than by aggregation.
+            example: false
+            type: boolean
+          owners:
+            $ref: '#/components/schemas/MachineAccountLinkedMachineIdentity_allOf_owners'
+          subtype:
+            description: The subtype of the machine identity.
+            example: Application
+            nullable: true
+            type: string
+          sourceId:
+            description: ID of the source the machine identity comes from.
+            example: 8d3e0094e99445de98eef6c75e25jc04
+            nullable: true
+            type: string
+          uuid:
+            description: "The UUID of the machine identity, as read from the source."
+            example: f5dd23fe-3414-42b7-bb1c-869400ad7a10
+            nullable: true
+            type: string
+          nativeIdentity:
+            description: "The native identity of the machine identity, as read from\
+              \ the source."
+            example: abc:123:dddd
+            nullable: true
+            type: string
+          datasetId:
+            description: ID of the dataset the machine identity was aggregated from.
+            example: aws-iam-roles
+            nullable: true
+            type: string
+          source:
+            allOf:
+            - $ref: '#/components/schemas/BaseReferenceDto'
+            description: The source the machine identity comes from.
+            example:
+              id: 8d3e0094e99445de98eef6c75e25jc04
+              type: SOURCE
+              name: Active Directory
+            nullable: true
+          userEntitlements:
+            description: The user entitlements associated with the machine identity.
+            items:
+              $ref: '#/components/schemas/MachineAccountLinkedMachineIdentity_allOf_userEntitlements'
+            nullable: true
+            type: array
+          existsOnSource:
+            description: Indicates whether the machine identity still exists on the
+              source.
+            enum:
+            - "TRUE"
+            - "FALSE"
+            - NOT_APPLICABLE
+            example: NOT_APPLICABLE
+            nullable: true
+            type: string
+          businessApplicationRefs:
+            description: The business applications linked to the machine identity.
+              This field is omitted when business application links are not available
+              for the machine identity.
+            items:
+              $ref: '#/components/schemas/MachineAccountLinkedMachineIdentity_allOf_businessApplicationRefs'
+            type: array
+          effectiveSanctionedStatus:
+            description: The sanctioned status derived from the linked business applications.
+              This field is present only when `businessApplicationRefs` is present.
+            enum:
+            - SANCTIONED
+            - UNSANCTIONED
+            - UNKNOWN
+            example: SANCTIONED
+            type: string
+        type: object
+      description: A machine identity that is linked to a machine account.
+      example:
+        sourceId: 8d3e0094e99445de98eef6c75e25jc04
+        created: 2015-05-28T14:07:17Z
+        description: Service identity for nightly batch jobs
+        owners:
+          primaryIdentity:
+            id: 2c918084660f45d6016617daa9210584
+            type: IDENTITY
+            name: Adam Kennedy
+          secondaryIdentities:
+          - id: 2c9180858082150f0180893dbaf44202
+            type: IDENTITY
+            name: Jane Doe
+        source:
+          id: 8d3e0094e99445de98eef6c75e25jc04
+          type: SOURCE
+          name: Active Directory
+        uuid: f5dd23fe-3414-42b7-bb1c-869400ad7a10
+        nativeIdentity: abc:123:dddd
+        effectiveSanctionedStatus: SANCTIONED
+        subtype: Application
+        businessApplicationRefs:
+        - name: Cursor
+          correlationType: MANUAL
+          id: 2ee5e239-e68c-4d69-93fb-6c7ce4576190
+          type: BUSINESS_APPLICATION
+          sanctionedStatus: SANCTIONED
+        - name: Cursor
+          correlationType: MANUAL
+          id: 2ee5e239-e68c-4d69-93fb-6c7ce4576190
+          type: BUSINESS_APPLICATION
+          sanctionedStatus: SANCTIONED
+        userEntitlements:
+        - sourceId: 8d3e0094e99445de98eef6c75e25jc04
+          displayName: Administrators
+          entitlementId: 2c9180835d2e5168015d32f890ca1581
+          source:
+            id: 8d3e0094e99445de98eef6c75e25jc04
+            type: SOURCE
+            name: Active Directory
+        - sourceId: 8d3e0094e99445de98eef6c75e25jc04
+          displayName: Administrators
+          entitlementId: 2c9180835d2e5168015d32f890ca1581
+          source:
+            id: 8d3e0094e99445de98eef6c75e25jc04
+            type: SOURCE
+            name: Active Directory
+        name: aName
+        modified: 2015-05-28T14:07:17Z
+        datasetId: aws-iam-roles
+        attributes:
+          Region: EU
+        id: id12345
+        manuallyEdited: false
+        manuallyCreated: false
+        existsOnSource: NOT_APPLICABLE
+      title: Machine Account Linked Machine Identity
+      type: object
+    MachineAccountClassificationCount:
+      description: The number of machine account candidates found by one classification
+        method.
+      properties:
+        classificationMethod:
+          description: The classification method that found the candidates.
+          enum:
+          - CRITERIA
+          - SOURCE
+          - DISCOVERY
+          example: CRITERIA
+          type: string
+        count:
+          description: The number of candidates found by this classification method.
+          example: 42
+          format: int32
+          type: integer
+      title: Machine Account Classification Count
+      type: object
+    MachineAccountsSummary:
+      description: "Counts of machine account candidates that are not yet linked to\
+        \ a machine identity, grouped by classification method."
+      example:
+        uncorrelated:
+        - classificationMethod: DISCOVERY
+          count: 5
+        human:
+        - classificationMethod: CRITERIA
+          count: 42
+        - classificationMethod: SOURCE
+          count: 17
+        - classificationMethod: DISCOVERY
+          count: 8
+      properties:
+        human:
+          description: "Counts of candidates that are correlated to a human identity,\
+            \ with one entry each for the `CRITERIA`, `SOURCE` and `DISCOVERY` classification\
+            \ methods."
+          example:
+          - classificationMethod: CRITERIA
+            count: 42
+          - classificationMethod: SOURCE
+            count: 17
+          - classificationMethod: DISCOVERY
+            count: 8
+          items:
+            $ref: '#/components/schemas/MachineAccountClassificationCount'
+          type: array
+        uncorrelated:
+          description: "Counts of candidates that are not correlated to any identity.\
+            \ This list has one entry, for the `DISCOVERY` classification method."
+          example:
+          - classificationMethod: DISCOVERY
+            count: 5
+          items:
+            $ref: '#/components/schemas/MachineAccountClassificationCount'
+          type: array
+      title: Machine Accounts Summary
+      type: object
+    JsonPatchOperation:
+      description: "A JSONPatch Operation as defined by [RFC 6902 - JSON Patch](https://tools.ietf.org/html/rfc6902)"
+      example:
+        op: replace
+        path: /description
+        value: New description
+      properties:
+        op:
+          description: The operation to be performed
+          enum:
+          - add
+          - remove
+          - replace
+          - move
+          - copy
+          - test
+          example: replace
+          type: string
+        path:
+          description: A string JSON Pointer representing the target path to an element
+            to be affected by the operation
+          example: /description
+          type: string
+        value:
+          $ref: '#/components/schemas/JsonPatchOperation_value'
+      required:
+      - op
+      - path
+      title: Json Patch Operation
+      type: object
+    MachineAccountBulkUpdateRequest:
+      description: The machine accounts to update and the JSON Patch to apply to each
+        of them.
+      example:
+        ids:
+        - ef38f94347e94562b5bb8424a56397d8
+        - 2c9180835d2e5168015d32f890ca1581
+        jsonPatch:
+        - op: replace
+          path: /environment
+          value: PROD
+      properties:
+        ids:
+          description: IDs of the machine accounts to update. Provide between 1 and
+            100 IDs.
+          example:
+          - ef38f94347e94562b5bb8424a56397d8
+          - 2c9180835d2e5168015d32f890ca1581
+          items:
+            maxLength: 128
+            type: string
+          maxItems: 100
+          minItems: 1
+          type: array
+        jsonPatch:
+          description: "[JSON Patch](https://tools.ietf.org/html/rfc6902) operations\
+            \ to apply to every machine account in `ids`. Each operation must target\
+            \ one of these top-level fields: `description`, `subtype`, `environment`,\
+            \ `machineIdentity`, `ownerIdentity`, `manuallyEdited`."
+          example:
+          - op: replace
+            path: /environment
+            value: PROD
+          items:
+            $ref: '#/components/schemas/JsonPatchOperation'
+          type: array
+      required:
+      - ids
+      - jsonPatch
+      title: Machine Account Bulk Update Request
+      type: object
+    MachineAccountBulkResult:
+      description: The outcome of a bulk operation for one machine account.
+      example:
+        id: ef38f94347e94562b5bb8424a56397d8
+        message: Success
+        status: 200
+      properties:
+        id:
+          description: ID of the machine account this result applies to.
+          example: ef38f94347e94562b5bb8424a56397d8
+          maxLength: 128
+          type: string
+        status:
+          description: "HTTP-style status code for this machine account. `200` means\
+            \ the operation succeeded or was queued. Other values, such as `400`,\
+            \ `404` or `500`, describe why it failed."
+          example: 200
+          format: int32
+          type: integer
+        message:
+          description: A message that describes the outcome for this machine account.
+          example: Success
+          type: string
+      title: Machine Account Bulk Result
+      type: object
+    MachineAccountBulkRequest:
+      description: The machine accounts to process in a bulk operation.
+      example:
+        ids:
+        - ef38f94347e94562b5bb8424a56397d8
+        - 2c9180835d2e5168015d32f890ca1581
+      properties:
+        ids:
+          description: IDs of the machine accounts to process. Provide between 1 and
+            100 IDs.
+          example:
+          - ef38f94347e94562b5bb8424a56397d8
+          - 2c9180835d2e5168015d32f890ca1581
+          items:
+            maxLength: 128
+            type: string
+          maxItems: 100
+          minItems: 1
+          type: array
+      required:
+      - ids
+      title: Machine Account Bulk Request
+      type: object
+    MachineAccountV2:
+      allOf:
+      - $ref: '#/components/schemas/BaseCommonDto'
+      - properties:
+          machineIdentities:
+            description: The machine identities linked to this machine account. The
+              list is empty when there are none.
+            example:
+            - type: MACHINE_IDENTITY
+              id: 1540e5a4-6c2e-4bf1-b88e-c08cae0696e9
+              name: SVC_ADService
+              subtype: APPLICATION
+            items:
+              $ref: '#/components/schemas/MachineAccountV2_allOf_machineIdentities'
+            type: array
+          description:
+            description: The description of the machine account.
+            example: Service account for Active Directory
+            nullable: true
+            type: string
+          nativeIdentity:
+            description: The unique ID of the machine account generated by the source
+              system.
+            example: "552775"
+            type: string
+          uuid:
+            description: The unique ID of the account as determined by the account
+              schema.
+            example: "{b0dce506-d6d4-44d2-8a32-d9a5b21fb175}"
+            nullable: true
+            type: string
+          ownerIdentity:
+            allOf:
+            - $ref: '#/components/schemas/BaseReferenceDto'
+            description: The identity that owns this machine account.
+            example:
+              id: 2c918084660f45d6016617daa9210584
+              type: IDENTITY
+              name: Adam Kennedy
+            nullable: true
+          owners:
+            $ref: '#/components/schemas/MachineAccountV2_allOf_owners'
+          subtype:
+            $ref: '#/components/schemas/MachineAccountV2_allOf_subtype'
+          accessType:
+            description: The connection type of the source this account is from.
+            example: direct
+            nullable: true
+            type: string
+          environment:
+            description: The environment of the machine account.
+            example: TEST
+            nullable: true
+            type: string
+          attributes:
+            additionalProperties: true
+            description: Custom attributes specific to the machine account.
+            example:
+              firstName: SailPoint
+              lastName: Support
+            nullable: true
+            type: object
+          connectorAttributes:
+            additionalProperties: true
+            description: The connector attributes for the account.
+            example:
+              mail: machine-178@sailpoint.com
+              givenName: Support
+            nullable: true
+            type: object
+          classificationMethod:
+            description: How the account was classified as a machine account.
+            enum:
+            - CRITERIA
+            - SOURCE
+            - DISCOVERY
+            - MANUAL
+            - MANUALLY_UNCLASSIFIED
+            example: SOURCE
+            nullable: true
+            type: string
+          manuallyEdited:
+            default: false
+            description: Indicates whether the machine account has been manually edited.
+            example: false
+            type: boolean
+          manuallyCorrelated:
+            default: false
+            description: Indicates whether the account has been manually correlated
+              to an identity.
+            example: false
+            type: boolean
+          enabled:
+            default: false
+            description: Indicates whether the account is enabled.
+            example: true
+            type: boolean
+          locked:
+            default: false
+            description: Indicates whether the account is currently locked.
+            example: false
+            type: boolean
+          hasEntitlements:
+            default: false
+            description: Indicates whether the account has entitlements.
+            example: true
+            type: boolean
+          source:
+            allOf:
+            - $ref: '#/components/schemas/BaseReferenceDto'
+            description: The source this machine account belongs to.
+            example:
+              id: 8d3e0094e99445de98eef6c75e25jc04
+              type: SOURCE
+              name: Active Directory
+          resource:
+            $ref: '#/components/schemas/MachineAccountV2_allOf_resource'
+          datasetId:
+            description: ID of the dataset the machine account was aggregated from.
+              Null for accounts that were not aggregated from a dataset.
+            example: aws-iam-roles
+            nullable: true
+            type: string
+          type:
+            description: The classification of the machine account.
+            enum:
+            - MACHINE
+            - MACHINE_DATASET
+            - CANDIDATE
+            - CANDIDATE_BY_SOURCE
+            - DISCOVERED
+            - AGENT
+            example: MACHINE
+            nullable: true
+            type: string
+          accountType:
+            deprecated: true
+            description: "Deprecated. Use `type`, which always has the same value."
+            enum:
+            - MACHINE
+            - MACHINE_DATASET
+            - CANDIDATE
+            - CANDIDATE_BY_SOURCE
+            - DISCOVERED
+            - AGENT
+            example: MACHINE
+            nullable: true
+            type: string
+          risk:
+            $ref: '#/components/schemas/MachineAccountV2_allOf_risk'
+          permissionLevel:
+            description: The permission level set by enrichment. Null when not enriched.
+              Read-only.
+            enum:
+            - PRIVILEGED
+            - ELEVATED
+            - BASIC
+            - UNKNOWN
+            example: PRIVILEGED
+            nullable: true
+            readOnly: true
+            type: string
+          compliance:
+            description: "Compliance control IDs the machine account violates, set\
+              \ by enrichment. Null when not enriched; empty when no violations were\
+              \ recorded. Read-only."
+            items:
+              $ref: '#/components/schemas/MachineAccountV2_allOf_compliance'
+            nullable: true
+            readOnly: true
+            type: array
+          lastUsedAt:
+            description: "When the machine account was last used, set by enrichment.\
+              \ Null when not enriched. Read-only."
+            example: 2026-03-10T21:38:25Z
+            format: date-time
+            nullable: true
+            readOnly: true
+            type: string
+        type: object
+      description: "A machine account. Machine identities are returned as the `machineIdentities`\
+        \ list, which includes the machine identity the account is directly linked\
+        \ to and machine identities linked to the account through its source resource."
+      example:
+        description: Service account for Active Directory
+        owners:
+          secondary:
+          - id: 2c9180858082150f0180893dbaf44202
+            type: IDENTITY
+            name: Jane Doe
+          primary:
+            id: 2c918084660f45d6016617daa9210584
+            type: IDENTITY
+            name: Adam Kennedy
+        source:
+          id: 8d3e0094e99445de98eef6c75e25jc04
+          type: SOURCE
+          name: Active Directory
+        type: MACHINE
+        uuid: "{b0dce506-d6d4-44d2-8a32-d9a5b21fb175}"
+        enabled: true
+        ownerIdentity:
+          id: 2c918084660f45d6016617daa9210584
+          type: IDENTITY
+          name: Adam Kennedy
+        accessType: direct
+        subtype:
+          displayName: Service Account
+          id: 43bdd144-4b17-4fce-a744-17c7fd3e717b
+          technicalName: serviceAccount
+        modified: 2015-05-28T14:07:17Z
+        datasetId: aws-iam-roles
+        hasEntitlements: true
+        id: id12345
+        locked: false
+        resource:
+          features:
+          - PROVISIONING
+          - AUTHENTICATION
+          name: nightly-batch-role
+          id: 8886e5e3-63d0-462f-a195-d98da885b8dc
+          type: aws:iam-role
+        created: 2015-05-28T14:07:17Z
+        connectorAttributes:
+          mail: machine-178@sailpoint.com
+          givenName: Support
+        accountType: MACHINE
+        manuallyCorrelated: false
+        nativeIdentity: "552775"
+        environment: TEST
+        permissionLevel: PRIVILEGED
+        lastUsedAt: 2026-03-10T21:38:25Z
+        compliance:
+        - id: SOC2-CC6.1
+        - id: SOC2-CC6.1
+        name: aName
+        machineIdentities:
+        - type: MACHINE_IDENTITY
+          id: 1540e5a4-6c2e-4bf1-b88e-c08cae0696e9
+          name: SVC_ADService
+          subtype: APPLICATION
+        attributes:
+          firstName: SailPoint
+          lastName: Support
+        risk:
+          severity: HIGH
+          score: 72.5
+        classificationMethod: SOURCE
+        manuallyEdited: false
+      title: Machine Account V2
+      type: object
     SourceSubtype:
       example:
         sourceId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -2520,6 +4988,297 @@ components:
       properties:
         id:
           description: Framework control id.
+          example: SOC2-CC6.1
+          nullable: true
+          type: string
+      type: object
+    MachineAccountLinkedMachineIdentity_allOf_owners:
+      description: The owners of the machine identity.
+      example:
+        primaryIdentity:
+          id: 2c918084660f45d6016617daa9210584
+          type: IDENTITY
+          name: Adam Kennedy
+        secondaryIdentities:
+        - id: 2c9180858082150f0180893dbaf44202
+          type: IDENTITY
+          name: Jane Doe
+      nullable: true
+      properties:
+        primaryIdentity:
+          allOf:
+          - $ref: '#/components/schemas/BaseReferenceDto'
+          description: The identity selected as the primary owner.
+          example:
+            id: 2c918084660f45d6016617daa9210584
+            type: IDENTITY
+            name: Adam Kennedy
+        secondaryIdentities:
+          description: The identities selected as secondary owners.
+          example:
+          - id: 2c9180858082150f0180893dbaf44202
+            type: IDENTITY
+            name: Jane Doe
+          items:
+            $ref: '#/components/schemas/BaseReferenceDto'
+          type: array
+      type: object
+    MachineAccountLinkedMachineIdentity_allOf_userEntitlements:
+      example:
+        sourceId: 8d3e0094e99445de98eef6c75e25jc04
+        displayName: Administrators
+        entitlementId: 2c9180835d2e5168015d32f890ca1581
+        source:
+          id: 8d3e0094e99445de98eef6c75e25jc04
+          type: SOURCE
+          name: Active Directory
+      properties:
+        sourceId:
+          description: ID of the source the entitlement belongs to.
+          example: 8d3e0094e99445de98eef6c75e25jc04
+          type: string
+        entitlementId:
+          description: ID of the entitlement.
+          example: 2c9180835d2e5168015d32f890ca1581
+          type: string
+        displayName:
+          description: The display name of the entitlement.
+          example: Administrators
+          type: string
+        source:
+          allOf:
+          - $ref: '#/components/schemas/BaseReferenceDto'
+          description: The source the entitlement belongs to.
+          example:
+            id: 8d3e0094e99445de98eef6c75e25jc04
+            type: SOURCE
+            name: Active Directory
+      type: object
+    MachineAccountLinkedMachineIdentity_allOf_businessApplicationRefs:
+      example:
+        name: Cursor
+        correlationType: MANUAL
+        id: 2ee5e239-e68c-4d69-93fb-6c7ce4576190
+        type: BUSINESS_APPLICATION
+        sanctionedStatus: SANCTIONED
+      properties:
+        type:
+          description: The reference type.
+          enum:
+          - BUSINESS_APPLICATION
+          example: BUSINESS_APPLICATION
+          type: string
+        id:
+          description: ID of the business application.
+          example: 2ee5e239-e68c-4d69-93fb-6c7ce4576190
+          type: string
+        name:
+          description: The display name of the business application.
+          example: Cursor
+          nullable: true
+          type: string
+        sanctionedStatus:
+          description: The sanctioned status of the business application.
+          enum:
+          - SANCTIONED
+          - UNSANCTIONED
+          - UNKNOWN
+          example: SANCTIONED
+          nullable: true
+          type: string
+        correlationType:
+          description: How the business application was linked to the machine identity.
+          enum:
+          - MANUAL
+          - AUTOMATIC
+          example: MANUAL
+          nullable: true
+          type: string
+      type: object
+    array_inner:
+      anyOf:
+      - type: string
+      - type: integer
+      - type: object
+      example:
+      - "001"
+      - "002"
+      - "003"
+    JsonPatchOperation_value:
+      description: "The value to be used for the operation, required for \"add\" and\
+        \ \"replace\" operations"
+      example: New description
+      oneOf:
+      - example: New description
+        title: string
+        type: string
+      - example: true
+        title: boolean
+        type: boolean
+      - example: 300
+        title: integer
+        type: integer
+      - example:
+          attributes:
+            name: philip
+        title: object
+        type: object
+      - items:
+          $ref: '#/components/schemas/array_inner'
+        title: array
+        type: array
+    MachineAccountV2_allOf_machineIdentities:
+      properties:
+        type:
+          description: The reference type.
+          enum:
+          - MACHINE_IDENTITY
+          example: MACHINE_IDENTITY
+          type: string
+        id:
+          description: ID of the machine identity.
+          example: 1540e5a4-6c2e-4bf1-b88e-c08cae0696e9
+          type: string
+        name:
+          description: The display name of the machine identity.
+          example: SVC_ADService
+          type: string
+        subtype:
+          description: The subtype of the machine identity.
+          enum:
+          - AI_AGENT
+          - APPLICATION
+          - DEVICE
+          example: APPLICATION
+          nullable: true
+          type: string
+      type: object
+    MachineAccountV2_allOf_owners:
+      description: "The owners of the machine account: a primary owner plus secondary\
+        \ owners, which are either up to ten identities or one governance group."
+      example:
+        secondary:
+        - id: 2c9180858082150f0180893dbaf44202
+          type: IDENTITY
+          name: Jane Doe
+        primary:
+          id: 2c918084660f45d6016617daa9210584
+          type: IDENTITY
+          name: Adam Kennedy
+      nullable: true
+      properties:
+        primary:
+          allOf:
+          - $ref: '#/components/schemas/BaseReferenceDto'
+          description: The identity selected as the primary owner.
+          example:
+            id: 2c918084660f45d6016617daa9210584
+            type: IDENTITY
+            name: Adam Kennedy
+        secondary:
+          description: "The secondary owners. Entries are either up to ten identities\
+            \ (type `IDENTITY`) or one governance group (type `GOVERNANCE_GROUP`),\
+            \ not both."
+          example:
+          - id: 2c9180858082150f0180893dbaf44202
+            type: IDENTITY
+            name: Jane Doe
+          items:
+            $ref: '#/components/schemas/BaseReferenceDto'
+          maxItems: 10
+          type: array
+      type: object
+    MachineAccountV2_allOf_subtype:
+      description: The machine account subtype assigned to this machine account.
+      example:
+        displayName: Service Account
+        id: 43bdd144-4b17-4fce-a744-17c7fd3e717b
+        technicalName: serviceAccount
+      nullable: true
+      properties:
+        id:
+          description: ID of the subtype.
+          example: 43bdd144-4b17-4fce-a744-17c7fd3e717b
+          type: string
+        technicalName:
+          description: The technical name of the subtype.
+          example: serviceAccount
+          type: string
+        displayName:
+          description: The display name of the subtype.
+          example: Service Account
+          type: string
+      type: object
+    MachineAccountV2_allOf_resource:
+      description: The source resource the machine account is derived from. Null when
+        the account has no source resource.
+      example:
+        features:
+        - PROVISIONING
+        - AUTHENTICATION
+        name: nightly-batch-role
+        id: 8886e5e3-63d0-462f-a195-d98da885b8dc
+        type: aws:iam-role
+      nullable: true
+      properties:
+        id:
+          description: The source resource identifier.
+          example: 8886e5e3-63d0-462f-a195-d98da885b8dc
+          type: string
+        type:
+          description: The type of the source resource.
+          example: aws:iam-role
+          type: string
+        name:
+          description: The display name of the source resource.
+          example: nightly-batch-role
+          nullable: true
+          type: string
+        features:
+          description: The features supported by the source resource.
+          example:
+          - PROVISIONING
+          - AUTHENTICATION
+          items:
+            type: string
+          nullable: true
+          type: array
+      type: object
+    MachineAccountV2_allOf_risk:
+      description: "Risk for this machine account, set by enrichment. Null when no\
+        \ risk has been recorded or when risk enrichment is not enabled for the tenant.\
+        \ Read-only."
+      example:
+        severity: HIGH
+        score: 72.5
+      nullable: true
+      properties:
+        score:
+          description: Risk score from 0 to 100. Null when only a severity has been
+            recorded.
+          example: 72.5
+          format: double
+          nullable: true
+          type: number
+        severity:
+          description: Risk severity.
+          enum:
+          - UNKNOWN
+          - LOW
+          - MEDIUM
+          - HIGH
+          - CRITICAL
+          example: HIGH
+          nullable: true
+          type: string
+      readOnly: true
+      type: object
+    MachineAccountV2_allOf_compliance:
+      example:
+        id: SOC2-CC6.1
+      properties:
+        id:
+          description: Framework control ID.
           example: SOC2-CC6.1
           nullable: true
           type: string

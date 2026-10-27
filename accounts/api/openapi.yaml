@@ -3,7 +3,7 @@ info:
   contact:
     name: Developer Relations
     url: https://developer.sailpoint.com/discuss/api-help
-  description: "Use these APIs to interact with the Identity Security Cloud platform\
+  description: "Use these APIs to interact with the SailPoint Identity Security platform\
     \ to achieve repeatable, automated processes with greater scalability. We encourage\
     \ you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss\
     \ to connect with other developers using our APIs."
@@ -11,7 +11,7 @@ info:
     name: MIT
     url: https://opensource.org/licenses/MIT
   termsOfService: https://developer.sailpoint.com/discuss/tos
-  title: Identity Security Cloud API - Accounts
+  title: SailPoint Identity Security API - Accounts
   version: v1
 servers:
 - description: This is the production API server.
@@ -32,30 +32,31 @@ security:
 tags:
 - description: "Use this API to implement and customize account functionality.\nWith\
     \ this functionality in place, administrators can manage users' access across\
-    \ sources in Identity Security Cloud. \n\nIn Identity Security Cloud, an account\
-    \ refers to a user's account on a supported source.\nThis typically includes a\
-    \ unique identifier for the user, a unique password, a set of permissions associated\
-    \ with the source and a set of attributes. Identity Security Cloud loads accounts\
-    \ through the creation of sources in Identity Security Cloud.\n\nAdministrators\
-    \ can correlate users' identities with the users' accounts on the different sources\
-    \ they use. \nThis allows Identity Security Cloud to govern the access of identities\
-    \ and all their correlated accounts securely and cohesively. \n\nTo view the accounts\
-    \ on a source and their correlated identities, administrators can use the Connections\
-    \ drop-down menu, select Sources, select the relevant source, and select its Account\
-    \ tab. \n\nTo view and edit source account statuses for an identity in Identity\
-    \ Security Cloud, administrators can use the Identities drop-down menu, select\
-    \ Identity List, select the relevant identity, and select its Accounts tab. \n\
-    Administrators can toggle an account's Actions to aggregate the account, enable/disable\
-    \ it, unlock it, or remove it from the identity. \n\nAccounts can have the following\
-    \ statuses: \n\n- Enabled: The account is enabled. The user can access it.\n\n\
-    - Disabled: The account is disabled, and the user cannot access it, but the identity\
-    \ is not disabled in Identity Security Cloud. This can occur when an administrator\
-    \ disables the account or when the user's lifecycle state changes. \n\n- Locked:\
-    \ The account is locked. This may occur when someone has entered an incorrect\
-    \ password for the account too many times.\n\n- Pending: The account is currently\
-    \ updating. This status typically lasts seconds. \n\nAdministrators can select\
-    \ the source account to view its attributes, entitlements, and the last time the\
-    \ account's password was changed.\n\nRefer to [Managing User Accounts](https://documentation.sailpoint.com/saas/help/accounts/identities.html?h=disabling+identities#managing-access)\
+    \ sources in SailPoint Identity Security. \n\nIn SailPoint Identity Security,\
+    \ an account refers to a user's account on a supported source.\nThis typically\
+    \ includes a unique identifier for the user, a unique password, a set of permissions\
+    \ associated with the source and a set of attributes. SailPoint Identity Security\
+    \ loads accounts through the creation of sources in SailPoint Identity Security.\n\
+    \nAdministrators can correlate users' identities with the users' accounts on the\
+    \ different sources they use. \nThis allows SailPoint Identity Security to govern\
+    \ the access of identities and all their correlated accounts securely and cohesively.\
+    \ \n\nTo view the accounts on a source and their correlated identities, administrators\
+    \ can use the Connections drop-down menu, select Sources, select the relevant\
+    \ source, and select its Account tab. \n\nTo view and edit source account statuses\
+    \ for an identity in SailPoint Identity Security, administrators can use the Identities\
+    \ drop-down menu, select Identity List, select the relevant identity, and select\
+    \ its Accounts tab. \nAdministrators can toggle an account's Actions to aggregate\
+    \ the account, enable/disable it, unlock it, or remove it from the identity. \n\
+    \nAccounts can have the following statuses: \n\n- Enabled: The account is enabled.\
+    \ The user can access it.\n\n- Disabled: The account is disabled, and the user\
+    \ cannot access it, but the identity is not disabled in SailPoint Identity Security.\
+    \ This can occur when an administrator disables the account or when the user's\
+    \ lifecycle state changes. \n\n- Locked: The account is locked. This may occur\
+    \ when someone has entered an incorrect password for the account too many times.\n\
+    \n- Pending: The account is currently updating. This status typically lasts seconds.\
+    \ \n\nAdministrators can select the source account to view its attributes, entitlements,\
+    \ and the last time the account's password was changed.\n\nRefer to [Managing\
+    \ User Accounts](https://documentation.sailpoint.com/saas/help/accounts/identities.html?h=disabling+identities#managing-access)\
     \ for more information about accounts.\n"
   name: Accounts
 paths:
@@ -66,7 +67,7 @@ paths:
       parameters:
       - description: |-
           Max number of results to return.
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
         example: 250
         explode: true
         in: query
@@ -81,7 +82,7 @@ paths:
         style: form
       - description: |-
           Offset into the full result set. Usually specified with *limit* to paginate through the results.
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
         example: 0
         explode: true
         in: query
@@ -98,7 +99,7 @@ paths:
 
           Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
 
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
         example: true
         explode: true
         in: query
@@ -123,7 +124,7 @@ paths:
           type: string
         style: form
       - description: |-
-          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
+          Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)
 
           Filtering is supported for the following fields and operators:
 
@@ -173,7 +174,7 @@ paths:
           type: string
         style: form
       - description: |-
-          Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
+          Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)
 
           Sorting is supported for the following fields: **id, name, created, modified, sourceId, identityId, nativeIdentity, uuid, manuallyCorrelated, entitlements, origin, identity.name, identity.identityState, identity.correlated, source.displayableName, source.authoritative, source.connectionType**
         example: "id,name"
@@ -269,16 +270,16 @@ paths:
       description: "Submit an account creation task - the API then returns the task\
         \ ID.  \n\nYou must include the `sourceId` where the account will be created\
         \ in the `attributes` object.\n\nThis endpoint creates an account on the source\
-        \ record in your ISC tenant.\nThis is useful for Flat File (`DelimitedFile`)\
-        \ type sources because it allows you to aggregate new accounts without needing\
-        \ to import a new CSV file every time. \n\nHowever, if you use this endpoint\
-        \ to create an account for a Direct Connection type source, you must ensure\
-        \ that the account also exists on the target source. \nThe endpoint doesn't\
-        \ actually provision the account on the target source, which means that if\
-        \ the account doesn't also exist on the target source, an aggregation between\
-        \ the source and your tenant will remove it from your tenant. \n\nBy providing\
-        \ the account ID of an existing account in the request body, this API will\
-        \ function as a PATCH operation and update the account.\n"
+        \ record in your SailPoint Identity Security tenant.\nThis is useful for Flat\
+        \ File (`DelimitedFile`) type sources because it allows you to aggregate new\
+        \ accounts without needing to import a new CSV file every time. \n\nHowever,\
+        \ if you use this endpoint to create an account for a Direct Connection type\
+        \ source, you must ensure that the account also exists on the target source.\
+        \ \nThe endpoint doesn't actually provision the account on the target source,\
+        \ which means that if the account doesn't also exist on the target source,\
+        \ an aggregation between the source and your tenant will remove it from your\
+        \ tenant. \n\nBy providing the account ID of an existing account in the request\
+        \ body, this API will function as a PATCH operation and update the account.\n"
       operationId: createAccountV1
       requestBody:
         content:
@@ -593,13 +594,13 @@ paths:
         \ updating an account's correlation by modifying the `identityId` and `manuallyCorrelated`\
         \ fields. \nTo reassign an account from one identity to another, replace the\
         \ current `identityId` with a new value. \nIf the account you're assigning\
-        \ was provisioned by Identity Security Cloud (ISC), it's possible for ISC\
-        \ to create a new account \nfor the previous identity as soon as the account\
-        \ is moved. If the account you're assigning is authoritative, \nthis causes\
-        \ the previous identity to become uncorrelated and can even result in its\
-        \ deletion.\nAll accounts that are reassigned will be set to `manuallyCorrelated:\
-        \ true` unless you specify otherwise.\n\n>**Note:** The `attributes` field\
-        \ can only be modified for flat file accounts. \n"
+        \ was provisioned by SailPoint Identity Security, it's possible for SailPoint\
+        \ Identity Security to create a new account \nfor the previous identity as\
+        \ soon as the account is moved. If the account you're assigning is authoritative,\
+        \ \nthis causes the previous identity to become uncorrelated and can even\
+        \ result in its deletion.\nAll accounts that are reassigned will be set to\
+        \ `manuallyCorrelated: true` unless you specify otherwise.\n\n>**Note:** The\
+        \ `attributes` field can only be modified for flat file accounts. \n"
       operationId: updateAccountV1
       parameters:
       - description: Account ID.
@@ -867,7 +868,7 @@ paths:
       parameters:
       - description: |-
           Max number of results to return.
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
         example: 250
         explode: true
         in: query
@@ -882,7 +883,7 @@ paths:
         style: form
       - description: |-
           Offset into the full result set. Usually specified with *limit* to paginate through the results.
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
         example: 0
         explode: true
         in: query
@@ -899,7 +900,7 @@ paths:
 
           Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
 
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
         example: true
         explode: true
         in: query
@@ -1997,7 +1998,7 @@ components:
     limit:
       description: |-
         Max number of results to return.
-        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
       example: 250
       explode: true
       in: query
@@ -2013,7 +2014,7 @@ components:
     offset:
       description: |-
         Offset into the full result set. Usually specified with *limit* to paginate through the results.
-        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
       example: 0
       explode: true
       in: query
@@ -2031,7 +2032,7 @@ components:
 
         Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
 
-        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
       example: true
       explode: true
       in: query

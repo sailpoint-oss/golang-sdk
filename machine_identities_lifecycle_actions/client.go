@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - Machine Identity Lifecycle Actions
+SailPoint Identity Security API - Machine Identity Lifecycle Actions
 
 Use these APIs to submit, list, retrieve, and cancel machine identity lifecycle actions (for example agent activate and deactivate). We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
@@ -44,7 +44,7 @@ var (
 	queryDescape    = strings.NewReplacer( "%5B", "[", "%5D", "]" )
 )
 
-// APIClient manages communication with the Identity Security Cloud API - Machine Identity Lifecycle Actions API vv1
+// APIClient manages communication with the SailPoint Identity Security API - Machine Identity Lifecycle Actions API vv1
 // In most cases there should be only one, shared, APIClient.
 type APIClient struct {
 	cfg    *Configuration

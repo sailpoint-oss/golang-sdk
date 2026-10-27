@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - Certification Summaries
+SailPoint Identity Security API - Certification Summaries
 
 Testing CertificationSummariesAPIService
 

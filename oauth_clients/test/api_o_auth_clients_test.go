@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - OAuth Clients
+SailPoint Identity Security API - OAuth Clients
 
 Testing OAuthClientsAPIService
 

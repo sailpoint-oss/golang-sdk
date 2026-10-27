@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - Lifecycle States
+SailPoint Identity Security API - Lifecycle States
 
 Testing LifecycleStatesAPIService
 

@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - Branding
+SailPoint Identity Security API - Branding
 
 Testing BrandingAPIService
 

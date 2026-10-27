@@ -3,7 +3,7 @@ info:
   contact:
     name: Developer Relations
     url: https://developer.sailpoint.com/discuss/api-help
-  description: "Use these APIs to interact with the Identity Security Cloud platform\
+  description: "Use these APIs to interact with the SailPoint Identity Security platform\
     \ to achieve repeatable, automated processes with greater scalability. We encourage\
     \ you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss\
     \ to connect with other developers using our APIs."
@@ -11,7 +11,7 @@ info:
     name: MIT
     url: https://opensource.org/licenses/MIT
   termsOfService: https://developer.sailpoint.com/discuss/tos
-  title: Identity Security Cloud API - Work Items
+  title: SailPoint Identity Security API - Work Items
   version: v1
 servers:
 - description: This is the production API server.
@@ -32,19 +32,19 @@ security:
 tags:
 - description: "Use this API to implement work item functionality. \nWith this functionality\
     \ in place, users can manage their work items (tasks). \n\nWork items refer to\
-    \ the tasks users see in Identity Security Cloud's Task Manager. \nThey can see\
-    \ the pending work items they need to complete, as well as the work items they\
-    \ have already completed. \nTask Manager lists the work items along with the involved\
-    \ sources, identities, accounts, and the timestamp when the work item was created.\
-    \ \nFor example, a user may see a pending 'Create an Account' work item for the\
-    \ identity Fred.Astaire in GitHub for Fred's GitHub account, fred-astaire-sp.\
-    \ \nOnce the user completes the work item, the work item will be listed with his\
-    \ or her other completed work items. \n\nTo complete work items, users can use\
-    \ their dashboards and select the 'My Tasks' widget. \nThe widget will list any\
-    \ work items they need to complete, and they can select the work item from the\
-    \ list to review its details. \nWhen they complete the work item, they can select\
-    \ 'Mark Complete' to add it to their list of completed work items. \n\nRefer to\
-    \ [Task Manager](https://documentation.sailpoint.com/saas/user-help/task_manager.html)\
+    \ the tasks users see in SailPoint Identity Security's Task Manager. \nThey can\
+    \ see the pending work items they need to complete, as well as the work items\
+    \ they have already completed. \nTask Manager lists the work items along with\
+    \ the involved sources, identities, accounts, and the timestamp when the work\
+    \ item was created. \nFor example, a user may see a pending 'Create an Account'\
+    \ work item for the identity Fred.Astaire in GitHub for Fred's GitHub account,\
+    \ fred-astaire-sp. \nOnce the user completes the work item, the work item will\
+    \ be listed with his or her other completed work items. \n\nTo complete work items,\
+    \ users can use their dashboards and select the 'My Tasks' widget. \nThe widget\
+    \ will list any work items they need to complete, and they can select the work\
+    \ item from the list to review its details. \nWhen they complete the work item,\
+    \ they can select 'Mark Complete' to add it to their list of completed work items.\
+    \ \n\nRefer to [Task Manager](https://documentation.sailpoint.com/saas/user-help/task_manager.html)\
     \ for more information about work items, including the different types of work\
     \ items users may need to complete.\n"
   name: Work Items
@@ -57,7 +57,7 @@ paths:
       parameters:
       - description: |-
           Max number of results to return.
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
         example: 250
         explode: true
         in: query
@@ -72,7 +72,7 @@ paths:
         style: form
       - description: |-
           Offset into the full result set. Usually specified with *limit* to paginate through the results.
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
         example: 0
         explode: true
         in: query
@@ -89,7 +89,7 @@ paths:
 
           Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
 
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
         example: true
         explode: true
         in: query
@@ -206,7 +206,7 @@ paths:
         style: form
       - description: |-
           Max number of results to return.
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
         example: 250
         explode: true
         in: query
@@ -221,7 +221,7 @@ paths:
         style: form
       - description: |-
           Offset into the full result set. Usually specified with *limit* to paginate through the results.
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
         example: 0
         explode: true
         in: query
@@ -238,7 +238,7 @@ paths:
 
           Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
 
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
         example: true
         explode: true
         in: query
@@ -1397,7 +1397,7 @@ components:
     limit:
       description: |-
         Max number of results to return.
-        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
       example: 250
       explode: true
       in: query
@@ -1413,7 +1413,7 @@ components:
     offset:
       description: |-
         Offset into the full result set. Usually specified with *limit* to paginate through the results.
-        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
       example: 0
       explode: true
       in: query
@@ -1431,7 +1431,7 @@ components:
 
         Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
 
-        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
       example: true
       explode: true
       in: query

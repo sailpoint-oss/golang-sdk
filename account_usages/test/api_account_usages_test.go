@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - Account Usages
+SailPoint Identity Security API - Account Usages
 
 Testing AccountUsagesAPIService
 

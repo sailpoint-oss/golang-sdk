@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - Segments
+SailPoint Identity Security API - Segments
 
 Testing SegmentsAPIService
 

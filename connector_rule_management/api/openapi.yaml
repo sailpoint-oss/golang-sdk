@@ -3,7 +3,7 @@ info:
   contact:
     name: Developer Relations
     url: https://developer.sailpoint.com/discuss/api-help
-  description: "Use these APIs to interact with the Identity Security Cloud platform\
+  description: "Use these APIs to interact with the SailPoint Identity Security platform\
     \ to achieve repeatable, automated processes with greater scalability. We encourage\
     \ you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss\
     \ to connect with other developers using our APIs."
@@ -11,7 +11,7 @@ info:
     name: MIT
     url: https://opensource.org/licenses/MIT
   termsOfService: https://developer.sailpoint.com/discuss/tos
-  title: Identity Security Cloud API - Connector Rule Management
+  title: SailPoint Identity Security API - Connector Rule Management
   version: v1
 servers:
 - description: This is the production API server.
@@ -32,15 +32,14 @@ security:
 tags:
 - description: "Use this API to implement connector rule management functionality.\
     \ \nWith this functionality in place, administrators can implement connector-executed\
-    \ rules in a programmatic, scalable way. \n\nIn Identity Security Cloud (ISC),\
-    \ [rules](https://developer.sailpoint.com/docs/extensibility/rules) serve as a\
-    \ flexible configuration framework you can leverage to perform complex or advanced\
-    \ configurations. \n[Connector-executed rules](https://developer.sailpoint.com/docs/extensibility/rules/connector-rules)\
-    \ are rules that are executed in the ISC virtual appliance (VA), usually extensions\
-    \ of the [connector](https://documentation.sailpoint.com/connectors/isc/landingpages/help/landingpages/isc_landing.html)\
-    \ itself, the bridge between the data source and ISC. \n\nThis API allows administrators\
-    \ to view existing connector-executed rules, make changes to them, delete them,\
-    \ and create new ones from the available types.\n"
+    \ rules in a programmatic, scalable way. \n\nIn SailPoint Identity Security, [rules](https://developer.sailpoint.com/docs/extensibility/rules)\
+    \ serve as a flexible configuration framework you can leverage to perform complex\
+    \ or advanced configurations. \n[Connector-executed rules](https://developer.sailpoint.com/docs/extensibility/rules/connector-rules)\
+    \ are rules that are executed in the SailPoint Identity Security virtual appliance\
+    \ (VA), usually extensions of the [connector](https://documentation.sailpoint.com/connectors/isc/landingpages/help/landingpages/isc_landing.html)\
+    \ itself, the bridge between the data source and SailPoint Identity Security.\
+    \ \n\nThis API allows administrators to view existing connector-executed rules,\
+    \ make changes to them, delete them, and create new ones from the available types.\n"
   name: Connector Rule Management
 paths:
   /connector-rules/v1:
@@ -50,7 +49,7 @@ paths:
       parameters:
       - description: |-
           Note that for this API the maximum value for limit is 50.
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
         example: 50
         explode: true
         in: query
@@ -65,7 +64,7 @@ paths:
         style: form
       - description: |-
           Offset into the full result set. Usually specified with *limit* to paginate through the results.
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
         example: 0
         explode: true
         in: query
@@ -82,7 +81,7 @@ paths:
 
           Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
 
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
         example: true
         explode: true
         in: query
@@ -651,7 +650,7 @@ components:
     limit50:
       description: |-
         Note that for this API the maximum value for limit is 50.
-        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
       example: 50
       explode: true
       in: query
@@ -667,7 +666,7 @@ components:
     offset:
       description: |-
         Offset into the full result set. Usually specified with *limit* to paginate through the results.
-        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
       example: 0
       explode: true
       in: query
@@ -685,7 +684,7 @@ components:
 
         Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
 
-        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
       example: true
       explode: true
       in: query

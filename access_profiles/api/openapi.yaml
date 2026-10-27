@@ -3,7 +3,7 @@ info:
   contact:
     name: Developer Relations
     url: https://developer.sailpoint.com/discuss/api-help
-  description: "Use these APIs to interact with the Identity Security Cloud platform\
+  description: "Use these APIs to interact with the SailPoint Identity Security platform\
     \ to achieve repeatable, automated processes with greater scalability. We encourage\
     \ you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss\
     \ to connect with other developers using our APIs."
@@ -11,7 +11,7 @@ info:
     name: MIT
     url: https://opensource.org/licenses/MIT
   termsOfService: https://developer.sailpoint.com/discuss/tos
-  title: Identity Security Cloud API - Access Profiles
+  title: SailPoint Identity Security API - Access Profiles
   version: v1
 servers:
 - description: This is the production API server.
@@ -32,37 +32,37 @@ security:
 tags:
 - description: "Use this API to implement and customize access profile functionality.\
     \ \nWith this functionality in place, administrators can create access profiles\
-    \ and configure them for use throughout Identity Security Cloud, enabling users\
-    \ to get the access they need quickly and securely.\n\nAccess profiles group entitlements,\
-    \ which represent access rights on sources. \n\nFor example, an Active Directory\
-    \ source in Identity Security Cloud can have multiple entitlements: the first,\
-    \ 'Employees,' may represent the access all employees have at the organization,\
+    \ and configure them for use throughout SailPoint Identity Security, enabling\
+    \ users to get the access they need quickly and securely.\n\nAccess profiles group\
+    \ entitlements, which represent access rights on sources. \n\nFor example, an\
+    \ Active Directory source in SailPoint Identity Security can have multiple entitlements:\
+    \ the first, 'Employees,' may represent the access all employees have at the organization,\
     \ and a second, 'Developers,' may represent the access all developers have at\
     \ the organization.\n\nAn administrator can then create a broader set of access\
     \ in the form of an access profile, 'AD Developers' grouping the 'Employees' entitlement\
     \ with the 'Developers' entitlement.\n\nWhen users only need Active Directory\
     \ employee access, they can request access to the 'Employees' entitlement.\n\n\
     When users need both Active Directory employee and developer access, they can\
-    \ request access to the 'AD Developers' access profile.\n\nIdentity Security Cloud\
-    \ uses access profiles in many features, including the following:\n\n- Provisioning:\
-    \ When you use the Provisioning Service, lifecycle states and roles both grant\
-    \ access to users in the form of access profiles.\n\n- Certifications: You can\
-    \ approve or revoke access profiles in certification campaigns, just like entitlements.\
-    \ \n\n- Access Requests: You can assign access profiles to applications, and when\
-    \ a user requests access to the app associated with an access profile and someone\
-    \ approves the request, access is granted to both the application and its associated\
-    \ access profile.\n\n- Roles: You can group one or more access profiles into a\
-    \ role to quickly assign access items based on an identity's role. \n\nIn Identity\
-    \ Security Cloud, administrators can use the Access drop-down menu and select\
-    \ Access Profiles to view, configure, and delete existing access profiles, as\
-    \ well as create new ones. \nAdministrators can enable and disable an access profile,\
-    \ and they can also make the following configurations: \n\n- Manage Entitlements:\
-    \ Manage the profile's access by adding and removing entitlements. \n\n- Access\
-    \ Requests: Configure access profiles to be requestable and establish an approval\
-    \ process for any requests that the access profile be granted or revoked. \nDo\
-    \ not configure an access profile to be requestable without first establishing\
+    \ request access to the 'AD Developers' access profile.\n\nSailPoint Identity\
+    \ Security uses access profiles in many features, including the following:\n\n\
+    - Provisioning: When you use the Provisioning Service, lifecycle states and roles\
+    \ both grant access to users in the form of access profiles.\n\n- Certifications:\
+    \ You can approve or revoke access profiles in certification campaigns, just like\
+    \ entitlements. \n\n- Access Requests: You can assign access profiles to applications,\
+    \ and when a user requests access to the app associated with an access profile\
+    \ and someone approves the request, access is granted to both the application\
+    \ and its associated access profile.\n\n- Roles: You can group one or more access\
+    \ profiles into a role to quickly assign access items based on an identity's role.\
+    \ \n\nIn SailPoint Identity Security, administrators can use the Access drop-down\
+    \ menu and select Access Profiles to view, configure, and delete existing access\
+    \ profiles, as well as create new ones. \nAdministrators can enable and disable\
+    \ an access profile, and they can also make the following configurations: \n\n\
+    - Manage Entitlements: Manage the profile's access by adding and removing entitlements.\
+    \ \n\n- Access Requests: Configure access profiles to be requestable and establish\
+    \ an approval process for any requests that the access profile be granted or revoked.\
+    \ \nDo not configure an access profile to be requestable without first establishing\
     \ a secure access request approval process for the access profile.\n\n- Multiple\
-    \ Account Options: Define the logic Identity Security Cloud uses to provision\
+    \ Account Options: Define the logic SailPoint Identity Security uses to provision\
     \ access to an identity with multiple accounts on the source. \n\nRefer to [Managing\
     \ Access Profiles](https://documentation.sailpoint.com/saas/help/access/access-profiles.html)\
     \ for more information about access profiles.\n"
@@ -89,7 +89,7 @@ paths:
         style: form
       - description: |-
           Max number of results to return.
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
         example: 250
         explode: true
         in: query
@@ -104,7 +104,7 @@ paths:
         style: form
       - description: |-
           Offset into the full result set. Usually specified with *limit* to paginate through the results.
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
         example: 0
         explode: true
         in: query
@@ -121,7 +121,7 @@ paths:
 
           Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
 
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
         example: true
         explode: true
         in: query
@@ -131,8 +131,8 @@ paths:
           default: false
           type: boolean
         style: form
-      - description: "Filter results using the standard syntax described in [V3 API\
-          \ Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)\n\
+      - description: "Filter results using the standard syntax described in [API Standard\
+          \ Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)\n\
           \nFiltering is supported for the following fields and operators:\n\n**id**:\
           \ *eq, in*\n\n**name**: *eq, sw*\n\n**created**: *gt, ge, le*\n\n**modified**:\
           \ *gt, lt, ge, le*\n\n**owner.id**: *eq, in*\n\n**requestable**: *eq*\n\n\
@@ -148,7 +148,7 @@ paths:
           type: string
         style: form
       - description: |-
-          Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
+          Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)
 
           Sorting is supported for the following fields: **name, created, modified**
         example: "name,-modified"
@@ -875,7 +875,7 @@ paths:
         x-sailpoint-resource-operation-id: listAccessProfilesV1
       - description: |-
           Max number of results to return.
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
         example: 250
         explode: true
         in: query
@@ -890,7 +890,7 @@ paths:
         style: form
       - description: |-
           Offset into the full result set. Usually specified with *limit* to paginate through the results.
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
         example: 0
         explode: true
         in: query
@@ -907,7 +907,7 @@ paths:
 
           Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
 
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
         example: true
         explode: true
         in: query
@@ -917,8 +917,8 @@ paths:
           default: false
           type: boolean
         style: form
-      - description: "Filter results using the standard syntax described in [V3 API\
-          \ Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)\n\
+      - description: "Filter results using the standard syntax described in [API Standard\
+          \ Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)\n\
           \nFiltering is supported for the following fields and operators:\n\n**id**:\
           \ *eq, in*\n\n**name**: *eq, sw*\n\n**attribute**: *eq, sw*\n\n**value**:\
           \ *eq, sw*\n\n**created**: *gt, lt, ge, le*\n\n**modified**: *gt, lt, ge,\
@@ -934,7 +934,7 @@ paths:
           type: string
         style: form
       - description: |-
-          Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
+          Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)
 
           Sorting is supported for the following fields: **name, attribute, value, created, modified**
         example: "name,-modified"
@@ -1729,7 +1729,7 @@ paths:
         style: form
       - description: |-
           Max number of results to return.
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
         example: 50
         explode: true
         in: query
@@ -1744,7 +1744,7 @@ paths:
         style: form
       - description: |-
           Offset into the full result set. Usually specified with *limit* to paginate through the results.
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
         example: 0
         explode: true
         in: query
@@ -1761,7 +1761,7 @@ paths:
 
           Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
 
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
         example: true
         explode: true
         in: query
@@ -1772,7 +1772,7 @@ paths:
           type: boolean
         style: form
       - description: |-
-          Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
+          Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)
 
           Sorting is supported for the following fields: **name, created, modified**
         example: name
@@ -1900,7 +1900,7 @@ components:
     limit:
       description: |-
         Max number of results to return.
-        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
       example: 250
       explode: true
       in: query
@@ -1916,7 +1916,7 @@ components:
     offset:
       description: |-
         Offset into the full result set. Usually specified with *limit* to paginate through the results.
-        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
       example: 0
       explode: true
       in: query
@@ -1934,7 +1934,7 @@ components:
 
         Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
 
-        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
       example: true
       explode: true
       in: query
@@ -3355,7 +3355,7 @@ components:
       properties:
         filters:
           description: |-
-            Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
+            Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)
 
             Filtering is supported for the following fields and operators:
 
@@ -3413,7 +3413,7 @@ components:
       description: |-
         Request to bulk update Access Model Metadata on every access profile matching a search query. A single access profile cannot be assigned more than 25 metadata values. Adding or replacing custom metadata requires a suite license.
 
-        For more information about the query object, refer to [V3 API Perform Search](https://developer.sailpoint.com/docs/api/v3/search-post).
+        For more information about the query object, refer to [V3 API Perform Search](https://developer.sailpoint.com/docs/api/search-post-v-1).
       example:
         query:
           indices:
@@ -3494,7 +3494,7 @@ components:
       properties:
         filters:
           description: |-
-            Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
+            Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)
 
             Filtering is supported for the following fields and operators:
 

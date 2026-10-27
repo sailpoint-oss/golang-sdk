@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - Launchers
+SailPoint Identity Security API - Launchers
 
 Testing LaunchersAPIService
 

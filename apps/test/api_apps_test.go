@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - Apps
+SailPoint Identity Security API - Apps
 
 Testing AppsAPIService
 

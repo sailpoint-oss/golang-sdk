@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud API - Triggers
+SailPoint Identity Security API - Triggers
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the SailPoint Identity Security platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: v1
 */
@@ -24,7 +24,7 @@ type AccessRequestSubmittedResponse struct {
 	Approved bool `json:"approved"`
 	// Comment from the subscribing service approving or denying the request.
 	Comment string `json:"comment"`
-	// Name of the subscribing service approving the request.  This doesn't normally have to be the name of an existing identity in ISC, but it does if you have an active subscription to the [Access Request Decision trigger](https://developer.sailpoint.com/docs/extensibility/event-triggers/triggers/access-request-decision). If you don't provide the `username` of an existing identity in your tenant, your Access Request Decision subscriptions will never trigger.
+	// Name of the subscribing service approving the request.  This doesn't normally have to be the name of an existing identity in SailPoint Identity Security, but it does if you have an active subscription to the [Access Request Decision trigger](https://developer.sailpoint.com/docs/extensibility/event-triggers/triggers/access-request-decision). If you don't provide the `username` of an existing identity in your tenant, your Access Request Decision subscriptions will never trigger.
 	Approver string `json:"approver"`
 	AdditionalProperties map[string]interface{}
 }

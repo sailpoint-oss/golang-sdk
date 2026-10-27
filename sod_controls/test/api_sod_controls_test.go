@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - SOD Controls
+SailPoint Identity Security API - SOD Controls
 
 Testing SODControlsAPIService
 

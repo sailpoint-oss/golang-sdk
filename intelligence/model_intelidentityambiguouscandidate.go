@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud API - Intelligence
+SailPoint Identity Security API - Intelligence
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the SailPoint Identity Security platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: v1
 */
@@ -20,7 +20,7 @@ var _ MappedNullable = &Intelidentityambiguouscandidate{}
 
 // Intelidentityambiguouscandidate One disambiguation hint when multiple identities matched the same filter.
 type Intelidentityambiguouscandidate struct {
-	// Identity Security Cloud identifier for a matching candidate.
+	// SailPoint Identity Security identifier for a matching candidate.
 	Id string `json:"id"`
 	// Human-facing label when available; omitted when empty upstream.
 	DisplayName *string `json:"displayName,omitempty"`

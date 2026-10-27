@@ -1,0 +1,716 @@
+openapi: 3.0.1
+info:
+  contact:
+    name: Developer Relations
+    url: https://developer.sailpoint.com/discuss/api-help
+  description: "Use these APIs to interact with the Identity Security Cloud platform\
+    \ to achieve repeatable, automated processes with greater scalability. We encourage\
+    \ you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss\
+    \ to connect with other developers using our APIs."
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  termsOfService: https://developer.sailpoint.com/discuss/tos
+  title: Identity Security Cloud API - Generic Request Approval Config
+  version: v1
+servers:
+- description: This is the production API server.
+  url: "https://{tenant}.api.identitynow.com"
+  variables:
+    tenant:
+      default: sailpoint
+      description: "This is the name of your tenant, typically your company's name."
+- description: This is the versioned API server.
+  url: "https://{apiUrl}"
+  variables:
+    apiUrl:
+      default: sailpoint.api.identitynow.com
+      description: This is the api url of your tenant
+security:
+- userAuth:
+  - sp:scopes:all
+tags:
+- description: |
+    Use this API to view and update the approval settings for machine identity requests, such as requests to activate or deactivate an AI agent, at the resource, subtype, source, or tenant level. Each scope holds one setting per request action; an action with no setting inherits the organization-level approval configuration.
+  name: Generic Request Approval Config
+paths:
+  /generic-request-approval-config/v1:
+    get:
+      description: |
+        This API returns the approval configuration for one scope. The scope is identified by `targetType` and, depending
+        on the target type, `targetId` and `sourceId`.
+
+
+        The response holds one entry per action that the target type supports. An action with no stored setting is
+        returned as `{}`, which means it inherits the organization-level approval configuration. A scope that has never
+        been configured returns `200` with every action set to `{}`, and the response always carries the `id` to use with
+        the update API.
+
+
+        Actions by target type:
+
+
+        **RESOURCE**: *ACTIVATE, DEACTIVATE*
+
+
+        **SUBTYPE**: *CREATE, DELETE*
+
+
+        **SOURCE**: *DELETE*
+
+
+        **GLOBAL**: *ACTIVATE, DEACTIVATE*
+
+
+        Only resources of the AI agent type support resource-level approval settings; any other resource returns `400`.
+        An unknown source, resource, or subtype returns `400`.
+
+
+        When agentic identity provisioning is not enabled for the tenant, this API returns `404`. When this API is not
+        enabled for the tenant, it returns `403`.
+      operationId: getGenericRequestApprovalConfigV1
+      parameters:
+      - description: The kind of scope to read.
+        example: RESOURCE
+        explode: true
+        in: query
+        name: targetType
+        required: true
+        schema:
+          enum:
+          - RESOURCE
+          - SUBTYPE
+          - SOURCE
+          - GLOBAL
+          type: string
+        style: form
+      - description: "The scope target. Required for **RESOURCE** (the source resource\
+          \ ID) and **SUBTYPE** (the subtype ID). For **SOURCE** the target is the\
+          \ `sourceId`, and for **GLOBAL** it is the tenant; when you supply it for\
+          \ those target types, it must match that value or the request returns `400`."
+        example: aws:bedrock-agent-alias-version
+        explode: true
+        in: query
+        name: targetId
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "The source that owns the scope. Required for **RESOURCE**, **SUBTYPE**,\
+          \ and **SOURCE**. Must be omitted for **GLOBAL**."
+        example: 6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa
+        explode: true
+        in: query
+        name: sourceId
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Use this header to enable this experimental API.
+        example: true
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericRequestApprovalConfig'
+          description: Approval configuration for the scope.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getGenericRequestApprovalConfigV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getGenericRequestApprovalConfigV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:generic-request-approval-config:read
+        - idn:generic-request-approval-config:manage
+      - applicationAuth:
+        - idn:generic-request-approval-config:read
+        - idn:generic-request-approval-config:manage
+      summary: Get generic request approval config
+      tags:
+      - Generic Request Approval Config
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+  /generic-request-approval-config/v1/{id}:
+    patch:
+      description: |
+        Use this API to update the approval configuration of one scope using a JSON Patch payload. Use the `id` returned
+        by the get API.
+
+
+        Patchable paths are `/approvalConfig`, which replaces every action at once, and `/approvalConfig/{ACTION}` for each
+        action the scope's target type supports. One request can update several actions. `id`, `targetType`, and
+        `targetId` identify the scope and can't be patched; a patch that targets any other path returns `400`.
+
+
+        To return an action to the organization-level approval configuration, `remove` it or `replace` it with `{}`.
+
+
+        Each configured action uses one scheme:
+
+
+        **APPROVAL**: requires `approvers` and `comments`. `approvers` is a comma-separated list of approver tokens:
+        `sourceOwner`, `manager`, `machineIdentityPrimaryOwner`, `machineIdentitySecondaryOwners`,
+        `machineIdentityAllOwners`, `workgroup:{governanceGroupId}`, and `identity:{identityId}`. For the
+        **SUBTYPE** **DELETE** action, `accountOwner` is also allowed. Tokens without an ID can appear at most once, and
+        IDs must be unique and must exist. `comments` is one of `ALL`, `APPROVAL`, `REJECTION`, or `OFF`.
+
+
+        **WORKFLOW**: requires `workflowId`, the UUID of a workflow. The same workflow can't be used for more than one
+        action. When workflow approvals are enabled for the tenant, the workflow must exist, be enabled, and use the
+        trigger for its action (`idn:machine-identity-activate` for ACTIVATE, `idn:machine-identity-deactivate` for
+        DEACTIVATE).
+
+
+        The **GLOBAL** scope only accepts the **WORKFLOW** scheme.
+
+
+        The ID must be a UUID; any other value returns `400`. When no approval configuration exists for the ID, this API
+        returns `404`.
+
+
+        When agentic identity provisioning is not enabled for the tenant, this API returns `404`. When this API is not
+        enabled for the tenant, it returns `403`.
+      operationId: updateGenericRequestApprovalConfigV1
+      parameters:
+      - description: Approval configuration ID.
+        example: 0f2c7a9e-3b4d-4e5f-8a6b-7c8d9e0f1a2b
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: getGenericRequestApprovalConfigV1
+      - description: Use this header to enable this experimental API.
+        example: true
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json-patch+json:
+            examples:
+              Require approval to activate:
+                value:
+                - op: replace
+                  path: /approvalConfig/ACTIVATE
+                  value:
+                    scheme: APPROVAL
+                    approvers: "machineIdentityPrimaryOwner,workgroup:8d3e0094-8a5e-4c6f-9a0b-2e5a1c7d4f10"
+                    comments: REJECTION
+              Use a workflow to approve deactivation:
+                value:
+                - op: replace
+                  path: /approvalConfig/DEACTIVATE
+                  value:
+                    scheme: WORKFLOW
+                    workflowId: 5a7c9e1b-2d4f-4a6c-8e0b-1d3f5a7c9e2b
+              Inherit the organization setting for activation:
+                value:
+                - op: remove
+                  path: /approvalConfig/ACTIVATE
+            schema:
+              items:
+                $ref: '#/components/schemas/JsonPatchOperation'
+              type: array
+        description: "A JSON of updated values [JSON Patch](https://tools.ietf.org/html/rfc6902)\
+          \ standard."
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericRequestApprovalConfig'
+          description: Updated approval configuration for the scope.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getGenericRequestApprovalConfigV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getGenericRequestApprovalConfigV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:generic-request-approval-config:manage
+      - applicationAuth:
+        - idn:generic-request-approval-config:manage
+      summary: Patch generic request approval config
+      tags:
+      - Generic Request Approval Config
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+components:
+  responses:
+    "400":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponseDto'
+      description: Client Error - Returned if the request body is invalid.
+    "401":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/getGenericRequestApprovalConfigV1_401_response'
+      description: "Unauthorized - Returned if there is no authorization header, or\
+        \ if the JWT token is expired."
+    "403":
+      content:
+        application/json:
+          examples:
+            "403":
+              summary: An example of a 403 response object
+              value:
+                detailCode: 403 Forbidden
+                trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                messages:
+                - locale: en-US
+                  localeOrigin: DEFAULT
+                  text: The server understood the request but refuses to authorize
+                    it.
+          schema:
+            $ref: '#/components/schemas/ErrorResponseDto'
+      description: "Forbidden - Returned if the user you are running as, doesn't have\
+        \ access to this end-point."
+    "404":
+      content:
+        application/json:
+          examples:
+            "404":
+              summary: An example of a 404 response object
+              value:
+                detailCode: 404 Not found
+                trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                messages:
+                - locale: en-US
+                  localeOrigin: DEFAULT
+                  text: The server did not find a current representation for the target
+                    resource.
+          schema:
+            $ref: '#/components/schemas/ErrorResponseDto'
+      description: Not Found - returned if the request URL refers to a resource or
+        object that does not exist
+    "429":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/getGenericRequestApprovalConfigV1_429_response'
+      description: Too Many Requests - Returned in response to too many requests in
+        a given period of time - rate limited. The Retry-After header in the response
+        includes how long to wait before trying again.
+    "500":
+      content:
+        application/json:
+          examples:
+            "500":
+              summary: An example of a 500 response object
+              value:
+                detailCode: 500.0 Internal Fault
+                trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                messages:
+                - locale: en-US
+                  localeOrigin: DEFAULT
+                  text: An internal fault occurred.
+          schema:
+            $ref: '#/components/schemas/ErrorResponseDto'
+      description: Internal Server Error - Returned if there is an unexpected error.
+  schemas:
+    GenericRequestApprovalActionConfig:
+      description: "The approval setting for one action. It is either an empty object,\
+        \ which inherits the organization-level approval configuration, an APPROVAL\
+        \ setting with `approvers` and `comments`, or a WORKFLOW setting with `workflowId`."
+      properties:
+        scheme:
+          description: How the request is approved. Omitted when the action inherits
+            the organization-level configuration.
+          enum:
+          - APPROVAL
+          - WORKFLOW
+          example: APPROVAL
+          type: string
+        approvers:
+          description: "APPROVAL scheme only. A comma-separated list of approver tokens:\
+            \ `sourceOwner`, `manager`, `machineIdentityPrimaryOwner`, `machineIdentitySecondaryOwners`,\
+            \ `machineIdentityAllOwners`, `workgroup:{governanceGroupId}`, and `identity:{identityId}`.\
+            \ `accountOwner` is also allowed for the SUBTYPE DELETE action."
+          example: "machineIdentityPrimaryOwner,workgroup:8d3e0094-8a5e-4c6f-9a0b-2e5a1c7d4f10"
+          type: string
+        comments:
+          description: "APPROVAL scheme only. When approvers must comment: on both\
+            \ decisions (ALL), on approval only (APPROVAL), on rejection only (REJECTION),\
+            \ or never (OFF)."
+          enum:
+          - ALL
+          - APPROVAL
+          - REJECTION
+          - "OFF"
+          example: REJECTION
+          type: string
+        workflowId:
+          description: WORKFLOW scheme only. The ID of the workflow that approves
+            the request.
+          example: 5a7c9e1b-2d4f-4a6c-8e0b-1d3f5a7c9e2b
+          type: string
+      title: Generic Request Approval Action Config
+      type: object
+    GenericRequestApprovalConfig:
+      description: "The approval configuration for one scope, with one entry per action\
+        \ the scope's target type supports."
+      example:
+        approvalConfig:
+          ACTIVATE:
+            scheme: APPROVAL
+            approvers: "machineIdentityPrimaryOwner,workgroup:8d3e0094-8a5e-4c6f-9a0b-2e5a1c7d4f10"
+            comments: REJECTION
+          DEACTIVATE: {}
+        targetId: aws:bedrock-agent-alias-version
+        targetType: RESOURCE
+        id: 0f2c7a9e-3b4d-4e5f-8a6b-7c8d9e0f1a2b
+      properties:
+        id:
+          description: The approval configuration ID. Use it with the update API.
+          example: 0f2c7a9e-3b4d-4e5f-8a6b-7c8d9e0f1a2b
+          type: string
+        targetType:
+          description: The kind of scope.
+          enum:
+          - RESOURCE
+          - SUBTYPE
+          - SOURCE
+          - GLOBAL
+          example: RESOURCE
+          type: string
+        targetId:
+          description: "The scope target: the source resource ID for RESOURCE, the\
+            \ subtype ID for SUBTYPE, the source ID for SOURCE, and the tenant ID\
+            \ for GLOBAL."
+          example: aws:bedrock-agent-alias-version
+          type: string
+        approvalConfig:
+          additionalProperties:
+            $ref: '#/components/schemas/GenericRequestApprovalActionConfig'
+          description: "The approval setting for each action, keyed by action name\
+            \ (ACTIVATE, DEACTIVATE, CREATE, or DELETE, depending on the target type).\
+            \ An empty object means the action inherits the organization-level approval\
+            \ configuration."
+          example:
+            ACTIVATE:
+              scheme: APPROVAL
+              approvers: "machineIdentityPrimaryOwner,workgroup:8d3e0094-8a5e-4c6f-9a0b-2e5a1c7d4f10"
+              comments: REJECTION
+            DEACTIVATE: {}
+          type: object
+      title: Generic Request Approval Config
+      type: object
+    LocaleOrigin:
+      description: "An indicator of how the locale was selected. *DEFAULT* means the\
+        \ locale is the system default. *REQUEST* means the locale was selected from\
+        \ the request context (i.e., best match based on the *Accept-Language* header).\
+        \ Additional values may be added in the future without notice."
+      enum:
+      - DEFAULT
+      - REQUEST
+      - null
+      example: DEFAULT
+      nullable: true
+      type: string
+    ErrorMessageDto:
+      example:
+        localeOrigin: DEFAULT
+        text: The request was syntactically correct but its content is semantically
+          invalid.
+        locale: en-US
+      properties:
+        locale:
+          description: "The locale for the message text, a BCP 47 language tag."
+          example: en-US
+          nullable: true
+          type: string
+        localeOrigin:
+          $ref: '#/components/schemas/LocaleOrigin'
+        text:
+          description: Actual text of the error message in the indicated locale.
+          example: The request was syntactically correct but its content is semantically
+            invalid.
+          type: string
+      title: Error Message Dto
+      type: object
+    ErrorResponseDto:
+      example:
+        causes:
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        messages:
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        detailCode: 400.1 Bad Request Content
+        trackingId: e7eab60924f64aa284175b9fa3309599
+      properties:
+        detailCode:
+          description: Fine-grained error code providing more detail of the error.
+          example: 400.1 Bad Request Content
+          type: string
+        trackingId:
+          description: Unique tracking id for the error.
+          example: e7eab60924f64aa284175b9fa3309599
+          type: string
+        messages:
+          description: Generic localized reason for error
+          items:
+            $ref: '#/components/schemas/ErrorMessageDto'
+          type: array
+        causes:
+          description: Plain-text descriptive reasons to provide additional detail
+            to the text provided in the messages field
+          items:
+            $ref: '#/components/schemas/ErrorMessageDto'
+          type: array
+      title: Error Response Dto
+      type: object
+    JsonPatchOperation:
+      description: "A JSONPatch Operation as defined by [RFC 6902 - JSON Patch](https://tools.ietf.org/html/rfc6902)"
+      example:
+        op: replace
+        path: /description
+        value: New description
+      properties:
+        op:
+          description: The operation to be performed
+          enum:
+          - add
+          - remove
+          - replace
+          - move
+          - copy
+          - test
+          example: replace
+          type: string
+        path:
+          description: A string JSON Pointer representing the target path to an element
+            to be affected by the operation
+          example: /description
+          type: string
+        value:
+          $ref: '#/components/schemas/JsonPatchOperation_value'
+      required:
+      - op
+      - path
+      title: Json Patch Operation
+      type: object
+    getGenericRequestApprovalConfigV1_401_response:
+      example:
+        error: "JWT validation failed: JWT is expired"
+      properties:
+        error:
+          description: A message describing the error
+          example: "JWT validation failed: JWT is expired"
+      type: object
+    getGenericRequestApprovalConfigV1_429_response:
+      example:
+        message: ' Rate Limit Exceeded '
+      properties:
+        message:
+          description: A message describing the error
+          example: ' Rate Limit Exceeded '
+      type: object
+    array_inner:
+      anyOf:
+      - type: string
+      - type: integer
+      - type: object
+      example:
+      - "001"
+      - "002"
+      - "003"
+    JsonPatchOperation_value:
+      description: "The value to be used for the operation, required for \"add\" and\
+        \ \"replace\" operations"
+      example: New description
+      oneOf:
+      - example: New description
+        title: string
+        type: string
+      - example: true
+        title: boolean
+        type: boolean
+      - example: 300
+        title: integer
+        type: integer
+      - example:
+          attributes:
+            name: philip
+        title: object
+        type: object
+      - items:
+          $ref: '#/components/schemas/array_inner'
+        title: array
+        type: array

@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 **Name** | **NullableString** | Alternate unique identifier for the identity (alias / search field name). | 
 **DisplayName** | **NullableString** | Human-readable display name of the identity. | 
 **Email** | **NullableString** | Email address of identity. | 
-**IdentityState** | **NullableString** | The current state of the identity, which determines how Identity Security Cloud interacts with the identity. | 
+**IdentityState** | **NullableString** | The current state of the identity, which determines how SailPoint Identity Security interacts with the identity. | 
 **CloudLifecycleState** | **NullableString** | The lifecycle status for the identity | 
 **Manager** | [**NullablePublicIdentityV2Manager**](public-identity-v2-manager) | Manager of this identity, or null when none | 
 **Attributes** | **map[string]string** | Configured public identity attributes only (from visible-attributes configuredAttributes). Missing keys are omitted; present null values are returned as null. | 

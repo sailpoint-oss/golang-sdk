@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - Identity History
+SailPoint Identity Security API - Identity History
 
 Testing IdentityHistoryAPIService
 

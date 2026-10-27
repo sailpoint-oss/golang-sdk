@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - Work Reassignment
+SailPoint Identity Security API - Work Reassignment
 
 Testing WorkReassignmentAPIService
 

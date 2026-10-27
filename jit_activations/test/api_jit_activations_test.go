@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - JIT Activations
+SailPoint Identity Security API - JIT Activations
 
 Testing JITActivationsAPIService
 

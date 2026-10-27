@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - MFA Configuration
+SailPoint Identity Security API - MFA Configuration
 
 Testing MFAConfigurationAPIService
 

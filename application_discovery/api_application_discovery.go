@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud API - Application Discovery
+SailPoint Identity Security API - Application Discovery
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the SailPoint Identity Security platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: v1
 */
@@ -34,13 +34,13 @@ type ApiGetDiscoveredApplicationsV1Request struct {
 	sorters *string
 }
 
-// Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+// Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
 func (r ApiGetDiscoveredApplicationsV1Request) Limit(limit int32) ApiGetDiscoveredApplicationsV1Request {
 	r.limit = &limit
 	return r
 }
 
-// Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+// Offset into the full result set. Usually specified with *limit* to paginate through the results. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
 func (r ApiGetDiscoveredApplicationsV1Request) Offset(offset int32) ApiGetDiscoveredApplicationsV1Request {
 	r.offset = &offset
 	return r
@@ -52,13 +52,13 @@ func (r ApiGetDiscoveredApplicationsV1Request) Detail(detail string) ApiGetDisco
 	return r
 }
 
-// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *eq, sw, co*  **description**: *eq, sw, co*  **createdAtStart**: *eq, le, ge*  **createdAtEnd**: *eq, le, ge*  **discoveredAtStart**: *eq, le, ge*  **discoveredAtEnd**: *eq, le, ge*  **discoverySource**: *eq, in*  **discoverySourceName**: *eq, in*  **discoverySourceCategory**: *eq, in* 
+// Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *eq, sw, co*  **description**: *eq, sw, co*  **createdAtStart**: *eq, le, ge*  **createdAtEnd**: *eq, le, ge*  **discoveredAtStart**: *eq, le, ge*  **discoveredAtEnd**: *eq, le, ge*  **discoverySource**: *eq, in*  **discoverySourceName**: *eq, in*  **discoverySourceCategory**: *eq, in* 
 func (r ApiGetDiscoveredApplicationsV1Request) Filter(filter string) ApiGetDiscoveredApplicationsV1Request {
 	r.filter = &filter
 	return r
 }
 
-// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, description, discoveredAt, discoverySource, discoverySourceName, discoverySourceCategory**
+// Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, description, discoveredAt, discoverySource, discoverySourceName, discoverySourceCategory**
 func (r ApiGetDiscoveredApplicationsV1Request) Sorters(sorters string) ApiGetDiscoveredApplicationsV1Request {
 	r.sorters = &sorters
 	return r
@@ -409,8 +409,8 @@ func (r ApiSendManualDiscoverApplicationsCsvTemplateV1Request) Execute() (*http.
 /*
 SendManualDiscoverApplicationsCsvTemplateV1 Upload csv to discover applications
 
-Uploading a CSV file with application data for manual correlation to specific ISC connectors. 
-If a suitable ISC connector is unavailable, the system will recommend generic connectors instead.
+Uploading a CSV file with application data for manual correlation to specific SailPoint Identity Security connectors. 
+If a suitable SailPoint Identity Security connector is unavailable, the system will recommend generic connectors instead.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiSendManualDiscoverApplicationsCsvTemplateV1Request

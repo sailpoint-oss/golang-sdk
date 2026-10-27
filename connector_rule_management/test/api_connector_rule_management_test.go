@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - Connector Rule Management
+SailPoint Identity Security API - Connector Rule Management
 
 Testing ConnectorRuleManagementAPIService
 

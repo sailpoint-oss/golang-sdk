@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - Sources
+SailPoint Identity Security API - Sources
 
 Testing SourcesAPIService
 
@@ -169,6 +169,20 @@ func Test_sources_SourcesAPIService(t *testing.T) {
 		httpRes, err := apiClient.SourcesAPI.DeleteProvisioningPolicyV2(context.Background(), sourceId, id).Execute()
 
 		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test SourcesAPIService DeleteSourceAgentsV1", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+
+		resp, httpRes, err := apiClient.SourcesAPI.DeleteSourceAgentsV1(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -462,6 +476,21 @@ func Test_sources_SourcesAPIService(t *testing.T) {
 		var sourceId string
 
 		resp, httpRes, err := apiClient.SourcesAPI.GetSourceHealthV1(context.Background(), sourceId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test SourcesAPIService GetSourceResourceCorrelationReprocessV1", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var sourceId string
+		var resourceId string
+
+		resp, httpRes, err := apiClient.SourcesAPI.GetSourceResourceCorrelationReprocessV1(context.Background(), sourceId, resourceId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -903,6 +932,21 @@ func Test_sources_SourcesAPIService(t *testing.T) {
 		var sourceId string
 
 		resp, httpRes, err := apiClient.SourcesAPI.SearchResourceObjectsV1(context.Background(), sourceId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test SourcesAPIService StartSourceResourceCorrelationReprocessV1", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var sourceId string
+		var resourceId string
+
+		resp, httpRes, err := apiClient.SourcesAPI.StartSourceResourceCorrelationReprocessV1(context.Background(), sourceId, resourceId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

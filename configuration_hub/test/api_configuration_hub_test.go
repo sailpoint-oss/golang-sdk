@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - Configuration Hub
+SailPoint Identity Security API - Configuration Hub
 
 Testing ConfigurationHubAPIService
 

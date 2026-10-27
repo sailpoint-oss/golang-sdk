@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - SIM Integrations
+SailPoint Identity Security API - SIM Integrations
 
 Testing SIMIntegrationsAPIService
 

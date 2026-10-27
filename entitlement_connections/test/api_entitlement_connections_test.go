@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - Entitlement Connections
+SailPoint Identity Security API - Entitlement Connections
 
 Testing EntitlementConnectionsAPIService
 

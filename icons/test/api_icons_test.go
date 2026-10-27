@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - Icons
+SailPoint Identity Security API - Icons
 
 Testing IconsAPIService
 

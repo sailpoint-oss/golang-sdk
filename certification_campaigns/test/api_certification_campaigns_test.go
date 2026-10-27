@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - Certification Campaigns
+SailPoint Identity Security API - Certification Campaigns
 
 Testing CertificationCampaignsAPIService
 

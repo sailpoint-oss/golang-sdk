@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - SP-Config
+SailPoint Identity Security API - SP-Config
 
 Testing SPConfigAPIService
 

@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - Saved Search
+SailPoint Identity Security API - Saved Search
 
 Testing SavedSearchAPIService
 

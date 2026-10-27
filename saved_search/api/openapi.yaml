@@ -3,7 +3,7 @@ info:
   contact:
     name: Developer Relations
     url: https://developer.sailpoint.com/discuss/api-help
-  description: "Use these APIs to interact with the Identity Security Cloud platform\
+  description: "Use these APIs to interact with the SailPoint Identity Security platform\
     \ to achieve repeatable, automated processes with greater scalability. We encourage\
     \ you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss\
     \ to connect with other developers using our APIs."
@@ -11,7 +11,7 @@ info:
     name: MIT
     url: https://opensource.org/licenses/MIT
   termsOfService: https://developer.sailpoint.com/discuss/tos
-  title: Identity Security Cloud API - Saved Search
+  title: SailPoint Identity Security API - Saved Search
   version: v1
 servers:
 - description: This is the production API server.
@@ -32,15 +32,15 @@ security:
 tags:
 - description: "Use this API to implement saved search functionality. \nWith saved\
     \ search functionality in place, users can save search queries and then view those\
-    \ saved searches, as well as rerun them. \n\nSearch queries in Identity Security\
-    \ Cloud can grow very long and specific, which can make reconstructing them difficult\
-    \ or tedious, so it can be especially helpful to save search queries. \nIt also\
-    \ opens the possibility to configure Identity Security Cloud to run the saved\
-    \ queries on a schedule, which is essential to detecting user information and\
-    \ access changes throughout an organization's tenant and across all its sources.\
+    \ saved searches, as well as rerun them. \n\nSearch queries in SailPoint Identity\
+    \ Security can grow very long and specific, which can make reconstructing them\
+    \ difficult or tedious, so it can be especially helpful to save search queries.\
+    \ \nIt also opens the possibility to configure SailPoint Identity Security to\
+    \ run the saved queries on a schedule, which is essential to detecting user information\
+    \ and access changes throughout an organization's tenant and across all its sources.\
     \ \nRefer to [Scheduled Search](https://developer.sailpoint.com/docs/api/scheduled-search)\
-    \ for more information about running saved searches on a schedule. \n\nIn Identity\
-    \ Security Cloud, users can save searches under a name, and then they can access\
+    \ for more information about running saved searches on a schedule. \n\nIn SailPoint\
+    \ Identity Security, users can save searches under a name, and then they can access\
     \ that saved search and run it again when they want. \n\nRefer to [Managing Saved\
     \ Searches](https://documentation.sailpoint.com/saas/help/search/saved-searches.html)\
     \ for more information about saving searches and using them.\n"
@@ -54,7 +54,7 @@ paths:
       parameters:
       - description: |-
           Offset into the full result set. Usually specified with *limit* to paginate through the results.
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
         example: 0
         explode: true
         in: query
@@ -68,7 +68,7 @@ paths:
         style: form
       - description: |-
           Max number of results to return.
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
         example: 250
         explode: true
         in: query
@@ -86,7 +86,7 @@ paths:
 
           Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
 
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
         example: true
         explode: true
         in: query
@@ -97,7 +97,7 @@ paths:
           type: boolean
         style: form
       - description: |-
-          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
+          Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)
 
           Filtering is supported for the following fields and operators:
 
@@ -703,7 +703,7 @@ components:
     offset:
       description: |-
         Offset into the full result set. Usually specified with *limit* to paginate through the results.
-        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
       example: 0
       explode: true
       in: query
@@ -718,7 +718,7 @@ components:
     limit:
       description: |-
         Max number of results to return.
-        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
       example: 250
       explode: true
       in: query
@@ -737,7 +737,7 @@ components:
 
         Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
 
-        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
       example: true
       explode: true
       in: query

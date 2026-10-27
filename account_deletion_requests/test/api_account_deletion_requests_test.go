@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - Account Deletion Requests
+SailPoint Identity Security API - Account Deletion Requests
 
 Testing AccountDeletionRequestsAPIService
 

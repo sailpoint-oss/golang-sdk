@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - IAI Peer Group Strategies
+SailPoint Identity Security API - IAI Peer Group Strategies
 
 Testing IAIPeerGroupStrategiesAPIService
 

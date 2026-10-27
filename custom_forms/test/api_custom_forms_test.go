@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - Custom Forms
+SailPoint Identity Security API - Custom Forms
 
 Testing CustomFormsAPIService
 

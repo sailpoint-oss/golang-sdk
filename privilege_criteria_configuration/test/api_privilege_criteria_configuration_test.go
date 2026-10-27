@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - Privilege Criteria Configuration
+SailPoint Identity Security API - Privilege Criteria Configuration
 
 Testing PrivilegeCriteriaConfigurationAPIService
 

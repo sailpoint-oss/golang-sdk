@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - Shared Signals Framework (SSF)
+SailPoint Identity Security API - Shared Signals Framework (SSF)
 
 Testing SharedSignalsFrameworkSSFAPIService
 

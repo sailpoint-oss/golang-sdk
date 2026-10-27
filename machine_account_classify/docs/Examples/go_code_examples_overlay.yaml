@@ -1,3 +1,47 @@
+- path: /accounts/v1/bulk-classify
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/machineaccountclassify/methods/machine-account-classify#send-bulk-classify-machine-accounts-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            machine_account_classify "github.com/sailpoint-oss/golang-sdk/v3/machine_account_classify"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+           bulkclassifymachineaccountsrequestJson := []byte(`{
+          "ids" : [ "ef38f94347e94562b5bb8424a56397d8", "2c9180835d191a86015d28455b4a2329" ]
+        }`) // BulkClassifyMachineAccountsRequest | 
+          classificationMode := `forceMachine` // string | Specifies how the accounts should be classified.        default - uses criteria to classify account as machine or human, excludes accounts that were manually classified.       ignoreManual - like default, but includes accounts that were manually classified.       forceMachine - forces account to be classified as machine.       forceHuman - forces account to be classified as human. (optional) (default to "default") # string | Specifies how the accounts should be classified.        default - uses criteria to classify account as machine or human, excludes accounts that were manually classified.       ignoreManual - like default, but includes accounts that were manually classified.       forceMachine - forces account to be classified as machine.       forceHuman - forces account to be classified as human. (optional) (default to "default")
+
+          
+          var bulkClassifyMachineAccountsRequest machine_account_classify.BulkClassifyMachineAccountsRequest
+          if err := json.Unmarshal(bulkclassifymachineaccountsrequestJson, &bulkClassifyMachineAccountsRequest); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.MachineAccountClassifyAPI.SendBulkClassifyMachineAccountsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).BulkClassifyMachineAccountsRequest(bulkClassifyMachineAccountsRequest).Execute()
+          //resp, r, err := apiClient.MachineAccountClassifyAPI.SendBulkClassifyMachineAccountsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).BulkClassifyMachineAccountsRequest(bulkClassifyMachineAccountsRequest).ClassificationMode(classificationMode).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountClassifyAPI.SendBulkClassifyMachineAccountsV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `SendBulkClassifyMachineAccountsV1`: []BulkClassifyMachineAccountResult
+          fmt.Fprintf(os.Stdout, "Response from `MachineAccountClassifyAPI.SendBulkClassifyMachineAccountsV1`: %v\n", resp)
+        }
 - path: /accounts/v1/{id}/classify
   method: Post
   xCodeSample:

@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - Triggers
+SailPoint Identity Security API - Triggers
 
 Testing TriggersAPIService
 

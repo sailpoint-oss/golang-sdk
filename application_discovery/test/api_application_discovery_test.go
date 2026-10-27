@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - Application Discovery
+SailPoint Identity Security API - Application Discovery
 
 Testing ApplicationDiscoveryAPIService
 

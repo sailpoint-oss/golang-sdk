@@ -27,7 +27,10 @@ docs/BaseReferenceDto.md
 docs/ConnectorDetail.md
 docs/CorrelationConfig.md
 docs/CorrelationConfigAttributeAssignmentsInner.md
+docs/CorrelationReprocessStatus.md
+docs/CorrelationReprocessStatusStartedBy.md
 docs/DatasetAggregationRequest.md
+docs/DeleteSourceAgentsRequest.md
 docs/DeleteSourceV1202Response.md
 docs/DependantAppConnections.md
 docs/DependantAppConnectionsAccountSource.md
@@ -58,6 +61,7 @@ docs/LoadUncorrelatedAccountsTaskTask.md
 docs/LoadUncorrelatedAccountsTaskTaskAttributes.md
 docs/LoadUncorrelatedAccountsTaskTaskMessagesInner.md
 docs/LocaleOrigin.md
+docs/LocalizedMessage.md
 docs/ManagerCorrelationMapping.md
 docs/Methods/Index.md
 docs/NativeChangeDetectionConfig.md
@@ -74,6 +78,8 @@ docs/Schema.md
 docs/Source.md
 docs/SourceAccountCorrelationConfig.md
 docs/SourceAccountCorrelationRule.md
+docs/SourceAgentDeletionTaskStatus.md
+docs/SourceAgentDeletionTaskStatusTarget.md
 docs/SourceBeforeProvisioningRule.md
 docs/SourceCluster.md
 docs/SourceConnectionsDto.md
@@ -99,8 +105,12 @@ docs/SourceSyncPayload.md
 docs/SourcesAPI.md
 docs/SourcesAPIdeveloperSite_code_examples.yaml
 docs/StatusResponse.md
+docs/TaskDefinitionSummary.md
 docs/TaskResultDetails.md
 docs/TaskResultDto.md
+docs/TaskReturnDetails.md
+docs/TaskStatusMessage.md
+docs/TaskStatusMessageParametersInner.md
 docs/Transform.md
 docs/TransformRead.md
 docs/UsageType.md
@@ -128,7 +138,10 @@ model_base_reference_dto.go
 model_connector_detail.go
 model_correlation_config.go
 model_correlation_config_attribute_assignments_inner.go
+model_correlation_reprocess_status.go
+model_correlation_reprocess_status_started_by.go
 model_dataset_aggregation_request.go
+model_delete_source_agents_request.go
 model_delete_source_v1_202_response.go
 model_dependant_app_connections.go
 model_dependant_app_connections_account_source.go
@@ -159,6 +172,7 @@ model_load_uncorrelated_accounts_task_task.go
 model_load_uncorrelated_accounts_task_task_attributes.go
 model_load_uncorrelated_accounts_task_task_messages_inner.go
 model_locale_origin.go
+model_localized_message.go
 model_manager_correlation_mapping.go
 model_native_change_detection_config.go
 model_password_policy_holders_dto_attributes.go
@@ -174,6 +188,8 @@ model_schema.go
 model_source.go
 model_source_account_correlation_config.go
 model_source_account_correlation_rule.go
+model_source_agent_deletion_task_status.go
+model_source_agent_deletion_task_status_target.go
 model_source_before_provisioning_rule.go
 model_source_cluster.go
 model_source_connections_dto.go
@@ -197,8 +213,12 @@ model_source_service_desk_integration_dto.go
 model_source_sync_job.go
 model_source_sync_payload.go
 model_status_response.go
+model_task_definition_summary.go
 model_task_result_details.go
 model_task_result_dto.go
+model_task_return_details.go
+model_task_status_message.go
+model_task_status_message_parameters_inner.go
 model_transform.go
 model_transform_read.go
 model_usage_type.go

@@ -3,7 +3,7 @@ info:
   contact:
     name: Developer Relations
     url: https://developer.sailpoint.com/discuss/api-help
-  description: "Use these APIs to interact with the Identity Security Cloud platform\
+  description: "Use these APIs to interact with the SailPoint Identity Security platform\
     \ to achieve repeatable, automated processes with greater scalability. We encourage\
     \ you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss\
     \ to connect with other developers using our APIs."
@@ -11,7 +11,7 @@ info:
     name: MIT
     url: https://opensource.org/licenses/MIT
   termsOfService: https://developer.sailpoint.com/discuss/tos
-  title: Identity Security Cloud API - Machine Identities
+  title: SailPoint Identity Security API - Machine Identities
   version: v1
 servers:
 - description: This is the production API server.
@@ -38,7 +38,7 @@ paths:
       operationId: listMachineIdentitiesV1
       parameters:
       - description: |-
-          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
+          Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)
 
           Filtering is supported for the following fields and operators:
 
@@ -80,7 +80,7 @@ paths:
           type: string
         style: form
       - description: |-
-          Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
+          Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)
 
           Sorting is supported for the following fields: **nativeIdentity, name, owners.primaryIdentity.name, source.name, created, modified**
         example: nativeIdentity
@@ -107,7 +107,7 @@ paths:
 
           Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
 
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
         example: true
         explode: true
         in: query
@@ -119,7 +119,7 @@ paths:
         style: form
       - description: |-
           Max number of results to return.
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
         example: 250
         explode: true
         in: query
@@ -134,7 +134,7 @@ paths:
         style: form
       - description: |-
           Offset into the full result set. Usually specified with *limit* to paginate through the results.
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
         example: 0
         explode: true
         in: query
@@ -745,7 +745,7 @@ paths:
         style: simple
         x-sailpoint-resource-operation-id: listMachineIdentitiesV1
       - description: |-
-          Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
+          Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)
 
           Sorting is supported for the following fields: **detectedAt**
 
@@ -774,7 +774,7 @@ paths:
 
           Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
 
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
         example: true
         explode: true
         in: query
@@ -786,7 +786,7 @@ paths:
         style: form
       - description: |-
           Max number of results to return.
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
         example: 250
         explode: true
         in: query
@@ -801,7 +801,7 @@ paths:
         style: form
       - description: |-
           Offset into the full result set. Usually specified with *limit* to paginate through the results.
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
         example: 0
         explode: true
         in: query
@@ -912,6 +912,132 @@ paths:
       - Machine Identities
       x-sailpoint-userLevels:
       - ORG_ADMIN
+  /machine-identities/v1/{id}/delete-async:
+    delete:
+      description: |
+        This API deletes an AI agent machine identity. It applies only to AI agents. Application machine identities return
+        `400`; delete them with the delete machine identity API instead.
+
+        When the AI agent was aggregated from a source and still exists on that source, the API starts a deletion task on
+        the source and returns the task status. When the AI agent was created manually or no longer exists on the source,
+        the API deletes it immediately and returns `200` with an empty body.
+
+        The API returns `400` when the AI agent is still assigned to machine accounts, or when its source does not support
+        deleting it. It returns `404` when the machine identity or its source is not found.
+      operationId: deleteMachineIdentityAsyncV1
+      parameters:
+      - description: Machine Identity ID.
+        example: ef38f94347e94562b5bb8424a56397d8
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listMachineIdentitiesV1
+      - description: Use this header to enable this experimental API.
+        example: true
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskStatus'
+          description: Status of the deletion task. The body is empty when the AI
+            agent was deleted immediately.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listMachineIdentitiesV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listMachineIdentitiesV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:dataset:manage
+      - applicationAuth:
+        - idn:dataset:manage
+      summary: Delete AI agent asynchronously
+      tags:
+      - Machine Identities
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /machine-identities/v1/anomaly-summaries/unsanctioned:
     get:
       description: "Returns aggregate counts (distinct agents, distinct owners, and\
@@ -1018,13 +1144,532 @@ paths:
       - Machine Identities
       x-sailpoint-userLevels:
       - ORG_ADMIN
+  /machine-identities/v1/all-counts:
+    get:
+      description: |
+        This API returns the number of application machine identities, AI agent machine identities, and machine accounts
+        owned by one identity, plus their total. Identify the owner with an `ownerId` filter. Use `ownerId eq "me"` for
+        the caller's own counts. Requests without an `ownerId` filter return `400`.
+
+        A caller who owns the machine identities and machine accounts can view their own counts. Other callers need the
+        **idn:mis-identity:read** or **idn:mis-account:read** right.
+      operationId: getMachineIdentityAllCountsV1
+      parameters:
+      - description: |-
+          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
+
+          Filtering is supported for the following fields and operators:
+
+          **ownerId**: *eq*
+
+          `ownerId` is required. Use the identity ID of the owner, or `me` for the caller.
+        example: ownerId eq "me"
+        explode: true
+        in: query
+        name: filters
+        required: true
+        schema:
+          type: string
+        style: form
+      - description: Use this header to enable this experimental API.
+        example: true
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MachineIdentityAllCounts'
+          description: Machine identity and machine account counts for the owner.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listMachineIdentitiesV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listMachineIdentitiesV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:mis-identity:read
+        - idn:mis-identity:manage
+        - idn:mis-account:read
+      - applicationAuth:
+        - idn:mis-identity:read
+        - idn:mis-identity:manage
+        - idn:mis-account:read
+      summary: Get owner machine identity counts
+      tags:
+      - Machine Identities
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+      - HELPDESK
+  /machine-identities/v1/agent-counts:
+    get:
+      description: |
+        This API returns tenant-wide summary counts for AI agent machine identities: the total, unsanctioned agents,
+        agents discovered in the last 30 days, risk severity counts, and ownership coverage.
+
+        When agentic risk scoring is not enabled for the tenant, `riskSeverity` is `null`. This version never counts AI
+        agents that have no risk severity, so `riskSeverity.unknown` is always `null`.
+      operationId: getMachineIdentityAgentCountsV1
+      parameters:
+      - description: Use this header to enable this experimental API.
+        example: true
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MachineIdentityAgentCounts'
+          description: AI agent summary counts.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listMachineIdentitiesV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listMachineIdentitiesV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:mis-identity:read
+        - idn:mis-identity:manage
+      - applicationAuth:
+        - idn:mis-identity:read
+        - idn:mis-identity:manage
+      summary: Get AI agent counts
+      tags:
+      - Machine Identities
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+      - HELPDESK
+  /machine-identities/v1/application-counts:
+    get:
+      description: |
+        This API returns tenant-wide summary counts for application machine identities: the total, unsanctioned
+        applications, applications discovered in the last 30 days, risk severity counts, and ownership coverage.
+
+        When agentic risk scoring is not enabled for the tenant, `riskSeverity` is `null`. This version never counts
+        applications that have no risk severity, so `riskSeverity.unknown` is always `null`.
+      operationId: getMachineIdentityApplicationCountsV1
+      parameters:
+      - description: Use this header to enable this experimental API.
+        example: true
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MachineIdentityApplicationCounts'
+          description: Application summary counts.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listMachineIdentitiesV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listMachineIdentitiesV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:mis-identity:read
+        - idn:mis-identity:manage
+      - applicationAuth:
+        - idn:mis-identity:read
+        - idn:mis-identity:manage
+      summary: Get application counts
+      tags:
+      - Machine Identities
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+      - HELPDESK
+  /machine-identities/v1/counts/daily:
+    get:
+      description: |
+        This API returns daily counts of machine identities, machine accounts, capabilities, and credentials for the tenant.
+        The window ends on the day before the current UTC date and covers the number of days set by `days`. The response
+        contains one entry per day. Days with no recorded counts have an empty `metrics` array.
+      operationId: getMachineIdentityDailyCountsV1
+      parameters:
+      - description: Number of days in the window. Values outside 1 to 90 return `400`.
+        example: 30
+        explode: true
+        in: query
+        name: days
+        required: false
+        schema:
+          default: 30
+          format: int32
+          maximum: 90
+          minimum: 1
+          type: integer
+        style: form
+      - description: Return counts for this entity type only. Other values return
+          `400`.
+        example: machine_identity
+        explode: true
+        in: query
+        name: entityType
+        required: false
+        schema:
+          enum:
+          - machine_identity
+          - machine_account
+          - capability
+          - credential
+          type: string
+        style: form
+      - description: Return counts for this subtype only. The value must exactly match
+          a recorded subtype.
+        example: AI Agent
+        explode: true
+        in: query
+        name: subType
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Use this header to enable this experimental API.
+        example: true
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MachineIdentityDailyCounts'
+          description: Daily counts for the window.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listMachineIdentitiesV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listMachineIdentitiesV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:mis-identity:read
+        - idn:mis-identity:manage
+      - applicationAuth:
+        - idn:mis-identity:read
+        - idn:mis-identity:manage
+      summary: Get daily non-human entity counts
+      tags:
+      - Machine Identities
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+      - HELPDESK
   /machine-identities/v2:
     get:
       description: This API returns a list of machine identities.
       operationId: listMachineIdentitiesV2
       parameters:
       - description: |-
-          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
+          Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)
 
           Filtering is supported for the following fields and operators:
 
@@ -1086,7 +1731,7 @@ paths:
           type: string
         style: form
       - description: |-
-          Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
+          Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)
 
           Sorting is supported for the following fields: **nativeIdentity, name, owners.primaryIdentity.name, source.name, created, modified, sessionCount, suspiciousSessionCount**
 
@@ -1105,7 +1750,7 @@ paths:
 
           Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
 
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
         example: true
         explode: true
         in: query
@@ -1117,7 +1762,7 @@ paths:
         style: form
       - description: |-
           Max number of results to return.
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
         example: 250
         explode: true
         in: query
@@ -1132,7 +1777,7 @@ paths:
         style: form
       - description: |-
           Offset into the full result set. Usually specified with *limit* to paginate through the results.
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
         example: 0
         explode: true
         in: query
@@ -1765,6 +2410,1369 @@ paths:
       - Machine Identities
       x-sailpoint-userLevels:
       - ORG_ADMIN
+  /machine-identities/v2/{id}/delete-async:
+    delete:
+      description: |
+        This API deletes an AI agent machine identity. It applies only to AI agents. Application machine identities return
+        `400`; delete them with the delete machine identity API instead.
+
+        When the AI agent was aggregated from a source and still exists on that source, the API starts a deletion task on
+        the source and returns the task status. When the AI agent was created manually or no longer exists on the source,
+        the API deletes it immediately and returns `200` with an empty body.
+
+        The API returns `400` when the AI agent is still assigned to machine accounts, or when its source does not support
+        deleting it. It returns `404` when the machine identity or its source is not found.
+      operationId: deleteMachineIdentityAsyncV2
+      parameters:
+      - description: Machine Identity ID.
+        example: ef38f94347e94562b5bb8424a56397d8
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listMachineIdentitiesV2
+      - description: Use this header to enable this experimental API.
+        example: true
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskStatus'
+          description: Status of the deletion task. The body is empty when the AI
+            agent was deleted immediately.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listMachineIdentitiesV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listMachineIdentitiesV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:dataset:manage
+      - applicationAuth:
+        - idn:dataset:manage
+      summary: Delete AI agent asynchronously
+      tags:
+      - Machine Identities
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+  /machine-identities/v2/{id}/accounts:
+    get:
+      description: |
+        This API returns the machine accounts that are linked to a machine identity. It supports the same filters and
+        sorters as the list machine accounts API, applied to the linked accounts only.
+
+        A caller who owns the machine identity can view its linked accounts. Other callers need the
+        **idn:mis-identity:read** right.
+      operationId: listMachineIdentityAccountsV2
+      parameters:
+      - description: Machine Identity ID.
+        example: ef38f94347e94562b5bb8424a56397d8
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listMachineIdentitiesV2
+      - description: |-
+          Max number of results to return.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        example: 250
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          Offset into the full result set. Usually specified with *limit* to paginate through the results.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        example: 0
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+          Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        example: true
+        explode: true
+        in: query
+        name: count
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+      - description: |-
+          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
+
+          Filtering is supported for the following fields and operators:
+
+          **id**: *eq, in*
+
+          **name**: *eq, in, sw*
+
+          **nativeIdentity**: *eq, in, sw*
+
+          **uuid**: *eq, in*
+
+          **description**: *eq, in, sw*
+
+          **machineIdentity.id**: *eq, in*
+
+          **machineIdentity.name**: *eq, in, sw*
+
+          **subtype.technicalName**: *eq, in, sw*
+
+          **subtype.displayName**: *eq, in, sw*
+
+          **accessType**: *eq, in, sw*
+
+          **environment**: *eq, in, sw*
+
+          **ownerIdentity**: *eq, in*
+
+          **ownerIdentity.id**: *eq, in*
+
+          **ownerIdentity.name**: *eq, in, sw*
+
+          **manuallyCorrelated**: *eq*
+
+          **enabled**: *eq*
+
+          **locked**: *eq*
+
+          **hasEntitlements**: *eq*
+
+          **attributes**: *eq*
+
+          **source.id**: *eq, in*
+
+          **source.name**: *eq, in, sw*
+
+          **created**: *eq, gt, lt, ge, le*
+
+          **modified**: *eq, gt, lt, ge, le*
+
+          **risk.severity**: *eq, in*
+
+          **permissionLevel**: *eq, in*
+
+          **lastUsedAt**: *gt, lt, ge, le*
+
+          `risk.severity`, `permissionLevel`, and `lastUsedAt` require Entro enrichment to be enabled for the tenant. When it is not, those filters return `400`. `compliance` and `complianceViolationsCount` are not filter fields. With unknown-severity enabled, a null stored severity matches `risk.severity eq "UNKNOWN"`.
+        example: hasEntitlements eq true
+        explode: true
+        in: query
+        name: filters
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: |-
+          Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
+
+          Sorting is supported for the following fields: **id, name, nativeIdentity, ownerIdentity, uuid, description, machineIdentity.id, machineIdentity.name, subtype.technicalName, subtype.displayName, accessType, environment, manuallyCorrelated, enabled, locked, hasEntitlements, ownerIdentity.id, ownerIdentity.name, attributes, source.id, source.name, created, modified, risk.severity, permissionLevel, lastUsedAt**
+
+          `risk.severity`, `permissionLevel`, and `lastUsedAt` require Entro enrichment to be enabled; otherwise those sorters return `400`. `risk.severity` sorts by rank (UNKNOWN, LOW, MEDIUM, HIGH, CRITICAL), not alphabetically. Null Entro values sort last. `compliance` is not sortable.
+        example: "id,name"
+        explode: true
+        in: query
+        name: sorters
+        required: false
+        schema:
+          format: comma-separated
+          type: string
+        style: form
+      - description: Use this header to enable this experimental API.
+        example: true
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/MachineAccount'
+                type: array
+          description: List of machine accounts linked to the machine identity.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listMachineIdentitiesV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listMachineIdentitiesV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:mis-identity:read
+        - idn:mis-identity:manage
+      - applicationAuth:
+        - idn:mis-identity:read
+        - idn:mis-identity:manage
+      summary: List linked machine accounts
+      tags:
+      - Machine Identities
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+      - HELPDESK
+  /machine-identities/v2/{id}/capabilities:
+    get:
+      description: |
+        This API returns all capabilities, such as MCP servers and tools, that are linked to a machine identity. The list
+        is not paginated.
+
+        A caller who owns the machine identity can view its linked capabilities. Other callers need the
+        **idn:mis-identity:read** right.
+      operationId: listMachineIdentityCapabilitiesV2
+      parameters:
+      - description: Machine Identity ID.
+        example: ef38f94347e94562b5bb8424a56397d8
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listMachineIdentitiesV2
+      - description: Use this header to enable this experimental API.
+        example: true
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Machineidentitycapability'
+                type: array
+          description: List of capabilities linked to the machine identity.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listMachineIdentitiesV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listMachineIdentitiesV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:mis-identity:read
+        - idn:mis-identity:manage
+      - applicationAuth:
+        - idn:mis-identity:read
+        - idn:mis-identity:manage
+      summary: List machine identity capabilities
+      tags:
+      - Machine Identities
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+      - HELPDESK
+  /machine-identities/v2/{id}/entitlements:
+    get:
+      description: |
+        This API returns the entitlements held by the machine accounts that are linked to a machine identity.
+
+        A caller who owns the machine identity can view its entitlements. Other callers need the
+        **idn:mis-identity:read** right.
+      operationId: listMachineIdentityEntitlementsV2
+      parameters:
+      - description: Machine Identity ID.
+        example: ef38f94347e94562b5bb8424a56397d8
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listMachineIdentitiesV2
+      - description: |-
+          Max number of results to return.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        example: 250
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          Offset into the full result set. Usually specified with *limit* to paginate through the results.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        example: 0
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+          Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        example: true
+        explode: true
+        in: query
+        name: count
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+      - description: |-
+          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
+
+          Filtering is supported for the following fields and operators:
+
+          **entitlementName**: *eq, in, sw, co*
+
+          `sw` and `co` both match the value anywhere in the entitlement name. Combine filters with `and` and `or`. `not` is not supported and returns `400`.
+        example: entitlementName sw "Finance"
+        explode: true
+        in: query
+        name: filters
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: |-
+          Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
+
+          Sorting is supported for the following fields: **entitlementName**
+        example: entitlementName
+        explode: true
+        in: query
+        name: sorters
+        required: false
+        schema:
+          format: comma-separated
+          type: string
+        style: form
+      - description: Use this header to enable this experimental API.
+        example: true
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Machineidentityentitlement'
+                type: array
+          description: List of entitlements of the machine identity.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listMachineIdentitiesV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listMachineIdentitiesV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:mis-identity:read
+        - idn:mis-identity:manage
+      - applicationAuth:
+        - idn:mis-identity:read
+        - idn:mis-identity:manage
+      summary: List machine identity entitlements
+      tags:
+      - Machine Identities
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+      - HELPDESK
+  /machine-identities/v2/agent-counts:
+    get:
+      description: |
+        This API returns tenant-wide summary counts for AI agent machine identities: the total, unsanctioned agents,
+        agents discovered in the last 30 days, risk severity counts, and ownership coverage.
+
+        When agentic risk scoring is not enabled for the tenant, `riskSeverity` is `null`. When unclassified risk severity
+        counting is not enabled for the tenant, `riskSeverity.unknown` is `null`.
+      operationId: getMachineIdentityAgentCountsV2
+      parameters:
+      - description: Use this header to enable this experimental API.
+        example: true
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MachineIdentityAgentCounts'
+          description: AI agent summary counts.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listMachineIdentitiesV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listMachineIdentitiesV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:mis-identity:read
+        - idn:mis-identity:manage
+      - applicationAuth:
+        - idn:mis-identity:read
+        - idn:mis-identity:manage
+      summary: Get AI agent counts
+      tags:
+      - Machine Identities
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+      - HELPDESK
+  /machine-identities/v2/application-counts:
+    get:
+      description: |
+        This API returns tenant-wide summary counts for application machine identities: the total, unsanctioned
+        applications, applications discovered in the last 30 days, risk severity counts, and ownership coverage.
+
+        When agentic risk scoring is not enabled for the tenant, `riskSeverity` is `null`. When unclassified risk severity
+        counting is not enabled for the tenant, `riskSeverity.unknown` is `null`.
+      operationId: getMachineIdentityApplicationCountsV2
+      parameters:
+      - description: Use this header to enable this experimental API.
+        example: true
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MachineIdentityApplicationCounts'
+          description: Application summary counts.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listMachineIdentitiesV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listMachineIdentitiesV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:mis-identity:read
+        - idn:mis-identity:manage
+      - applicationAuth:
+        - idn:mis-identity:read
+        - idn:mis-identity:manage
+      summary: Get application counts
+      tags:
+      - Machine Identities
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+      - HELPDESK
+  /machine-identities/v2/hostnames:
+    get:
+      description: |
+        This API returns the distinct hostnames of AI agent machine identities, in ascending order. Hostnames are returned
+        in lowercase with accents removed.
+
+        The API pages with a cursor instead of an offset. To get the next page, pass the last hostname of the current page
+        as `cursor`. A page with fewer hostnames than `limit` is the last page.
+
+        A caller who owns AI agents can list the hostnames of those agents. Other callers need the
+        **idn:mis-identity:read** right.
+      operationId: listMachineIdentityHostnamesV2
+      parameters:
+      - description: Return only hostnames that start with this value. Matching ignores
+          case and accents. A blank value is ignored.
+        example: prod-
+        explode: true
+        in: query
+        name: prefix
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Maximum number of hostnames to return. Values of `0` or more
+          than `250` return `400`.
+        example: 50
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 50
+          format: int32
+          maximum: 250
+          minimum: 1
+          type: integer
+        style: form
+      - description: Return only hostnames that sort after this value. Pass the last
+          hostname of the previous page. Omit it for the first page. A blank value
+          returns `400`.
+        example: prod-agent-07.example.com
+        explode: true
+        in: query
+        name: cursor
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Use this header to enable this experimental API.
+        example: true
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                example:
+                - prod-agent-08.example.com
+                - prod-agent-09.example.com
+                items:
+                  type: string
+                type: array
+          description: A page of AI agent hostnames.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listMachineIdentitiesV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listMachineIdentitiesV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:mis-identity:read
+        - idn:mis-identity:manage
+      - applicationAuth:
+        - idn:mis-identity:read
+        - idn:mis-identity:manage
+      summary: List AI agent hostnames
+      tags:
+      - Machine Identities
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+      - HELPDESK
+  /machine-identities/v2/bulk-update:
+    post:
+      description: |
+        This API applies the same JSON Patch operations to up to 100 machine identities and returns a result for each
+        requested ID. Only `/description`, `/userEntitlements`, `/owners`, `/owners/primary`, and `/owners/secondary` can
+        be patched. Patching any other path returns `400`. When access requests for non-human identities are not enabled
+        for the tenant, a patch that changes `/userEntitlements` returns `403`.
+
+        The response is always `207` when the request is valid. Check the `status` of each result to see whether that
+        machine identity was updated.
+
+        A caller who owns a machine identity can update it. Other callers need the **idn:mis-identity:update** right.
+        For callers without that right, IDs of machine identities they do not own return a `404` result.
+      operationId: updateMachineIdentitiesInBulkV2
+      parameters:
+      - description: Use this header to enable this experimental API.
+        example: true
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            examples:
+              Replace description:
+                value:
+                  ids:
+                  - ef38f94347e94562b5bb8424a56397d8
+                  - 2c9180858082150f0180893dbaf44201
+                  jsonPatch:
+                  - op: replace
+                    path: /description
+                    value: Agent used by the finance team
+              Replace primary owner:
+                value:
+                  ids:
+                  - ef38f94347e94562b5bb8424a56397d8
+                  jsonPatch:
+                  - op: replace
+                    path: /owners/primary
+                    value:
+                      id: 2c9180858082150f0180893dbaf44201
+                      type: IDENTITY
+            schema:
+              $ref: '#/components/schemas/MachineIdentityBulkUpdateRequest'
+        required: true
+      responses:
+        "207":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/MachineIdentityBulkResult'
+                type: array
+          description: A result for each requested machine identity ID.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listMachineIdentitiesV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listMachineIdentitiesV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:mis-identity:manage
+      - applicationAuth:
+        - idn:mis-identity:manage
+      summary: Bulk update machine identities
+      tags:
+      - Machine Identities
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+  /machine-identities/v2/bulk-delete:
+    post:
+      description: |
+        This API deletes up to 100 machine identities and returns a result for each requested ID.
+
+        The response is always `207` when the request is valid. Check the `status` of each result to see whether that
+        machine identity was deleted.
+
+        A caller who owns a machine identity can delete it. Other callers need the **idn:mis-identity:delete** right.
+        For callers without that right, IDs of machine identities they do not own return a `404` result.
+      operationId: deleteMachineIdentitiesInBulkV2
+      parameters:
+      - description: Use this header to enable this experimental API.
+        example: true
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MachineIdentityBulkRequest'
+        required: true
+      responses:
+        "207":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/MachineIdentityBulkResult'
+                type: array
+          description: A result for each requested machine identity ID.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listMachineIdentitiesV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listMachineIdentitiesV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:mis-identity:manage
+      - applicationAuth:
+        - idn:mis-identity:manage
+      summary: Bulk delete machine identities
+      tags:
+      - Machine Identities
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /sources/v1/{sourceId}/resources/{resourceId}/correlation-configs:
     get:
       description: "Returns the OWNER_PRIMARY and OWNER_SECONDARY correlation configs\
@@ -1809,7 +3817,7 @@ paths:
 
           Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
 
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
         example: true
         explode: true
         in: query
@@ -1821,7 +3829,7 @@ paths:
         style: form
       - description: |-
           Max number of results to return.
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
         example: 250
         explode: true
         in: query
@@ -1836,7 +3844,7 @@ paths:
         style: form
       - description: |-
           Offset into the full result set. Usually specified with *limit* to paginate through the results.
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
         example: 0
         explode: true
         in: query
@@ -2492,7 +4500,7 @@ paths:
       operationId: listMachineIdentityUserEntitlementsV1
       parameters:
       - description: |-
-          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
+          Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)
 
           Filtering is supported for the following fields and operators:
 
@@ -2516,7 +4524,7 @@ paths:
           type: string
         style: form
       - description: |-
-          Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
+          Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)
 
           Sorting is supported for the following fields: **machineIdentityName, entitlement.name, source.name**
         example: machineIdentityName
@@ -2542,7 +4550,7 @@ paths:
 
           Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
 
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
         example: true
         explode: true
         in: query
@@ -2554,7 +4562,7 @@ paths:
         style: form
       - description: |-
           Max number of results to return.
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
         example: 250
         explode: true
         in: query
@@ -2569,7 +4577,7 @@ paths:
         style: form
       - description: |-
           Offset into the full result set. Usually specified with *limit* to paginate through the results.
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
         example: 0
         explode: true
         in: query
@@ -2683,7 +4691,7 @@ components:
 
         Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
 
-        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
       example: true
       explode: true
       in: query
@@ -2696,7 +4704,7 @@ components:
     limit:
       description: |-
         Max number of results to return.
-        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
       example: 250
       explode: true
       in: query
@@ -2712,7 +4720,7 @@ components:
     offset:
       description: |-
         Offset into the full result set. Usually specified with *limit* to paginate through the results.
-        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
       example: 0
       explode: true
       in: query
@@ -3285,6 +5293,333 @@ components:
           $ref: '#/components/schemas/AnomalyEvidence'
       title: Anomaly
       type: object
+    Target:
+      example:
+        name: "Active Directory [source]"
+        id: c6dc37bf508149b28ce5b7d90ca4bbf9
+        type: APPLICATION
+      nullable: true
+      properties:
+        id:
+          description: Target ID
+          example: c6dc37bf508149b28ce5b7d90ca4bbf9
+          type: string
+        type:
+          description: Target type
+          enum:
+          - APPLICATION
+          - IDENTITY
+          - null
+          example: APPLICATION
+          nullable: true
+          type: string
+        name:
+          description: Target name
+          example: "Active Directory [source]"
+          type: string
+      title: Target
+      type: object
+    LocalizedMessage:
+      description: Localized error message to indicate a failed invocation or error
+        if any.
+      example:
+        locale: An error has occurred!
+        message: Error has occurred!
+      nullable: true
+      properties:
+        locale:
+          description: Message locale
+          example: An error has occurred!
+          type: string
+        message:
+          description: Message text
+          example: Error has occurred!
+          type: string
+      required:
+      - locale
+      - message
+      title: Localized Message
+      type: object
+    TaskStatusMessage:
+      description: TaskStatus Message
+      example:
+        type: INFO
+        parameters:
+        - name: value
+        key: akey
+        localizedText:
+          locale: An error has occurred!
+          message: Error has occurred!
+      properties:
+        type:
+          description: Type of the message
+          enum:
+          - INFO
+          - WARN
+          - ERROR
+          example: INFO
+          type: string
+        localizedText:
+          $ref: '#/components/schemas/LocalizedMessage'
+        key:
+          description: Key of the message
+          example: akey
+          type: string
+        parameters:
+          description: Message parameters for internationalization
+          example:
+          - name: value
+          items:
+            $ref: '#/components/schemas/TaskStatusMessage_parameters_inner'
+          nullable: true
+          type: array
+      required:
+      - key
+      - localizedText
+      - parameters
+      - type
+      title: Task Status Message
+      type: object
+    TaskReturnDetails:
+      description: Task return details
+      example:
+        name: label
+        attributeName: identityCount
+      properties:
+        name:
+          description: Display name of the TaskReturnDetails
+          example: label
+          type: string
+        attributeName:
+          description: Attribute the TaskReturnDetails is for
+          example: identityCount
+          type: string
+      required:
+      - attributeName
+      - name
+      title: Task Return Details
+      type: object
+    TaskDefinitionSummary:
+      description: "Definition of a type of task, used to invoke tasks"
+      example:
+        parentName: Cloud Account Aggregation
+        uniqueName: Cloud Account Aggregation
+        executor: sailpoint.task.ServiceTaskExecutor
+        description: Aggregates from the specified application.
+        arguments:
+          mantisExecutor: com.sailpoint.mantis.sources.task.AccountAggregationTask
+          eventClassesCsv: sailpoint.thunderbolt.events.AggregationEvents
+          serviceClass: sailpoint.thunderbolt.service.AggregationService
+          serviceMethod: accountAggregationTask
+        id: 2c91808475b4334b0175e1dff64b63c5
+      properties:
+        id:
+          description: System-generated unique ID of the TaskDefinition
+          example: 2c91808475b4334b0175e1dff64b63c5
+          type: string
+        uniqueName:
+          description: Name of the TaskDefinition
+          example: Cloud Account Aggregation
+          type: string
+        description:
+          description: Description of the TaskDefinition
+          example: Aggregates from the specified application.
+          nullable: true
+          type: string
+        parentName:
+          description: Name of the parent of the TaskDefinition
+          example: Cloud Account Aggregation
+          type: string
+        executor:
+          description: Executor of the TaskDefinition
+          example: sailpoint.task.ServiceTaskExecutor
+          nullable: true
+          type: string
+        arguments:
+          additionalProperties: true
+          description: "Formal parameters of the TaskDefinition, without values"
+          example:
+            mantisExecutor: com.sailpoint.mantis.sources.task.AccountAggregationTask
+            eventClassesCsv: sailpoint.thunderbolt.events.AggregationEvents
+            serviceClass: sailpoint.thunderbolt.service.AggregationService
+            serviceMethod: accountAggregationTask
+          type: object
+      required:
+      - arguments
+      - description
+      - executor
+      - id
+      - parentName
+      - uniqueName
+      title: Task Definition Summary
+      type: object
+    TaskStatus:
+      description: Details and current status of a specific task
+      example:
+        taskDefinitionSummary:
+          parentName: Cloud Account Aggregation
+          uniqueName: Cloud Account Aggregation
+          executor: sailpoint.task.ServiceTaskExecutor
+          description: Aggregates from the specified application.
+          arguments:
+            mantisExecutor: com.sailpoint.mantis.sources.task.AccountAggregationTask
+            eventClassesCsv: sailpoint.thunderbolt.events.AggregationEvents
+            serviceClass: sailpoint.thunderbolt.service.AggregationService
+            serviceMethod: accountAggregationTask
+          id: 2c91808475b4334b0175e1dff64b63c5
+        created: 2020-07-11T21:23:15Z
+        description: A Really Big Task
+        completed: 2020-07-11T21:23:15Z
+        percentComplete: 100
+        type: QUARTZ
+        launched: 2020-07-11T21:23:15Z
+        target:
+          name: "Active Directory [source]"
+          id: c6dc37bf508149b28ce5b7d90ca4bbf9
+          type: APPLICATION
+        parentName: Parent Task
+        uniqueName: Big Task
+        modified: 2020-07-11T21:23:15Z
+        messages:
+        - type: INFO
+          parameters:
+          - name: value
+          key: akey
+          localizedText:
+            locale: An error has occurred!
+            message: Error has occurred!
+        - type: INFO
+          parameters:
+          - name: value
+          key: akey
+          localizedText:
+            locale: An error has occurred!
+            message: Error has occurred!
+        progress: Started
+        returns:
+        - name: label
+          attributeName: identityCount
+        - name: label
+          attributeName: identityCount
+        attributes:
+          identityCount: 0
+        id: id12345
+        completionStatus: SUCCESS
+        launcher: sweep
+      properties:
+        id:
+          description: System-generated unique ID of the task this TaskStatus represents
+          example: id12345
+          type: string
+        type:
+          description: Type of task this TaskStatus represents
+          enum:
+          - QUARTZ
+          - QPOC
+          - QUEUED_TASK
+          example: QUARTZ
+          type: string
+        uniqueName:
+          description: Name of the task this TaskStatus represents
+          example: Big Task
+          type: string
+        description:
+          description: Description of the task this TaskStatus represents
+          example: A Really Big Task
+          type: string
+        parentName:
+          description: Name of the parent of the task this TaskStatus represents
+          example: Parent Task
+          nullable: true
+          type: string
+        launcher:
+          description: Service to execute the task this TaskStatus represents
+          example: sweep
+          type: string
+        target:
+          $ref: '#/components/schemas/Target'
+        created:
+          description: Creation date of the task this TaskStatus represents
+          example: 2020-07-11T21:23:15Z
+          format: date-time
+          type: string
+        modified:
+          description: Last modification date of the task this TaskStatus represents
+          example: 2020-07-11T21:23:15Z
+          format: date-time
+          nullable: true
+          type: string
+        launched:
+          description: Launch date of the task this TaskStatus represents
+          example: 2020-07-11T21:23:15Z
+          format: date-time
+          nullable: true
+          type: string
+        completed:
+          description: Completion date of the task this TaskStatus represents
+          example: 2020-07-11T21:23:15Z
+          format: date-time
+          nullable: true
+          type: string
+        completionStatus:
+          description: Completion status of the task this TaskStatus represents
+          enum:
+          - SUCCESS
+          - WARNING
+          - ERROR
+          - TERMINATED
+          - TEMPERROR
+          - null
+          example: SUCCESS
+          nullable: true
+          type: string
+        messages:
+          description: Messages associated with the task this TaskStatus represents
+          items:
+            $ref: '#/components/schemas/TaskStatusMessage'
+          type: array
+        returns:
+          description: Return values from the task this TaskStatus represents
+          items:
+            $ref: '#/components/schemas/TaskReturnDetails'
+          type: array
+        attributes:
+          additionalProperties: true
+          description: Attributes of the task this TaskStatus represents
+          example:
+            identityCount: 0
+          type: object
+        progress:
+          description: Current progress of the task this TaskStatus represents
+          example: Started
+          nullable: true
+          type: string
+        percentComplete:
+          description: Current percentage completion of the task this TaskStatus represents
+          example: 100
+          format: int32
+          type: integer
+        taskDefinitionSummary:
+          $ref: '#/components/schemas/TaskDefinitionSummary'
+      required:
+      - attributes
+      - completed
+      - completionStatus
+      - created
+      - description
+      - id
+      - launched
+      - launcher
+      - messages
+      - modified
+      - parentName
+      - percentComplete
+      - progress
+      - returns
+      - type
+      - uniqueName
+      title: Task Status
+      type: object
     UnsanctionedApplicationAnomalySummary:
       description: "Aggregate counts of machine identities flagged with unsanctioned-application\
         \ anomalies, used to power the Unsanctioned Agents card."
@@ -3317,6 +5652,292 @@ components:
           format: int64
           type: integer
       title: Unsanctioned Application Anomaly Summary
+      type: object
+    MachineIdentityAllCounts:
+      description: Number of machine identities and machine accounts owned by an identity.
+      example:
+        applicationIdentityCount: 4
+        aiAgentCount: 7
+        totalCount: 26
+        machineAccountsCount: 15
+      properties:
+        applicationIdentityCount:
+          description: Number of application machine identities where the identity
+            is a primary or secondary owner.
+          example: 4
+          format: int64
+          type: integer
+        aiAgentCount:
+          description: Number of AI agent machine identities where the identity is
+            a primary or secondary owner.
+          example: 7
+          format: int64
+          type: integer
+        machineAccountsCount:
+          description: Number of machine accounts owned by the identity.
+          example: 15
+          format: int64
+          type: integer
+        totalCount:
+          description: "Sum of the application, AI agent, and machine account counts."
+          example: 26
+          format: int64
+          type: integer
+      title: Machine Identity All Counts
+      type: object
+    MachineIdentityDiscoveredCounts:
+      description: Number of machine identities discovered within a recent time window.
+      example:
+        count: 8
+        windowDays: 30
+      properties:
+        count:
+          description: Number of machine identities created within the window.
+          example: 8
+          format: int64
+          type: integer
+        windowDays:
+          description: "Length of the window, in days."
+          example: 30
+          format: int32
+          type: integer
+      title: Machine Identity Discovered Counts
+      type: object
+    MachineIdentityRiskSeverityCounts:
+      description: Number of machine identities in each risk severity. This object
+        is `null` when agentic risk scoring is not enabled for the tenant.
+      example:
+        high: 12
+        critical: 3
+        low: 40
+        medium: 25
+        unknown: 5
+      nullable: true
+      properties:
+        critical:
+          description: Number of machine identities with a CRITICAL risk severity.
+          example: 3
+          format: int64
+          type: integer
+        high:
+          description: Number of machine identities with a HIGH risk severity.
+          example: 12
+          format: int64
+          type: integer
+        medium:
+          description: Number of machine identities with a MEDIUM risk severity.
+          example: 25
+          format: int64
+          type: integer
+        low:
+          description: Number of machine identities with a LOW risk severity.
+          example: 40
+          format: int64
+          type: integer
+        unknown:
+          description: Number of machine identities that have no risk severity. This
+            value is `null` unless unclassified risk severity counting is enabled
+            for the tenant. Version 1 of the API always returns `null`.
+          example: 5
+          format: int64
+          nullable: true
+          type: integer
+      title: Machine Identity Risk Severity Counts
+      type: object
+    MachineIdentityAgentCounts:
+      description: Tenant-wide summary counts for AI agent machine identities.
+      example:
+        discovered:
+          count: 8
+          windowDays: 30
+        unsanctionedAgentCount: 6
+        riskSeverity:
+          high: 12
+          critical: 3
+          low: 40
+          medium: 25
+          unknown: 5
+        ownership:
+          ownedAgents: 70
+          ownedPercent: 82
+        agentCount: 85
+      properties:
+        agentCount:
+          description: Total number of AI agents.
+          example: 85
+          format: int64
+          type: integer
+        unsanctionedAgentCount:
+          description: Number of AI agents that are not sanctioned.
+          example: 6
+          format: int64
+          type: integer
+        discovered:
+          $ref: '#/components/schemas/MachineIdentityDiscoveredCounts'
+        riskSeverity:
+          $ref: '#/components/schemas/MachineIdentityRiskSeverityCounts'
+        ownership:
+          $ref: '#/components/schemas/MachineIdentityAgentCounts_ownership'
+      title: Machine Identity Agent Counts
+      type: object
+    MachineIdentityApplicationCounts:
+      description: Tenant-wide summary counts for application machine identities.
+      example:
+        applicationCount: 120
+        discovered:
+          count: 8
+          windowDays: 30
+        riskSeverity:
+          high: 12
+          critical: 3
+          low: 40
+          medium: 25
+          unknown: 5
+        ownership:
+          ownedPercent: 79
+          ownedApplications: 95
+        unsanctionedApplicationCount: 9
+      properties:
+        applicationCount:
+          description: Total number of applications.
+          example: 120
+          format: int64
+          type: integer
+        unsanctionedApplicationCount:
+          description: Number of applications that are not sanctioned.
+          example: 9
+          format: int64
+          type: integer
+        discovered:
+          $ref: '#/components/schemas/MachineIdentityDiscoveredCounts'
+        riskSeverity:
+          $ref: '#/components/schemas/MachineIdentityRiskSeverityCounts'
+        ownership:
+          $ref: '#/components/schemas/MachineIdentityApplicationCounts_ownership'
+      title: Machine Identity Application Counts
+      type: object
+    MachineIdentityDailyCountMetric:
+      description: Counts for one entity type and subtype on a single day.
+      example:
+        createdCount30d: 37
+        entityType: machine_identity
+        subType: AI Agent
+        totalCount: 412
+        createdCount: 3
+      properties:
+        entityType:
+          description: Entity type the counts apply to.
+          enum:
+          - machine_identity
+          - machine_account
+          - capability
+          - credential
+          example: machine_identity
+          type: string
+        subType:
+          description: Subtype the counts apply to. `UNKNOWN` is used for entities
+            that have no subtype.
+          example: AI Agent
+          type: string
+        totalCount:
+          description: Number of entities of this type and subtype that existed on
+            the day.
+          example: 412
+          format: int64
+          type: integer
+        createdCount:
+          description: Number of entities of this type and subtype created on the
+            day.
+          example: 3
+          format: int64
+          type: integer
+        createdCount30d:
+          description: Number of entities of this type and subtype created in the
+            30 days ending on the day.
+          example: 37
+          format: int64
+          type: integer
+      title: Machine Identity Daily Count Metric
+      type: object
+    MachineIdentityDailyCountsDay:
+      description: Counts recorded for a single calendar day.
+      example:
+        metrics:
+        - createdCount30d: 37
+          entityType: machine_identity
+          subType: AI Agent
+          totalCount: 412
+          createdCount: 3
+        - createdCount30d: 37
+          entityType: machine_identity
+          subType: AI Agent
+          totalCount: 412
+          createdCount: 3
+        day: 2026-06-25
+      properties:
+        day:
+          description: Calendar day (UTC) the counts were recorded for.
+          example: 2026-06-25
+          format: date
+          type: string
+        metrics:
+          description: Counts for each entity type and subtype. The array is empty
+            when no counts were recorded for the day.
+          items:
+            $ref: '#/components/schemas/MachineIdentityDailyCountMetric'
+          type: array
+      title: Machine Identity Daily Counts Day
+      type: object
+    MachineIdentityDailyCounts:
+      description: Daily counts of non-human entities for the tenant over a window
+        of days.
+      example:
+        days:
+        - metrics:
+          - createdCount30d: 37
+            entityType: machine_identity
+            subType: AI Agent
+            totalCount: 412
+            createdCount: 3
+          - createdCount30d: 37
+            entityType: machine_identity
+            subType: AI Agent
+            totalCount: 412
+            createdCount: 3
+          day: 2026-06-25
+        - metrics:
+          - createdCount30d: 37
+            entityType: machine_identity
+            subType: AI Agent
+            totalCount: 412
+            createdCount: 3
+          - createdCount30d: 37
+            entityType: machine_identity
+            subType: AI Agent
+            totalCount: 412
+            createdCount: 3
+          day: 2026-06-25
+        from: 2026-05-27
+        to: 2026-06-25
+      properties:
+        from:
+          description: "First day (UTC) of the window, inclusive."
+          example: 2026-05-27
+          format: date
+          type: string
+        to:
+          description: "Last day (UTC) of the window, inclusive. This is always the\
+            \ day before the current UTC date."
+          example: 2026-06-25
+          format: date
+          type: string
+        days:
+          description: "One entry for each calendar day in the window, in ascending\
+            \ order."
+          items:
+            $ref: '#/components/schemas/MachineIdentityDailyCountsDay'
+          type: array
+      title: Machine Identity Daily Counts
       type: object
     MachineIdentityOwnersV2:
       description: Owner configuration for a machine identity. A single primary (human
@@ -3721,6 +6342,440 @@ components:
       - path
       title: Json Patch Operation
       type: object
+    MachineAccount:
+      allOf:
+      - $ref: '#/components/schemas/BaseCommonDto'
+      - properties:
+          description:
+            description: A description of the machine account
+            example: Service account for Active Directory
+            nullable: true
+            type: string
+          nativeIdentity:
+            description: The unique ID of the machine account generated by the source
+              system
+            example: "552775"
+            type: string
+          uuid:
+            description: The unique ID of the account as determined by the account
+              schema
+            example: "{b0dce506-d6d4-44d2-8a32-d9a5b21fb175}"
+            nullable: true
+            type: string
+          classificationMethod:
+            description: Classification Method
+            enum:
+            - SOURCE
+            - CRITERIA
+            - DISCOVERY
+            - MANUAL
+            example: SOURCE
+            type: string
+          machineIdentity:
+            description: The machine identity this account is associated with
+            example:
+              id: 1540e5a4-6c2e-4bf1-b88e-c08cae0696e9
+              type: MACHINE_IDENTITY
+              name: SVC_ADService
+          ownerIdentity:
+            description: The identity who owns this account.
+            example:
+              id: 2c918084660f45d6016617daa9210584
+              type: IDENTITY
+              name: Adam Kennedy
+            nullable: true
+          accessType:
+            description: The connection type of the source this account is from
+            example: direct
+            type: string
+          subtype:
+            description: The sub-type
+            nullable: true
+            type: string
+            example: null
+          environment:
+            description: Environment
+            example: TEST
+            nullable: true
+            type: string
+          attributes:
+            additionalProperties: true
+            description: Custom attributes specific to the machine account
+            example:
+              firstName: SailPoint
+              lastName: Support
+              displayName: SailPoint Support
+            nullable: true
+            type: object
+          connectorAttributes:
+            additionalProperties: true
+            description: The connector attributes for the account
+            example:
+              mail: machine-178@sailpoint.com
+              givenName: Support
+              displayName: SailPoint Support
+            nullable: true
+            type: object
+          manuallyCorrelated:
+            default: false
+            description: Indicates if the account has been manually correlated to
+              an identity
+            example: true
+            type: boolean
+          manuallyEdited:
+            default: false
+            description: Indicates if the account has been manually edited
+            example: true
+            type: boolean
+          locked:
+            description: Indicates if the account is currently locked
+            example: false
+            type: boolean
+          enabled:
+            default: false
+            description: Indicates if the account is enabled
+            example: false
+            type: boolean
+          hasEntitlements:
+            default: true
+            description: Indicates if the account has entitlements
+            example: false
+            type: boolean
+          source:
+            description: The source this machine account belongs to.
+            example:
+              id: 8d3e0094e99445de98eef6c75e25jc04
+              type: SOURCE
+              name: Active Directory
+          risk:
+            $ref: '#/components/schemas/MachineAccount_allOf_risk'
+          permissionLevel:
+            description: Entro permission level. Null when not enriched. Read-only;
+              written only by aggregation.
+            enum:
+            - PRIVILEGED
+            - ELEVATED
+            - BASIC
+            - UNKNOWN
+            example: PRIVILEGED
+            nullable: true
+            readOnly: true
+            type: string
+          compliance:
+            description: "Entro compliance control ids. Null when absent; empty when\
+              \ Entro recorded no violations. A violations count is the length of\
+              \ this array. There is no `complianceViolationsCount` field, and `compliance`\
+              \ is not a list filter or sort field. Read-only; written only by aggregation."
+            items:
+              $ref: '#/components/schemas/MachineAccount_allOf_compliance'
+            nullable: true
+            readOnly: true
+            type: array
+          lastUsedAt:
+            description: "When the machine account was last used, from Entro. Null\
+              \ when not enriched. Read-only; written only by aggregation."
+            example: 2026-03-10T21:38:25Z
+            format: date-time
+            nullable: true
+            readOnly: true
+            type: string
+        required:
+        - classificationMethod
+        - connectorAttributes
+        - enabled
+        - hasEntitlements
+        - locked
+        - manuallyEdited
+        - nativeIdentity
+        - source
+        type: object
+      example:
+        description: Service account for Active Directory
+        source:
+          id: 8d3e0094e99445de98eef6c75e25jc04
+          type: SOURCE
+          name: Active Directory
+        uuid: "{b0dce506-d6d4-44d2-8a32-d9a5b21fb175}"
+        enabled: false
+        machineIdentity:
+          id: 1540e5a4-6c2e-4bf1-b88e-c08cae0696e9
+          type: MACHINE_IDENTITY
+          name: SVC_ADService
+        ownerIdentity:
+          id: 2c918084660f45d6016617daa9210584
+          type: IDENTITY
+          name: Adam Kennedy
+        accessType: direct
+        subtype: subtype
+        modified: 2015-05-28T14:07:17Z
+        hasEntitlements: false
+        id: id12345
+        locked: false
+        created: 2015-05-28T14:07:17Z
+        connectorAttributes:
+          mail: machine-178@sailpoint.com
+          givenName: Support
+          displayName: SailPoint Support
+        manuallyCorrelated: true
+        nativeIdentity: "552775"
+        environment: TEST
+        permissionLevel: PRIVILEGED
+        lastUsedAt: 2026-03-10T21:38:25Z
+        compliance:
+        - id: SOC2-CC6.1
+        - id: SOC2-CC6.1
+        name: aName
+        attributes:
+          firstName: SailPoint
+          lastName: Support
+          displayName: SailPoint Support
+        risk:
+          severity: HIGH
+          score: 72.5
+        classificationMethod: SOURCE
+        manuallyEdited: true
+    Machineidentitycapability:
+      allOf:
+      - $ref: '#/components/schemas/BaseCommonDto'
+      - description: "A capability, such as an MCP server or tool, that is linked\
+          \ to a machine identity."
+        properties:
+          description:
+            description: Description of the capability.
+            example: Reads customer records from the CRM
+            type: string
+          type:
+            description: Type of the capability. `UNDEFINED` is returned when the
+              type is missing or not recognized.
+            enum:
+            - MCP
+            - TOOL
+            - SKILL
+            - PLUGIN
+            - PROCESS
+            - UNDEFINED
+            example: TOOL
+            type: string
+          status:
+            description: "Status of the capability, as reported by the source. `null`\
+              \ when the source does not report one."
+            example: active
+            nullable: true
+            type: string
+          nativeIdentity:
+            description: Unique identifier of the capability on the source.
+            example: crm-reader-tool
+            type: string
+          environment:
+            description: Environment the capability runs in.
+            example: production
+            type: string
+          source:
+            $ref: '#/components/schemas/Machine_Identity_Capability_source'
+          resource:
+            $ref: '#/components/schemas/ResourceV2'
+          datasetId:
+            description: ID of the source dataset the capability was aggregated from.
+            example: agents-dataset
+            type: string
+          owners:
+            $ref: '#/components/schemas/MachineIdentityOwnersV2'
+          attributes:
+            additionalProperties: true
+            description: A map of curated capability attributes.
+            example:
+              status: active
+            type: object
+          connectorAttributes:
+            additionalProperties: true
+            description: A map of attributes sourced from the connector during aggregation.
+            example:
+              toolVersion: "1.4"
+            type: object
+          manuallyEdited:
+            default: false
+            description: Indicates whether the capability has been manually edited.
+            example: false
+            type: boolean
+        title: Machine Identity Capability
+        type: object
+      example:
+        resource:
+          features:
+          - PROVISIONING
+          - AUTHENTICATION
+          name: nightly-batch-role
+          id: 8886e5e3-63d0-462f-a195-d98da885b8dc
+          type: aws:iam-role
+        created: 2015-05-28T14:07:17Z
+        connectorAttributes:
+          toolVersion: "1.4"
+        description: Reads customer records from the CRM
+        owners:
+          secondary:
+          - id: 2c9180858082150f0180893dbaf44202
+            name: Jane Doe
+            type: IDENTITY
+          primary:
+            name: William Wilson
+            id: 2c91808568c529c60168cca6f90c1313
+            type: IDENTITY
+        source:
+          name: William Wilson
+          id: 2c91808568c529c60168cca6f90c1313
+          type: IDENTITY
+        type: TOOL
+        nativeIdentity: crm-reader-tool
+        environment: production
+        name: aName
+        modified: 2015-05-28T14:07:17Z
+        datasetId: agents-dataset
+        attributes:
+          status: active
+        id: id12345
+        status: active
+        manuallyEdited: false
+    Machineidentityentitlement:
+      allOf:
+      - $ref: '#/components/schemas/BaseCommonDto'
+      - description: An entitlement held by a machine account that is linked to a
+          machine identity.
+        properties:
+          accountId:
+            description: ID of the machine account that holds the entitlement.
+            example: 2c9180858082150f0180893dbaf44201
+            type: string
+          accountName:
+            description: Name of the machine account that holds the entitlement.
+            example: svc-batch-runner
+            type: string
+          attribute:
+            description: Name of the account attribute that contains the entitlement.
+            example: memberOf
+            type: string
+          value:
+            description: Value of the entitlement.
+            example: "CN=Finance Readers,OU=Groups,DC=example,DC=com"
+            type: string
+          description:
+            description: Description of the entitlement.
+            example: Read access to finance reports
+            type: string
+          cloudGoverned:
+            default: false
+            description: Indicates whether the entitlement is governed in the cloud.
+            example: false
+            type: boolean
+          source:
+            $ref: '#/components/schemas/Machine_Identity_Entitlement_source'
+        title: Machine Identity Entitlement
+        type: object
+      example:
+        accountId: 2c9180858082150f0180893dbaf44201
+        accountName: svc-batch-runner
+        created: 2015-05-28T14:07:17Z
+        name: aName
+        modified: 2015-05-28T14:07:17Z
+        description: Read access to finance reports
+        id: id12345
+        attribute: memberOf
+        source:
+          name: William Wilson
+          id: 2c91808568c529c60168cca6f90c1313
+          type: IDENTITY
+        value: "CN=Finance Readers,OU=Groups,DC=example,DC=com"
+        cloudGoverned: false
+    MachineIdentityBulkUpdateRequest:
+      description: Machine identities to update and the JSON Patch operations to apply
+        to each of them.
+      example:
+        ids:
+        - ef38f94347e94562b5bb8424a56397d8
+        - 2c9180858082150f0180893dbaf44201
+        jsonPatch:
+        - op: replace
+          path: /description
+          value: Agent used by the finance team
+      properties:
+        ids:
+          description: IDs of the machine identities to update. Provide between 1
+            and 100 IDs.
+          example:
+          - ef38f94347e94562b5bb8424a56397d8
+          - 2c9180858082150f0180893dbaf44201
+          items:
+            maxLength: 128
+            type: string
+          maxItems: 100
+          minItems: 1
+          type: array
+        jsonPatch:
+          description: "[JSON Patch](https://tools.ietf.org/html/rfc6902) operations\
+            \ applied to every machine identity in `ids`. Only these paths can be\
+            \ patched: `/description`, `/userEntitlements`, `/owners`, `/owners/primary`,\
+            \ and `/owners/secondary`."
+          example:
+          - op: replace
+            path: /description
+            value: Agent used by the finance team
+          items:
+            $ref: '#/components/schemas/JsonPatchOperation'
+          type: array
+      required:
+      - ids
+      - jsonPatch
+      title: Machine Identity Bulk Update Request
+      type: object
+    MachineIdentityBulkResult:
+      description: Outcome of a bulk operation for one requested machine identity
+        ID.
+      example:
+        id: ef38f94347e94562b5bb8424a56397d8
+        message: Success
+        status: 200
+      properties:
+        id:
+          description: The requested machine identity ID.
+          example: ef38f94347e94562b5bb8424a56397d8
+          maxLength: 128
+          type: string
+        status:
+          description: "HTTP status code for this ID. `200` means the operation succeeded.\
+            \ Other values explain why it did not, for example `400` when the ID is\
+            \ missing or not valid, `404` when the machine identity is not found or\
+            \ the caller does not own it, and `409` when the ID appears more than\
+            \ once in the request."
+          example: 200
+          format: int32
+          type: integer
+        message:
+          description: Message describing the outcome for this ID.
+          example: Success
+          type: string
+      title: Machine Identity Bulk Result
+      type: object
+    MachineIdentityBulkRequest:
+      description: Machine identities to act on in a single bulk request.
+      example:
+        ids:
+        - ef38f94347e94562b5bb8424a56397d8
+        - 2c9180858082150f0180893dbaf44201
+      properties:
+        ids:
+          description: IDs of the machine identities. Provide between 1 and 100 IDs.
+          example:
+          - ef38f94347e94562b5bb8424a56397d8
+          - 2c9180858082150f0180893dbaf44201
+          items:
+            maxLength: 128
+            type: string
+          maxItems: 100
+          minItems: 1
+          type: array
+      required:
+      - ids
+      title: Machine Identity Bulk Request
+      type: object
     CorrelationRuleAction:
       description: The action applied when a correlation rule matches.
       example:
@@ -3993,140 +7048,6 @@ components:
       required:
       - datasetIds
       title: Machine Identity Aggregation Request
-      type: object
-    TaskDefinitionSummary:
-      description: "Definition of a type of task, used to invoke tasks"
-      example:
-        parentName: Cloud Account Aggregation
-        uniqueName: Cloud Account Aggregation
-        executor: sailpoint.task.ServiceTaskExecutor
-        description: Aggregates from the specified application.
-        arguments:
-          mantisExecutor: com.sailpoint.mantis.sources.task.AccountAggregationTask
-          eventClassesCsv: sailpoint.thunderbolt.events.AggregationEvents
-          serviceClass: sailpoint.thunderbolt.service.AggregationService
-          serviceMethod: accountAggregationTask
-        id: 2c91808475b4334b0175e1dff64b63c5
-      properties:
-        id:
-          description: System-generated unique ID of the TaskDefinition
-          example: 2c91808475b4334b0175e1dff64b63c5
-          type: string
-        uniqueName:
-          description: Name of the TaskDefinition
-          example: Cloud Account Aggregation
-          type: string
-        description:
-          description: Description of the TaskDefinition
-          example: Aggregates from the specified application.
-          nullable: true
-          type: string
-        parentName:
-          description: Name of the parent of the TaskDefinition
-          example: Cloud Account Aggregation
-          type: string
-        executor:
-          description: Executor of the TaskDefinition
-          example: sailpoint.task.ServiceTaskExecutor
-          nullable: true
-          type: string
-        arguments:
-          additionalProperties: true
-          description: "Formal parameters of the TaskDefinition, without values"
-          example:
-            mantisExecutor: com.sailpoint.mantis.sources.task.AccountAggregationTask
-            eventClassesCsv: sailpoint.thunderbolt.events.AggregationEvents
-            serviceClass: sailpoint.thunderbolt.service.AggregationService
-            serviceMethod: accountAggregationTask
-          type: object
-      required:
-      - arguments
-      - description
-      - executor
-      - id
-      - parentName
-      - uniqueName
-      title: Task Definition Summary
-      type: object
-    LocalizedMessage:
-      description: Localized error message to indicate a failed invocation or error
-        if any.
-      example:
-        locale: An error has occurred!
-        message: Error has occurred!
-      nullable: true
-      properties:
-        locale:
-          description: Message locale
-          example: An error has occurred!
-          type: string
-        message:
-          description: Message text
-          example: Error has occurred!
-          type: string
-      required:
-      - locale
-      - message
-      title: Localized Message
-      type: object
-    TaskStatusMessage:
-      description: TaskStatus Message
-      example:
-        type: INFO
-        parameters:
-        - name: value
-        key: akey
-        localizedText:
-          locale: An error has occurred!
-          message: Error has occurred!
-      properties:
-        type:
-          description: Type of the message
-          enum:
-          - INFO
-          - WARN
-          - ERROR
-          example: INFO
-          type: string
-        localizedText:
-          $ref: '#/components/schemas/LocalizedMessage'
-        key:
-          description: Key of the message
-          example: akey
-          type: string
-        parameters:
-          description: Message parameters for internationalization
-          example:
-          - name: value
-          items:
-            $ref: '#/components/schemas/TaskStatusMessage_parameters_inner'
-          nullable: true
-          type: array
-      required:
-      - key
-      - localizedText
-      - parameters
-      - type
-      title: Task Status Message
-      type: object
-    TaskReturnDetails:
-      description: Task return details
-      example:
-        name: label
-        attributeName: identityCount
-      properties:
-        name:
-          description: Display name of the TaskReturnDetails
-          example: label
-          type: string
-        attributeName:
-          description: Attribute the TaskReturnDetails is for
-          example: identityCount
-          type: string
-      required:
-      - attributeName
-      - name
-      title: Task Return Details
       type: object
     MachineIdentityAggregationResponse:
       example:
@@ -4403,6 +7324,44 @@ components:
       - entitlementId
       - sourceId
       type: object
+    TaskStatusMessage_parameters_inner:
+      anyOf:
+      - type: object
+      - type: string
+    MachineIdentityAgentCounts_ownership:
+      description: Ownership coverage of AI agents.
+      example:
+        ownedAgents: 70
+        ownedPercent: 82
+      properties:
+        ownedAgents:
+          description: Number of AI agents that have at least one owner.
+          example: 70
+          format: int64
+          type: integer
+        ownedPercent:
+          description: Percentage of AI agents that have at least one owner.
+          example: 82
+          format: int32
+          type: integer
+      type: object
+    MachineIdentityApplicationCounts_ownership:
+      description: Ownership coverage of applications.
+      example:
+        ownedPercent: 79
+        ownedApplications: 95
+      properties:
+        ownedApplications:
+          description: Number of applications that have at least one owner.
+          example: 95
+          format: int64
+          type: integer
+        ownedPercent:
+          description: Percentage of applications that have at least one owner.
+          example: 79
+          format: int32
+          type: integer
+      type: object
     MachineIdentityOwnersV2_primary:
       allOf:
       - $ref: '#/components/schemas/BaseReferenceDto'
@@ -4495,10 +7454,70 @@ components:
           $ref: '#/components/schemas/array_inner'
         title: array
         type: array
-    TaskStatusMessage_parameters_inner:
-      anyOf:
-      - type: object
-      - type: string
+    MachineAccount_allOf_risk:
+      description: Entro risk for this machine account. Present when Entro enrichment
+        is enabled for the tenant. Null when no risk has been recorded. `score` stays
+        null until a risk-engine projection exists. Read-only; written only by aggregation.
+        This is separate from machine-identity SAF risk.
+      example:
+        severity: HIGH
+        score: 72.5
+      nullable: true
+      properties:
+        score:
+          description: Risk score. Null for Entro-only severity.
+          example: 72.5
+          format: double
+          nullable: true
+          type: number
+        severity:
+          description: Risk severity. A null stored severity can render as UNKNOWN
+            when that behavior is enabled.
+          enum:
+          - UNKNOWN
+          - LOW
+          - MEDIUM
+          - HIGH
+          - CRITICAL
+          example: HIGH
+          nullable: true
+          type: string
+      readOnly: true
+      type: object
+    MachineAccount_allOf_compliance:
+      example:
+        id: SOC2-CC6.1
+      properties:
+        id:
+          description: Framework control id.
+          example: SOC2-CC6.1
+          nullable: true
+          type: string
+      type: object
+    Machine_Identity_Capability_source:
+      allOf:
+      - $ref: '#/components/schemas/BaseReferenceDto'
+      - example:
+          id: 2c9180835d191a86015d28455b4a2329
+          name: AI Agent Platform
+          type: SOURCE
+      description: The source the capability was aggregated from.
+      example:
+        name: William Wilson
+        id: 2c91808568c529c60168cca6f90c1313
+        type: IDENTITY
+    Machine_Identity_Entitlement_source:
+      allOf:
+      - $ref: '#/components/schemas/BaseReferenceDto'
+      - example:
+          id: 2c9180835d191a86015d28455b4a2329
+          name: Active Directory
+          type: SOURCE
+      description: The source the entitlement comes from.
+      example:
+        name: William Wilson
+        id: 2c91808568c529c60168cca6f90c1313
+        type: IDENTITY
     MachineIdentityAggregationResponse_target:
       allOf:
       - $ref: '#/components/schemas/BaseReferenceDto'

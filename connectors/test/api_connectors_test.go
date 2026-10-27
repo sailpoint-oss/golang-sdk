@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - Connectors
+SailPoint Identity Security API - Connectors
 
 Testing ConnectorsAPIService
 

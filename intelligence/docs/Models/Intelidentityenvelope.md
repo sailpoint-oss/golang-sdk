@@ -15,17 +15,17 @@ tags: ['SDK', 'Software Development Kit', 'Intelidentityenvelope', 'V1Intelident
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | Identity Security Cloud identifier for this non-human identity. | 
+**Id** | **string** | SailPoint Identity Security identifier for this non-human identity. | 
 **Type** | **string** | Identity type for the matched record. | 
 **DisplayName** | Pointer to **string** | Preferred display name for the non-human identity. | [optional] 
 **Description** | Pointer to **NullableString** | Optional description from upstream when present. | [optional] 
 **Subtype** | Pointer to **NullableString** | Sub-classification label for that NHI. | [optional] 
 **Attributes** | **map[string]interface{}** | Connector or runtime metadata; empty object when absent upstream. | 
-**Created** | Pointer to **SailPointTime** | Timestamp when the identity record was created in Identity Security Cloud. | [optional] 
-**Modified** | Pointer to **SailPointTime** | Timestamp when the identity record was last modified in Identity Security Cloud. | [optional] 
+**Created** | Pointer to **SailPointTime** | Timestamp when the identity record was created in SailPoint Identity Security. | [optional] 
+**Modified** | Pointer to **SailPointTime** | Timestamp when the identity record was last modified in SailPoint Identity Security. | [optional] 
 **Alias** | Pointer to **string** | Primary login or account alias for the identity. | [optional] 
 **Email** | Pointer to **string** | Primary business email address for the identity. | [optional] 
-**IdentityStatus** | Pointer to **string** | Current identity lifecycle status label from Identity Security Cloud. | [optional] 
+**IdentityStatus** | Pointer to **string** | Current identity lifecycle status label from SailPoint Identity Security. | [optional] 
 **IsManager** | Pointer to **bool** | True when the identity is flagged as a people manager in the organization. | [optional] [default to false]
 **IdentityGraph** | Pointer to [**Intelidentitygraphlink**](intelidentitygraphlink) | Omitted when the tenant lacks the idg:base license. | [optional] 
 **NonHumanIdentityOwnership** | Pointer to [**Intelnonhumanidentityownership**](intelnonhumanidentityownership) | Omitted when the tenant lacks `idn:machine-identity-security`. When present, both `agents` and `applications` always render.  | [optional] 
@@ -39,7 +39,7 @@ Name | Type | Description | Notes
 **Source** | Pointer to [**NullableIntelmachinesourcewire**](intelmachinesourcewire) | Source metadata for the machine identity when present upstream. | [optional] 
 **ExistsOnSource** | Pointer to **NullableString** | Upstream existsOnSource value. Wire uses uppercase strings such as TRUE or FALSE. | [optional] 
 **ManuallyEdited** | Pointer to **bool** | True when an administrator manually edited machine identity attributes. | [optional] [default to false]
-**ManuallyCreated** | Pointer to **bool** | True when the machine identity was created manually in Identity Security Cloud. | [optional] [default to false]
+**ManuallyCreated** | Pointer to **bool** | True when the machine identity was created manually in SailPoint Identity Security. | [optional] [default to false]
 **Owners** | [**Intelmachineidentityowners**](intelmachineidentityowners) |  | 
 **UserEntitlements** | Pointer to [**[]Intelmachineuserentitlement**](intelmachineuserentitlement) | Entitlements associated with the machine identity from upstream. | [optional] 
 **Derived** | [**Intelmachinederived**](intelmachinederived) |  | 

@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - Tagged Objects
+SailPoint Identity Security API - Tagged Objects
 
 Testing TaggedObjectsAPIService
 

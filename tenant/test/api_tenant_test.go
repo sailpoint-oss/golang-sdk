@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - Tenant
+SailPoint Identity Security API - Tenant
 
 Testing TenantAPIService
 

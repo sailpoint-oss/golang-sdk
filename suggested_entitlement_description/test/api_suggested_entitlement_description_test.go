@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - Suggested Entitlement Description
+SailPoint Identity Security API - Suggested Entitlement Description
 
 Testing SuggestedEntitlementDescriptionAPIService
 

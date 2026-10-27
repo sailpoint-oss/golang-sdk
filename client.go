@@ -36,6 +36,7 @@ import (
 	auth_users "github.com/sailpoint-oss/golang-sdk/v3/auth_users"
 	branding "github.com/sailpoint-oss/golang-sdk/v3/branding"
 	business_applications "github.com/sailpoint-oss/golang-sdk/v3/business_applications"
+	capabilities "github.com/sailpoint-oss/golang-sdk/v3/capabilities"
 	certification_campaign_filters "github.com/sailpoint-oss/golang-sdk/v3/certification_campaign_filters"
 	certification_campaigns "github.com/sailpoint-oss/golang-sdk/v3/certification_campaigns"
 	certification_summaries "github.com/sailpoint-oss/golang-sdk/v3/certification_summaries"
@@ -45,15 +46,18 @@ import (
 	connector_customizers "github.com/sailpoint-oss/golang-sdk/v3/connector_customizers"
 	connector_rule_management "github.com/sailpoint-oss/golang-sdk/v3/connector_rule_management"
 	connectors "github.com/sailpoint-oss/golang-sdk/v3/connectors"
+	credentials "github.com/sailpoint-oss/golang-sdk/v3/credentials"
 	custom_forms "github.com/sailpoint-oss/golang-sdk/v3/custom_forms"
 	custom_password_instructions "github.com/sailpoint-oss/golang-sdk/v3/custom_password_instructions"
 	custom_user_levels "github.com/sailpoint-oss/golang-sdk/v3/custom_user_levels"
 	data_access_security "github.com/sailpoint-oss/golang-sdk/v3/data_access_security"
 	data_segmentation "github.com/sailpoint-oss/golang-sdk/v3/data_segmentation"
 	declassify_source "github.com/sailpoint-oss/golang-sdk/v3/declassify_source"
+	devices "github.com/sailpoint-oss/golang-sdk/v3/devices"
 	dimensions "github.com/sailpoint-oss/golang-sdk/v3/dimensions"
 	entitlement_connections "github.com/sailpoint-oss/golang-sdk/v3/entitlement_connections"
 	entitlements "github.com/sailpoint-oss/golang-sdk/v3/entitlements"
+	generic_request_approval_config "github.com/sailpoint-oss/golang-sdk/v3/generic_request_approval_config"
 	global_tenant_security_settings "github.com/sailpoint-oss/golang-sdk/v3/global_tenant_security_settings"
 	gov_certification "github.com/sailpoint-oss/golang-sdk/v3/gov_certification"
 	governance_groups "github.com/sailpoint-oss/golang-sdk/v3/governance_groups"
@@ -77,11 +81,14 @@ import (
 	machine_account_classify "github.com/sailpoint-oss/golang-sdk/v3/machine_account_classify"
 	machine_account_creation_request "github.com/sailpoint-oss/golang-sdk/v3/machine_account_creation_request"
 	machine_account_mappings "github.com/sailpoint-oss/golang-sdk/v3/machine_account_mappings"
+	machine_account_recommendation "github.com/sailpoint-oss/golang-sdk/v3/machine_account_recommendation"
 	machine_account_subtypes "github.com/sailpoint-oss/golang-sdk/v3/machine_account_subtypes"
 	machine_accounts "github.com/sailpoint-oss/golang-sdk/v3/machine_accounts"
 	machine_classification_config "github.com/sailpoint-oss/golang-sdk/v3/machine_classification_config"
 	machine_identities "github.com/sailpoint-oss/golang-sdk/v3/machine_identities"
 	machine_identities_lifecycle_actions "github.com/sailpoint-oss/golang-sdk/v3/machine_identities_lifecycle_actions"
+	machine_identity_metadata "github.com/sailpoint-oss/golang-sdk/v3/machine_identity_metadata"
+	machine_mapping_metadata "github.com/sailpoint-oss/golang-sdk/v3/machine_mapping_metadata"
 	managed_clients "github.com/sailpoint-oss/golang-sdk/v3/managed_clients"
 	managed_cluster_types "github.com/sailpoint-oss/golang-sdk/v3/managed_cluster_types"
 	managed_clusters "github.com/sailpoint-oss/golang-sdk/v3/managed_clusters"
@@ -177,6 +184,7 @@ type APIClient struct {
 	AuthUsersAPI *auth_users.AuthUsersAPIService
 	BrandingAPI *branding.BrandingAPIService
 	BusinessApplicationsAPI *business_applications.BusinessApplicationsAPIService
+	CapabilitiesAPI *capabilities.CapabilitiesAPIService
 	CertificationCampaignFiltersAPI *certification_campaign_filters.CertificationCampaignFiltersAPIService
 	CertificationCampaignsAPI *certification_campaigns.CertificationCampaignsAPIService
 	CertificationSummariesAPI *certification_summaries.CertificationSummariesAPIService
@@ -186,15 +194,18 @@ type APIClient struct {
 	ConnectorCustomizersAPI *connector_customizers.ConnectorCustomizersAPIService
 	ConnectorRuleManagementAPI *connector_rule_management.ConnectorRuleManagementAPIService
 	ConnectorsAPI *connectors.ConnectorsAPIService
+	CredentialsAPI *credentials.CredentialsAPIService
 	CustomFormsAPI *custom_forms.CustomFormsAPIService
 	CustomPasswordInstructionsAPI *custom_password_instructions.CustomPasswordInstructionsAPIService
 	CustomUserLevelsAPI *custom_user_levels.CustomUserLevelsAPIService
 	DataAccessSecurityAPI *data_access_security.DataAccessSecurityAPIService
 	DataSegmentationAPI *data_segmentation.DataSegmentationAPIService
 	DeclassifySourceAPI *declassify_source.DeclassifySourceAPIService
+	DevicesAPI *devices.DevicesAPIService
 	DimensionsAPI *dimensions.DimensionsAPIService
 	EntitlementConnectionsAPI *entitlement_connections.EntitlementConnectionsAPIService
 	EntitlementsAPI *entitlements.EntitlementsAPIService
+	GenericRequestApprovalConfigAPI *generic_request_approval_config.GenericRequestApprovalConfigAPIService
 	GlobalTenantSecuritySettingsAPI *global_tenant_security_settings.GlobalTenantSecuritySettingsAPIService
 	NextGenerationCertificationCampaignsAPI *gov_certification.NextGenerationCertificationCampaignsAPIService
 	GovernanceGroupsAPI *governance_groups.GovernanceGroupsAPIService
@@ -218,11 +229,14 @@ type APIClient struct {
 	MachineAccountClassifyAPI *machine_account_classify.MachineAccountClassifyAPIService
 	MachineAccountCreationRequestAPI *machine_account_creation_request.MachineAccountCreationRequestAPIService
 	MachineAccountMappingsAPI *machine_account_mappings.MachineAccountMappingsAPIService
+	MachineAccountRecommendationAPI *machine_account_recommendation.MachineAccountRecommendationAPIService
 	MachineAccountSubtypesAPI *machine_account_subtypes.MachineAccountSubtypesAPIService
 	MachineAccountsAPI *machine_accounts.MachineAccountsAPIService
 	MachineClassificationConfigAPI *machine_classification_config.MachineClassificationConfigAPIService
 	MachineIdentitiesAPI *machine_identities.MachineIdentitiesAPIService
 	MachineIdentityLifecycleActionsAPI *machine_identities_lifecycle_actions.MachineIdentityLifecycleActionsAPIService
+	MachineIdentityMetadataAPI *machine_identity_metadata.MachineIdentityMetadataAPIService
+	MachineMappingMetadataAPI *machine_mapping_metadata.MachineMappingMetadataAPIService
 	ManagedClientsAPI *managed_clients.ManagedClientsAPIService
 	ManagedClusterTypesAPI *managed_cluster_types.ManagedClusterTypesAPIService
 	ManagedClustersAPI *managed_clusters.ManagedClustersAPIService
@@ -511,6 +525,18 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	_cfgBusinessApplications.HTTPClient = cfg.HTTPClient
 	c.BusinessApplicationsAPI = business_applications.NewAPIClient(_cfgBusinessApplications).BusinessApplicationsAPI
 
+	_cfgCapabilities := capabilities.NewConfiguration(
+		cfg.ClientConfiguration.ClientId,
+		cfg.ClientConfiguration.ClientSecret,
+		cfg.ClientConfiguration.BaseURL,
+		cfg.ClientConfiguration.TokenURL,
+		cfg.ClientConfiguration.Token,
+		consumerSuffix,
+		cfg.Experimental,
+	)
+	_cfgCapabilities.HTTPClient = cfg.HTTPClient
+	c.CapabilitiesAPI = capabilities.NewAPIClient(_cfgCapabilities).CapabilitiesAPI
+
 	_cfgCertificationCampaignFilters := certification_campaign_filters.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
 		cfg.ClientConfiguration.ClientSecret,
@@ -619,6 +645,18 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	_cfgConnectors.HTTPClient = cfg.HTTPClient
 	c.ConnectorsAPI = connectors.NewAPIClient(_cfgConnectors).ConnectorsAPI
 
+	_cfgCredentials := credentials.NewConfiguration(
+		cfg.ClientConfiguration.ClientId,
+		cfg.ClientConfiguration.ClientSecret,
+		cfg.ClientConfiguration.BaseURL,
+		cfg.ClientConfiguration.TokenURL,
+		cfg.ClientConfiguration.Token,
+		consumerSuffix,
+		cfg.Experimental,
+	)
+	_cfgCredentials.HTTPClient = cfg.HTTPClient
+	c.CredentialsAPI = credentials.NewAPIClient(_cfgCredentials).CredentialsAPI
+
 	_cfgCustomForms := custom_forms.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
 		cfg.ClientConfiguration.ClientSecret,
@@ -691,6 +729,18 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	_cfgDeclassifySource.HTTPClient = cfg.HTTPClient
 	c.DeclassifySourceAPI = declassify_source.NewAPIClient(_cfgDeclassifySource).DeclassifySourceAPI
 
+	_cfgDevices := devices.NewConfiguration(
+		cfg.ClientConfiguration.ClientId,
+		cfg.ClientConfiguration.ClientSecret,
+		cfg.ClientConfiguration.BaseURL,
+		cfg.ClientConfiguration.TokenURL,
+		cfg.ClientConfiguration.Token,
+		consumerSuffix,
+		cfg.Experimental,
+	)
+	_cfgDevices.HTTPClient = cfg.HTTPClient
+	c.DevicesAPI = devices.NewAPIClient(_cfgDevices).DevicesAPI
+
 	_cfgDimensions := dimensions.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
 		cfg.ClientConfiguration.ClientSecret,
@@ -726,6 +776,18 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	)
 	_cfgEntitlements.HTTPClient = cfg.HTTPClient
 	c.EntitlementsAPI = entitlements.NewAPIClient(_cfgEntitlements).EntitlementsAPI
+
+	_cfgGenericRequestApprovalConfig := generic_request_approval_config.NewConfiguration(
+		cfg.ClientConfiguration.ClientId,
+		cfg.ClientConfiguration.ClientSecret,
+		cfg.ClientConfiguration.BaseURL,
+		cfg.ClientConfiguration.TokenURL,
+		cfg.ClientConfiguration.Token,
+		consumerSuffix,
+		cfg.Experimental,
+	)
+	_cfgGenericRequestApprovalConfig.HTTPClient = cfg.HTTPClient
+	c.GenericRequestApprovalConfigAPI = generic_request_approval_config.NewAPIClient(_cfgGenericRequestApprovalConfig).GenericRequestApprovalConfigAPI
 
 	_cfgGlobalTenantSecuritySettings := global_tenant_security_settings.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
@@ -1003,6 +1065,18 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	_cfgMachineAccountMappings.HTTPClient = cfg.HTTPClient
 	c.MachineAccountMappingsAPI = machine_account_mappings.NewAPIClient(_cfgMachineAccountMappings).MachineAccountMappingsAPI
 
+	_cfgMachineAccountRecommendation := machine_account_recommendation.NewConfiguration(
+		cfg.ClientConfiguration.ClientId,
+		cfg.ClientConfiguration.ClientSecret,
+		cfg.ClientConfiguration.BaseURL,
+		cfg.ClientConfiguration.TokenURL,
+		cfg.ClientConfiguration.Token,
+		consumerSuffix,
+		cfg.Experimental,
+	)
+	_cfgMachineAccountRecommendation.HTTPClient = cfg.HTTPClient
+	c.MachineAccountRecommendationAPI = machine_account_recommendation.NewAPIClient(_cfgMachineAccountRecommendation).MachineAccountRecommendationAPI
+
 	_cfgMachineAccountSubtypes := machine_account_subtypes.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
 		cfg.ClientConfiguration.ClientSecret,
@@ -1062,6 +1136,30 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	)
 	_cfgMachineIdentityLifecycleActions.HTTPClient = cfg.HTTPClient
 	c.MachineIdentityLifecycleActionsAPI = machine_identities_lifecycle_actions.NewAPIClient(_cfgMachineIdentityLifecycleActions).MachineIdentityLifecycleActionsAPI
+
+	_cfgMachineIdentityMetadata := machine_identity_metadata.NewConfiguration(
+		cfg.ClientConfiguration.ClientId,
+		cfg.ClientConfiguration.ClientSecret,
+		cfg.ClientConfiguration.BaseURL,
+		cfg.ClientConfiguration.TokenURL,
+		cfg.ClientConfiguration.Token,
+		consumerSuffix,
+		cfg.Experimental,
+	)
+	_cfgMachineIdentityMetadata.HTTPClient = cfg.HTTPClient
+	c.MachineIdentityMetadataAPI = machine_identity_metadata.NewAPIClient(_cfgMachineIdentityMetadata).MachineIdentityMetadataAPI
+
+	_cfgMachineMappingMetadata := machine_mapping_metadata.NewConfiguration(
+		cfg.ClientConfiguration.ClientId,
+		cfg.ClientConfiguration.ClientSecret,
+		cfg.ClientConfiguration.BaseURL,
+		cfg.ClientConfiguration.TokenURL,
+		cfg.ClientConfiguration.Token,
+		consumerSuffix,
+		cfg.Experimental,
+	)
+	_cfgMachineMappingMetadata.HTTPClient = cfg.HTTPClient
+	c.MachineMappingMetadataAPI = machine_mapping_metadata.NewAPIClient(_cfgMachineMappingMetadata).MachineMappingMetadataAPI
 
 	_cfgManagedClients := managed_clients.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,

@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'Intelidentityambiguouscandidate', 'V1
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | Identity Security Cloud identifier for a matching candidate. | 
+**Id** | **string** | SailPoint Identity Security identifier for a matching candidate. | 
 **DisplayName** | Pointer to **string** | Human-facing label when available; omitted when empty upstream. | [optional] 
 
 ## Methods

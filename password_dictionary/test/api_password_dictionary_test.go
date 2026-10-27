@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - Password Dictionary
+SailPoint Identity Security API - Password Dictionary
 
 Testing PasswordDictionaryAPIService
 

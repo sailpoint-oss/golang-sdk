@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud API - Identities
+SailPoint Identity Security API - Identities
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the SailPoint Identity Security platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: v1
 */
@@ -17,7 +17,7 @@ import (
 // checks if the IdentityV2PrivilegeLevel type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &IdentityV2PrivilegeLevel{}
 
-// IdentityV2PrivilegeLevel Effective privilege level of the identity. This object is null when the IDNARC_ENABLE_IDENTITY_EFFECTIVE_PRIVILEGE feature flag is disabled. When the flag is enabled, an identity with no privilege level is returned with effective set to NONE.
+// IdentityV2PrivilegeLevel Effective privilege level of the identity with no privilege level is returned with effective set to NONE.
 type IdentityV2PrivilegeLevel struct {
 	// The effective privilege level of the identity. Returned values are uppercase. Filter and sort comparisons are case-insensitive. An identity with no privilege level is NONE.
 	Effective NullableString `json:"effective,omitempty"`

@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud API - Sources
+SailPoint Identity Security API - Sources
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the SailPoint Identity Security platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: v1
 */
@@ -450,7 +450,7 @@ func (r ApiCreateSourceDatasetV1Request) Execute() (*SourceDataset, *http.Respon
 /*
 CreateSourceDatasetV1 Create dataset on source
 
-Use this API to create a dataset on the specified source in Identity Security Cloud (ISC).
+Use this API to create a dataset on the specified source in SailPoint Identity Security.
 
 
 This operation requires a connector with the `supportDatasetCreation` label. `name` is required.
@@ -658,7 +658,7 @@ func (r ApiCreateSourceResourceV1Request) Execute() (*SourceDatasetResource, *ht
 /*
 CreateSourceResourceV1 Create resource on source
 
-Use this API to create a resource on the specified source in Identity Security Cloud (ISC).
+Use this API to create a resource on the specified source in SailPoint Identity Security.
 
 
 This operation requires a connector with the `supportDatasetCreation` label. `name`, `type`,
@@ -861,7 +861,7 @@ func (r ApiCreateSourceScheduleV1Request) Execute() (*Schedule3, *http.Response,
 /*
 CreateSourceScheduleV1 Create schedule on source
 
-Use this API to create a new schedule for a type on the specified source in Identity Security Cloud (ISC).
+Use this API to create a new schedule for a type on the specified source in SailPoint Identity Security.
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -1030,7 +1030,7 @@ func (r ApiCreateSourceSchemaV1Request) Execute() (*Schema, *http.Response, erro
 /*
 CreateSourceSchemaV1 Create schema on source
 
-Use this API to create a new schema on the specified source in Identity Security Cloud (ISC).
+Use this API to create a new schema on the specified source in SailPoint Identity Security.
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -2016,6 +2016,218 @@ func (a *SourcesAPIService) DeleteProvisioningPolicyV2Execute(r ApiDeleteProvisi
 	return localVarHTTPResponse, nil
 }
 
+type ApiDeleteSourceAgentsV1Request struct {
+	ctx context.Context
+	ApiService *SourcesAPIService
+	id string
+	xSailPointExperimental *string
+	deleteSourceAgentsRequest *DeleteSourceAgentsRequest
+}
+
+// Use this header to enable this experimental API.
+func (r ApiDeleteSourceAgentsV1Request) XSailPointExperimental(xSailPointExperimental string) ApiDeleteSourceAgentsV1Request {
+	r.xSailPointExperimental = &xSailPointExperimental
+	return r
+}
+
+func (r ApiDeleteSourceAgentsV1Request) DeleteSourceAgentsRequest(deleteSourceAgentsRequest DeleteSourceAgentsRequest) ApiDeleteSourceAgentsV1Request {
+	r.deleteSourceAgentsRequest = &deleteSourceAgentsRequest
+	return r
+}
+
+func (r ApiDeleteSourceAgentsV1Request) Execute() (*SourceAgentDeletionTaskStatus, *http.Response, error) {
+	return r.ApiService.DeleteSourceAgentsV1Execute(r)
+}
+
+/*
+DeleteSourceAgentsV1 Delete source AI agents
+
+Use this API to delete all AI agents that were aggregated into the given datasets on a source. Deletion runs as an
+asynchronous task, and the response contains the task's initial status.
+
+
+This API returns `400` when the source has no connector instance, when `datasetIds` is missing or empty, or when a
+deletion or aggregation is already running for the source.
+
+
+When agentic identity governance is not enabled for the tenant, or AI agent deletion is not available,
+this API returns `404`.
+
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id Source ID.
+ @return ApiDeleteSourceAgentsV1Request
+*/
+func (a *SourcesAPIService) DeleteSourceAgentsV1(ctx context.Context, id string) ApiDeleteSourceAgentsV1Request {
+	return ApiDeleteSourceAgentsV1Request{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+//  @return SourceAgentDeletionTaskStatus
+func (a *SourcesAPIService) DeleteSourceAgentsV1Execute(r ApiDeleteSourceAgentsV1Request) (*SourceAgentDeletionTaskStatus, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *SourceAgentDeletionTaskStatus
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.DeleteSourceAgentsV1")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/sources/v1/{id}/agents-delete"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	
+	if r.xSailPointExperimental == nil {
+		headerxSailPointExperimental := "true"
+		r.xSailPointExperimental = &headerxSailPointExperimental
+	}
+	
+	if r.xSailPointExperimental == nil {
+		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
+	}
+	
+	if r.xSailPointExperimental == nil {
+		headerxSailPointExperimental := "true"
+		r.xSailPointExperimental = &headerxSailPointExperimental
+	}
+	
+	if r.deleteSourceAgentsRequest == nil {
+		return localVarReturnValue, nil, reportError("deleteSourceAgentsRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
+	// body params
+	localVarPostBody = r.deleteSourceAgentsRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v ListSourcesV1401Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v ListSourcesV1429Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiDeleteSourceDatasetObjectsV1Request struct {
 	ctx context.Context
 	ApiService *SourcesAPIService
@@ -2037,8 +2249,8 @@ func (r ApiDeleteSourceDatasetObjectsV1Request) Execute() (*TaskResultDetails, *
 /*
 DeleteSourceDatasetObjectsV1 Delete objects for source dataset
 
-Starts a task to delete aggregated objects for the specified dataset on the source in Identity
-Security Cloud (ISC). Linked dataset and resource definitions are not deleted.
+Starts a task to delete aggregated objects for the specified dataset on the source in SailPoint Identity
+Security (SailPoint Identity Security). Linked dataset and resource definitions are not deleted.
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -2228,7 +2440,7 @@ func (r ApiDeleteSourceDatasetV1Request) Execute() (*http.Response, error) {
 /*
 DeleteSourceDatasetV1 Delete source dataset by id
 
-Use this API to delete a dataset on the specified source in Identity Security Cloud (ISC).
+Use this API to delete a dataset on the specified source in SailPoint Identity Security.
 
 
 This operation requires a connector with the `supportDatasetCreation` label. Linked resource
@@ -2411,7 +2623,7 @@ func (r ApiDeleteSourceResourceV1Request) Execute() (*http.Response, error) {
 /*
 DeleteSourceResourceV1 Delete source resource by id
 
-Use this API to delete a resource on the specified source in Identity Security Cloud (ISC).
+Use this API to delete a resource on the specified source in SailPoint Identity Security.
 
 
 The resource schema is deleted and the resource is unlinked from any dataset rows on the source.
@@ -2903,7 +3115,7 @@ func (r ApiDeleteSourceV1Request) Execute() (*DeleteSourceV1202Response, *http.R
 /*
 DeleteSourceV1 Delete source by id
 
-Use this API to delete a specific source in Identity Security Cloud (ISC).
+Use this API to delete a specific source in SailPoint Identity Security.
 The API removes all the accounts on the source first, and then it deletes the source. You can retrieve the actual task execution status with this method: GET `/task-status/{id}`
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -4252,7 +4464,7 @@ func (r ApiGetProvisioningPolicyV2Request) Execute() (*ProvisioningPolicyDtoV2, 
 /*
 GetProvisioningPolicyV2 Get provisioning policy by ID
 
-This end-point retrieves the ProvisioningPolicy with the specified ID on the specified Source in Identity Security Cloud.
+This end-point retrieves the ProvisioningPolicy with the specified ID on the specified Source in SailPoint Identity Security.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param sourceId The Source ID.
@@ -4796,7 +5008,7 @@ func (r ApiGetSourceConnectionsV1Request) Execute() (*SourceConnectionsDto, *htt
 /*
 GetSourceConnectionsV1 Get source connections by id
 
-Use this API to get all dependent Profiles, Attributes, Applications and Custom Transforms for a source by a specified ID in Identity Security Cloud (ISC).
+Use this API to get all dependent Profiles, Attributes, Applications and Custom Transforms for a source by a specified ID in SailPoint Identity Security.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param sourceId Source ID.
@@ -4972,7 +5184,7 @@ func (r ApiGetSourceDatasetV1Request) Execute() (*SourceDataset, *http.Response,
 /*
 GetSourceDatasetV1 Get source dataset by id
 
-Use this API to get a dataset by id for the specified source in Identity Security Cloud (ISC).
+Use this API to get a dataset by id for the specified source in SailPoint Identity Security.
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -5157,19 +5369,19 @@ func (r ApiGetSourceDatasetsV1Request) XSailPointExperimental(xSailPointExperime
 	return r
 }
 
-// Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+// Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
 func (r ApiGetSourceDatasetsV1Request) Limit(limit int32) ApiGetSourceDatasetsV1Request {
 	r.limit = &limit
 	return r
 }
 
-// Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+// Offset into the full result set. Usually specified with *limit* to paginate through the results. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
 func (r ApiGetSourceDatasetsV1Request) Offset(offset int32) ApiGetSourceDatasetsV1Request {
 	r.offset = &offset
 	return r
 }
 
-// If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+// If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
 func (r ApiGetSourceDatasetsV1Request) Count(count bool) ApiGetSourceDatasetsV1Request {
 	r.count = &count
 	return r
@@ -5182,7 +5394,7 @@ func (r ApiGetSourceDatasetsV1Request) Execute() ([]SourceDataset, *http.Respons
 /*
 GetSourceDatasetsV1 List datasets on source
 
-Use this API to list datasets for the specified source in Identity Security Cloud (ISC).
+Use this API to list datasets for the specified source in SailPoint Identity Security.
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -5697,6 +5909,219 @@ func (a *SourcesAPIService) GetSourceHealthV1Execute(r ApiGetSourceHealthV1Reque
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiGetSourceResourceCorrelationReprocessV1Request struct {
+	ctx context.Context
+	ApiService *SourcesAPIService
+	sourceId string
+	resourceId string
+	type_ *string
+	xSailPointExperimental *string
+}
+
+// Kind of correlation reprocess run to get.
+func (r ApiGetSourceResourceCorrelationReprocessV1Request) Type_(type_ string) ApiGetSourceResourceCorrelationReprocessV1Request {
+	r.type_ = &type_
+	return r
+}
+
+// Use this header to enable this experimental API.
+func (r ApiGetSourceResourceCorrelationReprocessV1Request) XSailPointExperimental(xSailPointExperimental string) ApiGetSourceResourceCorrelationReprocessV1Request {
+	r.xSailPointExperimental = &xSailPointExperimental
+	return r
+}
+
+func (r ApiGetSourceResourceCorrelationReprocessV1Request) Execute() (*CorrelationReprocessStatus, *http.Response, error) {
+	return r.ApiService.GetSourceResourceCorrelationReprocessV1Execute(r)
+}
+
+/*
+GetSourceResourceCorrelationReprocessV1 Get resource correlation reprocess status
+
+Use this API to get the progress of the latest correlation reprocess run of the given `type` for a resource on a
+source. You can call it whatever state the run is in. Finished runs are kept for a limited time. This API returns
+`404` when no run is found for the source resource and `type`.
+
+
+When machine identity security is not enabled for the tenant, or correlation reprocessing is not available,
+this API returns `404`.
+
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param sourceId Source ID.
+ @param resourceId Resource ID.
+ @return ApiGetSourceResourceCorrelationReprocessV1Request
+*/
+func (a *SourcesAPIService) GetSourceResourceCorrelationReprocessV1(ctx context.Context, sourceId string, resourceId string) ApiGetSourceResourceCorrelationReprocessV1Request {
+	return ApiGetSourceResourceCorrelationReprocessV1Request{
+		ApiService: a,
+		ctx: ctx,
+		sourceId: sourceId,
+		resourceId: resourceId,
+	}
+}
+
+// Execute executes the request
+//  @return CorrelationReprocessStatus
+func (a *SourcesAPIService) GetSourceResourceCorrelationReprocessV1Execute(r ApiGetSourceResourceCorrelationReprocessV1Request) (*CorrelationReprocessStatus, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *CorrelationReprocessStatus
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.GetSourceResourceCorrelationReprocessV1")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/sources/v1/{sourceId}/resources/{resourceId}/reprocess-correlations"
+	localVarPath = strings.Replace(localVarPath, "{"+"sourceId"+"}", url.PathEscape(parameterValueToString(r.sourceId, "sourceId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"resourceId"+"}", url.PathEscape(parameterValueToString(r.resourceId, "resourceId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	
+	if r.xSailPointExperimental == nil {
+		headerxSailPointExperimental := "true"
+		r.xSailPointExperimental = &headerxSailPointExperimental
+	}
+	
+	if r.type_ == nil {
+		return localVarReturnValue, nil, reportError("type_ is required and must be specified")
+	}
+	
+	if r.xSailPointExperimental == nil {
+		headerxSailPointExperimental := "true"
+		r.xSailPointExperimental = &headerxSailPointExperimental
+	}
+	
+	if r.xSailPointExperimental == nil {
+		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
+	}
+
+	parameterAddToHeaderOrQuery(localVarQueryParams, "type", r.type_, "form", "")
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v ListSourcesV1401Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v ListSourcesV1429Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiGetSourceResourceMappingsV1Request struct {
 	ctx context.Context
 	ApiService *SourcesAPIService
@@ -5717,8 +6142,8 @@ func (r ApiGetSourceResourceMappingsV1Request) Execute() (*map[string]SourceReso
 /*
 GetSourceResourceMappingsV1 Get source resource mappings
 
-Use this API to get aggregation metadata for resources on the specified source in Identity
-Security Cloud (ISC). The response is keyed by resource id. Each value includes the linked
+Use this API to get aggregation metadata for resources on the specified source in SailPoint Identity
+Security (SailPoint Identity Security). The response is keyed by resource id. Each value includes the linked
 dataset id, resource type, and connector object type. Resources without a matching schema are
 omitted.
 
@@ -5907,7 +6332,7 @@ func (r ApiGetSourceResourceV1Request) Execute() (*SourceDatasetResource, *http.
 /*
 GetSourceResourceV1 Get source resource by id
 
-Use this API to get a resource by id on the specified source in Identity Security Cloud (ISC).
+Use this API to get a resource by id on the specified source in SailPoint Identity Security.
 The response includes the full CIS schema for the resource.
 
 
@@ -6093,19 +6518,19 @@ func (r ApiGetSourceResourcesV1Request) XSailPointExperimental(xSailPointExperim
 	return r
 }
 
-// Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+// Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
 func (r ApiGetSourceResourcesV1Request) Limit(limit int32) ApiGetSourceResourcesV1Request {
 	r.limit = &limit
 	return r
 }
 
-// Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+// Offset into the full result set. Usually specified with *limit* to paginate through the results. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
 func (r ApiGetSourceResourcesV1Request) Offset(offset int32) ApiGetSourceResourcesV1Request {
 	r.offset = &offset
 	return r
 }
 
-// If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+// If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
 func (r ApiGetSourceResourcesV1Request) Count(count bool) ApiGetSourceResourcesV1Request {
 	r.count = &count
 	return r
@@ -6118,7 +6543,7 @@ func (r ApiGetSourceResourcesV1Request) Execute() ([]SourceDatasetResource, *htt
 /*
 GetSourceResourcesV1 List resources for a source
 
-Use this API to list resources defined on the specified source in Identity Security Cloud (ISC).
+Use this API to list resources defined on the specified source in SailPoint Identity Security.
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -6316,7 +6741,7 @@ func (r ApiGetSourceScheduleV1Request) Execute() (*Schedule3, *http.Response, er
 /*
 GetSourceScheduleV1 Get source schedule by type
 
-Get the source schedule by type in Identity Security Cloud (ISC).
+Get the source schedule by type in SailPoint Identity Security.
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -6488,7 +6913,7 @@ func (r ApiGetSourceSchedulesV1Request) Execute() ([]Schedule3, *http.Response, 
 /*
 GetSourceSchedulesV1 List schedules on source
 
-Use this API to list the schedules that exist on the specified source in Identity Security Cloud (ISC).
+Use this API to list the schedules that exist on the specified source in SailPoint Identity Security.
 :::info
 This endpoint uses a **cron expression** to schedule a task, following standard **cron job syntax**.
 
@@ -6851,7 +7276,7 @@ func (r ApiGetSourceSchemasV1Request) Execute() ([]Schema, *http.Response, error
 /*
 GetSourceSchemasV1 List schemas on source
 
-Use this API to list the schemas that exist on the specified source in Identity Security Cloud (ISC).
+Use this API to list the schemas that exist on the specified source in SailPoint Identity Security.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param sourceId Source ID.
@@ -7020,13 +7445,13 @@ type ApiGetSourceServiceDeskIntegrationsV1Request struct {
 	offset *int32
 }
 
-// Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+// Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
 func (r ApiGetSourceServiceDeskIntegrationsV1Request) Limit(limit int32) ApiGetSourceServiceDeskIntegrationsV1Request {
 	r.limit = &limit
 	return r
 }
 
-// Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+// Offset into the full result set. Usually specified with *limit* to paginate through the results. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
 func (r ApiGetSourceServiceDeskIntegrationsV1Request) Offset(offset int32) ApiGetSourceServiceDeskIntegrationsV1Request {
 	r.offset = &offset
 	return r
@@ -7039,7 +7464,7 @@ func (r ApiGetSourceServiceDeskIntegrationsV1Request) Execute() ([]SourceService
 /*
 GetSourceServiceDeskIntegrationsV1 List source service desk integrations
 
-Use this API to list the Service Desk Integrations that carry out provisioning for a source in Identity Security Cloud (ISC).
+Use this API to list the Service Desk Integrations that carry out provisioning for a source in SailPoint Identity Security (SailPoint Identity Security).
 
 A source is provisioned either entirely through its own connector or entirely through a Service Desk Integration; provisioning is never split between the two. An empty list therefore means the source's own connector handles provisioning, and a non-empty list means every provisioning request for the source is routed to the integrations named in the response.
 
@@ -7223,7 +7648,7 @@ func (r ApiGetSourceV1Request) Execute() (*Source, *http.Response, error) {
 /*
 GetSourceV1 Get source by id
 
-Use this API to get a source by a specified ID in Identity Security Cloud (ISC).
+Use this API to get a source by a specified ID in SailPoint Identity Security.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Source ID.
@@ -8334,7 +8759,7 @@ func (r ApiImportSourceDatasetV1Request) Execute() (*TaskResultDetails, *http.Re
 /*
 ImportSourceDatasetV1 Aggregate source dataset
 
-Starts an aggregation for the specified dataset on the source in Identity Security Cloud (ISC).
+Starts an aggregation for the specified dataset on the source in SailPoint Identity Security.
 An optional `config` object can be supplied for connector-specific aggregation settings.
 
 
@@ -8693,19 +9118,19 @@ type ApiListPasswordPolicyHoldersOnSourceV1Request struct {
 	count *bool
 }
 
-// Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+// Offset into the full result set. Usually specified with *limit* to paginate through the results. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
 func (r ApiListPasswordPolicyHoldersOnSourceV1Request) Offset(offset int32) ApiListPasswordPolicyHoldersOnSourceV1Request {
 	r.offset = &offset
 	return r
 }
 
-// Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+// Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
 func (r ApiListPasswordPolicyHoldersOnSourceV1Request) Limit(limit int32) ApiListPasswordPolicyHoldersOnSourceV1Request {
 	r.limit = &limit
 	return r
 }
 
-// If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+// If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
 func (r ApiListPasswordPolicyHoldersOnSourceV1Request) Count(count bool) ApiListPasswordPolicyHoldersOnSourceV1Request {
 	r.count = &count
 	return r
@@ -8901,13 +9326,13 @@ type ApiListProvisioningPoliciesV1Request struct {
 	limit *int64
 }
 
-// Offset  Integer specifying the offset of the first result from the beginning of the collection. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). The offset value is record-based, not page-based, and the index starts at 0.
+// Offset  Integer specifying the offset of the first result from the beginning of the collection. The standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#paginating-results). The offset value is record-based, not page-based, and the index starts at 0.
 func (r ApiListProvisioningPoliciesV1Request) Offset(offset int64) ApiListProvisioningPoliciesV1Request {
 	r.offset = &offset
 	return r
 }
 
-// Limit        Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used.
+// Limit        Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used.
 func (r ApiListProvisioningPoliciesV1Request) Limit(limit int64) ApiListProvisioningPoliciesV1Request {
 	r.limit = &limit
 	return r
@@ -9103,19 +9528,19 @@ func (r ApiListProvisioningPoliciesV2Request) XSailPointExperimental(xSailPointE
 	return r
 }
 
-// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **subtypeId**: *eq*  **usageType**: *eq*
+// Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **subtypeId**: *eq*  **usageType**: *eq*
 func (r ApiListProvisioningPoliciesV2Request) Filters(filters string) ApiListProvisioningPoliciesV2Request {
 	r.filters = &filters
 	return r
 }
 
-// Offset  Integer specifying the offset of the first result from the beginning of the collection. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). The offset value is record-based, not page-based, and the index starts at 0.
+// Offset  Integer specifying the offset of the first result from the beginning of the collection. The standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#paginating-results). The offset value is record-based, not page-based, and the index starts at 0.
 func (r ApiListProvisioningPoliciesV2Request) Offset(offset int64) ApiListProvisioningPoliciesV2Request {
 	r.offset = &offset
 	return r
 }
 
-// Limit Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used.
+// Limit Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used.
 func (r ApiListProvisioningPoliciesV2Request) Limit(limit int64) ApiListProvisioningPoliciesV2Request {
 	r.limit = &limit
 	return r
@@ -9320,31 +9745,31 @@ type ApiListSourcesV1Request struct {
 	includeIDNSource *bool
 }
 
-// Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+// Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
 func (r ApiListSourcesV1Request) Limit(limit int32) ApiListSourcesV1Request {
 	r.limit = &limit
 	return r
 }
 
-// Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+// Offset into the full result set. Usually specified with *limit* to paginate through the results. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
 func (r ApiListSourcesV1Request) Offset(offset int32) ApiListSourcesV1Request {
 	r.offset = &offset
 	return r
 }
 
-// If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+// If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
 func (r ApiListSourcesV1Request) Count(count bool) ApiListSourcesV1Request {
 	r.count = &count
 	return r
 }
 
-// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in, ge, gt, le, lt, ne, isnull, sw*  **name**: *co, eq, in, sw, ge, gt, ne, isnull*  **type**: *eq, in, ge, gt, ne, isnull, sw*  **owner.id**: *eq, in, ge, gt, le, lt, ne, isnull, sw*  **features**: *ca, co*  **created**: *eq, ge, gt, in, le, lt, ne, isnull, sw*  **modified**: *eq, ge, gt, in, le, lt, ne, isnull, sw*  **managementWorkgroup.id**: *eq, ge, gt, in, le, lt, ne, isnull, sw*  **description**: *eq, sw*  **authoritative**: *eq, ne, isnull*  **healthy**: *isnull*  **status**: *eq, in, ge, gt, le, lt, ne, isnull, sw*  **connectionType**: *eq, ge, gt, in, le, lt, ne, isnull, sw*  **connectorName**: *eq, ge, gt, in, ne, isnull, sw*  **category**: *co, eq, ge, gt, in, le, lt, ne, sw*
+// Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in, ge, gt, le, lt, ne, isnull, sw*  **name**: *co, eq, in, sw, ge, gt, ne, isnull*  **type**: *eq, in, ge, gt, ne, isnull, sw*  **owner.id**: *eq, in, ge, gt, le, lt, ne, isnull, sw*  **features**: *ca, co*  **created**: *eq, ge, gt, in, le, lt, ne, isnull, sw*  **modified**: *eq, ge, gt, in, le, lt, ne, isnull, sw*  **managementWorkgroup.id**: *eq, ge, gt, in, le, lt, ne, isnull, sw*  **description**: *eq, sw*  **authoritative**: *eq, ne, isnull*  **healthy**: *isnull*  **status**: *eq, in, ge, gt, le, lt, ne, isnull, sw*  **connectionType**: *eq, ge, gt, in, le, lt, ne, isnull, sw*  **connectorName**: *eq, ge, gt, in, ne, isnull, sw*  **category**: *co, eq, ge, gt, in, le, lt, ne, sw*
 func (r ApiListSourcesV1Request) Filters(filters string) ApiListSourcesV1Request {
 	r.filters = &filters
 	return r
 }
 
-// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **type, created, modified, name, owner.name, healthy, status, id, description, owner.id, accountCorrelationConfig.id, accountCorrelationConfig.name, managerCorrelationRule.type, managerCorrelationRule.id, managerCorrelationRule.name, authoritative, managementWorkgroup.id, connectorName, connectionType**
+// Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **type, created, modified, name, owner.name, healthy, status, id, description, owner.id, accountCorrelationConfig.id, accountCorrelationConfig.name, managerCorrelationRule.type, managerCorrelationRule.id, managerCorrelationRule.name, authoritative, managementWorkgroup.id, connectorName, connectionType**
 func (r ApiListSourcesV1Request) Sorters(sorters string) ApiListSourcesV1Request {
 	r.sorters = &sorters
 	return r
@@ -10292,7 +10717,7 @@ func (r ApiPutProvisioningPolicyV2Request) Execute() (*ProvisioningPolicyDtoV2, 
 /*
 PutProvisioningPolicyV2 Update provisioning policy by ID
 
-This end-point updates the provisioning policy with the specified ID on the specified source in Identity Security Cloud.
+This end-point updates the provisioning policy with the specified ID on the specified source in SailPoint Identity Security.
 Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning.
 Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/docs/extensibility/transforms/guides/transforms-in-provisioning-policies) for more information.
 
@@ -10703,7 +11128,7 @@ func (r ApiPutSourceDatasetV1Request) Execute() (*SourceDataset, *http.Response,
 /*
 PutSourceDatasetV1 Update source dataset (full)
 
-Use this API to replace a dataset on the specified source in Identity Security Cloud (ISC).
+Use this API to replace a dataset on the specified source in SailPoint Identity Security.
 
 
 Callers should round-trip the GET representation. `id` is required in the request body and must
@@ -10915,7 +11340,7 @@ func (r ApiPutSourceResourceV1Request) Execute() (*SourceDatasetResource, *http.
 /*
 PutSourceResourceV1 Update source resource (full)
 
-Use this API to replace a resource on the specified source in Identity Security Cloud (ISC).
+Use this API to replace a resource on the specified source in SailPoint Identity Security.
 
 
 After creation, schema attribute edits should be made through the source schema APIs. Connectors
@@ -11311,7 +11736,7 @@ func (r ApiPutSourceV1Request) Execute() (*Source, *http.Response, error) {
 /*
 PutSourceV1 Update source (full)
 
-Use this API to update a source in Identity Security Cloud (ISC), using a full object representation. This means that when you use this API, it completely replaces the existing source configuration.
+Use this API to update a source in SailPoint Identity Security, using a full object representation. This means that when you use this API, it completely replaces the existing source configuration.
 
 These fields are immutable, so they cannot be changed:
 
@@ -11560,6 +11985,223 @@ func (a *SourcesAPIService) SearchResourceObjectsV1Execute(r ApiSearchResourceOb
 	}
 	// body params
 	localVarPostBody = r.resourceObjectsRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v ListSourcesV1401Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v ListSourcesV1429Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiStartSourceResourceCorrelationReprocessV1Request struct {
+	ctx context.Context
+	ApiService *SourcesAPIService
+	sourceId string
+	resourceId string
+	type_ *string
+	xSailPointExperimental *string
+}
+
+// Kind of correlation to reprocess. &#x60;OWNER_CORRELATION&#x60; re-runs owner correlation.
+func (r ApiStartSourceResourceCorrelationReprocessV1Request) Type_(type_ string) ApiStartSourceResourceCorrelationReprocessV1Request {
+	r.type_ = &type_
+	return r
+}
+
+// Use this header to enable this experimental API.
+func (r ApiStartSourceResourceCorrelationReprocessV1Request) XSailPointExperimental(xSailPointExperimental string) ApiStartSourceResourceCorrelationReprocessV1Request {
+	r.xSailPointExperimental = &xSailPointExperimental
+	return r
+}
+
+func (r ApiStartSourceResourceCorrelationReprocessV1Request) Execute() (*CorrelationReprocessStatus, *http.Response, error) {
+	return r.ApiService.StartSourceResourceCorrelationReprocessV1Execute(r)
+}
+
+/*
+StartSourceResourceCorrelationReprocessV1 Start resource correlation reprocess
+
+Use this API to re-run correlation for the machine objects aggregated from a resource on a source, without
+running a new aggregation. The run is asynchronous. Poll its progress with the `GET` method on the same path
+and `type`.
+
+
+Only one run of a given `type` can be in progress for a source resource at a time. Starting another run while one
+is in progress returns `400`. This API returns `404` when the source or resource does not exist.
+
+
+When machine identity security is not enabled for the tenant, or correlation reprocessing is not available,
+this API returns `404`.
+
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param sourceId Source ID.
+ @param resourceId Resource ID.
+ @return ApiStartSourceResourceCorrelationReprocessV1Request
+*/
+func (a *SourcesAPIService) StartSourceResourceCorrelationReprocessV1(ctx context.Context, sourceId string, resourceId string) ApiStartSourceResourceCorrelationReprocessV1Request {
+	return ApiStartSourceResourceCorrelationReprocessV1Request{
+		ApiService: a,
+		ctx: ctx,
+		sourceId: sourceId,
+		resourceId: resourceId,
+	}
+}
+
+// Execute executes the request
+//  @return CorrelationReprocessStatus
+func (a *SourcesAPIService) StartSourceResourceCorrelationReprocessV1Execute(r ApiStartSourceResourceCorrelationReprocessV1Request) (*CorrelationReprocessStatus, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *CorrelationReprocessStatus
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.StartSourceResourceCorrelationReprocessV1")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/sources/v1/{sourceId}/resources/{resourceId}/reprocess-correlations"
+	localVarPath = strings.Replace(localVarPath, "{"+"sourceId"+"}", url.PathEscape(parameterValueToString(r.sourceId, "sourceId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"resourceId"+"}", url.PathEscape(parameterValueToString(r.resourceId, "resourceId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	
+	if r.xSailPointExperimental == nil {
+		headerxSailPointExperimental := "true"
+		r.xSailPointExperimental = &headerxSailPointExperimental
+	}
+	
+	if r.type_ == nil {
+		return localVarReturnValue, nil, reportError("type_ is required and must be specified")
+	}
+	
+	if r.xSailPointExperimental == nil {
+		headerxSailPointExperimental := "true"
+		r.xSailPointExperimental = &headerxSailPointExperimental
+	}
+	
+	if r.xSailPointExperimental == nil {
+		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
+	}
+
+	parameterAddToHeaderOrQuery(localVarQueryParams, "type", r.type_, "form", "")
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -14310,7 +14952,7 @@ type ApiUpdateSourceV1Request struct {
 	jsonPatchOperation *[]JsonPatchOperation
 }
 
-// A list of account update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Any password changes are submitted as plain-text and encrypted upon receipt in Identity Security Cloud (ISC).
+// A list of account update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Any password changes are submitted as plain-text and encrypted upon receipt in SailPoint Identity Security.
 func (r ApiUpdateSourceV1Request) JsonPatchOperation(jsonPatchOperation []JsonPatchOperation) ApiUpdateSourceV1Request {
 	r.jsonPatchOperation = &jsonPatchOperation
 	return r
@@ -14323,7 +14965,7 @@ func (r ApiUpdateSourceV1Request) Execute() (*Source, *http.Response, error) {
 /*
 UpdateSourceV1 Update source (partial)
 
-Use this API to partially update a source in Identity Security Cloud (ISC), using a list of patch operations according to the
+Use this API to partially update a source in SailPoint Identity Security, using a list of patch operations according to the
 [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 
 These fields are immutable, so they cannot be changed:

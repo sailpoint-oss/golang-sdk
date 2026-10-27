@@ -3,7 +3,7 @@ info:
   contact:
     name: Developer Relations
     url: https://developer.sailpoint.com/discuss/api-help
-  description: "Use these APIs to interact with the Identity Security Cloud platform\
+  description: "Use these APIs to interact with the SailPoint Identity Security platform\
     \ to achieve repeatable, automated processes with greater scalability. We encourage\
     \ you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss\
     \ to connect with other developers using our APIs."
@@ -11,7 +11,7 @@ info:
     name: MIT
     url: https://opensource.org/licenses/MIT
   termsOfService: https://developer.sailpoint.com/discuss/tos
-  title: Identity Security Cloud API - Triggers
+  title: SailPoint Identity Security API - Triggers
   version: v1
 servers:
 - description: This is the production API server.
@@ -31,7 +31,7 @@ security:
   - sp:scopes:all
 tags:
 - description: |
-    Event Triggers provide real-time updates to changes in Identity Security Cloud so you can take action as soon as an event occurs, rather than poll an API endpoint for updates. Identity Security Cloud provides a user interface within the admin console to create and manage trigger subscriptions.  These endpoints allow for programatically creating and managing trigger subscriptions.
+    Event Triggers provide real-time updates to changes in SailPoint Identity Security so you can take action as soon as an event occurs, rather than poll an API endpoint for updates. SailPoint Identity Security provides a user interface within the admin console to create and manage trigger subscriptions.  These endpoints allow for programatically creating and managing trigger subscriptions.
 
     There are two types of event triggers:
       * `FIRE_AND_FORGET`: This trigger type will send a payload to each subscriber without needing a response.  Each trigger of this type has a limit of **50 subscriptions**.
@@ -71,7 +71,7 @@ paths:
       parameters:
       - description: |-
           Max number of results to return.
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
         example: 250
         explode: true
         in: query
@@ -86,7 +86,7 @@ paths:
         style: form
       - description: |-
           Offset into the full result set. Usually specified with *limit* to paginate through the results.
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
         example: 0
         explode: true
         in: query
@@ -103,7 +103,7 @@ paths:
 
           Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
 
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
         example: true
         explode: true
         in: query
@@ -114,7 +114,7 @@ paths:
           type: boolean
         style: form
       - description: |-
-          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
+          Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)
 
           Filtering is supported for the following fields and operators:
 
@@ -128,7 +128,7 @@ paths:
           type: string
         style: form
       - description: |-
-          Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
+          Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)
 
           Sorting is supported for the following fields: **id, name**
         example: name
@@ -222,7 +222,7 @@ paths:
       parameters:
       - description: |-
           Max number of results to return.
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
         example: 250
         explode: true
         in: query
@@ -237,7 +237,7 @@ paths:
         style: form
       - description: |-
           Offset into the full result set. Usually specified with *limit* to paginate through the results.
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
         example: 0
         explode: true
         in: query
@@ -254,7 +254,7 @@ paths:
 
           Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
 
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
         example: true
         explode: true
         in: query
@@ -265,7 +265,7 @@ paths:
           type: boolean
         style: form
       - description: |-
-          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
+          Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)
 
           Filtering is supported for the following fields and operators:
 
@@ -283,7 +283,7 @@ paths:
           type: string
         style: form
       - description: |-
-          Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
+          Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)
 
           Sorting is supported for the following fields: **triggerId, triggerName**
         example: triggerName
@@ -1039,7 +1039,7 @@ paths:
       parameters:
       - description: |-
           Max number of results to return.
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
         example: 250
         explode: true
         in: query
@@ -1054,7 +1054,7 @@ paths:
         style: form
       - description: |-
           Offset into the full result set. Usually specified with *limit* to paginate through the results.
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
         example: 0
         explode: true
         in: query
@@ -1071,7 +1071,7 @@ paths:
 
           Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
 
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
         example: true
         explode: true
         in: query
@@ -1082,7 +1082,7 @@ paths:
           type: boolean
         style: form
       - description: |-
-          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
+          Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)
 
           Filtering is supported for the following fields and operators:
 
@@ -1098,7 +1098,7 @@ paths:
           type: string
         style: form
       - description: |-
-          Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
+          Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)
 
           Sorting is supported for the following fields: **triggerId, subscriptionName, created, completed**
         example: created
@@ -1391,7 +1391,7 @@ components:
     limit:
       description: |-
         Max number of results to return.
-        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
       example: 250
       explode: true
       in: query
@@ -1407,7 +1407,7 @@ components:
     offset:
       description: |-
         Offset into the full result set. Usually specified with *limit* to paginate through the results.
-        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
       example: 0
       explode: true
       in: query
@@ -1425,7 +1425,7 @@ components:
 
         Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
 
-        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
       example: true
       explode: true
       in: query
@@ -4129,9 +4129,9 @@ components:
           type: string
         approver:
           description: "Name of the subscribing service approving the request.  This\
-            \ doesn't normally have to be the name of an existing identity in ISC,\
-            \ but it does if you have an active subscription to the [Access Request\
-            \ Decision trigger](https://developer.sailpoint.com/docs/extensibility/event-triggers/triggers/access-request-decision).\
+            \ doesn't normally have to be the name of an existing identity in SailPoint\
+            \ Identity Security, but it does if you have an active subscription to\
+            \ the [Access Request Decision trigger](https://developer.sailpoint.com/docs/extensibility/event-triggers/triggers/access-request-decision).\
             \ If you don't provide the `username` of an existing identity in your\
             \ tenant, your Access Request Decision subscriptions will never trigger."
           example: AcmeCorpExternalIntegration
@@ -4150,7 +4150,7 @@ components:
           format: date-time
           type: string
         tenantId:
-          description: ISC tenant's unique identifier.
+          description: SailPoint Identity Security tenant's unique identifier.
           example: 2c9180845d1edece015d27a9717c3e19
           type: string
         formInstanceId:
@@ -6795,7 +6795,7 @@ x-webhooks:
       summary: Account aggregation completed
       operationId: accountAggregationCompletedEvent
       description: |-
-        This event trigger fires after a source aggregation has either succeeded or failed in collecting source accounts but before Identity Security Cloud (ISC) processes the aggregation.
+        This event trigger fires after a source aggregation has either succeeded or failed in collecting source accounts but before SailPoint Identity Security processes the aggregation.
         This is a `FIRE_AND_FORGET` event trigger.  You can have a maximum of 50 subscriptions for this trigger. For more information about this event trigger, refer to [Account Aggregation Completed](https://developer.sailpoint.com/docs/extensibility/event-triggers/triggers/account-aggregation-completed).
       tags:
       - Triggers
@@ -6813,7 +6813,7 @@ x-webhooks:
       summary: Accounts collected for aggregation
       operationId: accountsCollectedForAggregationEvent
       description: |-
-        This event trigger fires when Identity Security Cloud has gathered the accounts on a source and is prepared to aggregate them.
+        This event trigger fires when SailPoint Identity Security has gathered the accounts on a source and is prepared to aggregate them.
         This trigger occurs after the accounts have been collected from the source but before the aggregation processing begins.
         This is a `FIRE_AND_FORGET` event trigger.  You can have a maximum of 50 subscriptions for this trigger.
       tags:
@@ -6832,7 +6832,7 @@ x-webhooks:
       summary: Account created
       operationId: accountCreatedEvent
       description: |-
-        This event trigger fires when a new account is created in Identity Security Cloud.
+        This event trigger fires when a new account is created in SailPoint Identity Security.
         Accounts can be created via aggregations or provisioning, including when entitlements are added or removed.
         You could use this event trigger to fire a Workflow that notifies a source owner when an account is created.
         See [Aggregating Accounts](https://documentation.sailpoint.com/saas/help/accounts/index.html#aggregating-accounts) and [Configuring Source Account Provisioning](https://documentation.sailpoint.com/saas/help/provisioning/create_profile.html) for more information about the scenarios that lead to account creation.
@@ -6853,7 +6853,7 @@ x-webhooks:
       summary: Account deleted
       operationId: accountDeletedEvent
       description: |-
-        This event trigger fires when an account is deleted in Identity Security Cloud.
+        This event trigger fires when an account is deleted in SailPoint Identity Security.
         Accounts can be deleted via aggregations or provisioning.
         You could use this event trigger to fire a Workflow that takes additional actions after a privileged account has been deleted.
         See [Aggregating Accounts](https://documentation.sailpoint.com/saas/help/accounts/index.html#aggregating-accounts) and [Configuring Source Account Provisioning](https://documentation.sailpoint.com/saas/help/provisioning/create_profile.html) for more information about the scenarios that lead to account deletion.
@@ -6874,7 +6874,7 @@ x-webhooks:
       summary: Account updated
       operationId: accountUpdatedEvent
       description: |-
-        This event trigger fires when an account is updated in Identity Security Cloud.
+        This event trigger fires when an account is updated in SailPoint Identity Security.
         Accounts can be updated via aggregations or provisioning, including when entitlements are added or removed.
         You could use this event trigger to fire a Workflow that takes additional actions after a new entitlement has been provisioned to a privileged account.
         See [Aggregating Accounts](https://documentation.sailpoint.com/saas/help/accounts/index.html#aggregating-accounts) and [Configuring Source Account Provisioning](https://documentation.sailpoint.com/saas/help/provisioning/create_profile.html) for more information about the scenarios that lead to account updates.
@@ -6967,7 +6967,7 @@ x-webhooks:
       summary: Form submitted
       operationId: formSubmittedEvent
       description: |-
-        This event trigger fires after a user has submitted a [custom form](https://documentation.sailpoint.com/saas/help/forms/index.html) in Identity Security Cloud (ISC).
+        This event trigger fires after a user has submitted a [custom form](https://documentation.sailpoint.com/saas/help/forms/index.html) in SailPoint Identity Security.
         A typical use case for this trigger is to immediately take actions based on the data in the submitted form.
         This is a `FIRE_AND_FORGET` event trigger.  You can have a maximum of 50 subscriptions for this trigger. For more information about this event trigger, refer to [Form Submitted](https://developer.sailpoint.com/docs/extensibility/event-triggers/triggers/form-submitted).
       tags:
@@ -6986,7 +6986,7 @@ x-webhooks:
       summary: Identity attributes changed
       operationId: identityAttributesChangedEvent
       description: |-
-        This event trigger fires when Identity Security Cloud (ISC) detects an identity attribute change.  ISC identity attribute changes occur when account attributes aggregated from an authoritative source differ from an identity's current attributes during an identity refresh.
+        This event trigger fires when SailPoint Identity Security detects an identity attribute change.  SailPoint Identity Security identity attribute changes occur when account attributes aggregated from an authoritative source differ from an identity's current attributes during an identity refresh.
         This is a `FIRE_AND_FORGET` event trigger.  You can have a maximum of 50 subscriptions for this trigger. For more information about this event trigger, refer to [Identity Attributes Changed](https://developer.sailpoint.com/docs/extensibility/event-triggers/triggers/identity-attribute-changed).
       tags:
       - Triggers
@@ -7004,7 +7004,7 @@ x-webhooks:
       summary: Identity created
       operationId: identityCreatedEvent
       description: |-
-        This event trigger fires when Identity Security Cloud (ISC) detects a new identity during an aggregation and refresh from an authoritative source. ISC detects a new identity when it finds an account from an authoritative source that isn't correlated to an existing identity.
+        This event trigger fires when SailPoint Identity Security detects a new identity during an aggregation and refresh from an authoritative source. SailPoint Identity Security detects a new identity when it finds an account from an authoritative source that isn't correlated to an existing identity.
         This is a `FIRE_AND_FORGET` event trigger.  You can have a maximum of 50 subscriptions for this trigger. For more information about this event trigger, refer to [Identity Created](https://developer.sailpoint.com/docs/extensibility/event-triggers/triggers/identity-created).
       tags:
       - Triggers
@@ -7022,11 +7022,11 @@ x-webhooks:
       summary: Machine Identity Created
       operationId: machineIdentityCreatedEvent
       description: "This event trigger fires when a new machine identity is created\
-        \ in Identity Security Cloud.\nMachine identities can be created via the UI,\
-        \ endpoint, or aggregated. Machine identities can also be created via machine\
-        \ account to machine account mappings.\nYou could use this event trigger to\
-        \ fire a Workflow that discovers machine identity owners when a machine identity\
-        \ is created.\nSee [Managing Application Identities](https://documentation.sailpoint.com/saas/help/machine/identity.html),\
+        \ in SailPoint Identity Security.\nMachine identities can be created via the\
+        \ UI, endpoint, or aggregated. Machine identities can also be created via\
+        \ machine account to machine account mappings.\nYou could use this event trigger\
+        \ to fire a Workflow that discovers machine identity owners when a machine\
+        \ identity is created.\nSee [Managing Application Identities](https://documentation.sailpoint.com/saas/help/machine/identity.html),\
         \  [Managing AI Agents](https://documentation.sailpoint.com/saas/help/agent/agent_mgmt.html#updating-ai-agents),\
         \  [Aggregating AI Agents](https://documentation.sailpoint.com/saas/help/agent/agent_aggregations.html)\
         \ or  [Mapping Machine Account Attributes](https://documentation.sailpoint.com/saas/help/machine/account_configuration.html#mapping-machine-account-attributes)\
@@ -7052,7 +7052,7 @@ x-webhooks:
       summary: Machine Identity Updated
       operationId: machineIdentityUpdatedEvent
       description: |-
-        This event trigger fires when a machine identity is updated in Identity Security Cloud.
+        This event trigger fires when a machine identity is updated in SailPoint Identity Security.
         Machine identities can be updated via the UI, endpoint, or aggregations.
         You could use this event trigger to fire a Workflow that notifies machine identity owners when a machine identity's owner list changes.
         See [Managing Application Identities](https://documentation.sailpoint.com/saas/help/machine/identity.html),  [Managing AI Agents](https://documentation.sailpoint.com/saas/help/agent/agent_mgmt.html#updating-ai-agents) or  [Aggregating AI Agents](https://documentation.sailpoint.com/saas/help/agent/agent_aggregations.html)  for more information about the scenarios that lead to machine identity updates.
@@ -7074,7 +7074,7 @@ x-webhooks:
       summary: Machine Identity Deleted
       operationId: machineIdentityDeletedEvent
       description: |-
-        This event trigger fires when a machine identity is deleted in Identity Security Cloud.
+        This event trigger fires when a machine identity is deleted in SailPoint Identity Security.
         Machine identities can be deleted via the UI, endpoint, or aggregations. Machine identities can also be auto-deleted when all account correlations to the machine identity are removed.
         You could use this event trigger to fire a Workflow that notifies machine identity owners when a machine identity is decommissioned.
         See [Managing Application Identities](https://documentation.sailpoint.com/saas/help/machine/identity.html),  [Managing AI Agents](https://documentation.sailpoint.com/saas/help/agent/agent_mgmt.html#updating-ai-agents),  [Aggregating AI Agents](https://documentation.sailpoint.com/saas/help/agent/agent_aggregations.html),  [Mapping Machine Account Attributes](https://documentation.sailpoint.com/saas/help/machine/account_configuration.html#mapping-machine-account-attributes)  for more information about the scenarios that lead to machine identity deletion.
@@ -7095,7 +7095,7 @@ x-webhooks:
     post:
       summary: Native change account created
       operationId: nativeChangeAccountCreatedEvent
-      description: "This event trigger fires when Identity Security Cloud (ISC) aggregates\
+      description: "This event trigger fires when SailPoint Identity Security aggregates\
         \ data from an external source and detects that a new account exists on the\
         \ source. The external source must meet these criteria for you to receive\
         \ this type of event:\n  * Native Change Detection (NCD) is enabled.\n  *\
@@ -7123,7 +7123,7 @@ x-webhooks:
     post:
       summary: Native change account deleted
       operationId: nativeChangeAccountDeletedEvent
-      description: "This event trigger fires when Identity Security Cloud (ISC) aggregates\
+      description: "This event trigger fires when SailPoint Identity Security aggregates\
         \ data from an external source and detects that an account has been deleted\
         \ from the source. The external source must meet these criteria for you to\
         \ receive this type of event:\n  * Native Change Detection (NCD) is enabled.\n\
@@ -7152,7 +7152,7 @@ x-webhooks:
     post:
       summary: Native change account updated
       operationId: nativeChangeAccountUpdatedEvent
-      description: "This event trigger fires when Identity Security Cloud (ISC) aggregates\
+      description: "This event trigger fires when SailPoint Identity Security aggregates\
         \ data from an external source and detects that an account has been updated\
         \ on the source. The external source must meet these criteria for you to receive\
         \ this type of event:\n  * Native Change Detection (NCD) is enabled.\n  *\
@@ -7182,7 +7182,7 @@ x-webhooks:
       summary: Outlier detected
       operationId: outlierDetectedEvent
       description: |-
-        This event trigger fires when Identity Security Cloud (ISC) detects that identities have unusual access relative their peers. ISC calculates outliers daily, flags the outliers, and notifies the trigger's subscribers when it detects them.
+        This event trigger fires when SailPoint Identity Security detects that identities have unusual access relative their peers. SailPoint Identity Security calculates outliers daily, flags the outliers, and notifies the trigger's subscribers when it detects them.
         These are the requirements to use the trigger:
           * Your organization must have Access Insights, which it needs to access Identity Outliers.
           * Your organization must have at a configured source that it has loaded account data from.
@@ -7204,24 +7204,24 @@ x-webhooks:
     post:
       summary: Provisioning completed
       operationId: provisioningCompletedEvent
-      description: "This event trigger fires after Identity Security Cloud (ISC) provisions\
+      description: "This event trigger fires after SailPoint Identity Security provisions\
         \ access to an account.  This trigger provides organizations with a flexible\
         \ way to extend the provisioning workflow after an identity's access has changed\
-        \ within ISC. \nThese are the requirements to use the trigger:\n  * An oAuth\
-        \ client must be configured with the `ORG_ADMIN` authority.\n  * The organization\
-        \ has enabled the `ARSENAL_ALLOW_POSTPROVISIONING_TRIGGERS` feature flag.\n\
-        \  * Connectors are configured for provisioning into the target applications.\n\
-        \  * The organization is configured for automated provisioning. Different\
-        \ event contexts require different setups. For more information about these\
-        \ setups, refer to [Provisioning Completed](https://developer.sailpoint.com/docs/extensibility/event-triggers/triggers/provisioning-completed).\n\
+        \ within SailPoint Identity Security. \nThese are the requirements to use\
+        \ the trigger:\n  * An oAuth client must be configured with the `ORG_ADMIN`\
+        \ authority.\n  * The organization has enabled the `ARSENAL_ALLOW_POSTPROVISIONING_TRIGGERS`\
+        \ feature flag.\n  * Connectors are configured for provisioning into the target\
+        \ applications.\n  * The organization is configured for automated provisioning.\
+        \ Different event contexts require different setups. For more information\
+        \ about these setups, refer to [Provisioning Completed](https://developer.sailpoint.com/docs/extensibility/event-triggers/triggers/provisioning-completed).\n\
         \nTo provision access to a target application, the source's connector must\
         \ support these features: \n  * `ENABLE`: The ability to enable or disable\
         \ accounts.\n  * `UNLOCK`: The ability to lock or unlock accounts.\n  * `PROVISIONING`:\
         \ The ability to write to accounts.\n  * `PASSWORD`: The ability to update\
         \ account passwords.\n\nFor a list of supported connectors and features, refer\
-        \ to [Identity Security Cloud Connectors](https://documentation.sailpoint.com/connectors/isc/landingpages/help/landingpages/isc_landing.html).\
-        \ For more information about configuring sources for provisioning in ISC,\
-        \ refer to [Configuring Source Account Provisioning](https://documentation.sailpoint.com/saas/help/provisioning/create_profile.html).\n\
+        \ to [SailPoint Identity Security Connectors](https://documentation.sailpoint.com/connectors/isc/landingpages/help/landingpages/isc_landing.html).\
+        \ For more information about configuring sources for provisioning in SailPoint\
+        \ Identity Security, refer to [Configuring Source Account Provisioning](https://documentation.sailpoint.com/saas/help/provisioning/create_profile.html).\n\
         This is a `FIRE_AND_FORGET` event trigger.  You can have a maximum of 50 subscriptions\
         \ for this trigger. For more information about this event trigger, refer to\
         \ [Provisioning Completed](https://developer.sailpoint.com/docs/extensibility/event-triggers/triggers/provisioning-completed)."
@@ -7240,19 +7240,19 @@ x-webhooks:
     post:
       summary: Scheduled search
       operationId: scheduledSearchEvent
-      description: "This event trigger fires after Identity Security Cloud (ISC) generates\
-        \ a report from a saved search. \nIn ISC, users can subscribe to saved searches\
-        \ to receive an email report generated by the saved search. They can then\
-        \ set a schedule for when those saved searches generate reports, such as daily\
-        \ at 6:00 GMT.  The trigger can notify an external HTTP application that ISC\
-        \ has generated a report from a saved search and the report is ready to be\
-        \ processed. \nThese are some typical use cases for the trigger:\n  * Perform\
-        \ continous checks for Separation of Duties (SOD) violations, for quality\
-        \ control.\n  * Respond to upcoming Joiner-Mover-Leaver (JML) scenarios, such\
-        \ as deprovisioning access before an employee's separation date. \n\nThis\
-        \ is a `FIRE_AND_FORGET` event trigger.  You can have a maximum of 50 subscriptions\
-        \ for this trigger. For more information about this event trigger, refer to\
-        \ [Scheduled Search](https://developer.sailpoint.com/docs/extensibility/event-triggers/triggers/scheduled-search)."
+      description: "This event trigger fires after SailPoint Identity Security generates\
+        \ a report from a saved search. \nIn SailPoint Identity Security, users can\
+        \ subscribe to saved searches to receive an email report generated by the\
+        \ saved search. They can then set a schedule for when those saved searches\
+        \ generate reports, such as daily at 6:00 GMT.  The trigger can notify an\
+        \ external HTTP application that SailPoint Identity Security has generated\
+        \ a report from a saved search and the report is ready to be processed. \n\
+        These are some typical use cases for the trigger:\n  * Perform continous checks\
+        \ for Separation of Duties (SOD) violations, for quality control.\n  * Respond\
+        \ to upcoming Joiner-Mover-Leaver (JML) scenarios, such as deprovisioning\
+        \ access before an employee's separation date. \n\nThis is a `FIRE_AND_FORGET`\
+        \ event trigger.  You can have a maximum of 50 subscriptions for this trigger.\
+        \ For more information about this event trigger, refer to [Scheduled Search](https://developer.sailpoint.com/docs/extensibility/event-triggers/triggers/scheduled-search)."
       tags:
       - Triggers
       security:
@@ -7356,8 +7356,8 @@ x-webhooks:
     post:
       summary: Source created
       operationId: sourceCreatedEvent
-      description: "This event trigger fires when a new source is created in Identity\
-        \ Security Cloud (ISC), by either the [API](https://developer.sailpoint.com/docs/api/v2024/create-source)\
+      description: "This event trigger fires when a new source is created in SailPoint\
+        \ Identity Security, by either the [API](https://developer.sailpoint.com/docs/api/create-source-v-1)\
         \ or the [Admin UI](https://documentation.sailpoint.com/saas/help/accounts/loading_data.html#configuring-a-source).\
         \ \nThese are some typical use cases for the trigger:\n  * Provide evidence\
         \ to auditors to show that connector logic and sources are maintained by proper\
@@ -7381,8 +7381,8 @@ x-webhooks:
     post:
       summary: Source deleted
       operationId: sourceDeletedEvent
-      description: "This event trigger fires when a new source is deleted from Identity\
-        \ Security Cloud (ISC), by either the [API](https://developer.sailpoint.com/docs/api/v2024/delete-source)\
+      description: "This event trigger fires when a new source is deleted from SailPoint\
+        \ Identity Security, by either the [API](https://developer.sailpoint.com/docs/api/delete-source-v-1)\
         \ or the [Admin UI](https://documentation.sailpoint.com/saas/help/sources/index.html#deleting-a-source).\
         \ \nThese are some typical use cases for the trigger:\n  * Provide evidence\
         \ to auditors to show that connector logic and sources are maintained by proper\
@@ -7406,7 +7406,7 @@ x-webhooks:
       summary: Source updated
       operationId: sourceUpdatedEvent
       description: "This event trigger fires when a new source's configuration is\
-        \ changed in Identity Security Cloud (ISC).\nThese are some typical use cases\
+        \ changed in SailPoint Identity Security.\nThese are some typical use cases\
         \ for the trigger:\n  * Provide evidence to auditors to show that connector\
         \ logic and sources are maintained by proper change control processes and\
         \ aren't vulnerable to outside manipulation. \n  * Trigger review for an updated\
@@ -7429,7 +7429,7 @@ x-webhooks:
       summary: Va cluster status change
       operationId: vaClusterStatusChangeEvent
       description: |-
-        This event trigger fires when Identity Security Cloud (ISC) runs a health check on a virtual appliance (VA) cluster, and the cluster's health status is different from the previous health check, such as a change from healthy to unhealthy or the opposite.  VA cluster health checks run every 30 minutes. Users can use this trigger to monitor all their VA clusters' health status changes.
+        This event trigger fires when SailPoint Identity Security runs a health check on a virtual appliance (VA) cluster, and the cluster's health status is different from the previous health check, such as a change from healthy to unhealthy or the opposite.  VA cluster health checks run every 30 minutes. Users can use this trigger to monitor all their VA clusters' health status changes.
         These are some typical use cases for the trigger:
           * Create real-time health dashboards for VA clusters.
           * Notify an admin or system to take appropriate actions when a VA cluster's health status changes.
@@ -7451,11 +7451,11 @@ x-webhooks:
       summary: Identity deleted
       operationId: identityDeletedEvent
       description: "This event trigger fires after an identity has been completely\
-        \ deleted from Identity Security Cloud (ISC). ISC only deletes an identity\
-        \ when it meets all these requirements: \n  * It has no correlated accounts.\n\
-        \  * It's not an owner of a role, access profile, application, source, or\
-        \ task result. \n  * It's not an owner or requester of a work item.\n  * It's\
-        \ not a protected account or manager.\n  * It has no assigned capabilities,\
+        \ deleted from SailPoint Identity Security. SailPoint Identity Security only\
+        \ deletes an identity when it meets all these requirements: \n  * It has no\
+        \ correlated accounts.\n  * It's not an owner of a role, access profile, application,\
+        \ source, or task result. \n  * It's not an owner or requester of a work item.\n\
+        \  * It's not a protected account or manager.\n  * It has no assigned capabilities,\
         \ such as being an assigned certification reviewer.\n  * It's not involved\
         \ in any active certification as a target (its access is not being certified).\n\
         \nThese are some typical use cases for the trigger:\n  * Notify an administrator\

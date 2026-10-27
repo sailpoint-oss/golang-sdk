@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - Machine Account Creation Request
+SailPoint Identity Security API - Machine Account Creation Request
 
 Testing MachineAccountCreationRequestAPIService
 
@@ -27,6 +27,30 @@ func Test_machine_account_creation_request_MachineAccountCreationRequestAPIServi
 		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.MachineAccountCreationRequestAPI.CreateMachineAccountRequestV1(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test MachineAccountCreationRequestAPIService CreateMachineAccountRequestV2", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.MachineAccountCreationRequestAPI.CreateMachineAccountRequestV2(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test MachineAccountCreationRequestAPIService CreateMachineAccountV2", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.MachineAccountCreationRequestAPI.CreateMachineAccountV2(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

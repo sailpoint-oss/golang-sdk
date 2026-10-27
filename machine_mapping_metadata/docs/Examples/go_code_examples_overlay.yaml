@@ -1,0 +1,68 @@
+- path: /machine-mapping-metadata/v1/target-account-attributes
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/machinemappingmetadata/methods/machine-mapping-metadata#get-machine-mapping-target-account-attributes-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.MachineMappingMetadataAPI.GetMachineMappingTargetAccountAttributesV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+          //resp, r, err := apiClient.MachineMappingMetadataAPI.GetMachineMappingTargetAccountAttributesV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `MachineMappingMetadataAPI.GetMachineMappingTargetAccountAttributesV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetMachineMappingTargetAccountAttributesV1`: TargetAttributes
+          fmt.Fprintf(os.Stdout, "Response from `MachineMappingMetadataAPI.GetMachineMappingTargetAccountAttributesV1`: %v\n", resp)
+        }
+- path: /machine-mapping-metadata/v1/target-identity-attributes
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/machinemappingmetadata/methods/machine-mapping-metadata#get-machine-mapping-target-identity-attributes-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.MachineMappingMetadataAPI.GetMachineMappingTargetIdentityAttributesV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+          //resp, r, err := apiClient.MachineMappingMetadataAPI.GetMachineMappingTargetIdentityAttributesV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `MachineMappingMetadataAPI.GetMachineMappingTargetIdentityAttributesV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetMachineMappingTargetIdentityAttributesV1`: TargetAttributes
+          fmt.Fprintf(os.Stdout, "Response from `MachineMappingMetadataAPI.GetMachineMappingTargetIdentityAttributesV1`: %v\n", resp)
+        }

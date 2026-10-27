@@ -3,7 +3,7 @@ info:
   contact:
     name: Developer Relations
     url: https://developer.sailpoint.com/discuss/api-help
-  description: "Use these APIs to interact with the Identity Security Cloud platform\
+  description: "Use these APIs to interact with the SailPoint Identity Security platform\
     \ to achieve repeatable, automated processes with greater scalability. We encourage\
     \ you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss\
     \ to connect with other developers using our APIs."
@@ -11,7 +11,7 @@ info:
     name: MIT
     url: https://opensource.org/licenses/MIT
   termsOfService: https://developer.sailpoint.com/discuss/tos
-  title: Identity Security Cloud API - Branding
+  title: SailPoint Identity Security API - Branding
   version: v1
 servers:
 - description: This is the production API server.
@@ -33,7 +33,7 @@ tags:
 - description: "Use this API to implement and customize branding functionality. \n\
     With this functionality in place, administrators can get and manage existing branding\
     \ items, and they can also create new branding items and configure them for use\
-    \ throughout Identity Security Cloud. \nThe Branding APIs provide administrators\
+    \ throughout SailPoint Identity Security. \nThe Branding APIs provide administrators\
     \ with a way to customize branding items. \nThis customization includes details\
     \ like their colors, logos, and other information. \nRefer to [Certifications](https://documentation.sailpoint.com/saas/user-help/certs/reviewing/index.html)\
     \ for more information about certifications.\n"

@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - IAI Role Mining
+SailPoint Identity Security API - IAI Role Mining
 
 Testing IAIRoleMiningAPIService
 

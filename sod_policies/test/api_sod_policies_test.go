@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - SOD Policies
+SailPoint Identity Security API - SOD Policies
 
 Testing SODPoliciesAPIService
 

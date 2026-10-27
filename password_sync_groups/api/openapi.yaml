@@ -3,7 +3,7 @@ info:
   contact:
     name: Developer Relations
     url: https://developer.sailpoint.com/discuss/api-help
-  description: "Use these APIs to interact with the Identity Security Cloud platform\
+  description: "Use these APIs to interact with the SailPoint Identity Security platform\
     \ to achieve repeatable, automated processes with greater scalability. We encourage\
     \ you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss\
     \ to connect with other developers using our APIs."
@@ -11,7 +11,7 @@ info:
     name: MIT
     url: https://opensource.org/licenses/MIT
   termsOfService: https://developer.sailpoint.com/discuss/tos
-  title: Identity Security Cloud API - Password Sync Groups
+  title: SailPoint Identity Security API - Password Sync Groups
   version: v1
 servers:
 - description: This is the production API server.
@@ -42,26 +42,26 @@ tags:
     A user can then update his or her password for ActiveDirectory, GitHub, Gmail,\
     \ Google Drive, and Google Calendar all at once, rather then updating each one\
     \ individually.\n\nThe following are required for administrators to create a password\
-    \ sync group in Identity Security Cloud: \n\n- At least two direct connect sources\
-    \ connected to Identity Security Cloud and configured for Password Management.\n\
-    \n- Each authentication source in a sync group must have at least one application.\
-    \ Refer to [Adding and Resetting Application Passwords](https://documentation.sailpoint.com/saas/help/pwd/adv_config.html#adding-and-resetting-application-passwords)\
+    \ sync group in SailPoint Identity Security: \n\n- At least two direct connect\
+    \ sources connected to SailPoint Identity Security and configured for Password\
+    \ Management.\n\n- Each authentication source in a sync group must have at least\
+    \ one application. Refer to [Adding and Resetting Application Passwords](https://documentation.sailpoint.com/saas/help/pwd/adv_config.html#adding-and-resetting-application-passwords)\
     \ for more information about adding applications to sources.\n\n- At least one\
     \ password policy. Refer to [Managing Password Policies](https://documentation.sailpoint.com/saas/help/pwd/pwd_policies/index.html)\
-    \ for more information about password policies. \n\nIn the Admin panel in Identity\
-    \ Security Cloud, administrators can use the Password Mgmt dropdown menu to select\
-    \ Sync Groups. \nTo create a sync group, administrators must provide a name, choose\
-    \ a password policy to be enforced across the sources in the sync group, and select\
-    \ the sources to include in the sync group. \n\nAdministrators can also delete\
-    \ sync groups in Identity Security Cloud, but they should know the following before\
-    \ they do: \n\n- Passwords related to the associated sources will become independent,\
-    \ so changing one will not change the others anymore. \n\n- Passwords for the\
-    \ sources' connected applications will also become independent. \n\n- Password\
-    \ policies assigned to the sync group are then assigned directly to the associated\
-    \ sources. \nTo change the password policy for a source, administrators must edit\
-    \ it directly. \n\nOnce the password sync group has been created, users can update\
-    \ the password for the group in Password Manager.\n\nRefer to [Managing Password\
-    \ Sync Groups](https://documentation.sailpoint.com/saas/help/pwd/sync_grps.html)\
+    \ for more information about password policies. \n\nIn the Admin panel in SailPoint\
+    \ Identity Security, administrators can use the Password Mgmt dropdown menu to\
+    \ select Sync Groups. \nTo create a sync group, administrators must provide a\
+    \ name, choose a password policy to be enforced across the sources in the sync\
+    \ group, and select the sources to include in the sync group. \n\nAdministrators\
+    \ can also delete sync groups in SailPoint Identity Security, but they should\
+    \ know the following before they do: \n\n- Passwords related to the associated\
+    \ sources will become independent, so changing one will not change the others\
+    \ anymore. \n\n- Passwords for the sources' connected applications will also become\
+    \ independent. \n\n- Password policies assigned to the sync group are then assigned\
+    \ directly to the associated sources. \nTo change the password policy for a source,\
+    \ administrators must edit it directly. \n\nOnce the password sync group has been\
+    \ created, users can update the password for the group in Password Manager.\n\n\
+    Refer to [Managing Password Sync Groups](https://documentation.sailpoint.com/saas/help/pwd/sync_grps.html)\
     \ for more information about password sync groups.\n"
   name: Password Sync Groups
 paths:
@@ -72,7 +72,7 @@ paths:
       parameters:
       - description: |-
           Max number of results to return.
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
         example: 250
         explode: true
         in: query
@@ -87,7 +87,7 @@ paths:
         style: form
       - description: |-
           Offset into the full result set. Usually specified with *limit* to paginate through the results.
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
         example: 0
         explode: true
         in: query
@@ -104,7 +104,7 @@ paths:
 
           Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
 
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
         example: true
         explode: true
         in: query
@@ -610,7 +610,7 @@ components:
     limit:
       description: |-
         Max number of results to return.
-        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
       example: 250
       explode: true
       in: query
@@ -626,7 +626,7 @@ components:
     offset:
       description: |-
         Offset into the full result set. Usually specified with *limit* to paginate through the results.
-        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
       example: 0
       explode: true
       in: query
@@ -644,7 +644,7 @@ components:
 
         Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
 
-        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
       example: true
       explode: true
       in: query

@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - Data Access Security
+SailPoint Identity Security API - Data Access Security
 
 Testing DataAccessSecurityAPIService
 

@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud API - Search Attribute Configuration
+SailPoint Identity Security API - Search Attribute Configuration
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the SailPoint Identity Security platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: v1
 */
@@ -352,13 +352,13 @@ type ApiGetSearchAttributeConfigV1Request struct {
 	offset *int32
 }
 
-// Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+// Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
 func (r ApiGetSearchAttributeConfigV1Request) Limit(limit int32) ApiGetSearchAttributeConfigV1Request {
 	r.limit = &limit
 	return r
 }
 
-// Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+// Offset into the full result set. Usually specified with *limit* to paginate through the results. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
 func (r ApiGetSearchAttributeConfigV1Request) Offset(offset int32) ApiGetSearchAttributeConfigV1Request {
 	r.offset = &offset
 	return r
@@ -371,7 +371,7 @@ func (r ApiGetSearchAttributeConfigV1Request) Execute() ([]SearchAttributeConfig
 /*
 GetSearchAttributeConfigV1 List extended search attributes
 
-Get a list of attribute/application attributes currently configured in Identity Security Cloud (ISC).
+Get a list of attribute/application attributes currently configured in SailPoint Identity Security.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetSearchAttributeConfigV1Request

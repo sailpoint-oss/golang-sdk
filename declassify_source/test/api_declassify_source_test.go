@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - Declassify Source
+SailPoint Identity Security API - Declassify Source
 
 Testing DeclassifySourceAPIService
 

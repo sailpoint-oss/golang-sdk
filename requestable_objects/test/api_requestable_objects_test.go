@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - Requestable Objects
+SailPoint Identity Security API - Requestable Objects
 
 Testing RequestableObjectsAPIService
 

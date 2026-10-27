@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud API - Entitlements
+SailPoint Identity Security API - Entitlements
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the SailPoint Identity Security platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: v1
 */
@@ -18,7 +18,7 @@ import (
 // checks if the Entitlementmetadatabulkupdatebyqueryrequest type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &Entitlementmetadatabulkupdatebyqueryrequest{}
 
-// Entitlementmetadatabulkupdatebyqueryrequest Request to bulk update Access Model Metadata on every entitlement matching a search query. Adding or replacing custom metadata requires a suite license.  For more information about the query object, refer to [V3 API Perform Search](https://developer.sailpoint.com/docs/api/v3/search-post).
+// Entitlementmetadatabulkupdatebyqueryrequest Request to bulk update Access Model Metadata on every entitlement matching a search query. Adding or replacing custom metadata requires a suite license.  For more information about the query object, refer to [V3 API Perform Search](https://developer.sailpoint.com/docs/api/search-post-v-1).
 type Entitlementmetadatabulkupdatebyqueryrequest struct {
 	// The search query selecting the entitlements to update.
 	Query map[string]interface{} `json:"query"`

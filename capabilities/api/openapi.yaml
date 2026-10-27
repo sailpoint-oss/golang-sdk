@@ -1,0 +1,1099 @@
+openapi: 3.0.1
+info:
+  contact:
+    name: Developer Relations
+    url: https://developer.sailpoint.com/discuss/api-help
+  description: "Use these APIs to interact with the Identity Security Cloud platform\
+    \ to achieve repeatable, automated processes with greater scalability. We encourage\
+    \ you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss\
+    \ to connect with other developers using our APIs."
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  termsOfService: https://developer.sailpoint.com/discuss/tos
+  title: Identity Security Cloud API - Capabilities
+  version: v1
+servers:
+- description: This is the production API server.
+  url: "https://{tenant}.api.identitynow.com"
+  variables:
+    tenant:
+      default: sailpoint
+      description: "This is the name of your tenant, typically your company's name."
+- description: This is the versioned API server.
+  url: "https://{apiUrl}"
+  variables:
+    apiUrl:
+      default: sailpoint.api.identitynow.com
+      description: This is the api url of your tenant
+security:
+- userAuth:
+  - sp:scopes:all
+tags:
+- description: |
+    Use this API to list, view, and update capabilities. A capability is something a machine identity such as an AI agent can use, for example an MCP server, a tool, a skill, a plugin, or a process, discovered from a connected source. You can update a capability's owners, description, and environment; the values discovered from the source are read-only.
+  name: Capabilities
+paths:
+  /capabilities/v1:
+    get:
+      description: |
+        This API returns a list of capabilities.
+
+
+        Source sub-admins only see capabilities on the sources they manage.
+
+
+        When Machine Identity Security is not enabled for the tenant, this API returns `404`. When the capabilities API is
+        not enabled for the tenant, this API returns `403`.
+      operationId: listCapabilitiesV1
+      parameters:
+      - description: |-
+          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
+
+          Filtering is supported for the following fields and operators:
+
+          **name**: *eq, in, sw*
+
+          **nativeIdentity**: *eq, in, sw*
+
+          **type**: *eq, in*
+
+          **environment**: *eq, in*
+
+          **datasetId**: *eq, in*
+
+          **resource.id**: *eq, in*
+
+          **source.id**: *eq, in*
+
+          **source.name**: *eq, in, sw*
+
+          **owners.primary.id**: *eq, in*
+
+          **owners.primary.name**: *eq, in, sw*
+
+          **owners.primaryIdentity.id**: *eq, in*
+
+          **owners.primaryIdentity.name**: *eq, in, sw*
+
+          **owners.secondaryIdentity.id**: *eq, in*
+
+          **owners.secondaryIdentity.name**: *eq, in, sw*
+
+          **owners.secondaryGovernanceGroup.id**: *eq, in*
+
+          **owners.secondaryGovernanceGroup.name**: *eq, in, sw*
+
+          **owners.governanceGroup.id**: *eq, in*
+
+          **owners.governanceGroup.name**: *eq, in, sw*
+
+          **created**: *gt, ge, lt, le*
+
+          **modified**: *gt, ge, lt, le*
+        example: type eq "MCP"
+        explode: true
+        in: query
+        name: filters
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: |-
+          Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
+
+          Sorting is supported for the following fields: **created, modified, name, type, source.id, source.name, resource.id, environment, datasetId, nativeIdentity, owners.primary.id, owners.primary.name, owners.primaryIdentity.id, owners.primaryIdentity.name, owners.secondaryIdentity.id, owners.secondaryIdentity.name, owners.secondaryGovernanceGroup.id, owners.secondaryGovernanceGroup.name, owners.governanceGroup.id, owners.governanceGroup.name**
+        example: name
+        explode: true
+        in: query
+        name: sorters
+        required: false
+        schema:
+          format: comma-separated
+          type: string
+        style: form
+      - description: |-
+          If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+          Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        example: true
+        explode: true
+        in: query
+        name: count
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+      - description: |-
+          Max number of results to return.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        example: 250
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          Offset into the full result set. Usually specified with *limit* to paginate through the results.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        example: 0
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+        style: form
+      - description: Use this header to enable this experimental API.
+        example: true
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Capability'
+                type: array
+          description: List of capabilities.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listCapabilitiesV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listCapabilitiesV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:mis-identity:read
+        - idn:mis-identity:manage
+      - applicationAuth:
+        - idn:mis-identity:read
+        - idn:mis-identity:manage
+      summary: List capabilities
+      tags:
+      - Capabilities
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+      - HELPDESK
+  /capabilities/v1/{id}:
+    get:
+      description: |
+        This API returns a single capability by its ID.
+
+
+        The ID must be a UUID; any other value returns `400`. When no capability exists for the ID, this API returns `404`.
+
+
+        When Machine Identity Security is not enabled for the tenant, this API returns `404`. When the capabilities API is
+        not enabled for the tenant, this API returns `403`.
+      operationId: getCapabilityV1
+      parameters:
+      - description: Capability ID.
+        example: 9b1c2d3e-4f5a-4b6c-8d7e-9f0a1b2c3d4e
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listCapabilitiesV1
+      - description: Use this header to enable this experimental API.
+        example: true
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Capability'
+          description: Capability object.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listCapabilitiesV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listCapabilitiesV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:mis-identity:read
+        - idn:mis-identity:manage
+      - applicationAuth:
+        - idn:mis-identity:read
+        - idn:mis-identity:manage
+      summary: Get capability
+      tags:
+      - Capabilities
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+      - HELPDESK
+    patch:
+      description: |
+        Use this API to update a capability using a JSON Patch payload.
+
+
+        Patchable fields are **description**, **environment**, and **owners**. A patch that targets any other field,
+        including the values discovered from the source, returns `400`.
+
+
+        `owners.primary` is a single IDENTITY reference. `owners.secondary` holds either up to ten IDENTITY references or
+        exactly one GOVERNANCE_GROUP reference, not both; any other combination returns `400`.
+
+
+        The ID must be a UUID; any other value returns `400`. When no capability exists for the ID, this API returns `404`.
+
+
+        When Machine Identity Security is not enabled for the tenant, this API returns `404`. When the capabilities API is
+        not enabled for the tenant, this API returns `403`.
+      operationId: updateCapabilityV1
+      parameters:
+      - description: Capability ID.
+        example: 9b1c2d3e-4f5a-4b6c-8d7e-9f0a1b2c3d4e
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listCapabilitiesV1
+      - description: Use this header to enable this experimental API.
+        example: true
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json-patch+json:
+            examples:
+              Replace capability description:
+                value:
+                - op: replace
+                  path: /description
+                  value: MCP server that exposes the ticketing tools
+              Replace capability environment:
+                value:
+                - op: replace
+                  path: /environment
+                  value: production
+              Replace capability owners:
+                value:
+                - op: replace
+                  path: /owners
+                  value:
+                    primary:
+                      type: IDENTITY
+                      id: 2c9180858082150f0180893dbaf44201
+                    secondary:
+                    - type: IDENTITY
+                      id: 2c9180858082150f0180893dbaf44202
+            schema:
+              items:
+                $ref: '#/components/schemas/JsonPatchOperation'
+              type: array
+        description: "A JSON of updated values [JSON Patch](https://tools.ietf.org/html/rfc6902)\
+          \ standard."
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Capability'
+          description: Updated capability object.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listCapabilitiesV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listCapabilitiesV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:mis-identity:manage
+      - applicationAuth:
+        - idn:mis-identity:manage
+      summary: Partial update of capability
+      tags:
+      - Capabilities
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+components:
+  parameters:
+    count:
+      description: |-
+        If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+        Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+        See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+      example: true
+      explode: true
+      in: query
+      name: count
+      required: false
+      schema:
+        default: false
+        type: boolean
+      style: form
+    limit:
+      description: |-
+        Max number of results to return.
+        See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+      example: 250
+      explode: true
+      in: query
+      name: limit
+      required: false
+      schema:
+        default: 250
+        format: int32
+        maximum: 250
+        minimum: 0
+        type: integer
+      style: form
+    offset:
+      description: |-
+        Offset into the full result set. Usually specified with *limit* to paginate through the results.
+        See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+      example: 0
+      explode: true
+      in: query
+      name: offset
+      required: false
+      schema:
+        default: 0
+        format: int32
+        minimum: 0
+        type: integer
+      style: form
+  responses:
+    "400":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponseDto'
+      description: Client Error - Returned if the request body is invalid.
+    "401":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/listCapabilitiesV1_401_response'
+      description: "Unauthorized - Returned if there is no authorization header, or\
+        \ if the JWT token is expired."
+    "403":
+      content:
+        application/json:
+          examples:
+            "403":
+              summary: An example of a 403 response object
+              value:
+                detailCode: 403 Forbidden
+                trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                messages:
+                - locale: en-US
+                  localeOrigin: DEFAULT
+                  text: The server understood the request but refuses to authorize
+                    it.
+          schema:
+            $ref: '#/components/schemas/ErrorResponseDto'
+      description: "Forbidden - Returned if the user you are running as, doesn't have\
+        \ access to this end-point."
+    "404":
+      content:
+        application/json:
+          examples:
+            "404":
+              summary: An example of a 404 response object
+              value:
+                detailCode: 404 Not found
+                trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                messages:
+                - locale: en-US
+                  localeOrigin: DEFAULT
+                  text: The server did not find a current representation for the target
+                    resource.
+          schema:
+            $ref: '#/components/schemas/ErrorResponseDto'
+      description: Not Found - returned if the request URL refers to a resource or
+        object that does not exist
+    "429":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/listCapabilitiesV1_429_response'
+      description: Too Many Requests - Returned in response to too many requests in
+        a given period of time - rate limited. The Retry-After header in the response
+        includes how long to wait before trying again.
+    "500":
+      content:
+        application/json:
+          examples:
+            "500":
+              summary: An example of a 500 response object
+              value:
+                detailCode: 500.0 Internal Fault
+                trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                messages:
+                - locale: en-US
+                  localeOrigin: DEFAULT
+                  text: An internal fault occurred.
+          schema:
+            $ref: '#/components/schemas/ErrorResponseDto'
+      description: Internal Server Error - Returned if there is an unexpected error.
+  schemas:
+    BaseCommonDto:
+      properties:
+        id:
+          description: System-generated unique ID of the Object
+          example: id12345
+          readOnly: true
+          type: string
+        name:
+          description: Name of the Object
+          example: aName
+          nullable: true
+          type: string
+        created:
+          description: Creation date of the Object
+          example: 2015-05-28T14:07:17Z
+          format: date-time
+          readOnly: true
+          type: string
+        modified:
+          description: Last modification date of the Object
+          example: 2015-05-28T14:07:17Z
+          format: date-time
+          readOnly: true
+          type: string
+      required:
+      - name
+      title: Base Common Dto
+      type: object
+    DtoType:
+      description: An enumeration of the types of DTOs supported within the IdentityNow
+        infrastructure.
+      enum:
+      - ACCOUNT_CORRELATION_CONFIG
+      - ACCESS_PROFILE
+      - ACCESS_REQUEST_APPROVAL
+      - ACCOUNT
+      - APPLICATION
+      - CAMPAIGN
+      - CAMPAIGN_FILTER
+      - CERTIFICATION
+      - CLUSTER
+      - CONNECTOR_SCHEMA
+      - ENTITLEMENT
+      - GOVERNANCE_GROUP
+      - IDENTITY
+      - IDENTITY_PROFILE
+      - IDENTITY_REQUEST
+      - MACHINE_IDENTITY
+      - LIFECYCLE_STATE
+      - PASSWORD_POLICY
+      - ROLE
+      - RULE
+      - SOD_POLICY
+      - SOURCE
+      - TAG
+      - TAG_CATEGORY
+      - TASK_RESULT
+      - REPORT_RESULT
+      - SOD_VIOLATION
+      - ACCOUNT_ACTIVITY
+      - WORKGROUP
+      example: IDENTITY
+      type: string
+    BaseReferenceDto:
+      properties:
+        type:
+          $ref: '#/components/schemas/DtoType'
+        id:
+          description: ID of the object to which this reference applies
+          example: 2c91808568c529c60168cca6f90c1313
+          type: string
+        name:
+          description: Human-readable display name of the object to which this reference
+            applies
+          example: William Wilson
+          type: string
+      title: Base Reference Dto
+      type: object
+    CapabilityResource:
+      description: The source resource a capability is derived from.
+      example:
+        features:
+        - PROVISIONING
+        name: ticketing-mcp
+        id: 8886e5e3-63d0-462f-a195-d98da885b8dc
+        type: mcp-server
+      properties:
+        id:
+          description: The source resource identifier.
+          example: 8886e5e3-63d0-462f-a195-d98da885b8dc
+          type: string
+        type:
+          description: The type of the source resource.
+          example: mcp-server
+          type: string
+        name:
+          description: The display name of the source resource.
+          example: ticketing-mcp
+          type: string
+        features:
+          description: The set of features supported by the source resource.
+          example:
+          - PROVISIONING
+          items:
+            type: string
+          type: array
+      title: Capability Resource
+      type: object
+    CapabilityOwners:
+      description: Owner configuration for a capability. A single primary (human IDENTITY)
+        owner plus additional owners that are either up to ten human (IDENTITY) references
+        or exactly one GOVERNANCE_GROUP reference - not both.
+      example:
+        secondary:
+        - id: 2c9180858082150f0180893dbaf44202
+          name: Jane Doe
+          type: IDENTITY
+        primary:
+          name: William Wilson
+          id: 2c91808568c529c60168cca6f90c1313
+          type: IDENTITY
+      properties:
+        primary:
+          $ref: '#/components/schemas/CapabilityOwners_primary'
+        secondary:
+          description: Additional owners. Entries are either up to ten human (IDENTITY)
+            references or exactly one GOVERNANCE_GROUP reference - not both. Governance-group
+            owners appear here with type GOVERNANCE_GROUP.
+          example:
+          - id: 2c9180858082150f0180893dbaf44202
+            name: Jane Doe
+            type: IDENTITY
+          items:
+            $ref: '#/components/schemas/BaseReferenceDto'
+          maxItems: 10
+          type: array
+      title: Capability Owners
+      type: object
+    Capability:
+      allOf:
+      - $ref: '#/components/schemas/BaseCommonDto'
+      - properties:
+          description:
+            description: Description of the capability.
+            example: MCP server that exposes the ticketing tools
+            type: string
+          type:
+            description: The capability type. UNDEFINED is returned when the source
+              does not report a known type.
+            enum:
+            - MCP
+            - TOOL
+            - SKILL
+            - PLUGIN
+            - PROCESS
+            - UNDEFINED
+            example: MCP
+            type: string
+          status:
+            description: The capability status reported by the source.
+            example: Active
+            type: string
+          nativeIdentity:
+            description: The capability's unique identifier on the source.
+            example: mcp-ticketing-01
+            type: string
+          environment:
+            description: The environment the capability belongs to.
+            example: production
+            type: string
+          source:
+            $ref: '#/components/schemas/Capability_allOf_source'
+          resource:
+            $ref: '#/components/schemas/CapabilityResource'
+          datasetId:
+            description: The ID of the source dataset the capability was retrieved
+              from.
+            example: 8886e5e3-63d0-462f-a195-d98da885b8dc
+            type: string
+          owners:
+            $ref: '#/components/schemas/CapabilityOwners'
+          attributes:
+            additionalProperties: true
+            description: A map of curated capability attributes.
+            example:
+              status: Active
+            type: object
+          connectorAttributes:
+            additionalProperties: true
+            description: A map of attributes sourced from the connector during aggregation.
+            example:
+              endpoint: https://mcp.example.com/ticketing
+            type: object
+          manuallyEdited:
+            default: false
+            description: Indicates if the capability has been manually edited.
+            example: true
+            type: boolean
+        type: object
+      description: "A capability, such as an MCP server or tool, discovered from a\
+        \ connected source."
+      example:
+        resource:
+          features:
+          - PROVISIONING
+          name: ticketing-mcp
+          id: 8886e5e3-63d0-462f-a195-d98da885b8dc
+          type: mcp-server
+        created: 2015-05-28T14:07:17Z
+        connectorAttributes:
+          endpoint: https://mcp.example.com/ticketing
+        description: MCP server that exposes the ticketing tools
+        owners:
+          secondary:
+          - id: 2c9180858082150f0180893dbaf44202
+            name: Jane Doe
+            type: IDENTITY
+          primary:
+            name: William Wilson
+            id: 2c91808568c529c60168cca6f90c1313
+            type: IDENTITY
+        source:
+          name: William Wilson
+          id: 2c91808568c529c60168cca6f90c1313
+          type: IDENTITY
+        type: MCP
+        nativeIdentity: mcp-ticketing-01
+        environment: production
+        name: aName
+        modified: 2015-05-28T14:07:17Z
+        datasetId: 8886e5e3-63d0-462f-a195-d98da885b8dc
+        attributes:
+          status: Active
+        id: id12345
+        status: Active
+        manuallyEdited: true
+      title: Capability
+      type: object
+    LocaleOrigin:
+      description: "An indicator of how the locale was selected. *DEFAULT* means the\
+        \ locale is the system default. *REQUEST* means the locale was selected from\
+        \ the request context (i.e., best match based on the *Accept-Language* header).\
+        \ Additional values may be added in the future without notice."
+      enum:
+      - DEFAULT
+      - REQUEST
+      - null
+      example: DEFAULT
+      nullable: true
+      type: string
+    ErrorMessageDto:
+      example:
+        localeOrigin: DEFAULT
+        text: The request was syntactically correct but its content is semantically
+          invalid.
+        locale: en-US
+      properties:
+        locale:
+          description: "The locale for the message text, a BCP 47 language tag."
+          example: en-US
+          nullable: true
+          type: string
+        localeOrigin:
+          $ref: '#/components/schemas/LocaleOrigin'
+        text:
+          description: Actual text of the error message in the indicated locale.
+          example: The request was syntactically correct but its content is semantically
+            invalid.
+          type: string
+      title: Error Message Dto
+      type: object
+    ErrorResponseDto:
+      example:
+        causes:
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        messages:
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        detailCode: 400.1 Bad Request Content
+        trackingId: e7eab60924f64aa284175b9fa3309599
+      properties:
+        detailCode:
+          description: Fine-grained error code providing more detail of the error.
+          example: 400.1 Bad Request Content
+          type: string
+        trackingId:
+          description: Unique tracking id for the error.
+          example: e7eab60924f64aa284175b9fa3309599
+          type: string
+        messages:
+          description: Generic localized reason for error
+          items:
+            $ref: '#/components/schemas/ErrorMessageDto'
+          type: array
+        causes:
+          description: Plain-text descriptive reasons to provide additional detail
+            to the text provided in the messages field
+          items:
+            $ref: '#/components/schemas/ErrorMessageDto'
+          type: array
+      title: Error Response Dto
+      type: object
+    JsonPatchOperation:
+      description: "A JSONPatch Operation as defined by [RFC 6902 - JSON Patch](https://tools.ietf.org/html/rfc6902)"
+      example:
+        op: replace
+        path: /description
+        value: New description
+      properties:
+        op:
+          description: The operation to be performed
+          enum:
+          - add
+          - remove
+          - replace
+          - move
+          - copy
+          - test
+          example: replace
+          type: string
+        path:
+          description: A string JSON Pointer representing the target path to an element
+            to be affected by the operation
+          example: /description
+          type: string
+        value:
+          $ref: '#/components/schemas/JsonPatchOperation_value'
+      required:
+      - op
+      - path
+      title: Json Patch Operation
+      type: object
+    listCapabilitiesV1_401_response:
+      example:
+        error: "JWT validation failed: JWT is expired"
+      properties:
+        error:
+          description: A message describing the error
+          example: "JWT validation failed: JWT is expired"
+      type: object
+    listCapabilitiesV1_429_response:
+      example:
+        message: ' Rate Limit Exceeded '
+      properties:
+        message:
+          description: A message describing the error
+          example: ' Rate Limit Exceeded '
+      type: object
+    CapabilityOwners_primary:
+      allOf:
+      - $ref: '#/components/schemas/BaseReferenceDto'
+      - example:
+          id: 2c9180858082150f0180893dbaf44201
+          name: John Doe
+          type: IDENTITY
+      description: The identity selected as the primary owner.
+      example:
+        name: William Wilson
+        id: 2c91808568c529c60168cca6f90c1313
+        type: IDENTITY
+    Capability_allOf_source:
+      allOf:
+      - $ref: '#/components/schemas/BaseReferenceDto'
+      - example:
+          id: 6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa
+          name: AI Agent Platform
+          type: SOURCE
+      description: The source the capability was discovered from.
+      example:
+        name: William Wilson
+        id: 2c91808568c529c60168cca6f90c1313
+        type: IDENTITY
+    array_inner:
+      anyOf:
+      - type: string
+      - type: integer
+      - type: object
+      example:
+      - "001"
+      - "002"
+      - "003"
+    JsonPatchOperation_value:
+      description: "The value to be used for the operation, required for \"add\" and\
+        \ \"replace\" operations"
+      example: New description
+      oneOf:
+      - example: New description
+        title: string
+        type: string
+      - example: true
+        title: boolean
+        type: boolean
+      - example: 300
+        title: integer
+        type: integer
+      - example:
+          attributes:
+            name: philip
+        title: object
+        type: object
+      - items:
+          $ref: '#/components/schemas/array_inner'
+        title: array
+        type: array

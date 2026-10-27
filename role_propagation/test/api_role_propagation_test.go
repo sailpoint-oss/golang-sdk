@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - Role Propagation
+SailPoint Identity Security API - Role Propagation
 
 Testing RolePropagationAPIService
 

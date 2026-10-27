@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - Role Insights
+SailPoint Identity Security API - Role Insights
 
 Testing RoleInsightsAPIService
 

@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud API - Intelligence
+SailPoint Identity Security API - Intelligence
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the SailPoint Identity Security platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: v1
 */
@@ -21,7 +21,7 @@ var _ MappedNullable = &Intelidentitymachineaggregate{}
 
 // Intelidentitymachineaggregate Non-human identity response (type NHI). Machine identity fields are hoisted to the top level (no machine wrapper). Omits human-only fields and slices (email, alias, privilegedAccess, outliers, accessHistory). Top-level sourceId is omitted; use source.id when present. matchConfidence is present for opaque prefix resolution (exact or partial); omitted for direct id eq and exact opaque matches. The identityGraph deep link is omitted when the tenant lacks the idg:base license. 
 type Intelidentitymachineaggregate struct {
-	// Identity Security Cloud identifier for this non-human identity.
+	// SailPoint Identity Security identifier for this non-human identity.
 	Id string `json:"id"`
 	// Identity type for the matched record.
 	Type string `json:"type"`
@@ -31,9 +31,9 @@ type Intelidentitymachineaggregate struct {
 	Description NullableString `json:"description,omitempty"`
 	// Sub-classification label for that NHI.
 	Subtype NullableString `json:"subtype,omitempty"`
-	// Timestamp when the identity record was created in Identity Security Cloud.
+	// Timestamp when the identity record was created in SailPoint Identity Security.
 	Created *SailPointTime `json:"created,omitempty"`
-	// Timestamp when the identity record was last modified in Identity Security Cloud.
+	// Timestamp when the identity record was last modified in SailPoint Identity Security.
 	Modified *SailPointTime `json:"modified,omitempty"`
 	// Match quality for opaque prefix resolution; omitted for direct id eq and exact opaque matches.
 	MatchConfidence *string `json:"matchConfidence,omitempty"`
@@ -50,7 +50,7 @@ type Intelidentitymachineaggregate struct {
 	ExistsOnSource NullableString `json:"existsOnSource,omitempty"`
 	// True when an administrator manually edited machine identity attributes.
 	ManuallyEdited *bool `json:"manuallyEdited,omitempty"`
-	// True when the machine identity was created manually in Identity Security Cloud.
+	// True when the machine identity was created manually in SailPoint Identity Security.
 	ManuallyCreated *bool `json:"manuallyCreated,omitempty"`
 	Owners Intelmachineidentityowners `json:"owners"`
 	// Entitlements associated with the machine identity from upstream.

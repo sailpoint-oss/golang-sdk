@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - Data Segmentation
+SailPoint Identity Security API - Data Segmentation
 
 Testing DataSegmentationAPIService
 

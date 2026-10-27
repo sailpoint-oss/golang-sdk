@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud API - Triggers
+SailPoint Identity Security API - Triggers
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the SailPoint Identity Security platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: v1
 */
@@ -23,7 +23,7 @@ var _ MappedNullable = &FormSubmitted{}
 type FormSubmitted struct {
 	// Date and time when the user submitted the form.
 	SubmittedAt SailPointTime `json:"submittedAt"`
-	// ISC tenant's unique identifier.
+	// SailPoint Identity Security tenant's unique identifier.
 	TenantId string `json:"tenantId"`
 	// Form instance's unique identifier.
 	FormInstanceId string `json:"formInstanceId"`

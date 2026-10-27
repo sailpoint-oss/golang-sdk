@@ -16,7 +16,7 @@ tags: ['SDK', 'Software Development Kit', 'Identitycollectortype', 'V1Identityco
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Type** | **string** | Identity collector type display name. Matches the `type` values returned by list and used by create/update metadata. Base types only (for example `Box`, not `Box SaaS`). | 
-**IscConnectorNames** | **[]string** | Exact ISC `connectorName` values to use in `GET /v3/sources` filters (`connectorName eq \"...\"`). These are not always equal to `type` (for example Google Drive maps to `G Suite` and `Google Workspace SaaS`). | 
+**IscConnectorNames** | **[]string** | Exact SailPoint Identity Security `connectorName` values to use in `GET /v3/sources` filters (`connectorName eq \"...\"`). These are not always equal to `type` (for example Google Drive maps to `G Suite` and `Google Workspace SaaS`). | 
 
 ## Methods
 

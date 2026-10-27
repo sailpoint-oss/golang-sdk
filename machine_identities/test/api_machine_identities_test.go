@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - Machine Identities
+SailPoint Identity Security API - Machine Identities
 
 Testing MachineIdentitiesAPIService
 
@@ -46,6 +46,46 @@ func Test_machine_identities_MachineIdentitiesAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test MachineIdentitiesAPIService DeleteMachineIdentitiesInBulkV2", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.MachineIdentitiesAPI.DeleteMachineIdentitiesInBulkV2(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test MachineIdentitiesAPIService DeleteMachineIdentityAsyncV1", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+
+		resp, httpRes, err := apiClient.MachineIdentitiesAPI.DeleteMachineIdentityAsyncV1(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test MachineIdentitiesAPIService DeleteMachineIdentityAsyncV2", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+
+		resp, httpRes, err := apiClient.MachineIdentitiesAPI.DeleteMachineIdentityAsyncV2(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test MachineIdentitiesAPIService DeleteMachineIdentityV1", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -83,6 +123,78 @@ func Test_machine_identities_MachineIdentitiesAPIService(t *testing.T) {
 		httpRes, err := apiClient.MachineIdentitiesAPI.DeleteOwnershipCorrelationConfigV1(context.Background(), sourceId, resourceId, configId).Execute()
 
 		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test MachineIdentitiesAPIService GetMachineIdentityAgentCountsV1", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.MachineIdentitiesAPI.GetMachineIdentityAgentCountsV1(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test MachineIdentitiesAPIService GetMachineIdentityAgentCountsV2", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.MachineIdentitiesAPI.GetMachineIdentityAgentCountsV2(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test MachineIdentitiesAPIService GetMachineIdentityAllCountsV1", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.MachineIdentitiesAPI.GetMachineIdentityAllCountsV1(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test MachineIdentitiesAPIService GetMachineIdentityApplicationCountsV1", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.MachineIdentitiesAPI.GetMachineIdentityApplicationCountsV1(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test MachineIdentitiesAPIService GetMachineIdentityApplicationCountsV2", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.MachineIdentitiesAPI.GetMachineIdentityApplicationCountsV2(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test MachineIdentitiesAPIService GetMachineIdentityDailyCountsV1", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.MachineIdentitiesAPI.GetMachineIdentityDailyCountsV1(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -167,6 +279,20 @@ func Test_machine_identities_MachineIdentitiesAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test MachineIdentitiesAPIService ListMachineIdentityAccountsV2", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+
+		resp, httpRes, err := apiClient.MachineIdentitiesAPI.ListMachineIdentityAccountsV2(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test MachineIdentitiesAPIService ListMachineIdentityAnomaliesV1", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -174,6 +300,46 @@ func Test_machine_identities_MachineIdentitiesAPIService(t *testing.T) {
 		var id string
 
 		resp, httpRes, err := apiClient.MachineIdentitiesAPI.ListMachineIdentityAnomaliesV1(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test MachineIdentitiesAPIService ListMachineIdentityCapabilitiesV2", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+
+		resp, httpRes, err := apiClient.MachineIdentitiesAPI.ListMachineIdentityCapabilitiesV2(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test MachineIdentitiesAPIService ListMachineIdentityEntitlementsV2", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+
+		resp, httpRes, err := apiClient.MachineIdentitiesAPI.ListMachineIdentityEntitlementsV2(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test MachineIdentitiesAPIService ListMachineIdentityHostnamesV2", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.MachineIdentitiesAPI.ListMachineIdentityHostnamesV2(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -231,6 +397,18 @@ func Test_machine_identities_MachineIdentitiesAPIService(t *testing.T) {
 		var sourceId string
 
 		resp, httpRes, err := apiClient.MachineIdentitiesAPI.StartMachineIdentityAggregationV1(context.Background(), sourceId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test MachineIdentitiesAPIService UpdateMachineIdentitiesInBulkV2", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.MachineIdentitiesAPI.UpdateMachineIdentitiesInBulkV2(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

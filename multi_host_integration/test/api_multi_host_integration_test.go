@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - Multi-Host Integration
+SailPoint Identity Security API - Multi-Host Integration
 
 Testing MultiHostIntegrationAPIService
 

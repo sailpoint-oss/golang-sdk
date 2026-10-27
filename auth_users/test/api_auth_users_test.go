@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - Auth Users
+SailPoint Identity Security API - Auth Users
 
 Testing AuthUsersAPIService
 

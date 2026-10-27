@@ -3,7 +3,7 @@ info:
   contact:
     name: Developer Relations
     url: https://developer.sailpoint.com/discuss/api-help
-  description: "Use these APIs to interact with the Identity Security Cloud platform\
+  description: "Use these APIs to interact with the SailPoint Identity Security platform\
     \ to achieve repeatable, automated processes with greater scalability. We encourage\
     \ you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss\
     \ to connect with other developers using our APIs."
@@ -11,7 +11,7 @@ info:
     name: MIT
     url: https://opensource.org/licenses/MIT
   termsOfService: https://developer.sailpoint.com/discuss/tos
-  title: Identity Security Cloud API - SOD Policies
+  title: SailPoint Identity Security API - SOD Policies
   version: v1
 servers:
 - description: This is the production API server.
@@ -42,9 +42,9 @@ tags:
     \nOrganizations can use \"separation of duties\" (SOD) policies to enforce and\
     \ track their internal security rules throughout their tenants.\nThese SOD policies\
     \ limit each user's involvement in important processes and protects the organization\
-    \ from individuals gaining excessive access. \n\nTo create SOD policies in Identity\
-    \ Security Cloud, administrators use 'Search' and then access 'Policies'.\nTo\
-    \ create a policy, they must configure two lists of access items. Each access\
+    \ from individuals gaining excessive access. \n\nTo create SOD policies in SailPoint\
+    \ Identity Security, administrators use 'Search' and then access 'Policies'.\n\
+    To create a policy, they must configure two lists of access items. Each access\
     \ item can only be added to one of the two lists.\nThey can search for the entitlements\
     \ they want to add to these access lists.\n\n>Note: You can have a maximum of\
     \ 500 policies of any type (including general policies) in your organization.\
@@ -54,9 +54,9 @@ tags:
     \ in SOD violation reports that other users will see in emails at regular intervals\
     \ if they're subscribed to the SOD policy.\nThe other users can then better help\
     \ to enforce these SOD policies. \n\nTo create a subscription to a SOD policy\
-    \ in Identity Security Cloud, administrators use 'Search' and then access 'Layers'.\n\
-    They can create a subscription to the policy and schedule it to run at a regular\
-    \ interval. \n\nRefer to [Managing Policies](https://documentation.sailpoint.com/saas/help/sod/manage-policies.html)\
+    \ in SailPoint Identity Security, administrators use 'Search' and then access\
+    \ 'Layers'.\nThey can create a subscription to the policy and schedule it to run\
+    \ at a regular interval. \n\nRefer to [Managing Policies](https://documentation.sailpoint.com/saas/help/sod/manage-policies.html)\
     \ for more information about SOD policies. \n\nRefer to [Subscribe to a SOD Policy](https://documentation.sailpoint.com/saas/help/sod/policy-violations.html#subscribe-to-an-sod-policy)\
     \ for more information about SOD policy subscriptions.\n"
   name: SOD Policies
@@ -70,7 +70,7 @@ paths:
       parameters:
       - description: |-
           Max number of results to return.
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
         example: 250
         explode: true
         in: query
@@ -85,7 +85,7 @@ paths:
         style: form
       - description: |-
           Offset into the full result set. Usually specified with *limit* to paginate through the results.
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
         example: 0
         explode: true
         in: query
@@ -102,7 +102,7 @@ paths:
 
           Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
 
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
         example: true
         explode: true
         in: query
@@ -113,7 +113,7 @@ paths:
           type: boolean
         style: form
       - description: |-
-          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
+          Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)
 
           Filtering is supported for the following fields and operators:
 
@@ -139,7 +139,7 @@ paths:
           type: string
         style: form
       - description: |-
-          Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
+          Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)
 
           Sorting is supported for the following fields: **id, name, created, modified, description, ownerRef.name**
         example: "id,name"
@@ -2368,7 +2368,7 @@ components:
     limit:
       description: |-
         Max number of results to return.
-        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
       example: 250
       explode: true
       in: query
@@ -2384,7 +2384,7 @@ components:
     offset:
       description: |-
         Offset into the full result set. Usually specified with *limit* to paginate through the results.
-        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
       example: 0
       explode: true
       in: query
@@ -2402,7 +2402,7 @@ components:
 
         Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
 
-        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
       example: true
       explode: true
       in: query

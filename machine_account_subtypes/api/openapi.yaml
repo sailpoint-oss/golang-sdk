@@ -3,7 +3,7 @@ info:
   contact:
     name: Developer Relations
     url: https://developer.sailpoint.com/discuss/api-help
-  description: "Use these APIs to interact with the Identity Security Cloud platform\
+  description: "Use these APIs to interact with the SailPoint Identity Security platform\
     \ to achieve repeatable, automated processes with greater scalability. We encourage\
     \ you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss\
     \ to connect with other developers using our APIs."
@@ -11,7 +11,7 @@ info:
     name: MIT
     url: https://opensource.org/licenses/MIT
   termsOfService: https://developer.sailpoint.com/discuss/tos
-  title: Identity Security Cloud API - Machine Account Subtypes
+  title: SailPoint Identity Security API - Machine Account Subtypes
   version: v1
 servers:
 - description: This is the production API server.
@@ -156,7 +156,7 @@ paths:
       operationId: listSourceSubtypesV1
       parameters:
       - description: |-
-          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
+          Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)
 
           Filtering is supported for the following fields and operators:
 
@@ -176,7 +176,7 @@ paths:
           type: string
         style: form
       - description: |-
-          Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
+          Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)
 
           Sorting is supported for the following fields: **displayName, technicalName**
         example: displayName
@@ -203,7 +203,7 @@ paths:
 
           Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
 
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
         example: true
         explode: true
         in: query
@@ -215,7 +215,7 @@ paths:
         style: form
       - description: |-
           Max number of results to return.
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
         example: 250
         explode: true
         in: query
@@ -230,7 +230,7 @@ paths:
         style: form
       - description: |-
           Offset into the full result set. Usually specified with *limit* to paginate through the results.
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
         example: 0
         explode: true
         in: query
@@ -1071,6 +1071,1772 @@ paths:
       - SOURCE_ADMIN
       - SOURCE_SUBADMIN
       - API
+  /source-subtypes/v2:
+    get:
+      description: |-
+        List machine account subtypes defined at the source tier and the connector tier.
+
+        Without `sourceId`, the API lists every subtype in the tenant, and `filters` and `sorters` apply.
+
+        With `sourceId`, the API returns the source's effective subtypes: the subtypes defined for the source plus the
+        subtypes defined for the source's connector type. When a source subtype has the same technical name as a connector
+        subtype, only the source subtype is returned and its `origin` is `CONNECTOR`. `filters` cannot be used in this mode.
+        Use `targetType` to return only one tier of the effective set. An unknown `sourceId` returns `404`.
+
+        With `sourceId` and `effectiveSet=false`, the API returns only the subtypes defined for that source, and `filters`
+        apply.
+
+        The caller needs the `idn:source-subtypes:read` right.
+
+        This API returns `404` when Machine Identity Security or tiered subtype configuration is not enabled for the tenant.
+      operationId: listSourceSubtypesV2
+      parameters:
+      - description: "ID of a source. When supplied, the API returns subtypes for\
+          \ that source instead of the whole tenant."
+        example: 6d0458373bec4b4b80460992b76016da
+        explode: true
+        in: query
+        name: sourceId
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Controls what is returned for `sourceId`. When `true`, which\
+          \ is the default when `sourceId` is supplied, the API returns the source's\
+          \ effective subtypes across both tiers. When `false`, the API returns only\
+          \ the subtypes defined for the source. Passing `effectiveSet=true` explicitly\
+          \ without `sourceId` returns `400`."
+        example: true
+        explode: true
+        in: query
+        name: effectiveSet
+        required: false
+        schema:
+          default: true
+          type: boolean
+        style: form
+      - description: "Returns only effective subtypes of this tier. Requires `sourceId`,\
+          \ and cannot be combined with `effectiveSet=false`; otherwise the API returns\
+          \ `400`."
+        example: CONNECTOR
+        explode: true
+        in: query
+        name: targetType
+        required: false
+        schema:
+          enum:
+          - SOURCE
+          - CONNECTOR
+          type: string
+        style: form
+      - description: "When `true`, each item includes a summary of its machine account\
+          \ creation configuration in `config`."
+        example: false
+        explode: true
+        in: query
+        name: includeConfigs
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+      - description: |-
+          Max number of results to return.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        example: 250
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          Offset into the full result set. Usually specified with *limit* to paginate through the results.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        example: 0
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+          Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        example: true
+        explode: true
+        in: query
+        name: count
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+      - description: |-
+          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
+
+          Filtering is supported for the following fields and operators:
+
+          **id**: *eq, ne, in*
+
+          **technicalName**: *eq, ne, in, sw, co*
+
+          **displayName**: *eq, ne, in, sw, co*
+
+          **source.id**: *eq, ne, in, sw, co*
+
+          **targetType**: *eq, ne, in, sw, co*
+
+          **targetId**: *eq, ne, in, sw, co*
+
+          **targetName**: *eq, ne, in, sw, co, isnull*
+
+          **classification**: *eq, ne, in, sw, co*
+
+          **type**: *eq, ne, in, sw, co*
+
+          **created**: *gt, ge, lt, le*
+
+          **modified**: *gt, ge, lt, le*
+
+          Filters cannot be used with `sourceId` unless `effectiveSet=false`; otherwise the API returns `400`.
+        example: targetType eq "CONNECTOR"
+        explode: true
+        in: query
+        name: filters
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: |-
+          Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
+
+          Sorting is supported for the following fields: **id, technicalName, displayName, source.id, targetType, targetId, targetName, classification, type, created, modified**
+        example: displayName
+        explode: true
+        in: query
+        name: sorters
+        required: false
+        schema:
+          format: comma-separated
+          type: string
+        style: form
+      - description: Use this header to enable this experimental API.
+        example: true
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/SourceSubtypeV2WithConfig'
+                type: array
+          description: List of machine account subtypes. Items include `config` when
+            `includeConfigs=true`. The `X-Total-Count` header is returned when `count=true`.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/loadBulkSourceSubtypesV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/loadBulkSourceSubtypesV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:sources:read
+        - idn:sources:manage
+        - idn:connector-subtypes:manage
+      - applicationAuth:
+        - idn:sources:read
+        - idn:sources:manage
+        - idn:connector-subtypes:manage
+      summary: List subtypes
+      tags:
+      - Machine Account Subtypes
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+      - HELPDESK
+    post:
+      description: |-
+        Create a machine account subtype at the source tier or the connector tier.
+
+        A `SOURCE` subtype applies to the one source identified by `targetId`. A `CONNECTOR` subtype applies to every
+        source of the connector type identified by `targetId`, which must be a registered connector type. `targetType`
+        defaults to `SOURCE`. `CONNECTOR_VARIANT` is not supported and returns `400`. `technicalName`, `displayName` and
+        `description` are required, and the technical name and display name must be unique within the tier's scope.
+
+        Who can call this API depends on the requested tier:
+
+        * `SOURCE` (or omitted): requires the `idn:source-subtypes:create` right, held by org admins, source admins and
+        source sub-admins.
+
+        * `CONNECTOR`: requires the `idn:connector-subtypes:create` right, held by org admins.
+
+        A caller without the right for the requested tier receives `404`, not `403`.
+
+        This API returns `404` when Machine Identity Security or tiered subtype configuration is not enabled for the tenant.
+      operationId: createSourceSubtypeV2
+      parameters:
+      - description: Use this header to enable this experimental API.
+        example: true
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            examples:
+              Connector subtype:
+                value:
+                  targetType: CONNECTOR
+                  targetId: active-directory
+                  technicalName: service-account
+                  displayName: Service Account
+                  description: Accounts used by automated services.
+              Source subtype:
+                value:
+                  targetType: SOURCE
+                  targetId: 6d0458373bec4b4b80460992b76016da
+                  technicalName: batch-account
+                  displayName: Batch Account
+                  description: Accounts used by batch jobs.
+            schema:
+              $ref: '#/components/schemas/CreateSourceSubtypeV2Request'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SourceSubtypeV2'
+          description: Created machine account subtype.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/loadBulkSourceSubtypesV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/loadBulkSourceSubtypesV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:sources:manage
+        - idn:connector-subtypes:manage
+      - applicationAuth:
+        - idn:sources:manage
+        - idn:connector-subtypes:manage
+      summary: Create subtype
+      tags:
+      - Machine Account Subtypes
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+  /source-subtypes/v2/targets:
+    get:
+      description: |-
+        List the targets that have machine account subtypes, with subtype and source counts for each.
+
+        A `targetType` filter is required. `targetType eq "CONNECTOR"` returns one item per connector type.
+        `targetType eq "SOURCE"` returns one item per source subtype. A missing or unsupported `targetType` filter returns
+        `400`.
+
+        The caller needs the `idn:source-subtypes:read` right.
+
+        This API returns `404` when Machine Identity Security or tiered subtype configuration is not enabled for the tenant.
+      operationId: listSourceSubtypeTargetsV2
+      parameters:
+      - description: |-
+          Max number of results to return.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        example: 250
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          Offset into the full result set. Usually specified with *limit* to paginate through the results.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        example: 0
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+          Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        example: true
+        explode: true
+        in: query
+        name: count
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+      - description: |-
+          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
+
+          Filtering is supported for the following fields and operators:
+
+          **targetType**: *eq*
+
+          **targetName**: *eq, sw*
+
+          A `targetType` filter with the value `CONNECTOR` or `SOURCE` is required.
+        example: targetType eq "CONNECTOR"
+        explode: true
+        in: query
+        name: filters
+        required: true
+        schema:
+          type: string
+        style: form
+      - description: |-
+          Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
+
+          Sorting is supported for the following fields: **targetType, targetName, subtypeCount, sourceCount**
+
+          Results are sorted by **targetName** ascending by default.
+        example: -subtypeCount
+        explode: true
+        in: query
+        name: sorters
+        required: false
+        schema:
+          format: comma-separated
+          type: string
+        style: form
+      - description: Use this header to enable this experimental API.
+        example: true
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/SubtypeTargetSummary'
+                type: array
+          description: List of subtype targets. The `X-Total-Count` header is returned
+            when `count=true`.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/loadBulkSourceSubtypesV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/loadBulkSourceSubtypesV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:sources:read
+        - idn:sources:manage
+        - idn:connector-subtypes:manage
+      - applicationAuth:
+        - idn:sources:read
+        - idn:sources:manage
+        - idn:connector-subtypes:manage
+      summary: List subtype targets
+      tags:
+      - Machine Account Subtypes
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+      - HELPDESK
+  /source-subtypes/v2/{id}:
+    delete:
+      description: |-
+        Delete a machine account subtype of any tier by subtype ID. System-managed subtypes, and subtypes still assigned
+        to accounts, cannot be deleted and the request is rejected.
+
+        Who can call this API depends on the tier of the stored subtype:
+
+        * `SOURCE`: requires the `idn:source-subtypes:delete` right, held by org admins, source admins and source
+        sub-admins.
+
+        * `CONNECTOR`: requires the `idn:connector-subtypes:delete` right, held by org admins.
+
+        A caller without the right for the subtype's tier receives `404`, not `403`. A malformed ID returns `400`.
+
+        This API returns `404` when Machine Identity Security or tiered subtype configuration is not enabled for the tenant.
+      operationId: deleteMachineAccountSubtypeV2
+      parameters:
+      - description: The ID of the subtype.
+        example: 43bdd144-4b17-4fce-a744-17c7fd3e717b
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listSourceSubtypesV2
+      - description: Use this header to enable this experimental API.
+        example: true
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: Subtype deleted successfully.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/loadBulkSourceSubtypesV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/loadBulkSourceSubtypesV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:sources:manage
+        - idn:connector-subtypes:manage
+      - applicationAuth:
+        - idn:sources:manage
+        - idn:connector-subtypes:manage
+      summary: Delete subtype by ID
+      tags:
+      - Machine Account Subtypes
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+    get:
+      description: |-
+        Get a machine account subtype of any tier by subtype ID. The response may include `target.supportsProvisioning`.
+
+        The caller needs the `idn:source-subtypes:read` right. A malformed ID returns `400`.
+
+        This API returns `404` when Machine Identity Security or tiered subtype configuration is not enabled for the tenant.
+      operationId: getSourceSubtypeByIdV2
+      parameters:
+      - description: The ID of the subtype.
+        example: 43bdd144-4b17-4fce-a744-17c7fd3e717b
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listSourceSubtypesV2
+      - description: Use this header to enable this experimental API.
+        example: true
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SourceSubtypeV2'
+          description: Machine account subtype.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/loadBulkSourceSubtypesV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/loadBulkSourceSubtypesV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:sources:read
+        - idn:sources:manage
+        - idn:connector-subtypes:manage
+      - applicationAuth:
+        - idn:sources:read
+        - idn:sources:manage
+        - idn:connector-subtypes:manage
+      summary: Get subtype by ID
+      tags:
+      - Machine Account Subtypes
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+      - HELPDESK
+    patch:
+      description: |-
+        Update a machine account subtype of any tier by subtype ID, using the [JSON
+        Patch](https://tools.ietf.org/html/rfc6902) standard.
+
+        Only `displayName` and `description` are patchable, and both must remain present. Changing `targetType`,
+        `targetId`, `profile`, `classification`, `type` or `technicalName` returns `400`; to move a subtype to another
+        tier or target, delete it and create a new one.
+
+        Who can call this API depends on the tier of the stored subtype:
+
+        * `SOURCE`: requires the `idn:source-subtypes:update` right, held by org admins, source admins and source
+        sub-admins.
+
+        * `CONNECTOR`: requires the `idn:connector-subtypes:update` right, held by org admins.
+
+        A caller without the right for the subtype's tier receives `404`, not `403`. A malformed ID returns `400`.
+
+        This API returns `404` when Machine Identity Security or tiered subtype configuration is not enabled for the tenant.
+      operationId: patchMachineAccountSubtypeV2
+      parameters:
+      - description: The ID of the subtype.
+        example: 43bdd144-4b17-4fce-a744-17c7fd3e717b
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listSourceSubtypesV2
+      - description: Use this header to enable this experimental API.
+        example: true
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json-patch+json:
+            examples:
+              Update display name and description:
+                value:
+                - op: replace
+                  path: /displayName
+                  value: Service Account
+                - op: replace
+                  path: /description
+                  value: Accounts used by automated services.
+            schema:
+              items:
+                $ref: '#/components/schemas/JsonPatchOperation'
+              type: array
+        description: "A list of subtype update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902)\
+          \ standard."
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SourceSubtypeV2'
+          description: Updated machine account subtype.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/loadBulkSourceSubtypesV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/loadBulkSourceSubtypesV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:sources:manage
+        - idn:connector-subtypes:manage
+      - applicationAuth:
+        - idn:sources:manage
+        - idn:connector-subtypes:manage
+      summary: Patch subtype by ID
+      tags:
+      - Machine Account Subtypes
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+  /source-subtypes/v2/{id}/overrides:
+    post:
+      description: |-
+        Create a source subtype that overrides a connector subtype on one source. The new source subtype copies the
+        connector subtype's machine account configuration and provisioning policy at the time of the request. Later
+        changes to the connector subtype are not applied to the override.
+
+        The subtype identified by `id` must be a `CONNECTOR` subtype (otherwise `400`) that is in the source's effective
+        subtypes. An unknown subtype or source returns `404`. The request is rejected if the tenant's subtype
+        configuration cannot be changed this way.
+
+        The caller needs the `idn:source-subtypes:create` right, held by org admins, source admins and source sub-admins.
+        A caller without it receives `404`, not `403`. A malformed ID returns `400`.
+
+        This API returns `404` when Machine Identity Security or tiered subtype configuration is not enabled for the tenant.
+      operationId: createSourceSubtypeOverrideV2
+      parameters:
+      - description: The ID of the connector subtype to override.
+        example: 43bdd144-4b17-4fce-a744-17c7fd3e717b
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listSourceSubtypesV2
+      - description: Use this header to enable this experimental API.
+        example: true
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SourceSubtypeOverrideRequest'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SourceSubtypeV2'
+          description: Created source subtype that overrides the connector subtype.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/loadBulkSourceSubtypesV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/loadBulkSourceSubtypesV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:sources:manage
+      - applicationAuth:
+        - idn:sources:manage
+      summary: Override source connector subtype
+      tags:
+      - Machine Account Subtypes
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+  /source-subtypes/v2/{id}/provisioning-policy:
+    delete:
+      description: |-
+        Delete the machine account creation provisioning policy of a subtype of any tier. Returns `404` when the subtype
+        has no provisioning policy.
+
+        Who can call this API depends on the tier of the subtype:
+
+        * `SOURCE`: requires the `idn:source-subtypes:delete` right, held by org admins, source admins and source
+        sub-admins.
+
+        * `CONNECTOR`: requires the `idn:connector-subtypes:delete` right, held by org admins.
+
+        A caller without the right for the subtype's tier receives `404`, not `403`. A malformed ID returns `400`.
+
+        This API returns `404` when Machine Identity Security or tiered subtype configuration is not enabled for the tenant.
+      operationId: deleteSourceSubtypeProvisioningPolicyV2
+      parameters:
+      - description: The ID of the subtype.
+        example: 43bdd144-4b17-4fce-a744-17c7fd3e717b
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listSourceSubtypesV2
+      - description: Use this header to enable this experimental API.
+        example: true
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: Provisioning policy deleted successfully.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/loadBulkSourceSubtypesV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/loadBulkSourceSubtypesV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:sources:manage
+        - idn:connector-subtypes:manage
+      - applicationAuth:
+        - idn:sources:manage
+        - idn:connector-subtypes:manage
+      summary: Delete subtype provisioning policy
+      tags:
+      - Machine Account Subtypes
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+    get:
+      description: |-
+        Get the machine account creation provisioning policy of a subtype of any tier. Returns `404` when the subtype has
+        no provisioning policy.
+
+        The caller needs the `idn:source-subtypes:read` right. A malformed ID returns `400`.
+
+        This API returns `404` when Machine Identity Security or tiered subtype configuration is not enabled for the tenant.
+      operationId: getSourceSubtypeProvisioningPolicyV2
+      parameters:
+      - description: The ID of the subtype.
+        example: 43bdd144-4b17-4fce-a744-17c7fd3e717b
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listSourceSubtypesV2
+      - description: ID of the source the subtype belongs to. Supply it for `SOURCE`
+          subtypes so that a policy stored with the source can be found.
+        example: 6d0458373bec4b4b80460992b76016da
+        explode: true
+        in: query
+        name: sourceId
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Use this header to enable this experimental API.
+        example: true
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SubtypeProvisioningPolicy'
+          description: Subtype provisioning policy.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/loadBulkSourceSubtypesV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/loadBulkSourceSubtypesV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:sources:read
+        - idn:sources:manage
+        - idn:connector-subtypes:manage
+      - applicationAuth:
+        - idn:sources:read
+        - idn:sources:manage
+        - idn:connector-subtypes:manage
+      summary: Get subtype provisioning policy
+      tags:
+      - Machine Account Subtypes
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+      - HELPDESK
+    patch:
+      description: |-
+        Update the machine account creation provisioning policy of a subtype of any tier, using the [JSON
+        Patch](https://tools.ietf.org/html/rfc6902) standard. Only `name`, `description` and `fields` are patchable.
+        Returns `404` when the subtype has no provisioning policy.
+
+        Who can call this API depends on the tier of the subtype:
+
+        * `SOURCE`: requires the `idn:source-subtypes:update` right, held by org admins, source admins and source
+        sub-admins.
+
+        * `CONNECTOR`: requires the `idn:connector-subtypes:update` right, held by org admins.
+
+        A caller without the right for the subtype's tier receives `404`, not `403`. A malformed ID returns `400`.
+
+        This API returns `404` when Machine Identity Security or tiered subtype configuration is not enabled for the tenant.
+      operationId: patchSourceSubtypeProvisioningPolicyV2
+      parameters:
+      - description: The ID of the subtype.
+        example: 43bdd144-4b17-4fce-a744-17c7fd3e717b
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listSourceSubtypesV2
+      - description: Use this header to enable this experimental API.
+        example: true
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json-patch+json:
+            examples:
+              Update description:
+                value:
+                - op: replace
+                  path: /description
+                  value: Fields collected when creating a service account.
+            schema:
+              items:
+                $ref: '#/components/schemas/JsonPatchOperation'
+              type: array
+        description: "A list of policy update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902)\
+          \ standard."
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SubtypeProvisioningPolicy'
+          description: Updated subtype provisioning policy.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/loadBulkSourceSubtypesV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/loadBulkSourceSubtypesV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:sources:manage
+        - idn:connector-subtypes:manage
+      - applicationAuth:
+        - idn:sources:manage
+        - idn:connector-subtypes:manage
+      summary: Patch subtype provisioning policy
+      tags:
+      - Machine Account Subtypes
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+    post:
+      description: |-
+        Create the machine account creation provisioning policy of a subtype of any tier. A subtype has at most one
+        provisioning policy; the request is rejected if one already exists.
+
+        `id` and `subtypeId` must not be supplied (otherwise `400`). `usageType` must be `CREATE_MACHINE_ACCOUNT` or
+        omitted. `name` defaults to the subtype's display name.
+
+        Who can call this API depends on the tier of the subtype:
+
+        * `SOURCE`: requires the `idn:source-subtypes:update` right, held by org admins, source admins and source
+        sub-admins.
+
+        * `CONNECTOR`: requires the `idn:connector-subtypes:update` right, held by org admins.
+
+        A caller without the right for the subtype's tier receives `404`, not `403`. A malformed ID returns `400`.
+
+        This API returns `404` when Machine Identity Security or tiered subtype configuration is not enabled for the tenant.
+      operationId: createSourceSubtypeProvisioningPolicyV2
+      parameters:
+      - description: The ID of the subtype.
+        example: 43bdd144-4b17-4fce-a744-17c7fd3e717b
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listSourceSubtypesV2
+      - description: "When `true` and the request body has no `fields`, a `CONNECTOR`\
+          \ subtype's policy is created with the connector's default account creation\
+          \ fields. Ignored for `SOURCE` subtypes."
+        example: true
+        explode: true
+        in: query
+        name: useDefaultFields
+        required: false
+        schema:
+          default: true
+          type: boolean
+        style: form
+      - description: Use this header to enable this experimental API.
+        example: true
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            examples:
+              Create policy:
+                value:
+                  name: Service Account
+                  description: Fields collected when creating a service account.
+                  usageType: CREATE_MACHINE_ACCOUNT
+                  fields:
+                  - name: userName
+                    transform:
+                      type: rule
+                      attributes:
+                        name: Create Unique LDAP Attribute
+                    attributes:
+                      template: "{firstname}.{lastname}{uniqueCounter}"
+                      cloudMaxUniqueChecks: "50"
+                      cloudMaxSize: "20"
+                      cloudRequired: "true"
+                    isRequired: false
+                    type: string
+                    isMultiValued: false
+            schema:
+              $ref: '#/components/schemas/SubtypeProvisioningPolicy'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SubtypeProvisioningPolicy'
+          description: Created subtype provisioning policy.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/loadBulkSourceSubtypesV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/loadBulkSourceSubtypesV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:sources:manage
+        - idn:connector-subtypes:manage
+      - applicationAuth:
+        - idn:sources:manage
+        - idn:connector-subtypes:manage
+      summary: Create subtype provisioning policy
+      tags:
+      - Machine Account Subtypes
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
 components:
   parameters:
     count:
@@ -1079,7 +2845,7 @@ components:
 
         Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
 
-        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
       example: true
       explode: true
       in: query
@@ -1092,7 +2858,7 @@ components:
     limit:
       description: |-
         Max number of results to return.
-        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
       example: 250
       explode: true
       in: query
@@ -1108,7 +2874,7 @@ components:
     offset:
       description: |-
         Offset into the full result set. Usually specified with *limit* to paginate through the results.
-        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
       example: 0
       explode: true
       in: query
@@ -1435,6 +3201,437 @@ components:
       - path
       title: Json Patch Operation
       type: object
+    SubtypeTarget:
+      description: Reference to the source or connector the subtype is defined for.
+      example:
+        name: Active Directory
+        supportsProvisioning: true
+        id: active-directory
+        type: CONNECTOR
+      properties:
+        type:
+          description: Type of the target.
+          enum:
+          - SOURCE
+          - CONNECTOR
+          example: CONNECTOR
+          type: string
+        id:
+          description: "Source ID for a `SOURCE` target, or connector type for a `CONNECTOR`\
+            \ target."
+          example: active-directory
+          type: string
+        name:
+          description: Name of the source or connector.
+          example: Active Directory
+          type: string
+        supportsProvisioning:
+          default: false
+          description: Indicates whether the target supports provisioning. Only returned
+            when you get a single subtype by ID.
+          example: true
+          type: boolean
+      title: Subtype Target
+      type: object
+    SourceSubtypeV2:
+      description: A machine account subtype defined at the source tier or the connector
+        tier.
+      example:
+        targetName: Active Directory
+        targetId: active-directory
+        displayName: Service Account
+        created: 2026-07-28T16:13:42.801Z
+        origin: SOURCE
+        profile:
+          connectorType: JDBC
+          variant: MySql
+          id: 9a4b7d2e-1c3f-4e5a-8b6c-7d8e9f0a1b2c
+        systemManaged: false
+        description: Accounts used by automated services.
+        targetType: CONNECTOR
+        type: MACHINE
+        classification: MACHINE
+        technicalName: service-account
+        target:
+          name: Active Directory
+          supportsProvisioning: true
+          id: active-directory
+          type: CONNECTOR
+        modified: 2026-07-28T16:13:42.75Z
+        id: 43bdd144-4b17-4fce-a744-17c7fd3e717b
+      properties:
+        id:
+          description: Unique identifier for the subtype.
+          example: 43bdd144-4b17-4fce-a744-17c7fd3e717b
+          format: uuid
+          type: string
+        technicalName:
+          description: Technical name of the subtype.
+          example: service-account
+          type: string
+        displayName:
+          description: Display name of the subtype.
+          example: Service Account
+          type: string
+        description:
+          description: Description of the subtype.
+          example: Accounts used by automated services.
+          type: string
+        type:
+          description: Entity type of the subtype.
+          example: MACHINE
+          type: string
+        targetType:
+          description: Tier the subtype is defined at. `SOURCE` subtypes apply to
+            one source. `CONNECTOR` subtypes apply to every source of a connector
+            type. `CONNECTOR_VARIANT` is reserved for future use.
+          enum:
+          - SOURCE
+          - CONNECTOR
+          - CONNECTOR_VARIANT
+          example: CONNECTOR
+          type: string
+        targetId:
+          description: "Scope key of the subtype. The source ID for `SOURCE` subtypes,\
+            \ or the connector type for `CONNECTOR` subtypes."
+          example: active-directory
+          type: string
+        targetName:
+          description: Display name of the target source or connector.
+          example: Active Directory
+          nullable: true
+          type: string
+        classification:
+          description: Classification of the subtype.
+          enum:
+          - MACHINE
+          example: MACHINE
+          type: string
+        origin:
+          description: Tier of the parent subtype this subtype overrides. Set to `CONNECTOR`
+            when a source subtype replaces a connector subtype with the same technical
+            name in a source's effective subtype list. Otherwise `null`.
+          enum:
+          - SOURCE
+          - CONNECTOR
+          - CONNECTOR_VARIANT
+          nullable: true
+          type: string
+          example: null
+        profile:
+          $ref: '#/components/schemas/SourceSubtypeV2_profile'
+        systemManaged:
+          default: false
+          description: Indicates whether the subtype is managed by the system.
+          example: false
+          readOnly: true
+          type: boolean
+        created:
+          description: Creation timestamp.
+          example: 2026-07-28T16:13:42.801Z
+          format: date-time
+          type: string
+        modified:
+          description: Last modified timestamp.
+          example: 2026-07-28T16:13:42.75Z
+          format: date-time
+          type: string
+        target:
+          $ref: '#/components/schemas/SubtypeTarget'
+      title: Source Subtype V2
+      type: object
+    SourceSubtypeV2WithConfig:
+      allOf:
+      - $ref: '#/components/schemas/SourceSubtypeV2'
+      - properties:
+          config:
+            $ref: '#/components/schemas/SourceSubtypeV2WithConfig_allOf_config'
+        type: object
+      description: "A machine account subtype list item, returned when `includeConfigs=true`."
+      example:
+        targetName: Active Directory
+        targetId: active-directory
+        displayName: Service Account
+        created: 2026-07-28T16:13:42.801Z
+        origin: SOURCE
+        profile:
+          connectorType: JDBC
+          variant: MySql
+          id: 9a4b7d2e-1c3f-4e5a-8b6c-7d8e9f0a1b2c
+        systemManaged: false
+        description: Accounts used by automated services.
+        targetType: CONNECTOR
+        type: MACHINE
+        classification: MACHINE
+        technicalName: service-account
+        target:
+          name: Active Directory
+          supportsProvisioning: true
+          id: active-directory
+          type: CONNECTOR
+        modified: 2026-07-28T16:13:42.75Z
+        id: 43bdd144-4b17-4fce-a744-17c7fd3e717b
+        config:
+          machineAccountCreate:
+            accountCreateEnabled: true
+      title: Source Subtype V2 With Config
+    CreateSourceSubtypeV2Request:
+      description: Request body for creating a machine account subtype at the source
+        tier or the connector tier.
+      example:
+        targetName: Active Directory
+        targetId: active-directory
+        displayName: Service Account
+        description: Accounts used by automated services.
+        targetType: CONNECTOR
+        type: MACHINE
+        classification: MACHINE
+        technicalName: service-account
+      properties:
+        targetType:
+          default: SOURCE
+          description: Tier to create the subtype at. Defaults to `SOURCE`.
+          enum:
+          - SOURCE
+          - CONNECTOR
+          example: CONNECTOR
+          type: string
+        targetId:
+          description: "Scope key of the subtype. The source ID for a `SOURCE` subtype,\
+            \ or a registered connector type for a `CONNECTOR` subtype."
+          example: active-directory
+          type: string
+        targetName:
+          description: "Display name of the target. For a `CONNECTOR` subtype, a supplied\
+            \ value must match the connector's registered name and is replaced by\
+            \ the registered spelling. When omitted, the registered name is used."
+          example: Active Directory
+          type: string
+        technicalName:
+          description: Technical name of the subtype.
+          example: service-account
+          type: string
+        displayName:
+          description: Display name of the subtype.
+          example: Service Account
+          type: string
+        description:
+          description: Description of the subtype.
+          example: Accounts used by automated services.
+          type: string
+        type:
+          default: MACHINE
+          description: Entity type of the subtype. Defaults to `MACHINE`.
+          example: MACHINE
+          type: string
+        classification:
+          default: MACHINE
+          description: Classification of the subtype. Defaults to `MACHINE`.
+          enum:
+          - MACHINE
+          example: MACHINE
+          type: string
+      required:
+      - description
+      - displayName
+      - targetId
+      - technicalName
+      title: Create Source Subtype V2 Request
+      type: object
+    SubtypeTargetSummary:
+      description: "Summary of the subtypes defined for one target. There is one item\
+        \ per connector type for `CONNECTOR` targets, and one item per source subtype\
+        \ for `SOURCE` targets."
+      example:
+        targetName: Active Directory
+        sourceCount: 12
+        targetId: active-directory
+        targetType: CONNECTOR
+        lastModified: 2026-07-28T16:13:42.75Z
+        subtypeCount: 3
+      properties:
+        targetType:
+          description: Tier of the target.
+          enum:
+          - SOURCE
+          - CONNECTOR
+          example: CONNECTOR
+          type: string
+        targetId:
+          description: "Connector type for a `CONNECTOR` target, or source ID for\
+            \ a `SOURCE` target."
+          example: active-directory
+          type: string
+        targetName:
+          description: Display name of the target. Falls back to `targetId` when no
+            name is stored.
+          example: Active Directory
+          type: string
+        subtypeCount:
+          description: Number of subtypes defined for the target.
+          example: 3
+          format: int32
+          type: integer
+        sourceCount:
+          description: Number of sources the target's subtypes apply to.
+          example: 12
+          format: int32
+          type: integer
+        lastModified:
+          description: Most recent modification time across the target's subtypes.
+          example: 2026-07-28T16:13:42.75Z
+          format: date-time
+          nullable: true
+          type: string
+      title: Subtype Target Summary
+      type: object
+    SourceSubtypeOverrideRequest:
+      description: Request body for overriding a connector subtype on one source.
+      example:
+        sourceId: 6d0458373bec4b4b80460992b76016da
+      properties:
+        sourceId:
+          description: ID of the source to create the overriding source subtype on.
+          example: 6d0458373bec4b4b80460992b76016da
+          type: string
+      required:
+      - sourceId
+      title: Source Subtype Override Request
+      type: object
+    SubtypeProvisioningPolicyField:
+      description: One field of a subtype provisioning policy.
+      example:
+        isRequired: false
+        transform:
+          type: rule
+          attributes:
+            name: Create Unique LDAP Attribute
+        isMultiValued: false
+        name: userName
+        attributes:
+          template: "{firstname}.{lastname}{uniqueCounter}"
+          cloudMaxUniqueChecks: "50"
+          cloudMaxSize: "20"
+          cloudRequired: "true"
+        type: string
+      properties:
+        name:
+          description: Name of the attribute.
+          example: userName
+          type: string
+        transform:
+          additionalProperties: true
+          description: Transform to apply to the field.
+          example:
+            type: rule
+            attributes:
+              name: Create Unique LDAP Attribute
+          nullable: true
+          type: object
+        attributes:
+          additionalProperties: true
+          description: Attributes required for the transform.
+          example:
+            template: "{firstname}.{lastname}{uniqueCounter}"
+            cloudMaxUniqueChecks: "50"
+            cloudMaxSize: "20"
+            cloudRequired: "true"
+          nullable: true
+          type: object
+        isRequired:
+          default: false
+          description: Indicates whether the attribute is required.
+          example: false
+          type: boolean
+        type:
+          description: Type of the attribute.
+          example: string
+          nullable: true
+          type: string
+        isMultiValued:
+          default: false
+          description: Indicates whether the attribute is multi-valued.
+          example: false
+          type: boolean
+      required:
+      - name
+      title: Subtype Provisioning Policy Field
+      type: object
+    SubtypeProvisioningPolicy:
+      description: The machine account creation provisioning policy of a subtype.
+      example:
+        name: Service Account
+        description: Fields collected when creating a service account.
+        id: d7ae9ea3-507f-4d00-9d4f-b4464b344b88
+        subtypeId: 43bdd144-4b17-4fce-a744-17c7fd3e717b
+        fields:
+        - isRequired: false
+          transform:
+            type: rule
+            attributes:
+              name: Create Unique LDAP Attribute
+          isMultiValued: false
+          name: userName
+          attributes:
+            template: "{firstname}.{lastname}{uniqueCounter}"
+            cloudMaxUniqueChecks: "50"
+            cloudMaxSize: "20"
+            cloudRequired: "true"
+          type: string
+        - isRequired: false
+          transform:
+            type: rule
+            attributes:
+              name: Create Unique LDAP Attribute
+          isMultiValued: false
+          name: userName
+          attributes:
+            template: "{firstname}.{lastname}{uniqueCounter}"
+            cloudMaxUniqueChecks: "50"
+            cloudMaxSize: "20"
+            cloudRequired: "true"
+          type: string
+        usageType: CREATE_MACHINE_ACCOUNT
+      properties:
+        id:
+          description: System-generated unique ID of the provisioning policy. Must
+            not be supplied on create.
+          example: d7ae9ea3-507f-4d00-9d4f-b4464b344b88
+          readOnly: true
+          type: string
+        subtypeId:
+          description: ID of the subtype the policy belongs to. Must not be supplied
+            on create.
+          example: 43bdd144-4b17-4fce-a744-17c7fd3e717b
+          readOnly: true
+          type: string
+        name:
+          description: Name of the provisioning policy. Defaults to the subtype's
+            display name when omitted or blank.
+          example: Service Account
+          nullable: true
+          type: string
+        description:
+          description: Description of the provisioning policy.
+          example: Fields collected when creating a service account.
+          nullable: true
+          type: string
+        usageType:
+          default: CREATE_MACHINE_ACCOUNT
+          description: Usage type of the provisioning policy. Only `CREATE_MACHINE_ACCOUNT`
+            is supported.
+          enum:
+          - CREATE_MACHINE_ACCOUNT
+          example: CREATE_MACHINE_ACCOUNT
+          type: string
+        fields:
+          description: "Fields of the provisioning policy. Every field must have a\
+            \ non-blank `name`. When two fields share a name, only the first is kept."
+          items:
+            $ref: '#/components/schemas/SubtypeProvisioningPolicyField'
+          type: array
+      title: Subtype Provisioning Policy
+      type: object
     loadBulkSourceSubtypesV1_401_response:
       example:
         error: "JWT validation failed: JWT is expired"
@@ -1606,3 +3803,50 @@ components:
           $ref: '#/components/schemas/array_inner'
         title: array
         type: array
+    SourceSubtypeV2_profile:
+      description: Connector variant profile. Reserved for future use and currently
+        always `null`.
+      example:
+        connectorType: JDBC
+        variant: MySql
+        id: 9a4b7d2e-1c3f-4e5a-8b6c-7d8e9f0a1b2c
+      nullable: true
+      properties:
+        id:
+          description: Unique identifier for the connector variant profile.
+          example: 9a4b7d2e-1c3f-4e5a-8b6c-7d8e9f0a1b2c
+          format: uuid
+          type: string
+        connectorType:
+          description: Connector type of the variant.
+          example: JDBC
+          type: string
+        variant:
+          description: Name of the connector variant.
+          example: MySql
+          type: string
+      type: object
+    SourceSubtypeV2WithConfig_allOf_config_machineAccountCreate:
+      description: Machine account creation settings.
+      example:
+        accountCreateEnabled: true
+      properties:
+        accountCreateEnabled:
+          default: false
+          description: Indicates whether machine account creation is enabled for the
+            subtype.
+          example: true
+          type: boolean
+      type: object
+    SourceSubtypeV2WithConfig_allOf_config:
+      description: Summary of the subtype's machine account creation configuration.
+        `null` when the subtype is not a `MACHINE` subtype or has no machine account
+        creation configuration.
+      example:
+        machineAccountCreate:
+          accountCreateEnabled: true
+      nullable: true
+      properties:
+        machineAccountCreate:
+          $ref: '#/components/schemas/SourceSubtypeV2WithConfig_allOf_config_machineAccountCreate'
+      type: object

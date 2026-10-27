@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - Password Configuration
+SailPoint Identity Security API - Password Configuration
 
 Testing PasswordConfigurationAPIService
 

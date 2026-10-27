@@ -3,7 +3,7 @@ info:
   contact:
     name: Developer Relations
     url: https://developer.sailpoint.com/discuss/api-help
-  description: "Use these APIs to interact with the Identity Security Cloud platform\
+  description: "Use these APIs to interact with the SailPoint Identity Security platform\
     \ to achieve repeatable, automated processes with greater scalability. We encourage\
     \ you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss\
     \ to connect with other developers using our APIs."
@@ -11,7 +11,7 @@ info:
     name: MIT
     url: https://opensource.org/licenses/MIT
   termsOfService: https://developer.sailpoint.com/discuss/tos
-  title: Identity Security Cloud API - Certification Campaigns
+  title: SailPoint Identity Security API - Certification Campaigns
   version: v1
 servers:
 - description: This is the production API server.
@@ -33,10 +33,10 @@ tags:
 - description: "Use this API to implement certification campaign functionality.\n\
     With this functionality in place, administrators can create, customize, and manage\
     \ certification campaigns for their organizations' use. \nCertification campaigns\
-    \ provide Identity Security Cloud users with an interactive review process they\
-    \ can use to identify and verify access to systems. \nCampaigns help organizations\
+    \ provide SailPoint Identity Security users with an interactive review process\
+    \ they can use to identify and verify access to systems. \nCampaigns help organizations\
     \ reduce risk of inappropriate access and satisfy audit requirements. \n\nA certification\
-    \ refers to Identity Security Cloud's mechanism for reviewing a user's access\
+    \ refers to SailPoint Identity Security's mechanism for reviewing a user's access\
     \ to entitlements (sets of permissions) and approving or removing that access.\
     \ \nThese certifications serve as a way of showing that a user's access has been\
     \ reviewed and approved. \nMultiple certifications by different reviewers are\
@@ -44,27 +44,27 @@ tags:
     \ is called a certification campaign. \n\nFor example, an organization may use\
     \ a Manager Certification campaign as a way of showing that a user's access has\
     \ been reviewed and approved by multiple managers. \nOnce this campaign has been\
-    \ completed, Identity Security Cloud would provision all the access the user needs,\
-    \ nothing more. \n\nIdentity Security Cloud provides two simple campaign types\
-    \ users can create without using search queries, Manager and Source Owner campaigns:\n\
-    \nYou can create these types of campaigns without using any search queries in\
-    \ Identity Security Cloud: \n\n- ManagerCampaign: Identity Security Cloud provides\
-    \ this campaign type as a way to ensure that an identity's access is certified\
-    \ by their managers. \nYou only need to provide a name and description to create\
-    \ one. \n\n- Source Owner Campaign: Identity Security Cloud provides this campaign\
-    \ type as a way to ensure that an identity's access to a source is certified by\
-    \ its source owners. \nYou only need to provide a name and description to create\
-    \ one. \nYou can specify the sources whose owners you want involved or just run\
-    \ it across all sources. \n\nFor more information about these campaign types,\
-    \ refer to [Starting a Manager or Source Owner Campaign](https://documentation.sailpoint.com/saas/help/certs/starting_campaign.html).\n\
-    \nOne useful way to create certification campaigns in Identity Security Cloud\
+    \ completed, SailPoint Identity Security would provision all the access the user\
+    \ needs, nothing more. \n\nSailPoint Identity Security provides two simple campaign\
+    \ types users can create without using search queries, Manager and Source Owner\
+    \ campaigns:\n\nYou can create these types of campaigns without using any search\
+    \ queries in SailPoint Identity Security: \n\n- ManagerCampaign: SailPoint Identity\
+    \ Security provides this campaign type as a way to ensure that an identity's access\
+    \ is certified by their managers. \nYou only need to provide a name and description\
+    \ to create one. \n\n- Source Owner Campaign: SailPoint Identity Security provides\
+    \ this campaign type as a way to ensure that an identity's access to a source\
+    \ is certified by its source owners. \nYou only need to provide a name and description\
+    \ to create one. \nYou can specify the sources whose owners you want involved\
+    \ or just run it across all sources. \n\nFor more information about these campaign\
+    \ types, refer to [Starting a Manager or Source Owner Campaign](https://documentation.sailpoint.com/saas/help/certs/starting_campaign.html).\n\
+    \nOne useful way to create certification campaigns in SailPoint Identity Security\
     \ is to use a specific search and then run a campaign on the results returned\
     \ by that search. \nThis allows you to be much more specific about whom you are\
     \ certifying in your campaigns and what access you are certifying in your campaigns.\
     \ \nFor example, you can search for all identities who are managed by \"Amanda.Ross\"\
     \ and also have the access to the \"Accounting\" role and then run a certification\
     \ campaign based on that search to ensure that the returned identities are appropriately\
-    \ certified. \n\nYou can use Identity Security Cloud search queries to create\
+    \ certified. \n\nYou can use SailPoint Identity Security search queries to create\
     \ these types of campaigns: \n\n- Identities: Use this campaign type to review\
     \ and revoke access items for specific identities. \nYou can either build a search\
     \ query and create a campaign certifying all identities returned by that query,\
@@ -79,14 +79,14 @@ tags:
     \ and create a campaign certifying all roles returned by that query, or you can\
     \ search for individual roles and add those roles to the certification campaign.\
     \ \n\n- Uncorrelated Accounts: Use this campaign type to certify source accounts\
-    \ that aren't linked to an authoritative identity in Identity Security Cloud.\
+    \ that aren't linked to an authoritative identity in SailPoint Identity Security.\
     \ \nYou can use this campaign type to view all the uncorrelated accounts for a\
     \ source and certify them. \n\nFor more information about search-based campaigns,\
     \ refer to [Starting a Campaign from Search](https://documentation.sailpoint.com/saas/help/certs/starting_search_campaign.html).\n\
     \nOnce you have generated your campaign, it becomes available for preview. \n\
     An administrator can review the campaign and make changes, or if it's ready and\
     \ accurate, activate it. \n\nOnce the campaign is active, organization administrators\
-    \ or certification administrators can designate other Identity Security Cloud\
+    \ or certification administrators can designate other SailPoint Identity Security\
     \ users as certification reviewers. \nThose reviewers can view any of the certifications\
     \ they either need to review (active) or have already reviewed (completed).\n\n\
     When a certification campaign is in progress, certification reviewers see the\
@@ -129,7 +129,7 @@ paths:
         style: form
       - description: |-
           Max number of results to return.
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
         example: 250
         explode: true
         in: query
@@ -144,7 +144,7 @@ paths:
         style: form
       - description: |-
           Offset into the full result set. Usually specified with *limit* to paginate through the results.
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
         example: 0
         explode: true
         in: query
@@ -161,7 +161,7 @@ paths:
 
           Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
 
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
         example: true
         explode: true
         in: query
@@ -172,7 +172,7 @@ paths:
           type: boolean
         style: form
       - description: |-
-          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
+          Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)
 
           Filtering is supported for the following fields and operators:
 
@@ -190,7 +190,7 @@ paths:
           type: string
         style: form
       - description: |-
-          Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
+          Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)
 
           Sorting is supported for the following fields: **name, created**
         example: name
@@ -1641,7 +1641,7 @@ paths:
       parameters:
       - description: |-
           Max number of results to return.
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
         example: 250
         explode: true
         in: query
@@ -1656,7 +1656,7 @@ paths:
         style: form
       - description: |-
           Offset into the full result set. Usually specified with *limit* to paginate through the results.
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
         example: 0
         explode: true
         in: query
@@ -1673,7 +1673,7 @@ paths:
 
           Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
 
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
         example: true
         explode: true
         in: query
@@ -1684,7 +1684,7 @@ paths:
           type: boolean
         style: form
       - description: |-
-          Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
+          Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)
 
           Sorting is supported for the following fields: **name, created, modified**
         example: name
@@ -1697,7 +1697,7 @@ paths:
           type: string
         style: form
       - description: |-
-          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
+          Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)
 
           Filtering is supported for the following fields and operators:
 
@@ -3625,7 +3625,7 @@ components:
     limit:
       description: |-
         Max number of results to return.
-        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
       example: 250
       explode: true
       in: query
@@ -3641,7 +3641,7 @@ components:
     offset:
       description: |-
         Offset into the full result set. Usually specified with *limit* to paginate through the results.
-        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
       example: 0
       explode: true
       in: query
@@ -3659,7 +3659,7 @@ components:
 
         Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
 
-        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
       example: true
       explode: true
       in: query

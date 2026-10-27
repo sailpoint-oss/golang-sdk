@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - Machine Accounts
+SailPoint Identity Security API - Machine Accounts
 
 Testing MachineAccountsAPIService
 
@@ -64,6 +64,20 @@ func Test_machine_accounts_MachineAccountsAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test MachineAccountsAPIService DeleteMachineAccountV1", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+
+		resp, httpRes, err := apiClient.MachineAccountsAPI.DeleteMachineAccountV1(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test MachineAccountsAPIService DisableMachineAccountV1", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -78,6 +92,18 @@ func Test_machine_accounts_MachineAccountsAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test MachineAccountsAPIService DisableMachineAccountsInBulkV1", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.MachineAccountsAPI.DisableMachineAccountsInBulkV1(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test MachineAccountsAPIService EnableMachineAccountV1", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -85,6 +111,32 @@ func Test_machine_accounts_MachineAccountsAPIService(t *testing.T) {
 		var id string
 
 		resp, httpRes, err := apiClient.MachineAccountsAPI.EnableMachineAccountV1(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test MachineAccountsAPIService EnableMachineAccountsInBulkV1", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.MachineAccountsAPI.EnableMachineAccountsInBulkV1(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test MachineAccountsAPIService GetMachineAccountEntitlementsV1", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+
+		resp, httpRes, err := apiClient.MachineAccountsAPI.GetMachineAccountEntitlementsV1(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -135,6 +187,46 @@ func Test_machine_accounts_MachineAccountsAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test MachineAccountsAPIService GetMachineAccountV2", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+
+		resp, httpRes, err := apiClient.MachineAccountsAPI.GetMachineAccountV2(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test MachineAccountsAPIService GetMachineAccountsSummaryV1", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.MachineAccountsAPI.GetMachineAccountsSummaryV1(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test MachineAccountsAPIService ListMachineAccountMachineIdentitiesV1", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+
+		resp, httpRes, err := apiClient.MachineAccountsAPI.ListMachineAccountMachineIdentitiesV1(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test MachineAccountsAPIService ListMachineAccountSubtypesV1", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -154,6 +246,18 @@ func Test_machine_accounts_MachineAccountsAPIService(t *testing.T) {
 		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.MachineAccountsAPI.ListMachineAccountsV1(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test MachineAccountsAPIService ListMachineAccountsV2", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.MachineAccountsAPI.ListMachineAccountsV2(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -190,6 +294,30 @@ func Test_machine_accounts_MachineAccountsAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test MachineAccountsAPIService ReloadMachineAccountsInBulkAsyncV1", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.MachineAccountsAPI.ReloadMachineAccountsInBulkAsyncV1(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test MachineAccountsAPIService ReloadMachineAccountsInBulkV1", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.MachineAccountsAPI.ReloadMachineAccountsInBulkV1(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test MachineAccountsAPIService UnlockMachineAccountV1", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -211,6 +339,32 @@ func Test_machine_accounts_MachineAccountsAPIService(t *testing.T) {
 		var id string
 
 		resp, httpRes, err := apiClient.MachineAccountsAPI.UpdateMachineAccountV1(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test MachineAccountsAPIService UpdateMachineAccountV2", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+
+		resp, httpRes, err := apiClient.MachineAccountsAPI.UpdateMachineAccountV2(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test MachineAccountsAPIService UpdateMachineAccountsInBulkV1", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.MachineAccountsAPI.UpdateMachineAccountsInBulkV1(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

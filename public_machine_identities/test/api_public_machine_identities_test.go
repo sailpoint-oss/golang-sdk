@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - Public Machine Identities
+SailPoint Identity Security API - Public Machine Identities
 
 Testing PublicMachineIdentitiesAPIService
 

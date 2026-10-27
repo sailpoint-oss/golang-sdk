@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - Task Management
+SailPoint Identity Security API - Task Management
 
 Testing TaskManagementAPIService
 

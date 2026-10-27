@@ -15,13 +15,13 @@ tags: ['SDK', 'Software Development Kit', 'Intelidentitymachineaggregate', 'V1In
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | Identity Security Cloud identifier for this non-human identity. | 
+**Id** | **string** | SailPoint Identity Security identifier for this non-human identity. | 
 **Type** | **string** | Identity type for the matched record. | 
 **DisplayName** | Pointer to **string** | Preferred display name for the non-human identity. | [optional] 
 **Description** | Pointer to **NullableString** | Optional description from upstream when present. | [optional] 
 **Subtype** | Pointer to **NullableString** | Sub-classification label for that NHI. | [optional] 
-**Created** | Pointer to **SailPointTime** | Timestamp when the identity record was created in Identity Security Cloud. | [optional] 
-**Modified** | Pointer to **SailPointTime** | Timestamp when the identity record was last modified in Identity Security Cloud. | [optional] 
+**Created** | Pointer to **SailPointTime** | Timestamp when the identity record was created in SailPoint Identity Security. | [optional] 
+**Modified** | Pointer to **SailPointTime** | Timestamp when the identity record was last modified in SailPoint Identity Security. | [optional] 
 **MatchConfidence** | Pointer to **string** | Match quality for opaque prefix resolution; omitted for direct id eq and exact opaque matches. | [optional] 
 **IdentityGraph** | Pointer to [**Intelidentitygraphlink**](intelidentitygraphlink) | Omitted when the tenant lacks the idg:base license. | [optional] 
 **Accounts** | [**Intelmachineaccountsslice**](intelmachineaccountsslice) |  | 
@@ -30,7 +30,7 @@ Name | Type | Description | Notes
 **Source** | Pointer to [**NullableIntelmachinesourcewire**](intelmachinesourcewire) | Source metadata for the machine identity when present upstream. | [optional] 
 **ExistsOnSource** | Pointer to **NullableString** | Upstream existsOnSource value. Wire uses uppercase strings such as TRUE or FALSE. | [optional] 
 **ManuallyEdited** | Pointer to **bool** | True when an administrator manually edited machine identity attributes. | [optional] [default to false]
-**ManuallyCreated** | Pointer to **bool** | True when the machine identity was created manually in Identity Security Cloud. | [optional] [default to false]
+**ManuallyCreated** | Pointer to **bool** | True when the machine identity was created manually in SailPoint Identity Security. | [optional] [default to false]
 **Owners** | [**Intelmachineidentityowners**](intelmachineidentityowners) |  | 
 **UserEntitlements** | Pointer to [**[]Intelmachineuserentitlement**](intelmachineuserentitlement) | Entitlements associated with the machine identity from upstream. | [optional] 
 **Attributes** | **map[string]interface{}** | Connector or runtime metadata; empty object when absent upstream. | 

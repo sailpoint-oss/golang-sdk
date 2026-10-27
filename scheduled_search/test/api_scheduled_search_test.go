@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - Scheduled Search
+SailPoint Identity Security API - Scheduled Search
 
 Testing ScheduledSearchAPIService
 

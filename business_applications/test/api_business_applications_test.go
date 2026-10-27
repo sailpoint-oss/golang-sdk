@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - Business Applications
+SailPoint Identity Security API - Business Applications
 
 Testing BusinessApplicationsAPIService
 
@@ -48,11 +48,63 @@ func Test_business_applications_BusinessApplicationsAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test BusinessApplicationsAPIService GetMcpServerCountsV1", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.BusinessApplicationsAPI.GetMcpServerCountsV1(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test BusinessApplicationsAPIService GetMcpServerV1", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+
+		resp, httpRes, err := apiClient.BusinessApplicationsAPI.GetMcpServerV1(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test BusinessApplicationsAPIService ListBusinessApplicationsV1", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.BusinessApplicationsAPI.ListBusinessApplicationsV1(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test BusinessApplicationsAPIService ListMcpServerConnectedAgentsV1", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+
+		resp, httpRes, err := apiClient.BusinessApplicationsAPI.ListMcpServerConnectedAgentsV1(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test BusinessApplicationsAPIService ListMcpServersV1", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.BusinessApplicationsAPI.ListMcpServersV1(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

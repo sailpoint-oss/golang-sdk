@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - Managed Clients
+SailPoint Identity Security API - Managed Clients
 
 Testing ManagedClientsAPIService
 

@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - Global Tenant Security Settings
+SailPoint Identity Security API - Global Tenant Security Settings
 
 Testing GlobalTenantSecuritySettingsAPIService
 

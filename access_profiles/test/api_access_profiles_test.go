@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - Access Profiles
+SailPoint Identity Security API - Access Profiles
 
 Testing AccessProfilesAPIService
 

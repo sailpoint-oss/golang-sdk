@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - JIT Access
+SailPoint Identity Security API - JIT Access
 
 Testing JITAccessAPIService
 

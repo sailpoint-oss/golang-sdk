@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'IntelAccessAccountWire', 'V1IntelAcce
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | Unique account identifier in Identity Security Cloud. | 
+**Id** | **string** | Unique account identifier in SailPoint Identity Security. | 
 **Name** | **string** | Account name or login value on the correlated source. | 
 **Source** | Pointer to [**IntelAccessSourceWire**](intel-access-source-wire) | Source metadata for the account as returned by List Accounts wire format. | [optional] 
 **Disabled** | **bool** | True when the account is administratively disabled on the source. | 
@@ -25,8 +25,8 @@ Name | Type | Description | Notes
 **IsMachine** | **bool** | True when the account belongs to a machine or service identity. | 
 **ManuallyCorrelated** | **bool** | True when an administrator manually correlated the account to an identity. | 
 **NativeIdentity** | Pointer to **NullableString** | Native identifier string on the source directory or application. | [optional] 
-**Created** | **SailPointTime** | Timestamp when the account record was created in Identity Security Cloud. | 
-**Modified** | **SailPointTime** | Timestamp when the account record was last modified in Identity Security Cloud. | 
+**Created** | **SailPointTime** | Timestamp when the account record was created in SailPoint Identity Security. | 
+**Modified** | **SailPointTime** | Timestamp when the account record was last modified in SailPoint Identity Security. | 
 
 ## Methods
 

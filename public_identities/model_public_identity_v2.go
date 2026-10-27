@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud API - Public Identities
+SailPoint Identity Security API - Public Identities
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the SailPoint Identity Security platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: v1
 */
@@ -28,7 +28,7 @@ type PublicIdentityV2 struct {
 	DisplayName NullableString `json:"displayName"`
 	// Email address of identity.
 	Email NullableString `json:"email"`
-	// The current state of the identity, which determines how Identity Security Cloud interacts with the identity.
+	// The current state of the identity, which determines how SailPoint Identity Security interacts with the identity.
 	IdentityState NullableString `json:"identityState"`
 	// The lifecycle status for the identity
 	CloudLifecycleState NullableString `json:"cloudLifecycleState"`

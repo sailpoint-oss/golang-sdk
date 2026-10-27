@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - Access Request Identity Metrics
+SailPoint Identity Security API - Access Request Identity Metrics
 
 Testing AccessRequestIdentityMetricsAPIService
 

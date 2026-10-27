@@ -3,7 +3,7 @@ info:
   contact:
     name: Developer Relations
     url: https://developer.sailpoint.com/discuss/api-help
-  description: "Use these APIs to interact with the Identity Security Cloud platform\
+  description: "Use these APIs to interact with the SailPoint Identity Security platform\
     \ to achieve repeatable, automated processes with greater scalability. We encourage\
     \ you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss\
     \ to connect with other developers using our APIs."
@@ -11,7 +11,7 @@ info:
     name: MIT
     url: https://opensource.org/licenses/MIT
   termsOfService: https://developer.sailpoint.com/discuss/tos
-  title: Identity Security Cloud API - Machine Account Classify
+  title: SailPoint Identity Security API - Machine Account Classify
   version: v1
 servers:
 - description: This is the production API server.
@@ -155,6 +155,155 @@ paths:
       - ORG_ADMIN
       - SOURCE_ADMIN
       - SOURCE_SUBADMIN
+  /accounts/v1/bulk-classify:
+    post:
+      description: |-
+        Use this API to classify up to 250 accounts in one request.
+        The response lists a result for each requested account, with its own status code, so some accounts can succeed while others fail.
+        A token with API, ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
+        When machine account classification is not enabled for the tenant, this API returns `404`.
+      operationId: sendBulkClassifyMachineAccountsV1
+      parameters:
+      - description: "Specifies how the accounts should be classified. \n      default\
+          \ - uses criteria to classify account as machine or human, excludes accounts\
+          \ that were manually classified.\n      ignoreManual - like default, but\
+          \ includes accounts that were manually classified.\n      forceMachine -\
+          \ forces account to be classified as machine.\n      forceHuman - forces\
+          \ account to be classified as human."
+        example: forceMachine
+        explode: true
+        in: query
+        name: classificationMode
+        required: false
+        schema:
+          default: default
+          enum:
+          - default
+          - ignoreManual
+          - forceMachine
+          - forceHuman
+          type: string
+        style: form
+      - description: Use this header to enable this experimental API.
+        example: true
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BulkClassifyMachineAccountsRequest'
+        required: true
+      responses:
+        "207":
+          content:
+            application/json:
+              example:
+              - id: ef38f94347e94562b5bb8424a56397d8
+                status: 200
+                isMachine: true
+                message: Account classified successfully
+              - id: 2c9180835d191a86015d28455b4a2329
+                status: 404
+                isMachine: false
+                message: Account is not valid
+              schema:
+                items:
+                  $ref: '#/components/schemas/BulkClassifyMachineAccountResult'
+                type: array
+          description: Classification result for each requested account.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/sendClassifyMachineAccountV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/sendClassifyMachineAccountV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:accounts:classify
+      - applicationAuth:
+        - idn:accounts:classify
+      summary: Classify multiple machine accounts
+      tags:
+      - Machine Account Classify
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
 components:
   parameters:
     classificationmode:
@@ -210,6 +359,24 @@ components:
             $ref: '#/components/schemas/ErrorResponseDto'
       description: "Forbidden - Returned if the user you are running as, doesn't have\
         \ access to this end-point."
+    "404":
+      content:
+        application/json:
+          examples:
+            "404":
+              summary: An example of a 404 response object
+              value:
+                detailCode: 404 Not found
+                trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                messages:
+                - locale: en-US
+                  localeOrigin: DEFAULT
+                  text: The server did not find a current representation for the target
+                    resource.
+          schema:
+            $ref: '#/components/schemas/ErrorResponseDto'
+      description: Not Found - returned if the request URL refers to a resource or
+        object that does not exist
     "429":
       content:
         application/json:
@@ -311,6 +478,59 @@ components:
             $ref: '#/components/schemas/ErrorMessageDto'
           type: array
       title: Error Response Dto
+      type: object
+    BulkClassifyMachineAccountsRequest:
+      description: Accounts to classify.
+      example:
+        ids:
+        - ef38f94347e94562b5bb8424a56397d8
+        - 2c9180835d191a86015d28455b4a2329
+      properties:
+        ids:
+          description: IDs of the accounts to classify. Provide between 1 and 250
+            account IDs.
+          example:
+          - ef38f94347e94562b5bb8424a56397d8
+          - 2c9180835d191a86015d28455b4a2329
+          items:
+            type: string
+          maxItems: 250
+          minItems: 1
+          type: array
+      required:
+      - ids
+      title: Bulk Classify Machine Accounts Request
+      type: object
+    BulkClassifyMachineAccountResult:
+      description: Classification result for one account in a bulk classify request.
+      example:
+        id: ef38f94347e94562b5bb8424a56397d8
+        message: Account classified successfully
+        status: 200
+        isMachine: true
+      properties:
+        id:
+          description: Account ID from the request.
+          example: ef38f94347e94562b5bb8424a56397d8
+          type: string
+        status:
+          description: "HTTP status code for this account. `200` means the account\
+            \ was classified, `404` means the account was not found, and other codes\
+            \ describe why classification failed."
+          example: 200
+          format: int32
+          type: integer
+        isMachine:
+          default: false
+          description: Indicates if the account is classified as machine. `false`
+            when classification did not succeed.
+          example: true
+          type: boolean
+        message:
+          description: Result message for this account.
+          example: Account classified successfully
+          type: string
+      title: Bulk Classify Machine Account Result
       type: object
     sendClassifyMachineAccountV1_200_response:
       example:

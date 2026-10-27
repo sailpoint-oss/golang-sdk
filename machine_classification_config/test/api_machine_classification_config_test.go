@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - Machine Classification Config
+SailPoint Identity Security API - Machine Classification Config
 
 Testing MachineClassificationConfigAPIService
 

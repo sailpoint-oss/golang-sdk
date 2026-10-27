@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - Machine Account Mappings
+SailPoint Identity Security API - Machine Account Mappings
 
 Testing MachineAccountMappingsAPIService
 

@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - Reports Data Extraction
+SailPoint Identity Security API - Reports Data Extraction
 
 Testing ReportsDataExtractionAPIService
 

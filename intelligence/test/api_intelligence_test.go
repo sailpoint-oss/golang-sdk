@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - Intelligence
+SailPoint Identity Security API - Intelligence
 
 Testing IntelligenceAPIService
 

@@ -3,7 +3,7 @@ info:
   contact:
     name: Developer Relations
     url: https://developer.sailpoint.com/discuss/api-help
-  description: "Use these APIs to interact with the Identity Security Cloud platform\
+  description: "Use these APIs to interact with the SailPoint Identity Security platform\
     \ to achieve repeatable, automated processes with greater scalability. We encourage\
     \ you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss\
     \ to connect with other developers using our APIs."
@@ -11,7 +11,7 @@ info:
     name: MIT
     url: https://opensource.org/licenses/MIT
   termsOfService: https://developer.sailpoint.com/discuss/tos
-  title: Identity Security Cloud API - Shared Signals Framework (SSF)
+  title: SailPoint Identity Security API - Shared Signals Framework (SSF)
   version: v1
 servers:
 - description: This is the production API server.
@@ -35,9 +35,9 @@ tags:
     and automatically triggers session revocation events when specific lifecycle conditions are met.
 
     Use this API to implement transmitter functionality so administrators can discover the transmitter and manage streams.
-    Transmitters send identity data and events from Identity Security Cloud to external receivers over the Secure Sync Framework (SSF).
+    Transmitters send identity data and events from SailPoint Identity Security to external receivers over the Secure Sync Framework (SSF).
     The SSF configuration and JWKS endpoints support discovery and verification; the stream management endpoints support creating, updating, and managing streams and verifying receivers.
-    In Identity Security Cloud, administrators can use the "Connections" > "Shared Signals" area to view and manage transmitters and their streams.
+    In SailPoint Identity Security, administrators can use the "Connections" > "Shared Signals" area to view and manage transmitters and their streams.
   name: Shared Signals Framework (SSF)
 paths:
   /.well-known/v1/ssf-configuration:

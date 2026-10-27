@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud API - Custom User Levels
+SailPoint Identity Security API - Custom User Levels
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the SailPoint Identity Security platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: v1
 */
@@ -29,7 +29,7 @@ type PublicIdentity struct {
 	Email NullableString `json:"email,omitempty"`
 	// The lifecycle status for the identity
 	Status NullableString `json:"status,omitempty"`
-	// The current state of the identity, which determines how Identity Security Cloud interacts with the identity. An identity that is Active will be included identity picklists in Request Center, identity processing, and more. Identities that are Inactive will be excluded from these features. 
+	// The current state of the identity, which determines how SailPoint Identity Security interacts with the identity. An identity that is Active will be included identity picklists in Request Center, identity processing, and more. Identities that are Inactive will be excluded from these features. 
 	IdentityState NullableString `json:"identityState,omitempty"`
 	Manager NullableIdentityReference `json:"manager,omitempty"`
 	// The public identity attributes of the identity

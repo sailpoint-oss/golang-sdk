@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud API - Access Profiles
+SailPoint Identity Security API - Access Profiles
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the SailPoint Identity Security platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: v1
 */
@@ -18,7 +18,7 @@ import (
 // checks if the AccessProfileMetadataBulkUpdateByQueryRequest type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &AccessProfileMetadataBulkUpdateByQueryRequest{}
 
-// AccessProfileMetadataBulkUpdateByQueryRequest Request to bulk update Access Model Metadata on every access profile matching a search query. A single access profile cannot be assigned more than 25 metadata values. Adding or replacing custom metadata requires a suite license.  For more information about the query object, refer to [V3 API Perform Search](https://developer.sailpoint.com/docs/api/v3/search-post).
+// AccessProfileMetadataBulkUpdateByQueryRequest Request to bulk update Access Model Metadata on every access profile matching a search query. A single access profile cannot be assigned more than 25 metadata values. Adding or replacing custom metadata requires a suite license.  For more information about the query object, refer to [V3 API Perform Search](https://developer.sailpoint.com/docs/api/search-post-v-1).
 type AccessProfileMetadataBulkUpdateByQueryRequest struct {
 	// The search query selecting the access profiles to update.
 	Query map[string]interface{} `json:"query"`

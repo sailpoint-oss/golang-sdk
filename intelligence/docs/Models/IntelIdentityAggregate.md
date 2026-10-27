@@ -15,17 +15,17 @@ tags: ['SDK', 'Software Development Kit', 'IntelIdentityAggregate', 'V1IntelIden
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | Identity Security Cloud identifier for this identity. | 
+**Id** | **string** | SailPoint Identity Security identifier for this identity. | 
 **Type** | **string** | Identity type for the matched record. | 
 **DisplayName** | Pointer to **string** | Preferred display name for the identity across administrative experiences. | [optional] 
 **Description** | Pointer to **NullableString** | Optional free-text description assigned to the identity profile when present. | [optional] 
 **Subtype** | Pointer to **NullableString** | NERM classification for the identity. | [optional] 
 **Attributes** | Pointer to **map[string]interface{}** | Arbitrary SCIM-style attribute bag returned for the identity context view. | [optional] 
-**Created** | Pointer to **SailPointTime** | Timestamp when the identity record was created in Identity Security Cloud. | [optional] 
-**Modified** | Pointer to **SailPointTime** | Timestamp when the identity record was last modified in Identity Security Cloud. | [optional] 
+**Created** | Pointer to **SailPointTime** | Timestamp when the identity record was created in SailPoint Identity Security. | [optional] 
+**Modified** | Pointer to **SailPointTime** | Timestamp when the identity record was last modified in SailPoint Identity Security. | [optional] 
 **Alias** | Pointer to **string** | Primary login or account alias for the identity. | [optional] 
 **Email** | Pointer to **string** | Primary business email address for the identity. | [optional] 
-**IdentityStatus** | Pointer to **string** | Current identity lifecycle status label from Identity Security Cloud. | [optional] 
+**IdentityStatus** | Pointer to **string** | Current identity lifecycle status label from SailPoint Identity Security. | [optional] 
 **IsManager** | Pointer to **bool** | True when the identity is flagged as a people manager in the organization. | [optional] [default to false]
 **IdentityGraph** | Pointer to [**Intelidentitygraphlink**](intelidentitygraphlink) | Omitted when the tenant lacks the idg:base license. | [optional] 
 **NonHumanIdentityOwnership** | Pointer to [**Intelnonhumanidentityownership**](intelnonhumanidentityownership) | Omitted when the tenant lacks `idn:machine-identity-security`. When present, both `agents` and `applications` always render.  | [optional] 

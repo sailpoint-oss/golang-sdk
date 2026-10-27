@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - Machine Account Classify
+SailPoint Identity Security API - Machine Account Classify
 
 Testing MachineAccountClassifyAPIService
 
@@ -21,6 +21,18 @@ func Test_machine_account_classify_MachineAccountClassifyAPIService(t *testing.T
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
+
+	t.Run("Test MachineAccountClassifyAPIService SendBulkClassifyMachineAccountsV1", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.MachineAccountClassifyAPI.SendBulkClassifyMachineAccountsV1(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
 
 	t.Run("Test MachineAccountClassifyAPIService SendClassifyMachineAccountV1", func(t *testing.T) {
 

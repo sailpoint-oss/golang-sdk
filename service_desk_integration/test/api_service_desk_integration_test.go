@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - Service Desk Integration
+SailPoint Identity Security API - Service Desk Integration
 
 Testing ServiceDeskIntegrationAPIService
 

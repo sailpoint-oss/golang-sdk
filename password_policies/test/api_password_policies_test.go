@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - Password Policies
+SailPoint Identity Security API - Password Policies
 
 Testing PasswordPoliciesAPIService
 

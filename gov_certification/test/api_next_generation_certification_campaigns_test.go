@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - Next Generation Certification Campaigns
+SailPoint Identity Security API - Next Generation Certification Campaigns
 
 Testing NextGenerationCertificationCampaignsAPIService
 

@@ -1,0 +1,79 @@
+- path: /generic-request-approval-config/v1
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/genericrequestapprovalconfig/methods/generic-request-approval-config#get-generic-request-approval-config-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          targetType := `RESOURCE` // string | The kind of scope to read. # string | The kind of scope to read.
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+          targetId := `aws:bedrock-agent-alias-version` // string | The scope target. Required for **RESOURCE** (the source resource ID) and **SUBTYPE** (the subtype ID). For **SOURCE** the target is the `sourceId`, and for **GLOBAL** it is the tenant; when you supply it for those target types, it must match that value or the request returns `400`. (optional) # string | The scope target. Required for **RESOURCE** (the source resource ID) and **SUBTYPE** (the subtype ID). For **SOURCE** the target is the `sourceId`, and for **GLOBAL** it is the tenant; when you supply it for those target types, it must match that value or the request returns `400`. (optional)
+          sourceId := `6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa` // string | The source that owns the scope. Required for **RESOURCE**, **SUBTYPE**, and **SOURCE**. Must be omitted for **GLOBAL**. (optional) # string | The source that owns the scope. Required for **RESOURCE**, **SUBTYPE**, and **SOURCE**. Must be omitted for **GLOBAL**. (optional)
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.GenericRequestApprovalConfigAPI.GetGenericRequestApprovalConfigV1(context.Background()).TargetType(targetType).XSailPointExperimental(xSailPointExperimental).Execute()
+          //resp, r, err := apiClient.GenericRequestApprovalConfigAPI.GetGenericRequestApprovalConfigV1(context.Background()).TargetType(targetType).XSailPointExperimental(xSailPointExperimental).TargetId(targetId).SourceId(sourceId).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `GenericRequestApprovalConfigAPI.GetGenericRequestApprovalConfigV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetGenericRequestApprovalConfigV1`: GenericRequestApprovalConfig
+          fmt.Fprintf(os.Stdout, "Response from `GenericRequestApprovalConfigAPI.GetGenericRequestApprovalConfigV1`: %v\n", resp)
+        }
+- path: /generic-request-approval-config/v1/{id}
+  method: Patch
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/genericrequestapprovalconfig/methods/generic-request-approval-config#update-generic-request-approval-config-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            generic_request_approval_config "github.com/sailpoint-oss/golang-sdk/v3/generic_request_approval_config"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          id := `0f2c7a9e-3b4d-4e5f-8a6b-7c8d9e0f1a2b` // string | Approval configuration ID. # string | Approval configuration ID.
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+          jsonpatchoperationJson := []byte(`[{"op":"replace","path":"/approvalConfig/ACTIVATE","value":{"scheme":"APPROVAL","approvers":"machineIdentityPrimaryOwner,workgroup:8d3e0094-8a5e-4c6f-9a0b-2e5a1c7d4f10","comments":"REJECTION"}}]`) // []JsonPatchOperation | A JSON of updated values [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
+
+          
+          var jsonPatchOperation []generic_request_approval_config.JsonPatchOperation
+          if err := json.Unmarshal(jsonpatchoperationJson, &jsonPatchOperation); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.GenericRequestApprovalConfigAPI.UpdateGenericRequestApprovalConfigV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).JsonPatchOperation(jsonPatchOperation).Execute()
+          //resp, r, err := apiClient.GenericRequestApprovalConfigAPI.UpdateGenericRequestApprovalConfigV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).JsonPatchOperation(jsonPatchOperation).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `GenericRequestApprovalConfigAPI.UpdateGenericRequestApprovalConfigV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `UpdateGenericRequestApprovalConfigV1`: GenericRequestApprovalConfig
+          fmt.Fprintf(os.Stdout, "Response from `GenericRequestApprovalConfigAPI.UpdateGenericRequestApprovalConfigV1`: %v\n", resp)
+        }

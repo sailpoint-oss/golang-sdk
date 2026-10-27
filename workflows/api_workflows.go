@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud API - Workflows
+SailPoint Identity Security API - Workflows
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the SailPoint Identity Security platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: v1
 */
@@ -820,13 +820,13 @@ type ApiGetWorkflowExecutionHistoryV1Request struct {
 	offset *int32
 }
 
-// Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+// Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
 func (r ApiGetWorkflowExecutionHistoryV1Request) Limit(limit int32) ApiGetWorkflowExecutionHistoryV1Request {
 	r.limit = &limit
 	return r
 }
 
-// Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+// Offset into the full result set. Usually specified with *limit* to paginate through the results. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
 func (r ApiGetWorkflowExecutionHistoryV1Request) Offset(offset int32) ApiGetWorkflowExecutionHistoryV1Request {
 	r.offset = &offset
 	return r
@@ -1351,19 +1351,19 @@ type ApiGetWorkflowExecutionsV1Request struct {
 	filters *string
 }
 
-// Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+// Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
 func (r ApiGetWorkflowExecutionsV1Request) Limit(limit int32) ApiGetWorkflowExecutionsV1Request {
 	r.limit = &limit
 	return r
 }
 
-// Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+// Offset into the full result set. Usually specified with *limit* to paginate through the results. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
 func (r ApiGetWorkflowExecutionsV1Request) Offset(offset int32) ApiGetWorkflowExecutionsV1Request {
 	r.offset = &offset
 	return r
 }
 
-// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **start_time**: *eq, lt, le, gt, ge*  **status**: *eq*
+// Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **start_time**: *eq, lt, le, gt, ge*  **status**: *eq*
 func (r ApiGetWorkflowExecutionsV1Request) Filters(filters string) ApiGetWorkflowExecutionsV1Request {
 	r.filters = &filters
 	return r
@@ -1386,7 +1386,7 @@ GetWorkflowExecutionsV1 List workflow executions
 
   - Paginate through results with the `offset` parameter.
   For example, you can page through 50 executions per page and use that as a way to get to the records past the first 250.
-  Refer to [Paginating Results](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results) for more information about the query parameters you can use to achieve pagination.
+  Refer to [Paginating Results](https://developer.sailpoint.com/docs/api/standard-collection-parameters#paginating-results) for more information about the query parameters you can use to achieve pagination.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Workflow ID.
@@ -1734,13 +1734,13 @@ type ApiListCompleteWorkflowLibraryV1Request struct {
 	offset *int32
 }
 
-// Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+// Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
 func (r ApiListCompleteWorkflowLibraryV1Request) Limit(limit int32) ApiListCompleteWorkflowLibraryV1Request {
 	r.limit = &limit
 	return r
 }
 
-// Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+// Offset into the full result set. Usually specified with *limit* to paginate through the results. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
 func (r ApiListCompleteWorkflowLibraryV1Request) Offset(offset int32) ApiListCompleteWorkflowLibraryV1Request {
 	r.offset = &offset
 	return r
@@ -1914,19 +1914,19 @@ type ApiListWorkflowLibraryActionsV1Request struct {
 	filters *string
 }
 
-// Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+// Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
 func (r ApiListWorkflowLibraryActionsV1Request) Limit(limit int32) ApiListWorkflowLibraryActionsV1Request {
 	r.limit = &limit
 	return r
 }
 
-// Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+// Offset into the full result set. Usually specified with *limit* to paginate through the results. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
 func (r ApiListWorkflowLibraryActionsV1Request) Offset(offset int32) ApiListWorkflowLibraryActionsV1Request {
 	r.offset = &offset
 	return r
 }
 
-// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq*
+// Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq*
 func (r ApiListWorkflowLibraryActionsV1Request) Filters(filters string) ApiListWorkflowLibraryActionsV1Request {
 	r.filters = &filters
 	return r
@@ -2256,19 +2256,19 @@ type ApiListWorkflowLibraryTriggersV1Request struct {
 	filters *string
 }
 
-// Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+// Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
 func (r ApiListWorkflowLibraryTriggersV1Request) Limit(limit int32) ApiListWorkflowLibraryTriggersV1Request {
 	r.limit = &limit
 	return r
 }
 
-// Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+// Offset into the full result set. Usually specified with *limit* to paginate through the results. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
 func (r ApiListWorkflowLibraryTriggersV1Request) Offset(offset int32) ApiListWorkflowLibraryTriggersV1Request {
 	r.offset = &offset
 	return r
 }
 
-// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq*  **name**: *eq*  **type**: *eq*
+// Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq*  **name**: *eq*  **type**: *eq*
 func (r ApiListWorkflowLibraryTriggersV1Request) Filters(filters string) ApiListWorkflowLibraryTriggersV1Request {
 	r.filters = &filters
 	return r

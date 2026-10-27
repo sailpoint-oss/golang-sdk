@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - Password Sync Groups
+SailPoint Identity Security API - Password Sync Groups
 
 Testing PasswordSyncGroupsAPIService
 

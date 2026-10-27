@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - Dimensions
+SailPoint Identity Security API - Dimensions
 
 Testing DimensionsAPIService
 

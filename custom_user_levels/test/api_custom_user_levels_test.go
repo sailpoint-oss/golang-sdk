@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - Custom User Levels
+SailPoint Identity Security API - Custom User Levels
 
 Testing CustomUserLevelsAPIService
 

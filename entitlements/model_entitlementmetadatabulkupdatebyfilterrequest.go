@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud API - Entitlements
+SailPoint Identity Security API - Entitlements
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the SailPoint Identity Security platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: v1
 */
@@ -20,7 +20,7 @@ var _ MappedNullable = &Entitlementmetadatabulkupdatebyfilterrequest{}
 
 // Entitlementmetadatabulkupdatebyfilterrequest Request to bulk update Access Model Metadata on every entitlement matching a filter expression. Adding or replacing custom metadata requires a suite license.
 type Entitlementmetadatabulkupdatebyfilterrequest struct {
-	// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq*
+	// Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq*
 	Filters string `json:"filters"`
 	// The operation to be performed
 	Operation string `json:"operation"`

@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - Managed Clusters
+SailPoint Identity Security API - Managed Clusters
 
 Testing ManagedClustersAPIService
 

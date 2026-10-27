@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - Machine Account Subtypes
+SailPoint Identity Security API - Machine Account Subtypes
 
 Testing MachineAccountSubtypesAPIService
 
@@ -22,11 +22,51 @@ func Test_machine_account_subtypes_MachineAccountSubtypesAPIService(t *testing.T
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
+	t.Run("Test MachineAccountSubtypesAPIService CreateSourceSubtypeOverrideV2", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+
+		resp, httpRes, err := apiClient.MachineAccountSubtypesAPI.CreateSourceSubtypeOverrideV2(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test MachineAccountSubtypesAPIService CreateSourceSubtypeProvisioningPolicyV2", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+
+		resp, httpRes, err := apiClient.MachineAccountSubtypesAPI.CreateSourceSubtypeProvisioningPolicyV2(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test MachineAccountSubtypesAPIService CreateSourceSubtypeV1", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.MachineAccountSubtypesAPI.CreateSourceSubtypeV1(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test MachineAccountSubtypesAPIService CreateSourceSubtypeV2", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.MachineAccountSubtypesAPI.CreateSourceSubtypeV2(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -41,6 +81,32 @@ func Test_machine_account_subtypes_MachineAccountSubtypesAPIService(t *testing.T
 		var subtypeId string
 
 		httpRes, err := apiClient.MachineAccountSubtypesAPI.DeleteMachineAccountSubtypeV1(context.Background(), subtypeId).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test MachineAccountSubtypesAPIService DeleteMachineAccountSubtypeV2", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+
+		httpRes, err := apiClient.MachineAccountSubtypesAPI.DeleteMachineAccountSubtypeV2(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test MachineAccountSubtypesAPIService DeleteSourceSubtypeProvisioningPolicyV2", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+
+		httpRes, err := apiClient.MachineAccountSubtypesAPI.DeleteSourceSubtypeProvisioningPolicyV2(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -75,11 +141,63 @@ func Test_machine_account_subtypes_MachineAccountSubtypesAPIService(t *testing.T
 
 	})
 
+	t.Run("Test MachineAccountSubtypesAPIService GetSourceSubtypeByIdV2", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+
+		resp, httpRes, err := apiClient.MachineAccountSubtypesAPI.GetSourceSubtypeByIdV2(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test MachineAccountSubtypesAPIService GetSourceSubtypeProvisioningPolicyV2", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+
+		resp, httpRes, err := apiClient.MachineAccountSubtypesAPI.GetSourceSubtypeProvisioningPolicyV2(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test MachineAccountSubtypesAPIService ListSourceSubtypeTargetsV2", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.MachineAccountSubtypesAPI.ListSourceSubtypeTargetsV2(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test MachineAccountSubtypesAPIService ListSourceSubtypesV1", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.MachineAccountSubtypesAPI.ListSourceSubtypesV1(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test MachineAccountSubtypesAPIService ListSourceSubtypesV2", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.MachineAccountSubtypesAPI.ListSourceSubtypesV2(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -106,6 +224,34 @@ func Test_machine_account_subtypes_MachineAccountSubtypesAPIService(t *testing.T
 		var subtypeId string
 
 		resp, httpRes, err := apiClient.MachineAccountSubtypesAPI.PatchMachineAccountSubtypeV1(context.Background(), subtypeId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test MachineAccountSubtypesAPIService PatchMachineAccountSubtypeV2", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+
+		resp, httpRes, err := apiClient.MachineAccountSubtypesAPI.PatchMachineAccountSubtypeV2(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test MachineAccountSubtypesAPIService PatchSourceSubtypeProvisioningPolicyV2", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+
+		resp, httpRes, err := apiClient.MachineAccountSubtypesAPI.PatchSourceSubtypeProvisioningPolicyV2(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

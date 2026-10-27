@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - SOD Violations
+SailPoint Identity Security API - SOD Violations
 
 Testing SODViolationsAPIService
 

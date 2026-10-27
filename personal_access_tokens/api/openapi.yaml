@@ -3,7 +3,7 @@ info:
   contact:
     name: Developer Relations
     url: https://developer.sailpoint.com/discuss/api-help
-  description: "Use these APIs to interact with the Identity Security Cloud platform\
+  description: "Use these APIs to interact with the SailPoint Identity Security platform\
     \ to achieve repeatable, automated processes with greater scalability. We encourage\
     \ you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss\
     \ to connect with other developers using our APIs."
@@ -11,7 +11,7 @@ info:
     name: MIT
     url: https://opensource.org/licenses/MIT
   termsOfService: https://developer.sailpoint.com/discuss/tos
-  title: Identity Security Cloud API - Personal Access Tokens
+  title: SailPoint Identity Security API - Personal Access Tokens
   version: v1
 servers:
 - description: This is the production API server.
@@ -32,15 +32,15 @@ security:
 tags:
 - description: "Use this API to implement personal access token (PAT) functionality.\
     \ \nWith this functionality in place, users can use PATs as an alternative to\
-    \ passwords for authentication in Identity Security Cloud. \n\nPATs embed user\
-    \ information into the client ID and secret. \nThis replaces the API clients'\
+    \ passwords for authentication in SailPoint Identity Security. \n\nPATs embed\
+    \ user information into the client ID and secret. \nThis replaces the API clients'\
     \ need to store and provide a username and password to establish a connection,\
-    \ improving Identity Security Cloud organizations' integration security. \n\n\
-    In Identity Security Cloud, users can do the following to create and manage their\
-    \ PATs: Select the dropdown menu under their names, select Preferences, and then\
-    \ select Personal Access Tokens. \nThey must then provide a description about\
-    \ the token's purpose. \nThey can then select 'Create Token' at the bottom of\
-    \ the page to generate and view the Secret and Client ID. \n\nRefer to [Managing\
+    \ improving SailPoint Identity Security organizations' integration security. \n\
+    \nIn SailPoint Identity Security, users can do the following to create and manage\
+    \ their PATs: Select the dropdown menu under their names, select Preferences,\
+    \ and then select Personal Access Tokens. \nThey must then provide a description\
+    \ about the token's purpose. \nThey can then select 'Create Token' at the bottom\
+    \ of the page to generate and view the Secret and Client ID. \n\nRefer to [Managing\
     \ Personal Access Tokens](https://documentation.sailpoint.com/saas/help/common/api_keys.html?h=token#generating-a-personal-access-token)\
     \ for more information about PATs.\n"
   name: Personal Access Tokens
@@ -68,7 +68,7 @@ paths:
           type: string
         style: form
       - description: |-
-          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
+          Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)
 
           Filtering is supported for the following fields and operators:
 

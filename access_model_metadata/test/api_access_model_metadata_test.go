@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - Access Model Metadata
+SailPoint Identity Security API - Access Model Metadata
 
 Testing AccessModelMetadataAPIService
 

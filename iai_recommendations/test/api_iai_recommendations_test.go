@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - IAI Recommendations
+SailPoint Identity Security API - IAI Recommendations
 
 Testing IAIRecommendationsAPIService
 

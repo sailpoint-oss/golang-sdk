@@ -1,0 +1,70 @@
+- path: /accounts/v1/{id}/recommendation
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/machineaccountrecommendation/methods/machine-account-recommendation#get-machine-account-recommendation-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+          id := `2c9180835d2e5168015d32f890ca1581` // string | Account ID. # string | Account ID.
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.MachineAccountRecommendationAPI.GetMachineAccountRecommendationV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+          //resp, r, err := apiClient.MachineAccountRecommendationAPI.GetMachineAccountRecommendationV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountRecommendationAPI.GetMachineAccountRecommendationV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetMachineAccountRecommendationV1`: MachineAccountRecommendation
+          fmt.Fprintf(os.Stdout, "Response from `MachineAccountRecommendationAPI.GetMachineAccountRecommendationV1`: %v\n", resp)
+        }
+- path: /ai-recommendations/v1/reasons/machine-account-discovery
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/machineaccountrecommendation/methods/machine-account-recommendation#list-machine-account-discovery-reasons-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+          acceptLanguage := `en-US` // string | Preferred language for the reason messages. (optional) (default to "en") # string | Preferred language for the reason messages. (optional) (default to "en")
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.MachineAccountRecommendationAPI.ListMachineAccountDiscoveryReasonsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+          //resp, r, err := apiClient.MachineAccountRecommendationAPI.ListMachineAccountDiscoveryReasonsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).AcceptLanguage(acceptLanguage).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountRecommendationAPI.ListMachineAccountDiscoveryReasonsV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `ListMachineAccountDiscoveryReasonsV1`: []MachineAccountDiscoveryReason
+          fmt.Fprintf(os.Stdout, "Response from `MachineAccountRecommendationAPI.ListMachineAccountDiscoveryReasonsV1`: %v\n", resp)
+        }

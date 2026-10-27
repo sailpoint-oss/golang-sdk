@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - Entitlements
+SailPoint Identity Security API - Entitlements
 
 Testing EntitlementsAPIService
 

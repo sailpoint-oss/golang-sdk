@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - Public Identities Config
+SailPoint Identity Security API - Public Identities Config
 
 Testing PublicIdentitiesConfigAPIService
 

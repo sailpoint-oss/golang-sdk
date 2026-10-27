@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - Account Aggregations
+SailPoint Identity Security API - Account Aggregations
 
 Testing AccountAggregationsAPIService
 

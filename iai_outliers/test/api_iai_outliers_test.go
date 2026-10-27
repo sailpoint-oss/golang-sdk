@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - IAI Outliers
+SailPoint Identity Security API - IAI Outliers
 
 Testing IAIOutliersAPIService
 

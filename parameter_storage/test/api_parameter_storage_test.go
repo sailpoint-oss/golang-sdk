@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - Parameter Storage
+SailPoint Identity Security API - Parameter Storage
 
 Testing ParameterStorageAPIService
 

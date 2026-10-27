@@ -3,7 +3,7 @@ info:
   contact:
     name: Developer Relations
     url: https://developer.sailpoint.com/discuss/api-help
-  description: "Use these APIs to interact with the Identity Security Cloud platform\
+  description: "Use these APIs to interact with the SailPoint Identity Security platform\
     \ to achieve repeatable, automated processes with greater scalability. We encourage\
     \ you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss\
     \ to connect with other developers using our APIs."
@@ -11,7 +11,7 @@ info:
     name: MIT
     url: https://opensource.org/licenses/MIT
   termsOfService: https://developer.sailpoint.com/discuss/tos
-  title: Identity Security Cloud API - Service Desk Integration
+  title: SailPoint Identity Security API - Service Desk Integration
   version: v1
 servers:
 - description: This is the production API server.
@@ -30,22 +30,23 @@ security:
 - userAuth:
   - sp:scopes:all
 tags:
-- description: "Use this API to build an integration between Identity Security Cloud\
+- description: "Use this API to build an integration between SailPoint Identity Security\
     \ and a service desk ITSM (IT service management) solution. \nOnce an administrator\
-    \ builds this integration between Identity Security Cloud and a service desk,\
-    \ users can use Identity Security Cloud to raise and track tickets that are synchronized\
-    \ between Identity Security Cloud and the service desk. \n\nIn Identity Security\
-    \ Cloud, administrators can create a service desk integration (sometimes also\
-    \ called an SDIM, or Service Desk Integration Module) by going to Admin > Connections\
-    \ > Service Desk and selecting 'Create.'\n\nTo create a Generic Service Desk integration,\
-    \ for example, administrators must provide the required information on the General\
-    \ Settings page, the Connectivity and Authentication information, Ticket Creation\
-    \ information, Status Mapping information, and Requester Source information on\
-    \ the Configure page. \nRefer to [Integrating SailPoint with Generic Service Desk](https://documentation.sailpoint.com/connectors/generic_sd/help/integrating_generic_service_desk/intro.html)\
+    \ builds this integration between SailPoint Identity Security and a service desk,\
+    \ users can use SailPoint Identity Security to raise and track tickets that are\
+    \ synchronized between SailPoint Identity Security and the service desk. \n\n\
+    In SailPoint Identity Security, administrators can create a service desk integration\
+    \ (sometimes also called an SDIM, or Service Desk Integration Module) by going\
+    \ to Admin > Connections > Service Desk and selecting 'Create.'\n\nTo create a\
+    \ Generic Service Desk integration, for example, administrators must provide the\
+    \ required information on the General Settings page, the Connectivity and Authentication\
+    \ information, Ticket Creation information, Status Mapping information, and Requester\
+    \ Source information on the Configure page. \nRefer to [Integrating SailPoint\
+    \ with Generic Service Desk](https://documentation.sailpoint.com/connectors/generic_sd/help/integrating_generic_service_desk/intro.html)\
     \ for more information about the process of setting up a Generic Service Desk\
-    \ in Identity Security Cloud.\n\nAdministrators can create various service desk\
-    \ integrations, all with their own nuances. \nThe following service desk integrations\
-    \ are available: \n\n- [Atlassian Cloud Jira Service Management](https://documentation.sailpoint.com/connectors/atlassian/jira_cloud/help/integrating_jira_cloud_sd/introduction.html)\n\
+    \ in SailPoint Identity Security.\n\nAdministrators can create various service\
+    \ desk integrations, all with their own nuances. \nThe following service desk\
+    \ integrations are available: \n\n- [Atlassian Cloud Jira Service Management](https://documentation.sailpoint.com/connectors/atlassian/jira_cloud/help/integrating_jira_cloud_sd/introduction.html)\n\
     \n- [Atlassian Server Jira Service Management](https://documentation.sailpoint.com/connectors/atlassian/jira_server/help/integrating_jira_server_sd/introduction.html)\n\
     \n- [BMC Helix ITSM Service Desk](https://documentation.sailpoint.com/connectors/bmc/helix_ITSM_sd/help/integrating_bmc_helix_itsm_sd/intro.html)\n\
     \n- [BMC Helix Remedyforce Service Desk](https://documentation.sailpoint.com/connectors/bmc/helix_remedyforce_sd/help/integrating_bmc_helix_remedyforce_sd/intro.html)\n\
@@ -61,7 +62,7 @@ paths:
       parameters:
       - description: |-
           Offset into the full result set. Usually specified with *limit* to paginate through the results.
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
         example: 0
         explode: true
         in: query
@@ -75,7 +76,7 @@ paths:
         style: form
       - description: |-
           Max number of results to return.
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
         example: 250
         explode: true
         in: query
@@ -89,7 +90,7 @@ paths:
           type: integer
         style: form
       - description: |-
-          Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
+          Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)
 
           Sorting is supported for the following fields: **name**
         example: name
@@ -101,7 +102,7 @@ paths:
           type: string
         style: form
       - description: |-
-          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
+          Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)
 
           Filtering is supported for the following fields and operators:
 
@@ -126,7 +127,7 @@ paths:
 
           Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
 
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
         example: true
         explode: true
         in: query
@@ -1170,7 +1171,7 @@ components:
     offset:
       description: |-
         Offset into the full result set. Usually specified with *limit* to paginate through the results.
-        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
       example: 0
       explode: true
       in: query
@@ -1185,7 +1186,7 @@ components:
     limit:
       description: |-
         Max number of results to return.
-        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
       example: 250
       explode: true
       in: query
@@ -1204,7 +1205,7 @@ components:
 
         Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
 
-        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
       example: true
       explode: true
       in: query

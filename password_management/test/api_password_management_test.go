@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - Password Management
+SailPoint Identity Security API - Password Management
 
 Testing PasswordManagementAPIService
 

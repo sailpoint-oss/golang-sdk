@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - Machine Identity Lifecycle Actions
+SailPoint Identity Security API - Machine Identity Lifecycle Actions
 
 Testing MachineIdentityLifecycleActionsAPIService
 

@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud API - Intelligence
+SailPoint Identity Security API - Intelligence
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the SailPoint Identity Security platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: v1
 */
@@ -21,7 +21,7 @@ var _ MappedNullable = &IntelAccessAccountWire{}
 
 // IntelAccessAccountWire struct for IntelAccessAccountWire
 type IntelAccessAccountWire struct {
-	// Unique account identifier in Identity Security Cloud.
+	// Unique account identifier in SailPoint Identity Security.
 	Id string `json:"id"`
 	// Account name or login value on the correlated source.
 	Name string `json:"name"`
@@ -41,9 +41,9 @@ type IntelAccessAccountWire struct {
 	ManuallyCorrelated bool `json:"manuallyCorrelated"`
 	// Native identifier string on the source directory or application.
 	NativeIdentity NullableString `json:"nativeIdentity,omitempty"`
-	// Timestamp when the account record was created in Identity Security Cloud.
+	// Timestamp when the account record was created in SailPoint Identity Security.
 	Created SailPointTime `json:"created"`
-	// Timestamp when the account record was last modified in Identity Security Cloud.
+	// Timestamp when the account record was last modified in SailPoint Identity Security.
 	Modified SailPointTime `json:"modified"`
 	AdditionalProperties map[string]interface{}
 }

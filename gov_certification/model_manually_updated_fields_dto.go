@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud API - Next Generation Certification Campaigns
+SailPoint Identity Security API - Next Generation Certification Campaigns
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the SailPoint Identity Security platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: v1
 */
@@ -19,9 +19,9 @@ var _ MappedNullable = &ManuallyUpdatedFieldsDTO{}
 
 // ManuallyUpdatedFieldsDTO struct for ManuallyUpdatedFieldsDTO
 type ManuallyUpdatedFieldsDTO struct {
-	// True if the entitlements name was updated manually via entitlement import csv or patch endpoint. False means that property value has not been change after first entitlement aggregation. Field refers to [Entitlement response schema](https://developer.sailpoint.com/idn/api/beta/get-entitlement) > `name` property.
+	// True if the entitlements name was updated manually via entitlement import csv or patch endpoint. False means that property value has not been change after first entitlement aggregation. Field refers to [Entitlement response schema](https://developer.sailpoint.com/docs/api/get-entitlement-v-1) > `name` property.
 	DisplayName *bool `json:"displayName,omitempty"`
-	// True if the entitlement description was updated manually via entitlement import csv or patch endpoint. False means that property value has not been change after first entitlement aggregation. Field refers to [Entitlement response schema](https://developer.sailpoint.com/idn/api/beta/get-entitlement) > `description` property.
+	// True if the entitlement description was updated manually via entitlement import csv or patch endpoint. False means that property value has not been change after first entitlement aggregation. Field refers to [Entitlement response schema](https://developer.sailpoint.com/docs/api/get-entitlement-v-1) > `description` property.
 	Description *bool `json:"description,omitempty"`
 	AdditionalProperties map[string]interface{}
 }

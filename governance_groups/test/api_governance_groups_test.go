@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - Governance Groups
+SailPoint Identity Security API - Governance Groups
 
 Testing GovernanceGroupsAPIService
 

@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - Notifications
+SailPoint Identity Security API - Notifications
 
 Testing NotificationsAPIService
 

@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - Search Attribute Configuration
+SailPoint Identity Security API - Search Attribute Configuration
 
 Testing SearchAttributeConfigurationAPIService
 
