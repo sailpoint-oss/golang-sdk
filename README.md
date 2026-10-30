@@ -7,6 +7,26 @@ The Golang SDK allows you to use Golang to interact with the SailPoint APIs and 
 
 To get started with the Golang SDK and learn about its various functionalities, refer to the [documentation](https://developer.sailpoint.com/idn/tools/sdk/go) on https://developer.sailpoint.com. 
 
+## Calling any API with the generic client
+
+The generic client calls any SailPoint versioned API by its path, including APIs
+that do not have a resource-specific client or documentation yet. The path
+includes the API version, for example `accounts/v1`. The client uses the same
+configuration, authentication and retries as the other clients.
+
+- Each path segment is URL-encoded. Pass the segments unencoded.
+- Anything after a `?` in the path is sent as query parameters.
+- A PATCH body is a JSON Patch list, sent as `application/json-patch+json`.
+
+```go
+accounts, _, err := apiClient.Generic.DefaultAPI.GenericGet(ctx, "accounts/v1").Limit(10).Execute()
+
+patch := []map[string]interface{}{{"op": "replace", "path": "/attributes/input", "value": "lower"}}
+_, _, err = apiClient.Generic.DefaultAPI.GenericPatch(ctx, "transforms/v1/2c91808a").RequestBody(patch).Execute()
+```
+
+The response is the decoded JSON (`interface{}`): usually `map[string]interface{}` or `[]interface{}`.
+
 ## Examples
 
 In addition to the examples shown in the [documentation](https://developer.sailpoint.com/idn/tools/sdk/go), you can find more uses of the Golang SDK in the [examples](./examples/sdk.go).
