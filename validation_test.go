@@ -22,6 +22,30 @@ func Test_generic(t *testing.T) {
 	configuration := NewDefaultConfiguration()
 	apiClient := NewAPIClient(configuration)
 
+	t.Run("Test get v1 endpoint", func(t *testing.T) {
+		resp, r, err := apiClient.Generic.DefaultAPI.GenericGet(context.TODO(), "sources/v1").Limit(10).Execute()
+		require.NoError(t, err)
+		assert.Equal(t, 200, r.StatusCode)
+		sources, ok := resp.([]interface{})
+		require.True(t, ok, "expected a list, got %T", resp)
+		assert.LessOrEqual(t, len(sources), 10)
+	})
+
+	// access-request-config/v2 is experimental, so this also covers the
+	// experimental opt-in.
+	t.Run("Test get v2 endpoint", func(t *testing.T) {
+		experimentalConfiguration := NewDefaultConfiguration()
+		experimentalConfiguration.Experimental = true
+		experimentalClient := NewAPIClient(experimentalConfiguration)
+
+		resp, r, err := experimentalClient.Generic.DefaultAPI.GenericGet(context.TODO(), "access-request-config/v2").
+			XSailPointExperimental("true").Execute()
+		require.NoError(t, err)
+		assert.Equal(t, 200, r.StatusCode)
+		_, ok := resp.(map[string]interface{})
+		assert.True(t, ok, "expected an object, got %T", resp)
+	})
+
 	t.Run("Test List Accounts", func(t *testing.T) {
 
 		resp, r, err := apiClient.Generic.DefaultAPI.GenericGet(context.TODO(), "accounts/v1").Execute()
@@ -105,7 +129,7 @@ func Test_generic(t *testing.T) {
 		require.NotNil(t, getResp)
 		assert.Equal(t, 200, r.StatusCode)
 
-		jsonBytes, err := getResp.MarshalJSON()
+		jsonBytes, err := json.Marshal(getResp)
 		if err != nil {
 			fmt.Fprintf(os.Stderr, "error marshaling response: %v\n", err)
 			t.FailNow()

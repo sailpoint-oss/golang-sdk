@@ -9,12 +9,10 @@ client.go
 configuration.go
 docs/DefaultAPI.md
 docs/DefaultAPIdeveloperSite_code_examples.yaml
-docs/GenericResponse.md
 docs/Methods/Index.md
 git_push.sh
 go.mod
 go.sum
-model_generic_response.go
 response.go
 test/api_default_test.go
 utils.go

@@ -16,7 +16,8 @@
         )
 
         func main() {
-          path := `path_example` // string |  # string | 
+          path := `accounts/v1` // string | API path relative to the tenant base URL, including the API version, for example `accounts/v1`, `sources/v1/2c9180835d2e5168015d32f890ca1581` or `sources/v2/2c9180835d2e5168015d32f890ca1581/provisioning-policies`. Use whichever version the endpoint has. A leading slash is optional. Slashes separate path segments, and the SDK URL-encodes each segment, so pass the segments unencoded. Anything after a `?` is sent as query parameters, for example `accounts/v1?detailLevel=SLIM`. # string | API path relative to the tenant base URL, including the API version, for example `accounts/v1`, `sources/v1/2c9180835d2e5168015d32f890ca1581` or `sources/v2/2c9180835d2e5168015d32f890ca1581/provisioning-policies`. Use whichever version the endpoint has. A leading slash is optional. Slashes separate path segments, and the SDK URL-encodes each segment, so pass the segments unencoded. Anything after a `?` is sent as query parameters, for example `accounts/v1?detailLevel=SLIM`.
+          xSailPointExperimental := `true` // string | Set this header to `true` to call an experimental API. The SDK configuration must also enable experimental APIs. (optional) # string | Set this header to `true` to call an experimental API. The SDK configuration must also enable experimental APIs. (optional)
 
           
 
@@ -24,12 +25,12 @@
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
           resp, r, err := apiClient.DefaultAPI.GenericDelete(context.Background(), path).Execute()
-          //resp, r, err := apiClient.DefaultAPI.GenericDelete(context.Background(), path).Execute()
+          //resp, r, err := apiClient.DefaultAPI.GenericDelete(context.Background(), path).XSailPointExperimental(xSailPointExperimental).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.GenericDelete``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
           }
-          // response from `GenericDelete`: GenericResponse
+          // response from `GenericDelete`: interface{}
           fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.GenericDelete`: %v\n", resp)
         }
 - path: /{path}
@@ -50,7 +51,13 @@
         )
 
         func main() {
-          path := `path_example` // string |  # string | 
+          path := `accounts/v1` // string | API path relative to the tenant base URL, including the API version, for example `accounts/v1`, `sources/v1/2c9180835d2e5168015d32f890ca1581` or `sources/v2/2c9180835d2e5168015d32f890ca1581/provisioning-policies`. Use whichever version the endpoint has. A leading slash is optional. Slashes separate path segments, and the SDK URL-encodes each segment, so pass the segments unencoded. Anything after a `?` is sent as query parameters, for example `accounts/v1?detailLevel=SLIM`. # string | API path relative to the tenant base URL, including the API version, for example `accounts/v1`, `sources/v1/2c9180835d2e5168015d32f890ca1581` or `sources/v2/2c9180835d2e5168015d32f890ca1581/provisioning-policies`. Use whichever version the endpoint has. A leading slash is optional. Slashes separate path segments, and the SDK URL-encodes each segment, so pass the segments unencoded. Anything after a `?` is sent as query parameters, for example `accounts/v1?detailLevel=SLIM`.
+          limit := 250 // int32 | Max number of results to return. See [Standard Collection Parameters](https://developer.sailpoint.com/docs/standard-collection-parameters) for more information. (optional) # int32 | Max number of results to return. See [Standard Collection Parameters](https://developer.sailpoint.com/docs/standard-collection-parameters) for more information. (optional)
+          offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. (optional) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. (optional)
+          count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored. (optional) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored. (optional)
+          filters := `name eq "Example"` // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/docs/standard-collection-parameters#filtering-results). (optional) # string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/docs/standard-collection-parameters#filtering-results). (optional)
+          sorters := `name,-created` // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/docs/standard-collection-parameters#sorting-results). (optional) # string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/docs/standard-collection-parameters#sorting-results). (optional)
+          xSailPointExperimental := `true` // string | Set this header to `true` to call an experimental API. The SDK configuration must also enable experimental APIs. (optional) # string | Set this header to `true` to call an experimental API. The SDK configuration must also enable experimental APIs. (optional)
 
           
 
@@ -58,12 +65,12 @@
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
           resp, r, err := apiClient.DefaultAPI.GenericGet(context.Background(), path).Execute()
-          //resp, r, err := apiClient.DefaultAPI.GenericGet(context.Background(), path).Execute()
+          //resp, r, err := apiClient.DefaultAPI.GenericGet(context.Background(), path).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).XSailPointExperimental(xSailPointExperimental).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.GenericGet``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
           }
-          // response from `GenericGet`: GenericResponse
+          // response from `GenericGet`: interface{}
           fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.GenericGet`: %v\n", resp)
         }
 - path: /{path}
@@ -84,8 +91,9 @@
         )
 
         func main() {
-          path := `path_example` // string |  # string | 
-          requestBody := Object // map[string]interface{} |  (optional) # map[string]interface{} |  (optional)
+          path := `accounts/v1` // string | API path relative to the tenant base URL, including the API version, for example `accounts/v1`, `sources/v1/2c9180835d2e5168015d32f890ca1581` or `sources/v2/2c9180835d2e5168015d32f890ca1581/provisioning-policies`. Use whichever version the endpoint has. A leading slash is optional. Slashes separate path segments, and the SDK URL-encodes each segment, so pass the segments unencoded. Anything after a `?` is sent as query parameters, for example `accounts/v1?detailLevel=SLIM`. # string | API path relative to the tenant base URL, including the API version, for example `accounts/v1`, `sources/v1/2c9180835d2e5168015d32f890ca1581` or `sources/v2/2c9180835d2e5168015d32f890ca1581/provisioning-policies`. Use whichever version the endpoint has. A leading slash is optional. Slashes separate path segments, and the SDK URL-encodes each segment, so pass the segments unencoded. Anything after a `?` is sent as query parameters, for example `accounts/v1?detailLevel=SLIM`.
+          xSailPointExperimental := `true` // string | Set this header to `true` to call an experimental API. The SDK configuration must also enable experimental APIs. (optional) # string | Set this header to `true` to call an experimental API. The SDK configuration must also enable experimental APIs. (optional)
+          requestBody :=  // interface{} |  (optional) # interface{} |  (optional)
 
           
 
@@ -93,12 +101,12 @@
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
           resp, r, err := apiClient.DefaultAPI.GenericPatch(context.Background(), path).Execute()
-          //resp, r, err := apiClient.DefaultAPI.GenericPatch(context.Background(), path).RequestBody(requestBody).Execute()
+          //resp, r, err := apiClient.DefaultAPI.GenericPatch(context.Background(), path).XSailPointExperimental(xSailPointExperimental).RequestBody(requestBody).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.GenericPatch``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
           }
-          // response from `GenericPatch`: GenericResponse
+          // response from `GenericPatch`: interface{}
           fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.GenericPatch`: %v\n", resp)
         }
 - path: /{path}
@@ -119,8 +127,9 @@
         )
 
         func main() {
-          path := `path_example` // string |  # string | 
-          requestBody := Object // map[string]interface{} |  (optional) # map[string]interface{} |  (optional)
+          path := `accounts/v1` // string | API path relative to the tenant base URL, including the API version, for example `accounts/v1`, `sources/v1/2c9180835d2e5168015d32f890ca1581` or `sources/v2/2c9180835d2e5168015d32f890ca1581/provisioning-policies`. Use whichever version the endpoint has. A leading slash is optional. Slashes separate path segments, and the SDK URL-encodes each segment, so pass the segments unencoded. Anything after a `?` is sent as query parameters, for example `accounts/v1?detailLevel=SLIM`. # string | API path relative to the tenant base URL, including the API version, for example `accounts/v1`, `sources/v1/2c9180835d2e5168015d32f890ca1581` or `sources/v2/2c9180835d2e5168015d32f890ca1581/provisioning-policies`. Use whichever version the endpoint has. A leading slash is optional. Slashes separate path segments, and the SDK URL-encodes each segment, so pass the segments unencoded. Anything after a `?` is sent as query parameters, for example `accounts/v1?detailLevel=SLIM`.
+          xSailPointExperimental := `true` // string | Set this header to `true` to call an experimental API. The SDK configuration must also enable experimental APIs. (optional) # string | Set this header to `true` to call an experimental API. The SDK configuration must also enable experimental APIs. (optional)
+          requestBody :=  // interface{} |  (optional) # interface{} |  (optional)
 
           
 
@@ -128,12 +137,12 @@
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
           resp, r, err := apiClient.DefaultAPI.GenericPost(context.Background(), path).Execute()
-          //resp, r, err := apiClient.DefaultAPI.GenericPost(context.Background(), path).RequestBody(requestBody).Execute()
+          //resp, r, err := apiClient.DefaultAPI.GenericPost(context.Background(), path).XSailPointExperimental(xSailPointExperimental).RequestBody(requestBody).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.GenericPost``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
           }
-          // response from `GenericPost`: GenericResponse
+          // response from `GenericPost`: interface{}
           fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.GenericPost`: %v\n", resp)
         }
 - path: /{path}
@@ -154,8 +163,9 @@
         )
 
         func main() {
-          path := `path_example` // string |  # string | 
-          requestBody := Object // map[string]interface{} |  (optional) # map[string]interface{} |  (optional)
+          path := `accounts/v1` // string | API path relative to the tenant base URL, including the API version, for example `accounts/v1`, `sources/v1/2c9180835d2e5168015d32f890ca1581` or `sources/v2/2c9180835d2e5168015d32f890ca1581/provisioning-policies`. Use whichever version the endpoint has. A leading slash is optional. Slashes separate path segments, and the SDK URL-encodes each segment, so pass the segments unencoded. Anything after a `?` is sent as query parameters, for example `accounts/v1?detailLevel=SLIM`. # string | API path relative to the tenant base URL, including the API version, for example `accounts/v1`, `sources/v1/2c9180835d2e5168015d32f890ca1581` or `sources/v2/2c9180835d2e5168015d32f890ca1581/provisioning-policies`. Use whichever version the endpoint has. A leading slash is optional. Slashes separate path segments, and the SDK URL-encodes each segment, so pass the segments unencoded. Anything after a `?` is sent as query parameters, for example `accounts/v1?detailLevel=SLIM`.
+          xSailPointExperimental := `true` // string | Set this header to `true` to call an experimental API. The SDK configuration must also enable experimental APIs. (optional) # string | Set this header to `true` to call an experimental API. The SDK configuration must also enable experimental APIs. (optional)
+          requestBody :=  // interface{} |  (optional) # interface{} |  (optional)
 
           
 
@@ -163,11 +173,11 @@
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
           resp, r, err := apiClient.DefaultAPI.GenericPut(context.Background(), path).Execute()
-          //resp, r, err := apiClient.DefaultAPI.GenericPut(context.Background(), path).RequestBody(requestBody).Execute()
+          //resp, r, err := apiClient.DefaultAPI.GenericPut(context.Background(), path).XSailPointExperimental(xSailPointExperimental).RequestBody(requestBody).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.GenericPut``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
           }
-          // response from `GenericPut`: GenericResponse
+          // response from `GenericPut`: interface{}
           fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.GenericPut`: %v\n", resp)
         }
