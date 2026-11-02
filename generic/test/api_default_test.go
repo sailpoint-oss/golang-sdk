@@ -1,5 +1,5 @@
 /*
-Generic SailPoint Identity Security V2024 API
+SailPoint Identity Security API - Generic
 
 Testing DefaultAPIService
 

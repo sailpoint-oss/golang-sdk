@@ -8,7 +8,7 @@ clean-specs:
 
 # Path to the apis/ directory inside the checked-out api-specs repo.
 # Override with: make build APIS_DIR=/path/to/apis
-APIS_DIR ?= api-specs/idn/src/main/yaml/apis
+APIS_DIR ?= api-specs/idn/apis
 
 # Build all per-partition versioned SDK packages.
 # New partitions are auto-discovered — no Makefile changes needed when endpoints are added.

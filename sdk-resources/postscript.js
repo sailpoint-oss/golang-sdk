@@ -218,34 +218,36 @@ const fixFiles = async function (myArray) {
       }
     }
 
-    if (file.includes("api_default.go")) {
-      let updatedData = rawdata.replace(
-        /localVarPath\s*:=\s*localBasePath\s*\+\s*"\/\{path\}"\s*\n\s*localVarPath\s*=\s*strings\.Replace\(localVarPath,\s*"\{"\s*\+\s*"path"\s*\+\s*"\}",\s*url\.PathEscape\(parameterValueToString\(r\.path,\s*"path"\)\),\s*-1\)/g,
-        `// Added this code segment to allow for paths to be replaced fully
-    localVarPath := strings.TrimSuffix(localBasePath, "/{path}")
-    
-    if r.path != "" {
-        // Ensure the path starts with a forward slash
-        if !strings.HasPrefix(r.path, "/") {
-            localVarPath += "/"
-        }
-        localVarPath += r.path
-    }
-    
-    segments := strings.Split(localVarPath, "/")
-    for i, segment := range segments {
-        segments[i] = url.PathEscape(segment)
-    }
-    localVarPath = strings.Join(segments, "/")
-    // Done adding path replacement`
-      );
-
-      if (rawdata !== updatedData) {
-        fs.writeFile(file, updatedData, 'utf8');
-        console.log(`Updated ${file}`);
-      } else {
-        console.log(`No changes needed in ${file}`);
+    // Generic API: the generator escapes the whole `path` parameter, which turns
+    // the slashes of a multi-segment path ("accounts/v1/1234") into %2F. Escape
+    // each segment on its own instead, and send anything after a "?" as query
+    // parameters, so callers can pass any query parameter.
+    if (path.basename(path.dirname(file)) === "generic" && path.basename(file) === "api_default.go") {
+      const pathPattern = /localVarPath := localBasePath \+ "\/\{path\}"\n\s*localVarPath = strings\.Replace\(localVarPath, "\{"\+"path"\+"\}", url\.PathEscape\(parameterValueToString\(r\.path, "path"\)\), -1\)\n\n(\s*)localVarHeaderParams := make\(map\[string\]string\)\n\s*localVarQueryParams := url\.Values\{\}/g;
+      const found = rawdata.match(pathPattern) || [];
+      if (found.length === 0) {
+        throw new Error(`no path parameter replacement found in ${file}`);
       }
+      const updatedData = rawdata.replace(pathPattern, (_, indent) => [
+        `// Each segment of the generic path is escaped on its own, so the slashes`,
+        `${indent}// between segments are kept. Anything after a "?" is sent as query parameters.`,
+        `${indent}genericPath, genericQuery, _ := strings.Cut(r.path, "?")`,
+        `${indent}localVarPath := localBasePath`,
+        `${indent}for _, segment := range strings.Split(genericPath, "/") {`,
+        `${indent}\tif segment != "" {`,
+        `${indent}\t\tlocalVarPath += "/" + url.PathEscape(segment)`,
+        `${indent}\t}`,
+        `${indent}}`,
+        ``,
+        `${indent}localVarHeaderParams := make(map[string]string)`,
+        `${indent}localVarQueryParams, err := url.ParseQuery(genericQuery)`,
+        `${indent}if err != nil {`,
+        `${indent}\treturn localVarReturnValue, nil, reportError("invalid query string in path %q: %v", r.path, err)`,
+        `${indent}}`,
+      ].join("\n"));
+
+      await fs.writeFile(file, updatedData, 'utf8');
+      console.log(`Updated ${found.length} generic path(s) in ${file}`);
       continue;
     }
 
