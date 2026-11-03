@@ -91,6 +91,7 @@ Class | Method | HTTP request | Description
 *AccountsAPI* | [**GetAccountEntitlementsV1**](docs/AccountsAPI.md#getaccountentitlementsv1) | **Get** /accounts/v1/{id}/entitlements | Account entitlements
 *AccountsAPI* | [**GetAccountV1**](docs/AccountsAPI.md#getaccountv1) | **Get** /accounts/v1/{id} | Account details
 *AccountsAPI* | [**ListAccountsV1**](docs/AccountsAPI.md#listaccountsv1) | **Get** /accounts/v1 | Accounts list
+*AccountsAPI* | [**ListAccountsV2**](docs/AccountsAPI.md#listaccountsv2) | **Get** /accounts/v2 | List accounts (search)
 *AccountsAPI* | [**PutAccountV1**](docs/AccountsAPI.md#putaccountv1) | **Put** /accounts/v1/{id} | Update account
 *AccountsAPI* | [**SubmitReloadAccountV1**](docs/AccountsAPI.md#submitreloadaccountv1) | **Post** /accounts/v1/{id}/reload | Reload account
 *AccountsAPI* | [**UnlockAccountV1**](docs/AccountsAPI.md#unlockaccountv1) | **Post** /accounts/v1/{id}/unlock | Unlock account
@@ -111,6 +112,14 @@ Class | Method | HTTP request | Description
  - [AccountAttributesCreateAttributes](docs/AccountAttributesCreateAttributes.md)
  - [AccountToggleRequest](docs/AccountToggleRequest.md)
  - [AccountUnlockRequest](docs/AccountUnlockRequest.md)
+ - [AccountV2](docs/AccountV2.md)
+ - [AccountV2CorrelatedEntity](docs/AccountV2CorrelatedEntity.md)
+ - [AccountV2CorrelatedIdentity](docs/AccountV2CorrelatedIdentity.md)
+ - [AccountV2Identity](docs/AccountV2Identity.md)
+ - [AccountV2Owner](docs/AccountV2Owner.md)
+ - [AccountV2PrivilegeLevel](docs/AccountV2PrivilegeLevel.md)
+ - [AccountV2Recommendation](docs/AccountV2Recommendation.md)
+ - [AccountV2Source](docs/AccountV2Source.md)
  - [AccountsAsyncResult](docs/AccountsAsyncResult.md)
  - [AdditionalOwnerRef](docs/AdditionalOwnerRef.md)
  - [BaseCommonDto](docs/BaseCommonDto.md)

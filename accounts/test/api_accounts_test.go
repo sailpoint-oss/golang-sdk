@@ -182,6 +182,18 @@ func Test_accounts_AccountsAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test AccountsAPIService ListAccountsV2", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.AccountsAPI.ListAccountsV2(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test AccountsAPIService PutAccountV1", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test

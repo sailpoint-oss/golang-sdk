@@ -20,7 +20,7 @@ Method documents provide detailed information about each API operation (or metho
 - Example: Provides a sample of how the API uses the method. 
 
 ## Available Methods
-This is a list of the core methods available in the Python SDK for **NERMV2025** endpoints:
+This is a list of the core methods available in the Go SDK for **NERMV2025** endpoints:
 
 ```mdx-code-block
 import DocCardList from '@theme/DocCardList';

@@ -44,7 +44,7 @@ var (
 	queryDescape    = strings.NewReplacer( "%5B", "[", "%5D", "]" )
 )
 
-// APIClient manages communication with the SailPoint Identity Security API - Custom User Levels API vv1
+// APIClient manages communication with the SailPoint Identity Security API - Custom User Levels API v1
 // In most cases there should be only one, shared, APIClient.
 type APIClient struct {
 	cfg    *Configuration
