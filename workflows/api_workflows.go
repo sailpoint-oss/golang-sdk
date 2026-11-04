@@ -2440,6 +2440,20 @@ func (a *WorkflowsAPIService) ListWorkflowLibraryTriggersV1Execute(r ApiListWork
 type ApiListWorkflowsV1Request struct {
 	ctx context.Context
 	ApiService *WorkflowsAPIService
+	limit *int32
+	offset *int32
+}
+
+// Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+func (r ApiListWorkflowsV1Request) Limit(limit int32) ApiListWorkflowsV1Request {
+	r.limit = &limit
+	return r
+}
+
+// Offset into the full result set. Usually specified with *limit* to paginate through the results. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+func (r ApiListWorkflowsV1Request) Offset(offset int32) ApiListWorkflowsV1Request {
+	r.offset = &offset
+	return r
 }
 
 func (r ApiListWorkflowsV1Request) Execute() ([]Workflow, *http.Response, error) {
@@ -2482,6 +2496,18 @@ func (a *WorkflowsAPIService) ListWorkflowsV1Execute(r ApiListWorkflowsV1Request
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.limit != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
+	} else {
+		var defaultValue int32 = 250
+		r.limit = &defaultValue
+	}
+	if r.offset != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

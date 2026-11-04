@@ -26,6 +26,7 @@ Name | Type | Description | Notes
 **IsDynamicSchema** | Pointer to **bool** | Determines whether the dynamic output schema is returned in place of the action's output schema. The dynamic schema lists non-static properties, like properties of a workflow form where each form has different fields. These will be provided dynamically based on available form fields. | [optional] [default to false]
 **InputExample** | Pointer to **map[string]interface{}** | Example trigger payload if applicable | [optional] 
 **FormFields** | Pointer to [**[]WorkflowLibraryFormFields**](workflow-library-form-fields) | One or more inputs that the trigger accepts | [optional] 
+**FilterMode** | Pointer to **[]string** | Modes that the trigger uses, however no filterMode means the trigger is not filtered | [optional] 
 
 ## Methods
 
@@ -341,4 +342,29 @@ HasFormFields returns a boolean if a field has been set.
 `func (o *WorkflowLibraryTrigger) UnsetFormFields()`
 
 UnsetFormFields ensures that no value is present for FormFields, not even an explicit nil
+### GetFilterMode
+
+`func (o *WorkflowLibraryTrigger) GetFilterMode() []string`
+
+GetFilterMode returns the FilterMode field if non-nil, zero value otherwise.
+
+### GetFilterModeOk
+
+`func (o *WorkflowLibraryTrigger) GetFilterModeOk() (*[]string, bool)`
+
+GetFilterModeOk returns a tuple with the FilterMode field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFilterMode
+
+`func (o *WorkflowLibraryTrigger) SetFilterMode(v []string)`
+
+SetFilterMode sets FilterMode field to given value.
+
+### HasFilterMode
+
+`func (o *WorkflowLibraryTrigger) HasFilterMode() bool`
+
+HasFilterMode returns a boolean if a field has been set.
+
 

@@ -1939,7 +1939,10 @@
       "userAuth": [
         "sp:workflow:manage"
       ],
-      "applicationAuth": null
+      "applicationAuth": null,
+      "userLevels": [
+        "ORG_ADMIN"
+      ]
     },
     "createWorkgroupV1": {
       "resource": "governance-groups",
@@ -11882,7 +11885,10 @@
         "sp:workflow:read",
         "sp:workflow:manage"
       ],
-      "applicationAuth": null
+      "applicationAuth": null,
+      "userLevels": [
+        "ORG_ADMIN"
+      ]
     },
     "listWorkgroupMembersV1": {
       "resource": "governance-groups",

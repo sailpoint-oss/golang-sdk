@@ -28,6 +28,7 @@ Name | Type | Description | Notes
 **IsDynamicSchema** | Pointer to **bool** | Determines whether the dynamic output schema is returned in place of the action's output schema. The dynamic schema lists non-static properties, like properties of a workflow form where each form has different fields. These will be provided dynamically based on available form fields. | [optional] 
 **OutputSchema** | Pointer to **map[string]interface{}** | Example output schema | [optional] 
 **InputExample** | Pointer to **map[string]interface{}** | Example trigger payload if applicable | [optional] 
+**FilterMode** | Pointer to **[]string** | Modes that the trigger uses, however no filterMode means the trigger is not filtered | [optional] 
 
 ## Methods
 
@@ -393,4 +394,29 @@ HasInputExample returns a boolean if a field has been set.
 `func (o *ListCompleteWorkflowLibraryV1200ResponseInner) UnsetInputExample()`
 
 UnsetInputExample ensures that no value is present for InputExample, not even an explicit nil
+### GetFilterMode
+
+`func (o *ListCompleteWorkflowLibraryV1200ResponseInner) GetFilterMode() []string`
+
+GetFilterMode returns the FilterMode field if non-nil, zero value otherwise.
+
+### GetFilterModeOk
+
+`func (o *ListCompleteWorkflowLibraryV1200ResponseInner) GetFilterModeOk() (*[]string, bool)`
+
+GetFilterModeOk returns a tuple with the FilterMode field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFilterMode
+
+`func (o *ListCompleteWorkflowLibraryV1200ResponseInner) SetFilterMode(v []string)`
+
+SetFilterMode sets FilterMode field to given value.
+
+### HasFilterMode
+
+`func (o *ListCompleteWorkflowLibraryV1200ResponseInner) HasFilterMode() bool`
+
+HasFilterMode returns a boolean if a field has been set.
+
 

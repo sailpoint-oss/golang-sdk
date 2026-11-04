@@ -24,6 +24,8 @@ type WorkflowTrigger struct {
 	Type string `json:"type"`
 	// The trigger display name
 	DisplayName NullableString `json:"displayName,omitempty"`
+	// Mode used by the trigger.
+	Mode *string `json:"mode,omitempty"`
 	// Workflow Trigger Attributes.
 	Attributes map[string]interface{} `json:"attributes"`
 	AdditionalProperties map[string]interface{}
@@ -116,6 +118,38 @@ func (o *WorkflowTrigger) UnsetDisplayName() {
 	o.DisplayName.Unset()
 }
 
+// GetMode returns the Mode field value if set, zero value otherwise.
+func (o *WorkflowTrigger) GetMode() string {
+	if o == nil || IsNil(o.Mode) {
+		var ret string
+		return ret
+	}
+	return *o.Mode
+}
+
+// GetModeOk returns a tuple with the Mode field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WorkflowTrigger) GetModeOk() (*string, bool) {
+	if o == nil || IsNil(o.Mode) {
+		return nil, false
+	}
+	return o.Mode, true
+}
+
+// HasMode returns a boolean if a field has been set.
+func (o *WorkflowTrigger) HasMode() bool {
+	if o != nil && !IsNil(o.Mode) {
+		return true
+	}
+
+	return false
+}
+
+// SetMode gets a reference to the given string and assigns it to the Mode field.
+func (o *WorkflowTrigger) SetMode(v string) {
+	o.Mode = &v
+}
+
 // GetAttributes returns the Attributes field value
 // If the value is explicit nil, the zero value for map[string]interface{} will be returned
 func (o *WorkflowTrigger) GetAttributes() map[string]interface{} {
@@ -155,6 +189,9 @@ func (o WorkflowTrigger) ToMap() (map[string]interface{}, error) {
 	toSerialize["type"] = o.Type
 	if o.DisplayName.IsSet() {
 		toSerialize["displayName"] = o.DisplayName.Get()
+	}
+	if !IsNil(o.Mode) {
+		toSerialize["mode"] = o.Mode
 	}
 	if o.Attributes != nil {
 		toSerialize["attributes"] = o.Attributes
@@ -205,6 +242,7 @@ func (o *WorkflowTrigger) UnmarshalJSON(data []byte) (err error) {
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "displayName")
+		delete(additionalProperties, "mode")
 		delete(additionalProperties, "attributes")
 		o.AdditionalProperties = additionalProperties
 	}

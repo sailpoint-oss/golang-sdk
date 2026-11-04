@@ -1,7 +1,7 @@
 /*
 SailPoint Identity Security API - Machine Identity Lifecycle Actions
 
-Use these APIs to submit, list, retrieve, and cancel machine identity lifecycle actions (for example agent activate and deactivate). We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to submit, list, retrieve, and cancel machine identity lifecycle actions (currently activate and deactivate for Agent machine identities only). We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: v1
 */
@@ -708,6 +708,8 @@ SubmitMachineIdentityLifecycleActionV1 Submit machine identity lifecycle action
 
 Creates a lifecycle request for the target machine identity and returns the created lifecycle
 snapshot.
+
+**Note:** Lifecycle actions are currently supported only for machine identities of type **Agent**.
 
 The response includes the generated `requestId`, which is used by
 https://developer.sailpoint.com/docs/api/list-machine-identity-lifecycle-actions-v-1,

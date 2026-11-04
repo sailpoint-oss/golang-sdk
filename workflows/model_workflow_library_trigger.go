@@ -42,6 +42,8 @@ type WorkflowLibraryTrigger struct {
 	InputExample map[string]interface{} `json:"inputExample,omitempty"`
 	// One or more inputs that the trigger accepts
 	FormFields []WorkflowLibraryFormFields `json:"formFields,omitempty"`
+	// Modes that the trigger uses, however no filterMode means the trigger is not filtered
+	FilterMode []string `json:"filterMode,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -430,6 +432,38 @@ func (o *WorkflowLibraryTrigger) SetFormFields(v []WorkflowLibraryFormFields) {
 	o.FormFields = v
 }
 
+// GetFilterMode returns the FilterMode field value if set, zero value otherwise.
+func (o *WorkflowLibraryTrigger) GetFilterMode() []string {
+	if o == nil || IsNil(o.FilterMode) {
+		var ret []string
+		return ret
+	}
+	return o.FilterMode
+}
+
+// GetFilterModeOk returns a tuple with the FilterMode field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WorkflowLibraryTrigger) GetFilterModeOk() ([]string, bool) {
+	if o == nil || IsNil(o.FilterMode) {
+		return nil, false
+	}
+	return o.FilterMode, true
+}
+
+// HasFilterMode returns a boolean if a field has been set.
+func (o *WorkflowLibraryTrigger) HasFilterMode() bool {
+	if o != nil && !IsNil(o.FilterMode) {
+		return true
+	}
+
+	return false
+}
+
+// SetFilterMode gets a reference to the given []string and assigns it to the FilterMode field.
+func (o *WorkflowLibraryTrigger) SetFilterMode(v []string) {
+	o.FilterMode = v
+}
+
 func (o WorkflowLibraryTrigger) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -473,6 +507,9 @@ func (o WorkflowLibraryTrigger) ToMap() (map[string]interface{}, error) {
 	if o.FormFields != nil {
 		toSerialize["formFields"] = o.FormFields
 	}
+	if !IsNil(o.FilterMode) {
+		toSerialize["filterMode"] = o.FilterMode
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -506,6 +543,7 @@ func (o *WorkflowLibraryTrigger) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "isDynamicSchema")
 		delete(additionalProperties, "inputExample")
 		delete(additionalProperties, "formFields")
+		delete(additionalProperties, "filterMode")
 		o.AdditionalProperties = additionalProperties
 	}
 

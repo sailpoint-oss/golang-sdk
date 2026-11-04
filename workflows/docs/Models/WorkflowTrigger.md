@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Type** | **string** | The trigger type | 
 **DisplayName** | Pointer to **NullableString** | The trigger display name | [optional] 
+**Mode** | Pointer to **string** | Mode used by the trigger. | [optional] 
 **Attributes** | **map[string]interface{}** | Workflow Trigger Attributes. | 
 
 ## Methods
@@ -93,6 +94,31 @@ HasDisplayName returns a boolean if a field has been set.
 `func (o *WorkflowTrigger) UnsetDisplayName()`
 
 UnsetDisplayName ensures that no value is present for DisplayName, not even an explicit nil
+### GetMode
+
+`func (o *WorkflowTrigger) GetMode() string`
+
+GetMode returns the Mode field if non-nil, zero value otherwise.
+
+### GetModeOk
+
+`func (o *WorkflowTrigger) GetModeOk() (*string, bool)`
+
+GetModeOk returns a tuple with the Mode field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMode
+
+`func (o *WorkflowTrigger) SetMode(v string)`
+
+SetMode sets Mode field to given value.
+
+### HasMode
+
+`func (o *WorkflowTrigger) HasMode() bool`
+
+HasMode returns a boolean if a field has been set.
+
 ### GetAttributes
 
 `func (o *WorkflowTrigger) GetAttributes() map[string]interface{}`

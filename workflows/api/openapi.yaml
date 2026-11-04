@@ -38,6 +38,36 @@ paths:
     get:
       description: List all workflows in the tenant.
       operationId: listWorkflowsV1
+      parameters:
+      - description: |-
+          Max number of results to return.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        example: 250
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          Offset into the full result set. Usually specified with *limit* to paginate through the results.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        example: 0
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+        style: form
       responses:
         "200":
           content:
@@ -110,6 +140,8 @@ paths:
       summary: List workflows
       tags:
       - Workflows
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
     post:
       description: Create a new workflow with the desired trigger and steps specified
         in the request body.
@@ -118,8 +150,9 @@ paths:
         content:
           application/json:
             examples:
-              Event Trigger:
-                description: Workflow initiated by an event trigger
+              Event Trigger - Advanced Filter:
+                description: Workflow initiated by an event trigger that uses an advanced-mode
+                  filter
                 value:
                   name: Send Email
                   owner:
@@ -145,9 +178,84 @@ paths:
                   enabled: false
                   trigger:
                     type: EVENT
+                    mode: advanced
                     attributes:
                       id: idn:identity-attributes-changed
-                      filter: "$.changes[?(@.attribute == 'manager')]"
+                      filter.$: "$.changes[?(@.attribute == 'manager')]"
+              Event Trigger - Basic Filter:
+                description: Workflow initiated by an event trigger that uses a basic-mode
+                  filter
+                value:
+                  name: Send Email
+                  owner:
+                    type: IDENTITY
+                    id: 2c91808568c529c60168cca6f90c1313
+                    name: William Wilson
+                  description: Send an email to the identity who's attributes changed.
+                  definition:
+                    start: Send Email Test
+                    steps:
+                      Send Email:
+                        actionId: sp:send-email
+                        attributes:
+                          body: This is a test
+                          from: sailpoint@sailpoint.com
+                          recipientId.$: $.identity.id
+                          subject: test
+                        nextStep: success
+                        selectResult: null
+                        type: action
+                      success:
+                        type: success
+                  enabled: false
+                  trigger:
+                    type: EVENT
+                    mode: basic
+                    attributes:
+                      id: idn:identity-attributes-changed
+                      filter.$: "$.changes[?(@.attribute == \"manager\")]"
+                      filterDefinition:
+                        path: changes
+                        logic: and
+                        conditions:
+                        - path: attribute
+                          operator: ==
+                          type: string
+                          value: manager
+              Form Submitted Trigger:
+                description: Workflow initiated when a specific form is submitted
+                  with its department element set to IT
+                value:
+                  name: Send Email
+                  owner:
+                    type: IDENTITY
+                    id: 2c91808568c529c60168cca6f90c1313
+                    name: William Wilson
+                  description: Send an email to the identity who submitted the form.
+                  definition:
+                    start: Send Email
+                    steps:
+                      Send Email:
+                        actionId: sp:send-email
+                        attributes:
+                          body: This is a test
+                          from: sailpoint@sailpoint.com
+                          recipientId.$: $.trigger.submittedBy.id
+                          subject: test
+                        nextStep: success
+                        selectResult: null
+                        type: action
+                      success:
+                        type: success
+                  enabled: false
+                  trigger:
+                    type: EVENT
+                    attributes:
+                      id: sp:form-submitted
+                      formDefinitionId: 49841cb8-00a5-4fbd-9888-8bbb28d48331
+                      attributeToFilter: department
+                      operatorValue: StringEquals
+                      attributeValue: IT
               Scheduled Trigger:
                 description: Workflow initiated by a scheduled trigger
                 value:
@@ -279,6 +387,8 @@ paths:
       summary: Create workflow
       tags:
       - Workflows
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /workflows/v1/{id}:
     delete:
       description: Delete a workflow.  **Enabled workflows cannot be deleted**.  They
@@ -2329,6 +2439,7 @@ components:
     WorkflowTrigger:
       description: The trigger that starts the workflow
       example:
+        mode: advanced
         displayName: displayName
         attributes: "{}"
         type: EVENT
@@ -2345,6 +2456,13 @@ components:
         displayName:
           description: The trigger display name
           nullable: true
+          type: string
+        mode:
+          description: Mode used by the trigger.
+          enum:
+          - basic
+          - advanced
+          example: advanced
           type: string
         attributes:
           description: Workflow Trigger Attributes.
@@ -2378,6 +2496,7 @@ components:
             success:
               type: success
         trigger:
+          mode: advanced
           displayName: displayName
           attributes: "{}"
           type: EVENT
@@ -2449,6 +2568,7 @@ components:
         created: 2022-01-10T16:06:16.636381447Z
         description: Send an email to the identity who's attributes changed.
         trigger:
+          mode: advanced
           displayName: displayName
           attributes: "{}"
           type: EVENT
@@ -2991,6 +3111,9 @@ components:
       type: object
     WorkflowLibraryTrigger:
       example:
+        filterMode:
+        - basic
+        - advanced
         outputSchema: {}
         deprecated: false
         isSimulationEnabled: false
@@ -3105,6 +3228,18 @@ components:
           items:
             $ref: '#/components/schemas/WorkflowLibraryFormFields'
           nullable: true
+          type: array
+        filterMode:
+          description: "Modes that the trigger uses, however no filterMode means the\
+            \ trigger is not filtered"
+          example:
+          - basic
+          - advanced
+          items:
+            enum:
+            - basic
+            - advanced
+            type: string
           type: array
       title: Workflow Trigger
       type: object
