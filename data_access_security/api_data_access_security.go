@@ -2980,7 +2980,7 @@ type ApiGetIdentityCollectorBuiltinPropertiesV1Request struct {
 	filters *string
 }
 
-// Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **type**: *eq*
+// Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **type**: *eq*  Use public type display names only. Values MUST be double-quoted (for example, &#x60;type eq \&quot;AWS\&quot;&#x60;).
 func (r ApiGetIdentityCollectorBuiltinPropertiesV1Request) Filters(filters string) ApiGetIdentityCollectorBuiltinPropertiesV1Request {
 	r.filters = &filters
 	return r
@@ -2993,7 +2993,7 @@ func (r ApiGetIdentityCollectorBuiltinPropertiesV1Request) Execute() (*Identityc
 /*
 GetIdentityCollectorBuiltinPropertiesV1 List built-in identity collector properties
 
-Returns the built-in source attribute names for users and groups collections. When no filter is provided, built-in properties for all public identity collector types are returned (the same base types listed by [List Identity Collector Types](https://developer.sailpoint.com/docs/api/get-identity-collector-types-v-1)). When filtered by `type`, only the matching type is returned; the filter accepts any supported type display name, including SaaS variants such as `Box SaaS` or `AWS SaaS`.
+Returns the built-in source attribute names for users and groups collections. When no filter is provided, built-in properties for all public identity collector types are returned (the same base types listed by [List Identity Collector Types](https://developer.sailpoint.com/docs/api/get-identity-collector-types-v-1)). When filtered by `type`, only the matching type is returned; the filter accepts public type display names only (for example `AWS` or `Box`, not SaaS variants such as `AWS SaaS`). `type` string values MUST be double-quoted (for example, `type eq "AWS"`).
 
 These attributes are always available for field mapping without being listed in `properties`.
 
@@ -4487,7 +4487,7 @@ type ApiListIdentityCollectorsV1Request struct {
 	count *bool
 }
 
-// Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **sourceId**: *eq*  **type**: *eq, in*  **id**: *eq, in*  **name**: *eq, co*  For &#x60;name&#x60;, &#x60;eq&#x60; performs an exact match and &#x60;co&#x60; performs a contains (substring) match. Use public type display names from [List Identity Collector Types](https://developer.sailpoint.com/docs/api/get-identity-collector-types-v-1) with &#x60;type&#x60; filters (for example, &#x60;AWS&#x60;, not &#x60;AWS SaaS&#x60;).  Supported composite operators are *and, or*
+// Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **sourceId**: *eq*  **type**: *eq, in*  **id**: *eq, in*  **name**: *eq, co*  For &#x60;name&#x60;, &#x60;eq&#x60; performs an exact match and &#x60;co&#x60; performs a contains (substring) match. Use public type display names from [List Identity Collector Types](https://developer.sailpoint.com/docs/api/get-identity-collector-types-v-1) with &#x60;type&#x60; filters (for example, &#x60;AWS&#x60;, not &#x60;AWS SaaS&#x60;). &#x60;type&#x60; string values MUST be double-quoted (for example, &#x60;type eq \&quot;AWS\&quot;&#x60;).  Supported composite operators are *and, or*
 func (r ApiListIdentityCollectorsV1Request) Filters(filters string) ApiListIdentityCollectorsV1Request {
 	r.filters = &filters
 	return r

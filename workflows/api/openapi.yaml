@@ -1084,14 +1084,11 @@ paths:
       security:
       - userAuth:
         - sp:workflow-execution:read
-        - sp:workflow:manage
       summary: List workflow executions
       tags:
       - Workflows
       x-sailpoint-userLevels:
       - ORG_ADMIN
-      - SOURCE_SUBADMIN
-      - SOURCE_ADMIN
   /workflow-executions/v1/{id}:
     get:
       description: "Use this API to get a single workflow execution. Workflow executions\
@@ -1196,7 +1193,6 @@ paths:
       security:
       - userAuth:
         - sp:workflow-execution:read
-        - sp:workflow:manage
       summary: Get workflow execution
       tags:
       - Workflows
@@ -1335,14 +1331,11 @@ paths:
       security:
       - userAuth:
         - sp:workflow-execution:read
-        - sp:workflow:manage
       summary: Get workflow execution history
       tags:
       - Workflows
       x-sailpoint-userLevels:
       - ORG_ADMIN
-      - SOURCE_SUBADMIN
-      - SOURCE_ADMIN
   /workflow-executions/v1/{id}/history-v2:
     get:
       description: "Gets a workflow execution history, trigger input, and workflow\
@@ -1446,14 +1439,11 @@ paths:
       security:
       - userAuth:
         - sp:workflow-execution:read
-        - sp:workflow:manage
       summary: Get updated workflow execution history
       tags:
       - Workflows
       x-sailpoint-userLevels:
       - ORG_ADMIN
-      - SOURCE_SUBADMIN
-      - SOURCE_ADMIN
   /workflow-executions/v1/{id}/cancel:
     post:
       description: Use this API to cancel a running workflow execution.

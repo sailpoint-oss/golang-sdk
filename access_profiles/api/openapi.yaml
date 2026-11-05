@@ -1895,6 +1895,1650 @@ paths:
       - ROLE_SUBADMIN
       - SOURCE_ADMIN
       - SOURCE_SUBADMIN
+  /access-profiles/v2:
+    get:
+      description: |-
+        Get a list of access profiles.
+
+        This version reads from Search Lite and returns the same access profile shape as [List Access Profiles V1](https://developer.sailpoint.com/docs/api/list-access-profiles-v-1), with two additions: the calculated `privilegeLevel` field, and opaque cursor pagination through the `cursor` parameter and `X-Next-Cursor` response header.
+
+        >**Note:** When you omit `sorters`, results are sorted by `created` ascending. For deterministic ordering across pages, always specify explicit sorters. When you use cursor pagination, include `id` in `sorters`; the service appends it automatically if you omit it.
+
+        >**Note:** `offset` and `cursor` are mutually exclusive. Use `offset=0` along with a cursor value taken from a prior response's `X-Next-Cursor` header.
+      operationId: listAccessProfilesV2
+      parameters:
+      - description: Use this header to enable this experimental API.
+        example: true
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
+      - description: |-
+          Filters the returned list according to what is visible to the indicated ROLE_SUBADMIN or SOURCE_SUBADMIN identity. The value of the parameter is either an identity ID or the special value **me**, which is shorthand for the calling identity's ID.
+
+          If you specify an identity that isn't a subadmin, the API returns a 400 Bad Request error.
+        example: 8c190e6787aa4ed9a90bd9d5344523fb
+        explode: true
+        in: query
+        name: for-subadmin
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: |-
+          Max number of results to return.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        example: 50
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 50
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          Offset into the full result set. Usually specified with *limit* to paginate through the results. Must be 0 when you supply a `cursor`, and `offset` plus `limit` must not exceed 10000.
+
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        example: 0
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+          Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        example: true
+        explode: true
+        in: query
+        name: count
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+      - description: |-
+          Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)
+
+          Filtering is supported for the following fields and operators:
+
+          **id**: *eq, in*
+
+          **name**: *eq, in, co*
+
+          **created**: *lt, le, gt, ge*
+
+          **modified**: *lt, le, gt, ge*
+
+          **requestable**: *eq*
+
+          **source.id**: *eq, in*
+
+          **owner.id**: *eq, in*
+
+          **additionalOwners.id**: *eq, in*
+
+          **dimensional**: *eq*
+
+          **entitlement.id**: *eq, in*
+
+          **entitlement.name**: *eq, co*
+
+          **privilegeLevel.effective**: *eq, in*
+
+          Supported composite operators are *and, or*
+        example: name co "Developer"
+        explode: true
+        in: query
+        name: filters
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: |-
+          Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)
+
+          Sorting is supported for the following fields: **name, created, modified, id, privilegeLevel.effective**
+
+          Defaults to **created** ascending when omitted.
+        example: "name,-id"
+        explode: true
+        in: query
+        name: sorters
+        required: false
+        schema:
+          format: comma-separated
+          type: string
+        style: form
+      - description: |-
+          Filters access profiles to only those assigned to the segment(s) with the specified IDs.
+          If segmentation is currently unavailable, specifying this parameter results in an error.
+        example: "0b5c9f25-83c6-4762-9073-e38f7bb2ae26,2e8d8180-24bc-4d21-91c6-7affdb473b0d"
+        explode: true
+        in: query
+        name: for-segment-ids
+        required: false
+        schema:
+          format: comma-separated
+          type: string
+        style: form
+      - description: "Indicates whether the response list should contain unsegmented\
+          \ access profiles. If `for-segment-ids` is absent or empty, specifying *include-unsegmented*\
+          \ as `false` results in an error."
+        example: false
+        explode: true
+        in: query
+        name: include-unsegmented
+        required: false
+        schema:
+          default: true
+          type: boolean
+        style: form
+      - description: "Opaque cursor taken from the `X-Next-Cursor` header of a previous\
+          \ response, used to retrieve the next page of results. When you supply a\
+          \ cursor, `offset` must be 0."
+        example: W3sic29ydCI6ImNyZWF0ZWQiLCJ2YWx1ZSI6IjIwMjEtMDMtMDFUMjI6MzI6NTguMTA0WiJ9LHsic29ydCI6ImlkIiwidmFsdWUiOiIyYzkxODA4YTcxOTBkMDZlMDE3MTk5MzhmY2QyMDc5MiJ9XQ
+        explode: true
+        in: query
+        name: cursor
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Accessprofilev2'
+                type: array
+          description: List of access profiles.
+          headers:
+            X-Total-Count:
+              description: "The total result count, returned when *count* is **true**."
+              example: 137
+              explode: false
+              schema:
+                format: int32
+                type: integer
+              style: simple
+            X-Next-Cursor:
+              description: "Opaque cursor for the next page of results, returned when\
+                \ more results exist."
+              example: W3sic29ydCI6ImNyZWF0ZWQiLCJ2YWx1ZSI6IjIwMjEtMDMtMDFUMjI6MzI6NTguMTA0WiJ9LHsic29ydCI6ImlkIiwidmFsdWUiOiIyYzkxODA4YTcxOTBkMDZlMDE3MTk5MzhmY2QyMDc5MiJ9XQ
+              explode: false
+              schema:
+                type: string
+              style: simple
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfilesV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfilesV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:access-profile:read
+      summary: List access profiles
+      tags:
+      - Access Profiles
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - ROLE_ADMIN
+      - ROLE_SUBADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+    post:
+      description: |-
+        Create an access profile.
+
+        This version accepts the same request body and applies the same validation as [Create Access Profile V1](https://developer.sailpoint.com/docs/api/create-access-profile-v-1). It returns the v2 access profile shape, which adds the read-only `privilegeLevel` field.
+
+        A user with `ROLE_SUBADMIN` or `SOURCE_SUBADMIN` authority must be associated with the access profile's source.
+        The maximum supported length for the description field is 2000 characters. Longer descriptions will be preserved for existing access profiles. However, any new access profiles as well as any updates to existing descriptions are limited to 2000 characters.
+        >**Note:** To use this endpoint, you need all the listed scopes.
+        >**Note:** `privilegeLevel` is read-only and is ignored if supplied in the request body. It is calculated asynchronously from the access profile's entitlements, so it is typically absent from the create response.
+      operationId: createAccessProfileV2
+      parameters:
+      - description: Use this header to enable this experimental API.
+        example: true
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Accessprofilev2'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Accessprofilev2'
+          description: Access profile created.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfilesV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfilesV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:access-profile:manage
+        - idn:entitlement:read
+        - idn:identity:read
+        - idn:sources:read
+      summary: Create access profile
+      tags:
+      - Access Profiles
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - ROLE_ADMIN
+      - ROLE_SUBADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+  /access-profiles/v2/{id}:
+    delete:
+      description: |-
+        This API deletes an existing Access Profile.
+
+        This version behaves identically to [Delete the Specified Access Profile V1](https://developer.sailpoint.com/docs/api/delete-access-profile-v-1).
+
+        The Access Profile must not be in use, for example, Access Profile can not be deleted if they belong to an Application, Life Cycle State or a Role. If it is, a 400 error is returned.
+
+        A user with SOURCE_SUBADMIN must be able to administer the Source associated with the Access Profile.
+      operationId: deleteAccessProfileV2
+      parameters:
+      - description: Use this header to enable this experimental API.
+        example: true
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
+      - description: ID of the Access Profile to delete
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          example: 2c91808a7813090a017814121919ecca
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listAccessProfilesV2
+      responses:
+        "204":
+          description: No content - indicates the request was successful but there
+            is no content to be returned in the response.
+        "400":
+          content:
+            application/json:
+              examples:
+                "400.2.1.0 Object in use by another":
+                  description: Returned when an access profile cannot be deleted as
+                    it's being used
+                  value:
+                    detailCode: 400.2.1.0 Object in use by another
+                    trackingId: c9c1033c55b84ebc9e93e926dcf8b8b3
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The "testAccessProfile" access profile can't be deleted
+                        because it's in use.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Returned when an access profile cannot be deleted as it's being
+            used.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfilesV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfilesV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:access-profile:manage
+      summary: Delete the specified access profile
+      tags:
+      - Access Profiles
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+    get:
+      description: |-
+        Get an access profile by its ID.
+
+        This version reads from Search Lite and returns the same access profile shape as [Get Access Profile V1](https://developer.sailpoint.com/docs/api/get-access-profile-v-1), with the calculated `privilegeLevel` field added.
+      operationId: getAccessProfileV2
+      parameters:
+      - description: Use this header to enable this experimental API.
+        example: true
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
+      - description: ID of the Access Profile
+        example: 2c9180837ca6693d017ca8d097500149
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listAccessProfilesV2
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Accessprofilev2'
+          description: An AccessProfile
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfilesV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfilesV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:access-profile:read
+      summary: Get an access profile
+      tags:
+      - Access Profiles
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - ROLE_ADMIN
+      - ROLE_SUBADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+    patch:
+      description: |-
+        This API updates an existing Access Profile.
+
+        This version patches the same fields as [Patch a Specified Access Profile V1](https://developer.sailpoint.com/docs/api/patch-access-profile-v-1). It returns the v2 access profile shape, which adds the read-only `privilegeLevel` field.
+
+        The following fields are patchable:
+
+        **name**
+
+        **description**
+
+        **enabled**
+
+        **owner**
+
+        **additionalOwners**
+
+        **requestable**
+
+        **accessRequestConfig**
+
+        **revocationRequestConfig**
+
+        **segments**
+
+        **entitlements**
+
+        **provisioningCriteria**
+
+        **source** (must be updated with entitlements belonging to new source in the same API call)
+
+        If you need to change the `source` of the access profile, you can do so only if you update the `entitlements` in the same API call.  The new entitlements can only come from the target source that you want to change to.  Look for the example "Replace Source" in the examples dropdown.
+
+        A user with SOURCE_SUBADMIN may only use this API to patch Access Profiles which are associated with Sources they are able to administer.
+        >  The maximum supported length for the description field is 2000 characters. Longer descriptions will be preserved for existing access profiles, however, any new access profiles as well as any updates to existing descriptions will be limited to 2000 characters.
+
+        > You can only add or replace **entitlements** that exist on the source that the access profile is attached to. You can use the **list entitlements** endpoint with the **filters** query parameter to get a list of available entitlements on the access profile's source.
+
+        >**Note:** `privilegeLevel` is read-only and cannot be patched. Changing the access profile's entitlements recalculates it asynchronously, so the patch response may still show the previous value.
+      operationId: patchAccessProfileV2
+      parameters:
+      - description: Use this header to enable this experimental API.
+        example: true
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
+      - description: ID of the Access Profile to patch
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          example: 2c91808a7813090a017814121919ecca
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listAccessProfilesV2
+      requestBody:
+        content:
+          application/json-patch+json:
+            examples:
+              Add Entitlements:
+                description: Add one or more entitlements to the end of the list
+                value:
+                - op: add
+                  path: /entitlements
+                  value:
+                  - id: 2c9180857725c14301772a93bb77242d
+                    type: ENTITLEMENT
+                    name: AD User Group
+              Insert Entitlement:
+                description: Add an entitlement at the beginning of the entitlement
+                  list
+                value:
+                - op: add
+                  path: /entitlements/0
+                  value:
+                    id: 2c9180857725c14301772a93bb77242d
+                    type: ENTITLEMENT
+                    name: AD User Group
+              Replace Entitlements:
+                description: Replace all entitlements with a new list of entitlements
+                value:
+                - op: replace
+                  path: /entitlements
+                  value:
+                  - id: 2c9180857725c14301772a93bb77242d
+                    type: ENTITLEMENT
+                    name: AD User Group
+              Remove Entitlement:
+                description: Remove the first entitlement in the list
+                value:
+                - op: remove
+                  path: /entitlements/0
+              Replace Source:
+                description: Change the source and the entitlements of the access
+                  profile
+                value:
+                - op: replace
+                  path: /source
+                  value:
+                    id: 2c9180887671ff8c01767b4671fb7d5e
+                    type: SOURCE
+                    name: Employees
+                - op: replace
+                  path: /entitlements
+                  value:
+                  - id: 2c9180877677453d01767b4b08f63386
+                    type: ENTITLEMENT
+                    name: DevRel
+            schema:
+              items:
+                $ref: '#/components/schemas/JsonPatchOperation'
+              type: array
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Accessprofilev2'
+          description: Responds with the Access Profile as updated.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfilesV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfilesV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:access-profile:manage
+      summary: Patch a specified access profile
+      tags:
+      - Access Profiles
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+  /access-profiles/v2/{id}/entitlements:
+    get:
+      description: |-
+        Get a list of an access profile's entitlements.
+
+        This version reads from Search Lite and returns a superset of the entitlement returned by [List Access Profile's Entitlements V1](https://developer.sailpoint.com/docs/api/get-access-profile-entitlements-v-1), adding the entitlement's `tags` and calculated `privilegeLevel`. It also supports opaque cursor pagination through the `cursor` parameter and `X-Next-Cursor` response header.
+
+        A SOURCE_SUBADMIN user must have access to the source associated with the specified access profile.
+      operationId: getAccessProfileEntitlementsV2
+      parameters:
+      - description: Use this header to enable this experimental API.
+        example: true
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
+      - description: ID of the access profile containing the entitlements.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          example: 2c91808a7813090a017814121919ecca
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listAccessProfilesV2
+      - description: |-
+          Max number of results to return.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        example: 250
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          Offset into the full result set. Usually specified with *limit* to paginate through the results. Must be 0 when you supply a `cursor`, and `offset` plus `limit` must not exceed 10000.
+
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        example: 0
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+          Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        example: true
+        explode: true
+        in: query
+        name: count
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+      - description: |-
+          Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)
+
+          Filtering is supported for the following fields and operators:
+
+          **id**: *eq, in*
+
+          **name**: *eq, in, co*
+
+          **attribute**: *eq, co*
+
+          **value**: *eq, co*
+
+          **created**: *lt, le, gt, ge*
+
+          **modified**: *lt, le, gt, ge*
+
+          **privilegeLevel.effective**: *eq, in*
+
+          Results are automatically scoped to entitlements belonging to the access profile.
+        example: attribute eq "memberOf"
+        explode: true
+        in: query
+        name: filters
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: |-
+          Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)
+
+          Sorting is supported for the following fields: **name, attribute, value, created, modified, id, privilegeLevel.effective**
+
+          Defaults to **created** ascending when omitted.
+        example: "name,-id"
+        explode: true
+        in: query
+        name: sorters
+        required: false
+        schema:
+          format: comma-separated
+          type: string
+        style: form
+      - description: "Opaque cursor taken from the `X-Next-Cursor` header of a previous\
+          \ response, used to retrieve the next page of results. When you supply a\
+          \ cursor, `offset` must be 0."
+        example: W3sic29ydCI6ImNyZWF0ZWQiLCJ2YWx1ZSI6IjIwMjEtMDMtMDFUMjI6MzI6NTguMTA0WiJ9LHsic29ydCI6ImlkIiwidmFsdWUiOiIyYzkxODA4YTcxOTBkMDZlMDE3MTk5MzhmY2QyMDc5MiJ9XQ
+        explode: true
+        in: query
+        name: cursor
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Accessprofileentitlementv2'
+                type: array
+          description: List of entitlements.
+          headers:
+            X-Total-Count:
+              description: "The total result count, returned when *count* is **true**."
+              example: 42
+              explode: false
+              schema:
+                format: int32
+                type: integer
+              style: simple
+            X-Next-Cursor:
+              description: "Opaque cursor for the next page of results, returned when\
+                \ more results exist."
+              example: W3sic29ydCI6ImNyZWF0ZWQiLCJ2YWx1ZSI6IjIwMjEtMDMtMDFUMjI6MzI6NTguMTA0WiJ9LHsic29ydCI6ImlkIiwidmFsdWUiOiIyYzkxODA4YTcxOTBkMDZlMDE3MTk5MzhmY2QyMDc5MiJ9XQ
+              explode: false
+              schema:
+                type: string
+              style: simple
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfilesV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfilesV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:access-profile:read
+      summary: List access profile's entitlements
+      tags:
+      - Access Profiles
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+  /access-profiles/v2/filter:
+    post:
+      description: |-
+        Get a list of access profiles, supplying the filter criteria and access model metadata key/values in the request body rather than as query parameters.
+
+        Use this endpoint when you need to filter by access model metadata, or when your filter expression is too long to pass as a query parameter. Pagination, sorting, subadmin scoping, and segment scoping behave the same as [List Access Profiles V2](https://developer.sailpoint.com/docs/api/list-access-profiles-v-2), including opaque cursor pagination through the `cursor` parameter and `X-Next-Cursor` response header.
+      operationId: searchAccessProfilesByFilterV2
+      parameters:
+      - description: Use this header to enable this experimental API.
+        example: true
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
+      - description: |-
+          Filters the returned list according to what is visible to the indicated ROLE_SUBADMIN or SOURCE_SUBADMIN identity. The value of the parameter is either an identity ID or the special value **me**, which is shorthand for the calling identity's ID.
+
+          If you specify an identity that isn't a subadmin, the API returns a 400 Bad Request error.
+        example: 8c190e6787aa4ed9a90bd9d5344523fb
+        explode: true
+        in: query
+        name: for-subadmin
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: |-
+          Max number of results to return.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        example: 50
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 50
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          Offset into the full result set. Usually specified with *limit* to paginate through the results. Must be 0 when you supply a `cursor`, and `offset` plus `limit` must not exceed 10000.
+
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        example: 0
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+          Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        example: true
+        explode: true
+        in: query
+        name: count
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+      - description: |-
+          Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)
+
+          Sorting is supported for the following fields: **name, created, modified, id, privilegeLevel.effective**
+
+          Defaults to **created** ascending when omitted.
+        example: "name,-id"
+        explode: true
+        in: query
+        name: sorters
+        required: false
+        schema:
+          format: comma-separated
+          type: string
+        style: form
+      - description: |-
+          Filters access profiles to only those assigned to the segment(s) with the specified IDs.
+          If segmentation is currently unavailable, specifying this parameter results in an error.
+        example: "0b5c9f25-83c6-4762-9073-e38f7bb2ae26,2e8d8180-24bc-4d21-91c6-7affdb473b0d"
+        explode: true
+        in: query
+        name: for-segment-ids
+        required: false
+        schema:
+          format: comma-separated
+          type: string
+        style: form
+      - description: "Indicates whether the response list should contain unsegmented\
+          \ access profiles. If `for-segment-ids` is absent or empty, specifying *include-unsegmented*\
+          \ as `false` results in an error."
+        example: false
+        explode: true
+        in: query
+        name: include-unsegmented
+        required: false
+        schema:
+          default: true
+          type: boolean
+        style: form
+      - description: "Opaque cursor taken from the `X-Next-Cursor` header of a previous\
+          \ response, used to retrieve the next page of results. When you supply a\
+          \ cursor, `offset` must be 0."
+        example: W3sic29ydCI6ImNyZWF0ZWQiLCJ2YWx1ZSI6IjIwMjEtMDMtMDFUMjI6MzI6NTguMTA0WiJ9LHsic29ydCI6ImlkIiwidmFsdWUiOiIyYzkxODA4YTcxOTBkMDZlMDE3MTk5MzhmY2QyMDc5MiJ9XQ
+        explode: true
+        in: query
+        name: cursor
+        required: false
+        schema:
+          type: string
+        style: form
+      requestBody:
+        content:
+          application/json:
+            example:
+              filters: privilegeLevel.effective eq "HIGH"
+              ammKeyValues:
+              - attribute: iscFederalClassifications
+                values:
+                - secret
+            schema:
+              $ref: '#/components/schemas/AccessProfileListFilterV2'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Accessprofilev2'
+                type: array
+          description: List of access profiles.
+          headers:
+            X-Total-Count:
+              description: "The total result count, returned when *count* is **true**."
+              example: 137
+              explode: false
+              schema:
+                format: int32
+                type: integer
+              style: simple
+            X-Next-Cursor:
+              description: "Opaque cursor for the next page of results, returned when\
+                \ more results exist."
+              example: W3sic29ydCI6ImNyZWF0ZWQiLCJ2YWx1ZSI6IjIwMjEtMDMtMDFUMjI6MzI6NTguMTA0WiJ9LHsic29ydCI6ImlkIiwidmFsdWUiOiIyYzkxODA4YTcxOTBkMDZlMDE3MTk5MzhmY2QyMDc5MiJ9XQ
+              explode: false
+              schema:
+                type: string
+              style: simple
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfilesV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfilesV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:access-profile:read
+      summary: List access profiles by filter
+      tags:
+      - Access Profiles
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - ROLE_ADMIN
+      - ROLE_SUBADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+  /access-profiles/v2/bulk-delete:
+    post:
+      description: "This endpoint initiates a bulk deletion of one or more access\
+        \ profiles.\n\nThis version behaves identically to [Delete Access Profile(s)\
+        \ V1](https://developer.sailpoint.com/docs/api/delete-access-profiles-in-bulk-v-1).\n\
+        \nWhen the request is successful, the endpoint returns the bulk delete's task\
+        \ result ID.  To follow the task, you can use [Get Task Status by ID](https://developer.sailpoint.com/docs/api/get-task-status-v-1),\
+        \ which will return the task result's status and information. \nThis endpoint\
+        \ can only bulk delete up to a limit of 50 access profiles per request. \n\
+        By default, if any of the indicated access profiles are in use, no deletions\
+        \ will be performed and the **inUse** field of the response indicates the\
+        \ usages that must be removed first. If the request field **bestEffortOnly**\
+        \ is **true**, however, usages are reported in the **inUse** response field\
+        \ but all other indicated access profiles will be deleted.\nA SOURCE_SUBADMIN\
+        \ user can only use this endpoint to delete access profiles associated with\
+        \ sources they're able to administer."
+      operationId: deleteAccessProfilesInBulkV2
+      parameters:
+      - description: Use this header to enable this experimental API.
+        example: true
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            example:
+              bestEffortOnly: true
+              accessProfileIds:
+              - 2c91808876438bb2017668b91919ecca
+              - 2c91808876438ba801766e129f151816
+            schema:
+              $ref: '#/components/schemas/AccessProfileBulkDeleteRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                pending: []
+                inUse:
+                - accessProfileId: 2c91808876438ba801766e129f151816
+                  usages:
+                  - type: Role
+                    id: 2c9180887643764201766e9f6e121518
+              schema:
+                $ref: '#/components/schemas/AccessProfileBulkDeleteResponse'
+          description: "Returned only if **bestEffortOnly** is **false**, and one\
+            \ or more Access Profiles are in use."
+        "202":
+          content:
+            application/json:
+              example:
+                taskId: 2c91808a7813090a01781412a1119a20
+                pending:
+                - 2c91808a7813090a017813fe1919ecca
+                inUse:
+                - accessProfileId: 2c91808876438ba801766e129f151816
+                  usages:
+                  - type: Role
+                    id: 2c9180887643764201766e9f6e121518
+              schema:
+                $ref: '#/components/schemas/AccessProfileBulkDeleteResponse'
+          description: Returned if at least one deletion will be performed.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfilesV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfilesV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:access-profile:manage
+      summary: Delete access profile(s)
+      tags:
+      - Access Profiles
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+  /access-profiles/v2/bulk-update-requestable:
+    post:
+      description: |-
+        This API initiates a bulk update of field requestable for one or more Access Profiles.
+
+        This version behaves identically to [Update Access Profile(s) Requestable Field V1](https://developer.sailpoint.com/docs/api/update-access-profiles-in-bulk-v-1).
+
+        >  If any of the indicated Access Profiles is exists in Organization,then those Access Profiles will be added in **updated**
+            list of the response.Requestable field of these Access Profiles marked as **true** or **false**.
+
+        >  If any of the indicated Access Profiles is not does not exists in Organization,then those Access Profiles will be added in **notFound** list of the response. Access Profiles marked as **notFound** will not be updated.
+         A SOURCE_SUBADMIN may only use this API to update Access Profiles which are associated with Sources they are able to administer.
+      operationId: updateAccessProfilesInBulkV2
+      parameters:
+      - description: Use this header to enable this experimental API.
+        example: true
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            example:
+            - id: 464ae7bf-791e-49fd-b746-06a2e4a89635
+              requestable: false
+            schema:
+              $ref: '#/components/schemas/AccessProfileBulkUpdateRequest'
+        required: true
+      responses:
+        "207":
+          content:
+            application/json:
+              example:
+              - id: 464ae7bf-791e-49fd-b746-06a2e4a89635
+                status: "201"
+                requestable: false
+                description: Access Profile updated successfully.
+              schema:
+                $ref: '#/components/schemas/AccessProfileBulkUpdateResponse'
+          description: List of updated and not updated Access Profiles.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfilesV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "412":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/updateAccessProfilesInBulkV1_412_response'
+          description: Precondition Failed - Returned in response if API/Feature not
+            enabled for an organization.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfilesV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:access-profile:manage
+      summary: Update access profile(s) requestable field.
+      tags:
+      - Access Profiles
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
 components:
   parameters:
     limit:
@@ -3528,6 +5172,418 @@ components:
           nullable: true
           type: array
       type: object
+    AccessProfilePrivilegeLevel:
+      description: Effective privilege level calculated for the access profile.
+      properties:
+        effective:
+          description: "Effective privilege level of the access profile, derived from\
+            \ the highest privilege level of the entitlements it contains. `UNDETERMINED`\
+            \ indicates the level could not be calculated."
+          enum:
+          - NONE
+          - LOW
+          - MEDIUM
+          - HIGH
+          - UNDETERMINED
+          example: MEDIUM
+          type: string
+      title: Access Profile Privilege Level
+      type: object
+    Accessprofilev2:
+      description: Access profile.
+      example:
+        owner:
+          name: support
+          id: 2c9180a46faadee4016fb4e018c20639
+          type: IDENTITY
+        entitlements:
+        - name: "CN=entitlement.490efde5,OU=OrgCo,OU=ServiceDept,DC=HQAD,DC=local"
+          id: 2c91809773dee32014e13e122092014e
+          type: ENTITLEMENT
+        - name: "CN=entitlement.490efde5,OU=OrgCo,OU=ServiceDept,DC=HQAD,DC=local"
+          id: 2c91809773dee32014e13e122092014e
+          type: ENTITLEMENT
+        privilegeLevel:
+          effective: MEDIUM
+        created: 2021-03-01T22:32:58.104Z
+        description: Collection of entitlements to read/write the employee database
+        source:
+          name: ODS-AD-SOURCE
+          id: 2c91809773dee3610173fdb0b6061ef4
+          type: SOURCE
+        enabled: true
+        additionalOwners:
+        - name: support
+          id: 2c9180a46faadee4016fb4e018c20639
+          type: IDENTITY
+        - name: support
+          id: 2c9180a46faadee4016fb4e018c20639
+          type: IDENTITY
+        revocationRequestConfig:
+          approvalSchemes:
+          - approverId: 46c79819-a69f-49a2-becb-12c971ae66c6
+            approverType: GOVERNANCE_GROUP
+          - approverId: 46c79819-a69f-49a2-becb-12c971ae66c6
+            approverType: GOVERNANCE_GROUP
+        segments:
+        - f7b1b8a3-5fed-4fd4-ad29-82014e137e19
+        - 29cb6c06-1da8-43ea-8be4-b3125f248f2a
+        accessRequestConfig:
+          commentsRequired: true
+          reauthorizationRequired: true
+          approvalSchemes:
+          - approverId: 46c79819-a69f-49a2-becb-12c971ae66c6
+            approverType: GOVERNANCE_GROUP
+          - approverId: 46c79819-a69f-49a2-becb-12c971ae66c6
+            approverType: GOVERNANCE_GROUP
+          formDefinitionId: 78258e80-e9e2-4e1a-a11f-ce0b7c62f25d
+          denialCommentsRequired: true
+          requireEndDate: true
+          maxPermittedAccessDuration:
+            value: 6
+            timeUnit: MONTHS
+        name: Employee-database-read-write
+        provisioningCriteria:
+          children:
+          - children:
+            - children: children
+              attribute: email
+              operation: EQUALS
+              value: carlee.cert1c9f9b6fd@mailinator.com
+            - children: children
+              attribute: email
+              operation: EQUALS
+              value: carlee.cert1c9f9b6fd@mailinator.com
+            attribute: email
+            operation: EQUALS
+            value: carlee.cert1c9f9b6fd@mailinator.com
+          - children:
+            - children: children
+              attribute: email
+              operation: EQUALS
+              value: carlee.cert1c9f9b6fd@mailinator.com
+            - children: children
+              attribute: email
+              operation: EQUALS
+              value: carlee.cert1c9f9b6fd@mailinator.com
+            attribute: email
+            operation: EQUALS
+            value: carlee.cert1c9f9b6fd@mailinator.com
+          attribute: email
+          operation: EQUALS
+          value: carlee.cert1c9f9b6fd@mailinator.com
+        modified: 2021-03-02T20:22:28.104Z
+        accessModelMetadata:
+          attributes:
+          - key: iscPrivacy
+            name: Privacy
+            multiselect: false
+            status: active
+            type: governance
+            objectTypes:
+            - all
+            description: Specifies the level of privacy associated with an access
+              item.
+            values:
+            - value: public
+              name: Public
+              status: active
+        id: 2c91808a7190d06e01719938fcd20792
+        requestable: true
+      properties:
+        id:
+          description: Access profile ID.
+          example: 2c91808a7190d06e01719938fcd20792
+          readOnly: true
+          type: string
+        name:
+          description: Access profile name.
+          example: Employee-database-read-write
+          type: string
+        description:
+          description: Access profile description.
+          example: Collection of entitlements to read/write the employee database
+          nullable: true
+          type: string
+        created:
+          description: Date and time when the access profile was created.
+          example: 2021-03-01T22:32:58.104Z
+          format: date-time
+          readOnly: true
+          type: string
+        modified:
+          description: Date and time when the access profile was last modified.
+          example: 2021-03-02T20:22:28.104Z
+          format: date-time
+          readOnly: true
+          type: string
+        enabled:
+          default: false
+          description: "Indicates whether the access profile is enabled. If it's enabled,\
+            \ you must include at least one entitlement."
+          example: true
+          type: boolean
+        owner:
+          $ref: '#/components/schemas/OwnerReference'
+        source:
+          $ref: '#/components/schemas/AccessProfileSourceRef'
+        entitlements:
+          description: "List of entitlements associated with the access profile. If\
+            \ `enabled` is false, this can be empty. Otherwise, it must contain at\
+            \ least one entitlement."
+          items:
+            $ref: '#/components/schemas/EntitlementRef'
+          nullable: true
+          type: array
+        requestable:
+          default: true
+          description: "Indicates whether the access profile is requestable by access\
+            \ request. Currently, making an access profile non-requestable is only\
+            \ supported  for customers enabled with the new Request Center. Otherwise,\
+            \ attempting to create an access profile with a value  **false** in this\
+            \ field results in a 400 error."
+          example: true
+          type: boolean
+        accessRequestConfig:
+          $ref: '#/components/schemas/Requestability'
+        revocationRequestConfig:
+          $ref: '#/components/schemas/Revocability'
+        segments:
+          description: "List of segment IDs, if any, that the access profile is assigned\
+            \ to."
+          example:
+          - f7b1b8a3-5fed-4fd4-ad29-82014e137e19
+          - 29cb6c06-1da8-43ea-8be4-b3125f248f2a
+          items:
+            type: string
+          nullable: true
+          type: array
+        accessModelMetadata:
+          $ref: '#/components/schemas/AttributeDTOList'
+        provisioningCriteria:
+          $ref: '#/components/schemas/ProvisioningCriteriaLevel1'
+        additionalOwners:
+          description: List of additional owner references beyond the primary owner.
+            Each entry may be an identity (IDENTITY) or a governance group (GOVERNANCE_GROUP).
+          items:
+            $ref: '#/components/schemas/AdditionalOwnerRef'
+          nullable: true
+          type: array
+        privilegeLevel:
+          $ref: '#/components/schemas/Accessprofilev2_privilegeLevel'
+      required:
+      - name
+      - owner
+      - source
+      type: object
+    EntitlementPrivilegeLevel:
+      description: Privilege level detail for an entitlement.
+      properties:
+        direct:
+          description: Direct privilege level assigned to the entitlement
+          enum:
+          - HIGH
+          - LOW
+          - MEDIUM
+          - NONE
+          example: HIGH
+          type: string
+        setBy:
+          description: User or process that set the privilege level
+          example: SAILPOINT_MIGRATION
+          type: string
+        setByType:
+          description: Method by which the privilege level was set
+          enum:
+          - OVERRIDE
+          - CUSTOM_CRITERIA
+          - CONNECTOR_CRITERIA
+          - SINGLE_LEVEL_CRITERIA
+          example: OVERRIDE
+          nullable: true
+          type: string
+        inherited:
+          description: "Inherited privilege level on the entitlement, if any"
+          enum:
+          - HIGH
+          - LOW
+          - MEDIUM
+          - NONE
+          example: LOW
+          nullable: true
+          type: string
+        effective:
+          description: Effective privilege level assigned to the entitlement
+          enum:
+          - HIGH
+          - LOW
+          - MEDIUM
+          - NONE
+          example: HIGH
+          type: string
+      title: Entitlement Privilege Level
+      type: object
+    Accessprofileentitlementv2:
+      allOf:
+      - $ref: '#/components/schemas/Entitlement'
+      - description: "Entitlement returned by the access profile entitlements endpoint.\
+          \ Superset of the standard entitlement, adding the entitlement's tags and\
+          \ calculated privilege level."
+        properties:
+          tags:
+            description: List of tags assigned to the entitlement
+            example:
+            - tag1
+            - tag2
+            items:
+              type: string
+            nullable: true
+            type: array
+          privilegeLevel:
+            $ref: '#/components/schemas/Access_Profile_Entitlement_privilegeLevel'
+        title: Access Profile Entitlement
+        type: object
+      example:
+        owner:
+          name: john.doe
+          id: 2c9180827ca885d7017ca8ce28a000eb
+          type: IDENTITY
+        privilegeLevel:
+          effective: HIGH
+          inherited: LOW
+          direct: HIGH
+          setByType: OVERRIDE
+          setBy: SAILPOINT_MIGRATION
+        created: 2020-10-08T18:33:52.029Z
+        description: Grants the ability to access and manage payroll-related controls
+          and settings within the Corporate Active Directory system.
+        source:
+          name: Corporate Active Directory
+          id: 2c9180827ca885d7017ca8ce28a000eb
+          type: SOURCE
+        additionalOwners:
+        - name: support
+          id: 2c9180a46faadee4016fb4e018c20639
+          type: IDENTITY
+        - name: support
+          id: 2c9180a46faadee4016fb4e018c20639
+          type: IDENTITY
+        segments:
+        - f7b1b8a3-5fed-4fd4-ad29-82014e137e19
+        - 29cb6c06-1da8-43ea-8be4-b3125f248f2a
+        tags:
+        - tag1
+        - tag2
+        privileged: true
+        directPermissions:
+        - rights: HereIsRight1
+          target: SYS.GV_$TRANSACTION
+        - rights: HereIsRight1
+          target: SYS.GV_$TRANSACTION
+        manuallyUpdatedFields:
+          DISPLAY_NAME: true
+          DESCRIPTION: true
+        name: PayrollControls
+        modified: 2020-10-08T18:33:52.029Z
+        sourceSchemaObjectType: group
+        accessModelMetadata:
+          attributes:
+          - multiselect: true
+            values:
+            - name: Development
+              value: development
+              status: active
+            - name: Development
+              value: development
+              status: active
+            name: CSP
+            description: Indicates the type of deployment environment of an access
+              item.
+            type: governance
+            objectTypes:
+            - general
+            key: iscCsp
+            status: active
+          - multiselect: true
+            values:
+            - name: Development
+              value: development
+              status: active
+            - name: Development
+              value: development
+              status: active
+            name: CSP
+            description: Indicates the type of deployment environment of an access
+              item.
+            type: governance
+            objectTypes:
+            - general
+            key: iscCsp
+            status: active
+        attributes:
+          fieldName: fieldValue
+        id: 2c91808874ff91550175097daaec161c
+        attribute: memberOf
+        requestable: true
+        value: "CN=PayrollControls,OU=Groups,OU=Demo,DC=seri,DC=sailpointdemo,DC=com"
+        cloudGoverned: true
+    AccessProfileListFilterV2:
+      description: Filter criteria and Access Model Metadata key/values used to select
+        access profiles.
+      example:
+        ammKeyValues:
+        - attribute: iscFederalClassifications
+          values:
+          - secret
+        filters: privilegeLevel.effective eq "HIGH"
+      properties:
+        filters:
+          description: |-
+            Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)
+
+            Filtering is supported for the following fields and operators:
+
+            **id**: *eq, in*
+
+            **name**: *eq, in, co*
+
+            **created**: *lt, le, gt, ge*
+
+            **modified**: *lt, le, gt, ge*
+
+            **owner.id**: *eq, in*
+
+            **additionalOwners.id**: *eq, in*
+
+            **requestable**: *eq*
+
+            **source.id**: *eq, in*
+
+            **dimensional**: *eq*
+
+            **entitlement.id**: *eq, in*
+
+            **entitlement.name**: *eq, co*
+
+            **privilegeLevel.effective**: *eq, in*
+
+            Supported composite operators are *and, or*
+          example: privilegeLevel.effective eq "HIGH"
+          nullable: true
+          type: string
+        ammKeyValues:
+          description: The Access Model Metadata attributes and values used to filter
+            the results.
+          example:
+          - attribute: iscFederalClassifications
+            values:
+            - secret
+          items:
+            $ref: '#/components/schemas/AccessProfileListFilterDTO_ammKeyValues_inner'
+          nullable: true
+          type: array
+      title: Access Profile List Filter V2
+      type: object
     listAccessProfilesV1_401_response:
       example:
         error: "JWT validation failed: JWT is expired"
@@ -3761,3 +5817,27 @@ components:
             type: string
           type: array
       type: object
+    Accessprofilev2_privilegeLevel:
+      allOf:
+      - $ref: '#/components/schemas/AccessProfilePrivilegeLevel'
+      - description: "Effective privilege level of the access profile. Returned on\
+          \ read operations only, and omitted when the privilege level has not been\
+          \ calculated."
+        nullable: true
+        readOnly: true
+        type: object
+      example:
+        effective: MEDIUM
+    Access_Profile_Entitlement_privilegeLevel:
+      allOf:
+      - $ref: '#/components/schemas/EntitlementPrivilegeLevel'
+      - description: Privilege level of the entitlement
+        nullable: true
+        readOnly: true
+        type: object
+      example:
+        effective: HIGH
+        inherited: LOW
+        direct: HIGH
+        setByType: OVERRIDE
+        setBy: SAILPOINT_MIGRATION

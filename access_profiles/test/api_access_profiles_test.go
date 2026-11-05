@@ -34,6 +34,18 @@ func Test_access_profiles_AccessProfilesAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test AccessProfilesAPIService CreateAccessProfileV2", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.AccessProfilesAPI.CreateAccessProfileV2(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test AccessProfilesAPIService DeleteAccessProfileV1", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -47,11 +59,36 @@ func Test_access_profiles_AccessProfilesAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test AccessProfilesAPIService DeleteAccessProfileV2", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+
+		httpRes, err := apiClient.AccessProfilesAPI.DeleteAccessProfileV2(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test AccessProfilesAPIService DeleteAccessProfilesInBulkV1", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.AccessProfilesAPI.DeleteAccessProfilesInBulkV1(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test AccessProfilesAPIService DeleteAccessProfilesInBulkV2", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.AccessProfilesAPI.DeleteAccessProfilesInBulkV2(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -88,6 +125,20 @@ func Test_access_profiles_AccessProfilesAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test AccessProfilesAPIService GetAccessProfileEntitlementsV2", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+
+		resp, httpRes, err := apiClient.AccessProfilesAPI.GetAccessProfileEntitlementsV2(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test AccessProfilesAPIService GetAccessProfileV1", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -102,11 +153,37 @@ func Test_access_profiles_AccessProfilesAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test AccessProfilesAPIService GetAccessProfileV2", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+
+		resp, httpRes, err := apiClient.AccessProfilesAPI.GetAccessProfileV2(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test AccessProfilesAPIService ListAccessProfilesV1", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.AccessProfilesAPI.ListAccessProfilesV1(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test AccessProfilesAPIService ListAccessProfilesV2", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.AccessProfilesAPI.ListAccessProfilesV2(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -128,6 +205,20 @@ func Test_access_profiles_AccessProfilesAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test AccessProfilesAPIService PatchAccessProfileV2", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+
+		resp, httpRes, err := apiClient.AccessProfilesAPI.PatchAccessProfileV2(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test AccessProfilesAPIService SearchAccessProfilesByFilterV1", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -140,11 +231,35 @@ func Test_access_profiles_AccessProfilesAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test AccessProfilesAPIService SearchAccessProfilesByFilterV2", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.AccessProfilesAPI.SearchAccessProfilesByFilterV2(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test AccessProfilesAPIService UpdateAccessProfilesInBulkV1", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.AccessProfilesAPI.UpdateAccessProfilesInBulkV1(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test AccessProfilesAPIService UpdateAccessProfilesInBulkV2", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.AccessProfilesAPI.UpdateAccessProfilesInBulkV2(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

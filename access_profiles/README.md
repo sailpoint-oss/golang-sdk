@@ -80,15 +80,24 @@ All URIs are relative to *https://sailpoint.api.identitynow.com*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *AccessProfilesAPI* | [**CreateAccessProfileV1**](docs/AccessProfilesAPI.md#createaccessprofilev1) | **Post** /access-profiles/v1 | Create access profile
+*AccessProfilesAPI* | [**CreateAccessProfileV2**](docs/AccessProfilesAPI.md#createaccessprofilev2) | **Post** /access-profiles/v2 | Create access profile
 *AccessProfilesAPI* | [**DeleteAccessProfileV1**](docs/AccessProfilesAPI.md#deleteaccessprofilev1) | **Delete** /access-profiles/v1/{id} | Delete the specified access profile
+*AccessProfilesAPI* | [**DeleteAccessProfileV2**](docs/AccessProfilesAPI.md#deleteaccessprofilev2) | **Delete** /access-profiles/v2/{id} | Delete the specified access profile
 *AccessProfilesAPI* | [**DeleteAccessProfilesInBulkV1**](docs/AccessProfilesAPI.md#deleteaccessprofilesinbulkv1) | **Post** /access-profiles/v1/bulk-delete | Delete access profile(s)
+*AccessProfilesAPI* | [**DeleteAccessProfilesInBulkV2**](docs/AccessProfilesAPI.md#deleteaccessprofilesinbulkv2) | **Post** /access-profiles/v2/bulk-delete | Delete access profile(s)
 *AccessProfilesAPI* | [**DeleteMetadataFromAccessProfileByKeyAndValueV1**](docs/AccessProfilesAPI.md#deletemetadatafromaccessprofilebykeyandvaluev1) | **Delete** /access-profiles/v1/{id}/access-model-metadata/{attributeKey}/values/{attributeValue} | Remove metadata from access profile
 *AccessProfilesAPI* | [**GetAccessProfileEntitlementsV1**](docs/AccessProfilesAPI.md#getaccessprofileentitlementsv1) | **Get** /access-profiles/v1/{id}/entitlements | List access profile&#39;s entitlements
+*AccessProfilesAPI* | [**GetAccessProfileEntitlementsV2**](docs/AccessProfilesAPI.md#getaccessprofileentitlementsv2) | **Get** /access-profiles/v2/{id}/entitlements | List access profile&#39;s entitlements
 *AccessProfilesAPI* | [**GetAccessProfileV1**](docs/AccessProfilesAPI.md#getaccessprofilev1) | **Get** /access-profiles/v1/{id} | Get an access profile
+*AccessProfilesAPI* | [**GetAccessProfileV2**](docs/AccessProfilesAPI.md#getaccessprofilev2) | **Get** /access-profiles/v2/{id} | Get an access profile
 *AccessProfilesAPI* | [**ListAccessProfilesV1**](docs/AccessProfilesAPI.md#listaccessprofilesv1) | **Get** /access-profiles/v1 | List access profiles
+*AccessProfilesAPI* | [**ListAccessProfilesV2**](docs/AccessProfilesAPI.md#listaccessprofilesv2) | **Get** /access-profiles/v2 | List access profiles
 *AccessProfilesAPI* | [**PatchAccessProfileV1**](docs/AccessProfilesAPI.md#patchaccessprofilev1) | **Patch** /access-profiles/v1/{id} | Patch a specified access profile
+*AccessProfilesAPI* | [**PatchAccessProfileV2**](docs/AccessProfilesAPI.md#patchaccessprofilev2) | **Patch** /access-profiles/v2/{id} | Patch a specified access profile
 *AccessProfilesAPI* | [**SearchAccessProfilesByFilterV1**](docs/AccessProfilesAPI.md#searchaccessprofilesbyfilterv1) | **Post** /access-profiles/v1/filter | Filter access profiles by metadata
+*AccessProfilesAPI* | [**SearchAccessProfilesByFilterV2**](docs/AccessProfilesAPI.md#searchaccessprofilesbyfilterv2) | **Post** /access-profiles/v2/filter | List access profiles by filter
 *AccessProfilesAPI* | [**UpdateAccessProfilesInBulkV1**](docs/AccessProfilesAPI.md#updateaccessprofilesinbulkv1) | **Post** /access-profiles/v1/bulk-update-requestable | Update access profile(s) requestable field.
+*AccessProfilesAPI* | [**UpdateAccessProfilesInBulkV2**](docs/AccessProfilesAPI.md#updateaccessprofilesinbulkv2) | **Post** /access-profiles/v2/bulk-update-requestable | Update access profile(s) requestable field.
 *AccessProfilesAPI* | [**UpdateAccessProfilesMetadataByFilterV1**](docs/AccessProfilesAPI.md#updateaccessprofilesmetadatabyfilterv1) | **Post** /access-profiles/v1/access-model-metadata/bulk-update/filter | Bulk-update metadata by filter
 *AccessProfilesAPI* | [**UpdateAccessProfilesMetadataByIdsV1**](docs/AccessProfilesAPI.md#updateaccessprofilesmetadatabyidsv1) | **Post** /access-profiles/v1/access-model-metadata/bulk-update/ids | Bulk-update metadata by ids
 *AccessProfilesAPI* | [**UpdateAccessProfilesMetadataByQueryV1**](docs/AccessProfilesAPI.md#updateaccessprofilesmetadatabyqueryv1) | **Post** /access-profiles/v1/access-model-metadata/bulk-update/query | Bulk-update metadata by query
@@ -105,17 +114,23 @@ Class | Method | HTTP request | Description
  - [AccessProfileBulkDeleteRequest](docs/AccessProfileBulkDeleteRequest.md)
  - [AccessProfileBulkDeleteResponse](docs/AccessProfileBulkDeleteResponse.md)
  - [AccessProfileBulkUpdateRequestInner](docs/AccessProfileBulkUpdateRequestInner.md)
+ - [AccessProfileEntitlementPrivilegeLevel](docs/AccessProfileEntitlementPrivilegeLevel.md)
  - [AccessProfileListFilterDTO](docs/AccessProfileListFilterDTO.md)
  - [AccessProfileListFilterDTOAmmKeyValuesInner](docs/AccessProfileListFilterDTOAmmKeyValuesInner.md)
+ - [AccessProfileListFilterV2](docs/AccessProfileListFilterV2.md)
  - [AccessProfileMetadataBulkUpdateByFilterRequest](docs/AccessProfileMetadataBulkUpdateByFilterRequest.md)
  - [AccessProfileMetadataBulkUpdateByIdRequest](docs/AccessProfileMetadataBulkUpdateByIdRequest.md)
  - [AccessProfileMetadataBulkUpdateByIdRequestValuesInner](docs/AccessProfileMetadataBulkUpdateByIdRequestValuesInner.md)
  - [AccessProfileMetadataBulkUpdateByQueryRequest](docs/AccessProfileMetadataBulkUpdateByQueryRequest.md)
  - [AccessProfileMetadataBulkUpdateResponse](docs/AccessProfileMetadataBulkUpdateResponse.md)
+ - [AccessProfilePrivilegeLevel](docs/AccessProfilePrivilegeLevel.md)
  - [AccessProfileSourceRef](docs/AccessProfileSourceRef.md)
  - [AccessProfileUpdateItem](docs/AccessProfileUpdateItem.md)
  - [AccessProfileUsage](docs/AccessProfileUsage.md)
  - [AccessProfileUsageUsedByInner](docs/AccessProfileUsageUsedByInner.md)
+ - [Accessprofileentitlementv2](docs/Accessprofileentitlementv2.md)
+ - [Accessprofilev2](docs/Accessprofilev2.md)
+ - [Accessprofilev2PrivilegeLevel](docs/Accessprofilev2PrivilegeLevel.md)
  - [AdditionalOwnerRef](docs/AdditionalOwnerRef.md)
  - [ArrayInner](docs/ArrayInner.md)
  - [AttributeDTO](docs/AttributeDTO.md)
@@ -124,6 +139,7 @@ Class | Method | HTTP request | Description
  - [Entitlement](docs/Entitlement.md)
  - [EntitlementAccessModelMetadata](docs/EntitlementAccessModelMetadata.md)
  - [EntitlementOwner](docs/EntitlementOwner.md)
+ - [EntitlementPrivilegeLevel](docs/EntitlementPrivilegeLevel.md)
  - [EntitlementRef](docs/EntitlementRef.md)
  - [EntitlementSource](docs/EntitlementSource.md)
  - [ErrorMessageDto](docs/ErrorMessageDto.md)
