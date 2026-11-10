@@ -14,11 +14,11 @@ import (
 	"encoding/json"
 )
 
-// checks if the EntitlementOwner type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &EntitlementOwner{}
+// checks if the EntitlementV2Owner type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &EntitlementV2Owner{}
 
-// EntitlementOwner The identity that owns the entitlement
-type EntitlementOwner struct {
+// EntitlementV2Owner The identity that owns the entitlement
+type EntitlementV2Owner struct {
 	// The identity ID
 	Id *string `json:"id,omitempty"`
 	// The type of object
@@ -28,27 +28,27 @@ type EntitlementOwner struct {
 	AdditionalProperties map[string]interface{}
 }
 
-type _EntitlementOwner EntitlementOwner
+type _EntitlementV2Owner EntitlementV2Owner
 
-// NewEntitlementOwner instantiates a new EntitlementOwner object
+// NewEntitlementV2Owner instantiates a new EntitlementV2Owner object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewEntitlementOwner() *EntitlementOwner {
-	this := EntitlementOwner{}
+func NewEntitlementV2Owner() *EntitlementV2Owner {
+	this := EntitlementV2Owner{}
 	return &this
 }
 
-// NewEntitlementOwnerWithDefaults instantiates a new EntitlementOwner object
+// NewEntitlementV2OwnerWithDefaults instantiates a new EntitlementV2Owner object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewEntitlementOwnerWithDefaults() *EntitlementOwner {
-	this := EntitlementOwner{}
+func NewEntitlementV2OwnerWithDefaults() *EntitlementV2Owner {
+	this := EntitlementV2Owner{}
 	return &this
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
-func (o *EntitlementOwner) GetId() string {
+func (o *EntitlementV2Owner) GetId() string {
 	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
@@ -58,7 +58,7 @@ func (o *EntitlementOwner) GetId() string {
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EntitlementOwner) GetIdOk() (*string, bool) {
+func (o *EntitlementV2Owner) GetIdOk() (*string, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
@@ -66,7 +66,7 @@ func (o *EntitlementOwner) GetIdOk() (*string, bool) {
 }
 
 // HasId returns a boolean if a field has been set.
-func (o *EntitlementOwner) HasId() bool {
+func (o *EntitlementV2Owner) HasId() bool {
 	if o != nil && !IsNil(o.Id) {
 		return true
 	}
@@ -75,12 +75,12 @@ func (o *EntitlementOwner) HasId() bool {
 }
 
 // SetId gets a reference to the given string and assigns it to the Id field.
-func (o *EntitlementOwner) SetId(v string) {
+func (o *EntitlementV2Owner) SetId(v string) {
 	o.Id = &v
 }
 
 // GetType returns the Type field value if set, zero value otherwise.
-func (o *EntitlementOwner) GetType() string {
+func (o *EntitlementV2Owner) GetType() string {
 	if o == nil || IsNil(o.Type) {
 		var ret string
 		return ret
@@ -90,7 +90,7 @@ func (o *EntitlementOwner) GetType() string {
 
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EntitlementOwner) GetTypeOk() (*string, bool) {
+func (o *EntitlementV2Owner) GetTypeOk() (*string, bool) {
 	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
@@ -98,7 +98,7 @@ func (o *EntitlementOwner) GetTypeOk() (*string, bool) {
 }
 
 // HasType returns a boolean if a field has been set.
-func (o *EntitlementOwner) HasType() bool {
+func (o *EntitlementV2Owner) HasType() bool {
 	if o != nil && !IsNil(o.Type) {
 		return true
 	}
@@ -107,12 +107,12 @@ func (o *EntitlementOwner) HasType() bool {
 }
 
 // SetType gets a reference to the given string and assigns it to the Type field.
-func (o *EntitlementOwner) SetType(v string) {
+func (o *EntitlementV2Owner) SetType(v string) {
 	o.Type = &v
 }
 
 // GetName returns the Name field value if set, zero value otherwise.
-func (o *EntitlementOwner) GetName() string {
+func (o *EntitlementV2Owner) GetName() string {
 	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
@@ -122,7 +122,7 @@ func (o *EntitlementOwner) GetName() string {
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EntitlementOwner) GetNameOk() (*string, bool) {
+func (o *EntitlementV2Owner) GetNameOk() (*string, bool) {
 	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
@@ -130,7 +130,7 @@ func (o *EntitlementOwner) GetNameOk() (*string, bool) {
 }
 
 // HasName returns a boolean if a field has been set.
-func (o *EntitlementOwner) HasName() bool {
+func (o *EntitlementV2Owner) HasName() bool {
 	if o != nil && !IsNil(o.Name) {
 		return true
 	}
@@ -139,11 +139,11 @@ func (o *EntitlementOwner) HasName() bool {
 }
 
 // SetName gets a reference to the given string and assigns it to the Name field.
-func (o *EntitlementOwner) SetName(v string) {
+func (o *EntitlementV2Owner) SetName(v string) {
 	o.Name = &v
 }
 
-func (o EntitlementOwner) MarshalJSON() ([]byte, error) {
+func (o EntitlementV2Owner) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -151,7 +151,7 @@ func (o EntitlementOwner) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o EntitlementOwner) ToMap() (map[string]interface{}, error) {
+func (o EntitlementV2Owner) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
@@ -170,16 +170,16 @@ func (o EntitlementOwner) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *EntitlementOwner) UnmarshalJSON(data []byte) (err error) {
-	varEntitlementOwner := _EntitlementOwner{}
+func (o *EntitlementV2Owner) UnmarshalJSON(data []byte) (err error) {
+	varEntitlementV2Owner := _EntitlementV2Owner{}
 
-	err = json.Unmarshal(data, &varEntitlementOwner)
+	err = json.Unmarshal(data, &varEntitlementV2Owner)
 
 	if err != nil {
 		return err
 	}
 
-	*o = EntitlementOwner(varEntitlementOwner)
+	*o = EntitlementV2Owner(varEntitlementV2Owner)
 
 	additionalProperties := make(map[string]interface{})
 
@@ -193,38 +193,38 @@ func (o *EntitlementOwner) UnmarshalJSON(data []byte) (err error) {
 	return err
 }
 
-type NullableEntitlementOwner struct {
-	value *EntitlementOwner
+type NullableEntitlementV2Owner struct {
+	value *EntitlementV2Owner
 	isSet bool
 }
 
-func (v NullableEntitlementOwner) Get() *EntitlementOwner {
+func (v NullableEntitlementV2Owner) Get() *EntitlementV2Owner {
 	return v.value
 }
 
-func (v *NullableEntitlementOwner) Set(val *EntitlementOwner) {
+func (v *NullableEntitlementV2Owner) Set(val *EntitlementV2Owner) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableEntitlementOwner) IsSet() bool {
+func (v NullableEntitlementV2Owner) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableEntitlementOwner) Unset() {
+func (v *NullableEntitlementV2Owner) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableEntitlementOwner(val *EntitlementOwner) *NullableEntitlementOwner {
-	return &NullableEntitlementOwner{value: val, isSet: true}
+func NewNullableEntitlementV2Owner(val *EntitlementV2Owner) *NullableEntitlementV2Owner {
+	return &NullableEntitlementV2Owner{value: val, isSet: true}
 }
 
-func (v NullableEntitlementOwner) MarshalJSON() ([]byte, error) {
+func (v NullableEntitlementV2Owner) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableEntitlementOwner) UnmarshalJSON(src []byte) error {
+func (v *NullableEntitlementV2Owner) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

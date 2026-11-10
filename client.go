@@ -138,6 +138,7 @@ import (
 	transforms "github.com/sailpoint-oss/golang-sdk/v3/transforms"
 	triggers "github.com/sailpoint-oss/golang-sdk/v3/triggers"
 	ui_metadata "github.com/sailpoint-oss/golang-sdk/v3/ui_metadata"
+	ui_plugins "github.com/sailpoint-oss/golang-sdk/v3/ui_plugins"
 	work_items "github.com/sailpoint-oss/golang-sdk/v3/work_items"
 	work_reassignment "github.com/sailpoint-oss/golang-sdk/v3/work_reassignment"
 	workflows "github.com/sailpoint-oss/golang-sdk/v3/workflows"
@@ -286,6 +287,7 @@ type APIClient struct {
 	TransformsAPI *transforms.TransformsAPIService
 	TriggersAPI *triggers.TriggersAPIService
 	UIMetadataAPI *ui_metadata.UIMetadataAPIService
+	UIPluginsAPI *ui_plugins.UIPluginsAPIService
 	WorkItemsAPI *work_items.WorkItemsAPIService
 	WorkReassignmentAPI *work_reassignment.WorkReassignmentAPIService
 	WorkflowsAPI *workflows.WorkflowsAPIService
@@ -1748,6 +1750,18 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	)
 	_cfgUIMetadata.HTTPClient = cfg.HTTPClient
 	c.UIMetadataAPI = ui_metadata.NewAPIClient(_cfgUIMetadata).UIMetadataAPI
+
+	_cfgUIPlugins := ui_plugins.NewConfiguration(
+		cfg.ClientConfiguration.ClientId,
+		cfg.ClientConfiguration.ClientSecret,
+		cfg.ClientConfiguration.BaseURL,
+		cfg.ClientConfiguration.TokenURL,
+		cfg.ClientConfiguration.Token,
+		consumerSuffix,
+		cfg.Experimental,
+	)
+	_cfgUIPlugins.HTTPClient = cfg.HTTPClient
+	c.UIPluginsAPI = ui_plugins.NewAPIClient(_cfgUIPlugins).UIPluginsAPI
 
 	_cfgWorkItems := work_items.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,

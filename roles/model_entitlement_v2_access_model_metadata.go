@@ -14,36 +14,36 @@ import (
 	"encoding/json"
 )
 
-// checks if the EntitlementAccessModelMetadata type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &EntitlementAccessModelMetadata{}
+// checks if the EntitlementV2AccessModelMetadata type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &EntitlementV2AccessModelMetadata{}
 
-// EntitlementAccessModelMetadata Additional data to classify the entitlement
-type EntitlementAccessModelMetadata struct {
+// EntitlementV2AccessModelMetadata Additional data to classify the entitlement
+type EntitlementV2AccessModelMetadata struct {
 	Attributes []AccessModelMetadata `json:"attributes,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
-type _EntitlementAccessModelMetadata EntitlementAccessModelMetadata
+type _EntitlementV2AccessModelMetadata EntitlementV2AccessModelMetadata
 
-// NewEntitlementAccessModelMetadata instantiates a new EntitlementAccessModelMetadata object
+// NewEntitlementV2AccessModelMetadata instantiates a new EntitlementV2AccessModelMetadata object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewEntitlementAccessModelMetadata() *EntitlementAccessModelMetadata {
-	this := EntitlementAccessModelMetadata{}
+func NewEntitlementV2AccessModelMetadata() *EntitlementV2AccessModelMetadata {
+	this := EntitlementV2AccessModelMetadata{}
 	return &this
 }
 
-// NewEntitlementAccessModelMetadataWithDefaults instantiates a new EntitlementAccessModelMetadata object
+// NewEntitlementV2AccessModelMetadataWithDefaults instantiates a new EntitlementV2AccessModelMetadata object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewEntitlementAccessModelMetadataWithDefaults() *EntitlementAccessModelMetadata {
-	this := EntitlementAccessModelMetadata{}
+func NewEntitlementV2AccessModelMetadataWithDefaults() *EntitlementV2AccessModelMetadata {
+	this := EntitlementV2AccessModelMetadata{}
 	return &this
 }
 
 // GetAttributes returns the Attributes field value if set, zero value otherwise.
-func (o *EntitlementAccessModelMetadata) GetAttributes() []AccessModelMetadata {
+func (o *EntitlementV2AccessModelMetadata) GetAttributes() []AccessModelMetadata {
 	if o == nil || IsNil(o.Attributes) {
 		var ret []AccessModelMetadata
 		return ret
@@ -53,7 +53,7 @@ func (o *EntitlementAccessModelMetadata) GetAttributes() []AccessModelMetadata {
 
 // GetAttributesOk returns a tuple with the Attributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EntitlementAccessModelMetadata) GetAttributesOk() ([]AccessModelMetadata, bool) {
+func (o *EntitlementV2AccessModelMetadata) GetAttributesOk() ([]AccessModelMetadata, bool) {
 	if o == nil || IsNil(o.Attributes) {
 		return nil, false
 	}
@@ -61,7 +61,7 @@ func (o *EntitlementAccessModelMetadata) GetAttributesOk() ([]AccessModelMetadat
 }
 
 // HasAttributes returns a boolean if a field has been set.
-func (o *EntitlementAccessModelMetadata) HasAttributes() bool {
+func (o *EntitlementV2AccessModelMetadata) HasAttributes() bool {
 	if o != nil && !IsNil(o.Attributes) {
 		return true
 	}
@@ -70,11 +70,11 @@ func (o *EntitlementAccessModelMetadata) HasAttributes() bool {
 }
 
 // SetAttributes gets a reference to the given []AccessModelMetadata and assigns it to the Attributes field.
-func (o *EntitlementAccessModelMetadata) SetAttributes(v []AccessModelMetadata) {
+func (o *EntitlementV2AccessModelMetadata) SetAttributes(v []AccessModelMetadata) {
 	o.Attributes = v
 }
 
-func (o EntitlementAccessModelMetadata) MarshalJSON() ([]byte, error) {
+func (o EntitlementV2AccessModelMetadata) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -82,7 +82,7 @@ func (o EntitlementAccessModelMetadata) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o EntitlementAccessModelMetadata) ToMap() (map[string]interface{}, error) {
+func (o EntitlementV2AccessModelMetadata) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Attributes) {
 		toSerialize["attributes"] = o.Attributes
@@ -95,16 +95,16 @@ func (o EntitlementAccessModelMetadata) ToMap() (map[string]interface{}, error) 
 	return toSerialize, nil
 }
 
-func (o *EntitlementAccessModelMetadata) UnmarshalJSON(data []byte) (err error) {
-	varEntitlementAccessModelMetadata := _EntitlementAccessModelMetadata{}
+func (o *EntitlementV2AccessModelMetadata) UnmarshalJSON(data []byte) (err error) {
+	varEntitlementV2AccessModelMetadata := _EntitlementV2AccessModelMetadata{}
 
-	err = json.Unmarshal(data, &varEntitlementAccessModelMetadata)
+	err = json.Unmarshal(data, &varEntitlementV2AccessModelMetadata)
 
 	if err != nil {
 		return err
 	}
 
-	*o = EntitlementAccessModelMetadata(varEntitlementAccessModelMetadata)
+	*o = EntitlementV2AccessModelMetadata(varEntitlementV2AccessModelMetadata)
 
 	additionalProperties := make(map[string]interface{})
 
@@ -116,38 +116,38 @@ func (o *EntitlementAccessModelMetadata) UnmarshalJSON(data []byte) (err error) 
 	return err
 }
 
-type NullableEntitlementAccessModelMetadata struct {
-	value *EntitlementAccessModelMetadata
+type NullableEntitlementV2AccessModelMetadata struct {
+	value *EntitlementV2AccessModelMetadata
 	isSet bool
 }
 
-func (v NullableEntitlementAccessModelMetadata) Get() *EntitlementAccessModelMetadata {
+func (v NullableEntitlementV2AccessModelMetadata) Get() *EntitlementV2AccessModelMetadata {
 	return v.value
 }
 
-func (v *NullableEntitlementAccessModelMetadata) Set(val *EntitlementAccessModelMetadata) {
+func (v *NullableEntitlementV2AccessModelMetadata) Set(val *EntitlementV2AccessModelMetadata) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableEntitlementAccessModelMetadata) IsSet() bool {
+func (v NullableEntitlementV2AccessModelMetadata) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableEntitlementAccessModelMetadata) Unset() {
+func (v *NullableEntitlementV2AccessModelMetadata) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableEntitlementAccessModelMetadata(val *EntitlementAccessModelMetadata) *NullableEntitlementAccessModelMetadata {
-	return &NullableEntitlementAccessModelMetadata{value: val, isSet: true}
+func NewNullableEntitlementV2AccessModelMetadata(val *EntitlementV2AccessModelMetadata) *NullableEntitlementV2AccessModelMetadata {
+	return &NullableEntitlementV2AccessModelMetadata{value: val, isSet: true}
 }
 
-func (v NullableEntitlementAccessModelMetadata) MarshalJSON() ([]byte, error) {
+func (v NullableEntitlementV2AccessModelMetadata) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableEntitlementAccessModelMetadata) UnmarshalJSON(src []byte) error {
+func (v *NullableEntitlementV2AccessModelMetadata) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

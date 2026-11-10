@@ -38,12 +38,12 @@ type Entitlement struct {
 	CloudGoverned *bool `json:"cloudGoverned,omitempty"`
 	// True if the entitlement is able to be directly requested
 	Requestable *bool `json:"requestable,omitempty"`
-	Owner NullableEntitlementOwner `json:"owner,omitempty"`
+	Owner NullableEntitlementV2Owner `json:"owner,omitempty"`
 	// List of additional owner references beyond the primary owner. Each entry may be an identity (IDENTITY) or a governance group (GOVERNANCE_GROUP).
 	AdditionalOwners []AdditionalOwnerRef `json:"additionalOwners,omitempty"`
 	// A map of entitlement fields that have been manually updated. The key is the field name in UPPER_SNAKE_CASE format, and the value is true or false to indicate if the field has been updated.
 	ManuallyUpdatedFields map[string]interface{} `json:"manuallyUpdatedFields,omitempty"`
-	AccessModelMetadata *EntitlementAccessModelMetadata `json:"accessModelMetadata,omitempty"`
+	AccessModelMetadata *EntitlementV2AccessModelMetadata `json:"accessModelMetadata,omitempty"`
 	// Time when the entitlement was created
 	Created *SailPointTime `json:"created,omitempty"`
 	// Time when the entitlement was last modified
@@ -387,9 +387,9 @@ func (o *Entitlement) SetRequestable(v bool) {
 }
 
 // GetOwner returns the Owner field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Entitlement) GetOwner() EntitlementOwner {
+func (o *Entitlement) GetOwner() EntitlementV2Owner {
 	if o == nil || IsNil(o.Owner.Get()) {
-		var ret EntitlementOwner
+		var ret EntitlementV2Owner
 		return ret
 	}
 	return *o.Owner.Get()
@@ -398,7 +398,7 @@ func (o *Entitlement) GetOwner() EntitlementOwner {
 // GetOwnerOk returns a tuple with the Owner field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Entitlement) GetOwnerOk() (*EntitlementOwner, bool) {
+func (o *Entitlement) GetOwnerOk() (*EntitlementV2Owner, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -414,8 +414,8 @@ func (o *Entitlement) HasOwner() bool {
 	return false
 }
 
-// SetOwner gets a reference to the given NullableEntitlementOwner and assigns it to the Owner field.
-func (o *Entitlement) SetOwner(v EntitlementOwner) {
+// SetOwner gets a reference to the given NullableEntitlementV2Owner and assigns it to the Owner field.
+func (o *Entitlement) SetOwner(v EntitlementV2Owner) {
 	o.Owner.Set(&v)
 }
 // SetOwnerNil sets the value for Owner to be an explicit nil
@@ -495,9 +495,9 @@ func (o *Entitlement) SetManuallyUpdatedFields(v map[string]interface{}) {
 }
 
 // GetAccessModelMetadata returns the AccessModelMetadata field value if set, zero value otherwise.
-func (o *Entitlement) GetAccessModelMetadata() EntitlementAccessModelMetadata {
+func (o *Entitlement) GetAccessModelMetadata() EntitlementV2AccessModelMetadata {
 	if o == nil || IsNil(o.AccessModelMetadata) {
-		var ret EntitlementAccessModelMetadata
+		var ret EntitlementV2AccessModelMetadata
 		return ret
 	}
 	return *o.AccessModelMetadata
@@ -505,7 +505,7 @@ func (o *Entitlement) GetAccessModelMetadata() EntitlementAccessModelMetadata {
 
 // GetAccessModelMetadataOk returns a tuple with the AccessModelMetadata field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Entitlement) GetAccessModelMetadataOk() (*EntitlementAccessModelMetadata, bool) {
+func (o *Entitlement) GetAccessModelMetadataOk() (*EntitlementV2AccessModelMetadata, bool) {
 	if o == nil || IsNil(o.AccessModelMetadata) {
 		return nil, false
 	}
@@ -521,8 +521,8 @@ func (o *Entitlement) HasAccessModelMetadata() bool {
 	return false
 }
 
-// SetAccessModelMetadata gets a reference to the given EntitlementAccessModelMetadata and assigns it to the AccessModelMetadata field.
-func (o *Entitlement) SetAccessModelMetadata(v EntitlementAccessModelMetadata) {
+// SetAccessModelMetadata gets a reference to the given EntitlementV2AccessModelMetadata and assigns it to the AccessModelMetadata field.
+func (o *Entitlement) SetAccessModelMetadata(v EntitlementV2AccessModelMetadata) {
 	o.AccessModelMetadata = &v
 }
 

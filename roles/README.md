@@ -87,10 +87,14 @@ Class | Method | HTTP request | Description
 *RolesAPI* | [**GetBulkUpdateStatusV1**](docs/RolesAPI.md#getbulkupdatestatusv1) | **Get** /roles/v1/access-model-metadata/bulk-update | Get bulk-update statuses
 *RolesAPI* | [**GetRoleAssignedIdentitiesV1**](docs/RolesAPI.md#getroleassignedidentitiesv1) | **Get** /roles/v1/{id}/assigned-identities | List identities assigned a role
 *RolesAPI* | [**GetRoleEntitlementsV1**](docs/RolesAPI.md#getroleentitlementsv1) | **Get** /roles/v1/{id}/entitlements | List role&#39;s entitlements
+*RolesAPI* | [**GetRoleEntitlementsV2**](docs/RolesAPI.md#getroleentitlementsv2) | **Get** /roles/v2/{id}/entitlements | List role&#39;s entitlements
 *RolesAPI* | [**GetRoleV1**](docs/RolesAPI.md#getrolev1) | **Get** /roles/v1/{id} | Get a role
+*RolesAPI* | [**GetRoleV2**](docs/RolesAPI.md#getrolev2) | **Get** /roles/v2/{id} | Get a role
 *RolesAPI* | [**ListRolesV1**](docs/RolesAPI.md#listrolesv1) | **Get** /roles/v1 | List roles
+*RolesAPI* | [**ListRolesV2**](docs/RolesAPI.md#listrolesv2) | **Get** /roles/v2 | List roles
 *RolesAPI* | [**PatchRoleV1**](docs/RolesAPI.md#patchrolev1) | **Patch** /roles/v1/{id} | Patch a specified role
 *RolesAPI* | [**SearchRolesByFilterV1**](docs/RolesAPI.md#searchrolesbyfilterv1) | **Post** /roles/v1/filter | Filter roles by metadata
+*RolesAPI* | [**SearchRolesByFilterV2**](docs/RolesAPI.md#searchrolesbyfilterv2) | **Post** /roles/v2/filter | Filter roles by metadata
 *RolesAPI* | [**UpdateAttributeKeyAndValueToRoleV1**](docs/RolesAPI.md#updateattributekeyandvaluetorolev1) | **Post** /roles/v1/{id}/access-model-metadata/{attributeKey}/values/{attributeValue} | Add a metadata to role.
 *RolesAPI* | [**UpdateRolesMetadataByFilterV1**](docs/RolesAPI.md#updaterolesmetadatabyfilterv1) | **Post** /roles/v1/access-model-metadata/bulk-update/filter | Bulk-update roles&#39; metadata by filters
 *RolesAPI* | [**UpdateRolesMetadataByIdsV1**](docs/RolesAPI.md#updaterolesmetadatabyidsv1) | **Post** /roles/v1/access-model-metadata/bulk-update/ids | Bulk-update roles&#39; metadata by id
@@ -114,16 +118,20 @@ Class | Method | HTTP request | Description
  - [DimensionSchema](docs/DimensionSchema.md)
  - [DtoType](docs/DtoType.md)
  - [Entitlement](docs/Entitlement.md)
- - [EntitlementAccessModelMetadata](docs/EntitlementAccessModelMetadata.md)
- - [EntitlementOwner](docs/EntitlementOwner.md)
+ - [EntitlementPrivilegeLevel](docs/EntitlementPrivilegeLevel.md)
  - [EntitlementRef](docs/EntitlementRef.md)
  - [EntitlementSource](docs/EntitlementSource.md)
+ - [EntitlementV2](docs/EntitlementV2.md)
+ - [EntitlementV2AccessModelMetadata](docs/EntitlementV2AccessModelMetadata.md)
+ - [EntitlementV2Owner](docs/EntitlementV2Owner.md)
+ - [EntitlementV2PrivilegeLevel](docs/EntitlementV2PrivilegeLevel.md)
+ - [EntitlementV2Source](docs/EntitlementV2Source.md)
  - [ErrorMessageDto](docs/ErrorMessageDto.md)
  - [ErrorResponseDto](docs/ErrorResponseDto.md)
  - [JsonPatchOperation](docs/JsonPatchOperation.md)
  - [JsonPatchOperationValue](docs/JsonPatchOperationValue.md)
- - [ListRolesV1401Response](docs/ListRolesV1401Response.md)
- - [ListRolesV1429Response](docs/ListRolesV1429Response.md)
+ - [ListRolesV2401Response](docs/ListRolesV2401Response.md)
+ - [ListRolesV2429Response](docs/ListRolesV2429Response.md)
  - [LocaleOrigin](docs/LocaleOrigin.md)
  - [OwnerReference](docs/OwnerReference.md)
  - [PermissionDTO](docs/PermissionDTO.md)
@@ -152,6 +160,10 @@ Class | Method | HTTP request | Description
  - [RoleMetadataBulkUpdateByIdRequestValuesInner](docs/RoleMetadataBulkUpdateByIdRequestValuesInner.md)
  - [RoleMetadataBulkUpdateByQueryRequest](docs/RoleMetadataBulkUpdateByQueryRequest.md)
  - [RoleMetadataBulkUpdateByQueryRequestValuesInner](docs/RoleMetadataBulkUpdateByQueryRequestValuesInner.md)
+ - [RolePrivilegeLevel](docs/RolePrivilegeLevel.md)
+ - [RoleV2](docs/RoleV2.md)
+ - [Rolelistfilterdtov2](docs/Rolelistfilterdtov2.md)
+ - [Rolelistfilterdtov2AmmKeyValuesInner](docs/Rolelistfilterdtov2AmmKeyValuesInner.md)
  - [TaskResultDto](docs/TaskResultDto.md)
 
 

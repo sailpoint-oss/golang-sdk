@@ -1,15 +1,15 @@
 ---
-id: v1-list-roles-v1401-response
-title: ListRolesV1401Response
-pagination_label: ListRolesV1401Response
-sidebar_label: ListRolesV1401Response
+id: v1-list-roles-v2401-response
+title: ListRolesV2401Response
+pagination_label: ListRolesV2401Response
+sidebar_label: ListRolesV2401Response
 sidebar_class_name: gosdk
-keywords: ['go', 'Golang', 'sdk', 'ListRolesV1401Response', 'V1ListRolesV1401Response'] 
-slug: /tools/sdk/go/roles/models/list-roles-v1401-response
-tags: ['SDK', 'Software Development Kit', 'ListRolesV1401Response', 'V1ListRolesV1401Response']
+keywords: ['go', 'Golang', 'sdk', 'ListRolesV2401Response', 'V1ListRolesV2401Response'] 
+slug: /tools/sdk/go/roles/models/list-roles-v2401-response
+tags: ['SDK', 'Software Development Kit', 'ListRolesV2401Response', 'V1ListRolesV2401Response']
 ---
 
-# ListRolesV1401Response
+# ListRolesV2401Response
 
 ## Properties
 
@@ -19,56 +19,56 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewListRolesV1401Response
+### NewListRolesV2401Response
 
-`func NewListRolesV1401Response() *ListRolesV1401Response`
+`func NewListRolesV2401Response() *ListRolesV2401Response`
 
-NewListRolesV1401Response instantiates a new ListRolesV1401Response object
+NewListRolesV2401Response instantiates a new ListRolesV2401Response object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewListRolesV1401ResponseWithDefaults
+### NewListRolesV2401ResponseWithDefaults
 
-`func NewListRolesV1401ResponseWithDefaults() *ListRolesV1401Response`
+`func NewListRolesV2401ResponseWithDefaults() *ListRolesV2401Response`
 
-NewListRolesV1401ResponseWithDefaults instantiates a new ListRolesV1401Response object
+NewListRolesV2401ResponseWithDefaults instantiates a new ListRolesV2401Response object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetError
 
-`func (o *ListRolesV1401Response) GetError() interface{}`
+`func (o *ListRolesV2401Response) GetError() interface{}`
 
 GetError returns the Error field if non-nil, zero value otherwise.
 
 ### GetErrorOk
 
-`func (o *ListRolesV1401Response) GetErrorOk() (*interface{}, bool)`
+`func (o *ListRolesV2401Response) GetErrorOk() (*interface{}, bool)`
 
 GetErrorOk returns a tuple with the Error field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetError
 
-`func (o *ListRolesV1401Response) SetError(v interface{})`
+`func (o *ListRolesV2401Response) SetError(v interface{})`
 
 SetError sets Error field to given value.
 
 ### HasError
 
-`func (o *ListRolesV1401Response) HasError() bool`
+`func (o *ListRolesV2401Response) HasError() bool`
 
 HasError returns a boolean if a field has been set.
 
 ### SetErrorNil
 
-`func (o *ListRolesV1401Response) SetErrorNil(b bool)`
+`func (o *ListRolesV2401Response) SetErrorNil(b bool)`
 
  SetErrorNil sets the value for Error to be an explicit nil
 
 ### UnsetError
-`func (o *ListRolesV1401Response) UnsetError()`
+`func (o *ListRolesV2401Response) UnsetError()`
 
 UnsetError ensures that no value is present for Error, not even an explicit nil
 

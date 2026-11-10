@@ -14,37 +14,37 @@ import (
 	"encoding/json"
 )
 
-// checks if the ListRolesV1401Response type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ListRolesV1401Response{}
+// checks if the ListRolesV2401Response type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ListRolesV2401Response{}
 
-// ListRolesV1401Response struct for ListRolesV1401Response
-type ListRolesV1401Response struct {
+// ListRolesV2401Response struct for ListRolesV2401Response
+type ListRolesV2401Response struct {
 	// A message describing the error
 	Error interface{} `json:"error,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
-type _ListRolesV1401Response ListRolesV1401Response
+type _ListRolesV2401Response ListRolesV2401Response
 
-// NewListRolesV1401Response instantiates a new ListRolesV1401Response object
+// NewListRolesV2401Response instantiates a new ListRolesV2401Response object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewListRolesV1401Response() *ListRolesV1401Response {
-	this := ListRolesV1401Response{}
+func NewListRolesV2401Response() *ListRolesV2401Response {
+	this := ListRolesV2401Response{}
 	return &this
 }
 
-// NewListRolesV1401ResponseWithDefaults instantiates a new ListRolesV1401Response object
+// NewListRolesV2401ResponseWithDefaults instantiates a new ListRolesV2401Response object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewListRolesV1401ResponseWithDefaults() *ListRolesV1401Response {
-	this := ListRolesV1401Response{}
+func NewListRolesV2401ResponseWithDefaults() *ListRolesV2401Response {
+	this := ListRolesV2401Response{}
 	return &this
 }
 
 // GetError returns the Error field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ListRolesV1401Response) GetError() interface{} {
+func (o *ListRolesV2401Response) GetError() interface{} {
 	if o == nil {
 		var ret interface{}
 		return ret
@@ -55,7 +55,7 @@ func (o *ListRolesV1401Response) GetError() interface{} {
 // GetErrorOk returns a tuple with the Error field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ListRolesV1401Response) GetErrorOk() (*interface{}, bool) {
+func (o *ListRolesV2401Response) GetErrorOk() (*interface{}, bool) {
 	if o == nil || IsNil(o.Error) {
 		return nil, false
 	}
@@ -63,7 +63,7 @@ func (o *ListRolesV1401Response) GetErrorOk() (*interface{}, bool) {
 }
 
 // HasError returns a boolean if a field has been set.
-func (o *ListRolesV1401Response) HasError() bool {
+func (o *ListRolesV2401Response) HasError() bool {
 	if o != nil && !IsNil(o.Error) {
 		return true
 	}
@@ -72,11 +72,11 @@ func (o *ListRolesV1401Response) HasError() bool {
 }
 
 // SetError gets a reference to the given interface{} and assigns it to the Error field.
-func (o *ListRolesV1401Response) SetError(v interface{}) {
+func (o *ListRolesV2401Response) SetError(v interface{}) {
 	o.Error = v
 }
 
-func (o ListRolesV1401Response) MarshalJSON() ([]byte, error) {
+func (o ListRolesV2401Response) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -84,7 +84,7 @@ func (o ListRolesV1401Response) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o ListRolesV1401Response) ToMap() (map[string]interface{}, error) {
+func (o ListRolesV2401Response) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Error != nil {
 		toSerialize["error"] = o.Error
@@ -97,16 +97,16 @@ func (o ListRolesV1401Response) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *ListRolesV1401Response) UnmarshalJSON(data []byte) (err error) {
-	varListRolesV1401Response := _ListRolesV1401Response{}
+func (o *ListRolesV2401Response) UnmarshalJSON(data []byte) (err error) {
+	varListRolesV2401Response := _ListRolesV2401Response{}
 
-	err = json.Unmarshal(data, &varListRolesV1401Response)
+	err = json.Unmarshal(data, &varListRolesV2401Response)
 
 	if err != nil {
 		return err
 	}
 
-	*o = ListRolesV1401Response(varListRolesV1401Response)
+	*o = ListRolesV2401Response(varListRolesV2401Response)
 
 	additionalProperties := make(map[string]interface{})
 
@@ -118,38 +118,38 @@ func (o *ListRolesV1401Response) UnmarshalJSON(data []byte) (err error) {
 	return err
 }
 
-type NullableListRolesV1401Response struct {
-	value *ListRolesV1401Response
+type NullableListRolesV2401Response struct {
+	value *ListRolesV2401Response
 	isSet bool
 }
 
-func (v NullableListRolesV1401Response) Get() *ListRolesV1401Response {
+func (v NullableListRolesV2401Response) Get() *ListRolesV2401Response {
 	return v.value
 }
 
-func (v *NullableListRolesV1401Response) Set(val *ListRolesV1401Response) {
+func (v *NullableListRolesV2401Response) Set(val *ListRolesV2401Response) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableListRolesV1401Response) IsSet() bool {
+func (v NullableListRolesV2401Response) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableListRolesV1401Response) Unset() {
+func (v *NullableListRolesV2401Response) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableListRolesV1401Response(val *ListRolesV1401Response) *NullableListRolesV1401Response {
-	return &NullableListRolesV1401Response{value: val, isSet: true}
+func NewNullableListRolesV2401Response(val *ListRolesV2401Response) *NullableListRolesV2401Response {
+	return &NullableListRolesV2401Response{value: val, isSet: true}
 }
 
-func (v NullableListRolesV1401Response) MarshalJSON() ([]byte, error) {
+func (v NullableListRolesV2401Response) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableListRolesV1401Response) UnmarshalJSON(src []byte) error {
+func (v *NullableListRolesV2401Response) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

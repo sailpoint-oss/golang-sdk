@@ -1,0 +1,528 @@
+- path: /ui-plugins/v1/{pluginInstanceId}/asset-bundles
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/uiplugins/methods/ui-plugins#create-ui-plugin-asset-bundle-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          pluginInstanceId := `2c918086-7b5f-4b3e-8a1c-2d3e4f5a6b7c` // string | UUID of the plugin instance # string | UUID of the plugin instance
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+          file := []byte(`/path/to/file.txt`) // []*os.File | Repeatable form field. Send one part per file; use the part filename for the bundle-relative path (e.g. `assets/app.js`).
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.UIPluginsAPI.CreateUiPluginAssetBundleV1(context.Background(), pluginInstanceId).XSailPointExperimental(xSailPointExperimental).File(file).Execute()
+          //resp, r, err := apiClient.UIPluginsAPI.CreateUiPluginAssetBundleV1(context.Background(), pluginInstanceId).XSailPointExperimental(xSailPointExperimental).File(file).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `UIPluginsAPI.CreateUiPluginAssetBundleV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `CreateUiPluginAssetBundleV1`: UIPluginAssetBundle
+          fmt.Fprintf(os.Stdout, "Response from `UIPluginsAPI.CreateUiPluginAssetBundleV1`: %v\n", resp)
+        }
+- path: /ui-plugins/v1/{pluginInstanceId}/link
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/uiplugins/methods/ui-plugins#create-ui-plugin-link-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            ui_plugins "github.com/sailpoint-oss/golang-sdk/v3/ui_plugins"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          pluginInstanceId := `2c918086-7b5f-4b3e-8a1c-2d3e4f5a6b7c` // string | UUID of the plugin instance # string | UUID of the plugin instance
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+           linkuipluginrequestJson := []byte(`{
+          "port" : 4200
+        }`) // LinkUIPluginRequest | 
+
+          
+          var linkUIPluginRequest ui_plugins.LinkUIPluginRequest
+          if err := json.Unmarshal(linkuipluginrequestJson, &linkUIPluginRequest); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.UIPluginsAPI.CreateUiPluginLinkV1(context.Background(), pluginInstanceId).XSailPointExperimental(xSailPointExperimental).LinkUIPluginRequest(linkUIPluginRequest).Execute()
+          //resp, r, err := apiClient.UIPluginsAPI.CreateUiPluginLinkV1(context.Background(), pluginInstanceId).XSailPointExperimental(xSailPointExperimental).LinkUIPluginRequest(linkUIPluginRequest).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `UIPluginsAPI.CreateUiPluginLinkV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `CreateUiPluginLinkV1`: LinkUIPluginResponse
+          fmt.Fprintf(os.Stdout, "Response from `UIPluginsAPI.CreateUiPluginLinkV1`: %v\n", resp)
+        }
+- path: /ui-plugins/v1
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/uiplugins/methods/ui-plugins#create-ui-plugin-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            ui_plugins "github.com/sailpoint-oss/golang-sdk/v3/ui_plugins"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+           createuipluginrequestJson := []byte(`{
+          "apiScopes" : [ "idn:account:read" ],
+          "iframeSandbox" : "",
+          "slots" : [ {
+            "slotId" : "full-page",
+            "restrictToUsers" : [ "2c9180867b5f4b3e8a1c2d3e4f5a6b7c" ],
+            "requiredCapabilities" : [ "ORG_ADMIN" ]
+          }, {
+            "slotId" : "full-page",
+            "restrictToUsers" : [ "2c9180867b5f4b3e8a1c2d3e4f5a6b7c" ],
+            "requiredCapabilities" : [ "ORG_ADMIN" ]
+          }, {
+            "slotId" : "full-page",
+            "restrictToUsers" : [ "2c9180867b5f4b3e8a1c2d3e4f5a6b7c" ],
+            "requiredCapabilities" : [ "ORG_ADMIN" ]
+          }, {
+            "slotId" : "full-page",
+            "restrictToUsers" : [ "2c9180867b5f4b3e8a1c2d3e4f5a6b7c" ],
+            "requiredCapabilities" : [ "ORG_ADMIN" ]
+          }, {
+            "slotId" : "full-page",
+            "restrictToUsers" : [ "2c9180867b5f4b3e8a1c2d3e4f5a6b7c" ],
+            "requiredCapabilities" : [ "ORG_ADMIN" ]
+          } ],
+          "iframeAllow" : {
+            "default-src" : [ "'self'" ]
+          },
+          "name" : {
+            "en" : "Example text",
+            "fr" : "Texte d'exemple"
+          },
+          "alias" : "my-custom-plugin",
+          "description" : {
+            "en" : "Example text",
+            "fr" : "Texte d'exemple"
+          },
+          "permissionPolicy" : {
+            "default-src" : [ "'self'" ]
+          },
+          "contentSecurityPolicies" : {
+            "default-src" : [ "'self'" ]
+          }
+        }`) // CreateUIPluginRequest | 
+
+          
+          var createUIPluginRequest ui_plugins.CreateUIPluginRequest
+          if err := json.Unmarshal(createuipluginrequestJson, &createUIPluginRequest); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.UIPluginsAPI.CreateUiPluginV1(context.Background()).XSailPointExperimental(xSailPointExperimental).CreateUIPluginRequest(createUIPluginRequest).Execute()
+          //resp, r, err := apiClient.UIPluginsAPI.CreateUiPluginV1(context.Background()).XSailPointExperimental(xSailPointExperimental).CreateUIPluginRequest(createUIPluginRequest).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `UIPluginsAPI.CreateUiPluginV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `CreateUiPluginV1`: CreateUIPluginResponse
+          fmt.Fprintf(os.Stdout, "Response from `UIPluginsAPI.CreateUiPluginV1`: %v\n", resp)
+        }
+- path: /ui-plugins/v1/{pluginInstanceId}/link
+  method: Delete
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/uiplugins/methods/ui-plugins#delete-ui-plugin-link-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          pluginInstanceId := `2c918086-7b5f-4b3e-8a1c-2d3e4f5a6b7c` // string | UUID of the plugin instance # string | UUID of the plugin instance
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          r, err := apiClient.UIPluginsAPI.DeleteUiPluginLinkV1(context.Background(), pluginInstanceId).XSailPointExperimental(xSailPointExperimental).Execute()
+          //r, err := apiClient.UIPluginsAPI.DeleteUiPluginLinkV1(context.Background(), pluginInstanceId).XSailPointExperimental(xSailPointExperimental).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `UIPluginsAPI.DeleteUiPluginLinkV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+        }
+- path: /ui-plugins/v1/{pluginInstanceId}
+  method: Delete
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/uiplugins/methods/ui-plugins#delete-ui-plugin-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          pluginInstanceId := `2c918086-7b5f-4b3e-8a1c-2d3e4f5a6b7c` // string | UUID of the plugin instance # string | UUID of the plugin instance
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          r, err := apiClient.UIPluginsAPI.DeleteUiPluginV1(context.Background(), pluginInstanceId).XSailPointExperimental(xSailPointExperimental).Execute()
+          //r, err := apiClient.UIPluginsAPI.DeleteUiPluginV1(context.Background(), pluginInstanceId).XSailPointExperimental(xSailPointExperimental).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `UIPluginsAPI.DeleteUiPluginV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+        }
+- path: /ui-plugins/v1/resolve-alias
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/uiplugins/methods/ui-plugins#get-ui-plugin-by-alias-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          alias := `my-custom-plugin` // string | Alias to resolve within the caller's tenant # string | Alias to resolve within the caller's tenant
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.UIPluginsAPI.GetUiPluginByAliasV1(context.Background()).Alias(alias).XSailPointExperimental(xSailPointExperimental).Execute()
+          //resp, r, err := apiClient.UIPluginsAPI.GetUiPluginByAliasV1(context.Background()).Alias(alias).XSailPointExperimental(xSailPointExperimental).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `UIPluginsAPI.GetUiPluginByAliasV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetUiPluginByAliasV1`: UIPlugin
+          fmt.Fprintf(os.Stdout, "Response from `UIPluginsAPI.GetUiPluginByAliasV1`: %v\n", resp)
+        }
+- path: /ui-plugins/v1/{pluginInstanceId}
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/uiplugins/methods/ui-plugins#get-ui-plugin-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          pluginInstanceId := `2c918086-7b5f-4b3e-8a1c-2d3e4f5a6b7c` // string | UUID of the plugin instance # string | UUID of the plugin instance
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.UIPluginsAPI.GetUiPluginV1(context.Background(), pluginInstanceId).XSailPointExperimental(xSailPointExperimental).Execute()
+          //resp, r, err := apiClient.UIPluginsAPI.GetUiPluginV1(context.Background(), pluginInstanceId).XSailPointExperimental(xSailPointExperimental).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `UIPluginsAPI.GetUiPluginV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetUiPluginV1`: UIPlugin
+          fmt.Fprintf(os.Stdout, "Response from `UIPluginsAPI.GetUiPluginV1`: %v\n", resp)
+        }
+- path: /ui-plugins/v1/{pluginInstanceId}/asset-bundles
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/uiplugins/methods/ui-plugins#list-ui-plugin-asset-bundles-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          pluginInstanceId := `2c918086-7b5f-4b3e-8a1c-2d3e4f5a6b7c` // string | UUID of the plugin instance # string | UUID of the plugin instance
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+          limit := 250 // int32 | Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to false) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to false)
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.UIPluginsAPI.ListUiPluginAssetBundlesV1(context.Background(), pluginInstanceId).XSailPointExperimental(xSailPointExperimental).Execute()
+          //resp, r, err := apiClient.UIPluginsAPI.ListUiPluginAssetBundlesV1(context.Background(), pluginInstanceId).XSailPointExperimental(xSailPointExperimental).Limit(limit).Offset(offset).Count(count).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `UIPluginsAPI.ListUiPluginAssetBundlesV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `ListUiPluginAssetBundlesV1`: []UIPluginAssetBundle
+          fmt.Fprintf(os.Stdout, "Response from `UIPluginsAPI.ListUiPluginAssetBundlesV1`: %v\n", resp)
+        }
+- path: /ui-plugin-slots/v1
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/uiplugins/methods/ui-plugins#list-ui-plugin-slots-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+          filters := `state eq "active"` // string | Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **state**: *eq* (optional) # string | Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **state**: *eq* (optional)
+          allLangs := false // bool | When `true`, `name` and `description` are returned as full locale maps instead of a single translated string. (optional) (default to false) # bool | When `true`, `name` and `description` are returned as full locale maps instead of a single translated string. (optional) (default to false)
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.UIPluginsAPI.ListUiPluginSlotsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+          //resp, r, err := apiClient.UIPluginsAPI.ListUiPluginSlotsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Filters(filters).AllLangs(allLangs).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `UIPluginsAPI.ListUiPluginSlotsV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `ListUiPluginSlotsV1`: []UIPluginSlot
+          fmt.Fprintf(os.Stdout, "Response from `UIPluginsAPI.ListUiPluginSlotsV1`: %v\n", resp)
+        }
+- path: /ui-plugins/v1
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/uiplugins/methods/ui-plugins#list-ui-plugins-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+          limit := 250 // int32 | Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to false) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to false)
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.UIPluginsAPI.ListUiPluginsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+          //resp, r, err := apiClient.UIPluginsAPI.ListUiPluginsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Limit(limit).Offset(offset).Count(count).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `UIPluginsAPI.ListUiPluginsV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `ListUiPluginsV1`: []UIPlugin
+          fmt.Fprintf(os.Stdout, "Response from `UIPluginsAPI.ListUiPluginsV1`: %v\n", resp)
+        }
+- path: /ui-plugins/v1/validate-alias
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/uiplugins/methods/ui-plugins#test-ui-plugin-alias-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          alias := `my-custom-plugin` // string | Alias to validate (3-63 chars; letters, numbers, dashes; no leading/trailing/consecutive dashes) # string | Alias to validate (3-63 chars; letters, numbers, dashes; no leading/trailing/consecutive dashes)
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          r, err := apiClient.UIPluginsAPI.TestUiPluginAliasV1(context.Background()).Alias(alias).XSailPointExperimental(xSailPointExperimental).Execute()
+          //r, err := apiClient.UIPluginsAPI.TestUiPluginAliasV1(context.Background()).Alias(alias).XSailPointExperimental(xSailPointExperimental).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `UIPluginsAPI.TestUiPluginAliasV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+        }
+- path: /ui-plugins/v1/{pluginInstanceId}
+  method: Patch
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/uiplugins/methods/ui-plugins#update-ui-plugin-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            ui_plugins "github.com/sailpoint-oss/golang-sdk/v3/ui_plugins"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          pluginInstanceId := `2c918086-7b5f-4b3e-8a1c-2d3e4f5a6b7c` // string | UUID of the plugin instance # string | UUID of the plugin instance
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+           updateuipluginrequestJson := []byte(`{
+          "apiScopes" : [ "idn:account:read" ],
+          "iframeSandbox" : "",
+          "slots" : [ {
+            "slotId" : "full-page",
+            "restrictToUsers" : [ "2c9180867b5f4b3e8a1c2d3e4f5a6b7c" ],
+            "requiredCapabilities" : [ "ORG_ADMIN" ]
+          }, {
+            "slotId" : "full-page",
+            "restrictToUsers" : [ "2c9180867b5f4b3e8a1c2d3e4f5a6b7c" ],
+            "requiredCapabilities" : [ "ORG_ADMIN" ]
+          }, {
+            "slotId" : "full-page",
+            "restrictToUsers" : [ "2c9180867b5f4b3e8a1c2d3e4f5a6b7c" ],
+            "requiredCapabilities" : [ "ORG_ADMIN" ]
+          }, {
+            "slotId" : "full-page",
+            "restrictToUsers" : [ "2c9180867b5f4b3e8a1c2d3e4f5a6b7c" ],
+            "requiredCapabilities" : [ "ORG_ADMIN" ]
+          }, {
+            "slotId" : "full-page",
+            "restrictToUsers" : [ "2c9180867b5f4b3e8a1c2d3e4f5a6b7c" ],
+            "requiredCapabilities" : [ "ORG_ADMIN" ]
+          } ],
+          "iframeAllow" : {
+            "default-src" : [ "'self'" ]
+          },
+          "name" : {
+            "en" : "Example text",
+            "fr" : "Texte d'exemple"
+          },
+          "alias" : "my-custom-plugin",
+          "description" : {
+            "en" : "Example text",
+            "fr" : "Texte d'exemple"
+          },
+          "permissionPolicy" : {
+            "default-src" : [ "'self'" ]
+          },
+          "state" : "ENABLED",
+          "contentSecurityPolicies" : {
+            "default-src" : [ "'self'" ]
+          }
+        }`) // UpdateUIPluginRequest | 
+
+          
+          var updateUIPluginRequest ui_plugins.UpdateUIPluginRequest
+          if err := json.Unmarshal(updateuipluginrequestJson, &updateUIPluginRequest); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.UIPluginsAPI.UpdateUiPluginV1(context.Background(), pluginInstanceId).XSailPointExperimental(xSailPointExperimental).UpdateUIPluginRequest(updateUIPluginRequest).Execute()
+          //resp, r, err := apiClient.UIPluginsAPI.UpdateUiPluginV1(context.Background(), pluginInstanceId).XSailPointExperimental(xSailPointExperimental).UpdateUIPluginRequest(updateUIPluginRequest).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `UIPluginsAPI.UpdateUiPluginV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `UpdateUiPluginV1`: UIPlugin
+          fmt.Fprintf(os.Stdout, "Response from `UIPluginsAPI.UpdateUiPluginV1`: %v\n", resp)
+        }

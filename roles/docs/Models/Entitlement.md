@@ -24,10 +24,10 @@ Name | Type | Description | Notes
 **Privileged** | Pointer to **bool** | True if the entitlement is privileged | [optional] [default to false]
 **CloudGoverned** | Pointer to **bool** | True if the entitlement is cloud governed | [optional] [default to false]
 **Requestable** | Pointer to **bool** | True if the entitlement is able to be directly requested | [optional] [default to false]
-**Owner** | Pointer to [**NullableEntitlementOwner**](entitlement-owner) |  | [optional] 
+**Owner** | Pointer to [**NullableEntitlementV2Owner**](entitlement-v2-owner) |  | [optional] 
 **AdditionalOwners** | Pointer to [**[]AdditionalOwnerRef**](additional-owner-ref) | List of additional owner references beyond the primary owner. Each entry may be an identity (IDENTITY) or a governance group (GOVERNANCE_GROUP). | [optional] 
 **ManuallyUpdatedFields** | Pointer to **map[string]interface{}** | A map of entitlement fields that have been manually updated. The key is the field name in UPPER_SNAKE_CASE format, and the value is true or false to indicate if the field has been updated. | [optional] 
-**AccessModelMetadata** | Pointer to [**EntitlementAccessModelMetadata**](entitlement-access-model-metadata) |  | [optional] 
+**AccessModelMetadata** | Pointer to [**EntitlementV2AccessModelMetadata**](entitlement-v2-access-model-metadata) |  | [optional] 
 **Created** | Pointer to **SailPointTime** | Time when the entitlement was created | [optional] 
 **Modified** | Pointer to **SailPointTime** | Time when the entitlement was last modified | [optional] 
 **Source** | Pointer to [**EntitlementSource**](entitlement-source) |  | [optional] 
@@ -291,20 +291,20 @@ HasRequestable returns a boolean if a field has been set.
 
 ### GetOwner
 
-`func (o *Entitlement) GetOwner() EntitlementOwner`
+`func (o *Entitlement) GetOwner() EntitlementV2Owner`
 
 GetOwner returns the Owner field if non-nil, zero value otherwise.
 
 ### GetOwnerOk
 
-`func (o *Entitlement) GetOwnerOk() (*EntitlementOwner, bool)`
+`func (o *Entitlement) GetOwnerOk() (*EntitlementV2Owner, bool)`
 
 GetOwnerOk returns a tuple with the Owner field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOwner
 
-`func (o *Entitlement) SetOwner(v EntitlementOwner)`
+`func (o *Entitlement) SetOwner(v EntitlementV2Owner)`
 
 SetOwner sets Owner field to given value.
 
@@ -396,20 +396,20 @@ HasManuallyUpdatedFields returns a boolean if a field has been set.
 UnsetManuallyUpdatedFields ensures that no value is present for ManuallyUpdatedFields, not even an explicit nil
 ### GetAccessModelMetadata
 
-`func (o *Entitlement) GetAccessModelMetadata() EntitlementAccessModelMetadata`
+`func (o *Entitlement) GetAccessModelMetadata() EntitlementV2AccessModelMetadata`
 
 GetAccessModelMetadata returns the AccessModelMetadata field if non-nil, zero value otherwise.
 
 ### GetAccessModelMetadataOk
 
-`func (o *Entitlement) GetAccessModelMetadataOk() (*EntitlementAccessModelMetadata, bool)`
+`func (o *Entitlement) GetAccessModelMetadataOk() (*EntitlementV2AccessModelMetadata, bool)`
 
 GetAccessModelMetadataOk returns a tuple with the AccessModelMetadata field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAccessModelMetadata
 
-`func (o *Entitlement) SetAccessModelMetadata(v EntitlementAccessModelMetadata)`
+`func (o *Entitlement) SetAccessModelMetadata(v EntitlementV2AccessModelMetadata)`
 
 SetAccessModelMetadata sets AccessModelMetadata field to given value.
 

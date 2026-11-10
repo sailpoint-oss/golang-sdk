@@ -13,6 +13,10 @@ info:
   termsOfService: https://developer.sailpoint.com/discuss/tos
   title: SailPoint Identity Security API - Roles
   version: v1
+  x-audience: external-public
+externalDocs:
+  description: SailPoint Identity Security API documentation
+  url: https://developer.sailpoint.com/docs/api/
 servers:
 - description: This is the production API server.
   url: "https://{tenant}.api.identitynow.com"
@@ -74,6 +78,942 @@ tags:
     \ for more information about roles.\n"
   name: Roles
 paths:
+  /roles/v2:
+    get:
+      description: |-
+        This API returns a list of Roles. Each Role includes its effective privilege level in `privilegeLevel.effective`, which is the highest effective privilege level among the entitlements assigned directly to the Role and the entitlements included in the Role's access profiles.
+
+        Use either offset pagination (`offset` and `limit`) or cursor pagination (`cursor` and `limit`). When more results are available, the `x-next-cursor` response header contains the cursor for the next page. Send that value in the `cursor` query parameter, with the same `sorters`, to get the next page. You can't use `cursor` together with an `offset` greater than 0, and `offset` plus `limit` can't be greater than 10,000. Use cursor pagination to page beyond 10,000 results.
+
+        A token with API, ORG_ADMIN, ROLE_ADMIN, or ROLE_SUBADMIN authority is required to call this API.
+      operationId: listRolesV2
+      parameters:
+      - description: Use this header to enable this experimental API.
+        example: "true"
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
+      - description: "If provided, filters the returned list according to what is\
+          \ visible to the indicated ROLE_SUBADMIN Identity. The value of the parameter\
+          \ is either an Identity ID, or the special value **me**, which is shorthand\
+          \ for the calling Identity's ID. A 400 Bad Request error is returned if\
+          \ the **for-subadmin** parameter is specified for an Identity that is not\
+          \ a subadmin."
+        example: 5168015d32f890ca15812c9180835d2e
+        explode: true
+        in: query
+        name: for-subadmin
+        required: false
+        schema:
+          default: ""
+          type: string
+        style: form
+      - description: |-
+          Max number of results to return.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        example: 50
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 50
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          Offset into the full result set. Usually specified with *limit* to paginate through the results. Must be 0 or omitted when *cursor* is specified.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        example: 0
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+          Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        example: true
+        explode: true
+        in: query
+        name: count
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+      - description: Opaque cursor returned in the `x-next-cursor` response header
+          of the previous page. Pass it with the same `sorters` to get the next page
+          of results. Can't be used with an *offset* greater than 0.
+        example: eyJzb3J0IjpbIm5hbWUiLCJpZCJdLCJzZWFyY2hBZnRlciI6WyJSb2xlIDI1NjciLCIyYzkxIl19
+        explode: true
+        in: query
+        name: cursor
+        required: false
+        schema:
+          default: ""
+          type: string
+        style: form
+      - description: |-
+          Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)
+
+          Filtering is supported for the following fields and operators:
+
+          **id**: *eq, in*
+
+          **name**: *eq, in, sw, co*
+
+          **created**: *gt, lt, ge, le*
+
+          **modified**: *gt, lt, ge, le*
+
+          **type**: *eq, in*
+
+          **owner.id**: *eq, in*
+
+          **additionalOwners.id**: *eq, in*
+
+          **requestable**: *eq*
+
+          **dimensional**: *eq*
+
+          **source.id**: *eq, in*
+
+          **entitlement.id**: *eq, in*
+
+          **entitlement.name**: *eq, sw, co*
+
+          **accessProfile.id**: *eq, in*
+
+          **accessProfile.name**: *eq, sw, co*
+
+          **privilegeLevel.effective**: *eq, in*
+
+          Supported composite operators are *and, or*
+        example: "privilegeLevel.effective in (\"HIGH\",\"MEDIUM\")"
+        explode: true
+        in: query
+        name: filters
+        required: false
+        schema:
+          default: ""
+          type: string
+        style: form
+      - description: |-
+          Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)
+
+          Sorting is supported for the following fields: **id, name, created, modified, privilegeLevel.effective**
+
+          The default sort is **name**. **id** is always added as the final sort field so that cursor pagination is stable.
+        example: "-privilegeLevel.effective,name"
+        explode: true
+        in: query
+        name: sorters
+        required: false
+        schema:
+          default: name
+          format: comma-separated
+          type: string
+        style: form
+      - description: |-
+          If present and not empty, additionally filters Roles to those which are assigned to the Segment(s) with the specified IDs.
+
+          If segmentation is currently unavailable, specifying this parameter results in an error.
+        example: "0b5c9f25-83c6-4762-9073-e38f7bb2ae26,2e8d8180-24bc-4d21-91c6-7affdb473b0d"
+        explode: true
+        in: query
+        name: for-segment-ids
+        required: false
+        schema:
+          default: ""
+          format: comma-separated
+          type: string
+        style: form
+      - description: "Whether or not the response list should contain unsegmented\
+          \ Roles. If *for-segment-ids* is absent or empty, specifying *include-unsegmented*\
+          \ as false results in an error."
+        example: false
+        explode: true
+        in: query
+        name: include-unsegmented
+        required: false
+        schema:
+          default: true
+          type: boolean
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/RoleV2'
+                type: array
+          description: List of Roles
+          headers:
+            x-total-count:
+              description: The total result count (returned only if the *count* parameter
+                is specified as *true*).
+              example: 75
+              explode: false
+              schema:
+                format: int32
+                type: integer
+              style: simple
+            x-next-cursor:
+              description: Opaque cursor for the next page of results. Returned only
+                when more results are available. Pass it in the *cursor* query parameter
+                to get the next page.
+              example: eyJzb3J0IjpbIm5hbWUiLCJpZCJdLCJzZWFyY2hBZnRlciI6WyJSb2xlIDI1NjciLCIyYzkxIl19
+              explode: false
+              schema:
+                type: string
+              style: simple
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listRolesV2_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listRolesV2_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:role-unchecked:read
+        - idn:role-unchecked:manage
+        - idn:role-checked:manage
+        - idn:role-checked:read
+      summary: List roles
+      tags:
+      - Roles
+      x-sailpoint-lint-ignore:
+        path-list-operations-must-return-object: RolesV4Controller.listRoles returns
+          a top-level JSON array of roles. Wrapping it in an items object would not
+          match the live response.
+        path-query-parameters-must-be-camel-case: "RolesV4Controller binds for-subadmin,\
+          \ for-segment-ids, and include-unsegmented by those kebab-case query names.\
+          \ Camel-case names are not accepted."
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - ROLE_ADMIN
+      - ROLE_SUBADMIN
+  /roles/v2/{id}:
+    get:
+      description: |-
+        This API returns a Role by its ID. The response includes the Role's effective privilege level in `privilegeLevel.effective`, which is the highest effective privilege level among the entitlements assigned directly to the Role and the entitlements included in the Role's access profiles.
+
+        A token with API, ORG_ADMIN, ROLE_ADMIN, or ROLE_SUBADMIN authority is required to call this API. In addition, a token with ROLE_SUBADMIN authority may only call this API if all Access Profiles included in the Role are associated to Sources with management workgroups of which the ROLE_SUBADMIN is a member.
+      operationId: getRoleV2
+      parameters:
+      - description: Use this header to enable this experimental API.
+        example: "true"
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
+      - description: ID of the Role
+        example: 2c91808a7813090a017814121e121518
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listRolesV2
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RoleV2'
+          description: A Role
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listRolesV2_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listRolesV2_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:role-unchecked:read
+        - idn:role-unchecked:manage
+        - idn:role-checked:manage
+        - idn:role-checked:read
+      summary: Get a role
+      tags:
+      - Roles
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - ROLE_ADMIN
+      - ROLE_SUBADMIN
+  /roles/v2/{id}/entitlements:
+    get:
+      description: |-
+        Get a list of entitlements assigned directly to a specified Role. Each entitlement includes its privilege level in `privilegeLevel`, with the direct, inherited, and effective levels.
+
+        Use either offset pagination (`offset` and `limit`) or cursor pagination (`cursor` and `limit`). When more results are available, the `x-next-cursor` response header contains the cursor for the next page. You can't use `cursor` together with an `offset` greater than 0, and `offset` plus `limit` can't be greater than 10,000.
+      operationId: getRoleEntitlementsV2
+      parameters:
+      - description: Use this header to enable this experimental API.
+        example: "true"
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
+      - description: Containing role's ID.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          example: 2c91808a7813090a017814121919ecca
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listRolesV2
+      - description: |-
+          Max number of results to return.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        example: 50
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 50
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          Offset into the full result set. Usually specified with *limit* to paginate through the results. Must be 0 or omitted when *cursor* is specified.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        example: 0
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+          Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        example: true
+        explode: true
+        in: query
+        name: count
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+      - description: Opaque cursor returned in the `x-next-cursor` response header
+          of the previous page. Pass it with the same `sorters` to get the next page
+          of results. Can't be used with an *offset* greater than 0.
+        example: eyJzb3J0IjpbImNyZWF0ZWQiLCJpZCJdLCJzZWFyY2hBZnRlciI6WyIxNjAyMTgyMDMyMDI5IiwiMmM5MSJdfQ
+        explode: true
+        in: query
+        name: cursor
+        required: false
+        schema:
+          default: ""
+          type: string
+        style: form
+      - description: |-
+          Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)
+
+          Filtering is supported for the following fields and operators:
+
+          **id**: *eq, in*
+
+          **name**: *eq, in, sw, co*
+
+          **attribute**: *eq, sw, co*
+
+          **value**: *eq, sw, co*
+
+          **created**: *gt, lt, ge, le*
+
+          **modified**: *gt, lt, ge, le*
+
+          **privilegeLevel.effective**: *eq, in*
+        example: privilegeLevel.effective eq "HIGH"
+        explode: true
+        in: query
+        name: filters
+        required: false
+        schema:
+          default: ""
+          type: string
+        style: form
+      - description: |-
+          Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)
+
+          Sorting is supported for the following fields: **id, name, attribute, value, created, modified, privilegeLevel.effective**
+
+          The default sort is **created**. **id** is always added as the final sort field so that cursor pagination is stable.
+        example: "-privilegeLevel.effective,name"
+        explode: true
+        in: query
+        name: sorters
+        required: false
+        schema:
+          default: created
+          format: comma-separated
+          type: string
+        style: form
+      - description: "If present and not empty, filters entitlements to those assigned\
+          \ to the segment(s) with the specified IDs. Can't be used with *segmented-for-identity*."
+        example: "0b5c9f25-83c6-4762-9073-e38f7bb2ae26,2e8d8180-24bc-4d21-91c6-7affdb473b0d"
+        explode: true
+        in: query
+        name: for-segment-ids
+        required: false
+        schema:
+          default: ""
+          format: comma-separated
+          type: string
+        style: form
+      - description: "If present, filters entitlements to those in the segments visible\
+          \ to the specified identity. The value must be the calling identity's ID\
+          \ or the special value **me**. Can't be used with *for-segment-ids*."
+        example: me
+        explode: true
+        in: query
+        name: segmented-for-identity
+        required: false
+        schema:
+          default: ""
+          type: string
+        style: form
+      - description: "Whether the response list should contain unsegmented entitlements.\
+          \ If *for-segment-ids* is absent or empty, specifying *include-unsegmented*\
+          \ as false results in an error."
+        example: false
+        explode: true
+        in: query
+        name: include-unsegmented
+        required: false
+        schema:
+          default: true
+          type: boolean
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/EntitlementV2'
+                type: array
+          description: List of entitlements.
+          headers:
+            x-total-count:
+              description: The total result count (returned only if the *count* parameter
+                is specified as *true*).
+              example: 12
+              explode: false
+              schema:
+                format: int32
+                type: integer
+              style: simple
+            x-next-cursor:
+              description: Opaque cursor for the next page of results. Returned only
+                when more results are available. Pass it in the *cursor* query parameter
+                to get the next page.
+              example: eyJzb3J0IjpbImNyZWF0ZWQiLCJpZCJdLCJzZWFyY2hBZnRlciI6WyIxNjAyMTgyMDMyMDI5IiwiMmM5MSJdfQ
+              explode: false
+              schema:
+                type: string
+              style: simple
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listRolesV2_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listRolesV2_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:role-unchecked:read
+        - idn:role-unchecked:manage
+        - idn:role-checked:manage
+        - idn:role-checked:read
+      summary: List role's entitlements
+      tags:
+      - Roles
+      x-sailpoint-lint-ignore:
+        path-list-operations-must-return-object: RolesV4Controller returns a top-level
+          JSON array of entitlements for this role. Wrapping it in an items object
+          would not match the live response.
+        path-query-parameters-must-be-camel-case: "RolesV4Controller binds for-segment-ids,\
+          \ segmented-for-identity, and include-unsegmented by those kebab-case query\
+          \ names. Camel-case names are not accepted."
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - ROLE_ADMIN
+      - ROLE_SUBADMIN
+  /roles/v2/filter:
+    post:
+      description: |-
+        This API returns a list of Roles filtered by Access Model Metadata and by filter expression. Filtering is supported by filter expression, by metadata attribute key and values, or by both together. Each Role includes its effective privilege level in `privilegeLevel.effective`.
+
+        The `filters` expression in the request body supports the same fields and operators as the `filters` query parameter of [List roles](#operation/listRolesV2), including **privilegeLevel.effective**: *eq, in*.
+
+        Use either offset pagination (`offset` and `limit`) or cursor pagination (`cursor` and `limit`). When more results are available, the `x-next-cursor` response header contains the cursor for the next page. Send that value in the `cursor` query parameter, with the same request body and `sorters`, to get the next page. You can't use `cursor` together with an `offset` greater than 0, and `offset` plus `limit` can't be greater than 10,000.
+      operationId: searchRolesByFilterV2
+      parameters:
+      - description: Use this header to enable this experimental API.
+        example: "true"
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
+      - description: "If provided, filters the returned list according to what is\
+          \ visible to the indicated ROLE_SUBADMIN Identity. The value of the parameter\
+          \ is either an Identity ID, or the special value **me**, which is shorthand\
+          \ for the calling Identity's ID. A 400 Bad Request error is returned if\
+          \ the **for-subadmin** parameter is specified for an Identity that is not\
+          \ a subadmin."
+        example: 5168015d32f890ca15812c9180835d2e
+        explode: true
+        in: query
+        name: for-subadmin
+        required: false
+        schema:
+          default: ""
+          type: string
+        style: form
+      - description: "Max number of results to return See [API Standard Collection\
+          \ Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters)\
+          \ for more information."
+        example: 50
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 50
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          Offset into the full result set. Usually specified with *limit* to paginate through the results. Must be 0 or omitted when *cursor* is specified.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        example: 0
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+          Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        example: true
+        explode: true
+        in: query
+        name: count
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+      - description: Opaque cursor returned in the `x-next-cursor` response header
+          of the previous page. Pass it with the same request body and `sorters` to
+          get the next page of results. Can't be used with an *offset* greater than
+          0.
+        example: eyJzb3J0IjpbIm5hbWUiLCJpZCJdLCJzZWFyY2hBZnRlciI6WyJSb2xlIDI1NjciLCIyYzkxIl19
+        explode: true
+        in: query
+        name: cursor
+        required: false
+        schema:
+          default: ""
+          type: string
+        style: form
+      - description: |-
+          Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)
+
+          Sorting is supported for the following fields: **id, name, created, modified, privilegeLevel.effective**
+
+          The default sort is **name**. **id** is always added as the final sort field so that cursor pagination is stable.
+        example: "name,-modified"
+        explode: true
+        in: query
+        name: sorters
+        required: false
+        schema:
+          default: name
+          format: comma-separated
+          type: string
+        style: form
+      - description: |-
+          If present and not empty, additionally filters Roles to those which are assigned to the Segment(s) with the specified IDs.
+
+          If segmentation is currently unavailable, specifying this parameter results in an error.
+        example: "0b5c9f25-83c6-4762-9073-e38f7bb2ae26,2e8d8180-24bc-4d21-91c6-7affdb473b0d"
+        explode: true
+        in: query
+        name: for-segment-ids
+        required: false
+        schema:
+          default: ""
+          format: comma-separated
+          type: string
+        style: form
+      - description: "Whether or not the response list should contain unsegmented\
+          \ Roles. If *for-segment-ids* is absent or empty, specifying *include-unsegmented*\
+          \ as false results in an error."
+        example: false
+        explode: true
+        in: query
+        name: include-unsegmented
+        required: false
+        schema:
+          default: true
+          type: boolean
+        style: form
+      requestBody:
+        content:
+          application/json:
+            example:
+              filters: privilegeLevel.effective eq "HIGH"
+              ammKeyValues:
+              - attribute: iscFederalClassifications
+                values:
+                - secret
+            schema:
+              $ref: '#/components/schemas/Rolelistfilterdtov2'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/RoleV2'
+                type: array
+          description: List of Roles matching the filter criteria.
+          headers:
+            x-total-count:
+              description: The total result count (returned only if the *count* parameter
+                is specified as *true*).
+              example: 75
+              explode: false
+              schema:
+                format: int32
+                type: integer
+              style: simple
+            x-next-cursor:
+              description: Opaque cursor for the next page of results. Returned only
+                when more results are available. Pass it in the *cursor* query parameter
+                to get the next page.
+              example: eyJzb3J0IjpbIm5hbWUiLCJpZCJdLCJzZWFyY2hBZnRlciI6WyJSb2xlIDI1NjciLCIyYzkxIl19
+              explode: false
+              schema:
+                type: string
+              style: simple
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listRolesV2_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listRolesV2_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:role-unchecked:read
+        - idn:role-unchecked:manage
+        - idn:role-checked:manage
+        - idn:role-checked:read
+      summary: Filter roles by metadata
+      tags:
+      - Roles
+      x-sailpoint-lint-ignore:
+        path-query-parameters-must-be-camel-case: "RolesV4Controller.listRolesViaPost\
+          \ binds for-subadmin, for-segment-ids, and include-unsegmented by those\
+          \ kebab-case query names. Camel-case names are not accepted."
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - ROLE_ADMIN
+      - ROLE_SUBADMIN
   /roles/v1:
     get:
       description: |-
@@ -223,7 +1163,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/listRolesV1_401_response'
+                $ref: '#/components/schemas/listRolesV2_401_response'
           description: "Unauthorized - Returned if there is no authorization header,\
             \ or if the JWT token is expired."
         "403":
@@ -248,7 +1188,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/listRolesV1_429_response'
+                $ref: '#/components/schemas/listRolesV2_429_response'
           description: Too Many Requests - Returned in response to too many requests
             in a given period of time - rate limited. The Retry-After header in the
             response includes how long to wait before trying again.
@@ -315,7 +1255,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/listRolesV1_401_response'
+                $ref: '#/components/schemas/listRolesV2_401_response'
           description: "Unauthorized - Returned if there is no authorization header,\
             \ or if the JWT token is expired."
         "403":
@@ -340,7 +1280,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/listRolesV1_429_response'
+                $ref: '#/components/schemas/listRolesV2_429_response'
           description: Too Many Requests - Returned in response to too many requests
             in a given period of time - rate limited. The Retry-After header in the
             response includes how long to wait before trying again.
@@ -404,7 +1344,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/listRolesV1_401_response'
+                $ref: '#/components/schemas/listRolesV2_401_response'
           description: "Unauthorized - Returned if there is no authorization header,\
             \ or if the JWT token is expired."
         "403":
@@ -429,7 +1369,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/listRolesV1_429_response'
+                $ref: '#/components/schemas/listRolesV2_429_response'
           description: Too Many Requests - Returned in response to too many requests
             in a given period of time - rate limited. The Retry-After header in the
             response includes how long to wait before trying again.
@@ -494,7 +1434,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/listRolesV1_401_response'
+                $ref: '#/components/schemas/listRolesV2_401_response'
           description: "Unauthorized - Returned if there is no authorization header,\
             \ or if the JWT token is expired."
         "403":
@@ -519,7 +1459,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/listRolesV1_429_response'
+                $ref: '#/components/schemas/listRolesV2_429_response'
           description: Too Many Requests - Returned in response to too many requests
             in a given period of time - rate limited. The Retry-After header in the
             response includes how long to wait before trying again.
@@ -693,7 +1633,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/listRolesV1_401_response'
+                $ref: '#/components/schemas/listRolesV2_401_response'
           description: "Unauthorized - Returned if there is no authorization header,\
             \ or if the JWT token is expired."
         "403":
@@ -718,7 +1658,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/listRolesV1_429_response'
+                $ref: '#/components/schemas/listRolesV2_429_response'
           description: Too Many Requests - Returned in response to too many requests
             in a given period of time - rate limited. The Retry-After header in the
             response includes how long to wait before trying again.
@@ -823,7 +1763,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/listRolesV1_401_response'
+                $ref: '#/components/schemas/listRolesV2_401_response'
           description: "Unauthorized - Returned if there is no authorization header,\
             \ or if the JWT token is expired."
         "403":
@@ -848,7 +1788,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/listRolesV1_429_response'
+                $ref: '#/components/schemas/listRolesV2_429_response'
           description: Too Many Requests - Returned in response to too many requests
             in a given period of time - rate limited. The Retry-After header in the
             response includes how long to wait before trying again.
@@ -990,7 +1930,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/listRolesV1_401_response'
+                $ref: '#/components/schemas/listRolesV2_401_response'
           description: "Unauthorized - Returned if there is no authorization header,\
             \ or if the JWT token is expired."
         "403":
@@ -1015,7 +1955,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/listRolesV1_429_response'
+                $ref: '#/components/schemas/listRolesV2_429_response'
           description: Too Many Requests - Returned in response to too many requests
             in a given period of time - rate limited. The Retry-After header in the
             response includes how long to wait before trying again.
@@ -1169,7 +2109,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/listRolesV1_401_response'
+                $ref: '#/components/schemas/listRolesV2_401_response'
           description: "Unauthorized - Returned if there is no authorization header,\
             \ or if the JWT token is expired."
         "403":
@@ -1194,7 +2134,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/listRolesV1_429_response'
+                $ref: '#/components/schemas/listRolesV2_429_response'
           description: Too Many Requests - Returned in response to too many requests
             in a given period of time - rate limited. The Retry-After header in the
             response includes how long to wait before trying again.
@@ -1280,7 +2220,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/listRolesV1_401_response'
+                $ref: '#/components/schemas/listRolesV2_401_response'
           description: "Unauthorized - Returned if there is no authorization header,\
             \ or if the JWT token is expired."
         "403":
@@ -1305,7 +2245,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/listRolesV1_429_response'
+                $ref: '#/components/schemas/listRolesV2_429_response'
           description: Too Many Requests - Returned in response to too many requests
             in a given period of time - rate limited. The Retry-After header in the
             response includes how long to wait before trying again.
@@ -1391,7 +2331,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/listRolesV1_401_response'
+                $ref: '#/components/schemas/listRolesV2_401_response'
           description: "Unauthorized - Returned if there is no authorization header,\
             \ or if the JWT token is expired."
         "403":
@@ -1416,7 +2356,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/listRolesV1_429_response'
+                $ref: '#/components/schemas/listRolesV2_429_response'
           description: Too Many Requests - Returned in response to too many requests
             in a given period of time - rate limited. The Retry-After header in the
             response includes how long to wait before trying again.
@@ -1479,7 +2419,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/listRolesV1_401_response'
+                $ref: '#/components/schemas/listRolesV2_401_response'
           description: "Unauthorized - Returned if there is no authorization header,\
             \ or if the JWT token is expired."
         "403":
@@ -1504,7 +2444,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/listRolesV1_429_response'
+                $ref: '#/components/schemas/listRolesV2_429_response'
           description: Too Many Requests - Returned in response to too many requests
             in a given period of time - rate limited. The Retry-After header in the
             response includes how long to wait before trying again.
@@ -1578,7 +2518,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/listRolesV1_401_response'
+                $ref: '#/components/schemas/listRolesV2_401_response'
           description: "Unauthorized - Returned if there is no authorization header,\
             \ or if the JWT token is expired."
         "403":
@@ -1603,7 +2543,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/listRolesV1_429_response'
+                $ref: '#/components/schemas/listRolesV2_429_response'
           description: Too Many Requests - Returned in response to too many requests
             in a given period of time - rate limited. The Retry-After header in the
             response includes how long to wait before trying again.
@@ -1689,7 +2629,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/listRolesV1_401_response'
+                $ref: '#/components/schemas/listRolesV2_401_response'
           description: "Unauthorized - Returned if there is no authorization header,\
             \ or if the JWT token is expired."
         "403":
@@ -1714,7 +2654,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/listRolesV1_429_response'
+                $ref: '#/components/schemas/listRolesV2_429_response'
           description: Too Many Requests - Returned in response to too many requests
             in a given period of time - rate limited. The Retry-After header in the
             response includes how long to wait before trying again.
@@ -1782,7 +2722,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/listRolesV1_401_response'
+                $ref: '#/components/schemas/listRolesV2_401_response'
           description: "Unauthorized - Returned if there is no authorization header,\
             \ or if the JWT token is expired."
         "403":
@@ -1807,7 +2747,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/listRolesV1_429_response'
+                $ref: '#/components/schemas/listRolesV2_429_response'
           description: Too Many Requests - Returned in response to too many requests
             in a given period of time - rate limited. The Retry-After header in the
             response includes how long to wait before trying again.
@@ -1860,7 +2800,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/listRolesV1_401_response'
+                $ref: '#/components/schemas/listRolesV2_401_response'
           description: "Unauthorized - Returned if there is no authorization header,\
             \ or if the JWT token is expired."
         "403":
@@ -1885,7 +2825,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/listRolesV1_429_response'
+                $ref: '#/components/schemas/listRolesV2_429_response'
           description: Too Many Requests - Returned in response to too many requests
             in a given period of time - rate limited. The Retry-After header in the
             response includes how long to wait before trying again.
@@ -2047,7 +2987,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/listRolesV1_401_response'
+                $ref: '#/components/schemas/listRolesV2_401_response'
           description: "Unauthorized - Returned if there is no authorization header,\
             \ or if the JWT token is expired."
         "403":
@@ -2072,7 +3012,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/listRolesV1_429_response'
+                $ref: '#/components/schemas/listRolesV2_429_response'
           description: Too Many Requests - Returned in response to too many requests
             in a given period of time - rate limited. The Retry-After header in the
             response includes how long to wait before trying again.
@@ -2102,6 +3042,22 @@ paths:
       - Roles
 components:
   parameters:
+    count:
+      description: |-
+        If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+        Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+        See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+      example: true
+      explode: true
+      in: query
+      name: count
+      required: false
+      schema:
+        default: false
+        type: boolean
+      style: form
     limit50:
       description: |-
         Note that for this API the maximum value for limit is 50.
@@ -2133,22 +3089,6 @@ components:
         minimum: 0
         type: integer
       style: form
-    count:
-      description: |-
-        If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
-
-        Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
-
-        See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
-      example: true
-      explode: true
-      in: query
-      name: count
-      required: false
-      schema:
-        default: false
-        type: boolean
-      style: form
     limit:
       description: |-
         Max number of results to return.
@@ -2179,7 +3119,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/listRolesV1_401_response'
+            $ref: '#/components/schemas/listRolesV2_401_response'
       description: "Unauthorized - Returned if there is no authorization header, or\
         \ if the JWT token is expired."
     "403":
@@ -2200,11 +3140,29 @@ components:
             $ref: '#/components/schemas/ErrorResponseDto'
       description: "Forbidden - Returned if the user you are running as, doesn't have\
         \ access to this end-point."
+    "404":
+      content:
+        application/json:
+          examples:
+            "404":
+              summary: An example of a 404 response object
+              value:
+                detailCode: 404 Not found
+                trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                messages:
+                - locale: en-US
+                  localeOrigin: DEFAULT
+                  text: The server did not find a current representation for the target
+                    resource.
+          schema:
+            $ref: '#/components/schemas/ErrorResponseDto'
+      description: Not Found - returned if the request URL refers to a resource or
+        object that does not exist
     "429":
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/listRolesV1_429_response'
+            $ref: '#/components/schemas/listRolesV2_429_response'
       description: Too Many Requests - Returned in response to too many requests in
         a given period of time - rate limited. The Retry-After header in the response
         includes how long to wait before trying again.
@@ -3028,6 +3986,741 @@ components:
           nullable: true
           type: array
       type: object
+    RolePrivilegeLevel:
+      description: Privilege level of the role. The effective level is the highest
+        effective privilege level among the entitlements assigned directly to the
+        role and the entitlements included in the role's access profiles.
+      properties:
+        effective:
+          description: Effective privilege level of the role. **UNDETERMINED** means
+            the privilege level could not be calculated for the role's entitlements.
+          enum:
+          - NONE
+          - LOW
+          - MEDIUM
+          - HIGH
+          - UNDETERMINED
+          example: HIGH
+          type: string
+      title: Role Privilege Level
+      type: object
+    RoleV2:
+      description: "A Role, including its effective privilege level."
+      example:
+        owner:
+          name: support
+          id: 2c9180a46faadee4016fb4e018c20639
+          type: IDENTITY
+        entitlements:
+        - name: "CN=entitlement.490efde5,OU=OrgCo,OU=ServiceDept,DC=HQAD,DC=local"
+          id: 2c91809773dee32014e13e122092014e
+          type: ENTITLEMENT
+        - name: "CN=entitlement.490efde5,OU=OrgCo,OU=ServiceDept,DC=HQAD,DC=local"
+          id: 2c91809773dee32014e13e122092014e
+          type: ENTITLEMENT
+        dimensional: false
+        privilegeLevel: ""
+        created: 2021-03-01T22:32:58.104Z
+        dimensionRefs:
+        - name: Role 2
+          id: 2c91808568c529c60168cca6f90c1313
+          type: DIMENSION
+        - name: Role 2
+          id: 2c91808568c529c60168cca6f90c1313
+          type: DIMENSION
+        description: Read-only access to the finance reporting system
+        membership:
+          identities:
+          - aliasName: t.edison
+            name: Thomas Edison
+            id: 2c9180a46faadee4016fb4e018c20639
+            type: IDENTITY
+          - aliasName: t.edison
+            name: Thomas Edison
+            id: 2c9180a46faadee4016fb4e018c20639
+            type: IDENTITY
+          criteria:
+            stringValue: carlee.cert1c9f9b6fd@mailinator.com
+            children:
+            - stringValue: carlee.cert1c9f9b6fd@mailinator.com
+              children:
+              - stringValue: carlee.cert1c9f9b6fd@mailinator.com
+                operation: EQUALS
+                key:
+                  sourceId: 2c9180867427f3a301745aec18211519
+                  property: attribute.email
+                  type: ACCOUNT
+              - stringValue: carlee.cert1c9f9b6fd@mailinator.com
+                operation: EQUALS
+                key:
+                  sourceId: 2c9180867427f3a301745aec18211519
+                  property: attribute.email
+                  type: ACCOUNT
+              operation: EQUALS
+              key:
+                sourceId: 2c9180867427f3a301745aec18211519
+                property: attribute.email
+                type: ACCOUNT
+            - stringValue: carlee.cert1c9f9b6fd@mailinator.com
+              children:
+              - stringValue: carlee.cert1c9f9b6fd@mailinator.com
+                operation: EQUALS
+                key:
+                  sourceId: 2c9180867427f3a301745aec18211519
+                  property: attribute.email
+                  type: ACCOUNT
+              - stringValue: carlee.cert1c9f9b6fd@mailinator.com
+                operation: EQUALS
+                key:
+                  sourceId: 2c9180867427f3a301745aec18211519
+                  property: attribute.email
+                  type: ACCOUNT
+              operation: EQUALS
+              key:
+                sourceId: 2c9180867427f3a301745aec18211519
+                property: attribute.email
+                type: ACCOUNT
+            operation: EQUALS
+            key:
+              sourceId: 2c9180867427f3a301745aec18211519
+              property: attribute.email
+              type: ACCOUNT
+          type: IDENTITY_LIST
+        additionalOwners:
+        - name: support
+          id: 2c9180a46faadee4016fb4e018c20639
+          type: IDENTITY
+        - name: support
+          id: 2c9180a46faadee4016fb4e018c20639
+          type: IDENTITY
+        enabled: true
+        revocationRequestConfig:
+          commentsRequired: false
+          approvalSchemes:
+          - approverId: 46c79819-a69f-49a2-becb-12c971ae66c6
+            approverType: GOVERNANCE_GROUP
+          - approverId: 46c79819-a69f-49a2-becb-12c971ae66c6
+            approverType: GOVERNANCE_GROUP
+          denialCommentsRequired: false
+        segments:
+        - f7b1b8a3-5fed-4fd4-ad29-82014e137e19
+        - 29cb6c06-1da8-43ea-8be4-b3125f248f2a
+        legacyMembershipInfo:
+          type: IDENTITY_LIST
+        accessRequestConfig:
+          dimensionSchema:
+            dimensionAttributes:
+            - displayName: City
+              name: city
+              derived: true
+            - displayName: City
+              name: city
+              derived: true
+          commentsRequired: true
+          reauthorizationRequired: true
+          approvalSchemes:
+          - approverId: 46c79819-a69f-49a2-becb-12c971ae66c6
+            approverType: GOVERNANCE_GROUP
+          - approverId: 46c79819-a69f-49a2-becb-12c971ae66c6
+            approverType: GOVERNANCE_GROUP
+          formDefinitionId: 78258e80-e9e2-4e1a-a11f-ce0b7c62f25d
+          denialCommentsRequired: true
+          requireEndDate: true
+          maxPermittedAccessDuration:
+            value: 6
+            timeUnit: MONTHS
+        accessProfiles:
+        - name: Access Profile 2567
+          id: ff808081751e6e129f1518161919ecca
+          type: ACCESS_PROFILE
+        - name: Access Profile 2567
+          id: ff808081751e6e129f1518161919ecca
+          type: ACCESS_PROFILE
+        name: Role 2567
+        modified: 2021-03-02T20:22:28.104Z
+        accessModelMetadata:
+          attributes:
+          - key: iscPrivacy
+            name: Privacy
+            multiselect: false
+            status: active
+            type: governance
+            objectTypes:
+            - all
+            description: Specifies the level of privacy associated with an access
+              item.
+            values:
+            - value: public
+              name: Public
+              status: active
+        id: 2c918086749d78830174a1a40e121518
+        requestable: true
+      properties:
+        id:
+          description: "The id of the Role. This field must be left null when creating\
+            \ an Role, otherwise a 400 Bad Request error will result."
+          example: 2c918086749d78830174a1a40e121518
+          type: string
+        name:
+          description: The human-readable display name of the Role
+          example: Role 2567
+          maxLength: 128
+          type: string
+        created:
+          description: Date the Role was created
+          example: 2021-03-01T22:32:58.104Z
+          format: date-time
+          readOnly: true
+          type: string
+        modified:
+          description: Date the Role was last modified.
+          example: 2021-03-02T20:22:28.104Z
+          format: date-time
+          readOnly: true
+          type: string
+        description:
+          description: A human-readable description of the Role
+          example: Read-only access to the finance reporting system
+          nullable: true
+          type: string
+        owner:
+          $ref: '#/components/schemas/OwnerReference'
+        additionalOwners:
+          description: List of additional owner references beyond the primary owner.
+            Each entry may be an identity (IDENTITY) or a governance group (GOVERNANCE_GROUP).
+          items:
+            $ref: '#/components/schemas/AdditionalOwnerRef'
+          nullable: true
+          type: array
+          x-sailpoint-lint-ignore:
+            schema-arrays-must-not-be-nullable: The Role model leaves additionalOwners
+              null when there are no additional owners. An empty array is not what
+              the API returns.
+        accessProfiles:
+          items:
+            $ref: '#/components/schemas/AccessProfileRef'
+          nullable: true
+          type: array
+          x-sailpoint-lint-ignore:
+            schema-arrays-must-not-be-nullable: The Role model initializes accessProfiles
+              to null. An empty array is not what the API returns.
+        entitlements:
+          items:
+            $ref: '#/components/schemas/EntitlementRef'
+          type: array
+        membership:
+          $ref: '#/components/schemas/RoleMembershipSelector'
+        legacyMembershipInfo:
+          additionalProperties: true
+          description: "This field is not directly modifiable and is generally expected\
+            \ to be *null*. In very rare instances, some Roles may have been created\
+            \ using membership selection criteria that are no longer fully supported.\
+            \ While these Roles will still work, they should be migrated to STANDARD\
+            \ or IDENTITY_LIST selection criteria. This field exists for informational\
+            \ purposes as an aid to such migration."
+          example:
+            type: IDENTITY_LIST
+          nullable: true
+          type: object
+        enabled:
+          default: false
+          description: Whether the Role is enabled or not.
+          example: true
+          type: boolean
+        requestable:
+          default: false
+          description: Whether the Role can be the target of access requests.
+          example: true
+          type: boolean
+        accessRequestConfig:
+          $ref: '#/components/schemas/RequestabilityForRole'
+        revocationRequestConfig:
+          $ref: '#/components/schemas/RevocabilityForRole'
+        segments:
+          description: "List of IDs of segments, if any, to which this Role is assigned."
+          example:
+          - f7b1b8a3-5fed-4fd4-ad29-82014e137e19
+          - 29cb6c06-1da8-43ea-8be4-b3125f248f2a
+          items:
+            type: string
+          nullable: true
+          type: array
+          x-sailpoint-lint-ignore:
+            schema-arrays-must-not-be-nullable: The Role model initializes segments
+              to null. An empty array is not what the API returns.
+        dimensional:
+          default: false
+          description: Whether the Role is dimensional.
+          nullable: true
+          type: boolean
+          x-sailpoint-lint-ignore:
+            schema-booleans-must-not-be-nullable: "The Role model types dimensional\
+              \ as Boolean, so a role with no value is returned as null."
+        dimensionRefs:
+          description: List of references to dimensions to which this Role is assigned.
+            This field is only relevant if the Role is dimensional.
+          items:
+            $ref: '#/components/schemas/DimensionRef'
+          nullable: true
+          type: array
+          x-sailpoint-lint-ignore:
+            schema-arrays-must-not-be-nullable: "The Role model leaves dimensionRefs\
+              \ unset, so it is returned as null when the role has no dimensions."
+        accessModelMetadata:
+          $ref: '#/components/schemas/AttributeDTOList'
+        privilegeLevel:
+          allOf:
+          - $ref: '#/components/schemas/RolePrivilegeLevel'
+          nullable: true
+          readOnly: true
+      required:
+      - name
+      - owner
+      title: Role V2
+      type: object
+    LocaleOrigin:
+      description: "An indicator of how the locale was selected. *DEFAULT* means the\
+        \ locale is the system default. *REQUEST* means the locale was selected from\
+        \ the request context (i.e., best match based on the *Accept-Language* header).\
+        \ Additional values may be added in the future without notice."
+      enum:
+      - DEFAULT
+      - REQUEST
+      - null
+      example: DEFAULT
+      nullable: true
+      type: string
+    ErrorMessageDto:
+      example:
+        localeOrigin: DEFAULT
+        text: The request was syntactically correct but its content is semantically
+          invalid.
+        locale: en-US
+      properties:
+        locale:
+          description: "The locale for the message text, a BCP 47 language tag."
+          example: en-US
+          nullable: true
+          type: string
+        localeOrigin:
+          $ref: '#/components/schemas/LocaleOrigin'
+        text:
+          description: Actual text of the error message in the indicated locale.
+          example: The request was syntactically correct but its content is semantically
+            invalid.
+          type: string
+      title: Error Message Dto
+      type: object
+    ErrorResponseDto:
+      example:
+        causes:
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        messages:
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        detailCode: 400.1 Bad Request Content
+        trackingId: e7eab60924f64aa284175b9fa3309599
+      properties:
+        detailCode:
+          description: Fine-grained error code providing more detail of the error.
+          example: 400.1 Bad Request Content
+          type: string
+        trackingId:
+          description: Unique tracking id for the error.
+          example: e7eab60924f64aa284175b9fa3309599
+          type: string
+        messages:
+          description: Generic localized reason for error
+          items:
+            $ref: '#/components/schemas/ErrorMessageDto'
+          type: array
+        causes:
+          description: Plain-text descriptive reasons to provide additional detail
+            to the text provided in the messages field
+          items:
+            $ref: '#/components/schemas/ErrorMessageDto'
+          type: array
+      title: Error Response Dto
+      type: object
+    EntitlementPrivilegeLevel:
+      properties:
+        direct:
+          description: Direct privilege level assigned to the entitlement
+          enum:
+          - HIGH
+          - LOW
+          - MEDIUM
+          - NONE
+          example: HIGH
+          type: string
+        setBy:
+          description: User or process that set the privilege level
+          example: SAILPOINT_MIGRATION
+          type: string
+        setByType:
+          description: Method by which the privilege level was set
+          enum:
+          - OVERRIDE
+          - CUSTOM_CRITERIA
+          - CONNECTOR_CRITERIA
+          - SINGLE_LEVEL_CRITERIA
+          example: OVERRIDE
+          nullable: true
+          type: string
+        inherited:
+          description: "Inherited privilege level on the entitlement, if any"
+          enum:
+          - HIGH
+          - LOW
+          - MEDIUM
+          - NONE
+          nullable: true
+          type: string
+          example: null
+        effective:
+          description: Effective privilege level assigned to the entitlement
+          enum:
+          - HIGH
+          - LOW
+          - MEDIUM
+          - NONE
+          example: HIGH
+          type: string
+      title: Requested Account Ref
+      type: object
+    AccessModelMetadata:
+      description: Metadata that describes an access item
+      example:
+        multiselect: true
+        values:
+        - name: Development
+          value: development
+          status: active
+        - name: Development
+          value: development
+          status: active
+        name: CSP
+        description: Indicates the type of deployment environment of an access item.
+        type: governance
+        objectTypes:
+        - general
+        key: iscCsp
+        status: active
+      properties:
+        key:
+          description: Unique identifier for the metadata type
+          example: iscCsp
+          type: string
+        name:
+          description: Human readable name of the metadata type
+          example: CSP
+          type: string
+        multiselect:
+          default: false
+          description: Allows selecting multiple values
+          example: true
+          type: boolean
+        status:
+          description: The state of the metadata item
+          example: active
+          type: string
+        type:
+          description: The type of the metadata item
+          example: governance
+          type: string
+        objectTypes:
+          description: The types of objects
+          example:
+          - general
+          items:
+            example: general
+            type: string
+          type: array
+        description:
+          description: Describes the metadata item
+          example: Indicates the type of deployment environment of an access item.
+          type: string
+        values:
+          description: The value to assign to the metadata item
+          items:
+            $ref: '#/components/schemas/AccessModelMetadata_values_inner'
+          type: array
+      title: Access Model Metadata
+      type: object
+    PermissionDTO:
+      description: "Simplified DTO for the Permission objects stored in SailPoint's\
+        \ database. The data is aggregated from customer systems and is free-form,\
+        \ so its appearance can vary largely between different clients/customers."
+      example:
+        rights: HereIsRight1
+        target: SYS.GV_$TRANSACTION
+      properties:
+        rights:
+          description: All the rights (e.g. actions) that this permission allows on
+            the target
+          example: HereIsRight1
+          items:
+            example: SELECT
+            type: string
+          readOnly: true
+          type: array
+        target:
+          description: The target the permission would grants rights on.
+          example: SYS.GV_$TRANSACTION
+          readOnly: true
+          type: string
+      title: Permission DTO
+      type: object
+    EntitlementV2:
+      example:
+        owner:
+          name: john.doe
+          id: 2c9180827ca885d7017ca8ce28a000eb
+          type: IDENTITY
+        privilegeLevel:
+          effective: HIGH
+          inherited: HIGH
+          direct: HIGH
+          setByType: OVERRIDE
+          setBy: SAILPOINT_MIGRATION
+        created: 2020-10-08T18:33:52.029Z
+        description: "This entitlement allows users to access the accounts payable\
+          \ module of the organization's financial management system. Users can view,\
+          \ process, and approve invoices, manage vendor relationships, and perform\
+          \ other accounts payable-related tasks."
+        source:
+          name: ODS-AD-Source
+          id: 2c9180827ca885d7017ca8ce28a000eb
+          type: SOURCE
+        tags:
+        - tag1
+        - tag2
+        segments:
+        - f7b1b8a3-5fed-4fd4-ad29-82014e137e19
+        - 29cb6c06-1da8-43ea-8be4-b3125f248f2a
+        directPermissions:
+        - rights: HereIsRight1
+          target: SYS.GV_$TRANSACTION
+        - rights: HereIsRight1
+          target: SYS.GV_$TRANSACTION
+        manuallyUpdatedFields:
+          DISPLAY_NAME: true
+          DESCRIPTION: true
+        name: Account Payable
+        modified: 2020-10-08T18:33:52.029Z
+        sourceSchemaObjectType: group
+        accessModelMetadata:
+          attributes:
+          - multiselect: true
+            values:
+            - name: Development
+              value: development
+              status: active
+            - name: Development
+              value: development
+              status: active
+            name: CSP
+            description: Indicates the type of deployment environment of an access
+              item.
+            type: governance
+            objectTypes:
+            - general
+            key: iscCsp
+            status: active
+          - multiselect: true
+            values:
+            - name: Development
+              value: development
+              status: active
+            - name: Development
+              value: development
+              status: active
+            name: CSP
+            description: Indicates the type of deployment environment of an access
+              item.
+            type: governance
+            objectTypes:
+            - general
+            key: iscCsp
+            status: active
+        attributes:
+          fieldName: fieldValue
+        id: 2c91808874ff91550175097daaec161c
+        attribute: memberOf
+        requestable: true
+        value: "CN=Account Payable,OU=Finance,DC=xyz company"
+        cloudGoverned: true
+      properties:
+        id:
+          description: The entitlement id
+          example: 2c91808874ff91550175097daaec161c
+          type: string
+        name:
+          description: The entitlement name
+          example: Account Payable
+          type: string
+        attribute:
+          description: The entitlement attribute name
+          example: memberOf
+          type: string
+        value:
+          description: The value of the entitlement
+          example: "CN=Account Payable,OU=Finance,DC=xyz company"
+          type: string
+        sourceSchemaObjectType:
+          description: The object type of the entitlement from the source schema
+          example: group
+          type: string
+        description:
+          description: The description of the entitlement
+          example: "This entitlement allows users to access the accounts payable module\
+            \ of the organization's financial management system. Users can view, process,\
+            \ and approve invoices, manage vendor relationships, and perform other\
+            \ accounts payable-related tasks."
+          nullable: true
+          type: string
+        privilegeLevel:
+          $ref: '#/components/schemas/EntitlementV2_privilegeLevel'
+        tags:
+          description: List of tags assigned to the entitlement
+          example:
+          - tag1
+          - tag2
+          items:
+            type: string
+          nullable: true
+          type: array
+        cloudGoverned:
+          default: false
+          description: True if the entitlement is cloud governed
+          example: true
+          type: boolean
+        requestable:
+          default: false
+          description: True if the entitlement is able to be directly requested
+          example: true
+          type: boolean
+        owner:
+          $ref: '#/components/schemas/EntitlementV2_owner'
+        manuallyUpdatedFields:
+          additionalProperties: true
+          description: "A map of entitlement fields that have been manually updated.\
+            \ The key is the field name in UPPER_SNAKE_CASE format, and the value\
+            \ is true or false to indicate if the field has been updated."
+          example:
+            DISPLAY_NAME: true
+            DESCRIPTION: true
+          nullable: true
+          type: object
+        accessModelMetadata:
+          $ref: '#/components/schemas/EntitlementV2_accessModelMetadata'
+        created:
+          description: Time when the entitlement was created
+          example: 2020-10-08T18:33:52.029Z
+          format: date-time
+          type: string
+        modified:
+          description: Time when the entitlement was last modified
+          example: 2020-10-08T18:33:52.029Z
+          format: date-time
+          type: string
+        source:
+          $ref: '#/components/schemas/EntitlementV2_source'
+        attributes:
+          additionalProperties: true
+          description: A map of free-form key-value pairs from the source system
+          example:
+            fieldName: fieldValue
+          type: object
+        segments:
+          description: "List of IDs of segments, if any, to which this Entitlement\
+            \ is assigned."
+          example:
+          - f7b1b8a3-5fed-4fd4-ad29-82014e137e19
+          - 29cb6c06-1da8-43ea-8be4-b3125f248f2a
+          items:
+            type: string
+          nullable: true
+          type: array
+        directPermissions:
+          items:
+            $ref: '#/components/schemas/PermissionDTO'
+          type: array
+      title: Entitlement
+      type: object
+    Rolelistfilterdtov2:
+      description: "Request body for filtering roles by metadata and filter expression,\
+        \ including privilegeLevel.effective."
+      example:
+        ammKeyValues:
+        - attribute: iscFederalClassifications
+          values:
+          - secret
+        filters: "privilegeLevel.effective in (\"HIGH\",\"MEDIUM\")"
+      properties:
+        filters:
+          default: ""
+          description: |-
+            Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)
+
+            Filtering is supported for the following fields and operators:
+
+            **id**: *eq, in*
+
+            **name**: *eq, in, sw, co*
+
+            **created**: *gt, lt, ge, le*
+
+            **modified**: *gt, lt, ge, le*
+
+            **type**: *eq, in*
+
+            **owner.id**: *eq, in*
+
+            **additionalOwners.id**: *eq, in*
+
+            **requestable**: *eq*
+
+            **dimensional**: *eq*
+
+            **source.id**: *eq, in*
+
+            **entitlement.id**: *eq, in*
+
+            **entitlement.name**: *eq, sw, co*
+
+            **accessProfile.id**: *eq, in*
+
+            **accessProfile.name**: *eq, sw, co*
+
+            **privilegeLevel.effective**: *eq, in*
+
+            Supported composite operators are *and, or*
+          example: "privilegeLevel.effective in (\"HIGH\",\"MEDIUM\")"
+          type: string
+        ammKeyValues:
+          default: []
+          example:
+          - attribute: iscFederalClassifications
+            values:
+            - secret
+          items:
+            $ref: '#/components/schemas/Rolelistfilterdtov2_ammKeyValues_inner'
+          type: array
+      type: object
     Role:
       description: A Role
       example:
@@ -3291,83 +4984,6 @@ components:
       - name
       - owner
       type: object
-    LocaleOrigin:
-      description: "An indicator of how the locale was selected. *DEFAULT* means the\
-        \ locale is the system default. *REQUEST* means the locale was selected from\
-        \ the request context (i.e., best match based on the *Accept-Language* header).\
-        \ Additional values may be added in the future without notice."
-      enum:
-      - DEFAULT
-      - REQUEST
-      - null
-      example: DEFAULT
-      nullable: true
-      type: string
-    ErrorMessageDto:
-      example:
-        localeOrigin: DEFAULT
-        text: The request was syntactically correct but its content is semantically
-          invalid.
-        locale: en-US
-      properties:
-        locale:
-          description: "The locale for the message text, a BCP 47 language tag."
-          example: en-US
-          nullable: true
-          type: string
-        localeOrigin:
-          $ref: '#/components/schemas/LocaleOrigin'
-        text:
-          description: Actual text of the error message in the indicated locale.
-          example: The request was syntactically correct but its content is semantically
-            invalid.
-          type: string
-      title: Error Message Dto
-      type: object
-    ErrorResponseDto:
-      example:
-        causes:
-        - localeOrigin: DEFAULT
-          text: The request was syntactically correct but its content is semantically
-            invalid.
-          locale: en-US
-        - localeOrigin: DEFAULT
-          text: The request was syntactically correct but its content is semantically
-            invalid.
-          locale: en-US
-        messages:
-        - localeOrigin: DEFAULT
-          text: The request was syntactically correct but its content is semantically
-            invalid.
-          locale: en-US
-        - localeOrigin: DEFAULT
-          text: The request was syntactically correct but its content is semantically
-            invalid.
-          locale: en-US
-        detailCode: 400.1 Bad Request Content
-        trackingId: e7eab60924f64aa284175b9fa3309599
-      properties:
-        detailCode:
-          description: Fine-grained error code providing more detail of the error.
-          example: 400.1 Bad Request Content
-          type: string
-        trackingId:
-          description: Unique tracking id for the error.
-          example: e7eab60924f64aa284175b9fa3309599
-          type: string
-        messages:
-          description: Generic localized reason for error
-          items:
-            $ref: '#/components/schemas/ErrorMessageDto'
-          type: array
-        causes:
-          description: Plain-text descriptive reasons to provide additional detail
-            to the text provided in the messages field
-          items:
-            $ref: '#/components/schemas/ErrorMessageDto'
-          type: array
-      title: Error Response Dto
-      type: object
     JsonPatchOperation:
       description: "A JSONPatch Operation as defined by [RFC 6902 - JSON Patch](https://tools.ietf.org/html/rfc6902)"
       example:
@@ -3474,89 +5090,6 @@ components:
           type: string
         roleAssignmentSource:
           $ref: '#/components/schemas/RoleAssignmentSourceType'
-      type: object
-    AccessModelMetadata:
-      description: Metadata that describes an access item
-      example:
-        multiselect: true
-        values:
-        - name: Development
-          value: development
-          status: active
-        - name: Development
-          value: development
-          status: active
-        name: CSP
-        description: Indicates the type of deployment environment of an access item.
-        type: governance
-        objectTypes:
-        - general
-        key: iscCsp
-        status: active
-      properties:
-        key:
-          description: Unique identifier for the metadata type
-          example: iscCsp
-          type: string
-        name:
-          description: Human readable name of the metadata type
-          example: CSP
-          type: string
-        multiselect:
-          default: false
-          description: Allows selecting multiple values
-          example: true
-          type: boolean
-        status:
-          description: The state of the metadata item
-          example: active
-          type: string
-        type:
-          description: The type of the metadata item
-          example: governance
-          type: string
-        objectTypes:
-          description: The types of objects
-          example:
-          - general
-          items:
-            example: general
-            type: string
-          type: array
-        description:
-          description: Describes the metadata item
-          example: Indicates the type of deployment environment of an access item.
-          type: string
-        values:
-          description: The value to assign to the metadata item
-          items:
-            $ref: '#/components/schemas/AccessModelMetadata_values_inner'
-          type: array
-      title: Access Model Metadata
-      type: object
-    PermissionDTO:
-      description: "Simplified DTO for the Permission objects stored in SailPoint's\
-        \ database. The data is aggregated from customer systems and is free-form,\
-        \ so its appearance can vary largely between different clients/customers."
-      example:
-        rights: HereIsRight1
-        target: SYS.GV_$TRANSACTION
-      properties:
-        rights:
-          description: All the rights (e.g. actions) that this permission allows on
-            the target
-          example: HereIsRight1
-          items:
-            example: SELECT
-            type: string
-          readOnly: true
-          type: array
-        target:
-          description: The target the permission would grants rights on.
-          example: SYS.GV_$TRANSACTION
-          readOnly: true
-          type: string
-      title: Permission DTO
       type: object
     Entitlement:
       example:
@@ -3677,7 +5210,7 @@ components:
           example: true
           type: boolean
         owner:
-          $ref: '#/components/schemas/Entitlement_owner'
+          $ref: '#/components/schemas/EntitlementV2_owner'
         additionalOwners:
           description: List of additional owner references beyond the primary owner.
             Each entry may be an identity (IDENTITY) or a governance group (GOVERNANCE_GROUP).
@@ -3696,7 +5229,7 @@ components:
           nullable: true
           type: object
         accessModelMetadata:
-          $ref: '#/components/schemas/Entitlement_accessModelMetadata'
+          $ref: '#/components/schemas/EntitlementV2_accessModelMetadata'
         created:
           description: Time when the entitlement was created
           example: 2020-10-08T18:33:52.029Z
@@ -4020,7 +5553,7 @@ components:
           nullable: true
           type: array
       type: object
-    listRolesV1_401_response:
+    listRolesV2_401_response:
       example:
         error: "JWT validation failed: JWT is expired"
       properties:
@@ -4028,7 +5561,7 @@ components:
           description: A message describing the error
           example: "JWT validation failed: JWT is expired"
       type: object
-    listRolesV1_429_response:
+    listRolesV2_429_response:
       example:
         message: ' Rate Limit Exceeded '
       properties:
@@ -4036,38 +5569,6 @@ components:
           description: A message describing the error
           example: ' Rate Limit Exceeded '
       type: object
-    array_inner:
-      anyOf:
-      - type: string
-      - type: integer
-      - type: object
-      example:
-      - "001"
-      - "002"
-      - "003"
-    JsonPatchOperation_value:
-      description: "The value to be used for the operation, required for \"add\" and\
-        \ \"replace\" operations"
-      example: New description
-      oneOf:
-      - example: New description
-        title: string
-        type: string
-      - example: true
-        title: boolean
-        type: boolean
-      - example: 300
-        title: integer
-        type: integer
-      - example:
-          attributes:
-            name: philip
-        title: object
-        type: object
-      - items:
-          $ref: '#/components/schemas/array_inner'
-        title: array
-        type: array
     AccessModelMetadata_values_inner:
       description: An individual value to assign to the metadata item
       example:
@@ -4088,7 +5589,18 @@ components:
           example: active
           type: string
       type: object
-    Entitlement_owner:
+    EntitlementV2_privilegeLevel:
+      allOf:
+      - $ref: '#/components/schemas/EntitlementPrivilegeLevel'
+      - description: Privilege level of the entitlement
+        nullable: true
+      example:
+        effective: HIGH
+        inherited: HIGH
+        direct: HIGH
+        setByType: OVERRIDE
+        setBy: SAILPOINT_MIGRATION
+    EntitlementV2_owner:
       description: The identity that owns the entitlement
       example:
         name: john.doe
@@ -4111,7 +5623,7 @@ components:
           example: john.doe
           type: string
       type: object
-    Entitlement_accessModelMetadata:
+    EntitlementV2_accessModelMetadata:
       description: Additional data to classify the entitlement
       example:
         attributes:
@@ -4151,6 +5663,77 @@ components:
             $ref: '#/components/schemas/AccessModelMetadata'
           type: array
       type: object
+    EntitlementV2_source:
+      example:
+        name: ODS-AD-Source
+        id: 2c9180827ca885d7017ca8ce28a000eb
+        type: SOURCE
+      properties:
+        id:
+          description: The source ID
+          example: 2c9180827ca885d7017ca8ce28a000eb
+          type: string
+        type:
+          description: "The source type, will always be \"SOURCE\""
+          example: SOURCE
+          type: string
+        name:
+          description: The source name
+          example: ODS-AD-Source
+          type: string
+      type: object
+    Rolelistfilterdtov2_ammKeyValues_inner:
+      properties:
+        attribute:
+          description: attribute key of a metadata. A blank value is rejected with
+            a 400 error.
+          example: iscFederalClassifications
+          type: string
+        values:
+          default: []
+          description: "A list of attribute key names to filter roles. If the values\
+            \ is empty, will only filter by attribute key."
+          example:
+          - secret
+          items:
+            example: secret
+            type: string
+          type: array
+      required:
+      - attribute
+      type: object
+    array_inner:
+      anyOf:
+      - type: string
+      - type: integer
+      - type: object
+      example:
+      - "001"
+      - "002"
+      - "003"
+    JsonPatchOperation_value:
+      description: "The value to be used for the operation, required for \"add\" and\
+        \ \"replace\" operations"
+      example: New description
+      oneOf:
+      - example: New description
+        title: string
+        type: string
+      - example: true
+        title: boolean
+        type: boolean
+      - example: 300
+        title: integer
+        type: integer
+      - example:
+          attributes:
+            name: philip
+        title: object
+        type: object
+      - items:
+          $ref: '#/components/schemas/array_inner'
+        title: array
+        type: array
     Entitlement_source:
       example:
         name: Corporate Active Directory

@@ -1,15 +1,15 @@
 ---
-id: v1-entitlement-owner
-title: EntitlementOwner
-pagination_label: EntitlementOwner
-sidebar_label: EntitlementOwner
+id: v1-entitlement-v2-owner
+title: EntitlementV2Owner
+pagination_label: EntitlementV2Owner
+sidebar_label: EntitlementV2Owner
 sidebar_class_name: gosdk
-keywords: ['go', 'Golang', 'sdk', 'EntitlementOwner', 'V1EntitlementOwner'] 
-slug: /tools/sdk/go/roles/models/entitlement-owner
-tags: ['SDK', 'Software Development Kit', 'EntitlementOwner', 'V1EntitlementOwner']
+keywords: ['go', 'Golang', 'sdk', 'EntitlementV2Owner', 'V1EntitlementV2Owner'] 
+slug: /tools/sdk/go/roles/models/entitlement-v2-owner
+tags: ['SDK', 'Software Development Kit', 'EntitlementV2Owner', 'V1EntitlementV2Owner']
 ---
 
-# EntitlementOwner
+# EntitlementV2Owner
 
 ## Properties
 
@@ -21,95 +21,95 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewEntitlementOwner
+### NewEntitlementV2Owner
 
-`func NewEntitlementOwner() *EntitlementOwner`
+`func NewEntitlementV2Owner() *EntitlementV2Owner`
 
-NewEntitlementOwner instantiates a new EntitlementOwner object
+NewEntitlementV2Owner instantiates a new EntitlementV2Owner object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewEntitlementOwnerWithDefaults
+### NewEntitlementV2OwnerWithDefaults
 
-`func NewEntitlementOwnerWithDefaults() *EntitlementOwner`
+`func NewEntitlementV2OwnerWithDefaults() *EntitlementV2Owner`
 
-NewEntitlementOwnerWithDefaults instantiates a new EntitlementOwner object
+NewEntitlementV2OwnerWithDefaults instantiates a new EntitlementV2Owner object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetId
 
-`func (o *EntitlementOwner) GetId() string`
+`func (o *EntitlementV2Owner) GetId() string`
 
 GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *EntitlementOwner) GetIdOk() (*string, bool)`
+`func (o *EntitlementV2Owner) GetIdOk() (*string, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetId
 
-`func (o *EntitlementOwner) SetId(v string)`
+`func (o *EntitlementV2Owner) SetId(v string)`
 
 SetId sets Id field to given value.
 
 ### HasId
 
-`func (o *EntitlementOwner) HasId() bool`
+`func (o *EntitlementV2Owner) HasId() bool`
 
 HasId returns a boolean if a field has been set.
 
 ### GetType
 
-`func (o *EntitlementOwner) GetType() string`
+`func (o *EntitlementV2Owner) GetType() string`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *EntitlementOwner) GetTypeOk() (*string, bool)`
+`func (o *EntitlementV2Owner) GetTypeOk() (*string, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *EntitlementOwner) SetType(v string)`
+`func (o *EntitlementV2Owner) SetType(v string)`
 
 SetType sets Type field to given value.
 
 ### HasType
 
-`func (o *EntitlementOwner) HasType() bool`
+`func (o *EntitlementV2Owner) HasType() bool`
 
 HasType returns a boolean if a field has been set.
 
 ### GetName
 
-`func (o *EntitlementOwner) GetName() string`
+`func (o *EntitlementV2Owner) GetName() string`
 
 GetName returns the Name field if non-nil, zero value otherwise.
 
 ### GetNameOk
 
-`func (o *EntitlementOwner) GetNameOk() (*string, bool)`
+`func (o *EntitlementV2Owner) GetNameOk() (*string, bool)`
 
 GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetName
 
-`func (o *EntitlementOwner) SetName(v string)`
+`func (o *EntitlementV2Owner) SetName(v string)`
 
 SetName sets Name field to given value.
 
 ### HasName
 
-`func (o *EntitlementOwner) HasName() bool`
+`func (o *EntitlementV2Owner) HasName() bool`
 
 HasName returns a boolean if a field has been set.
 
