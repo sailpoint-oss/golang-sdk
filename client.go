@@ -110,6 +110,7 @@ import (
 	public_identities "github.com/sailpoint-oss/golang-sdk/v3/public_identities"
 	public_identities_config "github.com/sailpoint-oss/golang-sdk/v3/public_identities_config"
 	public_machine_identities "github.com/sailpoint-oss/golang-sdk/v3/public_machine_identities"
+	reminder_escalations "github.com/sailpoint-oss/golang-sdk/v3/reminder_escalations"
 	reports_data_extraction "github.com/sailpoint-oss/golang-sdk/v3/reports_data_extraction"
 	requestable_objects "github.com/sailpoint-oss/golang-sdk/v3/requestable_objects"
 	role_insights "github.com/sailpoint-oss/golang-sdk/v3/role_insights"
@@ -259,6 +260,7 @@ type APIClient struct {
 	PublicIdentitiesAPI *public_identities.PublicIdentitiesAPIService
 	PublicIdentitiesConfigAPI *public_identities_config.PublicIdentitiesConfigAPIService
 	PublicMachineIdentitiesAPI *public_machine_identities.PublicMachineIdentitiesAPIService
+	ReminderEscalationsAPI *reminder_escalations.ReminderEscalationsAPIService
 	ReportsDataExtractionAPI *reports_data_extraction.ReportsDataExtractionAPIService
 	RequestableObjectsAPI *requestable_objects.RequestableObjectsAPIService
 	RoleInsightsAPI *role_insights.RoleInsightsAPIService
@@ -1414,6 +1416,18 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	)
 	_cfgPublicMachineIdentities.HTTPClient = cfg.HTTPClient
 	c.PublicMachineIdentitiesAPI = public_machine_identities.NewAPIClient(_cfgPublicMachineIdentities).PublicMachineIdentitiesAPI
+
+	_cfgReminderEscalations := reminder_escalations.NewConfiguration(
+		cfg.ClientConfiguration.ClientId,
+		cfg.ClientConfiguration.ClientSecret,
+		cfg.ClientConfiguration.BaseURL,
+		cfg.ClientConfiguration.TokenURL,
+		cfg.ClientConfiguration.Token,
+		consumerSuffix,
+		cfg.Experimental,
+	)
+	_cfgReminderEscalations.HTTPClient = cfg.HTTPClient
+	c.ReminderEscalationsAPI = reminder_escalations.NewAPIClient(_cfgReminderEscalations).ReminderEscalationsAPI
 
 	_cfgReportsDataExtraction := reports_data_extraction.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,

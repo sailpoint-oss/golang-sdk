@@ -16,17 +16,17 @@ tags: ['SDK', 'Software Development Kit', 'LifecycleActionSubmitResponse', 'V1Li
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **RequestId** | **string** | Unique identifier for the created lifecycle request. | 
-**Status** | **string** | Initial lifecycle request status. | 
+**Status** | **Lifecyclestatus** |  | 
 **Action** | **Lifecycleaction** |  | 
-**TargetId** | **string** | Internal machine identity UUID for the lifecycle target. | 
-**ResourceId** | Pointer to **string** | Connector resource id for the lifecycle target, when present. | [optional] 
+**TargetId** | **string** | ID of the machine identity the request applies to. | 
+**ResourceId** | Pointer to **string** | ID of the machine identity in its source system, when available. | [optional] 
 **CreatedAt** | **SailPointTime** | Time when the lifecycle request was created (ISO-8601). | 
 
 ## Methods
 
 ### NewLifecycleActionSubmitResponse
 
-`func NewLifecycleActionSubmitResponse(requestId string, status string, action Lifecycleaction, targetId string, createdAt SailPointTime, ) *LifecycleActionSubmitResponse`
+`func NewLifecycleActionSubmitResponse(requestId string, status Lifecyclestatus, action Lifecycleaction, targetId string, createdAt SailPointTime, ) *LifecycleActionSubmitResponse`
 
 NewLifecycleActionSubmitResponse instantiates a new LifecycleActionSubmitResponse object
 This constructor will assign default values to properties that have it defined,
@@ -63,20 +63,20 @@ SetRequestId sets RequestId field to given value.
 
 ### GetStatus
 
-`func (o *LifecycleActionSubmitResponse) GetStatus() string`
+`func (o *LifecycleActionSubmitResponse) GetStatus() Lifecyclestatus`
 
 GetStatus returns the Status field if non-nil, zero value otherwise.
 
 ### GetStatusOk
 
-`func (o *LifecycleActionSubmitResponse) GetStatusOk() (*string, bool)`
+`func (o *LifecycleActionSubmitResponse) GetStatusOk() (*Lifecyclestatus, bool)`
 
 GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStatus
 
-`func (o *LifecycleActionSubmitResponse) SetStatus(v string)`
+`func (o *LifecycleActionSubmitResponse) SetStatus(v Lifecyclestatus)`
 
 SetStatus sets Status field to given value.
 

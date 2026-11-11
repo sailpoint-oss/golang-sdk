@@ -19,8 +19,8 @@ Name | Type | Description | Notes
 **TenantId** | Pointer to **string** | The Tenant ID of the Approval | [optional] 
 **Type** | Pointer to **string** | The type of the approval, such as ENTITLEMENT_DESCRIPTIONS, CUSTOM_ACCESS_REQUEST_APPROVAL, GENERIC_APPROVAL | [optional] 
 **Approvers** | Pointer to [**[]ApprovalIdentity**](approval-identity) | Object representation of an approver of an approval | [optional] 
-**CreatedDate** | Pointer to **string** | Date the approval was created | [optional] 
-**DueDate** | Pointer to **string** | Date the approval is due | [optional] 
+**CreatedDate** | Pointer to **SailPointTime** | Date the approval was created | [optional] 
+**DueDate** | Pointer to **SailPointTime** | Date the approval is due | [optional] 
 **EscalationStep** | Pointer to **string** | Step in the escalation process. If set to 0, the approval is not escalated. If set to 1, the approval is escalated to the first approver in the escalation chain. | [optional] 
 **SerialStep** | Pointer to **int64** | The serial step of the approval in the approval chain. For example, serialStep 1 is the first approval to action in an approval request chain. Parallel approvals are set to 0. | [optional] 
 **IsEscalated** | Pointer to **bool** | Whether or not the approval has been escalated. Will reset to false when the approval is actioned on. | [optional] [default to false]
@@ -36,14 +36,14 @@ Name | Type | Description | Notes
 **ApprovedBy** | Pointer to [**[]ApprovalIdentityRecord**](approval-identity-record) | Array of approvers who have approved the approval | [optional] 
 **RejectedBy** | Pointer to [**[]ApprovalIdentityRecord**](approval-identity-record) | Array of approvers who have rejected the approval | [optional] 
 **AssignedTo** | Pointer to [**[]ApprovalIdentity**](approval-identity) | Array of identities that the approval request is currently assigned to/waiting on. For parallel approvals, this is set to all approvers left to approve. | [optional] 
-**CompletedDate** | Pointer to **string** | Date the approval was completed | [optional] 
+**CompletedDate** | Pointer to **SailPointTime** | Date the approval was completed | [optional] 
 **ApprovalCriteria** | Pointer to [**Approval2ApprovalCriteria**](approval2-approval-criteria) |  | [optional] 
 **AdditionalAttributes** | Pointer to **string** | Json string representing additional attributes known about the object to be approved. | [optional] 
 **ReferenceData** | Pointer to [**[]ApprovalReference**](approval-reference) | Reference data related to the approval | [optional] 
 **ReassignmentHistory** | Pointer to [**[]ApprovalReassignmentHistory**](approval-reassignment-history) | History of whom the approval request was assigned to | [optional] 
 **StaticAttributes** | Pointer to **map[string]interface{}** | Field that can include any static additional info that may be needed by the service that the approval request originated from | [optional] 
 **ModifiedDate** | Pointer to **SailPointTime** | Date/time that the approval request was last updated | [optional] 
-**RequestedTarget** | Pointer to [**[]ApprovalRequestedTarget**](approval-requested-target) | RequestedTarget used to specify the actual object or target the approval request is for | [optional] 
+**RequestedTarget** | Pointer to [**ApprovalRequestedTarget**](approval-requested-target) |  | [optional] 
 
 ## Methods
 
@@ -166,20 +166,20 @@ HasApprovers returns a boolean if a field has been set.
 
 ### GetCreatedDate
 
-`func (o *Approval2) GetCreatedDate() string`
+`func (o *Approval2) GetCreatedDate() SailPointTime`
 
 GetCreatedDate returns the CreatedDate field if non-nil, zero value otherwise.
 
 ### GetCreatedDateOk
 
-`func (o *Approval2) GetCreatedDateOk() (*string, bool)`
+`func (o *Approval2) GetCreatedDateOk() (*SailPointTime, bool)`
 
 GetCreatedDateOk returns a tuple with the CreatedDate field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreatedDate
 
-`func (o *Approval2) SetCreatedDate(v string)`
+`func (o *Approval2) SetCreatedDate(v SailPointTime)`
 
 SetCreatedDate sets CreatedDate field to given value.
 
@@ -191,20 +191,20 @@ HasCreatedDate returns a boolean if a field has been set.
 
 ### GetDueDate
 
-`func (o *Approval2) GetDueDate() string`
+`func (o *Approval2) GetDueDate() SailPointTime`
 
 GetDueDate returns the DueDate field if non-nil, zero value otherwise.
 
 ### GetDueDateOk
 
-`func (o *Approval2) GetDueDateOk() (*string, bool)`
+`func (o *Approval2) GetDueDateOk() (*SailPointTime, bool)`
 
 GetDueDateOk returns a tuple with the DueDate field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDueDate
 
-`func (o *Approval2) SetDueDate(v string)`
+`func (o *Approval2) SetDueDate(v SailPointTime)`
 
 SetDueDate sets DueDate field to given value.
 
@@ -591,20 +591,20 @@ HasAssignedTo returns a boolean if a field has been set.
 
 ### GetCompletedDate
 
-`func (o *Approval2) GetCompletedDate() string`
+`func (o *Approval2) GetCompletedDate() SailPointTime`
 
 GetCompletedDate returns the CompletedDate field if non-nil, zero value otherwise.
 
 ### GetCompletedDateOk
 
-`func (o *Approval2) GetCompletedDateOk() (*string, bool)`
+`func (o *Approval2) GetCompletedDateOk() (*SailPointTime, bool)`
 
 GetCompletedDateOk returns a tuple with the CompletedDate field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCompletedDate
 
-`func (o *Approval2) SetCompletedDate(v string)`
+`func (o *Approval2) SetCompletedDate(v SailPointTime)`
 
 SetCompletedDate sets CompletedDate field to given value.
 
@@ -766,20 +766,20 @@ HasModifiedDate returns a boolean if a field has been set.
 
 ### GetRequestedTarget
 
-`func (o *Approval2) GetRequestedTarget() []ApprovalRequestedTarget`
+`func (o *Approval2) GetRequestedTarget() ApprovalRequestedTarget`
 
 GetRequestedTarget returns the RequestedTarget field if non-nil, zero value otherwise.
 
 ### GetRequestedTargetOk
 
-`func (o *Approval2) GetRequestedTargetOk() (*[]ApprovalRequestedTarget, bool)`
+`func (o *Approval2) GetRequestedTargetOk() (*ApprovalRequestedTarget, bool)`
 
 GetRequestedTargetOk returns a tuple with the RequestedTarget field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRequestedTarget
 
-`func (o *Approval2) SetRequestedTarget(v []ApprovalRequestedTarget)`
+`func (o *Approval2) SetRequestedTarget(v ApprovalRequestedTarget)`
 
 SetRequestedTarget sets RequestedTarget field to given value.
 

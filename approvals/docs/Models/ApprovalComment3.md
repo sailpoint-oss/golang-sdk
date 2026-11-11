@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Author** | Pointer to [**ApprovalIdentity**](approval-identity) |  | [optional] 
 **Comment** | Pointer to **string** | Comment to be left on an approval | [optional] 
-**CreatedDate** | Pointer to **string** | Date the comment was created | [optional] 
+**CreatedDate** | Pointer to **SailPointTime** | Date the comment was created | [optional] 
 **CommentId** | Pointer to **string** | ID of the comment | [optional] 
 
 ## Methods
@@ -91,20 +91,20 @@ HasComment returns a boolean if a field has been set.
 
 ### GetCreatedDate
 
-`func (o *ApprovalComment3) GetCreatedDate() string`
+`func (o *ApprovalComment3) GetCreatedDate() SailPointTime`
 
 GetCreatedDate returns the CreatedDate field if non-nil, zero value otherwise.
 
 ### GetCreatedDateOk
 
-`func (o *ApprovalComment3) GetCreatedDateOk() (*string, bool)`
+`func (o *ApprovalComment3) GetCreatedDateOk() (*SailPointTime, bool)`
 
 GetCreatedDateOk returns a tuple with the CreatedDate field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreatedDate
 
-`func (o *ApprovalComment3) SetCreatedDate(v string)`
+`func (o *ApprovalComment3) SetCreatedDate(v SailPointTime)`
 
 SetCreatedDate sets CreatedDate field to given value.
 

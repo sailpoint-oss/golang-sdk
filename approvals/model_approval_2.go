@@ -29,9 +29,9 @@ type Approval2 struct {
 	// Object representation of an approver of an approval
 	Approvers []ApprovalIdentity `json:"approvers,omitempty"`
 	// Date the approval was created
-	CreatedDate *string `json:"createdDate,omitempty"`
+	CreatedDate *SailPointTime `json:"createdDate,omitempty"`
 	// Date the approval is due
-	DueDate *string `json:"dueDate,omitempty"`
+	DueDate *SailPointTime `json:"dueDate,omitempty"`
 	// Step in the escalation process. If set to 0, the approval is not escalated. If set to 1, the approval is escalated to the first approver in the escalation chain.
 	EscalationStep *string `json:"escalationStep,omitempty"`
 	// The serial step of the approval in the approval chain. For example, serialStep 1 is the first approval to action in an approval request chain. Parallel approvals are set to 0.
@@ -59,7 +59,7 @@ type Approval2 struct {
 	// Array of identities that the approval request is currently assigned to/waiting on. For parallel approvals, this is set to all approvers left to approve.
 	AssignedTo []ApprovalIdentity `json:"assignedTo,omitempty"`
 	// Date the approval was completed
-	CompletedDate *string `json:"completedDate,omitempty"`
+	CompletedDate *SailPointTime `json:"completedDate,omitempty"`
 	ApprovalCriteria *Approval2ApprovalCriteria `json:"approvalCriteria,omitempty"`
 	// Json string representing additional attributes known about the object to be approved.
 	AdditionalAttributes *string `json:"additionalAttributes,omitempty"`
@@ -71,8 +71,7 @@ type Approval2 struct {
 	StaticAttributes map[string]interface{} `json:"staticAttributes,omitempty"`
 	// Date/time that the approval request was last updated
 	ModifiedDate *SailPointTime `json:"modifiedDate,omitempty"`
-	// RequestedTarget used to specify the actual object or target the approval request is for
-	RequestedTarget []ApprovalRequestedTarget `json:"requestedTarget,omitempty"`
+	RequestedTarget *ApprovalRequestedTarget `json:"requestedTarget,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -228,9 +227,9 @@ func (o *Approval2) SetApprovers(v []ApprovalIdentity) {
 }
 
 // GetCreatedDate returns the CreatedDate field value if set, zero value otherwise.
-func (o *Approval2) GetCreatedDate() string {
+func (o *Approval2) GetCreatedDate() SailPointTime {
 	if o == nil || IsNil(o.CreatedDate) {
-		var ret string
+		var ret SailPointTime
 		return ret
 	}
 	return *o.CreatedDate
@@ -238,7 +237,7 @@ func (o *Approval2) GetCreatedDate() string {
 
 // GetCreatedDateOk returns a tuple with the CreatedDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Approval2) GetCreatedDateOk() (*string, bool) {
+func (o *Approval2) GetCreatedDateOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.CreatedDate) {
 		return nil, false
 	}
@@ -254,15 +253,15 @@ func (o *Approval2) HasCreatedDate() bool {
 	return false
 }
 
-// SetCreatedDate gets a reference to the given string and assigns it to the CreatedDate field.
-func (o *Approval2) SetCreatedDate(v string) {
+// SetCreatedDate gets a reference to the given SailPointTime and assigns it to the CreatedDate field.
+func (o *Approval2) SetCreatedDate(v SailPointTime) {
 	o.CreatedDate = &v
 }
 
 // GetDueDate returns the DueDate field value if set, zero value otherwise.
-func (o *Approval2) GetDueDate() string {
+func (o *Approval2) GetDueDate() SailPointTime {
 	if o == nil || IsNil(o.DueDate) {
-		var ret string
+		var ret SailPointTime
 		return ret
 	}
 	return *o.DueDate
@@ -270,7 +269,7 @@ func (o *Approval2) GetDueDate() string {
 
 // GetDueDateOk returns a tuple with the DueDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Approval2) GetDueDateOk() (*string, bool) {
+func (o *Approval2) GetDueDateOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.DueDate) {
 		return nil, false
 	}
@@ -286,8 +285,8 @@ func (o *Approval2) HasDueDate() bool {
 	return false
 }
 
-// SetDueDate gets a reference to the given string and assigns it to the DueDate field.
-func (o *Approval2) SetDueDate(v string) {
+// SetDueDate gets a reference to the given SailPointTime and assigns it to the DueDate field.
+func (o *Approval2) SetDueDate(v SailPointTime) {
 	o.DueDate = &v
 }
 
@@ -772,9 +771,9 @@ func (o *Approval2) SetAssignedTo(v []ApprovalIdentity) {
 }
 
 // GetCompletedDate returns the CompletedDate field value if set, zero value otherwise.
-func (o *Approval2) GetCompletedDate() string {
+func (o *Approval2) GetCompletedDate() SailPointTime {
 	if o == nil || IsNil(o.CompletedDate) {
-		var ret string
+		var ret SailPointTime
 		return ret
 	}
 	return *o.CompletedDate
@@ -782,7 +781,7 @@ func (o *Approval2) GetCompletedDate() string {
 
 // GetCompletedDateOk returns a tuple with the CompletedDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Approval2) GetCompletedDateOk() (*string, bool) {
+func (o *Approval2) GetCompletedDateOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.CompletedDate) {
 		return nil, false
 	}
@@ -798,8 +797,8 @@ func (o *Approval2) HasCompletedDate() bool {
 	return false
 }
 
-// SetCompletedDate gets a reference to the given string and assigns it to the CompletedDate field.
-func (o *Approval2) SetCompletedDate(v string) {
+// SetCompletedDate gets a reference to the given SailPointTime and assigns it to the CompletedDate field.
+func (o *Approval2) SetCompletedDate(v SailPointTime) {
 	o.CompletedDate = &v
 }
 
@@ -996,17 +995,17 @@ func (o *Approval2) SetModifiedDate(v SailPointTime) {
 }
 
 // GetRequestedTarget returns the RequestedTarget field value if set, zero value otherwise.
-func (o *Approval2) GetRequestedTarget() []ApprovalRequestedTarget {
+func (o *Approval2) GetRequestedTarget() ApprovalRequestedTarget {
 	if o == nil || IsNil(o.RequestedTarget) {
-		var ret []ApprovalRequestedTarget
+		var ret ApprovalRequestedTarget
 		return ret
 	}
-	return o.RequestedTarget
+	return *o.RequestedTarget
 }
 
 // GetRequestedTargetOk returns a tuple with the RequestedTarget field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Approval2) GetRequestedTargetOk() ([]ApprovalRequestedTarget, bool) {
+func (o *Approval2) GetRequestedTargetOk() (*ApprovalRequestedTarget, bool) {
 	if o == nil || IsNil(o.RequestedTarget) {
 		return nil, false
 	}
@@ -1022,9 +1021,9 @@ func (o *Approval2) HasRequestedTarget() bool {
 	return false
 }
 
-// SetRequestedTarget gets a reference to the given []ApprovalRequestedTarget and assigns it to the RequestedTarget field.
-func (o *Approval2) SetRequestedTarget(v []ApprovalRequestedTarget) {
-	o.RequestedTarget = v
+// SetRequestedTarget gets a reference to the given ApprovalRequestedTarget and assigns it to the RequestedTarget field.
+func (o *Approval2) SetRequestedTarget(v ApprovalRequestedTarget) {
+	o.RequestedTarget = &v
 }
 
 func (o Approval2) MarshalJSON() ([]byte, error) {

@@ -22,12 +22,12 @@ var _ MappedNullable = &CancelLifecycleActionResponse{}
 type CancelLifecycleActionResponse struct {
 	// Lifecycle request identifier.
 	RequestId string `json:"requestId"`
-	// Updated lifecycle request status after cancel acceptance.
+	// Status of the request after the cancel is accepted. Always `CANCELING`.
 	Status string `json:"status"`
 	Action Lifecycleaction `json:"action"`
-	// Internal machine identity UUID for the lifecycle target.
+	// ID of the machine identity the request applies to.
 	TargetId string `json:"targetId"`
-	// Connector resource id for the lifecycle target, when present.
+	// ID of the machine identity in its source system, when available.
 	ResourceId *string `json:"resourceId,omitempty"`
 	AdditionalProperties map[string]interface{}
 }

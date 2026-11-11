@@ -16,10 +16,10 @@ tags: ['SDK', 'Software Development Kit', 'CancelLifecycleActionResponse', 'V1Ca
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **RequestId** | **string** | Lifecycle request identifier. | 
-**Status** | **string** | Updated lifecycle request status after cancel acceptance. | 
+**Status** | **string** | Status of the request after the cancel is accepted. Always `CANCELING`. | 
 **Action** | **Lifecycleaction** |  | 
-**TargetId** | **string** | Internal machine identity UUID for the lifecycle target. | 
-**ResourceId** | Pointer to **string** | Connector resource id for the lifecycle target, when present. | [optional] 
+**TargetId** | **string** | ID of the machine identity the request applies to. | 
+**ResourceId** | Pointer to **string** | ID of the machine identity in its source system, when available. | [optional] 
 
 ## Methods
 

@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'ApprovalApproveRequest', 'V1ApprovalA
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AdditionalAttributes** | Pointer to **map[string]string** | Additional attributes as key-value pairs that are not part of the standard schema but can be included for custom data. | [optional] 
-**Comment** | Pointer to **string** | Comment associated with the request. | [optional] 
-**OverrideApproverID** | Pointer to **string** | Optional field for ServiceNow Administrators to specify which member of a governance group to override/approve on behalf of. | [optional] 
+**AdditionalAttributes** | Pointer to **map[string]string** | Additional attributes as key-value pairs that are not part of the standard schema but can be included for custom data. | [optional] [default to {}]
+**Comment** | Pointer to **string** | Comment associated with the request. | [optional] [default to ""]
+**OverrideApproverID** | Pointer to **string** | Optional field for ServiceNow Administrators to specify which member of a governance group to override/approve on behalf of. | [optional] [default to ""]
 
 ## Methods
 

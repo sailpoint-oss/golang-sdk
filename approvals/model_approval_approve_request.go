@@ -36,6 +36,10 @@ type _ApprovalApproveRequest ApprovalApproveRequest
 // will change when the set of required properties is changed
 func NewApprovalApproveRequest() *ApprovalApproveRequest {
 	this := ApprovalApproveRequest{}
+	var comment string = ""
+	this.Comment = &comment
+	var overrideApproverID string = ""
+	this.OverrideApproverID = &overrideApproverID
 	return &this
 }
 
@@ -44,6 +48,10 @@ func NewApprovalApproveRequest() *ApprovalApproveRequest {
 // but it doesn't guarantee that properties required by API are set
 func NewApprovalApproveRequestWithDefaults() *ApprovalApproveRequest {
 	this := ApprovalApproveRequest{}
+	var comment string = ""
+	this.Comment = &comment
+	var overrideApproverID string = ""
+	this.OverrideApproverID = &overrideApproverID
 	return &this
 }
 

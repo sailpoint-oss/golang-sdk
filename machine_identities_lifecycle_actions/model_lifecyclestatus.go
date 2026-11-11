@@ -14,7 +14,7 @@ import (
 	"encoding/json"
 )
 
-// Lifecyclestatus Detailed lifecycle request status stored on the lifecycle action request.
+// Lifecyclestatus Status of the lifecycle action request.
 type Lifecyclestatus string
 
 // List of Lifecyclestatus

@@ -24,18 +24,18 @@ type LifecycleActionRequest struct {
 	Id *string `json:"id,omitempty"`
 	// Tenant identifier for the lifecycle request.
 	TenantId *string `json:"tenantId,omitempty"`
-	// Generic request status type discriminator.
+	// Type of request. Always `LIFECYCLE_ACTIONS_REQUEST` for lifecycle action requests.
 	StatusType *string `json:"statusType,omitempty"`
-	// Identity id of the principal that submitted the request.
+	// ID of the identity that submitted the request.
 	RequestedBy *string `json:"requestedBy,omitempty"`
-	// Resource type targeted by the lifecycle request.
+	// Type of machine identity the request applies to.
 	TargetType *string `json:"targetType,omitempty"`
-	// Internal machine identity UUID for the lifecycle target.
+	// ID of the machine identity the request applies to.
 	TargetId *string `json:"targetId,omitempty"`
 	OperationType *Lifecycleaction `json:"operationType,omitempty"`
-	// Temporal workflow identifier for the lifecycle request.
+	// Identifier of the workflow that processes the request.
 	WorkflowId *string `json:"workflowId,omitempty"`
-	// Indicates whether the lifecycle request has reached a terminal state.
+	// Indicates whether the request has finished. A request is finished when its status is `COMPLETED`, `REJECTED`, `FAILED`, or `CANCELED`.
 	Completed *bool `json:"completed,omitempty"`
 	Details *LifecycleActionRequestDetails `json:"details,omitempty"`
 	// Time when the lifecycle request was created (ISO-8601).

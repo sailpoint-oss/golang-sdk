@@ -18,7 +18,7 @@ import (
 // checks if the LifecycleActionRequestDetails type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &LifecycleActionRequestDetails{}
 
-// LifecycleActionRequestDetails Nested lifecycle execution context stored on the lifecycle request.
+// LifecycleActionRequestDetails Details of the lifecycle request, including its status, approval, comments, and provisioning.
 type LifecycleActionRequestDetails struct {
 	Status *Lifecyclestatus `json:"status,omitempty"`
 	Action *Lifecycleaction `json:"action,omitempty"`
@@ -30,20 +30,20 @@ type LifecycleActionRequestDetails struct {
 	CanceledAt *SailPointTime `json:"canceledAt,omitempty"`
 	// Comment provided when the request was canceled.
 	CancelComment *string `json:"cancelComment,omitempty"`
-	// Append-only comment thread for the lifecycle request.
+	// Comments on the lifecycle request, in the order they were added.
 	Comments []LifecycleComment `json:"comments,omitempty"`
-	// Workflow phase where the request failed, when applicable.
+	// Stage where the request failed, when applicable.
 	FailurePhase *string `json:"failurePhase,omitempty"`
 	// Failure reason for the lifecycle request, when applicable.
 	FailureReason *string `json:"failureReason,omitempty"`
 	Resource *LifecycleResourceSummary `json:"resource,omitempty"`
-	// Cached resource owners for the lifecycle target.
+	// Owners of the machine identity at the time the request was submitted.
 	ResourceOwners []LifecycleOwnerReference `json:"resourceOwners,omitempty"`
 	SourceOwner *LifecycleOwnerReference `json:"sourceOwner,omitempty"`
 	Requester *LifecycleRequesterReference `json:"requester,omitempty"`
-	// Approvals identifier when the request was submitted.
+	// ID of the approval request created for this lifecycle request.
 	ApprovalRequestId *string `json:"approvalRequestId,omitempty"`
-	// Approval settings identifier used for the request.
+	// ID of the approval settings used for the request.
 	ApprovalSettingsId *string `json:"approvalSettingsId,omitempty"`
 	Provisioning *LifecycleProvisioning `json:"provisioning,omitempty"`
 	AdditionalProperties map[string]interface{}

@@ -17,7 +17,7 @@ import (
 // checks if the CancelLifecycleActionRequest type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &CancelLifecycleActionRequest{}
 
-// CancelLifecycleActionRequest Optional cancel metadata. The path `requestId`.
+// CancelLifecycleActionRequest Optional details for the cancel request. The request to cancel is identified by the `requestId` in the path.
 type CancelLifecycleActionRequest struct {
 	// Optional cancel comment appended to the lifecycle request comment thread.
 	Comment *string `json:"comment,omitempty"`

@@ -12,6 +12,7 @@ package approvals
 
 import (
 	"encoding/json"
+	
 )
 
 // checks if the ApprovalComment3 type satisfies the MappedNullable interface at compile time
@@ -23,7 +24,7 @@ type ApprovalComment3 struct {
 	// Comment to be left on an approval
 	Comment *string `json:"comment,omitempty"`
 	// Date the comment was created
-	CreatedDate *string `json:"createdDate,omitempty"`
+	CreatedDate *SailPointTime `json:"createdDate,omitempty"`
 	// ID of the comment
 	CommentId *string `json:"commentId,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -113,9 +114,9 @@ func (o *ApprovalComment3) SetComment(v string) {
 }
 
 // GetCreatedDate returns the CreatedDate field value if set, zero value otherwise.
-func (o *ApprovalComment3) GetCreatedDate() string {
+func (o *ApprovalComment3) GetCreatedDate() SailPointTime {
 	if o == nil || IsNil(o.CreatedDate) {
-		var ret string
+		var ret SailPointTime
 		return ret
 	}
 	return *o.CreatedDate
@@ -123,7 +124,7 @@ func (o *ApprovalComment3) GetCreatedDate() string {
 
 // GetCreatedDateOk returns a tuple with the CreatedDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApprovalComment3) GetCreatedDateOk() (*string, bool) {
+func (o *ApprovalComment3) GetCreatedDateOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.CreatedDate) {
 		return nil, false
 	}
@@ -139,8 +140,8 @@ func (o *ApprovalComment3) HasCreatedDate() bool {
 	return false
 }
 
-// SetCreatedDate gets a reference to the given string and assigns it to the CreatedDate field.
-func (o *ApprovalComment3) SetCreatedDate(v string) {
+// SetCreatedDate gets a reference to the given SailPointTime and assigns it to the CreatedDate field.
+func (o *ApprovalComment3) SetCreatedDate(v SailPointTime) {
 	o.CreatedDate = &v
 }
 

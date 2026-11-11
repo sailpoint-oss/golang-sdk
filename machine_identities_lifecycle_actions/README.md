@@ -79,9 +79,9 @@ All URIs are relative to *https://sailpoint.api.identitynow.com*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*MachineIdentityLifecycleActionsAPI* | [**CancelMachineIdentityLifecycleActionV1**](docs/MachineIdentityLifecycleActionsAPI.md#cancelmachineidentitylifecycleactionv1) | **Post** /machine-identities/v1/lifecycle-actions/{requestId}/cancel | Cancel lifecycle action
-*MachineIdentityLifecycleActionsAPI* | [**GetMachineIdentityLifecycleActionV1**](docs/MachineIdentityLifecycleActionsAPI.md#getmachineidentitylifecycleactionv1) | **Get** /machine-identities/v1/lifecycle-actions/{requestId} | Get lifecycle action by requestId
-*MachineIdentityLifecycleActionsAPI* | [**ListMachineIdentityLifecycleActionsV1**](docs/MachineIdentityLifecycleActionsAPI.md#listmachineidentitylifecycleactionsv1) | **Get** /machine-identities/v1/lifecycle-actions | List lifecycle actions
+*MachineIdentityLifecycleActionsAPI* | [**CancelMachineIdentityLifecycleActionV1**](docs/MachineIdentityLifecycleActionsAPI.md#cancelmachineidentitylifecycleactionv1) | **Post** /machine-identities/v1/lifecycle-actions/{requestId}/cancel | Cancel machine identity lifecycle action
+*MachineIdentityLifecycleActionsAPI* | [**GetMachineIdentityLifecycleActionV1**](docs/MachineIdentityLifecycleActionsAPI.md#getmachineidentitylifecycleactionv1) | **Get** /machine-identities/v1/lifecycle-actions/{requestId} | Get machine identity lifecycle action
+*MachineIdentityLifecycleActionsAPI* | [**ListMachineIdentityLifecycleActionsV1**](docs/MachineIdentityLifecycleActionsAPI.md#listmachineidentitylifecycleactionsv1) | **Get** /machine-identities/v1/lifecycle-actions | List machine identity lifecycle actions
 *MachineIdentityLifecycleActionsAPI* | [**SubmitMachineIdentityLifecycleActionV1**](docs/MachineIdentityLifecycleActionsAPI.md#submitmachineidentitylifecycleactionv1) | **Post** /machine-identities/v1/{id}/lifecycle-actions | Submit machine identity lifecycle action
 
 

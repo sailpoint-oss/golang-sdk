@@ -22,9 +22,9 @@ All URIs are relative to *https://sailpoint.api.identitynow.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**cancel-machine-identity-lifecycle-action-v1**](#cancel-machine-identity-lifecycle-action-v1) | **Post** `/machine-identities/v1/lifecycle-actions/{requestId}/cancel` | Cancel lifecycle action
-[**get-machine-identity-lifecycle-action-v1**](#get-machine-identity-lifecycle-action-v1) | **Get** `/machine-identities/v1/lifecycle-actions/{requestId}` | Get lifecycle action by requestId
-[**list-machine-identity-lifecycle-actions-v1**](#list-machine-identity-lifecycle-actions-v1) | **Get** `/machine-identities/v1/lifecycle-actions` | List lifecycle actions
+[**cancel-machine-identity-lifecycle-action-v1**](#cancel-machine-identity-lifecycle-action-v1) | **Post** `/machine-identities/v1/lifecycle-actions/{requestId}/cancel` | Cancel machine identity lifecycle action
+[**get-machine-identity-lifecycle-action-v1**](#get-machine-identity-lifecycle-action-v1) | **Get** `/machine-identities/v1/lifecycle-actions/{requestId}` | Get machine identity lifecycle action
+[**list-machine-identity-lifecycle-actions-v1**](#list-machine-identity-lifecycle-actions-v1) | **Get** `/machine-identities/v1/lifecycle-actions` | List machine identity lifecycle actions
 [**submit-machine-identity-lifecycle-action-v1**](#submit-machine-identity-lifecycle-action-v1) | **Post** `/machine-identities/v1/{id}/lifecycle-actions` | Submit machine identity lifecycle action
 
 
@@ -40,33 +40,22 @@ This API is currently in an experimental state. The API is subject to change bas
    configuration.Experimental = true
  ```
 :::
-Cancel lifecycle action
-Attempts to cancel a lifecycle request before provisioning starts.
+Cancel machine identity lifecycle action
+Cancels a lifecycle action request that hasn't started provisioning yet. When the cancel is
+accepted, the request moves to `CANCELING` status.
 
-The path `requestId` is authoritative for lookup and authorization. The request body is
-optional and may carry cancel metadata such as `comment`. Any `requestId` value in the body is
-ignored.
+A request can't be canceled once provisioning has started, after it has finished, or while a cancel
+is already in progress.
 
-Workflow cancel signaling is attempted before the request is persisted as `CANCELING`. If
-signaling fails, the service returns **503** (`DOWNSTREAM_SERVICE_UNAVAILABLE`, cause
-`workflow-signal-failed`) and the lifecycle request status is unchanged.
+The request body is optional. Use it to add a comment explaining why the request was canceled.
 
-Invalid cancel states are returned as **400** (`INVALID_REQUEST_IN_CURRENT_STATE` variants).
+You can always cancel requests that you submitted. To cancel a request that someone else submitted,
+you need the `idn:machine-identity:lifecycle-action` right **and** admin or owner access to the
+machine identity. Admin or owner access means you're an org admin, a source admin, a source sub-admin
+for the machine identity's source, or the machine identity's owner.
 
-Cancel authorization matches https://developer.sailpoint.com/docs/api/get-machine-identity-lifecycle-action-v-1:
-the original submitter is always allowed; otherwise callers must have the
-`idn:machine-identity-lifecycle-action:manage` scope **and** target role-context access.
-
-**403 Forbidden**
-
-- `FORBIDDEN.lifecycle-request-access-denied` - caller is not the submitter and lacks both the
-  `idn:machine-identity-lifecycle-action:manage` scope and target role-context.
-- `FORBIDDEN.unsupported-type` - the persisted lifecycle row is not scoped to `AI_AGENT`.
-
-**404 Not Found**
-
-- `NOT_FOUND.detailed` - unknown `requestId`, or persisted `targetType`/target-identity subtype
-  mismatch.
+If the cancel can't be completed, the API returns an error and the request stays in `CANCELING`
+status.
 
 
 [API Spec](https://developer.sailpoint.com/docs/api/cancel-machine-identity-lifecycle-action-v-1)
@@ -149,25 +138,14 @@ This API is currently in an experimental state. The API is subject to change bas
    configuration.Experimental = true
  ```
 :::
-Get lifecycle action by requestId
-Returns one lifecycle request snapshot by `requestId`. Used for request-level inspection,
-including cancel acceptance and subsequent status changes.
+Get machine identity lifecycle action
+Returns a single lifecycle action request, including its current status, approval details, and
+provisioning progress. Use it to follow a request after you submit or cancel it.
 
-The original requester is always allowed to read their request. Otherwise, callers must have
-the `idn:machine-identity-lifecycle-action:manage` scope **and** role-context access to the target
-machine identity (organization admin, source admin, scoped source sub-admin, or effective owner).
-
-**403 Forbidden**
-
-- `FORBIDDEN.lifecycle-request-access-denied` - caller is not the submitter and lacks both the
-  `idn:machine-identity-lifecycle-action:manage` scope and target role-context (response includes `requestId` as a parameter).
-- `FORBIDDEN.unsupported-type` - the persisted lifecycle row is not scoped to `AI_AGENT`
-  (`targetType` on read-by-request-id paths).
-
-**404 Not Found**
-
-- `NOT_FOUND.detailed` - unknown `requestId`, or persisted `targetType` does not match the
-  target machine identity's subtype-to-resource-type mapping.
+You can always view requests that you submitted. To view a request that someone else submitted, you
+need the `idn:machine-identity:lifecycle-action` right **and** admin or owner access to the machine
+identity. Admin or owner access means you're an org admin, a source admin, a source sub-admin for the
+machine identity's source, or the machine identity's owner.
 
 
 [API Spec](https://developer.sailpoint.com/docs/api/get-machine-identity-lifecycle-action-v-1)
@@ -246,13 +224,12 @@ This API is currently in an experimental state. The API is subject to change bas
    configuration.Experimental = true
  ```
 :::
-List lifecycle actions
-Lists lifecycle requests visible to the requester identity in the current request context.
+List machine identity lifecycle actions
+Returns the lifecycle action requests that you submitted. Requests that other users submitted
+aren't included, even if you're an admin. If the call isn't made on behalf of an identity, the list
+is empty.
 
-Results are automatically scoped to the calling identity. If requester identity context is
-missing, an empty list is returned.
-
-When `limit` is omitted, this endpoint applies a default limit of 50.
+When `limit` is omitted, up to 50 results are returned.
 
 
 [API Spec](https://developer.sailpoint.com/docs/api/list-machine-identity-lifecycle-actions-v-1)
@@ -269,8 +246,8 @@ Other parameters are passed through a pointer to a apiListMachineIdentityLifecyc
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
- **filters** | **string** | Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **resourceType**: *eq, in*  **operationType**: *eq, in*  **status**: *eq, in*  **completed**: *eq*  **targetId**: *eq*  **targetName**: *eq, sw*  **sourceId**: *eq*  **created**: *gt, ge, lt, le* | 
- **sorters** | **string** | Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified, status**  Default sort is **-created** (newest first). | 
+ **filters** | **string** | Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **resourceType**: *eq, in*  **operationType**: *eq, in*  **status**: *eq, in*  **completed**: *eq*  **targetId**: *eq*  **targetName**: *eq, sw*  **sourceId**: *eq*  **created**: *gt, ge, lt, le*  The &#x60;resourceType&#x60; filter matches the &#x60;targetType&#x60; field in the response. | 
+ **sorters** | **string** | Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified, status**  Default sort is **-created** (newest first). | [default to &quot;-created&quot;]
  **limit** | **int32** | Max number of results to return. When omitted, the default limit is 50. The maximum allowed limit is 250.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. | [default to 50]
  **offset** | **int32** | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. | [default to 0]
  **count** | **bool** | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. | [default to false]
@@ -300,8 +277,8 @@ import (
 
 func main() {
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    filters := `status in ("RECEIVED","COMPLETED")` // string | Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **resourceType**: *eq, in*  **operationType**: *eq, in*  **status**: *eq, in*  **completed**: *eq*  **targetId**: *eq*  **targetName**: *eq, sw*  **sourceId**: *eq*  **created**: *gt, ge, lt, le* (optional) # string | Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **resourceType**: *eq, in*  **operationType**: *eq, in*  **status**: *eq, in*  **completed**: *eq*  **targetId**: *eq*  **targetName**: *eq, sw*  **sourceId**: *eq*  **created**: *gt, ge, lt, le* (optional)
-    sorters := `-created` // string | Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified, status**  Default sort is **-created** (newest first). (optional) # string | Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified, status**  Default sort is **-created** (newest first). (optional)
+    filters := `status in ("RECEIVED","COMPLETED")` // string | Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **resourceType**: *eq, in*  **operationType**: *eq, in*  **status**: *eq, in*  **completed**: *eq*  **targetId**: *eq*  **targetName**: *eq, sw*  **sourceId**: *eq*  **created**: *gt, ge, lt, le*  The `resourceType` filter matches the `targetType` field in the response. (optional) # string | Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **resourceType**: *eq, in*  **operationType**: *eq, in*  **status**: *eq, in*  **completed**: *eq*  **targetId**: *eq*  **targetName**: *eq, sw*  **sourceId**: *eq*  **created**: *gt, ge, lt, le*  The `resourceType` filter matches the `targetType` field in the response. (optional)
+    sorters := `-created` // string | Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified, status**  Default sort is **-created** (newest first). (optional) (default to "-created") # string | Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified, status**  Default sort is **-created** (newest first). (optional) (default to "-created")
     limit := 50 // int32 | Max number of results to return. When omitted, the default limit is 50. The maximum allowed limit is 250.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to 50) # int32 | Max number of results to return. When omitted, the default limit is 50. The maximum allowed limit is 250.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to 50)
     offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to 0)
     count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to false) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to false)
@@ -336,21 +313,23 @@ This API is currently in an experimental state. The API is subject to change bas
  ```
 :::
 Submit machine identity lifecycle action
-Creates a lifecycle request for the target machine identity and returns the created lifecycle
-snapshot.
+Submits a request to activate or deactivate a machine identity. Supported actions are `ACTIVATE`
+and `DEACTIVATE`.
 
 **Note:** Lifecycle actions are currently supported only for machine identities of type **Agent**.
 
-The response includes the generated `requestId`, which is used by
-https://developer.sailpoint.com/docs/api/list-machine-identity-lifecycle-actions-v-1,
-https://developer.sailpoint.com/docs/api/get-machine-identity-lifecycle-action-v-1, and
-https://developer.sailpoint.com/docs/api/cancel-machine-identity-lifecycle-action-v-1
+The response includes a `requestId`. Use it to
+[get the request](https://developer.sailpoint.com/docs/api/get-machine-identity-lifecycle-action-v-1) or
+[cancel it](https://developer.sailpoint.com/docs/api/cancel-machine-identity-lifecycle-action-v-1).
+To see all the requests you've submitted, use
+[list machine identity lifecycle actions](https://developer.sailpoint.com/docs/api/list-machine-identity-lifecycle-actions-v-1).
 
-Authorization is enforced in the service layer. Callers must have the
-`idn:machine-identity-lifecycle-action:manage` scope or role-context access to the target machine
-identity (organization admin, source admin, scoped source sub-admin, or effective owner).
+Only one lifecycle action can be in progress for a machine identity at a time. If another action is
+already in progress for the machine identity, the request is rejected.
 
-Supported actions are `DEACTIVATE`, `ACTIVATE`.
+To submit a lifecycle action, you need the `idn:machine-identity:lifecycle-action` right, or admin or
+owner access to the machine identity. Admin or owner access means you're an org admin, a source admin,
+a source sub-admin for the machine identity's source, or the machine identity's owner.
 
 
 [API Spec](https://developer.sailpoint.com/docs/api/submit-machine-identity-lifecycle-action-v-1)

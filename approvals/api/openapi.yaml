@@ -44,14 +44,14 @@ paths:
         \nThe absence of all query parameters for non admins will default to mine=true\
         \ (which is the equivalent of 'approverId=[your_identity_id]') \nwhile admins\
         \ will default to mine=false (which will show all approvals in the org).\n\
-        \nFor lookups by access request ID please use the following:\n\n'/generic-approvals?mine=false&filters=referenceType+eq+\"\
+        \nFor lookups by access request ID please use the following:\n\n'/generic-approvals/v1?mine=false&filters=referenceType+eq+\"\
         accessRequestId\"+and+referenceId+eq+\"12345678901234567890123456789012\"'"
       operationId: getApprovalsV1
       parameters:
       - description: "Determines whether to return the list of approvals assigned\
           \ to the current caller or all approvals in the org. Defaults to false if\
           \ admin, true otherwise (which is the equivalent of 'approverId=[your_identity_id]')."
-        example: "true"
+        example: true
         explode: true
         in: query
         name: mine
@@ -68,6 +68,7 @@ paths:
         name: requesterId
         required: false
         schema:
+          default: ""
           type: string
         style: form
       - description: Returns the list of approvals for a given requesteeId ID. Must
@@ -78,6 +79,7 @@ paths:
         name: requesteeId
         required: false
         schema:
+          default: ""
           type: string
         style: form
       - description: Returns the list of approvals for a given approverId ID. Must
@@ -88,11 +90,16 @@ paths:
         name: approverId
         required: false
         schema:
+          default: ""
           type: string
         style: form
-      - description: Adds X-Total-Count to the header to give the amount of total
-          approvals returned from the query.
-        example: "true"
+      - description: |-
+          If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+          Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        example: true
         explode: true
         in: query
         name: count
@@ -104,7 +111,7 @@ paths:
       - description: Adds X-Total-Count to the header to give the amount of total
           approvals returned from the query. Only returns the count and no approval
           objects.
-        example: "true"
+        example: true
         explode: true
         in: query
         name: count-only
@@ -115,7 +122,7 @@ paths:
         style: form
       - description: "If set to true in the query, the approval requests returned\
           \ will include comments."
-        example: "true"
+        example: true
         explode: true
         in: query
         name: include-comments
@@ -126,7 +133,7 @@ paths:
         style: form
       - description: "If set to true in the query, the approval requests returned\
           \ will include approvers."
-        example: "true"
+        example: true
         explode: true
         in: query
         name: include-approvers
@@ -137,7 +144,7 @@ paths:
         style: form
       - description: "If set to true in the query, the approval requests returned\
           \ will include reassignment history."
-        example: "true"
+        example: true
         explode: true
         in: query
         name: include-reassignment-history
@@ -148,7 +155,7 @@ paths:
         style: form
       - description: "If set to true in the query, the approval requests returned\
           \ will include batch information."
-        example: "true"
+        example: true
         explode: true
         in: query
         name: include-batch-info
@@ -194,6 +201,8 @@ paths:
 
           **requestedTargetType**: *eq, ne, in, co, sw*
 
+          **currentEPLevel**: *eq, ne, in, co, sw*
+
           **requestedTargetName**: *eq, ne, in, co, sw*
 
           **requestedTargetRequestType**: *eq, ne, in, co, sw*
@@ -215,6 +224,7 @@ paths:
         name: filters
         required: false
         schema:
+          default: ""
           type: string
         style: form
       - description: |-
@@ -319,13 +329,20 @@ paths:
       summary: Get approvals
       tags:
       - Approvals
+      x-sailpoint-lint-ignore:
+        path-list-operations-must-return-object: sp-approvals returns a top-level
+          JSON array for this list; the documented wire format must match the service
+          (SailPoint Rule 110).
+        path-query-parameters-must-be-camel-case: "Hyphenated query flags (count-only,\
+          \ include-comments, etc.) are required to match sp-approvals; the gateway\
+          \ forwards them unchanged (SailPoint Rule 130)."
       x-sailpoint-userLevels:
       - APPROVAL_OWNER
   /generic-approvals/v1/{id}:
     get:
       description: |-
         Fetches an approval request by it's approval ID. For lookups by access request ID please use the following:
-        /generic-approvals?filters=referenceType+eq+"accessRequestId"+and+referenceId+eq+"12345678901234567890123456789012"
+        /generic-approvals/v1?filters=referenceType+eq+"accessRequestId"+and+referenceId+eq+"12345678901234567890123456789012"
       operationId: getApprovalV1
       parameters:
       - description: ID of the approval that is to be returned
@@ -376,6 +393,24 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
         "429":
           content:
             application/json:
@@ -1094,11 +1129,13 @@ paths:
           * `{domainObjectID}`/`DOMAIN_OBJECT`
           * `ENTITLEMENT_DESCRIPTIONS`/`APPROVAL_TYPE`
           * `ACCESS_REQUEST_APPROVAL`/`APPROVAL_TYPE`
+          * `CUSTOM_ACCESS_REQUEST_APPROVAL`/`APPROVAL_TYPE`
           * `ACCOUNT_DELETE_APPROVAL_REQUEST`/`APPROVAL_TYPE`
           * `MACHINE_ACCOUNT_CREATE_APPROVAL_REQUEST`/`APPROVAL_TYPE`
           * `MACHINE_ACCOUNT_DELETE_APPROVAL_REQUEST`/`APPROVAL_TYPE`
           * `AGENT_ACTIVATE_APPROVAL`/`APPROVAL_TYPE`
           * `AGENT_DEACTIVATE_APPROVAL`/`APPROVAL_TYPE`
+          * `PRIVILEGED_ENTITLEMENT_RECOMMENDATION`/`APPROVAL_TYPE`
           * `{tenantID}`/`TENANT`
 
           Replace placeholders such as `{roleID}` with the actual resource ID.
@@ -1149,6 +1186,24 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
         "429":
           content:
             application/json:
@@ -1199,11 +1254,13 @@ paths:
           * `{domainObjectID}`/`DOMAIN_OBJECT`
           * `ENTITLEMENT_DESCRIPTIONS`/`APPROVAL_TYPE`
           * `ACCESS_REQUEST_APPROVAL`/`APPROVAL_TYPE`
+          * `CUSTOM_ACCESS_REQUEST_APPROVAL`/`APPROVAL_TYPE`
           * `ACCOUNT_DELETE_APPROVAL_REQUEST`/`APPROVAL_TYPE`
           * `MACHINE_ACCOUNT_CREATE_APPROVAL_REQUEST`/`APPROVAL_TYPE`
           * `MACHINE_ACCOUNT_DELETE_APPROVAL_REQUEST`/`APPROVAL_TYPE`
           * `AGENT_ACTIVATE_APPROVAL`/`APPROVAL_TYPE`
           * `AGENT_DEACTIVATE_APPROVAL`/`APPROVAL_TYPE`
+          * `PRIVILEGED_ENTITLEMENT_RECOMMENDATION`/`APPROVAL_TYPE`
           * `{tenantID}`/`TENANT`
 
           Replace placeholders such as `{roleID}` with the actual resource ID.
@@ -1229,11 +1286,13 @@ paths:
           * `{domainObjectID}`/`DOMAIN_OBJECT`
           * `ENTITLEMENT_DESCRIPTIONS`/`APPROVAL_TYPE`
           * `ACCESS_REQUEST_APPROVAL`/`APPROVAL_TYPE`
+          * `CUSTOM_ACCESS_REQUEST_APPROVAL`/`APPROVAL_TYPE`
           * `ACCOUNT_DELETE_APPROVAL_REQUEST`/`APPROVAL_TYPE`
           * `MACHINE_ACCOUNT_CREATE_APPROVAL_REQUEST`/`APPROVAL_TYPE`
           * `MACHINE_ACCOUNT_DELETE_APPROVAL_REQUEST`/`APPROVAL_TYPE`
           * `AGENT_ACTIVATE_APPROVAL`/`APPROVAL_TYPE`
           * `AGENT_DEACTIVATE_APPROVAL`/`APPROVAL_TYPE`
+          * `PRIVILEGED_ENTITLEMENT_RECOMMENDATION`/`APPROVAL_TYPE`
           * `{tenantID}`/`TENANT`
 
           Replace placeholders such as `{roleID}` with the actual resource ID.
@@ -1356,11 +1415,13 @@ paths:
           * `{domainObjectID}`/`DOMAIN_OBJECT`
           * `ENTITLEMENT_DESCRIPTIONS`/`APPROVAL_TYPE`
           * `ACCESS_REQUEST_APPROVAL`/`APPROVAL_TYPE`
+          * `CUSTOM_ACCESS_REQUEST_APPROVAL`/`APPROVAL_TYPE`
           * `ACCOUNT_DELETE_APPROVAL_REQUEST`/`APPROVAL_TYPE`
           * `MACHINE_ACCOUNT_CREATE_APPROVAL_REQUEST`/`APPROVAL_TYPE`
           * `MACHINE_ACCOUNT_DELETE_APPROVAL_REQUEST`/`APPROVAL_TYPE`
           * `AGENT_ACTIVATE_APPROVAL`/`APPROVAL_TYPE`
           * `AGENT_DEACTIVATE_APPROVAL`/`APPROVAL_TYPE`
+          * `PRIVILEGED_ENTITLEMENT_RECOMMENDATION`/`APPROVAL_TYPE`
           * `{tenantID}`/`TENANT`
 
           Replace placeholders such as `{roleID}` with the actual resource ID.
@@ -1386,11 +1447,13 @@ paths:
           * `{domainObjectID}`/`DOMAIN_OBJECT`
           * `ENTITLEMENT_DESCRIPTIONS`/`APPROVAL_TYPE`
           * `ACCESS_REQUEST_APPROVAL`/`APPROVAL_TYPE`
+          * `CUSTOM_ACCESS_REQUEST_APPROVAL`/`APPROVAL_TYPE`
           * `ACCOUNT_DELETE_APPROVAL_REQUEST`/`APPROVAL_TYPE`
           * `MACHINE_ACCOUNT_CREATE_APPROVAL_REQUEST`/`APPROVAL_TYPE`
           * `MACHINE_ACCOUNT_DELETE_APPROVAL_REQUEST`/`APPROVAL_TYPE`
           * `AGENT_ACTIVATE_APPROVAL`/`APPROVAL_TYPE`
           * `AGENT_DEACTIVATE_APPROVAL`/`APPROVAL_TYPE`
+          * `PRIVILEGED_ENTITLEMENT_RECOMMENDATION`/`APPROVAL_TYPE`
           * `{tenantID}`/`TENANT`
 
           Replace placeholders such as `{roleID}` with the actual resource ID.
@@ -1909,6 +1972,22 @@ paths:
       - ORG_ADMIN
 components:
   parameters:
+    count:
+      description: |-
+        If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+        Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+        See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+      example: true
+      explode: true
+      in: query
+      name: count
+      required: false
+      schema:
+        default: false
+        type: boolean
+      style: form
     limit:
       description: |-
         Max number of results to return.
@@ -2053,6 +2132,7 @@ components:
         email:
           description: Email address.
           example: mail@mail.com
+          format: email
           type: string
         identityID:
           description: Identity ID of the type of identity defined in the 'type' field.
@@ -2134,6 +2214,16 @@ components:
           type: string
       title: Approval Identity
       type: object
+      x-sailpoint-lint-ignore:
+        schema-property-names-must-not-be-type: Property name "type" is part of the
+          existing sp-approvals JSON contract; do not rename in the spec (SailPoint
+          Rule 410).
+        schema-property-names-must-be-camel-case: Property "identityID" matches the
+          sp-approvals wire JSON; do not rename in the spec (SailPoint Rule 118).
+        schema-references-must-use-id-names: Property "identityID" matches the sp-approvals
+          wire JSON; do not rename in the spec (SailPoint Rule 313).
+        schema-array-names-should-be-plural: Array property ownerOf matches sp-approvals
+          wire JSON; do not rename in the spec (SailPoint Rule 120).
     ApprovalName:
       description: Approval Name Object
       example:
@@ -2257,14 +2347,23 @@ components:
             OFF will prevent the approval request from being assigned to the requester or requestee by assigning it to their manager instead.
             DIRECT when the requester != requestee this will cause steps assigned directly to the requester to be auto-approved.
             INDIRECT when the requester != requestee this will cause steps assigned to the requester or a group containing the requester to be auto-approved.
+            SELF_REQUEST will cause steps assigned to the requester or a group containing the requester to be auto-approved whether or not the requester is the same as the requestee.
             This field will only be effective if requestedTarget.reauthRequired is set to false, otherwise the approval will have to be manually approved.
           enum:
           - "OFF"
           - DIRECT
           - INDIRECT
+          - SELF_REQUEST
           example: "OFF"
           type: string
       type: object
+      x-sailpoint-lint-ignore:
+        schema-property-names-must-not-be-type: Property name "type" is part of the
+          existing sp-approvals JSON contract; do not rename in the spec (SailPoint
+          Rule 410).
+        schema-array-names-should-be-plural: Array properties escalationChain and
+          serialChain match sp-approvals wire JSON; do not rename in the spec (SailPoint
+          Rule 120).
     ApprovalDescription:
       description: The description of what the approval is asking for
       example:
@@ -2319,6 +2418,7 @@ components:
         createdDate:
           description: Date the comment was created
           example: 2023-04-12T23:20:50.52Z
+          format: date-time
           type: string
         commentId:
           description: ID of the comment
@@ -2361,6 +2461,10 @@ components:
           type: integer
       title: Approval Reference
       type: object
+      x-sailpoint-lint-ignore:
+        schema-property-names-must-not-be-type: Property name "type" is part of the
+          existing sp-approvals JSON contract; do not rename in the spec (SailPoint
+          Rule 410).
     ApprovalIdentityRecord:
       description: Identity Record Object
       example:
@@ -2427,6 +2531,14 @@ components:
           format: email
           type: string
       type: object
+      x-sailpoint-lint-ignore:
+        schema-property-names-must-not-be-type: Property name "type" is part of the
+          existing sp-approvals JSON contract; do not rename in the spec (SailPoint
+          Rule 410).
+        schema-property-names-must-be-camel-case: Property "identityID" matches the
+          sp-approvals wire JSON; do not rename in the spec (SailPoint Rule 118).
+        schema-references-must-use-id-names: Property "identityID" matches the sp-approvals
+          wire JSON; do not rename in the spec (SailPoint Rule 313).
     ApprovalReassignmentHistory:
       description: ReassignmentHistoryRecord holds a history record of reassignment
         and escalation actions for an approval request
@@ -2525,47 +2637,138 @@ components:
           example: ESCALATION
           type: string
       type: object
+      x-sailpoint-lint-ignore:
+        schema-property-names-must-be-camel-case: Property "commentID" matches the
+          sp-approvals wire JSON; do not rename in the spec (SailPoint Rule 118).
+        schema-references-must-use-id-names: Property "commentID" matches the sp-approvals
+          wire JSON; do not rename in the spec (SailPoint Rule 313).
     ApprovalRequestedTarget:
-      description: "Represents a requested target in an approval process, including\
-        \ details such as ID, name, reauthentication requirements, and removal date."
+      description: Specifies the actual object or target the approval request is for.
       example:
+        requestType: GRANT_ACCESS
+        description: string
+        targetType: string
+        targetTypes:
+        - ROLE
+        - ACCESS_PROFILE
         reauthRequired: true
+        names:
+        - Engineering Role
+        currentEPLevel: HIGH
         removalDate: 2025-07-07T18:10:13.687Z
-        requestType: string
         forcedAuthSignature: string
         name: string
-        targetType: string
+        ids:
+        - 2c9180835d191a86015d28455b4a2329
         id: string
+        modifiedStartDate: 2025-07-07T18:10:13.687Z
+        modifiedRemovalDate: 2025-07-07T18:10:13.687Z
+        currentEPModifiedDate: 2025-07-07T18:10:13.687Z
+        startDate: 2025-07-07T18:10:13.687Z
+        epLevelAtCreation: HIGH
       properties:
-        forcedAuthSignature:
-          description: Signature required for forced authentication.
-          example: string
-          type: string
         id:
-          description: ID of the requested target.
+          description: Target ID (for example a role ID or access profile ID).
           example: string
           type: string
+        ids:
+          description: Target IDs when the approval request applies to multiple targets.
+          example:
+          - 2c9180835d191a86015d28455b4a2329
+          items:
+            example: 2c9180835d191a86015d28455b4a2329
+            type: string
+          type: array
         name:
-          description: Name of the requested target.
+          description: Target name (for example a role name or access profile name).
           example: string
           type: string
-        reauthRequired:
-          default: false
-          description: Indicates if reauthentication is required.
-          example: true
-          type: boolean
-        removalDate:
-          description: Date when the target will be removed.
+        names:
+          description: Target names when the approval request applies to multiple
+            targets.
+          example:
+          - Engineering Role
+          items:
+            example: Engineering Role
+            type: string
+          type: array
+        targetType:
+          description: Target type (for example Role or Access Profile).
+          example: string
+          type: string
+        targetTypes:
+          description: Target types when the approval request applies to multiple
+            targets.
+          example:
+          - ROLE
+          - ACCESS_PROFILE
+          items:
+            example: ROLE
+            type: string
+          type: array
+        description:
+          description: Optional description for the requested target.
+          example: string
+          type: string
+        epLevelAtCreation:
+          description: Effective privilege (EP) level at approval creation.
+          enum:
+          - HIGH
+          - MEDIUM
+          - LOW
+          - NONE
+          example: HIGH
+          type: string
+        currentEPLevel:
+          description: Current effective privilege (EP) level for the requested target.
+          enum:
+          - HIGH
+          - MEDIUM
+          - LOW
+          - NONE
+          example: HIGH
+          type: string
+        currentEPModifiedDate:
+          description: Date and time when the current effective privilege level was
+            last modified.
           example: 2025-07-07T18:10:13.687Z
           format: date-time
           type: string
         requestType:
-          description: Type of the request.
+          description: Access request type (for example GRANT_ACCESS or REVOKE_ACCESS).
+          example: GRANT_ACCESS
+          type: string
+        forcedAuthSignature:
+          description: Signature required for forced authentication.
           example: string
           type: string
-        targetType:
-          description: Type of the target.
-          example: string
+        reauthRequired:
+          default: false
+          description: Indicates whether forced reauthentication is required upon
+            approval.
+          example: true
+          type: boolean
+        startDate:
+          description: "When temporary access will be granted, if applicable."
+          example: 2025-07-07T18:10:13.687Z
+          format: date-time
+          type: string
+        removalDate:
+          description: "When temporary access will be removed, if applicable."
+          example: 2025-07-07T18:10:13.687Z
+          format: date-time
+          type: string
+        modifiedStartDate:
+          description: Updated start date when startDate is edited during the approval
+            request.
+          example: 2025-07-07T18:10:13.687Z
+          format: date-time
+          type: string
+        modifiedRemovalDate:
+          description: Updated removal date when removalDate is edited during the
+            approval request.
+          example: 2025-07-07T18:10:13.687Z
+          format: date-time
           type: string
       type: object
     Approval_2:
@@ -3087,20 +3290,27 @@ components:
             value: 30
         additionalAttributes: "{ \"llm_description\": \"generated description\" }"
         requestedTarget:
-        - reauthRequired: true
+          requestType: GRANT_ACCESS
+          description: string
+          targetType: string
+          targetTypes:
+          - ROLE
+          - ACCESS_PROFILE
+          reauthRequired: true
+          names:
+          - Engineering Role
+          currentEPLevel: HIGH
           removalDate: 2025-07-07T18:10:13.687Z
-          requestType: string
           forcedAuthSignature: string
           name: string
-          targetType: string
+          ids:
+          - 2c9180835d191a86015d28455b4a2329
           id: string
-        - reauthRequired: true
-          removalDate: 2025-07-07T18:10:13.687Z
-          requestType: string
-          forcedAuthSignature: string
-          name: string
-          targetType: string
-          id: string
+          modifiedStartDate: 2025-07-07T18:10:13.687Z
+          modifiedRemovalDate: 2025-07-07T18:10:13.687Z
+          currentEPModifiedDate: 2025-07-07T18:10:13.687Z
+          startDate: 2025-07-07T18:10:13.687Z
+          epLevelAtCreation: HIGH
       properties:
         id:
           description: The Approval ID
@@ -3123,10 +3333,12 @@ components:
         createdDate:
           description: Date the approval was created
           example: 2023-04-12T23:20:50.52Z
+          format: date-time
           type: string
         dueDate:
           description: Date the approval is due
           example: 2024-05-12T23:10:50.11Z
+          format: date-time
           type: string
         escalationStep:
           description: "Step in the escalation process. If set to 0, the approval\
@@ -3207,6 +3419,7 @@ components:
         completedDate:
           description: Date the approval was completed
           example: 2023-04-12T23:20:50.52Z
+          format: date-time
           type: string
         approvalCriteria:
           $ref: '#/components/schemas/Approval_2_approvalCriteria'
@@ -3242,13 +3455,19 @@ components:
           format: date-time
           type: string
         requestedTarget:
-          description: RequestedTarget used to specify the actual object or target
-            the approval request is for
-          items:
-            $ref: '#/components/schemas/ApprovalRequestedTarget'
-          type: array
+          $ref: '#/components/schemas/ApprovalRequestedTarget'
       title: Approval
       type: object
+      x-sailpoint-lint-ignore:
+        schema-property-names-must-not-be-type: Property name "type" is part of the
+          existing sp-approvals JSON contract; do not rename in the spec (SailPoint
+          Rule 410).
+        schema-array-names-should-be-plural: Locale list fields use singular wire
+          keys "name" and "description" in sp-approvals; do not rename in the spec
+          (SailPoint Rule 120).
+        schema-boolean-names-should-not-use-qualifying-verbs: Property "isEscalated"
+          matches the sp-approvals wire JSON; do not rename in the spec (SailPoint
+          Rule 311).
     LocaleOrigin:
       description: "An indicator of how the locale was selected. *DEFAULT* means the\
         \ locale is the system default. *REQUEST* means the locale was selected from\
@@ -3339,6 +3558,7 @@ components:
         additionalAttributes:
           additionalProperties:
             type: string
+          default: {}
           description: Additional attributes as key-value pairs that are not part
             of the standard schema but can be included for custom data.
           example:
@@ -3347,15 +3567,22 @@ components:
             additionalProp3: string
           type: object
         comment:
+          default: ""
           description: Comment associated with the request.
           example: comment
           type: string
         overrideApproverID:
+          default: ""
           description: Optional field for ServiceNow Administrators to specify which
             member of a governance group to override/approve on behalf of.
           example: "12345678901234567890123456789012"
           type: string
       type: object
+      x-sailpoint-lint-ignore:
+        schema-property-names-must-be-camel-case: Property "overrideApproverID" matches
+          the sp-approvals wire JSON; do not rename in the spec (SailPoint Rule 118).
+        schema-references-must-use-id-names: Property "overrideApproverID" matches
+          the sp-approvals wire JSON; do not rename in the spec (SailPoint Rule 313).
     ApprovalAttributesRequest:
       description: Approval Attributes Request
       example:
@@ -3429,15 +3656,22 @@ components:
         comment: string
       properties:
         comment:
+          default: ""
           description: Comment associated with the reject request.
           example: string
           type: string
         overrideApproverID:
+          default: ""
           description: Optional field for ServiceNow Administrators to specify which
             member of a governance group to override/reject on behalf of.
           example: "12345678901234567890123456789012"
           type: string
       type: object
+      x-sailpoint-lint-ignore:
+        schema-property-names-must-be-camel-case: Property "overrideApproverID" matches
+          the sp-approvals wire JSON; do not rename in the spec (SailPoint Rule 118).
+        schema-references-must-use-id-names: Property "overrideApproverID" matches
+          the sp-approvals wire JSON; do not rename in the spec (SailPoint Rule 313).
     ApprovalCancelRequest:
       description: Request body for cancelling a single approval request.
       example:
@@ -3591,6 +3825,7 @@ components:
         email:
           description: Email of the member.
           example: mail@mail.com
+          format: email
           type: string
         id:
           description: ID of the member.
@@ -3920,6 +4155,11 @@ components:
           example: MANAGER_OF
           type: string
       type: object
+      x-sailpoint-lint-ignore:
+        schema-property-names-must-be-camel-case: Nested property "identityID" matches
+          the sp-approvals wire JSON; do not rename in the spec (SailPoint Rule 118).
+        schema-references-must-use-id-names: Nested property "identityID" matches
+          the sp-approvals wire JSON; do not rename in the spec (SailPoint Rule 313).
     Approval_2_approvalCriteria_approval:
       description: Criteria for approval
       example:

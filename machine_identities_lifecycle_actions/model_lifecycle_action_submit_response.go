@@ -23,12 +23,11 @@ var _ MappedNullable = &LifecycleActionSubmitResponse{}
 type LifecycleActionSubmitResponse struct {
 	// Unique identifier for the created lifecycle request.
 	RequestId string `json:"requestId"`
-	// Initial lifecycle request status.
-	Status string `json:"status"`
+	Status Lifecyclestatus `json:"status"`
 	Action Lifecycleaction `json:"action"`
-	// Internal machine identity UUID for the lifecycle target.
+	// ID of the machine identity the request applies to.
 	TargetId string `json:"targetId"`
-	// Connector resource id for the lifecycle target, when present.
+	// ID of the machine identity in its source system, when available.
 	ResourceId *string `json:"resourceId,omitempty"`
 	// Time when the lifecycle request was created (ISO-8601).
 	CreatedAt SailPointTime `json:"createdAt"`
@@ -41,7 +40,7 @@ type _LifecycleActionSubmitResponse LifecycleActionSubmitResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewLifecycleActionSubmitResponse(requestId string, status string, action Lifecycleaction, targetId string, createdAt SailPointTime) *LifecycleActionSubmitResponse {
+func NewLifecycleActionSubmitResponse(requestId string, status Lifecyclestatus, action Lifecycleaction, targetId string, createdAt SailPointTime) *LifecycleActionSubmitResponse {
 	this := LifecycleActionSubmitResponse{}
 	this.RequestId = requestId
 	this.Status = status
@@ -84,9 +83,9 @@ func (o *LifecycleActionSubmitResponse) SetRequestId(v string) {
 }
 
 // GetStatus returns the Status field value
-func (o *LifecycleActionSubmitResponse) GetStatus() string {
+func (o *LifecycleActionSubmitResponse) GetStatus() Lifecyclestatus {
 	if o == nil {
-		var ret string
+		var ret Lifecyclestatus
 		return ret
 	}
 
@@ -95,7 +94,7 @@ func (o *LifecycleActionSubmitResponse) GetStatus() string {
 
 // GetStatusOk returns a tuple with the Status field value
 // and a boolean to check if the value has been set.
-func (o *LifecycleActionSubmitResponse) GetStatusOk() (*string, bool) {
+func (o *LifecycleActionSubmitResponse) GetStatusOk() (*Lifecyclestatus, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -103,7 +102,7 @@ func (o *LifecycleActionSubmitResponse) GetStatusOk() (*string, bool) {
 }
 
 // SetStatus sets field value
-func (o *LifecycleActionSubmitResponse) SetStatus(v string) {
+func (o *LifecycleActionSubmitResponse) SetStatus(v Lifecyclestatus) {
 	o.Status = v
 }
 

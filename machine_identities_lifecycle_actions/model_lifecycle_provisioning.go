@@ -18,7 +18,7 @@ import (
 // checks if the LifecycleProvisioning type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &LifecycleProvisioning{}
 
-// LifecycleProvisioning Provisioning execution window for the lifecycle request.
+// LifecycleProvisioning Provisioning status for the lifecycle request, with when provisioning started and ended.
 type LifecycleProvisioning struct {
 	Status *Lifecycleprovisioningstatus `json:"status,omitempty"`
 	// Time when provisioning started (ISO-8601).

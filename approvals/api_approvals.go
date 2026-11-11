@@ -737,8 +737,8 @@ Deletes an approval configuration.
 Configurations at the APPROVAL_REQUEST scope cannot be deleted.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id The ID defined by the scope field, where id/scope is the following:  * `{accountID}`/`ACCOUNT` * `{roleID}`/`ROLE` * `{entitlementID}`/`ENTITLEMENT` * `{accessProfileID}`/`ACCESS_PROFILE` * `{domainObjectID}`/`DOMAIN_OBJECT` * `ENTITLEMENT_DESCRIPTIONS`/`APPROVAL_TYPE` * `ACCESS_REQUEST_APPROVAL`/`APPROVAL_TYPE` * `ACCOUNT_DELETE_APPROVAL_REQUEST`/`APPROVAL_TYPE` * `MACHINE_ACCOUNT_CREATE_APPROVAL_REQUEST`/`APPROVAL_TYPE` * `MACHINE_ACCOUNT_DELETE_APPROVAL_REQUEST`/`APPROVAL_TYPE` * `AGENT_ACTIVATE_APPROVAL`/`APPROVAL_TYPE` * `AGENT_DEACTIVATE_APPROVAL`/`APPROVAL_TYPE` * `{tenantID}`/`TENANT`  Replace placeholders such as `{roleID}` with the actual resource ID. 
- @param scope The scope that defines the type of id, where id/scope is the following:  * `{accountID}`/`ACCOUNT` * `{roleID}`/`ROLE` * `{entitlementID}`/`ENTITLEMENT` * `{accessProfileID}`/`ACCESS_PROFILE` * `{domainObjectID}`/`DOMAIN_OBJECT` * `ENTITLEMENT_DESCRIPTIONS`/`APPROVAL_TYPE` * `ACCESS_REQUEST_APPROVAL`/`APPROVAL_TYPE` * `ACCOUNT_DELETE_APPROVAL_REQUEST`/`APPROVAL_TYPE` * `MACHINE_ACCOUNT_CREATE_APPROVAL_REQUEST`/`APPROVAL_TYPE` * `MACHINE_ACCOUNT_DELETE_APPROVAL_REQUEST`/`APPROVAL_TYPE` * `AGENT_ACTIVATE_APPROVAL`/`APPROVAL_TYPE` * `AGENT_DEACTIVATE_APPROVAL`/`APPROVAL_TYPE` * `{tenantID}`/`TENANT`  Replace placeholders such as `{roleID}` with the actual resource ID. 
+ @param id The ID defined by the scope field, where id/scope is the following:  * `{accountID}`/`ACCOUNT` * `{roleID}`/`ROLE` * `{entitlementID}`/`ENTITLEMENT` * `{accessProfileID}`/`ACCESS_PROFILE` * `{domainObjectID}`/`DOMAIN_OBJECT` * `ENTITLEMENT_DESCRIPTIONS`/`APPROVAL_TYPE` * `ACCESS_REQUEST_APPROVAL`/`APPROVAL_TYPE` * `CUSTOM_ACCESS_REQUEST_APPROVAL`/`APPROVAL_TYPE` * `ACCOUNT_DELETE_APPROVAL_REQUEST`/`APPROVAL_TYPE` * `MACHINE_ACCOUNT_CREATE_APPROVAL_REQUEST`/`APPROVAL_TYPE` * `MACHINE_ACCOUNT_DELETE_APPROVAL_REQUEST`/`APPROVAL_TYPE` * `AGENT_ACTIVATE_APPROVAL`/`APPROVAL_TYPE` * `AGENT_DEACTIVATE_APPROVAL`/`APPROVAL_TYPE` * `PRIVILEGED_ENTITLEMENT_RECOMMENDATION`/`APPROVAL_TYPE` * `{tenantID}`/`TENANT`  Replace placeholders such as `{roleID}` with the actual resource ID. 
+ @param scope The scope that defines the type of id, where id/scope is the following:  * `{accountID}`/`ACCOUNT` * `{roleID}`/`ROLE` * `{entitlementID}`/`ENTITLEMENT` * `{accessProfileID}`/`ACCESS_PROFILE` * `{domainObjectID}`/`DOMAIN_OBJECT` * `ENTITLEMENT_DESCRIPTIONS`/`APPROVAL_TYPE` * `ACCESS_REQUEST_APPROVAL`/`APPROVAL_TYPE` * `CUSTOM_ACCESS_REQUEST_APPROVAL`/`APPROVAL_TYPE` * `ACCOUNT_DELETE_APPROVAL_REQUEST`/`APPROVAL_TYPE` * `MACHINE_ACCOUNT_CREATE_APPROVAL_REQUEST`/`APPROVAL_TYPE` * `MACHINE_ACCOUNT_DELETE_APPROVAL_REQUEST`/`APPROVAL_TYPE` * `AGENT_ACTIVATE_APPROVAL`/`APPROVAL_TYPE` * `AGENT_DEACTIVATE_APPROVAL`/`APPROVAL_TYPE` * `PRIVILEGED_ENTITLEMENT_RECOMMENDATION`/`APPROVAL_TYPE` * `{tenantID}`/`TENANT`  Replace placeholders such as `{roleID}` with the actual resource ID. 
  @return ApiDeleteApprovalConfigRequestV1Request
 */
 func (a *ApprovalsAPIService) DeleteApprovalConfigRequestV1(ctx context.Context, id string, scope string) ApiDeleteApprovalConfigRequestV1Request {
@@ -895,7 +895,7 @@ func (r ApiGetApprovalV1Request) Execute() (*Approval2, *http.Response, error) {
 GetApprovalV1 Get an approval
 
 Fetches an approval request by it's approval ID. For lookups by access request ID please use the following:
-/generic-approvals?filters=referenceType+eq+"accessRequestId"+and+referenceId+eq+"12345678901234567890123456789012"
+/generic-approvals/v1?filters=referenceType+eq+"accessRequestId"+and+referenceId+eq+"12345678901234567890123456789012"
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id ID of the approval that is to be returned
@@ -1003,6 +1003,17 @@ func (a *ApprovalsAPIService) GetApprovalV1Execute(r ApiGetApprovalV1Request) (*
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
 		if localVarHTTPResponse.StatusCode == 429 {
 			var v GetApprovalsV1429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
@@ -1055,7 +1066,7 @@ GetApprovalsConfigV1 Get Approval Config
 Retrieves a singular approval configuration that matches the given ID
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id The ID defined by the scope field, where id/scope is the following:  * `{accountID}`/`ACCOUNT` * `{roleID}`/`ROLE` * `{entitlementID}`/`ENTITLEMENT` * `{accessProfileID}`/`ACCESS_PROFILE` * `{domainObjectID}`/`DOMAIN_OBJECT` * `ENTITLEMENT_DESCRIPTIONS`/`APPROVAL_TYPE` * `ACCESS_REQUEST_APPROVAL`/`APPROVAL_TYPE` * `ACCOUNT_DELETE_APPROVAL_REQUEST`/`APPROVAL_TYPE` * `MACHINE_ACCOUNT_CREATE_APPROVAL_REQUEST`/`APPROVAL_TYPE` * `MACHINE_ACCOUNT_DELETE_APPROVAL_REQUEST`/`APPROVAL_TYPE` * `AGENT_ACTIVATE_APPROVAL`/`APPROVAL_TYPE` * `AGENT_DEACTIVATE_APPROVAL`/`APPROVAL_TYPE` * `{tenantID}`/`TENANT`  Replace placeholders such as `{roleID}` with the actual resource ID. 
+ @param id The ID defined by the scope field, where id/scope is the following:  * `{accountID}`/`ACCOUNT` * `{roleID}`/`ROLE` * `{entitlementID}`/`ENTITLEMENT` * `{accessProfileID}`/`ACCESS_PROFILE` * `{domainObjectID}`/`DOMAIN_OBJECT` * `ENTITLEMENT_DESCRIPTIONS`/`APPROVAL_TYPE` * `ACCESS_REQUEST_APPROVAL`/`APPROVAL_TYPE` * `CUSTOM_ACCESS_REQUEST_APPROVAL`/`APPROVAL_TYPE` * `ACCOUNT_DELETE_APPROVAL_REQUEST`/`APPROVAL_TYPE` * `MACHINE_ACCOUNT_CREATE_APPROVAL_REQUEST`/`APPROVAL_TYPE` * `MACHINE_ACCOUNT_DELETE_APPROVAL_REQUEST`/`APPROVAL_TYPE` * `AGENT_ACTIVATE_APPROVAL`/`APPROVAL_TYPE` * `AGENT_DEACTIVATE_APPROVAL`/`APPROVAL_TYPE` * `PRIVILEGED_ENTITLEMENT_RECOMMENDATION`/`APPROVAL_TYPE` * `{tenantID}`/`TENANT`  Replace placeholders such as `{roleID}` with the actual resource ID. 
  @return ApiGetApprovalsConfigV1Request
 */
 func (a *ApprovalsAPIService) GetApprovalsConfigV1(ctx context.Context, id string) ApiGetApprovalsConfigV1Request {
@@ -1160,6 +1171,17 @@ func (a *ApprovalsAPIService) GetApprovalsConfigV1Execute(r ApiGetApprovalsConfi
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
 		if localVarHTTPResponse.StatusCode == 429 {
 			var v GetApprovalsV1429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
@@ -1238,7 +1260,7 @@ func (r ApiGetApprovalsV1Request) ApproverId(approverId string) ApiGetApprovalsV
 	return r
 }
 
-// Adds X-Total-Count to the header to give the amount of total approvals returned from the query.
+// If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
 func (r ApiGetApprovalsV1Request) Count(count bool) ApiGetApprovalsV1Request {
 	r.count = &count
 	return r
@@ -1274,7 +1296,7 @@ func (r ApiGetApprovalsV1Request) IncludeBatchInfo(includeBatchInfo bool) ApiGet
 	return r
 }
 
-// Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **status**: *eq, ne, in, co, sw*  **name**: *eq, ne, in, co, sw*  **priority**: *eq, ne, in, co, sw*  **type**: *eq, ne, in, co, sw*  **medium**: *eq, ne, in, co, sw*  **description**: *eq, ne, in, co, sw*  **batchId**: *eq, ne, in, co, sw*  **createdDate**: *eq, ne, in, co, sw, gt, ge, lt, le*  **dueDate**: *eq, ne, in, co, sw, gt, ge, lt, le*  **completedDate**: *eq, ne, in, co, sw, gt, ge, lt, le*  **search**: *eq, ne, in, co, sw*  **referenceId**: *eq, ne, in, co, sw*  **referenceType**: *eq, ne, in, co, sw*  **referenceName**: *eq, ne, in, co, sw*  **requestedTargetId**: *eq, ne, in, co, sw*  **requestedTargetType**: *eq, ne, in, co, sw*  **requestedTargetName**: *eq, ne, in, co, sw*  **requestedTargetRequestType**: *eq, ne, in, co, sw*  **modifiedDate**: *eq, ne, in, co, sw, gt, ge, lt, le*  **decisionDate**: *eq, ne, in, co, sw, gt, ge, lt, le*  **approvalId**: *eq, ne, in, co, sw*  **requesterId**: *eq, ne, in, co, sw*  **requesteeId**: *eq, ne, in, co, sw*  **approverId**: *eq, ne, in, co, sw*
+// Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **status**: *eq, ne, in, co, sw*  **name**: *eq, ne, in, co, sw*  **priority**: *eq, ne, in, co, sw*  **type**: *eq, ne, in, co, sw*  **medium**: *eq, ne, in, co, sw*  **description**: *eq, ne, in, co, sw*  **batchId**: *eq, ne, in, co, sw*  **createdDate**: *eq, ne, in, co, sw, gt, ge, lt, le*  **dueDate**: *eq, ne, in, co, sw, gt, ge, lt, le*  **completedDate**: *eq, ne, in, co, sw, gt, ge, lt, le*  **search**: *eq, ne, in, co, sw*  **referenceId**: *eq, ne, in, co, sw*  **referenceType**: *eq, ne, in, co, sw*  **referenceName**: *eq, ne, in, co, sw*  **requestedTargetId**: *eq, ne, in, co, sw*  **requestedTargetType**: *eq, ne, in, co, sw*  **currentEPLevel**: *eq, ne, in, co, sw*  **requestedTargetName**: *eq, ne, in, co, sw*  **requestedTargetRequestType**: *eq, ne, in, co, sw*  **modifiedDate**: *eq, ne, in, co, sw, gt, ge, lt, le*  **decisionDate**: *eq, ne, in, co, sw, gt, ge, lt, le*  **approvalId**: *eq, ne, in, co, sw*  **requesterId**: *eq, ne, in, co, sw*  **requesteeId**: *eq, ne, in, co, sw*  **approverId**: *eq, ne, in, co, sw*
 func (r ApiGetApprovalsV1Request) Filters(filters string) ApiGetApprovalsV1Request {
 	r.filters = &filters
 	return r
@@ -1308,7 +1330,7 @@ while admins will default to mine=false (which will show all approvals in the or
 
 For lookups by access request ID please use the following:
 
-'/generic-approvals?mine=false&filters=referenceType+eq+"accessRequestId"+and+referenceId+eq+"12345678901234567890123456789012"'
+'/generic-approvals/v1?mine=false&filters=referenceType+eq+"accessRequestId"+and+referenceId+eq+"12345678901234567890123456789012"'
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetApprovalsV1Request
@@ -1349,12 +1371,21 @@ func (a *ApprovalsAPIService) GetApprovalsV1Execute(r ApiGetApprovalsV1Request) 
 	}
 	if r.requesterId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "requesterId", r.requesterId, "form", "")
+	} else {
+		var defaultValue string = ""
+		r.requesterId = &defaultValue
 	}
 	if r.requesteeId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "requesteeId", r.requesteeId, "form", "")
+	} else {
+		var defaultValue string = ""
+		r.requesteeId = &defaultValue
 	}
 	if r.approverId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "approverId", r.approverId, "form", "")
+	} else {
+		var defaultValue string = ""
+		r.approverId = &defaultValue
 	}
 	if r.count != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "count", r.count, "form", "")
@@ -1394,6 +1425,9 @@ func (a *ApprovalsAPIService) GetApprovalsV1Execute(r ApiGetApprovalsV1Request) 
 	}
 	if r.filters != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "form", "")
+	} else {
+		var defaultValue string = ""
+		r.filters = &defaultValue
 	}
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
@@ -1714,8 +1748,8 @@ Upserts a singular approval configuration that matches the given configID and co
 For example to update the approval configurations for all Access Request Approvals please use: '/generic-approvals/config/ACCESS_REQUEST_APPROVAL/APPROVAL_TYPE'
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id The ID defined by the scope field, where id/scope is the following:  * `{accountID}`/`ACCOUNT` * `{roleID}`/`ROLE` * `{entitlementID}`/`ENTITLEMENT` * `{accessProfileID}`/`ACCESS_PROFILE` * `{domainObjectID}`/`DOMAIN_OBJECT` * `ENTITLEMENT_DESCRIPTIONS`/`APPROVAL_TYPE` * `ACCESS_REQUEST_APPROVAL`/`APPROVAL_TYPE` * `ACCOUNT_DELETE_APPROVAL_REQUEST`/`APPROVAL_TYPE` * `MACHINE_ACCOUNT_CREATE_APPROVAL_REQUEST`/`APPROVAL_TYPE` * `MACHINE_ACCOUNT_DELETE_APPROVAL_REQUEST`/`APPROVAL_TYPE` * `AGENT_ACTIVATE_APPROVAL`/`APPROVAL_TYPE` * `AGENT_DEACTIVATE_APPROVAL`/`APPROVAL_TYPE` * `{tenantID}`/`TENANT`  Replace placeholders such as `{roleID}` with the actual resource ID. 
- @param scope The scope that defines the type of id, where id/scope is the following:  * `{accountID}`/`ACCOUNT` * `{roleID}`/`ROLE` * `{entitlementID}`/`ENTITLEMENT` * `{accessProfileID}`/`ACCESS_PROFILE` * `{domainObjectID}`/`DOMAIN_OBJECT` * `ENTITLEMENT_DESCRIPTIONS`/`APPROVAL_TYPE` * `ACCESS_REQUEST_APPROVAL`/`APPROVAL_TYPE` * `ACCOUNT_DELETE_APPROVAL_REQUEST`/`APPROVAL_TYPE` * `MACHINE_ACCOUNT_CREATE_APPROVAL_REQUEST`/`APPROVAL_TYPE` * `MACHINE_ACCOUNT_DELETE_APPROVAL_REQUEST`/`APPROVAL_TYPE` * `AGENT_ACTIVATE_APPROVAL`/`APPROVAL_TYPE` * `AGENT_DEACTIVATE_APPROVAL`/`APPROVAL_TYPE` * `{tenantID}`/`TENANT`  Replace placeholders such as `{roleID}` with the actual resource ID. 
+ @param id The ID defined by the scope field, where id/scope is the following:  * `{accountID}`/`ACCOUNT` * `{roleID}`/`ROLE` * `{entitlementID}`/`ENTITLEMENT` * `{accessProfileID}`/`ACCESS_PROFILE` * `{domainObjectID}`/`DOMAIN_OBJECT` * `ENTITLEMENT_DESCRIPTIONS`/`APPROVAL_TYPE` * `ACCESS_REQUEST_APPROVAL`/`APPROVAL_TYPE` * `CUSTOM_ACCESS_REQUEST_APPROVAL`/`APPROVAL_TYPE` * `ACCOUNT_DELETE_APPROVAL_REQUEST`/`APPROVAL_TYPE` * `MACHINE_ACCOUNT_CREATE_APPROVAL_REQUEST`/`APPROVAL_TYPE` * `MACHINE_ACCOUNT_DELETE_APPROVAL_REQUEST`/`APPROVAL_TYPE` * `AGENT_ACTIVATE_APPROVAL`/`APPROVAL_TYPE` * `AGENT_DEACTIVATE_APPROVAL`/`APPROVAL_TYPE` * `PRIVILEGED_ENTITLEMENT_RECOMMENDATION`/`APPROVAL_TYPE` * `{tenantID}`/`TENANT`  Replace placeholders such as `{roleID}` with the actual resource ID. 
+ @param scope The scope that defines the type of id, where id/scope is the following:  * `{accountID}`/`ACCOUNT` * `{roleID}`/`ROLE` * `{entitlementID}`/`ENTITLEMENT` * `{accessProfileID}`/`ACCESS_PROFILE` * `{domainObjectID}`/`DOMAIN_OBJECT` * `ENTITLEMENT_DESCRIPTIONS`/`APPROVAL_TYPE` * `ACCESS_REQUEST_APPROVAL`/`APPROVAL_TYPE` * `CUSTOM_ACCESS_REQUEST_APPROVAL`/`APPROVAL_TYPE` * `ACCOUNT_DELETE_APPROVAL_REQUEST`/`APPROVAL_TYPE` * `MACHINE_ACCOUNT_CREATE_APPROVAL_REQUEST`/`APPROVAL_TYPE` * `MACHINE_ACCOUNT_DELETE_APPROVAL_REQUEST`/`APPROVAL_TYPE` * `AGENT_ACTIVATE_APPROVAL`/`APPROVAL_TYPE` * `AGENT_DEACTIVATE_APPROVAL`/`APPROVAL_TYPE` * `PRIVILEGED_ENTITLEMENT_RECOMMENDATION`/`APPROVAL_TYPE` * `{tenantID}`/`TENANT`  Replace placeholders such as `{roleID}` with the actual resource ID. 
  @return ApiPutApprovalsConfigV1Request
 */
 func (a *ApprovalsAPIService) PutApprovalsConfigV1(ctx context.Context, id string, scope string) ApiPutApprovalsConfigV1Request {

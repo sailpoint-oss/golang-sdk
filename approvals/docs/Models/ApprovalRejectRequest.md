@@ -15,8 +15,8 @@ tags: ['SDK', 'Software Development Kit', 'ApprovalRejectRequest', 'V1ApprovalRe
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Comment** | Pointer to **string** | Comment associated with the reject request. | [optional] 
-**OverrideApproverID** | Pointer to **string** | Optional field for ServiceNow Administrators to specify which member of a governance group to override/reject on behalf of. | [optional] 
+**Comment** | Pointer to **string** | Comment associated with the reject request. | [optional] [default to ""]
+**OverrideApproverID** | Pointer to **string** | Optional field for ServiceNow Administrators to specify which member of a governance group to override/reject on behalf of. | [optional] [default to ""]
 
 ## Methods
 

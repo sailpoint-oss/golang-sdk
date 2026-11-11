@@ -17,19 +17,19 @@ import (
 // checks if the LifecycleResourceSummary type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &LifecycleResourceSummary{}
 
-// LifecycleResourceSummary Cached resource context for the lifecycle target.
+// LifecycleResourceSummary Details of the machine identity at the time the request was submitted.
 type LifecycleResourceSummary struct {
-	// Internal machine identity UUID for the lifecycle target.
+	// ID of the machine identity.
 	Id *string `json:"id,omitempty"`
-	// Connector resource id for the lifecycle target.
+	// ID of the machine identity in its source system.
 	ResourceId *string `json:"resourceId,omitempty"`
-	// Display name of the lifecycle target.
+	// Name of the machine identity.
 	Name *string `json:"name,omitempty"`
-	// Source identifier for the lifecycle target.
+	// ID of the source the machine identity belongs to.
 	SourceId *string `json:"sourceId,omitempty"`
-	// Source name for the lifecycle target.
+	// Name of the source the machine identity belongs to.
 	SourceName *string `json:"sourceName,omitempty"`
-	// Machine identity subtype for the lifecycle target.
+	// Type of machine identity.
 	Subtype *string `json:"subtype,omitempty"`
 	AdditionalProperties map[string]interface{}
 }

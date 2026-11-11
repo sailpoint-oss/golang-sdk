@@ -18,22 +18,42 @@ import (
 // checks if the ApprovalRequestedTarget type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &ApprovalRequestedTarget{}
 
-// ApprovalRequestedTarget Represents a requested target in an approval process, including details such as ID, name, reauthentication requirements, and removal date.
+// ApprovalRequestedTarget Specifies the actual object or target the approval request is for.
 type ApprovalRequestedTarget struct {
+	// Target ID (for example a role ID or access profile ID).
+	Id *string `json:"id,omitempty"`
+	// Target IDs when the approval request applies to multiple targets.
+	Ids []string `json:"ids,omitempty"`
+	// Target name (for example a role name or access profile name).
+	Name *string `json:"name,omitempty"`
+	// Target names when the approval request applies to multiple targets.
+	Names []string `json:"names,omitempty"`
+	// Target type (for example Role or Access Profile).
+	TargetType *string `json:"targetType,omitempty"`
+	// Target types when the approval request applies to multiple targets.
+	TargetTypes []string `json:"targetTypes,omitempty"`
+	// Optional description for the requested target.
+	Description *string `json:"description,omitempty"`
+	// Effective privilege (EP) level at approval creation.
+	EpLevelAtCreation *string `json:"epLevelAtCreation,omitempty"`
+	// Current effective privilege (EP) level for the requested target.
+	CurrentEPLevel *string `json:"currentEPLevel,omitempty"`
+	// Date and time when the current effective privilege level was last modified.
+	CurrentEPModifiedDate *SailPointTime `json:"currentEPModifiedDate,omitempty"`
+	// Access request type (for example GRANT_ACCESS or REVOKE_ACCESS).
+	RequestType *string `json:"requestType,omitempty"`
 	// Signature required for forced authentication.
 	ForcedAuthSignature *string `json:"forcedAuthSignature,omitempty"`
-	// ID of the requested target.
-	Id *string `json:"id,omitempty"`
-	// Name of the requested target.
-	Name *string `json:"name,omitempty"`
-	// Indicates if reauthentication is required.
+	// Indicates whether forced reauthentication is required upon approval.
 	ReauthRequired *bool `json:"reauthRequired,omitempty"`
-	// Date when the target will be removed.
+	// When temporary access will be granted, if applicable.
+	StartDate *SailPointTime `json:"startDate,omitempty"`
+	// When temporary access will be removed, if applicable.
 	RemovalDate *SailPointTime `json:"removalDate,omitempty"`
-	// Type of the request.
-	RequestType *string `json:"requestType,omitempty"`
-	// Type of the target.
-	TargetType *string `json:"targetType,omitempty"`
+	// Updated start date when startDate is edited during the approval request.
+	ModifiedStartDate *SailPointTime `json:"modifiedStartDate,omitempty"`
+	// Updated removal date when removalDate is edited during the approval request.
+	ModifiedRemovalDate *SailPointTime `json:"modifiedRemovalDate,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -58,38 +78,6 @@ func NewApprovalRequestedTargetWithDefaults() *ApprovalRequestedTarget {
 	var reauthRequired bool = false
 	this.ReauthRequired = &reauthRequired
 	return &this
-}
-
-// GetForcedAuthSignature returns the ForcedAuthSignature field value if set, zero value otherwise.
-func (o *ApprovalRequestedTarget) GetForcedAuthSignature() string {
-	if o == nil || IsNil(o.ForcedAuthSignature) {
-		var ret string
-		return ret
-	}
-	return *o.ForcedAuthSignature
-}
-
-// GetForcedAuthSignatureOk returns a tuple with the ForcedAuthSignature field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ApprovalRequestedTarget) GetForcedAuthSignatureOk() (*string, bool) {
-	if o == nil || IsNil(o.ForcedAuthSignature) {
-		return nil, false
-	}
-	return o.ForcedAuthSignature, true
-}
-
-// HasForcedAuthSignature returns a boolean if a field has been set.
-func (o *ApprovalRequestedTarget) HasForcedAuthSignature() bool {
-	if o != nil && !IsNil(o.ForcedAuthSignature) {
-		return true
-	}
-
-	return false
-}
-
-// SetForcedAuthSignature gets a reference to the given string and assigns it to the ForcedAuthSignature field.
-func (o *ApprovalRequestedTarget) SetForcedAuthSignature(v string) {
-	o.ForcedAuthSignature = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
@@ -124,6 +112,38 @@ func (o *ApprovalRequestedTarget) SetId(v string) {
 	o.Id = &v
 }
 
+// GetIds returns the Ids field value if set, zero value otherwise.
+func (o *ApprovalRequestedTarget) GetIds() []string {
+	if o == nil || IsNil(o.Ids) {
+		var ret []string
+		return ret
+	}
+	return o.Ids
+}
+
+// GetIdsOk returns a tuple with the Ids field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApprovalRequestedTarget) GetIdsOk() ([]string, bool) {
+	if o == nil || IsNil(o.Ids) {
+		return nil, false
+	}
+	return o.Ids, true
+}
+
+// HasIds returns a boolean if a field has been set.
+func (o *ApprovalRequestedTarget) HasIds() bool {
+	if o != nil && !IsNil(o.Ids) {
+		return true
+	}
+
+	return false
+}
+
+// SetIds gets a reference to the given []string and assigns it to the Ids field.
+func (o *ApprovalRequestedTarget) SetIds(v []string) {
+	o.Ids = v
+}
+
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *ApprovalRequestedTarget) GetName() string {
 	if o == nil || IsNil(o.Name) {
@@ -156,100 +176,36 @@ func (o *ApprovalRequestedTarget) SetName(v string) {
 	o.Name = &v
 }
 
-// GetReauthRequired returns the ReauthRequired field value if set, zero value otherwise.
-func (o *ApprovalRequestedTarget) GetReauthRequired() bool {
-	if o == nil || IsNil(o.ReauthRequired) {
-		var ret bool
+// GetNames returns the Names field value if set, zero value otherwise.
+func (o *ApprovalRequestedTarget) GetNames() []string {
+	if o == nil || IsNil(o.Names) {
+		var ret []string
 		return ret
 	}
-	return *o.ReauthRequired
+	return o.Names
 }
 
-// GetReauthRequiredOk returns a tuple with the ReauthRequired field value if set, nil otherwise
+// GetNamesOk returns a tuple with the Names field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApprovalRequestedTarget) GetReauthRequiredOk() (*bool, bool) {
-	if o == nil || IsNil(o.ReauthRequired) {
+func (o *ApprovalRequestedTarget) GetNamesOk() ([]string, bool) {
+	if o == nil || IsNil(o.Names) {
 		return nil, false
 	}
-	return o.ReauthRequired, true
+	return o.Names, true
 }
 
-// HasReauthRequired returns a boolean if a field has been set.
-func (o *ApprovalRequestedTarget) HasReauthRequired() bool {
-	if o != nil && !IsNil(o.ReauthRequired) {
+// HasNames returns a boolean if a field has been set.
+func (o *ApprovalRequestedTarget) HasNames() bool {
+	if o != nil && !IsNil(o.Names) {
 		return true
 	}
 
 	return false
 }
 
-// SetReauthRequired gets a reference to the given bool and assigns it to the ReauthRequired field.
-func (o *ApprovalRequestedTarget) SetReauthRequired(v bool) {
-	o.ReauthRequired = &v
-}
-
-// GetRemovalDate returns the RemovalDate field value if set, zero value otherwise.
-func (o *ApprovalRequestedTarget) GetRemovalDate() SailPointTime {
-	if o == nil || IsNil(o.RemovalDate) {
-		var ret SailPointTime
-		return ret
-	}
-	return *o.RemovalDate
-}
-
-// GetRemovalDateOk returns a tuple with the RemovalDate field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ApprovalRequestedTarget) GetRemovalDateOk() (*SailPointTime, bool) {
-	if o == nil || IsNil(o.RemovalDate) {
-		return nil, false
-	}
-	return o.RemovalDate, true
-}
-
-// HasRemovalDate returns a boolean if a field has been set.
-func (o *ApprovalRequestedTarget) HasRemovalDate() bool {
-	if o != nil && !IsNil(o.RemovalDate) {
-		return true
-	}
-
-	return false
-}
-
-// SetRemovalDate gets a reference to the given SailPointTime and assigns it to the RemovalDate field.
-func (o *ApprovalRequestedTarget) SetRemovalDate(v SailPointTime) {
-	o.RemovalDate = &v
-}
-
-// GetRequestType returns the RequestType field value if set, zero value otherwise.
-func (o *ApprovalRequestedTarget) GetRequestType() string {
-	if o == nil || IsNil(o.RequestType) {
-		var ret string
-		return ret
-	}
-	return *o.RequestType
-}
-
-// GetRequestTypeOk returns a tuple with the RequestType field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ApprovalRequestedTarget) GetRequestTypeOk() (*string, bool) {
-	if o == nil || IsNil(o.RequestType) {
-		return nil, false
-	}
-	return o.RequestType, true
-}
-
-// HasRequestType returns a boolean if a field has been set.
-func (o *ApprovalRequestedTarget) HasRequestType() bool {
-	if o != nil && !IsNil(o.RequestType) {
-		return true
-	}
-
-	return false
-}
-
-// SetRequestType gets a reference to the given string and assigns it to the RequestType field.
-func (o *ApprovalRequestedTarget) SetRequestType(v string) {
-	o.RequestType = &v
+// SetNames gets a reference to the given []string and assigns it to the Names field.
+func (o *ApprovalRequestedTarget) SetNames(v []string) {
+	o.Names = v
 }
 
 // GetTargetType returns the TargetType field value if set, zero value otherwise.
@@ -284,6 +240,390 @@ func (o *ApprovalRequestedTarget) SetTargetType(v string) {
 	o.TargetType = &v
 }
 
+// GetTargetTypes returns the TargetTypes field value if set, zero value otherwise.
+func (o *ApprovalRequestedTarget) GetTargetTypes() []string {
+	if o == nil || IsNil(o.TargetTypes) {
+		var ret []string
+		return ret
+	}
+	return o.TargetTypes
+}
+
+// GetTargetTypesOk returns a tuple with the TargetTypes field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApprovalRequestedTarget) GetTargetTypesOk() ([]string, bool) {
+	if o == nil || IsNil(o.TargetTypes) {
+		return nil, false
+	}
+	return o.TargetTypes, true
+}
+
+// HasTargetTypes returns a boolean if a field has been set.
+func (o *ApprovalRequestedTarget) HasTargetTypes() bool {
+	if o != nil && !IsNil(o.TargetTypes) {
+		return true
+	}
+
+	return false
+}
+
+// SetTargetTypes gets a reference to the given []string and assigns it to the TargetTypes field.
+func (o *ApprovalRequestedTarget) SetTargetTypes(v []string) {
+	o.TargetTypes = v
+}
+
+// GetDescription returns the Description field value if set, zero value otherwise.
+func (o *ApprovalRequestedTarget) GetDescription() string {
+	if o == nil || IsNil(o.Description) {
+		var ret string
+		return ret
+	}
+	return *o.Description
+}
+
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApprovalRequestedTarget) GetDescriptionOk() (*string, bool) {
+	if o == nil || IsNil(o.Description) {
+		return nil, false
+	}
+	return o.Description, true
+}
+
+// HasDescription returns a boolean if a field has been set.
+func (o *ApprovalRequestedTarget) HasDescription() bool {
+	if o != nil && !IsNil(o.Description) {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given string and assigns it to the Description field.
+func (o *ApprovalRequestedTarget) SetDescription(v string) {
+	o.Description = &v
+}
+
+// GetEpLevelAtCreation returns the EpLevelAtCreation field value if set, zero value otherwise.
+func (o *ApprovalRequestedTarget) GetEpLevelAtCreation() string {
+	if o == nil || IsNil(o.EpLevelAtCreation) {
+		var ret string
+		return ret
+	}
+	return *o.EpLevelAtCreation
+}
+
+// GetEpLevelAtCreationOk returns a tuple with the EpLevelAtCreation field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApprovalRequestedTarget) GetEpLevelAtCreationOk() (*string, bool) {
+	if o == nil || IsNil(o.EpLevelAtCreation) {
+		return nil, false
+	}
+	return o.EpLevelAtCreation, true
+}
+
+// HasEpLevelAtCreation returns a boolean if a field has been set.
+func (o *ApprovalRequestedTarget) HasEpLevelAtCreation() bool {
+	if o != nil && !IsNil(o.EpLevelAtCreation) {
+		return true
+	}
+
+	return false
+}
+
+// SetEpLevelAtCreation gets a reference to the given string and assigns it to the EpLevelAtCreation field.
+func (o *ApprovalRequestedTarget) SetEpLevelAtCreation(v string) {
+	o.EpLevelAtCreation = &v
+}
+
+// GetCurrentEPLevel returns the CurrentEPLevel field value if set, zero value otherwise.
+func (o *ApprovalRequestedTarget) GetCurrentEPLevel() string {
+	if o == nil || IsNil(o.CurrentEPLevel) {
+		var ret string
+		return ret
+	}
+	return *o.CurrentEPLevel
+}
+
+// GetCurrentEPLevelOk returns a tuple with the CurrentEPLevel field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApprovalRequestedTarget) GetCurrentEPLevelOk() (*string, bool) {
+	if o == nil || IsNil(o.CurrentEPLevel) {
+		return nil, false
+	}
+	return o.CurrentEPLevel, true
+}
+
+// HasCurrentEPLevel returns a boolean if a field has been set.
+func (o *ApprovalRequestedTarget) HasCurrentEPLevel() bool {
+	if o != nil && !IsNil(o.CurrentEPLevel) {
+		return true
+	}
+
+	return false
+}
+
+// SetCurrentEPLevel gets a reference to the given string and assigns it to the CurrentEPLevel field.
+func (o *ApprovalRequestedTarget) SetCurrentEPLevel(v string) {
+	o.CurrentEPLevel = &v
+}
+
+// GetCurrentEPModifiedDate returns the CurrentEPModifiedDate field value if set, zero value otherwise.
+func (o *ApprovalRequestedTarget) GetCurrentEPModifiedDate() SailPointTime {
+	if o == nil || IsNil(o.CurrentEPModifiedDate) {
+		var ret SailPointTime
+		return ret
+	}
+	return *o.CurrentEPModifiedDate
+}
+
+// GetCurrentEPModifiedDateOk returns a tuple with the CurrentEPModifiedDate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApprovalRequestedTarget) GetCurrentEPModifiedDateOk() (*SailPointTime, bool) {
+	if o == nil || IsNil(o.CurrentEPModifiedDate) {
+		return nil, false
+	}
+	return o.CurrentEPModifiedDate, true
+}
+
+// HasCurrentEPModifiedDate returns a boolean if a field has been set.
+func (o *ApprovalRequestedTarget) HasCurrentEPModifiedDate() bool {
+	if o != nil && !IsNil(o.CurrentEPModifiedDate) {
+		return true
+	}
+
+	return false
+}
+
+// SetCurrentEPModifiedDate gets a reference to the given SailPointTime and assigns it to the CurrentEPModifiedDate field.
+func (o *ApprovalRequestedTarget) SetCurrentEPModifiedDate(v SailPointTime) {
+	o.CurrentEPModifiedDate = &v
+}
+
+// GetRequestType returns the RequestType field value if set, zero value otherwise.
+func (o *ApprovalRequestedTarget) GetRequestType() string {
+	if o == nil || IsNil(o.RequestType) {
+		var ret string
+		return ret
+	}
+	return *o.RequestType
+}
+
+// GetRequestTypeOk returns a tuple with the RequestType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApprovalRequestedTarget) GetRequestTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.RequestType) {
+		return nil, false
+	}
+	return o.RequestType, true
+}
+
+// HasRequestType returns a boolean if a field has been set.
+func (o *ApprovalRequestedTarget) HasRequestType() bool {
+	if o != nil && !IsNil(o.RequestType) {
+		return true
+	}
+
+	return false
+}
+
+// SetRequestType gets a reference to the given string and assigns it to the RequestType field.
+func (o *ApprovalRequestedTarget) SetRequestType(v string) {
+	o.RequestType = &v
+}
+
+// GetForcedAuthSignature returns the ForcedAuthSignature field value if set, zero value otherwise.
+func (o *ApprovalRequestedTarget) GetForcedAuthSignature() string {
+	if o == nil || IsNil(o.ForcedAuthSignature) {
+		var ret string
+		return ret
+	}
+	return *o.ForcedAuthSignature
+}
+
+// GetForcedAuthSignatureOk returns a tuple with the ForcedAuthSignature field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApprovalRequestedTarget) GetForcedAuthSignatureOk() (*string, bool) {
+	if o == nil || IsNil(o.ForcedAuthSignature) {
+		return nil, false
+	}
+	return o.ForcedAuthSignature, true
+}
+
+// HasForcedAuthSignature returns a boolean if a field has been set.
+func (o *ApprovalRequestedTarget) HasForcedAuthSignature() bool {
+	if o != nil && !IsNil(o.ForcedAuthSignature) {
+		return true
+	}
+
+	return false
+}
+
+// SetForcedAuthSignature gets a reference to the given string and assigns it to the ForcedAuthSignature field.
+func (o *ApprovalRequestedTarget) SetForcedAuthSignature(v string) {
+	o.ForcedAuthSignature = &v
+}
+
+// GetReauthRequired returns the ReauthRequired field value if set, zero value otherwise.
+func (o *ApprovalRequestedTarget) GetReauthRequired() bool {
+	if o == nil || IsNil(o.ReauthRequired) {
+		var ret bool
+		return ret
+	}
+	return *o.ReauthRequired
+}
+
+// GetReauthRequiredOk returns a tuple with the ReauthRequired field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApprovalRequestedTarget) GetReauthRequiredOk() (*bool, bool) {
+	if o == nil || IsNil(o.ReauthRequired) {
+		return nil, false
+	}
+	return o.ReauthRequired, true
+}
+
+// HasReauthRequired returns a boolean if a field has been set.
+func (o *ApprovalRequestedTarget) HasReauthRequired() bool {
+	if o != nil && !IsNil(o.ReauthRequired) {
+		return true
+	}
+
+	return false
+}
+
+// SetReauthRequired gets a reference to the given bool and assigns it to the ReauthRequired field.
+func (o *ApprovalRequestedTarget) SetReauthRequired(v bool) {
+	o.ReauthRequired = &v
+}
+
+// GetStartDate returns the StartDate field value if set, zero value otherwise.
+func (o *ApprovalRequestedTarget) GetStartDate() SailPointTime {
+	if o == nil || IsNil(o.StartDate) {
+		var ret SailPointTime
+		return ret
+	}
+	return *o.StartDate
+}
+
+// GetStartDateOk returns a tuple with the StartDate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApprovalRequestedTarget) GetStartDateOk() (*SailPointTime, bool) {
+	if o == nil || IsNil(o.StartDate) {
+		return nil, false
+	}
+	return o.StartDate, true
+}
+
+// HasStartDate returns a boolean if a field has been set.
+func (o *ApprovalRequestedTarget) HasStartDate() bool {
+	if o != nil && !IsNil(o.StartDate) {
+		return true
+	}
+
+	return false
+}
+
+// SetStartDate gets a reference to the given SailPointTime and assigns it to the StartDate field.
+func (o *ApprovalRequestedTarget) SetStartDate(v SailPointTime) {
+	o.StartDate = &v
+}
+
+// GetRemovalDate returns the RemovalDate field value if set, zero value otherwise.
+func (o *ApprovalRequestedTarget) GetRemovalDate() SailPointTime {
+	if o == nil || IsNil(o.RemovalDate) {
+		var ret SailPointTime
+		return ret
+	}
+	return *o.RemovalDate
+}
+
+// GetRemovalDateOk returns a tuple with the RemovalDate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApprovalRequestedTarget) GetRemovalDateOk() (*SailPointTime, bool) {
+	if o == nil || IsNil(o.RemovalDate) {
+		return nil, false
+	}
+	return o.RemovalDate, true
+}
+
+// HasRemovalDate returns a boolean if a field has been set.
+func (o *ApprovalRequestedTarget) HasRemovalDate() bool {
+	if o != nil && !IsNil(o.RemovalDate) {
+		return true
+	}
+
+	return false
+}
+
+// SetRemovalDate gets a reference to the given SailPointTime and assigns it to the RemovalDate field.
+func (o *ApprovalRequestedTarget) SetRemovalDate(v SailPointTime) {
+	o.RemovalDate = &v
+}
+
+// GetModifiedStartDate returns the ModifiedStartDate field value if set, zero value otherwise.
+func (o *ApprovalRequestedTarget) GetModifiedStartDate() SailPointTime {
+	if o == nil || IsNil(o.ModifiedStartDate) {
+		var ret SailPointTime
+		return ret
+	}
+	return *o.ModifiedStartDate
+}
+
+// GetModifiedStartDateOk returns a tuple with the ModifiedStartDate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApprovalRequestedTarget) GetModifiedStartDateOk() (*SailPointTime, bool) {
+	if o == nil || IsNil(o.ModifiedStartDate) {
+		return nil, false
+	}
+	return o.ModifiedStartDate, true
+}
+
+// HasModifiedStartDate returns a boolean if a field has been set.
+func (o *ApprovalRequestedTarget) HasModifiedStartDate() bool {
+	if o != nil && !IsNil(o.ModifiedStartDate) {
+		return true
+	}
+
+	return false
+}
+
+// SetModifiedStartDate gets a reference to the given SailPointTime and assigns it to the ModifiedStartDate field.
+func (o *ApprovalRequestedTarget) SetModifiedStartDate(v SailPointTime) {
+	o.ModifiedStartDate = &v
+}
+
+// GetModifiedRemovalDate returns the ModifiedRemovalDate field value if set, zero value otherwise.
+func (o *ApprovalRequestedTarget) GetModifiedRemovalDate() SailPointTime {
+	if o == nil || IsNil(o.ModifiedRemovalDate) {
+		var ret SailPointTime
+		return ret
+	}
+	return *o.ModifiedRemovalDate
+}
+
+// GetModifiedRemovalDateOk returns a tuple with the ModifiedRemovalDate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApprovalRequestedTarget) GetModifiedRemovalDateOk() (*SailPointTime, bool) {
+	if o == nil || IsNil(o.ModifiedRemovalDate) {
+		return nil, false
+	}
+	return o.ModifiedRemovalDate, true
+}
+
+// HasModifiedRemovalDate returns a boolean if a field has been set.
+func (o *ApprovalRequestedTarget) HasModifiedRemovalDate() bool {
+	if o != nil && !IsNil(o.ModifiedRemovalDate) {
+		return true
+	}
+
+	return false
+}
+
+// SetModifiedRemovalDate gets a reference to the given SailPointTime and assigns it to the ModifiedRemovalDate field.
+func (o *ApprovalRequestedTarget) SetModifiedRemovalDate(v SailPointTime) {
+	o.ModifiedRemovalDate = &v
+}
+
 func (o ApprovalRequestedTarget) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -294,26 +634,56 @@ func (o ApprovalRequestedTarget) MarshalJSON() ([]byte, error) {
 
 func (o ApprovalRequestedTarget) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.ForcedAuthSignature) {
-		toSerialize["forcedAuthSignature"] = o.ForcedAuthSignature
-	}
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.Ids) {
+		toSerialize["ids"] = o.Ids
 	}
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.ReauthRequired) {
-		toSerialize["reauthRequired"] = o.ReauthRequired
+	if !IsNil(o.Names) {
+		toSerialize["names"] = o.Names
 	}
-	if !IsNil(o.RemovalDate) {
-		toSerialize["removalDate"] = o.RemovalDate
+	if !IsNil(o.TargetType) {
+		toSerialize["targetType"] = o.TargetType
+	}
+	if !IsNil(o.TargetTypes) {
+		toSerialize["targetTypes"] = o.TargetTypes
+	}
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
+	}
+	if !IsNil(o.EpLevelAtCreation) {
+		toSerialize["epLevelAtCreation"] = o.EpLevelAtCreation
+	}
+	if !IsNil(o.CurrentEPLevel) {
+		toSerialize["currentEPLevel"] = o.CurrentEPLevel
+	}
+	if !IsNil(o.CurrentEPModifiedDate) {
+		toSerialize["currentEPModifiedDate"] = o.CurrentEPModifiedDate
 	}
 	if !IsNil(o.RequestType) {
 		toSerialize["requestType"] = o.RequestType
 	}
-	if !IsNil(o.TargetType) {
-		toSerialize["targetType"] = o.TargetType
+	if !IsNil(o.ForcedAuthSignature) {
+		toSerialize["forcedAuthSignature"] = o.ForcedAuthSignature
+	}
+	if !IsNil(o.ReauthRequired) {
+		toSerialize["reauthRequired"] = o.ReauthRequired
+	}
+	if !IsNil(o.StartDate) {
+		toSerialize["startDate"] = o.StartDate
+	}
+	if !IsNil(o.RemovalDate) {
+		toSerialize["removalDate"] = o.RemovalDate
+	}
+	if !IsNil(o.ModifiedStartDate) {
+		toSerialize["modifiedStartDate"] = o.ModifiedStartDate
+	}
+	if !IsNil(o.ModifiedRemovalDate) {
+		toSerialize["modifiedRemovalDate"] = o.ModifiedRemovalDate
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -337,13 +707,23 @@ func (o *ApprovalRequestedTarget) UnmarshalJSON(data []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "forcedAuthSignature")
 		delete(additionalProperties, "id")
+		delete(additionalProperties, "ids")
 		delete(additionalProperties, "name")
-		delete(additionalProperties, "reauthRequired")
-		delete(additionalProperties, "removalDate")
-		delete(additionalProperties, "requestType")
+		delete(additionalProperties, "names")
 		delete(additionalProperties, "targetType")
+		delete(additionalProperties, "targetTypes")
+		delete(additionalProperties, "description")
+		delete(additionalProperties, "epLevelAtCreation")
+		delete(additionalProperties, "currentEPLevel")
+		delete(additionalProperties, "currentEPModifiedDate")
+		delete(additionalProperties, "requestType")
+		delete(additionalProperties, "forcedAuthSignature")
+		delete(additionalProperties, "reauthRequired")
+		delete(additionalProperties, "startDate")
+		delete(additionalProperties, "removalDate")
+		delete(additionalProperties, "modifiedStartDate")
+		delete(additionalProperties, "modifiedRemovalDate")
 		o.AdditionalProperties = additionalProperties
 	}
 

@@ -32,7 +32,7 @@ type ApprovalConfig struct {
 	MachineIdentityManagerAssignment *string `json:"machineIdentityManagerAssignment,omitempty"`
 	// When true, all approvals will be created with the status \"PASSED\" effectively skipping the approval process. Note this field should only be used for Machine Account or Machine related approvals.
 	CircumventApprovalProcess *bool `json:"circumventApprovalProcess,omitempty"`
-	// OFF will prevent the approval request from being assigned to the requester or requestee by assigning it to their manager instead. DIRECT when the requester != requestee this will cause steps assigned directly to the requester to be auto-approved. INDIRECT when the requester != requestee this will cause steps assigned to the requester or a group containing the requester to be auto-approved. This field will only be effective if requestedTarget.reauthRequired is set to false, otherwise the approval will have to be manually approved.
+	// OFF will prevent the approval request from being assigned to the requester or requestee by assigning it to their manager instead. DIRECT when the requester != requestee this will cause steps assigned directly to the requester to be auto-approved. INDIRECT when the requester != requestee this will cause steps assigned to the requester or a group containing the requester to be auto-approved. SELF_REQUEST will cause steps assigned to the requester or a group containing the requester to be auto-approved whether or not the requester is the same as the requestee. This field will only be effective if requestedTarget.reauthRequired is set to false, otherwise the approval will have to be manually approved.
 	AutoApprove *string `json:"autoApprove,omitempty"`
 	AdditionalProperties map[string]interface{}
 }

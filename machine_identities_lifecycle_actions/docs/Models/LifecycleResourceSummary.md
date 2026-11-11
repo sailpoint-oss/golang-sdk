@@ -15,12 +15,12 @@ tags: ['SDK', 'Software Development Kit', 'LifecycleResourceSummary', 'V1Lifecyc
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | Internal machine identity UUID for the lifecycle target. | [optional] 
-**ResourceId** | Pointer to **string** | Connector resource id for the lifecycle target. | [optional] 
-**Name** | Pointer to **string** | Display name of the lifecycle target. | [optional] 
-**SourceId** | Pointer to **string** | Source identifier for the lifecycle target. | [optional] 
-**SourceName** | Pointer to **string** | Source name for the lifecycle target. | [optional] 
-**Subtype** | Pointer to **string** | Machine identity subtype for the lifecycle target. | [optional] 
+**Id** | Pointer to **string** | ID of the machine identity. | [optional] 
+**ResourceId** | Pointer to **string** | ID of the machine identity in its source system. | [optional] 
+**Name** | Pointer to **string** | Name of the machine identity. | [optional] 
+**SourceId** | Pointer to **string** | ID of the source the machine identity belongs to. | [optional] 
+**SourceName** | Pointer to **string** | Name of the source the machine identity belongs to. | [optional] 
+**Subtype** | Pointer to **string** | Type of machine identity. | [optional] 
 
 ## Methods
 

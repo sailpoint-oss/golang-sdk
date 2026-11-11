@@ -14,7 +14,7 @@ import (
 	"encoding/json"
 )
 
-// Lifecycleprovisioningstatus Provisioning execution status for the downstream workflow window.
+// Lifecycleprovisioningstatus Status of provisioning the change to the machine identity's source.
 type Lifecycleprovisioningstatus string
 
 // List of Lifecycleprovisioningstatus
