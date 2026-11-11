@@ -28,7 +28,7 @@ Name | Type | Description | Notes
 **PreferredLanguage** | Pointer to **string** | The locale the user prefers to use | [optional] 
 **Locale** | Pointer to **string** | The locale the user prefers to use | [optional] 
 **GroupStrings** | Pointer to **string** | Group strings configured on the customer's Active Directory configuration, provided by the IDP at the moment on authentication. | [optional] 
-**SailpointIdentityId** | Pointer to **string** | The identity ID of the user in ISC | [optional] 
+**SailpointIdentityId** | Pointer to **string** | The identity ID of the user in SailPoint Identity Security | [optional] 
 
 ## Methods
 

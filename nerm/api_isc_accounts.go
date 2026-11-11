@@ -352,7 +352,7 @@ func (r ApiUpdateProfileRequest) Execute() (*GetSingleSchemaMappedProfile200Resp
 /*
 UpdateProfile Update Profile
 
-Updates a profile only through ISC schema-mapped attributes, performs a reverse mapping to match the NERM attributes to update.
+Updates a profile only through SailPoint Identity Security schema-mapped attributes, performs a reverse mapping to match the NERM attributes to update.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id ID of the object to retrieve, update, or delete

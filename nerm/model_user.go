@@ -46,7 +46,7 @@ type User struct {
 	Locale *string `json:"locale,omitempty"`
 	// Group strings configured on the customer's Active Directory configuration, provided by the IDP at the moment on authentication.
 	GroupStrings *string `json:"group_strings,omitempty"`
-	// The identity ID of the user in ISC
+	// The identity ID of the user in SailPoint Identity Security
 	SailpointIdentityId *string `json:"sailpoint_identity_id,omitempty"`
 	AdditionalProperties map[string]interface{}
 }

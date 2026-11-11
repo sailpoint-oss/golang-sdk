@@ -160,7 +160,7 @@ func main() {
 
 ## update-profile
 Update Profile
-Updates a profile only through ISC schema-mapped attributes, performs a reverse mapping to match the NERM attributes to update.
+Updates a profile only through SailPoint Identity Security schema-mapped attributes, performs a reverse mapping to match the NERM attributes to update.
 
 [API Spec](https://developer.sailpoint.com/docs/api/update-profile)
 
