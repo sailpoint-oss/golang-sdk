@@ -3,7 +3,7 @@ info:
   contact:
     name: Developer Relations
     url: https://developer.sailpoint.com/discuss/api-help
-  description: "Use these APIs to interact with the Identity Security Cloud platform\
+  description: "Use these APIs to interact with the SailPoint Identity Security platform\
     \ to achieve repeatable, automated processes with greater scalability. We encourage\
     \ you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss\
     \ to connect with other developers using our APIs."
@@ -11,7 +11,7 @@ info:
     name: MIT
     url: https://opensource.org/licenses/MIT
   termsOfService: https://developer.sailpoint.com/discuss/tos
-  title: Identity Security Cloud API - UI Plugins
+  title: SailPoint Identity Security API - UI Plugins
   version: v1
   x-audience: external-public
 externalDocs:
@@ -33,11 +33,11 @@ security:
 - userAuth:
   - sp:scopes:all
 tags:
-- description: "UI Plugins let you extend the Identity Security Cloud (ISC) user interface\
+- description: "UI Plugins let you extend the SailPoint Identity Security user interface\
     \ with your own custom web applications. Rather than building a separate app that\
-    \ lives outside the platform, a UI plugin is a micro-frontend that ISC loads directly\
+    \ lives outside the platform, a UI plugin is a micro-frontend that SailPoint Identity Security loads directly\
     \ into designated **slots** in its UI — so your custom experience runs inside\
-    \ ISC, using the tenant's session and honoring its security model. UI Plugins\
+    \ SailPoint Identity Security, using the tenant's session and honoring its security model. UI Plugins\
     \ are a licensed feature. \nThe best way to interact with the UI Plugins API is\
     \ to use the [SailPoint CLI](https://developer.sailpoint.com/docs/tools/cli).\
     \ Alternatively, you can use the REST APIs for tenant UI plugin instance lifecycle\
@@ -248,7 +248,7 @@ paths:
               name:
                 en: My Custom Plugin
               description:
-                en: Extends the ISC UI with custom workflows
+                en: Extends the SailPoint Identity Security UI with custom workflows
               apiScopes:
               - idn:account:read
               slots:
@@ -1891,7 +1891,7 @@ components:
           type: string
         requiredCapabilities:
           default: []
-          description: ISC capabilities the user must hold (AND logic) to see this
+          description: SailPoint Identity Security capabilities the user must hold (AND logic) to see this
             plugin in the slot. Empty means unrestricted.
           example:
           - ORG_ADMIN
@@ -2789,9 +2789,9 @@ components:
       description: |
         OAuth2 Bearer token (JWT) generated using either a [personal access token (PAT)](https://developer.sailpoint.com/docs/api/authentication/#generate-a-personal-access-token) or through the [authorization code flow](https://developer.sailpoint.com/docs/api/authentication/#request-access-token-with-authorization-code-grant-flow).
 
-        Personal access tokens are associated with a user in Identity Security Cloud and relies on the user's [user level](https://documentation.sailpoint.com/saas/help/common/users/index.html) (ex. Admin, Helpdesk, etc.) to determine a base level of access.
+        Personal access tokens are associated with a user in SailPoint Identity Security and relies on the user's [user level](https://documentation.sailpoint.com/saas/help/common/users/index.html) (ex. Admin, Helpdesk, etc.) to determine a base level of access.
 
-        See [Identity Security Cloud REST API Authentication](https://developer.sailpoint.com/docs/api/authentication/) for more information.
+        See [SailPoint Identity Security REST API Authentication](https://developer.sailpoint.com/docs/api/authentication/) for more information.
       flows:
         authorizationCode:
           authorizationUrl: https://example-tenant.login.sailpoint.com/oauth/authorize
@@ -2810,9 +2810,9 @@ components:
       description: |
         OAuth2 Bearer token (JWT) generated using [client credentials flow](https://developer.sailpoint.com/docs/api/authentication/#request-access-token-with-client-credentials-grant-flow).
 
-        Client credentials refers to tokens that are not associated with a user in Identity Security Cloud.
+        Client credentials refers to tokens that are not associated with a user in SailPoint Identity Security.
 
-        See [Identity Security Cloud REST API Authentication](https://developer.sailpoint.com/docs/api/authentication/) for more information.
+        See [SailPoint Identity Security REST API Authentication](https://developer.sailpoint.com/docs/api/authentication/) for more information.
       flows:
         clientCredentials:
           scopes:

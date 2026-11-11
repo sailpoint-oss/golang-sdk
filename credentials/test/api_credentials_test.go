@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - Credentials
+SailPoint Identity Security API - Credentials
 
 Testing CredentialsAPIService
 

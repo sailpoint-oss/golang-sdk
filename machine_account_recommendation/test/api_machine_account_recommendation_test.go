@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - Machine Account Recommendation
+SailPoint Identity Security API - Machine Account Recommendation
 
 Testing MachineAccountRecommendationAPIService
 

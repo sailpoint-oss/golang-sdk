@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - Capabilities
+SailPoint Identity Security API - Capabilities
 
 Testing CapabilitiesAPIService
 

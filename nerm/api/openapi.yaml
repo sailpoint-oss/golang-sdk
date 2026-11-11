@@ -2033,7 +2033,7 @@ paths:
       tags:
       - isc accounts
     patch:
-      description: "Updates a profile only through ISC schema-mapped attributes, performs\
+      description: "Updates a profile only through SailPoint Identity Security schema-mapped attributes, performs\
         \ a reverse mapping to match the NERM attributes to update."
       operationId: updateProfile
       parameters:
@@ -10567,7 +10567,7 @@ components:
           example: "Admin_group, Developer_group"
           type: string
         sailpoint_identity_id:
-          description: The identity ID of the user in ISC
+          description: The identity ID of the user in SailPoint Identity Security
           example: 9496f8d6ddab49c0bef1e9ee6f1b835a
           type: string
       type: object
@@ -15890,9 +15890,9 @@ components:
       description: |
         OAuth2 Bearer token (JWT) generated using either a [personal access token (PAT)](https://developer.sailpoint.com/docs/api/authentication/#generate-a-personal-access-token) or through the [authorization code flow](https://developer.sailpoint.com/docs/api/authentication/#request-access-token-with-authorization-code-grant-flow).
 
-        Personal access tokens are associated with a user in Identity Security Cloud and relies on the user's [user level](https://documentation.sailpoint.com/saas/help/common/users/index.html) (ex. Admin, Helpdesk, etc.) to determine a base level of access.
+        Personal access tokens are associated with a user in SailPoint Identity Security and relies on the user's [user level](https://documentation.sailpoint.com/saas/help/common/users/index.html) (ex. Admin, Helpdesk, etc.) to determine a base level of access.
 
-        See [Identity Security Cloud REST API Authentication](https://developer.sailpoint.com/docs/api/authentication/) for more information.
+        See [SailPoint Identity Security REST API Authentication](https://developer.sailpoint.com/docs/api/authentication/) for more information.
       flows:
         authorizationCode:
           authorizationUrl: https://example-tenant.login.sailpoint.com/oauth/authorize

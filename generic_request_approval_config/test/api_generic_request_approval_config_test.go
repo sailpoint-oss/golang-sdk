@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - Generic Request Approval Config
+SailPoint Identity Security API - Generic Request Approval Config
 
 Testing GenericRequestApprovalConfigAPIService
 

@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - Prompt Insights
+SailPoint Identity Security API - Prompt Insights
 
 Testing PromptInsightsAPIService
 

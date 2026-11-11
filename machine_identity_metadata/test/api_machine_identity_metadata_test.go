@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - Machine Identity Metadata
+SailPoint Identity Security API - Machine Identity Metadata
 
 Testing MachineIdentityMetadataAPIService
 
