@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud API - UI Plugins
+SailPoint Identity Security API - UI Plugins
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the SailPoint Identity Security platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: v1
 */
@@ -22,7 +22,7 @@ var _ MappedNullable = &PluginSlot{}
 type PluginSlot struct {
 	// Identifier referencing an entry in the slot registry
 	SlotId string `json:"slotId"`
-	// ISC capabilities the user must hold (AND logic) to see this plugin in the slot. Empty means unrestricted.
+	// SailPoint Identity Security capabilities the user must hold (AND logic) to see this plugin in the slot. Empty means unrestricted.
 	RequiredCapabilities []string `json:"requiredCapabilities,omitempty"`
 	// User GUIDs (32-char hex) limiting visibility during development. Empty means no user restriction.
 	RestrictToUsers []string `json:"restrictToUsers,omitempty"`

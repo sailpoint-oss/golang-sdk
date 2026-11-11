@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - Devices
+SailPoint Identity Security API - Devices
 
 Testing DevicesAPIService
 
