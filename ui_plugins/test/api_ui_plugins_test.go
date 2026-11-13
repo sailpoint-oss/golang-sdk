@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud API - UI Plugins
+SailPoint Identity Security API - UI Plugins
 
 Testing UIPluginsAPIService
 
