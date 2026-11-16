@@ -42,28 +42,32 @@ func (r ApiCreateSourceSubtypeOverrideV2Request) SourceSubtypeOverrideRequest(so
 	return r
 }
 
-func (r ApiCreateSourceSubtypeOverrideV2Request) Execute() (*SourceSubtypeV2, *http.Response, error) {
+func (r ApiCreateSourceSubtypeOverrideV2Request) Execute() (*SubtypeWithTarget, *http.Response, error) {
 	return r.ApiService.CreateSourceSubtypeOverrideV2Execute(r)
 }
 
 /*
-CreateSourceSubtypeOverrideV2 Override source connector subtype
+CreateSourceSubtypeOverrideV2 Create a source-tier override
 
-Create a source subtype that overrides a connector subtype on one source. The new source subtype copies the
-connector subtype's machine account configuration and provisioning policy at the time of the request. Later
-changes to the connector subtype are not applied to the override.
+Creates a SOURCE-tier snapshot of a CONNECTOR-tier subtype for one source. The snapshot copies
+the parent display data, machine-account config, and authored provisioning policy. It does not
+add the connector's default account-creation fields, and later connector-tier edits do not
+propagate.
 
-The subtype identified by `id` must be a `CONNECTOR` subtype (otherwise `400`) that is in the source's effective
-subtypes. An unknown subtype or source returns `404`. The request is rejected if the tenant's subtype
-configuration cannot be changed this way.
+`subtypeId` must be a CONNECTOR-tier subtype UUID that is in the source effective set. The
+created row is an ordinary SOURCE subtype (`targetType=SOURCE`, new `id`, `origin=null`) and
+can be patched or deleted with the existing v2 subtype routes.
 
-The caller needs the `idn:source-subtypes:create` right, held by org admins, source admins and source sub-admins.
-A caller without it receives `404`, not `403`. A malformed ID returns `400`.
+Requires `idn:source-subtypes:create`. A missing right, an unknown parent, or an unknown source
+returns **404**. A parent that is not CONNECTOR, a blank `sourceId`, a parent that is not
+effective on the source, a name collision, or a subtype cap returns **400**. A malformed `subtypeId` returns **400**.
 
-This API returns `404` when Machine Identity Security or tiered subtype configuration is not enabled for the tenant.
+When the experimental header is missing, or when the tiered subtype configuration is not enabled
+for the tenant, the endpoint returns **404**.
+
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id The ID of the connector subtype to override.
+ @param id CONNECTOR-tier subtype to snapshot onto the source.
  @return ApiCreateSourceSubtypeOverrideV2Request
 */
 func (a *MachineAccountSubtypesAPIService) CreateSourceSubtypeOverrideV2(ctx context.Context, id string) ApiCreateSourceSubtypeOverrideV2Request {
@@ -75,13 +79,13 @@ func (a *MachineAccountSubtypesAPIService) CreateSourceSubtypeOverrideV2(ctx con
 }
 
 // Execute executes the request
-//  @return SourceSubtypeV2
-func (a *MachineAccountSubtypesAPIService) CreateSourceSubtypeOverrideV2Execute(r ApiCreateSourceSubtypeOverrideV2Request) (*SourceSubtypeV2, *http.Response, error) {
+//  @return SubtypeWithTarget
+func (a *MachineAccountSubtypesAPIService) CreateSourceSubtypeOverrideV2Execute(r ApiCreateSourceSubtypeOverrideV2Request) (*SubtypeWithTarget, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *SourceSubtypeV2
+		localVarReturnValue  *SubtypeWithTarget
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MachineAccountSubtypesAPIService.CreateSourceSubtypeOverrideV2")
@@ -241,7 +245,7 @@ type ApiCreateSourceSubtypeProvisioningPolicyV2Request struct {
 	ApiService *MachineAccountSubtypesAPIService
 	id string
 	xSailPointExperimental *string
-	subtypeProvisioningPolicy *SubtypeProvisioningPolicy
+	provisioningPolicyDto *ProvisioningPolicyDto
 	useDefaultFields *bool
 }
 
@@ -251,40 +255,37 @@ func (r ApiCreateSourceSubtypeProvisioningPolicyV2Request) XSailPointExperimenta
 	return r
 }
 
-func (r ApiCreateSourceSubtypeProvisioningPolicyV2Request) SubtypeProvisioningPolicy(subtypeProvisioningPolicy SubtypeProvisioningPolicy) ApiCreateSourceSubtypeProvisioningPolicyV2Request {
-	r.subtypeProvisioningPolicy = &subtypeProvisioningPolicy
+func (r ApiCreateSourceSubtypeProvisioningPolicyV2Request) ProvisioningPolicyDto(provisioningPolicyDto ProvisioningPolicyDto) ApiCreateSourceSubtypeProvisioningPolicyV2Request {
+	r.provisioningPolicyDto = &provisioningPolicyDto
 	return r
 }
 
-// When &#x60;true&#x60; and the request body has no &#x60;fields&#x60;, a &#x60;CONNECTOR&#x60; subtype&#39;s policy is created with the connector&#39;s default account creation fields. Ignored for &#x60;SOURCE&#x60; subtypes.
+// When &#x60;true&#x60; and the request body has no &#x60;fields&#x60;, a &#x60;CONNECTOR&#x60; subtype&#39;s policy is created with the connector&#39;s default account-creation fields. Ignored for &#x60;SOURCE&#x60; subtypes.
 func (r ApiCreateSourceSubtypeProvisioningPolicyV2Request) UseDefaultFields(useDefaultFields bool) ApiCreateSourceSubtypeProvisioningPolicyV2Request {
 	r.useDefaultFields = &useDefaultFields
 	return r
 }
 
-func (r ApiCreateSourceSubtypeProvisioningPolicyV2Request) Execute() (*SubtypeProvisioningPolicy, *http.Response, error) {
+func (r ApiCreateSourceSubtypeProvisioningPolicyV2Request) Execute() (*ProvisioningPolicyDto, *http.Response, error) {
 	return r.ApiService.CreateSourceSubtypeProvisioningPolicyV2Execute(r)
 }
 
 /*
 CreateSourceSubtypeProvisioningPolicyV2 Create subtype provisioning policy
 
-Create the machine account creation provisioning policy of a subtype of any tier. A subtype has at most one
-provisioning policy; the request is rejected if one already exists.
+Creates the machine account creation provisioning policy for a subtype. A subtype has at most
+one policy; the request is rejected if one already exists.
 
-`id` and `subtypeId` must not be supplied (otherwise `400`). `usageType` must be `CREATE_MACHINE_ACCOUNT` or
-omitted. `name` defaults to the subtype's display name.
+When `useDefaultFields` is `true` and the body has no `fields`, a `CONNECTOR` subtype's policy
+is created with the connector's default account-creation fields. `SOURCE` subtypes ignore
+`useDefaultFields`.
 
-Who can call this API depends on the tier of the subtype:
+SOURCE-tier write requires `idn:source-subtypes:update`. CONNECTOR-tier write requires
+`idn:connector-subtypes:update`. A missing subtype or a missing right returns **404**.
 
-* `SOURCE`: requires the `idn:source-subtypes:update` right, held by org admins, source admins and source
-sub-admins.
+When the experimental header is missing, or when the tiered subtype configuration is not enabled
+for the tenant, the endpoint returns **404**.
 
-* `CONNECTOR`: requires the `idn:connector-subtypes:update` right, held by org admins.
-
-A caller without the right for the subtype's tier receives `404`, not `403`. A malformed ID returns `400`.
-
-This API returns `404` when Machine Identity Security or tiered subtype configuration is not enabled for the tenant.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The ID of the subtype.
@@ -299,13 +300,13 @@ func (a *MachineAccountSubtypesAPIService) CreateSourceSubtypeProvisioningPolicy
 }
 
 // Execute executes the request
-//  @return SubtypeProvisioningPolicy
-func (a *MachineAccountSubtypesAPIService) CreateSourceSubtypeProvisioningPolicyV2Execute(r ApiCreateSourceSubtypeProvisioningPolicyV2Request) (*SubtypeProvisioningPolicy, *http.Response, error) {
+//  @return ProvisioningPolicyDto
+func (a *MachineAccountSubtypesAPIService) CreateSourceSubtypeProvisioningPolicyV2Execute(r ApiCreateSourceSubtypeProvisioningPolicyV2Request) (*ProvisioningPolicyDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *SubtypeProvisioningPolicy
+		localVarReturnValue  *ProvisioningPolicyDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MachineAccountSubtypesAPIService.CreateSourceSubtypeProvisioningPolicyV2")
@@ -334,8 +335,8 @@ func (a *MachineAccountSubtypesAPIService) CreateSourceSubtypeProvisioningPolicy
 		r.xSailPointExperimental = &headerxSailPointExperimental
 	}
 	
-	if r.subtypeProvisioningPolicy == nil {
-		return localVarReturnValue, nil, reportError("subtypeProvisioningPolicy is required and must be specified")
+	if r.provisioningPolicyDto == nil {
+		return localVarReturnValue, nil, reportError("provisioningPolicyDto is required and must be specified")
 	}
 
 	if r.useDefaultFields != nil {
@@ -363,7 +364,7 @@ func (a *MachineAccountSubtypesAPIService) CreateSourceSubtypeProvisioningPolicy
 	}
 	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	// body params
-	localVarPostBody = r.subtypeProvisioningPolicy
+	localVarPostBody = r.provisioningPolicyDto
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -420,6 +421,17 @@ func (a *MachineAccountSubtypesAPIService) CreateSourceSubtypeProvisioningPolicy
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 409 {
 			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -657,7 +669,7 @@ type ApiCreateSourceSubtypeV2Request struct {
 	ctx context.Context
 	ApiService *MachineAccountSubtypesAPIService
 	xSailPointExperimental *string
-	createSourceSubtypeV2Request *CreateSourceSubtypeV2Request
+	sourceSubtypeV2 *SourceSubtypeV2
 }
 
 // Use this header to enable this experimental API.
@@ -666,35 +678,36 @@ func (r ApiCreateSourceSubtypeV2Request) XSailPointExperimental(xSailPointExperi
 	return r
 }
 
-func (r ApiCreateSourceSubtypeV2Request) CreateSourceSubtypeV2Request(createSourceSubtypeV2Request CreateSourceSubtypeV2Request) ApiCreateSourceSubtypeV2Request {
-	r.createSourceSubtypeV2Request = &createSourceSubtypeV2Request
+func (r ApiCreateSourceSubtypeV2Request) SourceSubtypeV2(sourceSubtypeV2 SourceSubtypeV2) ApiCreateSourceSubtypeV2Request {
+	r.sourceSubtypeV2 = &sourceSubtypeV2
 	return r
 }
 
-func (r ApiCreateSourceSubtypeV2Request) Execute() (*SourceSubtypeV2, *http.Response, error) {
+func (r ApiCreateSourceSubtypeV2Request) Execute() (*SubtypeWithTarget, *http.Response, error) {
 	return r.ApiService.CreateSourceSubtypeV2Execute(r)
 }
 
 /*
-CreateSourceSubtypeV2 Create subtype
+CreateSourceSubtypeV2 Create a tiered subtype
 
-Create a machine account subtype at the source tier or the connector tier.
+Creates a machine account subtype at the tier declared on the request body.
 
-A `SOURCE` subtype applies to the one source identified by `targetId`. A `CONNECTOR` subtype applies to every
-source of the connector type identified by `targetId`, which must be a registered connector type. `targetType`
-defaults to `SOURCE`. `CONNECTOR_VARIANT` is not supported and returns `400`. `technicalName`, `displayName` and
-`description` are required, and the technical name and display name must be unique within the tier's scope.
+`targetId` is required at every tier. `targetType` defaults to `SOURCE` when omitted. Do not
+supply `id` or `profile`; those fields are response-only. `systemManaged`, `created`,
+`modified`, and `origin` are ignored on input. CONNECTOR `targetName` is optional and is filled
+from the connector's display name.
 
-Who can call this API depends on the requested tier:
+SOURCE-tier create requires `idn:source-subtypes:create`. CONNECTOR-tier create requires
+`idn:connector-subtypes:create`. A missing right is returned as **404**, not **403**.
+`CONNECTOR_VARIANT` is not available and returns **400**.
 
-* `SOURCE` (or omitted): requires the `idn:source-subtypes:create` right, held by org admins, source admins and
-source sub-admins.
+Duplicate technical name or display name in the same tier scope returns **400**. Exceeding the
+organization subtype limit returns **400**. The create also stores a `CREATE_MACHINE_ACCOUNT`
+provisioning policy from the connector's default account-creation fields.
 
-* `CONNECTOR`: requires the `idn:connector-subtypes:create` right, held by org admins.
+When the experimental header is missing, or when the tiered subtype configuration is not enabled
+for the tenant, the endpoint returns **404**.
 
-A caller without the right for the requested tier receives `404`, not `403`.
-
-This API returns `404` when Machine Identity Security or tiered subtype configuration is not enabled for the tenant.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateSourceSubtypeV2Request
@@ -707,13 +720,13 @@ func (a *MachineAccountSubtypesAPIService) CreateSourceSubtypeV2(ctx context.Con
 }
 
 // Execute executes the request
-//  @return SourceSubtypeV2
-func (a *MachineAccountSubtypesAPIService) CreateSourceSubtypeV2Execute(r ApiCreateSourceSubtypeV2Request) (*SourceSubtypeV2, *http.Response, error) {
+//  @return SubtypeWithTarget
+func (a *MachineAccountSubtypesAPIService) CreateSourceSubtypeV2Execute(r ApiCreateSourceSubtypeV2Request) (*SubtypeWithTarget, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *SourceSubtypeV2
+		localVarReturnValue  *SubtypeWithTarget
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MachineAccountSubtypesAPIService.CreateSourceSubtypeV2")
@@ -741,8 +754,8 @@ func (a *MachineAccountSubtypesAPIService) CreateSourceSubtypeV2Execute(r ApiCre
 		r.xSailPointExperimental = &headerxSailPointExperimental
 	}
 	
-	if r.createSourceSubtypeV2Request == nil {
-		return localVarReturnValue, nil, reportError("createSourceSubtypeV2Request is required and must be specified")
+	if r.sourceSubtypeV2 == nil {
+		return localVarReturnValue, nil, reportError("sourceSubtypeV2 is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -764,7 +777,7 @@ func (a *MachineAccountSubtypesAPIService) CreateSourceSubtypeV2Execute(r ApiCre
 	}
 	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	// body params
-	localVarPostBody = r.createSourceSubtypeV2Request
+	localVarPostBody = r.sourceSubtypeV2
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1050,21 +1063,20 @@ func (r ApiDeleteMachineAccountSubtypeV2Request) Execute() (*http.Response, erro
 }
 
 /*
-DeleteMachineAccountSubtypeV2 Delete subtype by ID
+DeleteMachineAccountSubtypeV2 Delete tiered subtype by ID
 
-Delete a machine account subtype of any tier by subtype ID. System-managed subtypes, and subtypes still assigned
-to accounts, cannot be deleted and the request is rejected.
+Deletes a tiered subtype by id.
 
-Who can call this API depends on the tier of the stored subtype:
+System-managed subtypes return **400**. A subtype that is still assigned to accounts returns
+**400**. A connector-tier response includes how many accounts and sources still use it.
 
-* `SOURCE`: requires the `idn:source-subtypes:delete` right, held by org admins, source admins and source
-sub-admins.
+SOURCE-tier delete requires `idn:source-subtypes:delete`. CONNECTOR-tier delete requires
+`idn:connector-subtypes:delete`. Unknown id and a denied tier are both returned as **404**. A
+malformed UUID returns **400**.
 
-* `CONNECTOR`: requires the `idn:connector-subtypes:delete` right, held by org admins.
+When the experimental header is missing, or when the tiered subtype configuration is not enabled
+for the tenant, the endpoint returns **404**.
 
-A caller without the right for the subtype's tier receives `404`, not `403`. A malformed ID returns `400`.
-
-This API returns `404` when Machine Identity Security or tiered subtype configuration is not enabled for the tenant.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The ID of the subtype.
@@ -1238,19 +1250,14 @@ func (r ApiDeleteSourceSubtypeProvisioningPolicyV2Request) Execute() (*http.Resp
 /*
 DeleteSourceSubtypeProvisioningPolicyV2 Delete subtype provisioning policy
 
-Delete the machine account creation provisioning policy of a subtype of any tier. Returns `404` when the subtype
-has no provisioning policy.
+Deletes the stored `CREATE_MACHINE_ACCOUNT` provisioning policy for a subtype.
 
-Who can call this API depends on the tier of the subtype:
+SOURCE-tier delete requires `idn:source-subtypes:delete`. CONNECTOR-tier delete requires
+`idn:connector-subtypes:delete`. Missing subtype and missing right both return **404**.
 
-* `SOURCE`: requires the `idn:source-subtypes:delete` right, held by org admins, source admins and source
-sub-admins.
+When the experimental header is missing, or when the tiered subtype configuration is not enabled
+for the tenant, the endpoint returns **404**.
 
-* `CONNECTOR`: requires the `idn:connector-subtypes:delete` right, held by org admins.
-
-A caller without the right for the subtype's tier receives `404`, not `403`. A malformed ID returns `400`.
-
-This API returns `404` when Machine Identity Security or tiered subtype configuration is not enabled for the tenant.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The ID of the subtype.
@@ -1787,18 +1794,20 @@ func (r ApiGetSourceSubtypeByIdV2Request) XSailPointExperimental(xSailPointExper
 	return r
 }
 
-func (r ApiGetSourceSubtypeByIdV2Request) Execute() (*SourceSubtypeV2, *http.Response, error) {
+func (r ApiGetSourceSubtypeByIdV2Request) Execute() (*SubtypeWithTargetProvisioning, *http.Response, error) {
 	return r.ApiService.GetSourceSubtypeByIdV2Execute(r)
 }
 
 /*
-GetSourceSubtypeByIdV2 Get subtype by ID
+GetSourceSubtypeByIdV2 Get tiered subtype by ID
 
-Get a machine account subtype of any tier by subtype ID. The response may include `target.supportsProvisioning`.
+Returns one machine account subtype by id, including whether its target can provision accounts.
 
-The caller needs the `idn:source-subtypes:read` right. A malformed ID returns `400`.
+Unknown id returns **404**. A caller without the required right also receives **404**. If
+provisioning support cannot be determined, the API returns **503**. When the experimental
+header is missing, or when tiered subtype configuration is not enabled, the endpoint returns
+**404**.
 
-This API returns `404` when Machine Identity Security or tiered subtype configuration is not enabled for the tenant.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The ID of the subtype.
@@ -1813,13 +1822,13 @@ func (a *MachineAccountSubtypesAPIService) GetSourceSubtypeByIdV2(ctx context.Co
 }
 
 // Execute executes the request
-//  @return SourceSubtypeV2
-func (a *MachineAccountSubtypesAPIService) GetSourceSubtypeByIdV2Execute(r ApiGetSourceSubtypeByIdV2Request) (*SourceSubtypeV2, *http.Response, error) {
+//  @return SubtypeWithTargetProvisioning
+func (a *MachineAccountSubtypesAPIService) GetSourceSubtypeByIdV2Execute(r ApiGetSourceSubtypeByIdV2Request) (*SubtypeWithTargetProvisioning, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *SourceSubtypeV2
+		localVarReturnValue  *SubtypeWithTargetProvisioning
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MachineAccountSubtypesAPIService.GetSourceSubtypeByIdV2")
@@ -1947,6 +1956,17 @@ func (a *MachineAccountSubtypesAPIService) GetSourceSubtypeByIdV2Execute(r ApiGe
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 503 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1983,19 +2003,22 @@ func (r ApiGetSourceSubtypeProvisioningPolicyV2Request) SourceId(sourceId string
 	return r
 }
 
-func (r ApiGetSourceSubtypeProvisioningPolicyV2Request) Execute() (*SubtypeProvisioningPolicy, *http.Response, error) {
+func (r ApiGetSourceSubtypeProvisioningPolicyV2Request) Execute() (*ProvisioningPolicyDto, *http.Response, error) {
 	return r.ApiService.GetSourceSubtypeProvisioningPolicyV2Execute(r)
 }
 
 /*
 GetSourceSubtypeProvisioningPolicyV2 Get subtype provisioning policy
 
-Get the machine account creation provisioning policy of a subtype of any tier. Returns `404` when the subtype has
-no provisioning policy.
+Returns the machine account creation provisioning policy for a subtype of any tier. Returns
+**404** when the subtype has no provisioning policy.
 
-The caller needs the `idn:source-subtypes:read` right. A malformed ID returns `400`.
+For a `SOURCE` subtype, pass `sourceId` so a policy stored on that source can be found.
 
-This API returns `404` when Machine Identity Security or tiered subtype configuration is not enabled for the tenant.
+The caller needs `idn:source-subtypes:read`. A malformed id returns **400**. When the
+experimental header is missing, or when tiered subtype configuration is not enabled, the
+endpoint returns **404**.
+
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The ID of the subtype.
@@ -2010,13 +2033,13 @@ func (a *MachineAccountSubtypesAPIService) GetSourceSubtypeProvisioningPolicyV2(
 }
 
 // Execute executes the request
-//  @return SubtypeProvisioningPolicy
-func (a *MachineAccountSubtypesAPIService) GetSourceSubtypeProvisioningPolicyV2Execute(r ApiGetSourceSubtypeProvisioningPolicyV2Request) (*SubtypeProvisioningPolicy, *http.Response, error) {
+//  @return ProvisioningPolicyDto
+func (a *MachineAccountSubtypesAPIService) GetSourceSubtypeProvisioningPolicyV2Execute(r ApiGetSourceSubtypeProvisioningPolicyV2Request) (*ProvisioningPolicyDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *SubtypeProvisioningPolicy
+		localVarReturnValue  *ProvisioningPolicyDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MachineAccountSubtypesAPIService.GetSourceSubtypeProvisioningPolicyV2")
@@ -2042,6 +2065,9 @@ func (a *MachineAccountSubtypesAPIService) GetSourceSubtypeProvisioningPolicyV2E
 
 	if r.sourceId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "sourceId", r.sourceId, "form", "")
+	} else {
+		var defaultValue string = ""
+		r.sourceId = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2168,13 +2194,13 @@ type ApiListSourceSubtypeTargetsV2Request struct {
 	ApiService *MachineAccountSubtypesAPIService
 	filters *string
 	xSailPointExperimental *string
+	sorters *string
+	count *bool
 	limit *int32
 	offset *int32
-	count *bool
-	sorters *string
 }
 
-// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **targetType**: *eq*  **targetName**: *eq, sw*  A &#x60;targetType&#x60; filter with the value &#x60;CONNECTOR&#x60; or &#x60;SOURCE&#x60; is required.
+// Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **targetType**: *eq*  **targetName**: *eq, sw*
 func (r ApiListSourceSubtypeTargetsV2Request) Filters(filters string) ApiListSourceSubtypeTargetsV2Request {
 	r.filters = &filters
 	return r
@@ -2183,6 +2209,18 @@ func (r ApiListSourceSubtypeTargetsV2Request) Filters(filters string) ApiListSou
 // Use this header to enable this experimental API.
 func (r ApiListSourceSubtypeTargetsV2Request) XSailPointExperimental(xSailPointExperimental string) ApiListSourceSubtypeTargetsV2Request {
 	r.xSailPointExperimental = &xSailPointExperimental
+	return r
+}
+
+// Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **targetType, targetName, subtypeCount, sourceCount**  Default sort is targetName ascending.
+func (r ApiListSourceSubtypeTargetsV2Request) Sorters(sorters string) ApiListSourceSubtypeTargetsV2Request {
+	r.sorters = &sorters
+	return r
+}
+
+// If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+func (r ApiListSourceSubtypeTargetsV2Request) Count(count bool) ApiListSourceSubtypeTargetsV2Request {
+	r.count = &count
 	return r
 }
 
@@ -2198,18 +2236,6 @@ func (r ApiListSourceSubtypeTargetsV2Request) Offset(offset int32) ApiListSource
 	return r
 }
 
-// If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
-func (r ApiListSourceSubtypeTargetsV2Request) Count(count bool) ApiListSourceSubtypeTargetsV2Request {
-	r.count = &count
-	return r
-}
-
-// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **targetType, targetName, subtypeCount, sourceCount**  Results are sorted by **targetName** ascending by default.
-func (r ApiListSourceSubtypeTargetsV2Request) Sorters(sorters string) ApiListSourceSubtypeTargetsV2Request {
-	r.sorters = &sorters
-	return r
-}
-
 func (r ApiListSourceSubtypeTargetsV2Request) Execute() ([]SubtypeTargetSummary, *http.Response, error) {
 	return r.ApiService.ListSourceSubtypeTargetsV2Execute(r)
 }
@@ -2217,15 +2243,17 @@ func (r ApiListSourceSubtypeTargetsV2Request) Execute() ([]SubtypeTargetSummary,
 /*
 ListSourceSubtypeTargetsV2 List subtype targets
 
-List the targets that have machine account subtypes, with subtype and source counts for each.
+Lists per-target subtype counts. Connector-tier rows are grouped by connector type.
+Source-tier rows are returned 1:1 with each source-tier subtype.
 
-A `targetType` filter is required. `targetType eq "CONNECTOR"` returns one item per connector type.
-`targetType eq "SOURCE"` returns one item per source subtype. A missing or unsupported `targetType` filter returns
-`400`.
+`filters` must include `targetType eq "CONNECTOR"` or `targetType eq "SOURCE"`. Missing or
+blank `targetType` returns **400**. `CONNECTOR_VARIANT` and unknown values return **400**.
+Filter and sort fields are independent of the subtype list API. Default sort is `targetName`
+ascending. `lastModified` is response-only and is not filterable or sortable.
 
-The caller needs the `idn:source-subtypes:read` right.
+When the experimental header is missing, or when the tiered subtype configuration is not enabled
+for the tenant, the endpoint returns **404**.
 
-This API returns `404` when Machine Identity Security or tiered subtype configuration is not enabled for the tenant.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListSourceSubtypeTargetsV2Request
@@ -2276,6 +2304,19 @@ func (a *MachineAccountSubtypesAPIService) ListSourceSubtypeTargetsV2Execute(r A
 		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
 	}
 
+	parameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "form", "")
+	if r.sorters != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sorters", r.sorters, "form", "")
+	} else {
+		var defaultValue string = "targetName"
+		r.sorters = &defaultValue
+	}
+	if r.count != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "count", r.count, "form", "")
+	} else {
+		var defaultValue bool = false
+		r.count = &defaultValue
+	}
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
 	} else {
@@ -2287,16 +2328,6 @@ func (a *MachineAccountSubtypesAPIService) ListSourceSubtypeTargetsV2Execute(r A
 	} else {
 		var defaultValue int32 = 0
 		r.offset = &defaultValue
-	}
-	if r.count != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "count", r.count, "form", "")
-	} else {
-		var defaultValue bool = false
-		r.count = &defaultValue
-	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "form", "")
-	if r.sorters != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "sorters", r.sorters, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2651,15 +2682,15 @@ type ApiListSourceSubtypesV2Request struct {
 	ctx context.Context
 	ApiService *MachineAccountSubtypesAPIService
 	xSailPointExperimental *string
+	filters *string
+	sorters *string
 	sourceId *string
 	effectiveSet *bool
 	targetType *string
 	includeConfigs *bool
+	count *bool
 	limit *int32
 	offset *int32
-	count *bool
-	filters *string
-	sorters *string
 }
 
 // Use this header to enable this experimental API.
@@ -2668,27 +2699,45 @@ func (r ApiListSourceSubtypesV2Request) XSailPointExperimental(xSailPointExperim
 	return r
 }
 
-// ID of a source. When supplied, the API returns subtypes for that source instead of the whole tenant.
+// Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in, sw*  **displayName**: *eq, sw*  **technicalName**: *eq, sw*  **source.id**: *eq, in*  **targetType**: *eq, in*  **targetId**: *eq, in*  **targetName**: *eq, sw*  **classification**: *eq, in*  **type**: *eq, in*  **created**: *gt, ge, lt, le*  **modified**: *gt, ge, lt, le*  Filters cannot be combined with the effective set. That combination returns 400.
+func (r ApiListSourceSubtypesV2Request) Filters(filters string) ApiListSourceSubtypesV2Request {
+	r.filters = &filters
+	return r
+}
+
+// Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, displayName, technicalName, source.id, targetType, targetId, targetName, classification, type, created, modified**  When omitted, order is unspecified.
+func (r ApiListSourceSubtypesV2Request) Sorters(sorters string) ApiListSourceSubtypesV2Request {
+	r.sorters = &sorters
+	return r
+}
+
+// Source scope. When supplied, omitted &#x60;effectiveSet&#x60; defaults to &#x60;true&#x60;. Unknown source returns **404**. Empty means the parameter was omitted.
 func (r ApiListSourceSubtypesV2Request) SourceId(sourceId string) ApiListSourceSubtypesV2Request {
 	r.sourceId = &sourceId
 	return r
 }
 
-// Controls what is returned for &#x60;sourceId&#x60;. When &#x60;true&#x60;, which is the default when &#x60;sourceId&#x60; is supplied, the API returns the source&#39;s effective subtypes across both tiers. When &#x60;false&#x60;, the API returns only the subtypes defined for the source. Passing &#x60;effectiveSet&#x3D;true&#x60; explicitly without &#x60;sourceId&#x60; returns &#x60;400&#x60;.
+// When &#x60;true&#x60; with &#x60;sourceId&#x60;, return the effective subtype set for that source. When &#x60;false&#x60; with &#x60;sourceId&#x60;, return only that source&#39;s raw SOURCE-tier rows. &#x60;true&#x60; without &#x60;sourceId&#x60; returns **400**. Combining with &#x60;filters&#x60; returns **400**.
 func (r ApiListSourceSubtypesV2Request) EffectiveSet(effectiveSet bool) ApiListSourceSubtypesV2Request {
 	r.effectiveSet = &effectiveSet
 	return r
 }
 
-// Returns only effective subtypes of this tier. Requires &#x60;sourceId&#x60;, and cannot be combined with &#x60;effectiveSet&#x3D;false&#x60;; otherwise the API returns &#x60;400&#x60;.
+// Winner-tier cut on the effective set only. &#x60;CONNECTOR&#x60; returns inherited connector winners. &#x60;SOURCE&#x60; returns source-only winners and SOURCE overrides. Omit it to keep the full winner set. Invalid when &#x60;effectiveSet&#x60; is &#x60;false&#x60; or &#x60;sourceId&#x60; is omitted.
 func (r ApiListSourceSubtypesV2Request) TargetType(targetType string) ApiListSourceSubtypesV2Request {
 	r.targetType = &targetType
 	return r
 }
 
-// When &#x60;true&#x60;, each item includes a summary of its machine account creation configuration in &#x60;config&#x60;.
+// When &#x60;true&#x60;, each &#x60;MACHINE&#x60; subtype with a stored machine-account-create config includes slim &#x60;config.machineAccountCreate.accountCreateEnabled&#x60;. Default &#x60;false&#x60; omits &#x60;config&#x60;.
 func (r ApiListSourceSubtypesV2Request) IncludeConfigs(includeConfigs bool) ApiListSourceSubtypesV2Request {
 	r.includeConfigs = &includeConfigs
+	return r
+}
+
+// If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+func (r ApiListSourceSubtypesV2Request) Count(count bool) ApiListSourceSubtypesV2Request {
+	r.count = &count
 	return r
 }
 
@@ -2704,46 +2753,42 @@ func (r ApiListSourceSubtypesV2Request) Offset(offset int32) ApiListSourceSubtyp
 	return r
 }
 
-// If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
-func (r ApiListSourceSubtypesV2Request) Count(count bool) ApiListSourceSubtypesV2Request {
-	r.count = &count
-	return r
-}
-
-// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, ne, in*  **technicalName**: *eq, ne, in, sw, co*  **displayName**: *eq, ne, in, sw, co*  **source.id**: *eq, ne, in, sw, co*  **targetType**: *eq, ne, in, sw, co*  **targetId**: *eq, ne, in, sw, co*  **targetName**: *eq, ne, in, sw, co, isnull*  **classification**: *eq, ne, in, sw, co*  **type**: *eq, ne, in, sw, co*  **created**: *gt, ge, lt, le*  **modified**: *gt, ge, lt, le*  Filters cannot be used with &#x60;sourceId&#x60; unless &#x60;effectiveSet&#x3D;false&#x60;; otherwise the API returns &#x60;400&#x60;.
-func (r ApiListSourceSubtypesV2Request) Filters(filters string) ApiListSourceSubtypesV2Request {
-	r.filters = &filters
-	return r
-}
-
-// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, technicalName, displayName, source.id, targetType, targetId, targetName, classification, type, created, modified**
-func (r ApiListSourceSubtypesV2Request) Sorters(sorters string) ApiListSourceSubtypesV2Request {
-	r.sorters = &sorters
-	return r
-}
-
-func (r ApiListSourceSubtypesV2Request) Execute() ([]SourceSubtypeV2WithConfig, *http.Response, error) {
+func (r ApiListSourceSubtypesV2Request) Execute() ([]SubtypeWithTargetAndConfig, *http.Response, error) {
 	return r.ApiService.ListSourceSubtypesV2Execute(r)
 }
 
 /*
-ListSourceSubtypesV2 List subtypes
+ListSourceSubtypesV2 Retrieve all tiered subtypes
 
-List machine account subtypes defined at the source tier and the connector tier.
+Lists machine account subtypes across SOURCE and CONNECTOR tiers.
 
-Without `sourceId`, the API lists every subtype in the tenant, and `filters` and `sorters` apply.
+`targetId` is the scope key at every tier (source id for `SOURCE`, connector type for
+`CONNECTOR`). Responses include a resolved `target` reference and do not include `sourceId`.
+List responses do not include `target.supportsProvisioning`.
 
-With `sourceId`, the API returns the source's effective subtypes: the subtypes defined for the source plus the
-subtypes defined for the source's connector type. When a source subtype has the same technical name as a connector
-subtype, only the source subtype is returned and its `origin` is `CONNECTOR`. `filters` cannot be used in this mode.
-Use `targetType` to return only one tier of the effective set. An unknown `sourceId` returns `404`.
+With `sourceId`, omitted `effectiveSet` defaults to `true` and returns the effective set for
+that source (SOURCE overrides CONNECTOR by technical name). `effectiveSet=false` returns only
+that source's raw SOURCE-tier rows. `effectiveSet=true` without `sourceId` returns **400**.
+Combining `filters` with effective-set resolution returns **400**. Unknown `sourceId` returns
+**404**. Limit, offset, and `count` apply on both paths. There is no default sort.
 
-With `sourceId` and `effectiveSet=false`, the API returns only the subtypes defined for that source, and `filters`
-apply.
+Optional `targetType` applies only on the effective-set path. `CONNECTOR` keeps inherited
+connector winners. `SOURCE` keeps source-only winners and SOURCE overrides. Omitting it keeps
+the full winner set. A blank, unknown, or `CONNECTOR_VARIANT` value, or any `targetType` when
+`effectiveSet` is `false` or `sourceId` is omitted, returns **400**.
 
-The caller needs the `idn:source-subtypes:read` right.
+On the effective set, `origin` is `CONNECTOR` only when a SOURCE winner overrides a CONNECTOR
+parent of the same technical name. Connector-only and source-only winners have `origin=null`.
 
-This API returns `404` when Machine Identity Security or tiered subtype configuration is not enabled for the tenant.
+`includeConfigs` defaults to `false`. When `true`, each `MACHINE` subtype that has a stored
+machine-account-create config includes slim `config.machineAccountCreate.accountCreateEnabled`.
+A `MACHINE` row with no create config, and every non-`MACHINE` row, omits `config`. The list
+does not return the full machine-config document.
+
+This API requires the Machine Identity Security product. When the experimental header is
+missing, or when the tiered subtype configuration is not enabled for the tenant, the endpoint
+returns **404**.
+
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListSourceSubtypesV2Request
@@ -2756,13 +2801,13 @@ func (a *MachineAccountSubtypesAPIService) ListSourceSubtypesV2(ctx context.Cont
 }
 
 // Execute executes the request
-//  @return []SourceSubtypeV2WithConfig
-func (a *MachineAccountSubtypesAPIService) ListSourceSubtypesV2Execute(r ApiListSourceSubtypesV2Request) ([]SourceSubtypeV2WithConfig, *http.Response, error) {
+//  @return []SubtypeWithTargetAndConfig
+func (a *MachineAccountSubtypesAPIService) ListSourceSubtypesV2Execute(r ApiListSourceSubtypesV2Request) ([]SubtypeWithTargetAndConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []SourceSubtypeV2WithConfig
+		localVarReturnValue  []SubtypeWithTargetAndConfig
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MachineAccountSubtypesAPIService.ListSourceSubtypesV2")
@@ -2785,8 +2830,20 @@ func (a *MachineAccountSubtypesAPIService) ListSourceSubtypesV2Execute(r ApiList
 		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
 	}
 
+	if r.filters != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "form", "")
+	}
+	if r.sorters != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sorters", r.sorters, "form", "")
+	} else {
+		var defaultValue string = ""
+		r.sorters = &defaultValue
+	}
 	if r.sourceId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "sourceId", r.sourceId, "form", "")
+	} else {
+		var defaultValue string = ""
+		r.sourceId = &defaultValue
 	}
 	if r.effectiveSet != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "effectiveSet", r.effectiveSet, "form", "")
@@ -2803,6 +2860,12 @@ func (a *MachineAccountSubtypesAPIService) ListSourceSubtypesV2Execute(r ApiList
 		var defaultValue bool = false
 		r.includeConfigs = &defaultValue
 	}
+	if r.count != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "count", r.count, "form", "")
+	} else {
+		var defaultValue bool = false
+		r.count = &defaultValue
+	}
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
 	} else {
@@ -2814,18 +2877,6 @@ func (a *MachineAccountSubtypesAPIService) ListSourceSubtypesV2Execute(r ApiList
 	} else {
 		var defaultValue int32 = 0
 		r.offset = &defaultValue
-	}
-	if r.count != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "count", r.count, "form", "")
-	} else {
-		var defaultValue bool = false
-		r.count = &defaultValue
-	}
-	if r.filters != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "form", "")
-	}
-	if r.sorters != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "sorters", r.sorters, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -3364,30 +3415,27 @@ func (r ApiPatchMachineAccountSubtypeV2Request) JsonPatchOperation(jsonPatchOper
 	return r
 }
 
-func (r ApiPatchMachineAccountSubtypeV2Request) Execute() (*SourceSubtypeV2, *http.Response, error) {
+func (r ApiPatchMachineAccountSubtypeV2Request) Execute() (*SubtypeWithTarget, *http.Response, error) {
 	return r.ApiService.PatchMachineAccountSubtypeV2Execute(r)
 }
 
 /*
-PatchMachineAccountSubtypeV2 Patch subtype by ID
+PatchMachineAccountSubtypeV2 Patch tiered subtype by ID
 
-Update a machine account subtype of any tier by subtype ID, using the [JSON
-Patch](https://tools.ietf.org/html/rfc6902) standard.
+Applies an RFC 6902 JSON Patch to a tiered subtype.
 
-Only `displayName` and `description` are patchable, and both must remain present. Changing `targetType`,
-`targetId`, `profile`, `classification`, `type` or `technicalName` returns `400`; to move a subtype to another
-tier or target, delete it and create a new one.
+Patchable fields are `displayName` and `description` only. Tier and identity fields
+(`technicalName`, `targetType`, `targetId`, `profile`, `classification`, `type`) are immutable;
+change them by deleting and recreating the subtype.
 
-Who can call this API depends on the tier of the stored subtype:
+SOURCE-tier update requires `idn:source-subtypes:update`. CONNECTOR-tier update requires
+`idn:connector-subtypes:update`. Unknown id and a denied tier are both returned as **404**. A
+malformed UUID returns **400**. System-managed rows and a duplicate display name in the same
+tier scope return **400**.
 
-* `SOURCE`: requires the `idn:source-subtypes:update` right, held by org admins, source admins and source
-sub-admins.
+When the experimental header is missing, or when the tiered subtype configuration is not enabled
+for the tenant, the endpoint returns **404**.
 
-* `CONNECTOR`: requires the `idn:connector-subtypes:update` right, held by org admins.
-
-A caller without the right for the subtype's tier receives `404`, not `403`. A malformed ID returns `400`.
-
-This API returns `404` when Machine Identity Security or tiered subtype configuration is not enabled for the tenant.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The ID of the subtype.
@@ -3402,13 +3450,13 @@ func (a *MachineAccountSubtypesAPIService) PatchMachineAccountSubtypeV2(ctx cont
 }
 
 // Execute executes the request
-//  @return SourceSubtypeV2
-func (a *MachineAccountSubtypesAPIService) PatchMachineAccountSubtypeV2Execute(r ApiPatchMachineAccountSubtypeV2Request) (*SourceSubtypeV2, *http.Response, error) {
+//  @return SubtypeWithTarget
+func (a *MachineAccountSubtypesAPIService) PatchMachineAccountSubtypeV2Execute(r ApiPatchMachineAccountSubtypeV2Request) (*SubtypeWithTarget, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *SourceSubtypeV2
+		localVarReturnValue  *SubtypeWithTarget
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MachineAccountSubtypesAPIService.PatchMachineAccountSubtypeV2")
@@ -3583,27 +3631,23 @@ func (r ApiPatchSourceSubtypeProvisioningPolicyV2Request) JsonPatchOperation(jso
 	return r
 }
 
-func (r ApiPatchSourceSubtypeProvisioningPolicyV2Request) Execute() (*SubtypeProvisioningPolicy, *http.Response, error) {
+func (r ApiPatchSourceSubtypeProvisioningPolicyV2Request) Execute() (*ProvisioningPolicyDto, *http.Response, error) {
 	return r.ApiService.PatchSourceSubtypeProvisioningPolicyV2Execute(r)
 }
 
 /*
 PatchSourceSubtypeProvisioningPolicyV2 Patch subtype provisioning policy
 
-Update the machine account creation provisioning policy of a subtype of any tier, using the [JSON
-Patch](https://tools.ietf.org/html/rfc6902) standard. Only `name`, `description` and `fields` are patchable.
-Returns `404` when the subtype has no provisioning policy.
+Patches the stored `CREATE_MACHINE_ACCOUNT` provisioning policy for a subtype using RFC 6902
+JSON Patch.
 
-Who can call this API depends on the tier of the subtype:
+SOURCE-tier write requires `idn:source-subtypes:update`. CONNECTOR-tier write requires
+`idn:connector-subtypes:update`. Missing subtype, missing policy, and missing right all return
+**404**.
 
-* `SOURCE`: requires the `idn:source-subtypes:update` right, held by org admins, source admins and source
-sub-admins.
+When the experimental header is missing, or when the tiered subtype configuration is not enabled
+for the tenant, the endpoint returns **404**.
 
-* `CONNECTOR`: requires the `idn:connector-subtypes:update` right, held by org admins.
-
-A caller without the right for the subtype's tier receives `404`, not `403`. A malformed ID returns `400`.
-
-This API returns `404` when Machine Identity Security or tiered subtype configuration is not enabled for the tenant.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The ID of the subtype.
@@ -3618,13 +3662,13 @@ func (a *MachineAccountSubtypesAPIService) PatchSourceSubtypeProvisioningPolicyV
 }
 
 // Execute executes the request
-//  @return SubtypeProvisioningPolicy
-func (a *MachineAccountSubtypesAPIService) PatchSourceSubtypeProvisioningPolicyV2Execute(r ApiPatchSourceSubtypeProvisioningPolicyV2Request) (*SubtypeProvisioningPolicy, *http.Response, error) {
+//  @return ProvisioningPolicyDto
+func (a *MachineAccountSubtypesAPIService) PatchSourceSubtypeProvisioningPolicyV2Execute(r ApiPatchSourceSubtypeProvisioningPolicyV2Request) (*ProvisioningPolicyDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *SubtypeProvisioningPolicy
+		localVarReturnValue  *ProvisioningPolicyDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MachineAccountSubtypesAPIService.PatchSourceSubtypeProvisioningPolicyV2")

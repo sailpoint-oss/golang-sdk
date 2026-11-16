@@ -15,16 +15,16 @@ tags: ['SDK', 'Software Development Kit', 'MachineAccountCreateRequestInputV2', 
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**SubtypeId** | **string** | Subtype ID for which machine account create is enabled and user have the entitlement to create the machine account. | 
-**SourceId** | Pointer to **string** | ID of the source to create the machine account on. The subtype must be available on this source. Required when subtypes can be configured per source for the tenant; otherwise it is ignored and the subtype's own source is used. | [optional] 
-**FormId** | Pointer to **string** | Form ID selected by user for the machine account create request. | [optional] 
-**OwnerIdentityId** | **string** | Owner Identity ID. This identity will be assigned as an owner of the created machine account. | 
-**MachineIdentityId** | Pointer to **NullableString** | Machine identity to correlate with the created machine account. If not provided, a new machine identity will be created. | [optional] 
-**Environment** | Pointer to **string** | Environment type to use for the machine account. | [optional] 
-**Description** | Pointer to **string** | Description for the machine account. | [optional] 
-**UserInput** | Pointer to **map[string]interface{}** | Fields of the form linked to the subtype in approval settings. | [optional] 
-**Entitlements** | Pointer to [**[]MachineAccountCreateEntitlement**](machine-account-create-entitlement) | Entitlements to request for the created machine account, each with an optional comment, start date, and remove date. Duplicate IDs are ignored and up to 20 unique entitlements are allowed. Use either `entitlements` or `entitlementIds`, depending on which one your tenant supports; sending a non-empty list that your tenant does not support returns `400`. | [optional] 
-**EntitlementIds** | Pointer to **[]string** | List of entitlement IDs to provision for created machine account. Up to 20 unique entitlements are allowed. Use either `entitlements` or `entitlementIds`, depending on which one your tenant supports; sending a non-empty list that your tenant does not support returns `400`. | [optional] 
+**SourceId** | Pointer to **string** | Source the machine account is created on. Required while tiered subtype configuration is enabled, so a connector-tier subtype can name its source. Ignored when that flag is off; the source is then the subtype's own source. | [optional] [default to ""]
+**SubtypeId** | **string** | Subtype that must be in the source effective set and for which the caller holds the create machine account entitlement. | 
+**FormId** | Pointer to **string** | Form selected for the machine account create request. | [optional] [default to ""]
+**OwnerIdentityId** | **string** | Identity assigned as owner of the created machine account. | 
+**MachineIdentityId** | Pointer to **NullableString** | Machine identity to correlate with the created machine account. When omitted, a new machine identity is created. | [optional] 
+**Environment** | Pointer to **string** | Environment type to use for the machine account. | [optional] [default to ""]
+**Description** | Pointer to **string** | Description for the machine account. | [optional] [default to ""]
+**UserInput** | Pointer to **map[string]interface{}** | Fields of the form linked to the subtype in approval settings. | [optional] [default to {}]
+**Entitlements** | Pointer to [**[]MachineAccountCreateEntitlement**](machine-account-create-entitlement) | Entitlements to provision, including an optional comment and access dates. Honored while per-entitlement request details are enabled. De-duplicated by `id` (first occurrence wins), at most 20 unique ids. A non-empty array is rejected when that flag is off. An empty array is accepted. | [optional] [default to []]
+**EntitlementIds** | Pointer to **[]string** | Entitlement ids to provision. Honored while per-entitlement request details are off. Values are trimmed, blanks are dropped, and ids are de-duplicated (first occurrence wins), at most 20 unique ids. A non-empty array is rejected when per-entitlement request details are enabled. An empty array is accepted. | [optional] [default to []]
 
 ## Methods
 
@@ -44,26 +44,6 @@ will change when the set of required properties is changed
 NewMachineAccountCreateRequestInputV2WithDefaults instantiates a new MachineAccountCreateRequestInputV2 object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetSubtypeId
-
-`func (o *MachineAccountCreateRequestInputV2) GetSubtypeId() string`
-
-GetSubtypeId returns the SubtypeId field if non-nil, zero value otherwise.
-
-### GetSubtypeIdOk
-
-`func (o *MachineAccountCreateRequestInputV2) GetSubtypeIdOk() (*string, bool)`
-
-GetSubtypeIdOk returns a tuple with the SubtypeId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSubtypeId
-
-`func (o *MachineAccountCreateRequestInputV2) SetSubtypeId(v string)`
-
-SetSubtypeId sets SubtypeId field to given value.
-
 
 ### GetSourceId
 
@@ -89,6 +69,26 @@ SetSourceId sets SourceId field to given value.
 `func (o *MachineAccountCreateRequestInputV2) HasSourceId() bool`
 
 HasSourceId returns a boolean if a field has been set.
+
+### GetSubtypeId
+
+`func (o *MachineAccountCreateRequestInputV2) GetSubtypeId() string`
+
+GetSubtypeId returns the SubtypeId field if non-nil, zero value otherwise.
+
+### GetSubtypeIdOk
+
+`func (o *MachineAccountCreateRequestInputV2) GetSubtypeIdOk() (*string, bool)`
+
+GetSubtypeIdOk returns a tuple with the SubtypeId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSubtypeId
+
+`func (o *MachineAccountCreateRequestInputV2) SetSubtypeId(v string)`
+
+SetSubtypeId sets SubtypeId field to given value.
+
 
 ### GetFormId
 

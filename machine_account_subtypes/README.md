@@ -79,23 +79,23 @@ All URIs are relative to *https://sailpoint.api.identitynow.com*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*MachineAccountSubtypesAPI* | [**CreateSourceSubtypeOverrideV2**](docs/MachineAccountSubtypesAPI.md#createsourcesubtypeoverridev2) | **Post** /source-subtypes/v2/{id}/overrides | Override source connector subtype
+*MachineAccountSubtypesAPI* | [**CreateSourceSubtypeOverrideV2**](docs/MachineAccountSubtypesAPI.md#createsourcesubtypeoverridev2) | **Post** /source-subtypes/v2/{id}/overrides | Create a source-tier override
 *MachineAccountSubtypesAPI* | [**CreateSourceSubtypeProvisioningPolicyV2**](docs/MachineAccountSubtypesAPI.md#createsourcesubtypeprovisioningpolicyv2) | **Post** /source-subtypes/v2/{id}/provisioning-policy | Create subtype provisioning policy
 *MachineAccountSubtypesAPI* | [**CreateSourceSubtypeV1**](docs/MachineAccountSubtypesAPI.md#createsourcesubtypev1) | **Post** /source-subtypes/v1 | Create subtype
-*MachineAccountSubtypesAPI* | [**CreateSourceSubtypeV2**](docs/MachineAccountSubtypesAPI.md#createsourcesubtypev2) | **Post** /source-subtypes/v2 | Create subtype
+*MachineAccountSubtypesAPI* | [**CreateSourceSubtypeV2**](docs/MachineAccountSubtypesAPI.md#createsourcesubtypev2) | **Post** /source-subtypes/v2 | Create a tiered subtype
 *MachineAccountSubtypesAPI* | [**DeleteMachineAccountSubtypeV1**](docs/MachineAccountSubtypesAPI.md#deletemachineaccountsubtypev1) | **Delete** /source-subtypes/v1/{subtypeId} | Delete subtype by ID
-*MachineAccountSubtypesAPI* | [**DeleteMachineAccountSubtypeV2**](docs/MachineAccountSubtypesAPI.md#deletemachineaccountsubtypev2) | **Delete** /source-subtypes/v2/{id} | Delete subtype by ID
+*MachineAccountSubtypesAPI* | [**DeleteMachineAccountSubtypeV2**](docs/MachineAccountSubtypesAPI.md#deletemachineaccountsubtypev2) | **Delete** /source-subtypes/v2/{id} | Delete tiered subtype by ID
 *MachineAccountSubtypesAPI* | [**DeleteSourceSubtypeProvisioningPolicyV2**](docs/MachineAccountSubtypesAPI.md#deletesourcesubtypeprovisioningpolicyv2) | **Delete** /source-subtypes/v2/{id}/provisioning-policy | Delete subtype provisioning policy
 *MachineAccountSubtypesAPI* | [**GetMachineAccountSubtypeApprovalConfigV1**](docs/MachineAccountSubtypesAPI.md#getmachineaccountsubtypeapprovalconfigv1) | **Get** /source-subtypes/v1/{subtypeId}/machine-config | Machine Subtype Approval Config
 *MachineAccountSubtypesAPI* | [**GetSourceSubtypeByIdV1**](docs/MachineAccountSubtypesAPI.md#getsourcesubtypebyidv1) | **Get** /source-subtypes/v1/{subtypeId} | Get subtype by ID
-*MachineAccountSubtypesAPI* | [**GetSourceSubtypeByIdV2**](docs/MachineAccountSubtypesAPI.md#getsourcesubtypebyidv2) | **Get** /source-subtypes/v2/{id} | Get subtype by ID
+*MachineAccountSubtypesAPI* | [**GetSourceSubtypeByIdV2**](docs/MachineAccountSubtypesAPI.md#getsourcesubtypebyidv2) | **Get** /source-subtypes/v2/{id} | Get tiered subtype by ID
 *MachineAccountSubtypesAPI* | [**GetSourceSubtypeProvisioningPolicyV2**](docs/MachineAccountSubtypesAPI.md#getsourcesubtypeprovisioningpolicyv2) | **Get** /source-subtypes/v2/{id}/provisioning-policy | Get subtype provisioning policy
 *MachineAccountSubtypesAPI* | [**ListSourceSubtypeTargetsV2**](docs/MachineAccountSubtypesAPI.md#listsourcesubtypetargetsv2) | **Get** /source-subtypes/v2/targets | List subtype targets
 *MachineAccountSubtypesAPI* | [**ListSourceSubtypesV1**](docs/MachineAccountSubtypesAPI.md#listsourcesubtypesv1) | **Get** /source-subtypes/v1 | Retrieve all subtypes
-*MachineAccountSubtypesAPI* | [**ListSourceSubtypesV2**](docs/MachineAccountSubtypesAPI.md#listsourcesubtypesv2) | **Get** /source-subtypes/v2 | List subtypes
+*MachineAccountSubtypesAPI* | [**ListSourceSubtypesV2**](docs/MachineAccountSubtypesAPI.md#listsourcesubtypesv2) | **Get** /source-subtypes/v2 | Retrieve all tiered subtypes
 *MachineAccountSubtypesAPI* | [**LoadBulkSourceSubtypesV1**](docs/MachineAccountSubtypesAPI.md#loadbulksourcesubtypesv1) | **Post** /source-subtypes/v1/bulk-retrieve | Bulk Retrieve of Source Subtypes
 *MachineAccountSubtypesAPI* | [**PatchMachineAccountSubtypeV1**](docs/MachineAccountSubtypesAPI.md#patchmachineaccountsubtypev1) | **Patch** /source-subtypes/v1/{subtypeId} | Patch subtype by ID
-*MachineAccountSubtypesAPI* | [**PatchMachineAccountSubtypeV2**](docs/MachineAccountSubtypesAPI.md#patchmachineaccountsubtypev2) | **Patch** /source-subtypes/v2/{id} | Patch subtype by ID
+*MachineAccountSubtypesAPI* | [**PatchMachineAccountSubtypeV2**](docs/MachineAccountSubtypesAPI.md#patchmachineaccountsubtypev2) | **Patch** /source-subtypes/v2/{id} | Patch tiered subtype by ID
 *MachineAccountSubtypesAPI* | [**PatchSourceSubtypeProvisioningPolicyV2**](docs/MachineAccountSubtypesAPI.md#patchsourcesubtypeprovisioningpolicyv2) | **Patch** /source-subtypes/v2/{id}/provisioning-policy | Patch subtype provisioning policy
 *MachineAccountSubtypesAPI* | [**UpdateMachineAccountSubtypeApprovalConfigV1**](docs/MachineAccountSubtypesAPI.md#updatemachineaccountsubtypeapprovalconfigv1) | **Patch** /source-subtypes/v1/{subtypeId}/machine-config | Machine Subtype Approval Config
 
@@ -103,10 +103,11 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [ArrayInner](docs/ArrayInner.md)
+ - [ConnectorVariantProfile](docs/ConnectorVariantProfile.md)
  - [CreateSourceSubtypeV1Request](docs/CreateSourceSubtypeV1Request.md)
- - [CreateSourceSubtypeV2Request](docs/CreateSourceSubtypeV2Request.md)
  - [ErrorMessageDto](docs/ErrorMessageDto.md)
  - [ErrorResponseDto](docs/ErrorResponseDto.md)
+ - [FieldDetailsDto](docs/FieldDetailsDto.md)
  - [JsonPatchOperation](docs/JsonPatchOperation.md)
  - [JsonPatchOperationValue](docs/JsonPatchOperationValue.md)
  - [LoadBulkSourceSubtypesV1401Response](docs/LoadBulkSourceSubtypesV1401Response.md)
@@ -115,19 +116,22 @@ Class | Method | HTTP request | Description
  - [MachineAccountSubtypeConfigDto](docs/MachineAccountSubtypeConfigDto.md)
  - [MachineAccountSubtypeConfigDtoMachineAccountCreate](docs/MachineAccountSubtypeConfigDtoMachineAccountCreate.md)
  - [MachineAccountSubtypeConfigDtoMachineAccountDelete](docs/MachineAccountSubtypeConfigDtoMachineAccountDelete.md)
+ - [MachineAccountSubtypeListConfig](docs/MachineAccountSubtypeListConfig.md)
+ - [MachineAccountSubtypeListConfigMachineAccountCreate](docs/MachineAccountSubtypeListConfigMachineAccountCreate.md)
  - [MachineSubtypeApprovalConfig](docs/MachineSubtypeApprovalConfig.md)
+ - [ProvisioningPolicyDto](docs/ProvisioningPolicyDto.md)
  - [SourceSubtypeOverrideRequest](docs/SourceSubtypeOverrideRequest.md)
  - [SourceSubtypeV2](docs/SourceSubtypeV2.md)
- - [SourceSubtypeV2Profile](docs/SourceSubtypeV2Profile.md)
- - [SourceSubtypeV2WithConfig](docs/SourceSubtypeV2WithConfig.md)
- - [SourceSubtypeV2WithConfigAllOfConfig](docs/SourceSubtypeV2WithConfigAllOfConfig.md)
- - [SourceSubtypeV2WithConfigAllOfConfigMachineAccountCreate](docs/SourceSubtypeV2WithConfigAllOfConfigMachineAccountCreate.md)
  - [SourceSubtypeWithSource](docs/SourceSubtypeWithSource.md)
  - [SourceSubtypeWithSourceSource](docs/SourceSubtypeWithSourceSource.md)
- - [SubtypeProvisioningPolicy](docs/SubtypeProvisioningPolicy.md)
- - [SubtypeProvisioningPolicyField](docs/SubtypeProvisioningPolicyField.md)
+ - [SubtypeClassification](docs/SubtypeClassification.md)
  - [SubtypeTarget](docs/SubtypeTarget.md)
+ - [SubtypeTargetRef](docs/SubtypeTargetRef.md)
  - [SubtypeTargetSummary](docs/SubtypeTargetSummary.md)
+ - [SubtypeTargetType](docs/SubtypeTargetType.md)
+ - [SubtypeWithTarget](docs/SubtypeWithTarget.md)
+ - [SubtypeWithTargetAndConfig](docs/SubtypeWithTargetAndConfig.md)
+ - [SubtypeWithTargetProvisioning](docs/SubtypeWithTargetProvisioning.md)
 
 
 ## Documentation For Authorization

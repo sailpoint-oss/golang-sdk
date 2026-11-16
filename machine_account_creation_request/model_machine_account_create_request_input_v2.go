@@ -18,17 +18,17 @@ import (
 // checks if the MachineAccountCreateRequestInputV2 type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &MachineAccountCreateRequestInputV2{}
 
-// MachineAccountCreateRequestInputV2 Contains the information for processing a user-initiated machine account creation request. Adds a target source and per-entitlement request details to the v1 request.
+// MachineAccountCreateRequestInputV2 Machine account create request. `sourceId` is required while tiered subtype configuration is enabled and is ignored when that flag is off. `entitlements` is honored while per-entitlement request details are enabled. `entitlementIds` is honored while that flag is off. A non-empty list of the kind the current flag state does not honor is rejected.
 type MachineAccountCreateRequestInputV2 struct {
-	// Subtype ID for which machine account create is enabled and user have the entitlement to create the machine account.
-	SubtypeId string `json:"subtypeId"`
-	// ID of the source to create the machine account on. The subtype must be available on this source. Required when subtypes can be configured per source for the tenant; otherwise it is ignored and the subtype's own source is used.
+	// Source the machine account is created on. Required while tiered subtype configuration is enabled, so a connector-tier subtype can name its source. Ignored when that flag is off; the source is then the subtype's own source.
 	SourceId *string `json:"sourceId,omitempty"`
-	// Form ID selected by user for the machine account create request.
+	// Subtype that must be in the source effective set and for which the caller holds the create machine account entitlement.
+	SubtypeId string `json:"subtypeId"`
+	// Form selected for the machine account create request.
 	FormId *string `json:"formId,omitempty"`
-	// Owner Identity ID. This identity will be assigned as an owner of the created machine account.
+	// Identity assigned as owner of the created machine account.
 	OwnerIdentityId string `json:"ownerIdentityId"`
-	// Machine identity to correlate with the created machine account. If not provided, a new machine identity will be created.
+	// Machine identity to correlate with the created machine account. When omitted, a new machine identity is created.
 	MachineIdentityId NullableString `json:"machineIdentityId,omitempty"`
 	// Environment type to use for the machine account.
 	Environment *string `json:"environment,omitempty"`
@@ -36,9 +36,9 @@ type MachineAccountCreateRequestInputV2 struct {
 	Description *string `json:"description,omitempty"`
 	// Fields of the form linked to the subtype in approval settings.
 	UserInput map[string]interface{} `json:"userInput,omitempty"`
-	// Entitlements to request for the created machine account, each with an optional comment, start date, and remove date. Duplicate IDs are ignored and up to 20 unique entitlements are allowed. Use either `entitlements` or `entitlementIds`, depending on which one your tenant supports; sending a non-empty list that your tenant does not support returns `400`.
+	// Entitlements to provision, including an optional comment and access dates. Honored while per-entitlement request details are enabled. De-duplicated by `id` (first occurrence wins), at most 20 unique ids. A non-empty array is rejected when that flag is off. An empty array is accepted.
 	Entitlements []MachineAccountCreateEntitlement `json:"entitlements,omitempty"`
-	// List of entitlement IDs to provision for created machine account. Up to 20 unique entitlements are allowed. Use either `entitlements` or `entitlementIds`, depending on which one your tenant supports; sending a non-empty list that your tenant does not support returns `400`.
+	// Entitlement ids to provision. Honored while per-entitlement request details are off. Values are trimmed, blanks are dropped, and ids are de-duplicated (first occurrence wins), at most 20 unique ids. A non-empty array is rejected when per-entitlement request details are enabled. An empty array is accepted.
 	EntitlementIds []string `json:"entitlementIds,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -51,8 +51,16 @@ type _MachineAccountCreateRequestInputV2 MachineAccountCreateRequestInputV2
 // will change when the set of required properties is changed
 func NewMachineAccountCreateRequestInputV2(subtypeId string, ownerIdentityId string) *MachineAccountCreateRequestInputV2 {
 	this := MachineAccountCreateRequestInputV2{}
+	var sourceId string = ""
+	this.SourceId = &sourceId
 	this.SubtypeId = subtypeId
+	var formId string = ""
+	this.FormId = &formId
 	this.OwnerIdentityId = ownerIdentityId
+	var environment string = ""
+	this.Environment = &environment
+	var description string = ""
+	this.Description = &description
 	return &this
 }
 
@@ -61,31 +69,15 @@ func NewMachineAccountCreateRequestInputV2(subtypeId string, ownerIdentityId str
 // but it doesn't guarantee that properties required by API are set
 func NewMachineAccountCreateRequestInputV2WithDefaults() *MachineAccountCreateRequestInputV2 {
 	this := MachineAccountCreateRequestInputV2{}
+	var sourceId string = ""
+	this.SourceId = &sourceId
+	var formId string = ""
+	this.FormId = &formId
+	var environment string = ""
+	this.Environment = &environment
+	var description string = ""
+	this.Description = &description
 	return &this
-}
-
-// GetSubtypeId returns the SubtypeId field value
-func (o *MachineAccountCreateRequestInputV2) GetSubtypeId() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.SubtypeId
-}
-
-// GetSubtypeIdOk returns a tuple with the SubtypeId field value
-// and a boolean to check if the value has been set.
-func (o *MachineAccountCreateRequestInputV2) GetSubtypeIdOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.SubtypeId, true
-}
-
-// SetSubtypeId sets field value
-func (o *MachineAccountCreateRequestInputV2) SetSubtypeId(v string) {
-	o.SubtypeId = v
 }
 
 // GetSourceId returns the SourceId field value if set, zero value otherwise.
@@ -118,6 +110,30 @@ func (o *MachineAccountCreateRequestInputV2) HasSourceId() bool {
 // SetSourceId gets a reference to the given string and assigns it to the SourceId field.
 func (o *MachineAccountCreateRequestInputV2) SetSourceId(v string) {
 	o.SourceId = &v
+}
+
+// GetSubtypeId returns the SubtypeId field value
+func (o *MachineAccountCreateRequestInputV2) GetSubtypeId() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.SubtypeId
+}
+
+// GetSubtypeIdOk returns a tuple with the SubtypeId field value
+// and a boolean to check if the value has been set.
+func (o *MachineAccountCreateRequestInputV2) GetSubtypeIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.SubtypeId, true
+}
+
+// SetSubtypeId sets field value
+func (o *MachineAccountCreateRequestInputV2) SetSubtypeId(v string) {
+	o.SubtypeId = v
 }
 
 // GetFormId returns the FormId field value if set, zero value otherwise.
@@ -388,10 +404,10 @@ func (o MachineAccountCreateRequestInputV2) MarshalJSON() ([]byte, error) {
 
 func (o MachineAccountCreateRequestInputV2) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["subtypeId"] = o.SubtypeId
 	if !IsNil(o.SourceId) {
 		toSerialize["sourceId"] = o.SourceId
 	}
+	toSerialize["subtypeId"] = o.SubtypeId
 	if !IsNil(o.FormId) {
 		toSerialize["formId"] = o.FormId
 	}
@@ -458,8 +474,8 @@ func (o *MachineAccountCreateRequestInputV2) UnmarshalJSON(data []byte) (err err
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "subtypeId")
 		delete(additionalProperties, "sourceId")
+		delete(additionalProperties, "subtypeId")
 		delete(additionalProperties, "formId")
 		delete(additionalProperties, "ownerIdentityId")
 		delete(additionalProperties, "machineIdentityId")

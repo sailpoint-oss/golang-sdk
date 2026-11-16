@@ -13,41 +13,39 @@ package machine_account_subtypes
 import (
 	"encoding/json"
 	
+	"fmt"
 )
 
 // checks if the SourceSubtypeV2 type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &SourceSubtypeV2{}
 
-// SourceSubtypeV2 A machine account subtype defined at the source tier or the connector tier.
+// SourceSubtypeV2 struct for SourceSubtypeV2
 type SourceSubtypeV2 struct {
-	// Unique identifier for the subtype.
+	// Server-generated subtype identifier. Must not be supplied on create.
 	Id *string `json:"id,omitempty"`
-	// Technical name of the subtype.
-	TechnicalName *string `json:"technicalName,omitempty"`
+	// Technical name of the subtype. Unique within the target tier scope.
+	TechnicalName string `json:"technicalName"`
 	// Display name of the subtype.
-	DisplayName *string `json:"displayName,omitempty"`
+	DisplayName string `json:"displayName"`
 	// Description of the subtype.
-	Description *string `json:"description,omitempty"`
-	// Entity type of the subtype.
+	Description string `json:"description"`
+	// Entity type of the subtype. Defaults to `MACHINE` when omitted.
 	Type *string `json:"type,omitempty"`
-	// Tier the subtype is defined at. `SOURCE` subtypes apply to one source. `CONNECTOR` subtypes apply to every source of a connector type. `CONNECTOR_VARIANT` is reserved for future use.
-	TargetType *string `json:"targetType,omitempty"`
-	// Scope key of the subtype. The source ID for `SOURCE` subtypes, or the connector type for `CONNECTOR` subtypes.
-	TargetId *string `json:"targetId,omitempty"`
-	// Display name of the target source or connector.
-	TargetName NullableString `json:"targetName,omitempty"`
-	// Classification of the subtype.
-	Classification *string `json:"classification,omitempty"`
-	// Tier of the parent subtype this subtype overrides. Set to `CONNECTOR` when a source subtype replaces a connector subtype with the same technical name in a source's effective subtype list. Otherwise `null`.
+	TargetType *SubtypeTargetType `json:"targetType,omitempty"`
+	// Scope key for the subtype. Source id when `targetType` is `SOURCE`. Connector type or connector specification id when `targetType` is `CONNECTOR`.
+	TargetId string `json:"targetId"`
+	// Human-readable target label. May be omitted on create; the service persists a display name.
+	TargetName *string `json:"targetName,omitempty"`
+	Classification *SubtypeClassification `json:"classification,omitempty"`
+	// Response-only origin badge. Set on effective-set list reads: `CONNECTOR` when a SOURCE winner overrides a CONNECTOR parent of the same technical name. `null` on connector-only and source-only winners, and on plain CRUD list, create, patch, and get-by-id.
 	Origin NullableString `json:"origin,omitempty"`
-	Profile NullableSourceSubtypeV2Profile `json:"profile,omitempty"`
-	// Indicates whether the subtype is managed by the system.
+	Profile NullableConnectorVariantProfile `json:"profile,omitempty"`
+	// Server-set flag indicating the subtype is managed by the system. Incoming values are ignored.
 	SystemManaged *bool `json:"systemManaged,omitempty"`
 	// Creation timestamp.
-	Created *SailPointTime `json:"created,omitempty"`
+	Created NullableTime `json:"created,omitempty"`
 	// Last modified timestamp.
-	Modified *SailPointTime `json:"modified,omitempty"`
-	Target *SubtypeTarget `json:"target,omitempty"`
+	Modified NullableTime `json:"modified,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -57,8 +55,16 @@ type _SourceSubtypeV2 SourceSubtypeV2
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSourceSubtypeV2() *SourceSubtypeV2 {
+func NewSourceSubtypeV2(technicalName string, displayName string, description string, targetId string) *SourceSubtypeV2 {
 	this := SourceSubtypeV2{}
+	this.TechnicalName = technicalName
+	this.DisplayName = displayName
+	this.Description = description
+	var type_ string = "MACHINE"
+	this.Type = &type_
+	this.TargetId = targetId
+	var targetName string = ""
+	this.TargetName = &targetName
 	return &this
 }
 
@@ -67,6 +73,10 @@ func NewSourceSubtypeV2() *SourceSubtypeV2 {
 // but it doesn't guarantee that properties required by API are set
 func NewSourceSubtypeV2WithDefaults() *SourceSubtypeV2 {
 	this := SourceSubtypeV2{}
+	var type_ string = "MACHINE"
+	this.Type = &type_
+	var targetName string = ""
+	this.TargetName = &targetName
 	return &this
 }
 
@@ -102,100 +112,76 @@ func (o *SourceSubtypeV2) SetId(v string) {
 	o.Id = &v
 }
 
-// GetTechnicalName returns the TechnicalName field value if set, zero value otherwise.
+// GetTechnicalName returns the TechnicalName field value
 func (o *SourceSubtypeV2) GetTechnicalName() string {
-	if o == nil || IsNil(o.TechnicalName) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.TechnicalName
+
+	return o.TechnicalName
 }
 
-// GetTechnicalNameOk returns a tuple with the TechnicalName field value if set, nil otherwise
+// GetTechnicalNameOk returns a tuple with the TechnicalName field value
 // and a boolean to check if the value has been set.
 func (o *SourceSubtypeV2) GetTechnicalNameOk() (*string, bool) {
-	if o == nil || IsNil(o.TechnicalName) {
+	if o == nil {
 		return nil, false
 	}
-	return o.TechnicalName, true
+	return &o.TechnicalName, true
 }
 
-// HasTechnicalName returns a boolean if a field has been set.
-func (o *SourceSubtypeV2) HasTechnicalName() bool {
-	if o != nil && !IsNil(o.TechnicalName) {
-		return true
-	}
-
-	return false
-}
-
-// SetTechnicalName gets a reference to the given string and assigns it to the TechnicalName field.
+// SetTechnicalName sets field value
 func (o *SourceSubtypeV2) SetTechnicalName(v string) {
-	o.TechnicalName = &v
+	o.TechnicalName = v
 }
 
-// GetDisplayName returns the DisplayName field value if set, zero value otherwise.
+// GetDisplayName returns the DisplayName field value
 func (o *SourceSubtypeV2) GetDisplayName() string {
-	if o == nil || IsNil(o.DisplayName) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.DisplayName
+
+	return o.DisplayName
 }
 
-// GetDisplayNameOk returns a tuple with the DisplayName field value if set, nil otherwise
+// GetDisplayNameOk returns a tuple with the DisplayName field value
 // and a boolean to check if the value has been set.
 func (o *SourceSubtypeV2) GetDisplayNameOk() (*string, bool) {
-	if o == nil || IsNil(o.DisplayName) {
+	if o == nil {
 		return nil, false
 	}
-	return o.DisplayName, true
+	return &o.DisplayName, true
 }
 
-// HasDisplayName returns a boolean if a field has been set.
-func (o *SourceSubtypeV2) HasDisplayName() bool {
-	if o != nil && !IsNil(o.DisplayName) {
-		return true
-	}
-
-	return false
-}
-
-// SetDisplayName gets a reference to the given string and assigns it to the DisplayName field.
+// SetDisplayName sets field value
 func (o *SourceSubtypeV2) SetDisplayName(v string) {
-	o.DisplayName = &v
+	o.DisplayName = v
 }
 
-// GetDescription returns the Description field value if set, zero value otherwise.
+// GetDescription returns the Description field value
 func (o *SourceSubtypeV2) GetDescription() string {
-	if o == nil || IsNil(o.Description) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Description
+
+	return o.Description
 }
 
-// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// GetDescriptionOk returns a tuple with the Description field value
 // and a boolean to check if the value has been set.
 func (o *SourceSubtypeV2) GetDescriptionOk() (*string, bool) {
-	if o == nil || IsNil(o.Description) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Description, true
+	return &o.Description, true
 }
 
-// HasDescription returns a boolean if a field has been set.
-func (o *SourceSubtypeV2) HasDescription() bool {
-	if o != nil && !IsNil(o.Description) {
-		return true
-	}
-
-	return false
-}
-
-// SetDescription gets a reference to the given string and assigns it to the Description field.
+// SetDescription sets field value
 func (o *SourceSubtypeV2) SetDescription(v string) {
-	o.Description = &v
+	o.Description = v
 }
 
 // GetType returns the Type field value if set, zero value otherwise.
@@ -231,9 +217,9 @@ func (o *SourceSubtypeV2) SetType(v string) {
 }
 
 // GetTargetType returns the TargetType field value if set, zero value otherwise.
-func (o *SourceSubtypeV2) GetTargetType() string {
+func (o *SourceSubtypeV2) GetTargetType() SubtypeTargetType {
 	if o == nil || IsNil(o.TargetType) {
-		var ret string
+		var ret SubtypeTargetType
 		return ret
 	}
 	return *o.TargetType
@@ -241,7 +227,7 @@ func (o *SourceSubtypeV2) GetTargetType() string {
 
 // GetTargetTypeOk returns a tuple with the TargetType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SourceSubtypeV2) GetTargetTypeOk() (*string, bool) {
+func (o *SourceSubtypeV2) GetTargetTypeOk() (*SubtypeTargetType, bool) {
 	if o == nil || IsNil(o.TargetType) {
 		return nil, false
 	}
@@ -257,89 +243,71 @@ func (o *SourceSubtypeV2) HasTargetType() bool {
 	return false
 }
 
-// SetTargetType gets a reference to the given string and assigns it to the TargetType field.
-func (o *SourceSubtypeV2) SetTargetType(v string) {
+// SetTargetType gets a reference to the given SubtypeTargetType and assigns it to the TargetType field.
+func (o *SourceSubtypeV2) SetTargetType(v SubtypeTargetType) {
 	o.TargetType = &v
 }
 
-// GetTargetId returns the TargetId field value if set, zero value otherwise.
+// GetTargetId returns the TargetId field value
 func (o *SourceSubtypeV2) GetTargetId() string {
-	if o == nil || IsNil(o.TargetId) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.TargetId
+
+	return o.TargetId
 }
 
-// GetTargetIdOk returns a tuple with the TargetId field value if set, nil otherwise
+// GetTargetIdOk returns a tuple with the TargetId field value
 // and a boolean to check if the value has been set.
 func (o *SourceSubtypeV2) GetTargetIdOk() (*string, bool) {
-	if o == nil || IsNil(o.TargetId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.TargetId, true
+	return &o.TargetId, true
 }
 
-// HasTargetId returns a boolean if a field has been set.
-func (o *SourceSubtypeV2) HasTargetId() bool {
-	if o != nil && !IsNil(o.TargetId) {
-		return true
-	}
-
-	return false
-}
-
-// SetTargetId gets a reference to the given string and assigns it to the TargetId field.
+// SetTargetId sets field value
 func (o *SourceSubtypeV2) SetTargetId(v string) {
-	o.TargetId = &v
+	o.TargetId = v
 }
 
-// GetTargetName returns the TargetName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetTargetName returns the TargetName field value if set, zero value otherwise.
 func (o *SourceSubtypeV2) GetTargetName() string {
-	if o == nil || IsNil(o.TargetName.Get()) {
+	if o == nil || IsNil(o.TargetName) {
 		var ret string
 		return ret
 	}
-	return *o.TargetName.Get()
+	return *o.TargetName
 }
 
 // GetTargetNameOk returns a tuple with the TargetName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SourceSubtypeV2) GetTargetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.TargetName) {
 		return nil, false
 	}
-	return o.TargetName.Get(), o.TargetName.IsSet()
+	return o.TargetName, true
 }
 
 // HasTargetName returns a boolean if a field has been set.
 func (o *SourceSubtypeV2) HasTargetName() bool {
-	if o != nil && o.TargetName.IsSet() {
+	if o != nil && !IsNil(o.TargetName) {
 		return true
 	}
 
 	return false
 }
 
-// SetTargetName gets a reference to the given NullableString and assigns it to the TargetName field.
+// SetTargetName gets a reference to the given string and assigns it to the TargetName field.
 func (o *SourceSubtypeV2) SetTargetName(v string) {
-	o.TargetName.Set(&v)
-}
-// SetTargetNameNil sets the value for TargetName to be an explicit nil
-func (o *SourceSubtypeV2) SetTargetNameNil() {
-	o.TargetName.Set(nil)
-}
-
-// UnsetTargetName ensures that no value is present for TargetName, not even an explicit nil
-func (o *SourceSubtypeV2) UnsetTargetName() {
-	o.TargetName.Unset()
+	o.TargetName = &v
 }
 
 // GetClassification returns the Classification field value if set, zero value otherwise.
-func (o *SourceSubtypeV2) GetClassification() string {
+func (o *SourceSubtypeV2) GetClassification() SubtypeClassification {
 	if o == nil || IsNil(o.Classification) {
-		var ret string
+		var ret SubtypeClassification
 		return ret
 	}
 	return *o.Classification
@@ -347,7 +315,7 @@ func (o *SourceSubtypeV2) GetClassification() string {
 
 // GetClassificationOk returns a tuple with the Classification field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SourceSubtypeV2) GetClassificationOk() (*string, bool) {
+func (o *SourceSubtypeV2) GetClassificationOk() (*SubtypeClassification, bool) {
 	if o == nil || IsNil(o.Classification) {
 		return nil, false
 	}
@@ -363,8 +331,8 @@ func (o *SourceSubtypeV2) HasClassification() bool {
 	return false
 }
 
-// SetClassification gets a reference to the given string and assigns it to the Classification field.
-func (o *SourceSubtypeV2) SetClassification(v string) {
+// SetClassification gets a reference to the given SubtypeClassification and assigns it to the Classification field.
+func (o *SourceSubtypeV2) SetClassification(v SubtypeClassification) {
 	o.Classification = &v
 }
 
@@ -411,9 +379,9 @@ func (o *SourceSubtypeV2) UnsetOrigin() {
 }
 
 // GetProfile returns the Profile field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *SourceSubtypeV2) GetProfile() SourceSubtypeV2Profile {
+func (o *SourceSubtypeV2) GetProfile() ConnectorVariantProfile {
 	if o == nil || IsNil(o.Profile.Get()) {
-		var ret SourceSubtypeV2Profile
+		var ret ConnectorVariantProfile
 		return ret
 	}
 	return *o.Profile.Get()
@@ -422,7 +390,7 @@ func (o *SourceSubtypeV2) GetProfile() SourceSubtypeV2Profile {
 // GetProfileOk returns a tuple with the Profile field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *SourceSubtypeV2) GetProfileOk() (*SourceSubtypeV2Profile, bool) {
+func (o *SourceSubtypeV2) GetProfileOk() (*ConnectorVariantProfile, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -438,8 +406,8 @@ func (o *SourceSubtypeV2) HasProfile() bool {
 	return false
 }
 
-// SetProfile gets a reference to the given NullableSourceSubtypeV2Profile and assigns it to the Profile field.
-func (o *SourceSubtypeV2) SetProfile(v SourceSubtypeV2Profile) {
+// SetProfile gets a reference to the given NullableConnectorVariantProfile and assigns it to the Profile field.
+func (o *SourceSubtypeV2) SetProfile(v ConnectorVariantProfile) {
 	o.Profile.Set(&v)
 }
 // SetProfileNil sets the value for Profile to be an explicit nil
@@ -484,100 +452,88 @@ func (o *SourceSubtypeV2) SetSystemManaged(v bool) {
 	o.SystemManaged = &v
 }
 
-// GetCreated returns the Created field value if set, zero value otherwise.
+// GetCreated returns the Created field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SourceSubtypeV2) GetCreated() SailPointTime {
-	if o == nil || IsNil(o.Created) {
+	if o == nil || IsNil(o.Created.Get()) {
 		var ret SailPointTime
 		return ret
 	}
-	return *o.Created
+	return *o.Created.Get()
 }
 
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SourceSubtypeV2) GetCreatedOk() (*SailPointTime, bool) {
-	if o == nil || IsNil(o.Created) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Created, true
+	return o.Created.Get(), o.Created.IsSet()
 }
 
 // HasCreated returns a boolean if a field has been set.
 func (o *SourceSubtypeV2) HasCreated() bool {
-	if o != nil && !IsNil(o.Created) {
+	if o != nil && o.Created.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetCreated gets a reference to the given SailPointTime and assigns it to the Created field.
+// SetCreated gets a reference to the given NullableTime and assigns it to the Created field.
 func (o *SourceSubtypeV2) SetCreated(v SailPointTime) {
-	o.Created = &v
+	o.Created.Set(&v)
+}
+// SetCreatedNil sets the value for Created to be an explicit nil
+func (o *SourceSubtypeV2) SetCreatedNil() {
+	o.Created.Set(nil)
 }
 
-// GetModified returns the Modified field value if set, zero value otherwise.
+// UnsetCreated ensures that no value is present for Created, not even an explicit nil
+func (o *SourceSubtypeV2) UnsetCreated() {
+	o.Created.Unset()
+}
+
+// GetModified returns the Modified field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SourceSubtypeV2) GetModified() SailPointTime {
-	if o == nil || IsNil(o.Modified) {
+	if o == nil || IsNil(o.Modified.Get()) {
 		var ret SailPointTime
 		return ret
 	}
-	return *o.Modified
+	return *o.Modified.Get()
 }
 
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SourceSubtypeV2) GetModifiedOk() (*SailPointTime, bool) {
-	if o == nil || IsNil(o.Modified) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Modified, true
+	return o.Modified.Get(), o.Modified.IsSet()
 }
 
 // HasModified returns a boolean if a field has been set.
 func (o *SourceSubtypeV2) HasModified() bool {
-	if o != nil && !IsNil(o.Modified) {
+	if o != nil && o.Modified.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetModified gets a reference to the given SailPointTime and assigns it to the Modified field.
+// SetModified gets a reference to the given NullableTime and assigns it to the Modified field.
 func (o *SourceSubtypeV2) SetModified(v SailPointTime) {
-	o.Modified = &v
+	o.Modified.Set(&v)
+}
+// SetModifiedNil sets the value for Modified to be an explicit nil
+func (o *SourceSubtypeV2) SetModifiedNil() {
+	o.Modified.Set(nil)
 }
 
-// GetTarget returns the Target field value if set, zero value otherwise.
-func (o *SourceSubtypeV2) GetTarget() SubtypeTarget {
-	if o == nil || IsNil(o.Target) {
-		var ret SubtypeTarget
-		return ret
-	}
-	return *o.Target
-}
-
-// GetTargetOk returns a tuple with the Target field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *SourceSubtypeV2) GetTargetOk() (*SubtypeTarget, bool) {
-	if o == nil || IsNil(o.Target) {
-		return nil, false
-	}
-	return o.Target, true
-}
-
-// HasTarget returns a boolean if a field has been set.
-func (o *SourceSubtypeV2) HasTarget() bool {
-	if o != nil && !IsNil(o.Target) {
-		return true
-	}
-
-	return false
-}
-
-// SetTarget gets a reference to the given SubtypeTarget and assigns it to the Target field.
-func (o *SourceSubtypeV2) SetTarget(v SubtypeTarget) {
-	o.Target = &v
+// UnsetModified ensures that no value is present for Modified, not even an explicit nil
+func (o *SourceSubtypeV2) UnsetModified() {
+	o.Modified.Unset()
 }
 
 func (o SourceSubtypeV2) MarshalJSON() ([]byte, error) {
@@ -593,26 +549,18 @@ func (o SourceSubtypeV2) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !IsNil(o.TechnicalName) {
-		toSerialize["technicalName"] = o.TechnicalName
-	}
-	if !IsNil(o.DisplayName) {
-		toSerialize["displayName"] = o.DisplayName
-	}
-	if !IsNil(o.Description) {
-		toSerialize["description"] = o.Description
-	}
+	toSerialize["technicalName"] = o.TechnicalName
+	toSerialize["displayName"] = o.DisplayName
+	toSerialize["description"] = o.Description
 	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
 	if !IsNil(o.TargetType) {
 		toSerialize["targetType"] = o.TargetType
 	}
-	if !IsNil(o.TargetId) {
-		toSerialize["targetId"] = o.TargetId
-	}
-	if o.TargetName.IsSet() {
-		toSerialize["targetName"] = o.TargetName.Get()
+	toSerialize["targetId"] = o.TargetId
+	if !IsNil(o.TargetName) {
+		toSerialize["targetName"] = o.TargetName
 	}
 	if !IsNil(o.Classification) {
 		toSerialize["classification"] = o.Classification
@@ -626,14 +574,11 @@ func (o SourceSubtypeV2) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SystemManaged) {
 		toSerialize["systemManaged"] = o.SystemManaged
 	}
-	if !IsNil(o.Created) {
-		toSerialize["created"] = o.Created
+	if o.Created.IsSet() {
+		toSerialize["created"] = o.Created.Get()
 	}
-	if !IsNil(o.Modified) {
-		toSerialize["modified"] = o.Modified
-	}
-	if !IsNil(o.Target) {
-		toSerialize["target"] = o.Target
+	if o.Modified.IsSet() {
+		toSerialize["modified"] = o.Modified.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -644,6 +589,30 @@ func (o SourceSubtypeV2) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *SourceSubtypeV2) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"technicalName",
+		"displayName",
+		"description",
+		"targetId",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
 	varSourceSubtypeV2 := _SourceSubtypeV2{}
 
 	err = json.Unmarshal(data, &varSourceSubtypeV2)
@@ -671,7 +640,6 @@ func (o *SourceSubtypeV2) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "systemManaged")
 		delete(additionalProperties, "created")
 		delete(additionalProperties, "modified")
-		delete(additionalProperties, "target")
 		o.AdditionalProperties = additionalProperties
 	}
 

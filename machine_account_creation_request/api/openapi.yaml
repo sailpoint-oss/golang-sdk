@@ -13,6 +13,7 @@ info:
   termsOfService: https://developer.sailpoint.com/discuss/tos
   title: SailPoint Identity Security API - Machine Account Creation Request
   version: v1
+  x-audience: external-public
 servers:
 - description: This is the production API server.
   url: "https://{tenant}.api.identitynow.com"
@@ -147,6 +148,148 @@ paths:
       summary: Submit Machine Account Creation Request
       tags:
       - Machine Account Creation Request
+      x-sailpoint-userLevels:
+      - USER
+  /account-requests/v2/machine-account-create:
+    post:
+      description: |
+        Initiates a machine account creation request. The same body and process are used by `POST /machine-accounts/v2/machine-account-create`.
+
+        `sourceId` is required while tiered subtype configuration is enabled, and `subtypeId` must then be in that source's effective set. When that flag is off, `sourceId` is ignored and the source is the subtype's own source. `entitlements` is honored while per-entitlement request details are enabled; `entitlementIds` is honored while that flag is off. A non-empty list of the other kind returns **400**. At most 20 unique entitlement ids are allowed.
+
+        The call returns **202** with `accountRequestId`. Poll `GET /account-requests/v1/machine-account-create/{accountRequestId}` for status. There is no v2 status route.
+
+        Missing `subtypeId` or `ownerIdentityId`, or a missing `sourceId` while tiered subtype configuration is enabled, returns **400**. An unknown owner, source, or subtype returns **404**. A subtype that is not in the source effective set returns **400**. The endpoint returns **404** when both tiered subtype configuration and per-entitlement request details are disabled.
+
+        The caller must be authenticated with the `sp:scopes:default` scope. The create machine account entitlement for the subtype is checked when the request is processed. Without that entitlement the API returns **403**.
+      operationId: createMachineAccountRequestV2
+      parameters:
+      - description: Use this header to enable this experimental API.
+        example: "true"
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            examples:
+              WithEntitlements:
+                value:
+                  sourceId: 2c9180907c1e4b3a017c1e5f2a3b0001
+                  subtypeId: 1419fc28-a8ed-4a07-9f5c-0cb5dfad6311
+                  formId: 4f1bb61b-a0ab-4c0a-b9fb-20f44407b75a
+                  ownerIdentityId: 9f2c1b7e4a6d4c8fa1b2c3d4e5f60718
+                  machineIdentityId: b1e2c3d4-0a5b-4c6d-8e7f-9a0b1c2d3e4f
+                  environment: production
+                  description: Nightly reconciliation job
+                  userInput:
+                    accountName: svc-recon-01
+                  entitlements:
+                  - id: 858d2151-ff19-464b-ae0d-6938b3af2baf
+                    comment: Needed to read the reconciliation staging tables.
+                    startDate: 2026-09-01T00:00:00.000Z
+                    removeDate: 2027-03-01T00:00:00.000Z
+                  - id: 0c7a44b9-3e21-4f88-9a10-77bd2c6e5f31
+            schema:
+              $ref: '#/components/schemas/MachineAccountCreateRequestInputV2'
+        required: true
+      responses:
+        "202":
+          content:
+            application/json:
+              example:
+                accountRequestId: e5f6a7b8-9c0d-4e1f-a2b3-c4d5e6f7a8b9
+              schema:
+                $ref: '#/components/schemas/AccountRequestAsyncResult'
+          description: Machine account creation request accepted.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/createMachineAccountRequestV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/createMachineAccountRequestV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - sp:scopes:default
+      summary: Machine Account Creation Request (v2)
+      tags:
+      - Machine Account Creation Request
+      x-sailpoint-lint-ignore:
+        path-create-operations-must-return-201: Accepts the request and returns 202.
+          Callers poll the v1 status path for the result.
       x-sailpoint-userLevels:
       - USER
   /account-requests/v1/machine-account-create/{accountRequestId}:
@@ -284,132 +427,6 @@ paths:
       - Machine Account Creation Request
       x-sailpoint-userLevels:
       - USER
-  /account-requests/v2/machine-account-create:
-    post:
-      description: |
-        Submits a machine account creation request on the account-requests API.
-        This operation accepts the same request and runs the same creation process as [Create Machine Account](https://developer.sailpoint.com/docs/api/create-machine-account-v-2). Use this operation when the integration already calls the account-requests APIs. New integrations should call [Create Machine Account](https://developer.sailpoint.com/docs/api/create-machine-account-v-2).
-
-        This method validates the input data, processes the machine account creation request, and returns an asynchronous result containing a tracking ID.
-
-        Compared with v1, this version:
-        - Accepts a `sourceId` so you can choose the source to create the account on. When subtypes can be configured per source for the tenant, `sourceId` is required and the subtype must be available on that source.
-        - Accepts `entitlements`, which lets you add a comment, start date, and remove date to each requested entitlement.
-        - Supports subtypes that are not tied to a single source. Version 1 rejects those subtypes.
-
-        There is no v2 status endpoint. Use the returned `accountRequestId` with [Get Machine Account Creation Request](https://developer.sailpoint.com/docs/api/get-create-machine-account-request-v-1) to track the request.
-
-        This API returns `403` when machine identity creation is not included in the tenant's plan. When machine account creation is not enabled for the tenant, this API returns `404`.
-
-        >**NOTE: You can only request a machine account on a subtype for which you have a create machine account entitlement provisioned. Otherwise, this API returns `403`.**
-      operationId: createMachineAccountRequestV2
-      parameters:
-      - description: Use this header to enable this experimental API.
-        example: true
-        explode: false
-        in: header
-        name: X-SailPoint-Experimental
-        required: true
-        schema:
-          default: "true"
-          type: string
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/MachineAccountCreateRequestInputV2'
-        required: true
-      responses:
-        "202":
-          content:
-            application/json:
-              example:
-                accountRequestId: 2d81808474683da6017468693c260196
-              schema:
-                $ref: '#/components/schemas/AccountRequestAsyncResult'
-          description: Machine account creation request result.
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponseDto'
-          description: Client Error - Returned if the request body is invalid.
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/createMachineAccountRequestV1_401_response'
-          description: "Unauthorized - Returned if there is no authorization header,\
-            \ or if the JWT token is expired."
-        "403":
-          content:
-            application/json:
-              examples:
-                "403":
-                  summary: An example of a 403 response object
-                  value:
-                    detailCode: 403 Forbidden
-                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
-                    messages:
-                    - locale: en-US
-                      localeOrigin: DEFAULT
-                      text: The server understood the request but refuses to authorize
-                        it.
-              schema:
-                $ref: '#/components/schemas/ErrorResponseDto'
-          description: "Forbidden - Returned if the user you are running as, doesn't\
-            \ have access to this end-point."
-        "404":
-          content:
-            application/json:
-              examples:
-                "404":
-                  summary: An example of a 404 response object
-                  value:
-                    detailCode: 404 Not found
-                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
-                    messages:
-                    - locale: en-US
-                      localeOrigin: DEFAULT
-                      text: The server did not find a current representation for the
-                        target resource.
-              schema:
-                $ref: '#/components/schemas/ErrorResponseDto'
-          description: Not Found - returned if the request URL refers to a resource
-            or object that does not exist
-        "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/createMachineAccountRequestV1_429_response'
-          description: Too Many Requests - Returned in response to too many requests
-            in a given period of time - rate limited. The Retry-After header in the
-            response includes how long to wait before trying again.
-        "500":
-          content:
-            application/json:
-              examples:
-                "500":
-                  summary: An example of a 500 response object
-                  value:
-                    detailCode: 500.0 Internal Fault
-                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
-                    messages:
-                    - locale: en-US
-                      localeOrigin: DEFAULT
-                      text: An internal fault occurred.
-              schema:
-                $ref: '#/components/schemas/ErrorResponseDto'
-          description: Internal Server Error - Returned if there is an unexpected
-            error.
-      security:
-      - userAuth: []
-      summary: Submit Machine Account Creation Request
-      tags:
-      - Machine Account Creation Request
-      x-sailpoint-userLevels:
-      - USER
   /machine-accounts/v2/machine-account-create:
     post:
       description: |
@@ -418,19 +435,20 @@ paths:
         This method validates the input data, processes the machine account creation request, and returns an asynchronous result containing a tracking ID.
 
         Compared with v1, this version:
-        - Accepts a `sourceId` so you can choose the source to create the account on. When subtypes can be configured per source for the tenant, `sourceId` is required and the subtype must be available on that source.
-        - Accepts `entitlements`, which lets you add a comment, start date, and remove date to each requested entitlement.
-        - Supports subtypes that are not tied to a single source. Version 1 rejects those subtypes.
+        - Accepts a `sourceId` so you can choose the source to create the account on. `sourceId` is required while tiered subtype configuration is enabled, and the subtype must be in that source's effective set. When that flag is off, `sourceId` is ignored and the source is the subtype's own source.
+        - Accepts `entitlements` (comment, start date, and remove date) while per-entitlement request details are enabled. `entitlementIds` is honored while that flag is off. A non-empty list of the other kind returns `400`.
+        - Supports subtypes that are not tied to a single source while tiered subtype configuration is enabled. Version 1 rejects those subtypes.
 
         There is no v2 status endpoint. Use the returned `accountRequestId` with [Get Machine Account Creation Request](https://developer.sailpoint.com/docs/api/get-create-machine-account-request-v-1) to track the request.
 
         This API returns `403` when machine identity creation is not included in the tenant's plan. When machine account creation is not enabled for the tenant, this API returns `404`.
 
+        This API requires the `sp:scopes:default` scope.
         >**NOTE: You can only request a machine account on a subtype for which you have a create machine account entitlement provisioned. Otherwise, this API returns `403`.**
       operationId: createMachineAccountV2
       parameters:
       - description: Use this header to enable this experimental API.
-        example: true
+        example: "true"
         explode: false
         in: header
         name: X-SailPoint-Experimental
@@ -529,10 +547,14 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - userAuth: []
-      summary: Create Machine Account V2
+      - userAuth:
+        - sp:scopes:default
+      summary: Create Machine Account (v2)
       tags:
       - Machine Account Creation Request
+      x-sailpoint-lint-ignore:
+        path-create-operations-must-return-201: Accepts the request and returns 202.
+          Callers poll the v1 status path for the result.
       x-sailpoint-userLevels:
       - USER
   /source-subtypes/v1/machine-account-create-access:
@@ -910,6 +932,141 @@ components:
           type: array
       title: Error Response Dto
       type: object
+    MachineAccountCreateEntitlement:
+      description: One entitlement to provision on the created machine account. `id`
+        is the entitlement id. Comment and access dates are optional.
+      properties:
+        id:
+          description: Entitlement id to provision. Not required to be a UUID.
+          example: 858d2151-ff19-464b-ae0d-6938b3af2baf
+          type: string
+        comment:
+          default: ""
+          description: Justification stored with the entitlement request.
+          example: Needed to read the reconciliation staging tables.
+          type: string
+        startDate:
+          description: When access starts. Must be in the future and before `removeDate`
+            when both are set.
+          example: 2026-09-01T00:00:00Z
+          format: date-time
+          nullable: true
+          type: string
+        removeDate:
+          description: When access ends. Must be in the future and after `startDate`
+            when both are set.
+          example: 2027-03-01T00:00:00Z
+          format: date-time
+          nullable: true
+          type: string
+      required:
+      - id
+      title: Machine Account Create Entitlement
+      type: object
+    MachineAccountCreateRequestInputV2:
+      description: Machine account create request. `sourceId` is required while tiered
+        subtype configuration is enabled and is ignored when that flag is off. `entitlements`
+        is honored while per-entitlement request details are enabled. `entitlementIds`
+        is honored while that flag is off. A non-empty list of the kind the current
+        flag state does not honor is rejected.
+      example:
+        sourceId: 2c9180907c1e4b3a017c1e5f2a3b0001
+        formId: 4f1bb61b-a0ab-4c0a-b9fb-20f44407b75a
+        entitlements:
+        - id: 858d2151-ff19-464b-ae0d-6938b3af2baf
+          comment: Needed to read the reconciliation staging tables.
+          startDate: 2026-09-01T00:00:00.000Z
+          removeDate: 2027-03-01T00:00:00.000Z
+        - id: 0c7a44b9-3e21-4f88-9a10-77bd2c6e5f31
+        entitlementIds:
+        - 858d2151-ff19-464b-ae0d-6938b3af2baf
+        - 0c7a44b9-3e21-4f88-9a10-77bd2c6e5f31
+        environment: production
+        description: Nightly reconciliation job
+        machineIdentityId: b1e2c3d4-0a5b-4c6d-8e7f-9a0b1c2d3e4f
+        ownerIdentityId: 9f2c1b7e4a6d4c8fa1b2c3d4e5f60718
+        userInput:
+          accountName: svc-recon-01
+        subtypeId: 1419fc28-a8ed-4a07-9f5c-0cb5dfad6311
+      properties:
+        sourceId:
+          default: ""
+          description: "Source the machine account is created on. Required while tiered\
+            \ subtype configuration is enabled, so a connector-tier subtype can name\
+            \ its source. Ignored when that flag is off; the source is then the subtype's\
+            \ own source."
+          example: 2c9180907c1e4b3a017c1e5f2a3b0001
+          type: string
+        subtypeId:
+          description: Subtype that must be in the source effective set and for which
+            the caller holds the create machine account entitlement.
+          example: 1419fc28-a8ed-4a07-9f5c-0cb5dfad6311
+          type: string
+        formId:
+          default: ""
+          description: Form selected for the machine account create request.
+          example: 4f1bb61b-a0ab-4c0a-b9fb-20f44407b75a
+          type: string
+        ownerIdentityId:
+          description: Identity assigned as owner of the created machine account.
+          example: 9f2c1b7e4a6d4c8fa1b2c3d4e5f60718
+          type: string
+        machineIdentityId:
+          description: "Machine identity to correlate with the created machine account.\
+            \ When omitted, a new machine identity is created."
+          example: b1e2c3d4-0a5b-4c6d-8e7f-9a0b1c2d3e4f
+          nullable: true
+          type: string
+        environment:
+          default: ""
+          description: Environment type to use for the machine account.
+          example: production
+          type: string
+        description:
+          default: ""
+          description: Description for the machine account.
+          example: Nightly reconciliation job
+          type: string
+        userInput:
+          default: {}
+          description: Fields of the form linked to the subtype in approval settings.
+          example:
+            accountName: svc-recon-01
+          type: object
+        entitlements:
+          default: []
+          description: "Entitlements to provision, including an optional comment and\
+            \ access dates. Honored while per-entitlement request details are enabled.\
+            \ De-duplicated by `id` (first occurrence wins), at most 20 unique ids.\
+            \ A non-empty array is rejected when that flag is off. An empty array\
+            \ is accepted."
+          example:
+          - id: 858d2151-ff19-464b-ae0d-6938b3af2baf
+            comment: Needed to read the reconciliation staging tables.
+            startDate: 2026-09-01T00:00:00.000Z
+            removeDate: 2027-03-01T00:00:00.000Z
+          - id: 0c7a44b9-3e21-4f88-9a10-77bd2c6e5f31
+          items:
+            $ref: '#/components/schemas/MachineAccountCreateEntitlement'
+          type: array
+        entitlementIds:
+          default: []
+          description: "Entitlement ids to provision. Honored while per-entitlement\
+            \ request details are off. Values are trimmed, blanks are dropped, and\
+            \ ids are de-duplicated (first occurrence wins), at most 20 unique ids.\
+            \ A non-empty array is rejected when per-entitlement request details are\
+            \ enabled. An empty array is accepted."
+          example:
+          - 858d2151-ff19-464b-ae0d-6938b3af2baf
+          - 0c7a44b9-3e21-4f88-9a10-77bd2c6e5f31
+          items:
+            type: string
+          type: array
+      required:
+      - ownerIdentityId
+      - subtypeId
+      title: Machine Account Create Request Input V2
+      type: object
     DtoType:
       description: An enumeration of the types of DTOs supported within the IdentityNow
         infrastructure.
@@ -1072,130 +1229,6 @@ components:
           type: string
       title: Create Machine Account Request Details Dto
       type: object
-    MachineAccountCreateEntitlement:
-      description: "An entitlement to request for the machine account, with optional\
-        \ comment and access dates."
-      properties:
-        id:
-          description: ID of the entitlement to request.
-          example: 2c91808a7624751a01762f19d67c220e
-          type: string
-        comment:
-          description: Comment to include with the entitlement request.
-          example: Needed to read the inventory share.
-          type: string
-        startDate:
-          description: "Date and time when access to the entitlement starts. Must\
-            \ be in the future and, when `removeDate` is also set, before `removeDate`."
-          example: 2026-11-01T00:00:00Z
-          format: date-time
-          type: string
-        removeDate:
-          description: Date and time when access to the entitlement is removed. Must
-            be in the future.
-          example: 2027-11-01T00:00:00Z
-          format: date-time
-          type: string
-      required:
-      - id
-      title: Machine Account Create Entitlement
-      type: object
-    MachineAccountCreateRequestInputV2:
-      description: Contains the information for processing a user-initiated machine
-        account creation request. Adds a target source and per-entitlement request
-        details to the v1 request.
-      example:
-        sourceId: 2c9180835d191a86015d28455b4a2329
-        formId: f5dd23fe-3414-42b7-bb1c-869400ad7a10
-        entitlements:
-        - id: 2c91808a7624751a01762f19d67c220e
-          comment: Needed to read the inventory share.
-          startDate: 2026-11-01T00:00:00Z
-          removeDate: 2027-11-01T00:00:00Z
-        entitlementIds:
-        - 6d28b7c1620c49c6b6d5cbf81eb4b5fa
-        - 2c91808a7624751a01762f19d67c220e
-        environment: Dev
-        description: Requesting machine account for tracking the inventory.
-        machineIdentityId: 6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa
-        ownerIdentityId: 18104e7e499b4e23882d6323344ab6bc
-        userInput:
-          target: AD Source
-          description: Inventory tracking
-        subtypeId: 6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa
-      properties:
-        subtypeId:
-          description: Subtype ID for which machine account create is enabled and
-            user have the entitlement to create the machine account.
-          example: 6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa
-          type: string
-        sourceId:
-          description: ID of the source to create the machine account on. The subtype
-            must be available on this source. Required when subtypes can be configured
-            per source for the tenant; otherwise it is ignored and the subtype's own
-            source is used.
-          example: 2c9180835d191a86015d28455b4a2329
-          type: string
-        formId:
-          description: Form ID selected by user for the machine account create request.
-          example: f5dd23fe-3414-42b7-bb1c-869400ad7a10
-          type: string
-        ownerIdentityId:
-          description: Owner Identity ID. This identity will be assigned as an owner
-            of the created machine account.
-          example: 18104e7e499b4e23882d6323344ab6bc
-          type: string
-        machineIdentityId:
-          description: "Machine identity to correlate with the created machine account.\
-            \ If not provided, a new machine identity will be created."
-          example: 6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa
-          nullable: true
-          type: string
-        environment:
-          description: Environment type to use for the machine account.
-          example: Dev
-          type: string
-        description:
-          description: Description for the machine account.
-          example: Requesting machine account for tracking the inventory.
-          type: string
-        userInput:
-          description: Fields of the form linked to the subtype in approval settings.
-          example:
-            target: AD Source
-            description: Inventory tracking
-          type: object
-        entitlements:
-          description: "Entitlements to request for the created machine account, each\
-            \ with an optional comment, start date, and remove date. Duplicate IDs\
-            \ are ignored and up to 20 unique entitlements are allowed. Use either\
-            \ `entitlements` or `entitlementIds`, depending on which one your tenant\
-            \ supports; sending a non-empty list that your tenant does not support\
-            \ returns `400`."
-          example:
-          - id: 2c91808a7624751a01762f19d67c220e
-            comment: Needed to read the inventory share.
-            startDate: 2026-11-01T00:00:00Z
-            removeDate: 2027-11-01T00:00:00Z
-          items:
-            $ref: '#/components/schemas/MachineAccountCreateEntitlement'
-          type: array
-        entitlementIds:
-          description: "List of entitlement IDs to provision for created machine account.\
-            \ Up to 20 unique entitlements are allowed. Use either `entitlements`\
-            \ or `entitlementIds`, depending on which one your tenant supports; sending\
-            \ a non-empty list that your tenant does not support returns `400`."
-          example:
-          - 6d28b7c1620c49c6b6d5cbf81eb4b5fa
-          - 2c91808a7624751a01762f19d67c220e
-          items:
-            type: string
-          type: array
-      required:
-      - ownerIdentityId
-      - subtypeId
-      title: Machine Account Create Request Input V2
-      type: object
     MachineAccountCreateAccessDto:
       description: A summary endpoint which returns list of sources and subtypes for
         which user has an entitlement to request machine accounts.
@@ -1281,3 +1314,6 @@ components:
           example: Subtype Technical Name
           type: string
       type: object
+x-sailpoint-lint-ignore:
+  path-resource-names-must-be-plural: "The published v1 status path is /account-requests/v1/machine-account-create/{accountRequestId}.\
+    \ The segment before the id is the existing resource name."

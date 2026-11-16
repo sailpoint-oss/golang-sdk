@@ -1095,7 +1095,9 @@
       "sdkName": "CreateMachineAccountRequestV2",
       "httpMethod": "POST",
       "path": "/account-requests/v2/machine-account-create",
-      "userAuth": [],
+      "userAuth": [
+        "sp:scopes:default"
+      ],
       "applicationAuth": null,
       "userLevels": [
         "USER"
@@ -1125,7 +1127,9 @@
       "sdkName": "CreateMachineAccountV2",
       "httpMethod": "POST",
       "path": "/machine-accounts/v2/machine-account-create",
-      "userAuth": [],
+      "userAuth": [
+        "sp:scopes:default"
+      ],
       "applicationAuth": null,
       "userLevels": [
         "USER"
@@ -1768,10 +1772,10 @@
       "httpMethod": "POST",
       "path": "/source-subtypes/v2/{id}/overrides",
       "userAuth": [
-        "idn:sources:manage"
+        "idn:source-subtypes:create"
       ],
       "applicationAuth": [
-        "idn:sources:manage"
+        "idn:source-subtypes:create"
       ],
       "userLevels": [
         "ORG_ADMIN",
@@ -1786,12 +1790,12 @@
       "httpMethod": "POST",
       "path": "/source-subtypes/v2/{id}/provisioning-policy",
       "userAuth": [
-        "idn:sources:manage",
-        "idn:connector-subtypes:manage"
+        "idn:source-subtypes:update",
+        "idn:connector-subtypes:update"
       ],
       "applicationAuth": [
-        "idn:sources:manage",
-        "idn:connector-subtypes:manage"
+        "idn:source-subtypes:update",
+        "idn:connector-subtypes:update"
       ],
       "userLevels": [
         "ORG_ADMIN",
@@ -1824,12 +1828,12 @@
       "httpMethod": "POST",
       "path": "/source-subtypes/v2",
       "userAuth": [
-        "idn:sources:manage",
-        "idn:connector-subtypes:manage"
+        "idn:source-subtypes:create",
+        "idn:connector-subtypes:create"
       ],
       "applicationAuth": [
-        "idn:sources:manage",
-        "idn:connector-subtypes:manage"
+        "idn:source-subtypes:create",
+        "idn:connector-subtypes:create"
       ],
       "userLevels": [
         "ORG_ADMIN",
@@ -2818,12 +2822,12 @@
       "httpMethod": "DELETE",
       "path": "/source-subtypes/v2/{id}",
       "userAuth": [
-        "idn:sources:manage",
-        "idn:connector-subtypes:manage"
+        "idn:source-subtypes:delete",
+        "idn:connector-subtypes:delete"
       ],
       "applicationAuth": [
-        "idn:sources:manage",
-        "idn:connector-subtypes:manage"
+        "idn:source-subtypes:delete",
+        "idn:connector-subtypes:delete"
       ],
       "userLevels": [
         "ORG_ADMIN",
@@ -3606,12 +3610,12 @@
       "httpMethod": "DELETE",
       "path": "/source-subtypes/v2/{id}/provisioning-policy",
       "userAuth": [
-        "idn:sources:manage",
-        "idn:connector-subtypes:manage"
+        "idn:source-subtypes:delete",
+        "idn:connector-subtypes:delete"
       ],
       "applicationAuth": [
-        "idn:sources:manage",
-        "idn:connector-subtypes:manage"
+        "idn:source-subtypes:delete",
+        "idn:connector-subtypes:delete"
       ],
       "userLevels": [
         "ORG_ADMIN",
@@ -9159,20 +9163,15 @@
       "httpMethod": "GET",
       "path": "/source-subtypes/v2/{id}",
       "userAuth": [
-        "idn:sources:read",
-        "idn:sources:manage",
-        "idn:connector-subtypes:manage"
+        "idn:source-subtypes:read"
       ],
       "applicationAuth": [
-        "idn:sources:read",
-        "idn:sources:manage",
-        "idn:connector-subtypes:manage"
+        "idn:source-subtypes:read"
       ],
       "userLevels": [
         "ORG_ADMIN",
         "SOURCE_ADMIN",
-        "SOURCE_SUBADMIN",
-        "HELPDESK"
+        "SOURCE_SUBADMIN"
       ]
     },
     "getSourceSubtypeProvisioningPolicyV2": {
@@ -9182,20 +9181,15 @@
       "httpMethod": "GET",
       "path": "/source-subtypes/v2/{id}/provisioning-policy",
       "userAuth": [
-        "idn:sources:read",
-        "idn:sources:manage",
-        "idn:connector-subtypes:manage"
+        "idn:source-subtypes:read"
       ],
       "applicationAuth": [
-        "idn:sources:read",
-        "idn:sources:manage",
-        "idn:connector-subtypes:manage"
+        "idn:source-subtypes:read"
       ],
       "userLevels": [
         "ORG_ADMIN",
         "SOURCE_ADMIN",
-        "SOURCE_SUBADMIN",
-        "HELPDESK"
+        "SOURCE_SUBADMIN"
       ]
     },
     "getSourceV1": {
@@ -11847,20 +11841,15 @@
       "httpMethod": "GET",
       "path": "/source-subtypes/v2/targets",
       "userAuth": [
-        "idn:sources:read",
-        "idn:sources:manage",
-        "idn:connector-subtypes:manage"
+        "idn:source-subtypes:read"
       ],
       "applicationAuth": [
-        "idn:sources:read",
-        "idn:sources:manage",
-        "idn:connector-subtypes:manage"
+        "idn:source-subtypes:read"
       ],
       "userLevels": [
         "ORG_ADMIN",
         "SOURCE_ADMIN",
-        "SOURCE_SUBADMIN",
-        "HELPDESK"
+        "SOURCE_SUBADMIN"
       ]
     },
     "listSourceSubtypesV1": {
@@ -11890,20 +11879,15 @@
       "httpMethod": "GET",
       "path": "/source-subtypes/v2",
       "userAuth": [
-        "idn:sources:read",
-        "idn:sources:manage",
-        "idn:connector-subtypes:manage"
+        "idn:source-subtypes:read"
       ],
       "applicationAuth": [
-        "idn:sources:read",
-        "idn:sources:manage",
-        "idn:connector-subtypes:manage"
+        "idn:source-subtypes:read"
       ],
       "userLevels": [
         "ORG_ADMIN",
         "SOURCE_ADMIN",
-        "SOURCE_SUBADMIN",
-        "HELPDESK"
+        "SOURCE_SUBADMIN"
       ]
     },
     "listSourcesV1": {
@@ -12752,12 +12736,12 @@
       "httpMethod": "PATCH",
       "path": "/source-subtypes/v2/{id}",
       "userAuth": [
-        "idn:sources:manage",
-        "idn:connector-subtypes:manage"
+        "idn:source-subtypes:update",
+        "idn:connector-subtypes:update"
       ],
       "applicationAuth": [
-        "idn:sources:manage",
-        "idn:connector-subtypes:manage"
+        "idn:source-subtypes:update",
+        "idn:connector-subtypes:update"
       ],
       "userLevels": [
         "ORG_ADMIN",
@@ -13057,12 +13041,12 @@
       "httpMethod": "PATCH",
       "path": "/source-subtypes/v2/{id}/provisioning-policy",
       "userAuth": [
-        "idn:sources:manage",
-        "idn:connector-subtypes:manage"
+        "idn:source-subtypes:update",
+        "idn:connector-subtypes:update"
       ],
       "applicationAuth": [
-        "idn:sources:manage",
-        "idn:connector-subtypes:manage"
+        "idn:source-subtypes:update",
+        "idn:connector-subtypes:update"
       ],
       "userLevels": [
         "ORG_ADMIN",

@@ -80,8 +80,8 @@ All URIs are relative to *https://sailpoint.api.identitynow.com*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *MachineAccountCreationRequestAPI* | [**CreateMachineAccountRequestV1**](docs/MachineAccountCreationRequestAPI.md#createmachineaccountrequestv1) | **Post** /account-requests/v1/machine-account-create | Submit Machine Account Creation Request
-*MachineAccountCreationRequestAPI* | [**CreateMachineAccountRequestV2**](docs/MachineAccountCreationRequestAPI.md#createmachineaccountrequestv2) | **Post** /account-requests/v2/machine-account-create | Submit Machine Account Creation Request
-*MachineAccountCreationRequestAPI* | [**CreateMachineAccountV2**](docs/MachineAccountCreationRequestAPI.md#createmachineaccountv2) | **Post** /machine-accounts/v2/machine-account-create | Create Machine Account V2
+*MachineAccountCreationRequestAPI* | [**CreateMachineAccountRequestV2**](docs/MachineAccountCreationRequestAPI.md#createmachineaccountrequestv2) | **Post** /account-requests/v2/machine-account-create | Machine Account Creation Request (v2)
+*MachineAccountCreationRequestAPI* | [**CreateMachineAccountV2**](docs/MachineAccountCreationRequestAPI.md#createmachineaccountv2) | **Post** /machine-accounts/v2/machine-account-create | Create Machine Account (v2)
 *MachineAccountCreationRequestAPI* | [**GetCreateMachineAccountRequestV1**](docs/MachineAccountCreationRequestAPI.md#getcreatemachineaccountrequestv1) | **Get** /account-requests/v1/machine-account-create/{accountRequestId} | Get Machine Account Creation Request
 *MachineAccountCreationRequestAPI* | [**GetMachineAccountCreateAccessInfoV1**](docs/MachineAccountCreationRequestAPI.md#getmachineaccountcreateaccessinfov1) | **Get** /source-subtypes/v1/machine-account-create-access | Machine Account Create Access
 

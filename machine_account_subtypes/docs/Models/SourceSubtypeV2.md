@@ -15,27 +15,26 @@ tags: ['SDK', 'Software Development Kit', 'SourceSubtypeV2', 'V1SourceSubtypeV2'
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | Unique identifier for the subtype. | [optional] 
-**TechnicalName** | Pointer to **string** | Technical name of the subtype. | [optional] 
-**DisplayName** | Pointer to **string** | Display name of the subtype. | [optional] 
-**Description** | Pointer to **string** | Description of the subtype. | [optional] 
-**Type** | Pointer to **string** | Entity type of the subtype. | [optional] 
-**TargetType** | Pointer to **string** | Tier the subtype is defined at. `SOURCE` subtypes apply to one source. `CONNECTOR` subtypes apply to every source of a connector type. `CONNECTOR_VARIANT` is reserved for future use. | [optional] 
-**TargetId** | Pointer to **string** | Scope key of the subtype. The source ID for `SOURCE` subtypes, or the connector type for `CONNECTOR` subtypes. | [optional] 
-**TargetName** | Pointer to **NullableString** | Display name of the target source or connector. | [optional] 
-**Classification** | Pointer to **string** | Classification of the subtype. | [optional] 
-**Origin** | Pointer to **NullableString** | Tier of the parent subtype this subtype overrides. Set to `CONNECTOR` when a source subtype replaces a connector subtype with the same technical name in a source's effective subtype list. Otherwise `null`. | [optional] 
-**Profile** | Pointer to [**NullableSourceSubtypeV2Profile**](source-subtype-v2-profile) |  | [optional] 
-**SystemManaged** | Pointer to **bool** | Indicates whether the subtype is managed by the system. | [optional] [readonly] [default to false]
-**Created** | Pointer to **SailPointTime** | Creation timestamp. | [optional] 
-**Modified** | Pointer to **SailPointTime** | Last modified timestamp. | [optional] 
-**Target** | Pointer to [**SubtypeTarget**](subtype-target) |  | [optional] 
+**Id** | Pointer to **string** | Server-generated subtype identifier. Must not be supplied on create. | [optional] [readonly] 
+**TechnicalName** | **string** | Technical name of the subtype. Unique within the target tier scope. | 
+**DisplayName** | **string** | Display name of the subtype. | 
+**Description** | **string** | Description of the subtype. | 
+**Type** | Pointer to **string** | Entity type of the subtype. Defaults to `MACHINE` when omitted. | [optional] [default to "MACHINE"]
+**TargetType** | Pointer to **SubtypeTargetType** |  | [optional] 
+**TargetId** | **string** | Scope key for the subtype. Source id when `targetType` is `SOURCE`. Connector type or connector specification id when `targetType` is `CONNECTOR`. | 
+**TargetName** | Pointer to **string** | Human-readable target label. May be omitted on create; the service persists a display name. | [optional] [default to ""]
+**Classification** | Pointer to **SubtypeClassification** |  | [optional] 
+**Origin** | Pointer to **NullableString** | Response-only origin badge. Set on effective-set list reads: `CONNECTOR` when a SOURCE winner overrides a CONNECTOR parent of the same technical name. `null` on connector-only and source-only winners, and on plain CRUD list, create, patch, and get-by-id. | [optional] [readonly] 
+**Profile** | Pointer to [**NullableConnectorVariantProfile**](connector-variant-profile) |  | [optional] 
+**SystemManaged** | Pointer to **bool** | Server-set flag indicating the subtype is managed by the system. Incoming values are ignored. | [optional] [readonly] [default to false]
+**Created** | Pointer to **NullableTime** | Creation timestamp. | [optional] [readonly] 
+**Modified** | Pointer to **NullableTime** | Last modified timestamp. | [optional] [readonly] 
 
 ## Methods
 
 ### NewSourceSubtypeV2
 
-`func NewSourceSubtypeV2() *SourceSubtypeV2`
+`func NewSourceSubtypeV2(technicalName string, displayName string, description string, targetId string, ) *SourceSubtypeV2`
 
 NewSourceSubtypeV2 instantiates a new SourceSubtypeV2 object
 This constructor will assign default values to properties that have it defined,
@@ -94,11 +93,6 @@ and a boolean to check if the value has been set.
 
 SetTechnicalName sets TechnicalName field to given value.
 
-### HasTechnicalName
-
-`func (o *SourceSubtypeV2) HasTechnicalName() bool`
-
-HasTechnicalName returns a boolean if a field has been set.
 
 ### GetDisplayName
 
@@ -119,11 +113,6 @@ and a boolean to check if the value has been set.
 
 SetDisplayName sets DisplayName field to given value.
 
-### HasDisplayName
-
-`func (o *SourceSubtypeV2) HasDisplayName() bool`
-
-HasDisplayName returns a boolean if a field has been set.
 
 ### GetDescription
 
@@ -144,11 +133,6 @@ and a boolean to check if the value has been set.
 
 SetDescription sets Description field to given value.
 
-### HasDescription
-
-`func (o *SourceSubtypeV2) HasDescription() bool`
-
-HasDescription returns a boolean if a field has been set.
 
 ### GetType
 
@@ -177,20 +161,20 @@ HasType returns a boolean if a field has been set.
 
 ### GetTargetType
 
-`func (o *SourceSubtypeV2) GetTargetType() string`
+`func (o *SourceSubtypeV2) GetTargetType() SubtypeTargetType`
 
 GetTargetType returns the TargetType field if non-nil, zero value otherwise.
 
 ### GetTargetTypeOk
 
-`func (o *SourceSubtypeV2) GetTargetTypeOk() (*string, bool)`
+`func (o *SourceSubtypeV2) GetTargetTypeOk() (*SubtypeTargetType, bool)`
 
 GetTargetTypeOk returns a tuple with the TargetType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTargetType
 
-`func (o *SourceSubtypeV2) SetTargetType(v string)`
+`func (o *SourceSubtypeV2) SetTargetType(v SubtypeTargetType)`
 
 SetTargetType sets TargetType field to given value.
 
@@ -219,11 +203,6 @@ and a boolean to check if the value has been set.
 
 SetTargetId sets TargetId field to given value.
 
-### HasTargetId
-
-`func (o *SourceSubtypeV2) HasTargetId() bool`
-
-HasTargetId returns a boolean if a field has been set.
 
 ### GetTargetName
 
@@ -250,32 +229,22 @@ SetTargetName sets TargetName field to given value.
 
 HasTargetName returns a boolean if a field has been set.
 
-### SetTargetNameNil
-
-`func (o *SourceSubtypeV2) SetTargetNameNil(b bool)`
-
- SetTargetNameNil sets the value for TargetName to be an explicit nil
-
-### UnsetTargetName
-`func (o *SourceSubtypeV2) UnsetTargetName()`
-
-UnsetTargetName ensures that no value is present for TargetName, not even an explicit nil
 ### GetClassification
 
-`func (o *SourceSubtypeV2) GetClassification() string`
+`func (o *SourceSubtypeV2) GetClassification() SubtypeClassification`
 
 GetClassification returns the Classification field if non-nil, zero value otherwise.
 
 ### GetClassificationOk
 
-`func (o *SourceSubtypeV2) GetClassificationOk() (*string, bool)`
+`func (o *SourceSubtypeV2) GetClassificationOk() (*SubtypeClassification, bool)`
 
 GetClassificationOk returns a tuple with the Classification field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetClassification
 
-`func (o *SourceSubtypeV2) SetClassification(v string)`
+`func (o *SourceSubtypeV2) SetClassification(v SubtypeClassification)`
 
 SetClassification sets Classification field to given value.
 
@@ -322,20 +291,20 @@ HasOrigin returns a boolean if a field has been set.
 UnsetOrigin ensures that no value is present for Origin, not even an explicit nil
 ### GetProfile
 
-`func (o *SourceSubtypeV2) GetProfile() SourceSubtypeV2Profile`
+`func (o *SourceSubtypeV2) GetProfile() ConnectorVariantProfile`
 
 GetProfile returns the Profile field if non-nil, zero value otherwise.
 
 ### GetProfileOk
 
-`func (o *SourceSubtypeV2) GetProfileOk() (*SourceSubtypeV2Profile, bool)`
+`func (o *SourceSubtypeV2) GetProfileOk() (*ConnectorVariantProfile, bool)`
 
 GetProfileOk returns a tuple with the Profile field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetProfile
 
-`func (o *SourceSubtypeV2) SetProfile(v SourceSubtypeV2Profile)`
+`func (o *SourceSubtypeV2) SetProfile(v ConnectorVariantProfile)`
 
 SetProfile sets Profile field to given value.
 
@@ -405,6 +374,16 @@ SetCreated sets Created field to given value.
 
 HasCreated returns a boolean if a field has been set.
 
+### SetCreatedNil
+
+`func (o *SourceSubtypeV2) SetCreatedNil(b bool)`
+
+ SetCreatedNil sets the value for Created to be an explicit nil
+
+### UnsetCreated
+`func (o *SourceSubtypeV2) UnsetCreated()`
+
+UnsetCreated ensures that no value is present for Created, not even an explicit nil
 ### GetModified
 
 `func (o *SourceSubtypeV2) GetModified() SailPointTime`
@@ -430,29 +409,14 @@ SetModified sets Modified field to given value.
 
 HasModified returns a boolean if a field has been set.
 
-### GetTarget
+### SetModifiedNil
 
-`func (o *SourceSubtypeV2) GetTarget() SubtypeTarget`
+`func (o *SourceSubtypeV2) SetModifiedNil(b bool)`
 
-GetTarget returns the Target field if non-nil, zero value otherwise.
+ SetModifiedNil sets the value for Modified to be an explicit nil
 
-### GetTargetOk
+### UnsetModified
+`func (o *SourceSubtypeV2) UnsetModified()`
 
-`func (o *SourceSubtypeV2) GetTargetOk() (*SubtypeTarget, bool)`
-
-GetTargetOk returns a tuple with the Target field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetTarget
-
-`func (o *SourceSubtypeV2) SetTarget(v SubtypeTarget)`
-
-SetTarget sets Target field to given value.
-
-### HasTarget
-
-`func (o *SourceSubtypeV2) HasTarget() bool`
-
-HasTarget returns a boolean if a field has been set.
-
+UnsetModified ensures that no value is present for Modified, not even an explicit nil
 

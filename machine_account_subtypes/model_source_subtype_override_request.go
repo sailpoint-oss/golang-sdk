@@ -18,9 +18,9 @@ import (
 // checks if the SourceSubtypeOverrideRequest type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &SourceSubtypeOverrideRequest{}
 
-// SourceSubtypeOverrideRequest Request body for overriding a connector subtype on one source.
+// SourceSubtypeOverrideRequest Creates a SOURCE-tier snapshot of a CONNECTOR-tier subtype for one source. Later edits to the connector-tier parent are not copied onto the snapshot.
 type SourceSubtypeOverrideRequest struct {
-	// ID of the source to create the overriding source subtype on.
+	// Source that receives the override.
 	SourceId string `json:"sourceId"`
 	AdditionalProperties map[string]interface{}
 }

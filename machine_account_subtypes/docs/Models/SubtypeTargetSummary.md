@@ -15,12 +15,12 @@ tags: ['SDK', 'Software Development Kit', 'SubtypeTargetSummary', 'V1SubtypeTarg
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**TargetType** | Pointer to **string** | Tier of the target. | [optional] 
-**TargetId** | Pointer to **string** | Connector type for a `CONNECTOR` target, or source ID for a `SOURCE` target. | [optional] 
-**TargetName** | Pointer to **string** | Display name of the target. Falls back to `targetId` when no name is stored. | [optional] 
-**SubtypeCount** | Pointer to **int32** | Number of subtypes defined for the target. | [optional] 
-**SourceCount** | Pointer to **int32** | Number of sources the target's subtypes apply to. | [optional] 
-**LastModified** | Pointer to **NullableTime** | Most recent modification time across the target's subtypes. | [optional] 
+**TargetType** | Pointer to **SubtypeTargetType** |  | [optional] 
+**TargetId** | Pointer to **string** | Scope key. Connector type for `CONNECTOR`. Source id for `SOURCE`. | [optional] 
+**TargetName** | Pointer to **string** | Display label. Never null; falls back to `targetId`. | [optional] 
+**SubtypeCount** | Pointer to **int32** | Number of subtypes in this target group. | [optional] 
+**SourceCount** | Pointer to **int32** | Number of sources of this connector type for a `CONNECTOR` row. `1` on a `SOURCE` row. Sortable. Not filterable. | [optional] 
+**LastModified** | Pointer to **SailPointTime** | Latest `modified` timestamp in the `targetId` group for `CONNECTOR`, or that subtype row's `modified` for `SOURCE`. Not filterable or sortable. | [optional] [readonly] 
 
 ## Methods
 
@@ -43,20 +43,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetTargetType
 
-`func (o *SubtypeTargetSummary) GetTargetType() string`
+`func (o *SubtypeTargetSummary) GetTargetType() SubtypeTargetType`
 
 GetTargetType returns the TargetType field if non-nil, zero value otherwise.
 
 ### GetTargetTypeOk
 
-`func (o *SubtypeTargetSummary) GetTargetTypeOk() (*string, bool)`
+`func (o *SubtypeTargetSummary) GetTargetTypeOk() (*SubtypeTargetType, bool)`
 
 GetTargetTypeOk returns a tuple with the TargetType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTargetType
 
-`func (o *SubtypeTargetSummary) SetTargetType(v string)`
+`func (o *SubtypeTargetSummary) SetTargetType(v SubtypeTargetType)`
 
 SetTargetType sets TargetType field to given value.
 
@@ -191,14 +191,4 @@ SetLastModified sets LastModified field to given value.
 
 HasLastModified returns a boolean if a field has been set.
 
-### SetLastModifiedNil
-
-`func (o *SubtypeTargetSummary) SetLastModifiedNil(b bool)`
-
- SetLastModifiedNil sets the value for LastModified to be an explicit nil
-
-### UnsetLastModified
-`func (o *SubtypeTargetSummary) UnsetLastModified()`
-
-UnsetLastModified ensures that no value is present for LastModified, not even an explicit nil
 

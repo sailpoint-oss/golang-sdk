@@ -15,10 +15,10 @@ tags: ['SDK', 'Software Development Kit', 'SubtypeTarget', 'V1SubtypeTarget']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | Pointer to **string** | Type of the target. | [optional] 
-**Id** | Pointer to **string** | Source ID for a `SOURCE` target, or connector type for a `CONNECTOR` target. | [optional] 
-**Name** | Pointer to **string** | Name of the source or connector. | [optional] 
-**SupportsProvisioning** | Pointer to **bool** | Indicates whether the target supports provisioning. Only returned when you get a single subtype by ID. | [optional] [default to false]
+**Type** | Pointer to **string** | DTO type of the target. `SOURCE` for source-tier rows; `CONNECTOR` for connector-tier rows. | [optional] 
+**Id** | Pointer to **string** | Target identifier. Source id for `SOURCE`. Connector specification id or connector type for `CONNECTOR`. | [optional] 
+**Name** | Pointer to **string** | Human-readable target name. Falls back to `id` when a display name is not available. | [optional] 
+**SupportsProvisioning** | Pointer to **bool** | Whether the target can provision accounts. `false` when the target does not support provisioning. | [optional] [default to false]
 
 ## Methods
 

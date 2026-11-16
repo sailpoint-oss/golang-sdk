@@ -15,10 +15,10 @@ tags: ['SDK', 'Software Development Kit', 'MachineAccountCreateEntitlement', 'V1
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | ID of the entitlement to request. | 
-**Comment** | Pointer to **string** | Comment to include with the entitlement request. | [optional] 
-**StartDate** | Pointer to **SailPointTime** | Date and time when access to the entitlement starts. Must be in the future and, when `removeDate` is also set, before `removeDate`. | [optional] 
-**RemoveDate** | Pointer to **SailPointTime** | Date and time when access to the entitlement is removed. Must be in the future. | [optional] 
+**Id** | **string** | Entitlement id to provision. Not required to be a UUID. | 
+**Comment** | Pointer to **string** | Justification stored with the entitlement request. | [optional] [default to ""]
+**StartDate** | Pointer to **NullableTime** | When access starts. Must be in the future and before `removeDate` when both are set. | [optional] 
+**RemoveDate** | Pointer to **NullableTime** | When access ends. Must be in the future and after `startDate` when both are set. | [optional] 
 
 ## Methods
 
@@ -109,6 +109,16 @@ SetStartDate sets StartDate field to given value.
 
 HasStartDate returns a boolean if a field has been set.
 
+### SetStartDateNil
+
+`func (o *MachineAccountCreateEntitlement) SetStartDateNil(b bool)`
+
+ SetStartDateNil sets the value for StartDate to be an explicit nil
+
+### UnsetStartDate
+`func (o *MachineAccountCreateEntitlement) UnsetStartDate()`
+
+UnsetStartDate ensures that no value is present for StartDate, not even an explicit nil
 ### GetRemoveDate
 
 `func (o *MachineAccountCreateEntitlement) GetRemoveDate() SailPointTime`
@@ -134,4 +144,14 @@ SetRemoveDate sets RemoveDate field to given value.
 
 HasRemoveDate returns a boolean if a field has been set.
 
+### SetRemoveDateNil
+
+`func (o *MachineAccountCreateEntitlement) SetRemoveDateNil(b bool)`
+
+ SetRemoveDateNil sets the value for RemoveDate to be an explicit nil
+
+### UnsetRemoveDate
+`func (o *MachineAccountCreateEntitlement) UnsetRemoveDate()`
+
+UnsetRemoveDate ensures that no value is present for RemoveDate, not even an explicit nil
 

@@ -13,6 +13,7 @@ info:
   termsOfService: https://developer.sailpoint.com/discuss/tos
   title: SailPoint Identity Security API - Machine Account Subtypes
   version: v1
+  x-audience: external-public
 servers:
 - description: This is the production API server.
   url: "https://{tenant}.api.identitynow.com"
@@ -31,7 +32,8 @@ security:
   - sp:scopes:all
 tags:
 - description: |
-    Use this API to get, update, and delete machine account subtype for sources.
+    Use this API to get, update, and delete machine account subtypes. V2 paths are experimental
+    and require the `X-SailPoint-Experimental` header.
   name: Machine Account Subtypes
 paths:
   /source-subtypes/v1/bulk-retrieve:
@@ -1073,39 +1075,105 @@ paths:
       - API
   /source-subtypes/v2:
     get:
-      description: |-
-        List machine account subtypes defined at the source tier and the connector tier.
+      description: |
+        Lists machine account subtypes across SOURCE and CONNECTOR tiers.
 
-        Without `sourceId`, the API lists every subtype in the tenant, and `filters` and `sorters` apply.
+        `targetId` is the scope key at every tier (source id for `SOURCE`, connector type for
+        `CONNECTOR`). Responses include a resolved `target` reference and do not include `sourceId`.
+        List responses do not include `target.supportsProvisioning`.
 
-        With `sourceId`, the API returns the source's effective subtypes: the subtypes defined for the source plus the
-        subtypes defined for the source's connector type. When a source subtype has the same technical name as a connector
-        subtype, only the source subtype is returned and its `origin` is `CONNECTOR`. `filters` cannot be used in this mode.
-        Use `targetType` to return only one tier of the effective set. An unknown `sourceId` returns `404`.
+        With `sourceId`, omitted `effectiveSet` defaults to `true` and returns the effective set for
+        that source (SOURCE overrides CONNECTOR by technical name). `effectiveSet=false` returns only
+        that source's raw SOURCE-tier rows. `effectiveSet=true` without `sourceId` returns **400**.
+        Combining `filters` with effective-set resolution returns **400**. Unknown `sourceId` returns
+        **404**. Limit, offset, and `count` apply on both paths. There is no default sort.
 
-        With `sourceId` and `effectiveSet=false`, the API returns only the subtypes defined for that source, and `filters`
-        apply.
+        Optional `targetType` applies only on the effective-set path. `CONNECTOR` keeps inherited
+        connector winners. `SOURCE` keeps source-only winners and SOURCE overrides. Omitting it keeps
+        the full winner set. A blank, unknown, or `CONNECTOR_VARIANT` value, or any `targetType` when
+        `effectiveSet` is `false` or `sourceId` is omitted, returns **400**.
 
-        The caller needs the `idn:source-subtypes:read` right.
+        On the effective set, `origin` is `CONNECTOR` only when a SOURCE winner overrides a CONNECTOR
+        parent of the same technical name. Connector-only and source-only winners have `origin=null`.
 
-        This API returns `404` when Machine Identity Security or tiered subtype configuration is not enabled for the tenant.
+        `includeConfigs` defaults to `false`. When `true`, each `MACHINE` subtype that has a stored
+        machine-account-create config includes slim `config.machineAccountCreate.accountCreateEnabled`.
+        A `MACHINE` row with no create config, and every non-`MACHINE` row, omits `config`. The list
+        does not return the full machine-config document.
+
+        This API requires the Machine Identity Security product. When the experimental header is
+        missing, or when the tiered subtype configuration is not enabled for the tenant, the endpoint
+        returns **404**.
       operationId: listSourceSubtypesV2
       parameters:
-      - description: "ID of a source. When supplied, the API returns subtypes for\
-          \ that source instead of the whole tenant."
+      - description: |-
+          Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)
+
+          Filtering is supported for the following fields and operators:
+
+          **id**: *eq, in, sw*
+
+          **displayName**: *eq, sw*
+
+          **technicalName**: *eq, sw*
+
+          **source.id**: *eq, in*
+
+          **targetType**: *eq, in*
+
+          **targetId**: *eq, in*
+
+          **targetName**: *eq, sw*
+
+          **classification**: *eq, in*
+
+          **type**: *eq, in*
+
+          **created**: *gt, ge, lt, le*
+
+          **modified**: *gt, ge, lt, le*
+
+          Filters cannot be combined with the effective set. That combination returns 400.
+        example: targetType eq "CONNECTOR"
+        explode: true
+        in: query
+        name: filters
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: |-
+          Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)
+
+          Sorting is supported for the following fields: **id, displayName, technicalName, source.id, targetType, targetId, targetName, classification, type, created, modified**
+
+          When omitted, order is unspecified.
+        example: displayName
+        explode: true
+        in: query
+        name: sorters
+        required: false
+        schema:
+          default: ""
+          format: comma-separated
+          type: string
+        style: form
+      - description: "Source scope. When supplied, omitted `effectiveSet` defaults\
+          \ to `true`. Unknown source returns **404**. Empty means the parameter was\
+          \ omitted."
         example: 6d0458373bec4b4b80460992b76016da
         explode: true
         in: query
         name: sourceId
         required: false
         schema:
+          default: ""
           type: string
         style: form
-      - description: "Controls what is returned for `sourceId`. When `true`, which\
-          \ is the default when `sourceId` is supplied, the API returns the source's\
-          \ effective subtypes across both tiers. When `false`, the API returns only\
-          \ the subtypes defined for the source. Passing `effectiveSet=true` explicitly\
-          \ without `sourceId` returns `400`."
+      - description: "When `true` with `sourceId`, return the effective subtype set\
+          \ for that source. When `false` with `sourceId`, return only that source's\
+          \ raw SOURCE-tier rows. `true` without `sourceId` returns **400**. Combining\
+          \ with `filters` returns **400**."
         example: true
         explode: true
         in: query
@@ -1115,10 +1183,11 @@ paths:
           default: true
           type: boolean
         style: form
-      - description: "Returns only effective subtypes of this tier. Requires `sourceId`,\
-          \ and cannot be combined with `effectiveSet=false`; otherwise the API returns\
-          \ `400`."
-        example: CONNECTOR
+      - description: Winner-tier cut on the effective set only. `CONNECTOR` returns
+          inherited connector winners. `SOURCE` returns source-only winners and SOURCE
+          overrides. Omit it to keep the full winner set. Invalid when `effectiveSet`
+          is `false` or `sourceId` is omitted.
+        example: SOURCE
         explode: true
         in: query
         name: targetType
@@ -1129,12 +1198,31 @@ paths:
           - CONNECTOR
           type: string
         style: form
-      - description: "When `true`, each item includes a summary of its machine account\
-          \ creation configuration in `config`."
+        x-sailpoint-lint-ignore:
+          schema-optional-properties-must-have-default: Omitted means the full effective
+            set. A default would select one tier.
+      - description: "When `true`, each `MACHINE` subtype with a stored machine-account-create\
+          \ config includes slim `config.machineAccountCreate.accountCreateEnabled`.\
+          \ Default `false` omits `config`."
         example: false
         explode: true
         in: query
         name: includeConfigs
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+      - description: |-
+          If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+          Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        example: true
+        explode: true
+        in: query
+        name: count
         required: false
         schema:
           default: false
@@ -1169,72 +1257,8 @@ paths:
           minimum: 0
           type: integer
         style: form
-      - description: |-
-          If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
-
-          Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
-
-          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
-        example: true
-        explode: true
-        in: query
-        name: count
-        required: false
-        schema:
-          default: false
-          type: boolean
-        style: form
-      - description: |-
-          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
-
-          Filtering is supported for the following fields and operators:
-
-          **id**: *eq, ne, in*
-
-          **technicalName**: *eq, ne, in, sw, co*
-
-          **displayName**: *eq, ne, in, sw, co*
-
-          **source.id**: *eq, ne, in, sw, co*
-
-          **targetType**: *eq, ne, in, sw, co*
-
-          **targetId**: *eq, ne, in, sw, co*
-
-          **targetName**: *eq, ne, in, sw, co, isnull*
-
-          **classification**: *eq, ne, in, sw, co*
-
-          **type**: *eq, ne, in, sw, co*
-
-          **created**: *gt, ge, lt, le*
-
-          **modified**: *gt, ge, lt, le*
-
-          Filters cannot be used with `sourceId` unless `effectiveSet=false`; otherwise the API returns `400`.
-        example: targetType eq "CONNECTOR"
-        explode: true
-        in: query
-        name: filters
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: |-
-          Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
-
-          Sorting is supported for the following fields: **id, technicalName, displayName, source.id, targetType, targetId, targetName, classification, type, created, modified**
-        example: displayName
-        explode: true
-        in: query
-        name: sorters
-        required: false
-        schema:
-          format: comma-separated
-          type: string
-        style: form
       - description: Use this header to enable this experimental API.
-        example: true
+        example: "true"
         explode: false
         in: header
         name: X-SailPoint-Experimental
@@ -1247,12 +1271,32 @@ paths:
         "200":
           content:
             application/json:
+              examples:
+                ConnectorSubtype:
+                  value:
+                  - id: 43bdd144-4b17-4fce-a744-17c7fd3e717b
+                    technicalName: nonPersonal
+                    displayName: Non Personal
+                    description: Machine accounts for JDBC connectors
+                    type: MACHINE
+                    targetType: CONNECTOR
+                    targetId: JDBC
+                    targetName: JDBC
+                    classification: MACHINE
+                    origin: null
+                    profile: null
+                    systemManaged: false
+                    created: 2026-08-18T12:00:00.000Z
+                    modified: 2026-08-18T12:00:00.000Z
+                    target:
+                      type: CONNECTOR
+                      id: JDBC
+                      name: JDBC
               schema:
                 items:
-                  $ref: '#/components/schemas/SourceSubtypeV2WithConfig'
+                  $ref: '#/components/schemas/SubtypeWithTargetAndConfig'
                 type: array
-          description: List of machine account subtypes. Items include `config` when
-            `includeConfigs=true`. The `X-Total-Count` header is returned when `count=true`.
+          description: List of tiered machine account subtypes.
         "400":
           content:
             application/json:
@@ -1329,44 +1373,39 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:sources:read
-        - idn:sources:manage
-        - idn:connector-subtypes:manage
+        - idn:source-subtypes:read
       - applicationAuth:
-        - idn:sources:read
-        - idn:sources:manage
-        - idn:connector-subtypes:manage
-      summary: List subtypes
+        - idn:source-subtypes:read
+      summary: Retrieve all tiered subtypes
       tags:
       - Machine Account Subtypes
       x-sailpoint-userLevels:
       - ORG_ADMIN
       - SOURCE_ADMIN
       - SOURCE_SUBADMIN
-      - HELPDESK
     post:
-      description: |-
-        Create a machine account subtype at the source tier or the connector tier.
+      description: |
+        Creates a machine account subtype at the tier declared on the request body.
 
-        A `SOURCE` subtype applies to the one source identified by `targetId`. A `CONNECTOR` subtype applies to every
-        source of the connector type identified by `targetId`, which must be a registered connector type. `targetType`
-        defaults to `SOURCE`. `CONNECTOR_VARIANT` is not supported and returns `400`. `technicalName`, `displayName` and
-        `description` are required, and the technical name and display name must be unique within the tier's scope.
+        `targetId` is required at every tier. `targetType` defaults to `SOURCE` when omitted. Do not
+        supply `id` or `profile`; those fields are response-only. `systemManaged`, `created`,
+        `modified`, and `origin` are ignored on input. CONNECTOR `targetName` is optional and is filled
+        from the connector's display name.
 
-        Who can call this API depends on the requested tier:
+        SOURCE-tier create requires `idn:source-subtypes:create`. CONNECTOR-tier create requires
+        `idn:connector-subtypes:create`. A missing right is returned as **404**, not **403**.
+        `CONNECTOR_VARIANT` is not available and returns **400**.
 
-        * `SOURCE` (or omitted): requires the `idn:source-subtypes:create` right, held by org admins, source admins and
-        source sub-admins.
+        Duplicate technical name or display name in the same tier scope returns **400**. Exceeding the
+        organization subtype limit returns **400**. The create also stores a `CREATE_MACHINE_ACCOUNT`
+        provisioning policy from the connector's default account-creation fields.
 
-        * `CONNECTOR`: requires the `idn:connector-subtypes:create` right, held by org admins.
-
-        A caller without the right for the requested tier receives `404`, not `403`.
-
-        This API returns `404` when Machine Identity Security or tiered subtype configuration is not enabled for the tenant.
+        When the experimental header is missing, or when the tiered subtype configuration is not enabled
+        for the tenant, the endpoint returns **404**.
       operationId: createSourceSubtypeV2
       parameters:
       - description: Use this header to enable this experimental API.
-        example: true
+        example: "true"
         explode: false
         in: header
         name: X-SailPoint-Experimental
@@ -1379,30 +1418,61 @@ paths:
         content:
           application/json:
             examples:
-              Connector subtype:
+              ConnectorSubtype:
                 value:
                   targetType: CONNECTOR
-                  targetId: active-directory
-                  technicalName: service-account
-                  displayName: Service Account
-                  description: Accounts used by automated services.
-              Source subtype:
+                  targetId: JDBC
+                  technicalName: nonPersonal
+                  displayName: Non Personal
+                  description: Machine accounts for JDBC connectors
+                  type: MACHINE
+              SourceSubtype:
                 value:
                   targetType: SOURCE
                   targetId: 6d0458373bec4b4b80460992b76016da
-                  technicalName: batch-account
-                  displayName: Batch Account
-                  description: Accounts used by batch jobs.
+                  technicalName: privileged
+                  displayName: Privileged
+                  description: Elevated service accounts on this source
+                  type: MACHINE
             schema:
-              $ref: '#/components/schemas/CreateSourceSubtypeV2Request'
+              $ref: '#/components/schemas/SourceSubtypeV2'
         required: true
       responses:
         "201":
           content:
             application/json:
+              examples:
+                ConnectorSubtype:
+                  value:
+                    id: 43bdd144-4b17-4fce-a744-17c7fd3e717b
+                    technicalName: nonPersonal
+                    displayName: Non Personal
+                    description: Machine accounts for JDBC connectors
+                    type: MACHINE
+                    targetType: CONNECTOR
+                    targetId: JDBC
+                    targetName: JDBC
+                    classification: MACHINE
+                    origin: null
+                    profile: null
+                    systemManaged: false
+                    created: 2026-08-18T12:00:00.000Z
+                    modified: 2026-08-18T12:00:00.000Z
+                    target:
+                      type: CONNECTOR
+                      id: JDBC
+                      name: JDBC
               schema:
-                $ref: '#/components/schemas/SourceSubtypeV2'
-          description: Created machine account subtype.
+                $ref: '#/components/schemas/SubtypeWithTarget'
+          description: Created tiered machine account subtype.
+          headers:
+            location:
+              description: URL of the created subtype.
+              explode: false
+              schema:
+                format: uri
+                type: string
+              style: simple
         "400":
           content:
             application/json:
@@ -1479,12 +1549,12 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:sources:manage
-        - idn:connector-subtypes:manage
+        - idn:source-subtypes:create
+        - idn:connector-subtypes:create
       - applicationAuth:
-        - idn:sources:manage
-        - idn:connector-subtypes:manage
-      summary: Create subtype
+        - idn:source-subtypes:create
+        - idn:connector-subtypes:create
+      summary: Create a tiered subtype
       tags:
       - Machine Account Subtypes
       x-sailpoint-userLevels:
@@ -1493,18 +1563,66 @@ paths:
       - SOURCE_SUBADMIN
   /source-subtypes/v2/targets:
     get:
-      description: |-
-        List the targets that have machine account subtypes, with subtype and source counts for each.
+      description: |
+        Lists per-target subtype counts. Connector-tier rows are grouped by connector type.
+        Source-tier rows are returned 1:1 with each source-tier subtype.
 
-        A `targetType` filter is required. `targetType eq "CONNECTOR"` returns one item per connector type.
-        `targetType eq "SOURCE"` returns one item per source subtype. A missing or unsupported `targetType` filter returns
-        `400`.
+        `filters` must include `targetType eq "CONNECTOR"` or `targetType eq "SOURCE"`. Missing or
+        blank `targetType` returns **400**. `CONNECTOR_VARIANT` and unknown values return **400**.
+        Filter and sort fields are independent of the subtype list API. Default sort is `targetName`
+        ascending. `lastModified` is response-only and is not filterable or sortable.
 
-        The caller needs the `idn:source-subtypes:read` right.
-
-        This API returns `404` when Machine Identity Security or tiered subtype configuration is not enabled for the tenant.
+        When the experimental header is missing, or when the tiered subtype configuration is not enabled
+        for the tenant, the endpoint returns **404**.
       operationId: listSourceSubtypeTargetsV2
       parameters:
+      - description: |-
+          Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)
+
+          Filtering is supported for the following fields and operators:
+
+          **targetType**: *eq*
+
+          **targetName**: *eq, sw*
+        example: targetType eq "CONNECTOR"
+        explode: true
+        in: query
+        name: filters
+        required: true
+        schema:
+          type: string
+        style: form
+      - description: |-
+          Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)
+
+          Sorting is supported for the following fields: **targetType, targetName, subtypeCount, sourceCount**
+
+          Default sort is targetName ascending.
+        example: targetName
+        explode: true
+        in: query
+        name: sorters
+        required: false
+        schema:
+          default: targetName
+          format: comma-separated
+          type: string
+        style: form
+      - description: |-
+          If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+          Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        example: true
+        explode: true
+        in: query
+        name: count
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
       - description: |-
           Max number of results to return.
           See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
@@ -1534,56 +1652,8 @@ paths:
           minimum: 0
           type: integer
         style: form
-      - description: |-
-          If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
-
-          Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
-
-          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
-        example: true
-        explode: true
-        in: query
-        name: count
-        required: false
-        schema:
-          default: false
-          type: boolean
-        style: form
-      - description: |-
-          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
-
-          Filtering is supported for the following fields and operators:
-
-          **targetType**: *eq*
-
-          **targetName**: *eq, sw*
-
-          A `targetType` filter with the value `CONNECTOR` or `SOURCE` is required.
-        example: targetType eq "CONNECTOR"
-        explode: true
-        in: query
-        name: filters
-        required: true
-        schema:
-          type: string
-        style: form
-      - description: |-
-          Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
-
-          Sorting is supported for the following fields: **targetType, targetName, subtypeCount, sourceCount**
-
-          Results are sorted by **targetName** ascending by default.
-        example: -subtypeCount
-        explode: true
-        in: query
-        name: sorters
-        required: false
-        schema:
-          format: comma-separated
-          type: string
-        style: form
       - description: Use this header to enable this experimental API.
-        example: true
+        example: "true"
         explode: false
         in: header
         name: X-SailPoint-Experimental
@@ -1596,12 +1666,20 @@ paths:
         "200":
           content:
             application/json:
+              examples:
+                ConnectorTarget:
+                  value:
+                  - targetType: CONNECTOR
+                    targetId: JDBC
+                    targetName: JDBC
+                    subtypeCount: 3
+                    sourceCount: 12
+                    lastModified: 2026-08-18T12:00:00.000Z
               schema:
                 items:
                   $ref: '#/components/schemas/SubtypeTargetSummary'
                 type: array
-          description: List of subtype targets. The `X-Total-Count` header is returned
-            when `count=true`.
+          description: List of subtype target summaries.
         "400":
           content:
             application/json:
@@ -1678,13 +1756,9 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:sources:read
-        - idn:sources:manage
-        - idn:connector-subtypes:manage
+        - idn:source-subtypes:read
       - applicationAuth:
-        - idn:sources:read
-        - idn:sources:manage
-        - idn:connector-subtypes:manage
+        - idn:source-subtypes:read
       summary: List subtype targets
       tags:
       - Machine Account Subtypes
@@ -1692,23 +1766,20 @@ paths:
       - ORG_ADMIN
       - SOURCE_ADMIN
       - SOURCE_SUBADMIN
-      - HELPDESK
   /source-subtypes/v2/{id}:
     delete:
-      description: |-
-        Delete a machine account subtype of any tier by subtype ID. System-managed subtypes, and subtypes still assigned
-        to accounts, cannot be deleted and the request is rejected.
+      description: |
+        Deletes a tiered subtype by id.
 
-        Who can call this API depends on the tier of the stored subtype:
+        System-managed subtypes return **400**. A subtype that is still assigned to accounts returns
+        **400**. A connector-tier response includes how many accounts and sources still use it.
 
-        * `SOURCE`: requires the `idn:source-subtypes:delete` right, held by org admins, source admins and source
-        sub-admins.
+        SOURCE-tier delete requires `idn:source-subtypes:delete`. CONNECTOR-tier delete requires
+        `idn:connector-subtypes:delete`. Unknown id and a denied tier are both returned as **404**. A
+        malformed UUID returns **400**.
 
-        * `CONNECTOR`: requires the `idn:connector-subtypes:delete` right, held by org admins.
-
-        A caller without the right for the subtype's tier receives `404`, not `403`. A malformed ID returns `400`.
-
-        This API returns `404` when Machine Identity Security or tiered subtype configuration is not enabled for the tenant.
+        When the experimental header is missing, or when the tiered subtype configuration is not enabled
+        for the tenant, the endpoint returns **404**.
       operationId: deleteMachineAccountSubtypeV2
       parameters:
       - description: The ID of the subtype.
@@ -1723,7 +1794,7 @@ paths:
         style: simple
         x-sailpoint-resource-operation-id: listSourceSubtypesV2
       - description: Use this header to enable this experimental API.
-        example: true
+        example: "true"
         explode: false
         in: header
         name: X-SailPoint-Experimental
@@ -1734,7 +1805,8 @@ paths:
         style: simple
       responses:
         "204":
-          description: Subtype deleted successfully.
+          description: No content - indicates the request was successful but there
+            is no content to be returned in the response.
         "400":
           content:
             application/json:
@@ -1811,12 +1883,12 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:sources:manage
-        - idn:connector-subtypes:manage
+        - idn:source-subtypes:delete
+        - idn:connector-subtypes:delete
       - applicationAuth:
-        - idn:sources:manage
-        - idn:connector-subtypes:manage
-      summary: Delete subtype by ID
+        - idn:source-subtypes:delete
+        - idn:connector-subtypes:delete
+      summary: Delete tiered subtype by ID
       tags:
       - Machine Account Subtypes
       x-sailpoint-userLevels:
@@ -1824,12 +1896,13 @@ paths:
       - SOURCE_ADMIN
       - SOURCE_SUBADMIN
     get:
-      description: |-
-        Get a machine account subtype of any tier by subtype ID. The response may include `target.supportsProvisioning`.
+      description: |
+        Returns one machine account subtype by id, including whether its target can provision accounts.
 
-        The caller needs the `idn:source-subtypes:read` right. A malformed ID returns `400`.
-
-        This API returns `404` when Machine Identity Security or tiered subtype configuration is not enabled for the tenant.
+        Unknown id returns **404**. A caller without the required right also receives **404**. If
+        provisioning support cannot be determined, the API returns **503**. When the experimental
+        header is missing, or when tiered subtype configuration is not enabled, the endpoint returns
+        **404**.
       operationId: getSourceSubtypeByIdV2
       parameters:
       - description: The ID of the subtype.
@@ -1844,7 +1917,7 @@ paths:
         style: simple
         x-sailpoint-resource-operation-id: listSourceSubtypesV2
       - description: Use this header to enable this experimental API.
-        example: true
+        example: "true"
         explode: false
         in: header
         name: X-SailPoint-Experimental
@@ -1857,9 +1930,31 @@ paths:
         "200":
           content:
             application/json:
+              examples:
+                ConnectorSubtype:
+                  value:
+                    id: 43bdd144-4b17-4fce-a744-17c7fd3e717b
+                    technicalName: nonPersonal
+                    displayName: Non Personal
+                    description: Machine accounts for JDBC connectors
+                    type: MACHINE
+                    targetType: CONNECTOR
+                    targetId: JDBC
+                    targetName: JDBC
+                    classification: MACHINE
+                    origin: null
+                    profile: null
+                    systemManaged: false
+                    created: 2026-08-18T12:00:00.000Z
+                    modified: 2026-08-18T12:00:00.000Z
+                    target:
+                      type: CONNECTOR
+                      id: JDBC
+                      name: JDBC
+                      supportsProvisioning: true
               schema:
-                $ref: '#/components/schemas/SourceSubtypeV2'
-          description: Machine account subtype.
+                $ref: '#/components/schemas/SubtypeWithTargetProvisioning'
+          description: "Tiered machine account subtype, including `target.supportsProvisioning`."
         "400":
           content:
             application/json:
@@ -1934,42 +2029,40 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+        "503":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Connector catalogue timeout, HTTP error, or unparseable payload\
+            \ while resolving `supportsProvisioning` for a CONNECTOR target."
       security:
       - userAuth:
-        - idn:sources:read
-        - idn:sources:manage
-        - idn:connector-subtypes:manage
+        - idn:source-subtypes:read
       - applicationAuth:
-        - idn:sources:read
-        - idn:sources:manage
-        - idn:connector-subtypes:manage
-      summary: Get subtype by ID
+        - idn:source-subtypes:read
+      summary: Get tiered subtype by ID
       tags:
       - Machine Account Subtypes
       x-sailpoint-userLevels:
       - ORG_ADMIN
       - SOURCE_ADMIN
       - SOURCE_SUBADMIN
-      - HELPDESK
     patch:
-      description: |-
-        Update a machine account subtype of any tier by subtype ID, using the [JSON
-        Patch](https://tools.ietf.org/html/rfc6902) standard.
+      description: |
+        Applies an RFC 6902 JSON Patch to a tiered subtype.
 
-        Only `displayName` and `description` are patchable, and both must remain present. Changing `targetType`,
-        `targetId`, `profile`, `classification`, `type` or `technicalName` returns `400`; to move a subtype to another
-        tier or target, delete it and create a new one.
+        Patchable fields are `displayName` and `description` only. Tier and identity fields
+        (`technicalName`, `targetType`, `targetId`, `profile`, `classification`, `type`) are immutable;
+        change them by deleting and recreating the subtype.
 
-        Who can call this API depends on the tier of the stored subtype:
+        SOURCE-tier update requires `idn:source-subtypes:update`. CONNECTOR-tier update requires
+        `idn:connector-subtypes:update`. Unknown id and a denied tier are both returned as **404**. A
+        malformed UUID returns **400**. System-managed rows and a duplicate display name in the same
+        tier scope return **400**.
 
-        * `SOURCE`: requires the `idn:source-subtypes:update` right, held by org admins, source admins and source
-        sub-admins.
-
-        * `CONNECTOR`: requires the `idn:connector-subtypes:update` right, held by org admins.
-
-        A caller without the right for the subtype's tier receives `404`, not `403`. A malformed ID returns `400`.
-
-        This API returns `404` when Machine Identity Security or tiered subtype configuration is not enabled for the tenant.
+        When the experimental header is missing, or when the tiered subtype configuration is not enabled
+        for the tenant, the endpoint returns **404**.
       operationId: patchMachineAccountSubtypeV2
       parameters:
       - description: The ID of the subtype.
@@ -1984,7 +2077,7 @@ paths:
         style: simple
         x-sailpoint-resource-operation-id: listSourceSubtypesV2
       - description: Use this header to enable this experimental API.
-        example: true
+        example: "true"
         explode: false
         in: header
         name: X-SailPoint-Experimental
@@ -2001,7 +2094,7 @@ paths:
                 value:
                 - op: replace
                   path: /displayName
-                  value: Service Account
+                  value: Non-personal accounts
                 - op: replace
                   path: /description
                   value: Accounts used by automated services.
@@ -2017,8 +2110,8 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SourceSubtypeV2'
-          description: Updated machine account subtype.
+                $ref: '#/components/schemas/SubtypeWithTarget'
+          description: Updated tiered machine account subtype.
         "400":
           content:
             application/json:
@@ -2095,12 +2188,12 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:sources:manage
-        - idn:connector-subtypes:manage
+        - idn:source-subtypes:update
+        - idn:connector-subtypes:update
       - applicationAuth:
-        - idn:sources:manage
-        - idn:connector-subtypes:manage
-      summary: Patch subtype by ID
+        - idn:source-subtypes:update
+        - idn:connector-subtypes:update
+      summary: Patch tiered subtype by ID
       tags:
       - Machine Account Subtypes
       x-sailpoint-userLevels:
@@ -2109,22 +2202,25 @@ paths:
       - SOURCE_SUBADMIN
   /source-subtypes/v2/{id}/overrides:
     post:
-      description: |-
-        Create a source subtype that overrides a connector subtype on one source. The new source subtype copies the
-        connector subtype's machine account configuration and provisioning policy at the time of the request. Later
-        changes to the connector subtype are not applied to the override.
+      description: |
+        Creates a SOURCE-tier snapshot of a CONNECTOR-tier subtype for one source. The snapshot copies
+        the parent display data, machine-account config, and authored provisioning policy. It does not
+        add the connector's default account-creation fields, and later connector-tier edits do not
+        propagate.
 
-        The subtype identified by `id` must be a `CONNECTOR` subtype (otherwise `400`) that is in the source's effective
-        subtypes. An unknown subtype or source returns `404`. The request is rejected if the tenant's subtype
-        configuration cannot be changed this way.
+        `subtypeId` must be a CONNECTOR-tier subtype UUID that is in the source effective set. The
+        created row is an ordinary SOURCE subtype (`targetType=SOURCE`, new `id`, `origin=null`) and
+        can be patched or deleted with the existing v2 subtype routes.
 
-        The caller needs the `idn:source-subtypes:create` right, held by org admins, source admins and source sub-admins.
-        A caller without it receives `404`, not `403`. A malformed ID returns `400`.
+        Requires `idn:source-subtypes:create`. A missing right, an unknown parent, or an unknown source
+        returns **404**. A parent that is not CONNECTOR, a blank `sourceId`, a parent that is not
+        effective on the source, a name collision, or a subtype cap returns **400**. A malformed `subtypeId` returns **400**.
 
-        This API returns `404` when Machine Identity Security or tiered subtype configuration is not enabled for the tenant.
+        When the experimental header is missing, or when the tiered subtype configuration is not enabled
+        for the tenant, the endpoint returns **404**.
       operationId: createSourceSubtypeOverrideV2
       parameters:
-      - description: The ID of the connector subtype to override.
+      - description: CONNECTOR-tier subtype to snapshot onto the source.
         example: 43bdd144-4b17-4fce-a744-17c7fd3e717b
         explode: false
         in: path
@@ -2136,7 +2232,7 @@ paths:
         style: simple
         x-sailpoint-resource-operation-id: listSourceSubtypesV2
       - description: Use this header to enable this experimental API.
-        example: true
+        example: "true"
         explode: false
         in: header
         name: X-SailPoint-Experimental
@@ -2148,6 +2244,8 @@ paths:
       requestBody:
         content:
           application/json:
+            example:
+              sourceId: 6d0458373bec4b4b80460992b76016da
             schema:
               $ref: '#/components/schemas/SourceSubtypeOverrideRequest'
         required: true
@@ -2155,9 +2253,38 @@ paths:
         "201":
           content:
             application/json:
+              examples:
+                SourceOverride:
+                  value:
+                    id: 7c1e4b3a-017c-4e5f-a2b3-00016d045837
+                    technicalName: nonPersonal
+                    displayName: Non Personal
+                    description: Machine accounts for JDBC connectors
+                    type: MACHINE
+                    targetType: SOURCE
+                    targetId: 6d0458373bec4b4b80460992b76016da
+                    targetName: Corporate JDBC
+                    classification: MACHINE
+                    origin: null
+                    profile: null
+                    systemManaged: false
+                    created: 2026-09-30T12:00:00.000Z
+                    modified: 2026-09-30T12:00:00.000Z
+                    target:
+                      type: SOURCE
+                      id: 6d0458373bec4b4b80460992b76016da
+                      name: Corporate JDBC
               schema:
-                $ref: '#/components/schemas/SourceSubtypeV2'
-          description: Created source subtype that overrides the connector subtype.
+                $ref: '#/components/schemas/SubtypeWithTarget'
+          description: Created SOURCE-tier override.
+          headers:
+            location:
+              description: URL of the created source override.
+              explode: false
+              schema:
+                format: uri
+                type: string
+              style: simple
         "400":
           content:
             application/json:
@@ -2234,10 +2361,10 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:sources:manage
+        - idn:source-subtypes:create
       - applicationAuth:
-        - idn:sources:manage
-      summary: Override source connector subtype
+        - idn:source-subtypes:create
+      summary: Create a source-tier override
       tags:
       - Machine Account Subtypes
       x-sailpoint-userLevels:
@@ -2246,20 +2373,14 @@ paths:
       - SOURCE_SUBADMIN
   /source-subtypes/v2/{id}/provisioning-policy:
     delete:
-      description: |-
-        Delete the machine account creation provisioning policy of a subtype of any tier. Returns `404` when the subtype
-        has no provisioning policy.
+      description: |
+        Deletes the stored `CREATE_MACHINE_ACCOUNT` provisioning policy for a subtype.
 
-        Who can call this API depends on the tier of the subtype:
+        SOURCE-tier delete requires `idn:source-subtypes:delete`. CONNECTOR-tier delete requires
+        `idn:connector-subtypes:delete`. Missing subtype and missing right both return **404**.
 
-        * `SOURCE`: requires the `idn:source-subtypes:delete` right, held by org admins, source admins and source
-        sub-admins.
-
-        * `CONNECTOR`: requires the `idn:connector-subtypes:delete` right, held by org admins.
-
-        A caller without the right for the subtype's tier receives `404`, not `403`. A malformed ID returns `400`.
-
-        This API returns `404` when Machine Identity Security or tiered subtype configuration is not enabled for the tenant.
+        When the experimental header is missing, or when the tiered subtype configuration is not enabled
+        for the tenant, the endpoint returns **404**.
       operationId: deleteSourceSubtypeProvisioningPolicyV2
       parameters:
       - description: The ID of the subtype.
@@ -2274,7 +2395,7 @@ paths:
         style: simple
         x-sailpoint-resource-operation-id: listSourceSubtypesV2
       - description: Use this header to enable this experimental API.
-        example: true
+        example: "true"
         explode: false
         in: header
         name: X-SailPoint-Experimental
@@ -2285,7 +2406,8 @@ paths:
         style: simple
       responses:
         "204":
-          description: Provisioning policy deleted successfully.
+          description: No content - indicates the request was successful but there
+            is no content to be returned in the response.
         "400":
           content:
             application/json:
@@ -2362,11 +2484,11 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:sources:manage
-        - idn:connector-subtypes:manage
+        - idn:source-subtypes:delete
+        - idn:connector-subtypes:delete
       - applicationAuth:
-        - idn:sources:manage
-        - idn:connector-subtypes:manage
+        - idn:source-subtypes:delete
+        - idn:connector-subtypes:delete
       summary: Delete subtype provisioning policy
       tags:
       - Machine Account Subtypes
@@ -2375,13 +2497,15 @@ paths:
       - SOURCE_ADMIN
       - SOURCE_SUBADMIN
     get:
-      description: |-
-        Get the machine account creation provisioning policy of a subtype of any tier. Returns `404` when the subtype has
-        no provisioning policy.
+      description: |
+        Returns the machine account creation provisioning policy for a subtype of any tier. Returns
+        **404** when the subtype has no provisioning policy.
 
-        The caller needs the `idn:source-subtypes:read` right. A malformed ID returns `400`.
+        For a `SOURCE` subtype, pass `sourceId` so a policy stored on that source can be found.
 
-        This API returns `404` when Machine Identity Security or tiered subtype configuration is not enabled for the tenant.
+        The caller needs `idn:source-subtypes:read`. A malformed id returns **400**. When the
+        experimental header is missing, or when tiered subtype configuration is not enabled, the
+        endpoint returns **404**.
       operationId: getSourceSubtypeProvisioningPolicyV2
       parameters:
       - description: The ID of the subtype.
@@ -2403,10 +2527,11 @@ paths:
         name: sourceId
         required: false
         schema:
+          default: ""
           type: string
         style: form
       - description: Use this header to enable this experimental API.
-        example: true
+        example: "true"
         explode: false
         in: header
         name: X-SailPoint-Experimental
@@ -2419,9 +2544,28 @@ paths:
         "200":
           content:
             application/json:
+              examples:
+                Policy:
+                  value:
+                    id: 54f626b4-c9d8-4f7e-b768-046c20583abb
+                    subtypeId: 43bdd144-4b17-4fce-a744-17c7fd3e717b
+                    name: Create Machine Account
+                    description: Fields used when creating a machine account for this
+                      subtype
+                    usageType: CREATE_MACHINE_ACCOUNT
+                    fields:
+                    - name: userName
+                      transform:
+                        type: rule
+                        attributes:
+                          name: Create Unique LDAP Attribute
+                      attributes: {}
+                      isRequired: true
+                      type: string
+                      isMultiValued: false
               schema:
-                $ref: '#/components/schemas/SubtypeProvisioningPolicy'
-          description: Subtype provisioning policy.
+                $ref: '#/components/schemas/ProvisioningPolicyDto'
+          description: CREATE_MACHINE_ACCOUNT provisioning policy for the subtype.
         "400":
           content:
             application/json:
@@ -2498,13 +2642,9 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:sources:read
-        - idn:sources:manage
-        - idn:connector-subtypes:manage
+        - idn:source-subtypes:read
       - applicationAuth:
-        - idn:sources:read
-        - idn:sources:manage
-        - idn:connector-subtypes:manage
+        - idn:source-subtypes:read
       summary: Get subtype provisioning policy
       tags:
       - Machine Account Subtypes
@@ -2512,23 +2652,17 @@ paths:
       - ORG_ADMIN
       - SOURCE_ADMIN
       - SOURCE_SUBADMIN
-      - HELPDESK
     patch:
-      description: |-
-        Update the machine account creation provisioning policy of a subtype of any tier, using the [JSON
-        Patch](https://tools.ietf.org/html/rfc6902) standard. Only `name`, `description` and `fields` are patchable.
-        Returns `404` when the subtype has no provisioning policy.
+      description: |
+        Patches the stored `CREATE_MACHINE_ACCOUNT` provisioning policy for a subtype using RFC 6902
+        JSON Patch.
 
-        Who can call this API depends on the tier of the subtype:
+        SOURCE-tier write requires `idn:source-subtypes:update`. CONNECTOR-tier write requires
+        `idn:connector-subtypes:update`. Missing subtype, missing policy, and missing right all return
+        **404**.
 
-        * `SOURCE`: requires the `idn:source-subtypes:update` right, held by org admins, source admins and source
-        sub-admins.
-
-        * `CONNECTOR`: requires the `idn:connector-subtypes:update` right, held by org admins.
-
-        A caller without the right for the subtype's tier receives `404`, not `403`. A malformed ID returns `400`.
-
-        This API returns `404` when Machine Identity Security or tiered subtype configuration is not enabled for the tenant.
+        When the experimental header is missing, or when the tiered subtype configuration is not enabled
+        for the tenant, the endpoint returns **404**.
       operationId: patchSourceSubtypeProvisioningPolicyV2
       parameters:
       - description: The ID of the subtype.
@@ -2543,7 +2677,7 @@ paths:
         style: simple
         x-sailpoint-resource-operation-id: listSourceSubtypesV2
       - description: Use this header to enable this experimental API.
-        example: true
+        example: "true"
         explode: false
         in: header
         name: X-SailPoint-Experimental
@@ -2556,11 +2690,11 @@ paths:
         content:
           application/json-patch+json:
             examples:
-              Update description:
+              Replace description:
                 value:
                 - op: replace
                   path: /description
-                  value: Fields collected when creating a service account.
+                  value: Updated machine account create fields
             schema:
               items:
                 $ref: '#/components/schemas/JsonPatchOperation'
@@ -2573,8 +2707,8 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SubtypeProvisioningPolicy'
-          description: Updated subtype provisioning policy.
+                $ref: '#/components/schemas/ProvisioningPolicyDto'
+          description: Updated CREATE_MACHINE_ACCOUNT provisioning policy.
         "400":
           content:
             application/json:
@@ -2651,11 +2785,11 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:sources:manage
-        - idn:connector-subtypes:manage
+        - idn:source-subtypes:update
+        - idn:connector-subtypes:update
       - applicationAuth:
-        - idn:sources:manage
-        - idn:connector-subtypes:manage
+        - idn:source-subtypes:update
+        - idn:connector-subtypes:update
       summary: Patch subtype provisioning policy
       tags:
       - Machine Account Subtypes
@@ -2664,23 +2798,19 @@ paths:
       - SOURCE_ADMIN
       - SOURCE_SUBADMIN
     post:
-      description: |-
-        Create the machine account creation provisioning policy of a subtype of any tier. A subtype has at most one
-        provisioning policy; the request is rejected if one already exists.
+      description: |
+        Creates the machine account creation provisioning policy for a subtype. A subtype has at most
+        one policy; the request is rejected if one already exists.
 
-        `id` and `subtypeId` must not be supplied (otherwise `400`). `usageType` must be `CREATE_MACHINE_ACCOUNT` or
-        omitted. `name` defaults to the subtype's display name.
+        When `useDefaultFields` is `true` and the body has no `fields`, a `CONNECTOR` subtype's policy
+        is created with the connector's default account-creation fields. `SOURCE` subtypes ignore
+        `useDefaultFields`.
 
-        Who can call this API depends on the tier of the subtype:
+        SOURCE-tier write requires `idn:source-subtypes:update`. CONNECTOR-tier write requires
+        `idn:connector-subtypes:update`. A missing subtype or a missing right returns **404**.
 
-        * `SOURCE`: requires the `idn:source-subtypes:update` right, held by org admins, source admins and source
-        sub-admins.
-
-        * `CONNECTOR`: requires the `idn:connector-subtypes:update` right, held by org admins.
-
-        A caller without the right for the subtype's tier receives `404`, not `403`. A malformed ID returns `400`.
-
-        This API returns `404` when Machine Identity Security or tiered subtype configuration is not enabled for the tenant.
+        When the experimental header is missing, or when the tiered subtype configuration is not enabled
+        for the tenant, the endpoint returns **404**.
       operationId: createSourceSubtypeProvisioningPolicyV2
       parameters:
       - description: The ID of the subtype.
@@ -2695,7 +2825,7 @@ paths:
         style: simple
         x-sailpoint-resource-operation-id: listSourceSubtypesV2
       - description: "When `true` and the request body has no `fields`, a `CONNECTOR`\
-          \ subtype's policy is created with the connector's default account creation\
+          \ subtype's policy is created with the connector's default account-creation\
           \ fields. Ignored for `SOURCE` subtypes."
         example: true
         explode: true
@@ -2707,7 +2837,7 @@ paths:
           type: boolean
         style: form
       - description: Use this header to enable this experimental API.
-        example: true
+        example: "true"
         explode: false
         in: header
         name: X-SailPoint-Experimental
@@ -2720,35 +2850,40 @@ paths:
         content:
           application/json:
             examples:
-              Create policy:
+              Policy:
                 value:
-                  name: Service Account
-                  description: Fields collected when creating a service account.
+                  name: Create Machine Account
+                  description: Fields used when creating a machine account for this
+                    subtype
                   usageType: CREATE_MACHINE_ACCOUNT
                   fields:
                   - name: userName
                     transform:
-                      type: rule
+                      type: static
                       attributes:
-                        name: Create Unique LDAP Attribute
-                    attributes:
-                      template: "{firstname}.{lastname}{uniqueCounter}"
-                      cloudMaxUniqueChecks: "50"
-                      cloudMaxSize: "20"
-                      cloudRequired: "true"
-                    isRequired: false
+                        value: $displayName
+                    attributes: {}
+                    isRequired: true
                     type: string
                     isMultiValued: false
             schema:
-              $ref: '#/components/schemas/SubtypeProvisioningPolicy'
+              $ref: '#/components/schemas/ProvisioningPolicyDto'
         required: true
       responses:
         "201":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SubtypeProvisioningPolicy'
-          description: Created subtype provisioning policy.
+                $ref: '#/components/schemas/ProvisioningPolicyDto'
+          description: Stored CREATE_MACHINE_ACCOUNT provisioning policy.
+          headers:
+            location:
+              description: URL of the stored provisioning policy.
+              explode: false
+              schema:
+                format: uri
+                type: string
+              style: simple
         "400":
           content:
             application/json:
@@ -2798,6 +2933,13 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Conflict - a provisioning policy is already stored for the
+            subtype.
         "429":
           content:
             application/json:
@@ -2825,11 +2967,11 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:sources:manage
-        - idn:connector-subtypes:manage
+        - idn:source-subtypes:update
+        - idn:connector-subtypes:update
       - applicationAuth:
-        - idn:sources:manage
-        - idn:connector-subtypes:manage
+        - idn:source-subtypes:update
+        - idn:connector-subtypes:update
       summary: Create subtype provisioning policy
       tags:
       - Machine Account Subtypes
@@ -2887,6 +3029,9 @@ components:
         type: integer
       style: form
   responses:
+    "204":
+      description: No content - indicates the request was successful but there is
+        no content to be returned in the response.
     "400":
       content:
         application/json:
@@ -3201,305 +3346,385 @@ components:
       - path
       title: Json Patch Operation
       type: object
-    SubtypeTarget:
-      description: Reference to the source or connector the subtype is defined for.
+    SubtypeTargetType:
+      description: "Tier that scopes the subtype. `SOURCE` is unique per source. `CONNECTOR`\
+        \ is unique per connector type and applies to every source of that connector.\
+        \ On create, omitted `targetType` defaults to `SOURCE`. `CONNECTOR_VARIANT`\
+        \ is reserved and is not available for create, update, or delete."
+      enum:
+      - SOURCE
+      - CONNECTOR
+      - CONNECTOR_VARIANT
+      example: CONNECTOR
+      title: Subtype Target Type
+      type: string
+    SubtypeClassification:
+      description: Classification of the subtype. Published values are `MACHINE`.
+      enum:
+      - MACHINE
+      example: MACHINE
+      title: Subtype Classification
+      type: string
+    ConnectorVariantProfile:
+      description: Response-only connector-variant profile. Always `null` for `SOURCE`
+        and `CONNECTOR` tiers in this release. Populated when the connector-variant
+        tier is available.
       example:
-        name: Active Directory
-        supportsProvisioning: true
-        id: active-directory
-        type: CONNECTOR
+        connectorType: JDBC
+        variant: MySql
+        id: 65de7634-d315-482c-aad4-7fdbd1e42056
+      nullable: true
       properties:
-        type:
-          description: Type of the target.
-          enum:
-          - SOURCE
-          - CONNECTOR
-          example: CONNECTOR
-          type: string
         id:
-          description: "Source ID for a `SOURCE` target, or connector type for a `CONNECTOR`\
-            \ target."
-          example: active-directory
+          description: Unique identifier of the connector variant profile.
+          example: 65de7634-d315-482c-aad4-7fdbd1e42056
+          format: uuid
           type: string
-        name:
-          description: Name of the source or connector.
-          example: Active Directory
+        connectorType:
+          default: ""
+          description: "Connector type of the variant profile, for example `JDBC`."
+          example: JDBC
           type: string
-        supportsProvisioning:
-          default: false
-          description: Indicates whether the target supports provisioning. Only returned
-            when you get a single subtype by ID.
-          example: true
-          type: boolean
-      title: Subtype Target
+        variant:
+          default: ""
+          description: "Variant name within the connector type, for example `MySql`."
+          example: MySql
+          type: string
+      readOnly: true
+      title: Connector Variant Profile
       type: object
     SourceSubtypeV2:
-      description: A machine account subtype defined at the source tier or the connector
-        tier.
       example:
-        targetName: Active Directory
-        targetId: active-directory
-        displayName: Service Account
-        created: 2026-07-28T16:13:42.801Z
-        origin: SOURCE
+        targetName: JDBC
+        targetId: JDBC
+        displayName: Non Personal
+        created: 2026-08-18T12:00:00Z
+        origin: CONNECTOR
         profile:
           connectorType: JDBC
           variant: MySql
-          id: 9a4b7d2e-1c3f-4e5a-8b6c-7d8e9f0a1b2c
+          id: 65de7634-d315-482c-aad4-7fdbd1e42056
         systemManaged: false
-        description: Accounts used by automated services.
+        description: Machine accounts for JDBC connectors
         targetType: CONNECTOR
         type: MACHINE
         classification: MACHINE
-        technicalName: service-account
-        target:
-          name: Active Directory
-          supportsProvisioning: true
-          id: active-directory
-          type: CONNECTOR
-        modified: 2026-07-28T16:13:42.75Z
+        technicalName: nonPersonal
+        modified: 2026-08-18T12:00:00Z
         id: 43bdd144-4b17-4fce-a744-17c7fd3e717b
       properties:
         id:
-          description: Unique identifier for the subtype.
+          description: Server-generated subtype identifier. Must not be supplied on
+            create.
           example: 43bdd144-4b17-4fce-a744-17c7fd3e717b
           format: uuid
+          readOnly: true
           type: string
         technicalName:
-          description: Technical name of the subtype.
-          example: service-account
+          description: Technical name of the subtype. Unique within the target tier
+            scope.
+          example: nonPersonal
           type: string
         displayName:
           description: Display name of the subtype.
-          example: Service Account
+          example: Non Personal
           type: string
         description:
           description: Description of the subtype.
-          example: Accounts used by automated services.
+          example: Machine accounts for JDBC connectors
           type: string
         type:
-          description: Entity type of the subtype.
+          default: MACHINE
+          description: Entity type of the subtype. Defaults to `MACHINE` when omitted.
           example: MACHINE
           type: string
+          x-sailpoint-lint-ignore:
+            schema-property-names-must-not-be-type: The service returns this field
+              as type. It is the subtype entity type and defaults to MACHINE.
         targetType:
-          description: Tier the subtype is defined at. `SOURCE` subtypes apply to
-            one source. `CONNECTOR` subtypes apply to every source of a connector
-            type. `CONNECTOR_VARIANT` is reserved for future use.
-          enum:
-          - SOURCE
-          - CONNECTOR
-          - CONNECTOR_VARIANT
-          example: CONNECTOR
-          type: string
+          $ref: '#/components/schemas/SubtypeTargetType'
         targetId:
-          description: "Scope key of the subtype. The source ID for `SOURCE` subtypes,\
-            \ or the connector type for `CONNECTOR` subtypes."
-          example: active-directory
+          description: Scope key for the subtype. Source id when `targetType` is `SOURCE`.
+            Connector type or connector specification id when `targetType` is `CONNECTOR`.
+          example: JDBC
           type: string
         targetName:
-          description: Display name of the target source or connector.
-          example: Active Directory
-          nullable: true
+          default: ""
+          description: Human-readable target label. May be omitted on create; the
+            service persists a display name.
+          example: JDBC
           type: string
         classification:
-          description: Classification of the subtype.
-          enum:
-          - MACHINE
-          example: MACHINE
-          type: string
+          $ref: '#/components/schemas/SubtypeClassification'
         origin:
-          description: Tier of the parent subtype this subtype overrides. Set to `CONNECTOR`
-            when a source subtype replaces a connector subtype with the same technical
-            name in a source's effective subtype list. Otherwise `null`.
+          description: "Response-only origin badge. Set on effective-set list reads:\
+            \ `CONNECTOR` when a SOURCE winner overrides a CONNECTOR parent of the\
+            \ same technical name. `null` on connector-only and source-only winners,\
+            \ and on plain CRUD list, create, patch, and get-by-id."
           enum:
           - SOURCE
           - CONNECTOR
           - CONNECTOR_VARIANT
+          - null
+          example: CONNECTOR
           nullable: true
+          readOnly: true
           type: string
-          example: null
         profile:
-          $ref: '#/components/schemas/SourceSubtypeV2_profile'
+          $ref: '#/components/schemas/ConnectorVariantProfile'
         systemManaged:
           default: false
-          description: Indicates whether the subtype is managed by the system.
+          description: Server-set flag indicating the subtype is managed by the system.
+            Incoming values are ignored.
           example: false
           readOnly: true
           type: boolean
         created:
           description: Creation timestamp.
-          example: 2026-07-28T16:13:42.801Z
+          example: 2026-08-18T12:00:00Z
           format: date-time
+          nullable: true
+          readOnly: true
           type: string
         modified:
           description: Last modified timestamp.
-          example: 2026-07-28T16:13:42.75Z
+          example: 2026-08-18T12:00:00Z
           format: date-time
-          type: string
-        target:
-          $ref: '#/components/schemas/SubtypeTarget'
-      title: Source Subtype V2
-      type: object
-    SourceSubtypeV2WithConfig:
-      allOf:
-      - $ref: '#/components/schemas/SourceSubtypeV2'
-      - properties:
-          config:
-            $ref: '#/components/schemas/SourceSubtypeV2WithConfig_allOf_config'
-        type: object
-      description: "A machine account subtype list item, returned when `includeConfigs=true`."
-      example:
-        targetName: Active Directory
-        targetId: active-directory
-        displayName: Service Account
-        created: 2026-07-28T16:13:42.801Z
-        origin: SOURCE
-        profile:
-          connectorType: JDBC
-          variant: MySql
-          id: 9a4b7d2e-1c3f-4e5a-8b6c-7d8e9f0a1b2c
-        systemManaged: false
-        description: Accounts used by automated services.
-        targetType: CONNECTOR
-        type: MACHINE
-        classification: MACHINE
-        technicalName: service-account
-        target:
-          name: Active Directory
-          supportsProvisioning: true
-          id: active-directory
-          type: CONNECTOR
-        modified: 2026-07-28T16:13:42.75Z
-        id: 43bdd144-4b17-4fce-a744-17c7fd3e717b
-        config:
-          machineAccountCreate:
-            accountCreateEnabled: true
-      title: Source Subtype V2 With Config
-    CreateSourceSubtypeV2Request:
-      description: Request body for creating a machine account subtype at the source
-        tier or the connector tier.
-      example:
-        targetName: Active Directory
-        targetId: active-directory
-        displayName: Service Account
-        description: Accounts used by automated services.
-        targetType: CONNECTOR
-        type: MACHINE
-        classification: MACHINE
-        technicalName: service-account
-      properties:
-        targetType:
-          default: SOURCE
-          description: Tier to create the subtype at. Defaults to `SOURCE`.
-          enum:
-          - SOURCE
-          - CONNECTOR
-          example: CONNECTOR
-          type: string
-        targetId:
-          description: "Scope key of the subtype. The source ID for a `SOURCE` subtype,\
-            \ or a registered connector type for a `CONNECTOR` subtype."
-          example: active-directory
-          type: string
-        targetName:
-          description: "Display name of the target. For a `CONNECTOR` subtype, a supplied\
-            \ value must match the connector's registered name and is replaced by\
-            \ the registered spelling. When omitted, the registered name is used."
-          example: Active Directory
-          type: string
-        technicalName:
-          description: Technical name of the subtype.
-          example: service-account
-          type: string
-        displayName:
-          description: Display name of the subtype.
-          example: Service Account
-          type: string
-        description:
-          description: Description of the subtype.
-          example: Accounts used by automated services.
-          type: string
-        type:
-          default: MACHINE
-          description: Entity type of the subtype. Defaults to `MACHINE`.
-          example: MACHINE
-          type: string
-        classification:
-          default: MACHINE
-          description: Classification of the subtype. Defaults to `MACHINE`.
-          enum:
-          - MACHINE
-          example: MACHINE
+          nullable: true
+          readOnly: true
           type: string
       required:
       - description
       - displayName
       - targetId
       - technicalName
-      title: Create Source Subtype V2 Request
+      title: Source Subtype V2
       type: object
-    SubtypeTargetSummary:
-      description: "Summary of the subtypes defined for one target. There is one item\
-        \ per connector type for `CONNECTOR` targets, and one item per source subtype\
-        \ for `SOURCE` targets."
+    SubtypeTargetRef:
+      description: Resolved target of a tiered subtype. Present on v2 responses; not
+        accepted on create.
       example:
-        targetName: Active Directory
-        sourceCount: 12
-        targetId: active-directory
-        targetType: CONNECTOR
-        lastModified: 2026-07-28T16:13:42.75Z
-        subtypeCount: 3
+        name: 15Five
+        id: 65de7634-d315-482c-aad4-7fdbd1e42056
+        type: CONNECTOR
       properties:
-        targetType:
-          description: Tier of the target.
+        type:
+          description: DTO type of the target. `SOURCE` for source-tier rows; `CONNECTOR`
+            for connector-tier rows.
           enum:
           - SOURCE
           - CONNECTOR
           example: CONNECTOR
           type: string
+          x-sailpoint-lint-ignore:
+            schema-property-names-must-not-be-type: The service returns this field
+              as type. It distinguishes SOURCE and CONNECTOR targets.
+        id:
+          description: Target identifier. Source id for `SOURCE`. Connector specification
+            id or connector type for `CONNECTOR`.
+          example: 65de7634-d315-482c-aad4-7fdbd1e42056
+          type: string
+        name:
+          description: Human-readable target name. Falls back to `id` when a display
+            name is not available.
+          example: 15Five
+          type: string
+      title: Subtype Target Ref
+      type: object
+    SubtypeWithTarget:
+      allOf:
+      - $ref: '#/components/schemas/SourceSubtypeV2'
+      - properties:
+          target:
+            $ref: '#/components/schemas/SubtypeTargetRef'
+        type: object
+      description: "Tiered source subtype as returned by v2 list, create, and patch.\
+        \ Get-by-id uses Subtype With Target Provisioning."
+      example:
+        targetName: JDBC
+        targetId: JDBC
+        displayName: Non Personal
+        created: 2026-08-18T12:00:00Z
+        origin: CONNECTOR
+        profile:
+          connectorType: JDBC
+          variant: MySql
+          id: 65de7634-d315-482c-aad4-7fdbd1e42056
+        systemManaged: false
+        description: Machine accounts for JDBC connectors
+        targetType: CONNECTOR
+        type: MACHINE
+        classification: MACHINE
+        technicalName: nonPersonal
+        target:
+          name: 15Five
+          id: 65de7634-d315-482c-aad4-7fdbd1e42056
+          type: CONNECTOR
+        modified: 2026-08-18T12:00:00Z
+        id: 43bdd144-4b17-4fce-a744-17c7fd3e717b
+      title: Subtype With Target
+      type: object
+    MachineAccountSubtypeListConfig:
+      description: "Slim machine-account-create config embedded on a list item when\
+        \ `includeConfigs` is `true`. Full create, delete, approval, password, and\
+        \ form fields stay on the machine-config API."
+      example:
+        machineAccountCreate:
+          accountCreateEnabled: true
+      properties:
+        machineAccountCreate:
+          $ref: '#/components/schemas/MachineAccountSubtypeListConfig_machineAccountCreate'
+      title: Machine Account Subtype List Config
+      type: object
+    SubtypeWithTargetAndConfig:
+      allOf:
+      - $ref: '#/components/schemas/SubtypeWithTarget'
+      - properties:
+          config:
+            $ref: '#/components/schemas/MachineAccountSubtypeListConfig'
+        type: object
+      description: Tiered source subtype returned by the v2 list. `config` is included
+        only when `includeConfigs` is `true` and the subtype has a stored machine-account-create
+        config.
+      example:
+        targetName: JDBC
+        targetId: JDBC
+        displayName: Non Personal
+        created: 2026-08-18T12:00:00Z
+        origin: CONNECTOR
+        profile:
+          connectorType: JDBC
+          variant: MySql
+          id: 65de7634-d315-482c-aad4-7fdbd1e42056
+        systemManaged: false
+        description: Machine accounts for JDBC connectors
+        targetType: CONNECTOR
+        type: MACHINE
+        classification: MACHINE
+        technicalName: nonPersonal
+        target:
+          name: 15Five
+          id: 65de7634-d315-482c-aad4-7fdbd1e42056
+          type: CONNECTOR
+        modified: 2026-08-18T12:00:00Z
+        id: 43bdd144-4b17-4fce-a744-17c7fd3e717b
+        config:
+          machineAccountCreate:
+            accountCreateEnabled: true
+      title: Subtype With Target And Config
+      type: object
+    SubtypeTargetSummary:
+      description: One row per connector type (`CONNECTOR`) or per source-tier subtype
+        (`SOURCE`) from `GET /source-subtypes/v2/targets`.
+      example:
+        targetName: JDBC
+        sourceCount: 12
+        targetId: JDBC
+        targetType: CONNECTOR
+        lastModified: 2026-08-18T12:00:00Z
+        subtypeCount: 3
+      properties:
+        targetType:
+          $ref: '#/components/schemas/SubtypeTargetType'
         targetId:
-          description: "Connector type for a `CONNECTOR` target, or source ID for\
-            \ a `SOURCE` target."
-          example: active-directory
+          description: Scope key. Connector type for `CONNECTOR`. Source id for `SOURCE`.
+          example: JDBC
           type: string
         targetName:
-          description: Display name of the target. Falls back to `targetId` when no
-            name is stored.
-          example: Active Directory
+          description: Display label. Never null; falls back to `targetId`.
+          example: JDBC
           type: string
         subtypeCount:
-          description: Number of subtypes defined for the target.
+          description: Number of subtypes in this target group.
           example: 3
           format: int32
           type: integer
         sourceCount:
-          description: Number of sources the target's subtypes apply to.
+          description: Number of sources of this connector type for a `CONNECTOR`
+            row. `1` on a `SOURCE` row. Sortable. Not filterable.
           example: 12
           format: int32
           type: integer
         lastModified:
-          description: Most recent modification time across the target's subtypes.
-          example: 2026-07-28T16:13:42.75Z
+          description: "Latest `modified` timestamp in the `targetId` group for `CONNECTOR`,\
+            \ or that subtype row's `modified` for `SOURCE`. Not filterable or sortable."
+          example: 2026-08-18T12:00:00Z
           format: date-time
-          nullable: true
+          readOnly: true
           type: string
       title: Subtype Target Summary
       type: object
+    SubtypeTarget:
+      allOf:
+      - $ref: '#/components/schemas/SubtypeTargetRef'
+      - properties:
+          supportsProvisioning:
+            default: false
+            description: Whether the target can provision accounts. `false` when the
+              target does not support provisioning.
+            example: true
+            type: boolean
+        type: object
+      description: Resolved target of a tiered subtype on get-by-id. Extends the list/create/patch
+        target reference with `supportsProvisioning`. Not accepted on create.
+      example:
+        name: 15Five
+        supportsProvisioning: true
+        id: 65de7634-d315-482c-aad4-7fdbd1e42056
+        type: CONNECTOR
+      title: Subtype Target
+      type: object
+    SubtypeWithTargetProvisioning:
+      allOf:
+      - $ref: '#/components/schemas/SourceSubtypeV2'
+      - properties:
+          target:
+            $ref: '#/components/schemas/SubtypeTarget'
+        type: object
+      description: "Get-by-id response. Same as the list/create/patch model, except\
+        \ `target` includes `supportsProvisioning`. List, create, and patch do not\
+        \ return that field."
+      example:
+        targetName: JDBC
+        targetId: JDBC
+        displayName: Non Personal
+        created: 2026-08-18T12:00:00Z
+        origin: CONNECTOR
+        profile:
+          connectorType: JDBC
+          variant: MySql
+          id: 65de7634-d315-482c-aad4-7fdbd1e42056
+        systemManaged: false
+        description: Machine accounts for JDBC connectors
+        targetType: CONNECTOR
+        type: MACHINE
+        classification: MACHINE
+        technicalName: nonPersonal
+        target:
+          name: 15Five
+          supportsProvisioning: true
+          id: 65de7634-d315-482c-aad4-7fdbd1e42056
+          type: CONNECTOR
+        modified: 2026-08-18T12:00:00Z
+        id: 43bdd144-4b17-4fce-a744-17c7fd3e717b
+      title: Subtype With Target Provisioning
+      type: object
     SourceSubtypeOverrideRequest:
-      description: Request body for overriding a connector subtype on one source.
+      description: Creates a SOURCE-tier snapshot of a CONNECTOR-tier subtype for
+        one source. Later edits to the connector-tier parent are not copied onto the
+        snapshot.
       example:
         sourceId: 6d0458373bec4b4b80460992b76016da
       properties:
         sourceId:
-          description: ID of the source to create the overriding source subtype on.
+          description: Source that receives the override.
           example: 6d0458373bec4b4b80460992b76016da
           type: string
       required:
       - sourceId
       title: Source Subtype Override Request
       type: object
-    SubtypeProvisioningPolicyField:
-      description: One field of a subtype provisioning policy.
+    FieldDetailsDto:
       example:
         isRequired: false
         transform:
@@ -3509,60 +3734,61 @@ components:
         isMultiValued: false
         name: userName
         attributes:
-          template: "{firstname}.{lastname}{uniqueCounter}"
+          template: firstname.lastname.uniqueCounter
           cloudMaxUniqueChecks: "50"
           cloudMaxSize: "20"
           cloudRequired: "true"
         type: string
       properties:
         name:
-          description: Name of the attribute.
+          default: ""
+          description: The name of the attribute.
           example: userName
           type: string
         transform:
-          additionalProperties: true
-          description: Transform to apply to the field.
+          default: {}
+          description: The transform to apply to the field.
           example:
             type: rule
             attributes:
               name: Create Unique LDAP Attribute
-          nullable: true
           type: object
         attributes:
-          additionalProperties: true
+          default: {}
           description: Attributes required for the transform.
           example:
-            template: "{firstname}.{lastname}{uniqueCounter}"
+            template: firstname.lastname.uniqueCounter
             cloudMaxUniqueChecks: "50"
             cloudMaxSize: "20"
             cloudRequired: "true"
-          nullable: true
           type: object
         isRequired:
           default: false
-          description: Indicates whether the attribute is required.
+          description: Flag indicating whether or not the attribute is required.
           example: false
           type: boolean
         type:
-          description: Type of the attribute.
+          default: string
+          description: The type of the attribute.
           example: string
-          nullable: true
           type: string
+          x-sailpoint-lint-ignore:
+            schema-property-names-must-not-be-type: "The service returns this field\
+              \ as type. It is the provisioning attribute type, for example string."
         isMultiValued:
           default: false
-          description: Indicates whether the attribute is multi-valued.
+          description: Flag indicating whether or not the attribute is multi-valued.
           example: false
           type: boolean
-      required:
-      - name
-      title: Subtype Provisioning Policy Field
+      title: Field Details Dto
       type: object
-    SubtypeProvisioningPolicy:
-      description: The machine account creation provisioning policy of a subtype.
+    ProvisioningPolicyDto:
+      description: CREATE_MACHINE_ACCOUNT provisioning policy stored on a source subtype.
+        Field-compatible with source provisioning-policy documents.
       example:
-        name: Service Account
-        description: Fields collected when creating a service account.
-        id: d7ae9ea3-507f-4d00-9d4f-b4464b344b88
+        name: Create Machine Account
+        description: Fields used when creating a machine account for this subtype
+        id: 54f626b4-c9d8-4f7e-b768-046c20583abb
         subtypeId: 43bdd144-4b17-4fce-a744-17c7fd3e717b
         fields:
         - isRequired: false
@@ -3573,7 +3799,7 @@ components:
           isMultiValued: false
           name: userName
           attributes:
-            template: "{firstname}.{lastname}{uniqueCounter}"
+            template: firstname.lastname.uniqueCounter
             cloudMaxUniqueChecks: "50"
             cloudMaxSize: "20"
             cloudRequired: "true"
@@ -3586,7 +3812,7 @@ components:
           isMultiValued: false
           name: userName
           attributes:
-            template: "{firstname}.{lastname}{uniqueCounter}"
+            template: firstname.lastname.uniqueCounter
             cloudMaxUniqueChecks: "50"
             cloudMaxSize: "20"
             cloudRequired: "true"
@@ -3594,41 +3820,36 @@ components:
         usageType: CREATE_MACHINE_ACCOUNT
       properties:
         id:
-          description: System-generated unique ID of the provisioning policy. Must
-            not be supplied on create.
-          example: d7ae9ea3-507f-4d00-9d4f-b4464b344b88
-          readOnly: true
+          description: Unique identifier of the stored provisioning policy.
+          example: 54f626b4-c9d8-4f7e-b768-046c20583abb
+          format: uuid
           type: string
         subtypeId:
-          description: ID of the subtype the policy belongs to. Must not be supplied
-            on create.
+          description: Identifier of the subtype that owns this policy.
           example: 43bdd144-4b17-4fce-a744-17c7fd3e717b
-          readOnly: true
+          format: uuid
           type: string
         name:
-          description: Name of the provisioning policy. Defaults to the subtype's
-            display name when omitted or blank.
-          example: Service Account
+          description: Name of the provisioning policy.
+          example: Create Machine Account
           nullable: true
           type: string
         description:
           description: Description of the provisioning policy.
-          example: Fields collected when creating a service account.
+          example: Fields used when creating a machine account for this subtype
           nullable: true
           type: string
         usageType:
-          default: CREATE_MACHINE_ACCOUNT
-          description: Usage type of the provisioning policy. Only `CREATE_MACHINE_ACCOUNT`
-            is supported.
-          enum:
-          - CREATE_MACHINE_ACCOUNT
+          default: ""
+          description: Usage type of the policy. This API stores only `CREATE_MACHINE_ACCOUNT`.
           example: CREATE_MACHINE_ACCOUNT
           type: string
         fields:
-          description: "Fields of the provisioning policy. Every field must have a\
-            \ non-blank `name`. When two fields share a name, only the first is kept."
+          default: []
+          description: Fields in the provisioning policy. Field order is not semantically
+            meaningful.
           items:
-            $ref: '#/components/schemas/SubtypeProvisioningPolicyField'
+            $ref: '#/components/schemas/FieldDetailsDto'
           type: array
       title: Subtype Provisioning Policy
       type: object
@@ -3803,50 +4024,15 @@ components:
           $ref: '#/components/schemas/array_inner'
         title: array
         type: array
-    SourceSubtypeV2_profile:
-      description: Connector variant profile. Reserved for future use and currently
-        always `null`.
-      example:
-        connectorType: JDBC
-        variant: MySql
-        id: 9a4b7d2e-1c3f-4e5a-8b6c-7d8e9f0a1b2c
-      nullable: true
-      properties:
-        id:
-          description: Unique identifier for the connector variant profile.
-          example: 9a4b7d2e-1c3f-4e5a-8b6c-7d8e9f0a1b2c
-          format: uuid
-          type: string
-        connectorType:
-          description: Connector type of the variant.
-          example: JDBC
-          type: string
-        variant:
-          description: Name of the connector variant.
-          example: MySql
-          type: string
-      type: object
-    SourceSubtypeV2WithConfig_allOf_config_machineAccountCreate:
-      description: Machine account creation settings.
+    MachineAccountSubtypeListConfig_machineAccountCreate:
+      description: Stored create flag for this subtype. Omitted when no create config
+        exists.
       example:
         accountCreateEnabled: true
       properties:
         accountCreateEnabled:
           default: false
-          description: Indicates whether machine account creation is enabled for the
-            subtype.
+          description: Whether machine account creation is enabled for this subtype.
           example: true
           type: boolean
-      type: object
-    SourceSubtypeV2WithConfig_allOf_config:
-      description: Summary of the subtype's machine account creation configuration.
-        `null` when the subtype is not a `MACHINE` subtype or has no machine account
-        creation configuration.
-      example:
-        machineAccountCreate:
-          accountCreateEnabled: true
-      nullable: true
-      properties:
-        machineAccountCreate:
-          $ref: '#/components/schemas/SourceSubtypeV2WithConfig_allOf_config_machineAccountCreate'
       type: object

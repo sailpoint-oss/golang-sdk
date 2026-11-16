@@ -16,7 +16,7 @@
         )
 
         func main() {
-          id := `43bdd144-4b17-4fce-a744-17c7fd3e717b` // string | The ID of the connector subtype to override. # string | The ID of the connector subtype to override.
+          id := `43bdd144-4b17-4fce-a744-17c7fd3e717b` // string | CONNECTOR-tier subtype to snapshot onto the source. # string | CONNECTOR-tier subtype to snapshot onto the source.
           xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
            sourcesubtypeoverriderequestJson := []byte(`{
           "sourceId" : "6d0458373bec4b4b80460992b76016da"
@@ -39,7 +39,7 @@
             fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountSubtypesAPI.CreateSourceSubtypeOverrideV2``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
           }
-          // response from `CreateSourceSubtypeOverrideV2`: SourceSubtypeV2
+          // response from `CreateSourceSubtypeOverrideV2`: SubtypeWithTarget
           fmt.Fprintf(os.Stdout, "Response from `MachineAccountSubtypesAPI.CreateSourceSubtypeOverrideV2`: %v\n", resp)
         }
 - path: /source-subtypes/v2/{id}/provisioning-policy
@@ -62,10 +62,10 @@
         func main() {
           id := `43bdd144-4b17-4fce-a744-17c7fd3e717b` // string | The ID of the subtype. # string | The ID of the subtype.
           xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-           subtypeprovisioningpolicyJson := []byte(`{
-          "name" : "Service Account",
-          "description" : "Fields collected when creating a service account.",
-          "id" : "d7ae9ea3-507f-4d00-9d4f-b4464b344b88",
+           provisioningpolicydtoJson := []byte(`{
+          "name" : "Create Machine Account",
+          "description" : "Fields used when creating a machine account for this subtype",
+          "id" : "54f626b4-c9d8-4f7e-b768-046c20583abb",
           "subtypeId" : "43bdd144-4b17-4fce-a744-17c7fd3e717b",
           "fields" : [ {
             "isRequired" : false,
@@ -78,7 +78,7 @@
             "isMultiValued" : false,
             "name" : "userName",
             "attributes" : {
-              "template" : "{firstname}.{lastname}{uniqueCounter}",
+              "template" : "firstname.lastname.uniqueCounter",
               "cloudMaxUniqueChecks" : "50",
               "cloudMaxSize" : "20",
               "cloudRequired" : "true"
@@ -95,7 +95,7 @@
             "isMultiValued" : false,
             "name" : "userName",
             "attributes" : {
-              "template" : "{firstname}.{lastname}{uniqueCounter}",
+              "template" : "firstname.lastname.uniqueCounter",
               "cloudMaxUniqueChecks" : "50",
               "cloudMaxSize" : "20",
               "cloudRequired" : "true"
@@ -103,12 +103,12 @@
             "type" : "string"
           } ],
           "usageType" : "CREATE_MACHINE_ACCOUNT"
-        }`) // SubtypeProvisioningPolicy | 
-          useDefaultFields := true // bool | When `true` and the request body has no `fields`, a `CONNECTOR` subtype's policy is created with the connector's default account creation fields. Ignored for `SOURCE` subtypes. (optional) (default to true) # bool | When `true` and the request body has no `fields`, a `CONNECTOR` subtype's policy is created with the connector's default account creation fields. Ignored for `SOURCE` subtypes. (optional) (default to true)
+        }`) // ProvisioningPolicyDto | 
+          useDefaultFields := true // bool | When `true` and the request body has no `fields`, a `CONNECTOR` subtype's policy is created with the connector's default account-creation fields. Ignored for `SOURCE` subtypes. (optional) (default to true) # bool | When `true` and the request body has no `fields`, a `CONNECTOR` subtype's policy is created with the connector's default account-creation fields. Ignored for `SOURCE` subtypes. (optional) (default to true)
 
           
-          var subtypeProvisioningPolicy machine_account_subtypes.SubtypeProvisioningPolicy
-          if err := json.Unmarshal(subtypeprovisioningpolicyJson, &subtypeProvisioningPolicy); err != nil {
+          var provisioningPolicyDto machine_account_subtypes.ProvisioningPolicyDto
+          if err := json.Unmarshal(provisioningpolicydtoJson, &provisioningPolicyDto); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -117,13 +117,13 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.MachineAccountSubtypesAPI.CreateSourceSubtypeProvisioningPolicyV2(context.Background(), id).XSailPointExperimental(xSailPointExperimental).SubtypeProvisioningPolicy(subtypeProvisioningPolicy).Execute()
-          //resp, r, err := apiClient.MachineAccountSubtypesAPI.CreateSourceSubtypeProvisioningPolicyV2(context.Background(), id).XSailPointExperimental(xSailPointExperimental).SubtypeProvisioningPolicy(subtypeProvisioningPolicy).UseDefaultFields(useDefaultFields).Execute()
+          resp, r, err := apiClient.MachineAccountSubtypesAPI.CreateSourceSubtypeProvisioningPolicyV2(context.Background(), id).XSailPointExperimental(xSailPointExperimental).ProvisioningPolicyDto(provisioningPolicyDto).Execute()
+          //resp, r, err := apiClient.MachineAccountSubtypesAPI.CreateSourceSubtypeProvisioningPolicyV2(context.Background(), id).XSailPointExperimental(xSailPointExperimental).ProvisioningPolicyDto(provisioningPolicyDto).UseDefaultFields(useDefaultFields).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountSubtypesAPI.CreateSourceSubtypeProvisioningPolicyV2``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
           }
-          // response from `CreateSourceSubtypeProvisioningPolicyV2`: SubtypeProvisioningPolicy
+          // response from `CreateSourceSubtypeProvisioningPolicyV2`: ProvisioningPolicyDto
           fmt.Fprintf(os.Stdout, "Response from `MachineAccountSubtypesAPI.CreateSourceSubtypeProvisioningPolicyV2`: %v\n", resp)
         }
 - path: /source-subtypes/v1
@@ -186,20 +186,30 @@
 
         func main() {
           xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-           createsourcesubtypev2requestJson := []byte(`{
-          "targetName" : "Active Directory",
-          "targetId" : "active-directory",
-          "displayName" : "Service Account",
-          "description" : "Accounts used by automated services.",
+           sourcesubtypev2Json := []byte(`{
+          "targetName" : "JDBC",
+          "targetId" : "JDBC",
+          "displayName" : "Non Personal",
+          "created" : "2026-08-18T12:00:00Z",
+          "origin" : "CONNECTOR",
+          "profile" : {
+            "connectorType" : "JDBC",
+            "variant" : "MySql",
+            "id" : "65de7634-d315-482c-aad4-7fdbd1e42056"
+          },
+          "systemManaged" : false,
+          "description" : "Machine accounts for JDBC connectors",
           "targetType" : "CONNECTOR",
           "type" : "MACHINE",
           "classification" : "MACHINE",
-          "technicalName" : "service-account"
-        }`) // CreateSourceSubtypeV2Request | 
+          "technicalName" : "nonPersonal",
+          "modified" : "2026-08-18T12:00:00Z",
+          "id" : "43bdd144-4b17-4fce-a744-17c7fd3e717b"
+        }`) // SourceSubtypeV2 | 
 
           
-          var createSourceSubtypeV2Request machine_account_subtypes.CreateSourceSubtypeV2Request
-          if err := json.Unmarshal(createsourcesubtypev2requestJson, &createSourceSubtypeV2Request); err != nil {
+          var sourceSubtypeV2 machine_account_subtypes.SourceSubtypeV2
+          if err := json.Unmarshal(sourcesubtypev2Json, &sourceSubtypeV2); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -208,13 +218,13 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.MachineAccountSubtypesAPI.CreateSourceSubtypeV2(context.Background()).XSailPointExperimental(xSailPointExperimental).CreateSourceSubtypeV2Request(createSourceSubtypeV2Request).Execute()
-          //resp, r, err := apiClient.MachineAccountSubtypesAPI.CreateSourceSubtypeV2(context.Background()).XSailPointExperimental(xSailPointExperimental).CreateSourceSubtypeV2Request(createSourceSubtypeV2Request).Execute()
+          resp, r, err := apiClient.MachineAccountSubtypesAPI.CreateSourceSubtypeV2(context.Background()).XSailPointExperimental(xSailPointExperimental).SourceSubtypeV2(sourceSubtypeV2).Execute()
+          //resp, r, err := apiClient.MachineAccountSubtypesAPI.CreateSourceSubtypeV2(context.Background()).XSailPointExperimental(xSailPointExperimental).SourceSubtypeV2(sourceSubtypeV2).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountSubtypesAPI.CreateSourceSubtypeV2``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
           }
-          // response from `CreateSourceSubtypeV2`: SourceSubtypeV2
+          // response from `CreateSourceSubtypeV2`: SubtypeWithTarget
           fmt.Fprintf(os.Stdout, "Response from `MachineAccountSubtypesAPI.CreateSourceSubtypeV2`: %v\n", resp)
         }
 - path: /source-subtypes/v1/{subtypeId}
@@ -418,7 +428,7 @@
             fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountSubtypesAPI.GetSourceSubtypeByIdV2``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
           }
-          // response from `GetSourceSubtypeByIdV2`: SourceSubtypeV2
+          // response from `GetSourceSubtypeByIdV2`: SubtypeWithTargetProvisioning
           fmt.Fprintf(os.Stdout, "Response from `MachineAccountSubtypesAPI.GetSourceSubtypeByIdV2`: %v\n", resp)
         }
 - path: /source-subtypes/v2/{id}/provisioning-policy
@@ -441,7 +451,7 @@
         func main() {
           id := `43bdd144-4b17-4fce-a744-17c7fd3e717b` // string | The ID of the subtype. # string | The ID of the subtype.
           xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-          sourceId := `6d0458373bec4b4b80460992b76016da` // string | ID of the source the subtype belongs to. Supply it for `SOURCE` subtypes so that a policy stored with the source can be found. (optional) # string | ID of the source the subtype belongs to. Supply it for `SOURCE` subtypes so that a policy stored with the source can be found. (optional)
+          sourceId := `6d0458373bec4b4b80460992b76016da` // string | ID of the source the subtype belongs to. Supply it for `SOURCE` subtypes so that a policy stored with the source can be found. (optional) (default to "") # string | ID of the source the subtype belongs to. Supply it for `SOURCE` subtypes so that a policy stored with the source can be found. (optional) (default to "")
 
           
 
@@ -454,7 +464,7 @@
             fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountSubtypesAPI.GetSourceSubtypeProvisioningPolicyV2``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
           }
-          // response from `GetSourceSubtypeProvisioningPolicyV2`: SubtypeProvisioningPolicy
+          // response from `GetSourceSubtypeProvisioningPolicyV2`: ProvisioningPolicyDto
           fmt.Fprintf(os.Stdout, "Response from `MachineAccountSubtypesAPI.GetSourceSubtypeProvisioningPolicyV2`: %v\n", resp)
         }
 - path: /source-subtypes/v2/targets
@@ -475,12 +485,12 @@
         )
 
         func main() {
-          filters := `targetType eq "CONNECTOR"` // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **targetType**: *eq*  **targetName**: *eq, sw*  A `targetType` filter with the value `CONNECTOR` or `SOURCE` is required. # string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **targetType**: *eq*  **targetName**: *eq, sw*  A `targetType` filter with the value `CONNECTOR` or `SOURCE` is required.
+          filters := `targetType eq "CONNECTOR"` // string | Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **targetType**: *eq*  **targetName**: *eq, sw* # string | Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **targetType**: *eq*  **targetName**: *eq, sw*
           xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+          sorters := `targetName` // string | Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **targetType, targetName, subtypeCount, sourceCount**  Default sort is targetName ascending. (optional) (default to "targetName") # string | Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **targetType, targetName, subtypeCount, sourceCount**  Default sort is targetName ascending. (optional) (default to "targetName")
+          count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to false) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to false)
           limit := 250 // int32 | Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to 250)
           offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to 0)
-          count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to false) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to false)
-          sorters := `-subtypeCount` // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **targetType, targetName, subtypeCount, sourceCount**  Results are sorted by **targetName** ascending by default. (optional) # string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **targetType, targetName, subtypeCount, sourceCount**  Results are sorted by **targetName** ascending by default. (optional)
 
           
 
@@ -488,7 +498,7 @@
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
           resp, r, err := apiClient.MachineAccountSubtypesAPI.ListSourceSubtypeTargetsV2(context.Background()).Filters(filters).XSailPointExperimental(xSailPointExperimental).Execute()
-          //resp, r, err := apiClient.MachineAccountSubtypesAPI.ListSourceSubtypeTargetsV2(context.Background()).Filters(filters).XSailPointExperimental(xSailPointExperimental).Limit(limit).Offset(offset).Count(count).Sorters(sorters).Execute()
+          //resp, r, err := apiClient.MachineAccountSubtypesAPI.ListSourceSubtypeTargetsV2(context.Background()).Filters(filters).XSailPointExperimental(xSailPointExperimental).Sorters(sorters).Count(count).Limit(limit).Offset(offset).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountSubtypesAPI.ListSourceSubtypeTargetsV2``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -554,15 +564,15 @@
 
         func main() {
           xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-          sourceId := `6d0458373bec4b4b80460992b76016da` // string | ID of a source. When supplied, the API returns subtypes for that source instead of the whole tenant. (optional) # string | ID of a source. When supplied, the API returns subtypes for that source instead of the whole tenant. (optional)
-          effectiveSet := true // bool | Controls what is returned for `sourceId`. When `true`, which is the default when `sourceId` is supplied, the API returns the source's effective subtypes across both tiers. When `false`, the API returns only the subtypes defined for the source. Passing `effectiveSet=true` explicitly without `sourceId` returns `400`. (optional) (default to true) # bool | Controls what is returned for `sourceId`. When `true`, which is the default when `sourceId` is supplied, the API returns the source's effective subtypes across both tiers. When `false`, the API returns only the subtypes defined for the source. Passing `effectiveSet=true` explicitly without `sourceId` returns `400`. (optional) (default to true)
-          targetType := `CONNECTOR` // string | Returns only effective subtypes of this tier. Requires `sourceId`, and cannot be combined with `effectiveSet=false`; otherwise the API returns `400`. (optional) # string | Returns only effective subtypes of this tier. Requires `sourceId`, and cannot be combined with `effectiveSet=false`; otherwise the API returns `400`. (optional)
-          includeConfigs := false // bool | When `true`, each item includes a summary of its machine account creation configuration in `config`. (optional) (default to false) # bool | When `true`, each item includes a summary of its machine account creation configuration in `config`. (optional) (default to false)
+          filters := `targetType eq "CONNECTOR"` // string | Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in, sw*  **displayName**: *eq, sw*  **technicalName**: *eq, sw*  **source.id**: *eq, in*  **targetType**: *eq, in*  **targetId**: *eq, in*  **targetName**: *eq, sw*  **classification**: *eq, in*  **type**: *eq, in*  **created**: *gt, ge, lt, le*  **modified**: *gt, ge, lt, le*  Filters cannot be combined with the effective set. That combination returns 400. (optional) # string | Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in, sw*  **displayName**: *eq, sw*  **technicalName**: *eq, sw*  **source.id**: *eq, in*  **targetType**: *eq, in*  **targetId**: *eq, in*  **targetName**: *eq, sw*  **classification**: *eq, in*  **type**: *eq, in*  **created**: *gt, ge, lt, le*  **modified**: *gt, ge, lt, le*  Filters cannot be combined with the effective set. That combination returns 400. (optional)
+          sorters := `displayName` // string | Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, displayName, technicalName, source.id, targetType, targetId, targetName, classification, type, created, modified**  When omitted, order is unspecified. (optional) (default to "") # string | Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, displayName, technicalName, source.id, targetType, targetId, targetName, classification, type, created, modified**  When omitted, order is unspecified. (optional) (default to "")
+          sourceId := `6d0458373bec4b4b80460992b76016da` // string | Source scope. When supplied, omitted `effectiveSet` defaults to `true`. Unknown source returns **404**. Empty means the parameter was omitted. (optional) (default to "") # string | Source scope. When supplied, omitted `effectiveSet` defaults to `true`. Unknown source returns **404**. Empty means the parameter was omitted. (optional) (default to "")
+          effectiveSet := true // bool | When `true` with `sourceId`, return the effective subtype set for that source. When `false` with `sourceId`, return only that source's raw SOURCE-tier rows. `true` without `sourceId` returns **400**. Combining with `filters` returns **400**. (optional) (default to true) # bool | When `true` with `sourceId`, return the effective subtype set for that source. When `false` with `sourceId`, return only that source's raw SOURCE-tier rows. `true` without `sourceId` returns **400**. Combining with `filters` returns **400**. (optional) (default to true)
+          targetType := `SOURCE` // string | Winner-tier cut on the effective set only. `CONNECTOR` returns inherited connector winners. `SOURCE` returns source-only winners and SOURCE overrides. Omit it to keep the full winner set. Invalid when `effectiveSet` is `false` or `sourceId` is omitted. (optional) # string | Winner-tier cut on the effective set only. `CONNECTOR` returns inherited connector winners. `SOURCE` returns source-only winners and SOURCE overrides. Omit it to keep the full winner set. Invalid when `effectiveSet` is `false` or `sourceId` is omitted. (optional)
+          includeConfigs := false // bool | When `true`, each `MACHINE` subtype with a stored machine-account-create config includes slim `config.machineAccountCreate.accountCreateEnabled`. Default `false` omits `config`. (optional) (default to false) # bool | When `true`, each `MACHINE` subtype with a stored machine-account-create config includes slim `config.machineAccountCreate.accountCreateEnabled`. Default `false` omits `config`. (optional) (default to false)
+          count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to false) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to false)
           limit := 250 // int32 | Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to 250)
           offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to 0)
-          count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to false) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to false)
-          filters := `targetType eq "CONNECTOR"` // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, ne, in*  **technicalName**: *eq, ne, in, sw, co*  **displayName**: *eq, ne, in, sw, co*  **source.id**: *eq, ne, in, sw, co*  **targetType**: *eq, ne, in, sw, co*  **targetId**: *eq, ne, in, sw, co*  **targetName**: *eq, ne, in, sw, co, isnull*  **classification**: *eq, ne, in, sw, co*  **type**: *eq, ne, in, sw, co*  **created**: *gt, ge, lt, le*  **modified**: *gt, ge, lt, le*  Filters cannot be used with `sourceId` unless `effectiveSet=false`; otherwise the API returns `400`. (optional) # string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, ne, in*  **technicalName**: *eq, ne, in, sw, co*  **displayName**: *eq, ne, in, sw, co*  **source.id**: *eq, ne, in, sw, co*  **targetType**: *eq, ne, in, sw, co*  **targetId**: *eq, ne, in, sw, co*  **targetName**: *eq, ne, in, sw, co, isnull*  **classification**: *eq, ne, in, sw, co*  **type**: *eq, ne, in, sw, co*  **created**: *gt, ge, lt, le*  **modified**: *gt, ge, lt, le*  Filters cannot be used with `sourceId` unless `effectiveSet=false`; otherwise the API returns `400`. (optional)
-          sorters := `displayName` // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, technicalName, displayName, source.id, targetType, targetId, targetName, classification, type, created, modified** (optional) # string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, technicalName, displayName, source.id, targetType, targetId, targetName, classification, type, created, modified** (optional)
 
           
 
@@ -570,12 +580,12 @@
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
           resp, r, err := apiClient.MachineAccountSubtypesAPI.ListSourceSubtypesV2(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
-          //resp, r, err := apiClient.MachineAccountSubtypesAPI.ListSourceSubtypesV2(context.Background()).XSailPointExperimental(xSailPointExperimental).SourceId(sourceId).EffectiveSet(effectiveSet).TargetType(targetType).IncludeConfigs(includeConfigs).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
+          //resp, r, err := apiClient.MachineAccountSubtypesAPI.ListSourceSubtypesV2(context.Background()).XSailPointExperimental(xSailPointExperimental).Filters(filters).Sorters(sorters).SourceId(sourceId).EffectiveSet(effectiveSet).TargetType(targetType).IncludeConfigs(includeConfigs).Count(count).Limit(limit).Offset(offset).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountSubtypesAPI.ListSourceSubtypesV2``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
           }
-          // response from `ListSourceSubtypesV2`: []SourceSubtypeV2WithConfig
+          // response from `ListSourceSubtypesV2`: []SubtypeWithTargetAndConfig
           fmt.Fprintf(os.Stdout, "Response from `MachineAccountSubtypesAPI.ListSourceSubtypesV2`: %v\n", resp)
         }
 - path: /source-subtypes/v1/bulk-retrieve
@@ -681,7 +691,7 @@
         func main() {
           id := `43bdd144-4b17-4fce-a744-17c7fd3e717b` // string | The ID of the subtype. # string | The ID of the subtype.
           xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-          jsonpatchoperationJson := []byte(`[{"op":"replace","path":"/displayName","value":"Service Account"},{"op":"replace","path":"/description","value":"Accounts used by automated services."}]`) // []JsonPatchOperation | A list of subtype update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
+          jsonpatchoperationJson := []byte(`[{"op":"replace","path":"/displayName","value":"Non-personal accounts"},{"op":"replace","path":"/description","value":"Accounts used by automated services."}]`) // []JsonPatchOperation | A list of subtype update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 
           
           var jsonPatchOperation []machine_account_subtypes.JsonPatchOperation
@@ -700,7 +710,7 @@
             fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountSubtypesAPI.PatchMachineAccountSubtypeV2``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
           }
-          // response from `PatchMachineAccountSubtypeV2`: SourceSubtypeV2
+          // response from `PatchMachineAccountSubtypeV2`: SubtypeWithTarget
           fmt.Fprintf(os.Stdout, "Response from `MachineAccountSubtypesAPI.PatchMachineAccountSubtypeV2`: %v\n", resp)
         }
 - path: /source-subtypes/v2/{id}/provisioning-policy
@@ -723,7 +733,7 @@
         func main() {
           id := `43bdd144-4b17-4fce-a744-17c7fd3e717b` // string | The ID of the subtype. # string | The ID of the subtype.
           xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-          jsonpatchoperationJson := []byte(`[{"op":"replace","path":"/description","value":"Fields collected when creating a service account."}]`) // []JsonPatchOperation | A list of policy update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
+          jsonpatchoperationJson := []byte(`[{"op":"replace","path":"/description","value":"Updated machine account create fields"}]`) // []JsonPatchOperation | A list of policy update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 
           
           var jsonPatchOperation []machine_account_subtypes.JsonPatchOperation
@@ -742,7 +752,7 @@
             fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountSubtypesAPI.PatchSourceSubtypeProvisioningPolicyV2``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
           }
-          // response from `PatchSourceSubtypeProvisioningPolicyV2`: SubtypeProvisioningPolicy
+          // response from `PatchSourceSubtypeProvisioningPolicyV2`: ProvisioningPolicyDto
           fmt.Fprintf(os.Stdout, "Response from `MachineAccountSubtypesAPI.PatchSourceSubtypeProvisioningPolicyV2`: %v\n", resp)
         }
 - path: /source-subtypes/v1/{subtypeId}/machine-config

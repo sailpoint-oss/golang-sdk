@@ -14,51 +14,51 @@ import (
 	"encoding/json"
 )
 
-// checks if the SubtypeProvisioningPolicy type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &SubtypeProvisioningPolicy{}
+// checks if the ProvisioningPolicyDto type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ProvisioningPolicyDto{}
 
-// SubtypeProvisioningPolicy The machine account creation provisioning policy of a subtype.
-type SubtypeProvisioningPolicy struct {
-	// System-generated unique ID of the provisioning policy. Must not be supplied on create.
+// ProvisioningPolicyDto CREATE_MACHINE_ACCOUNT provisioning policy stored on a source subtype. Field-compatible with source provisioning-policy documents.
+type ProvisioningPolicyDto struct {
+	// Unique identifier of the stored provisioning policy.
 	Id *string `json:"id,omitempty"`
-	// ID of the subtype the policy belongs to. Must not be supplied on create.
+	// Identifier of the subtype that owns this policy.
 	SubtypeId *string `json:"subtypeId,omitempty"`
-	// Name of the provisioning policy. Defaults to the subtype's display name when omitted or blank.
+	// Name of the provisioning policy.
 	Name NullableString `json:"name,omitempty"`
 	// Description of the provisioning policy.
 	Description NullableString `json:"description,omitempty"`
-	// Usage type of the provisioning policy. Only `CREATE_MACHINE_ACCOUNT` is supported.
+	// Usage type of the policy. This API stores only `CREATE_MACHINE_ACCOUNT`.
 	UsageType *string `json:"usageType,omitempty"`
-	// Fields of the provisioning policy. Every field must have a non-blank `name`. When two fields share a name, only the first is kept.
-	Fields []SubtypeProvisioningPolicyField `json:"fields,omitempty"`
+	// Fields in the provisioning policy. Field order is not semantically meaningful.
+	Fields []FieldDetailsDto `json:"fields,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
-type _SubtypeProvisioningPolicy SubtypeProvisioningPolicy
+type _ProvisioningPolicyDto ProvisioningPolicyDto
 
-// NewSubtypeProvisioningPolicy instantiates a new SubtypeProvisioningPolicy object
+// NewProvisioningPolicyDto instantiates a new ProvisioningPolicyDto object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSubtypeProvisioningPolicy() *SubtypeProvisioningPolicy {
-	this := SubtypeProvisioningPolicy{}
-	var usageType string = "CREATE_MACHINE_ACCOUNT"
+func NewProvisioningPolicyDto() *ProvisioningPolicyDto {
+	this := ProvisioningPolicyDto{}
+	var usageType string = ""
 	this.UsageType = &usageType
 	return &this
 }
 
-// NewSubtypeProvisioningPolicyWithDefaults instantiates a new SubtypeProvisioningPolicy object
+// NewProvisioningPolicyDtoWithDefaults instantiates a new ProvisioningPolicyDto object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewSubtypeProvisioningPolicyWithDefaults() *SubtypeProvisioningPolicy {
-	this := SubtypeProvisioningPolicy{}
-	var usageType string = "CREATE_MACHINE_ACCOUNT"
+func NewProvisioningPolicyDtoWithDefaults() *ProvisioningPolicyDto {
+	this := ProvisioningPolicyDto{}
+	var usageType string = ""
 	this.UsageType = &usageType
 	return &this
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
-func (o *SubtypeProvisioningPolicy) GetId() string {
+func (o *ProvisioningPolicyDto) GetId() string {
 	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
@@ -68,7 +68,7 @@ func (o *SubtypeProvisioningPolicy) GetId() string {
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SubtypeProvisioningPolicy) GetIdOk() (*string, bool) {
+func (o *ProvisioningPolicyDto) GetIdOk() (*string, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
@@ -76,7 +76,7 @@ func (o *SubtypeProvisioningPolicy) GetIdOk() (*string, bool) {
 }
 
 // HasId returns a boolean if a field has been set.
-func (o *SubtypeProvisioningPolicy) HasId() bool {
+func (o *ProvisioningPolicyDto) HasId() bool {
 	if o != nil && !IsNil(o.Id) {
 		return true
 	}
@@ -85,12 +85,12 @@ func (o *SubtypeProvisioningPolicy) HasId() bool {
 }
 
 // SetId gets a reference to the given string and assigns it to the Id field.
-func (o *SubtypeProvisioningPolicy) SetId(v string) {
+func (o *ProvisioningPolicyDto) SetId(v string) {
 	o.Id = &v
 }
 
 // GetSubtypeId returns the SubtypeId field value if set, zero value otherwise.
-func (o *SubtypeProvisioningPolicy) GetSubtypeId() string {
+func (o *ProvisioningPolicyDto) GetSubtypeId() string {
 	if o == nil || IsNil(o.SubtypeId) {
 		var ret string
 		return ret
@@ -100,7 +100,7 @@ func (o *SubtypeProvisioningPolicy) GetSubtypeId() string {
 
 // GetSubtypeIdOk returns a tuple with the SubtypeId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SubtypeProvisioningPolicy) GetSubtypeIdOk() (*string, bool) {
+func (o *ProvisioningPolicyDto) GetSubtypeIdOk() (*string, bool) {
 	if o == nil || IsNil(o.SubtypeId) {
 		return nil, false
 	}
@@ -108,7 +108,7 @@ func (o *SubtypeProvisioningPolicy) GetSubtypeIdOk() (*string, bool) {
 }
 
 // HasSubtypeId returns a boolean if a field has been set.
-func (o *SubtypeProvisioningPolicy) HasSubtypeId() bool {
+func (o *ProvisioningPolicyDto) HasSubtypeId() bool {
 	if o != nil && !IsNil(o.SubtypeId) {
 		return true
 	}
@@ -117,12 +117,12 @@ func (o *SubtypeProvisioningPolicy) HasSubtypeId() bool {
 }
 
 // SetSubtypeId gets a reference to the given string and assigns it to the SubtypeId field.
-func (o *SubtypeProvisioningPolicy) SetSubtypeId(v string) {
+func (o *ProvisioningPolicyDto) SetSubtypeId(v string) {
 	o.SubtypeId = &v
 }
 
 // GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *SubtypeProvisioningPolicy) GetName() string {
+func (o *ProvisioningPolicyDto) GetName() string {
 	if o == nil || IsNil(o.Name.Get()) {
 		var ret string
 		return ret
@@ -133,7 +133,7 @@ func (o *SubtypeProvisioningPolicy) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *SubtypeProvisioningPolicy) GetNameOk() (*string, bool) {
+func (o *ProvisioningPolicyDto) GetNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -141,7 +141,7 @@ func (o *SubtypeProvisioningPolicy) GetNameOk() (*string, bool) {
 }
 
 // HasName returns a boolean if a field has been set.
-func (o *SubtypeProvisioningPolicy) HasName() bool {
+func (o *ProvisioningPolicyDto) HasName() bool {
 	if o != nil && o.Name.IsSet() {
 		return true
 	}
@@ -150,21 +150,21 @@ func (o *SubtypeProvisioningPolicy) HasName() bool {
 }
 
 // SetName gets a reference to the given NullableString and assigns it to the Name field.
-func (o *SubtypeProvisioningPolicy) SetName(v string) {
+func (o *ProvisioningPolicyDto) SetName(v string) {
 	o.Name.Set(&v)
 }
 // SetNameNil sets the value for Name to be an explicit nil
-func (o *SubtypeProvisioningPolicy) SetNameNil() {
+func (o *ProvisioningPolicyDto) SetNameNil() {
 	o.Name.Set(nil)
 }
 
 // UnsetName ensures that no value is present for Name, not even an explicit nil
-func (o *SubtypeProvisioningPolicy) UnsetName() {
+func (o *ProvisioningPolicyDto) UnsetName() {
 	o.Name.Unset()
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *SubtypeProvisioningPolicy) GetDescription() string {
+func (o *ProvisioningPolicyDto) GetDescription() string {
 	if o == nil || IsNil(o.Description.Get()) {
 		var ret string
 		return ret
@@ -175,7 +175,7 @@ func (o *SubtypeProvisioningPolicy) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *SubtypeProvisioningPolicy) GetDescriptionOk() (*string, bool) {
+func (o *ProvisioningPolicyDto) GetDescriptionOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -183,7 +183,7 @@ func (o *SubtypeProvisioningPolicy) GetDescriptionOk() (*string, bool) {
 }
 
 // HasDescription returns a boolean if a field has been set.
-func (o *SubtypeProvisioningPolicy) HasDescription() bool {
+func (o *ProvisioningPolicyDto) HasDescription() bool {
 	if o != nil && o.Description.IsSet() {
 		return true
 	}
@@ -192,21 +192,21 @@ func (o *SubtypeProvisioningPolicy) HasDescription() bool {
 }
 
 // SetDescription gets a reference to the given NullableString and assigns it to the Description field.
-func (o *SubtypeProvisioningPolicy) SetDescription(v string) {
+func (o *ProvisioningPolicyDto) SetDescription(v string) {
 	o.Description.Set(&v)
 }
 // SetDescriptionNil sets the value for Description to be an explicit nil
-func (o *SubtypeProvisioningPolicy) SetDescriptionNil() {
+func (o *ProvisioningPolicyDto) SetDescriptionNil() {
 	o.Description.Set(nil)
 }
 
 // UnsetDescription ensures that no value is present for Description, not even an explicit nil
-func (o *SubtypeProvisioningPolicy) UnsetDescription() {
+func (o *ProvisioningPolicyDto) UnsetDescription() {
 	o.Description.Unset()
 }
 
 // GetUsageType returns the UsageType field value if set, zero value otherwise.
-func (o *SubtypeProvisioningPolicy) GetUsageType() string {
+func (o *ProvisioningPolicyDto) GetUsageType() string {
 	if o == nil || IsNil(o.UsageType) {
 		var ret string
 		return ret
@@ -216,7 +216,7 @@ func (o *SubtypeProvisioningPolicy) GetUsageType() string {
 
 // GetUsageTypeOk returns a tuple with the UsageType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SubtypeProvisioningPolicy) GetUsageTypeOk() (*string, bool) {
+func (o *ProvisioningPolicyDto) GetUsageTypeOk() (*string, bool) {
 	if o == nil || IsNil(o.UsageType) {
 		return nil, false
 	}
@@ -224,7 +224,7 @@ func (o *SubtypeProvisioningPolicy) GetUsageTypeOk() (*string, bool) {
 }
 
 // HasUsageType returns a boolean if a field has been set.
-func (o *SubtypeProvisioningPolicy) HasUsageType() bool {
+func (o *ProvisioningPolicyDto) HasUsageType() bool {
 	if o != nil && !IsNil(o.UsageType) {
 		return true
 	}
@@ -233,14 +233,14 @@ func (o *SubtypeProvisioningPolicy) HasUsageType() bool {
 }
 
 // SetUsageType gets a reference to the given string and assigns it to the UsageType field.
-func (o *SubtypeProvisioningPolicy) SetUsageType(v string) {
+func (o *ProvisioningPolicyDto) SetUsageType(v string) {
 	o.UsageType = &v
 }
 
 // GetFields returns the Fields field value if set, zero value otherwise.
-func (o *SubtypeProvisioningPolicy) GetFields() []SubtypeProvisioningPolicyField {
+func (o *ProvisioningPolicyDto) GetFields() []FieldDetailsDto {
 	if o == nil || IsNil(o.Fields) {
-		var ret []SubtypeProvisioningPolicyField
+		var ret []FieldDetailsDto
 		return ret
 	}
 	return o.Fields
@@ -248,7 +248,7 @@ func (o *SubtypeProvisioningPolicy) GetFields() []SubtypeProvisioningPolicyField
 
 // GetFieldsOk returns a tuple with the Fields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SubtypeProvisioningPolicy) GetFieldsOk() ([]SubtypeProvisioningPolicyField, bool) {
+func (o *ProvisioningPolicyDto) GetFieldsOk() ([]FieldDetailsDto, bool) {
 	if o == nil || IsNil(o.Fields) {
 		return nil, false
 	}
@@ -256,7 +256,7 @@ func (o *SubtypeProvisioningPolicy) GetFieldsOk() ([]SubtypeProvisioningPolicyFi
 }
 
 // HasFields returns a boolean if a field has been set.
-func (o *SubtypeProvisioningPolicy) HasFields() bool {
+func (o *ProvisioningPolicyDto) HasFields() bool {
 	if o != nil && !IsNil(o.Fields) {
 		return true
 	}
@@ -264,12 +264,12 @@ func (o *SubtypeProvisioningPolicy) HasFields() bool {
 	return false
 }
 
-// SetFields gets a reference to the given []SubtypeProvisioningPolicyField and assigns it to the Fields field.
-func (o *SubtypeProvisioningPolicy) SetFields(v []SubtypeProvisioningPolicyField) {
+// SetFields gets a reference to the given []FieldDetailsDto and assigns it to the Fields field.
+func (o *ProvisioningPolicyDto) SetFields(v []FieldDetailsDto) {
 	o.Fields = v
 }
 
-func (o SubtypeProvisioningPolicy) MarshalJSON() ([]byte, error) {
+func (o ProvisioningPolicyDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -277,7 +277,7 @@ func (o SubtypeProvisioningPolicy) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o SubtypeProvisioningPolicy) ToMap() (map[string]interface{}, error) {
+func (o ProvisioningPolicyDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
@@ -305,16 +305,16 @@ func (o SubtypeProvisioningPolicy) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *SubtypeProvisioningPolicy) UnmarshalJSON(data []byte) (err error) {
-	varSubtypeProvisioningPolicy := _SubtypeProvisioningPolicy{}
+func (o *ProvisioningPolicyDto) UnmarshalJSON(data []byte) (err error) {
+	varProvisioningPolicyDto := _ProvisioningPolicyDto{}
 
-	err = json.Unmarshal(data, &varSubtypeProvisioningPolicy)
+	err = json.Unmarshal(data, &varProvisioningPolicyDto)
 
 	if err != nil {
 		return err
 	}
 
-	*o = SubtypeProvisioningPolicy(varSubtypeProvisioningPolicy)
+	*o = ProvisioningPolicyDto(varProvisioningPolicyDto)
 
 	additionalProperties := make(map[string]interface{})
 
@@ -331,38 +331,38 @@ func (o *SubtypeProvisioningPolicy) UnmarshalJSON(data []byte) (err error) {
 	return err
 }
 
-type NullableSubtypeProvisioningPolicy struct {
-	value *SubtypeProvisioningPolicy
+type NullableProvisioningPolicyDto struct {
+	value *ProvisioningPolicyDto
 	isSet bool
 }
 
-func (v NullableSubtypeProvisioningPolicy) Get() *SubtypeProvisioningPolicy {
+func (v NullableProvisioningPolicyDto) Get() *ProvisioningPolicyDto {
 	return v.value
 }
 
-func (v *NullableSubtypeProvisioningPolicy) Set(val *SubtypeProvisioningPolicy) {
+func (v *NullableProvisioningPolicyDto) Set(val *ProvisioningPolicyDto) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableSubtypeProvisioningPolicy) IsSet() bool {
+func (v NullableProvisioningPolicyDto) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableSubtypeProvisioningPolicy) Unset() {
+func (v *NullableProvisioningPolicyDto) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableSubtypeProvisioningPolicy(val *SubtypeProvisioningPolicy) *NullableSubtypeProvisioningPolicy {
-	return &NullableSubtypeProvisioningPolicy{value: val, isSet: true}
+func NewNullableProvisioningPolicyDto(val *ProvisioningPolicyDto) *NullableProvisioningPolicyDto {
+	return &NullableProvisioningPolicyDto{value: val, isSet: true}
 }
 
-func (v NullableSubtypeProvisioningPolicy) MarshalJSON() ([]byte, error) {
+func (v NullableProvisioningPolicyDto) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableSubtypeProvisioningPolicy) UnmarshalJSON(src []byte) error {
+func (v *NullableProvisioningPolicyDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

@@ -19,16 +19,16 @@ import (
 // checks if the MachineAccountCreateEntitlement type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &MachineAccountCreateEntitlement{}
 
-// MachineAccountCreateEntitlement An entitlement to request for the machine account, with optional comment and access dates.
+// MachineAccountCreateEntitlement One entitlement to provision on the created machine account. `id` is the entitlement id. Comment and access dates are optional.
 type MachineAccountCreateEntitlement struct {
-	// ID of the entitlement to request.
+	// Entitlement id to provision. Not required to be a UUID.
 	Id string `json:"id"`
-	// Comment to include with the entitlement request.
+	// Justification stored with the entitlement request.
 	Comment *string `json:"comment,omitempty"`
-	// Date and time when access to the entitlement starts. Must be in the future and, when `removeDate` is also set, before `removeDate`.
-	StartDate *SailPointTime `json:"startDate,omitempty"`
-	// Date and time when access to the entitlement is removed. Must be in the future.
-	RemoveDate *SailPointTime `json:"removeDate,omitempty"`
+	// When access starts. Must be in the future and before `removeDate` when both are set.
+	StartDate NullableTime `json:"startDate,omitempty"`
+	// When access ends. Must be in the future and after `startDate` when both are set.
+	RemoveDate NullableTime `json:"removeDate,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -41,6 +41,8 @@ type _MachineAccountCreateEntitlement MachineAccountCreateEntitlement
 func NewMachineAccountCreateEntitlement(id string) *MachineAccountCreateEntitlement {
 	this := MachineAccountCreateEntitlement{}
 	this.Id = id
+	var comment string = ""
+	this.Comment = &comment
 	return &this
 }
 
@@ -49,6 +51,8 @@ func NewMachineAccountCreateEntitlement(id string) *MachineAccountCreateEntitlem
 // but it doesn't guarantee that properties required by API are set
 func NewMachineAccountCreateEntitlementWithDefaults() *MachineAccountCreateEntitlement {
 	this := MachineAccountCreateEntitlement{}
+	var comment string = ""
+	this.Comment = &comment
 	return &this
 }
 
@@ -108,68 +112,88 @@ func (o *MachineAccountCreateEntitlement) SetComment(v string) {
 	o.Comment = &v
 }
 
-// GetStartDate returns the StartDate field value if set, zero value otherwise.
+// GetStartDate returns the StartDate field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *MachineAccountCreateEntitlement) GetStartDate() SailPointTime {
-	if o == nil || IsNil(o.StartDate) {
+	if o == nil || IsNil(o.StartDate.Get()) {
 		var ret SailPointTime
 		return ret
 	}
-	return *o.StartDate
+	return *o.StartDate.Get()
 }
 
 // GetStartDateOk returns a tuple with the StartDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *MachineAccountCreateEntitlement) GetStartDateOk() (*SailPointTime, bool) {
-	if o == nil || IsNil(o.StartDate) {
+	if o == nil {
 		return nil, false
 	}
-	return o.StartDate, true
+	return o.StartDate.Get(), o.StartDate.IsSet()
 }
 
 // HasStartDate returns a boolean if a field has been set.
 func (o *MachineAccountCreateEntitlement) HasStartDate() bool {
-	if o != nil && !IsNil(o.StartDate) {
+	if o != nil && o.StartDate.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetStartDate gets a reference to the given SailPointTime and assigns it to the StartDate field.
+// SetStartDate gets a reference to the given NullableTime and assigns it to the StartDate field.
 func (o *MachineAccountCreateEntitlement) SetStartDate(v SailPointTime) {
-	o.StartDate = &v
+	o.StartDate.Set(&v)
+}
+// SetStartDateNil sets the value for StartDate to be an explicit nil
+func (o *MachineAccountCreateEntitlement) SetStartDateNil() {
+	o.StartDate.Set(nil)
 }
 
-// GetRemoveDate returns the RemoveDate field value if set, zero value otherwise.
+// UnsetStartDate ensures that no value is present for StartDate, not even an explicit nil
+func (o *MachineAccountCreateEntitlement) UnsetStartDate() {
+	o.StartDate.Unset()
+}
+
+// GetRemoveDate returns the RemoveDate field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *MachineAccountCreateEntitlement) GetRemoveDate() SailPointTime {
-	if o == nil || IsNil(o.RemoveDate) {
+	if o == nil || IsNil(o.RemoveDate.Get()) {
 		var ret SailPointTime
 		return ret
 	}
-	return *o.RemoveDate
+	return *o.RemoveDate.Get()
 }
 
 // GetRemoveDateOk returns a tuple with the RemoveDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *MachineAccountCreateEntitlement) GetRemoveDateOk() (*SailPointTime, bool) {
-	if o == nil || IsNil(o.RemoveDate) {
+	if o == nil {
 		return nil, false
 	}
-	return o.RemoveDate, true
+	return o.RemoveDate.Get(), o.RemoveDate.IsSet()
 }
 
 // HasRemoveDate returns a boolean if a field has been set.
 func (o *MachineAccountCreateEntitlement) HasRemoveDate() bool {
-	if o != nil && !IsNil(o.RemoveDate) {
+	if o != nil && o.RemoveDate.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetRemoveDate gets a reference to the given SailPointTime and assigns it to the RemoveDate field.
+// SetRemoveDate gets a reference to the given NullableTime and assigns it to the RemoveDate field.
 func (o *MachineAccountCreateEntitlement) SetRemoveDate(v SailPointTime) {
-	o.RemoveDate = &v
+	o.RemoveDate.Set(&v)
+}
+// SetRemoveDateNil sets the value for RemoveDate to be an explicit nil
+func (o *MachineAccountCreateEntitlement) SetRemoveDateNil() {
+	o.RemoveDate.Set(nil)
+}
+
+// UnsetRemoveDate ensures that no value is present for RemoveDate, not even an explicit nil
+func (o *MachineAccountCreateEntitlement) UnsetRemoveDate() {
+	o.RemoveDate.Unset()
 }
 
 func (o MachineAccountCreateEntitlement) MarshalJSON() ([]byte, error) {
@@ -186,11 +210,11 @@ func (o MachineAccountCreateEntitlement) ToMap() (map[string]interface{}, error)
 	if !IsNil(o.Comment) {
 		toSerialize["comment"] = o.Comment
 	}
-	if !IsNil(o.StartDate) {
-		toSerialize["startDate"] = o.StartDate
+	if o.StartDate.IsSet() {
+		toSerialize["startDate"] = o.StartDate.Get()
 	}
-	if !IsNil(o.RemoveDate) {
-		toSerialize["removeDate"] = o.RemoveDate
+	if o.RemoveDate.IsSet() {
+		toSerialize["removeDate"] = o.RemoveDate.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {

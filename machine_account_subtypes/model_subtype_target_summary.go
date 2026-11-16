@@ -18,20 +18,19 @@ import (
 // checks if the SubtypeTargetSummary type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &SubtypeTargetSummary{}
 
-// SubtypeTargetSummary Summary of the subtypes defined for one target. There is one item per connector type for `CONNECTOR` targets, and one item per source subtype for `SOURCE` targets.
+// SubtypeTargetSummary One row per connector type (`CONNECTOR`) or per source-tier subtype (`SOURCE`) from `GET /source-subtypes/v2/targets`.
 type SubtypeTargetSummary struct {
-	// Tier of the target.
-	TargetType *string `json:"targetType,omitempty"`
-	// Connector type for a `CONNECTOR` target, or source ID for a `SOURCE` target.
+	TargetType *SubtypeTargetType `json:"targetType,omitempty"`
+	// Scope key. Connector type for `CONNECTOR`. Source id for `SOURCE`.
 	TargetId *string `json:"targetId,omitempty"`
-	// Display name of the target. Falls back to `targetId` when no name is stored.
+	// Display label. Never null; falls back to `targetId`.
 	TargetName *string `json:"targetName,omitempty"`
-	// Number of subtypes defined for the target.
+	// Number of subtypes in this target group.
 	SubtypeCount *int32 `json:"subtypeCount,omitempty"`
-	// Number of sources the target's subtypes apply to.
+	// Number of sources of this connector type for a `CONNECTOR` row. `1` on a `SOURCE` row. Sortable. Not filterable.
 	SourceCount *int32 `json:"sourceCount,omitempty"`
-	// Most recent modification time across the target's subtypes.
-	LastModified NullableTime `json:"lastModified,omitempty"`
+	// Latest `modified` timestamp in the `targetId` group for `CONNECTOR`, or that subtype row's `modified` for `SOURCE`. Not filterable or sortable.
+	LastModified *SailPointTime `json:"lastModified,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -55,9 +54,9 @@ func NewSubtypeTargetSummaryWithDefaults() *SubtypeTargetSummary {
 }
 
 // GetTargetType returns the TargetType field value if set, zero value otherwise.
-func (o *SubtypeTargetSummary) GetTargetType() string {
+func (o *SubtypeTargetSummary) GetTargetType() SubtypeTargetType {
 	if o == nil || IsNil(o.TargetType) {
-		var ret string
+		var ret SubtypeTargetType
 		return ret
 	}
 	return *o.TargetType
@@ -65,7 +64,7 @@ func (o *SubtypeTargetSummary) GetTargetType() string {
 
 // GetTargetTypeOk returns a tuple with the TargetType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SubtypeTargetSummary) GetTargetTypeOk() (*string, bool) {
+func (o *SubtypeTargetSummary) GetTargetTypeOk() (*SubtypeTargetType, bool) {
 	if o == nil || IsNil(o.TargetType) {
 		return nil, false
 	}
@@ -81,8 +80,8 @@ func (o *SubtypeTargetSummary) HasTargetType() bool {
 	return false
 }
 
-// SetTargetType gets a reference to the given string and assigns it to the TargetType field.
-func (o *SubtypeTargetSummary) SetTargetType(v string) {
+// SetTargetType gets a reference to the given SubtypeTargetType and assigns it to the TargetType field.
+func (o *SubtypeTargetSummary) SetTargetType(v SubtypeTargetType) {
 	o.TargetType = &v
 }
 
@@ -214,46 +213,36 @@ func (o *SubtypeTargetSummary) SetSourceCount(v int32) {
 	o.SourceCount = &v
 }
 
-// GetLastModified returns the LastModified field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetLastModified returns the LastModified field value if set, zero value otherwise.
 func (o *SubtypeTargetSummary) GetLastModified() SailPointTime {
-	if o == nil || IsNil(o.LastModified.Get()) {
+	if o == nil || IsNil(o.LastModified) {
 		var ret SailPointTime
 		return ret
 	}
-	return *o.LastModified.Get()
+	return *o.LastModified
 }
 
 // GetLastModifiedOk returns a tuple with the LastModified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SubtypeTargetSummary) GetLastModifiedOk() (*SailPointTime, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.LastModified) {
 		return nil, false
 	}
-	return o.LastModified.Get(), o.LastModified.IsSet()
+	return o.LastModified, true
 }
 
 // HasLastModified returns a boolean if a field has been set.
 func (o *SubtypeTargetSummary) HasLastModified() bool {
-	if o != nil && o.LastModified.IsSet() {
+	if o != nil && !IsNil(o.LastModified) {
 		return true
 	}
 
 	return false
 }
 
-// SetLastModified gets a reference to the given NullableTime and assigns it to the LastModified field.
+// SetLastModified gets a reference to the given SailPointTime and assigns it to the LastModified field.
 func (o *SubtypeTargetSummary) SetLastModified(v SailPointTime) {
-	o.LastModified.Set(&v)
-}
-// SetLastModifiedNil sets the value for LastModified to be an explicit nil
-func (o *SubtypeTargetSummary) SetLastModifiedNil() {
-	o.LastModified.Set(nil)
-}
-
-// UnsetLastModified ensures that no value is present for LastModified, not even an explicit nil
-func (o *SubtypeTargetSummary) UnsetLastModified() {
-	o.LastModified.Unset()
+	o.LastModified = &v
 }
 
 func (o SubtypeTargetSummary) MarshalJSON() ([]byte, error) {
@@ -281,8 +270,8 @@ func (o SubtypeTargetSummary) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SourceCount) {
 		toSerialize["sourceCount"] = o.SourceCount
 	}
-	if o.LastModified.IsSet() {
-		toSerialize["lastModified"] = o.LastModified.Get()
+	if !IsNil(o.LastModified) {
+		toSerialize["lastModified"] = o.LastModified
 	}
 
 	for key, value := range o.AdditionalProperties {

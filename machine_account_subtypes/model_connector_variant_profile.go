@@ -14,41 +14,49 @@ import (
 	"encoding/json"
 )
 
-// checks if the SourceSubtypeV2Profile type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &SourceSubtypeV2Profile{}
+// checks if the ConnectorVariantProfile type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ConnectorVariantProfile{}
 
-// SourceSubtypeV2Profile Connector variant profile. Reserved for future use and currently always `null`.
-type SourceSubtypeV2Profile struct {
-	// Unique identifier for the connector variant profile.
+// ConnectorVariantProfile Response-only connector-variant profile. Always `null` for `SOURCE` and `CONNECTOR` tiers in this release. Populated when the connector-variant tier is available.
+type ConnectorVariantProfile struct {
+	// Unique identifier of the connector variant profile.
 	Id *string `json:"id,omitempty"`
-	// Connector type of the variant.
+	// Connector type of the variant profile, for example `JDBC`.
 	ConnectorType *string `json:"connectorType,omitempty"`
-	// Name of the connector variant.
+	// Variant name within the connector type, for example `MySql`.
 	Variant *string `json:"variant,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
-type _SourceSubtypeV2Profile SourceSubtypeV2Profile
+type _ConnectorVariantProfile ConnectorVariantProfile
 
-// NewSourceSubtypeV2Profile instantiates a new SourceSubtypeV2Profile object
+// NewConnectorVariantProfile instantiates a new ConnectorVariantProfile object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSourceSubtypeV2Profile() *SourceSubtypeV2Profile {
-	this := SourceSubtypeV2Profile{}
+func NewConnectorVariantProfile() *ConnectorVariantProfile {
+	this := ConnectorVariantProfile{}
+	var connectorType string = ""
+	this.ConnectorType = &connectorType
+	var variant string = ""
+	this.Variant = &variant
 	return &this
 }
 
-// NewSourceSubtypeV2ProfileWithDefaults instantiates a new SourceSubtypeV2Profile object
+// NewConnectorVariantProfileWithDefaults instantiates a new ConnectorVariantProfile object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewSourceSubtypeV2ProfileWithDefaults() *SourceSubtypeV2Profile {
-	this := SourceSubtypeV2Profile{}
+func NewConnectorVariantProfileWithDefaults() *ConnectorVariantProfile {
+	this := ConnectorVariantProfile{}
+	var connectorType string = ""
+	this.ConnectorType = &connectorType
+	var variant string = ""
+	this.Variant = &variant
 	return &this
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
-func (o *SourceSubtypeV2Profile) GetId() string {
+func (o *ConnectorVariantProfile) GetId() string {
 	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
@@ -58,7 +66,7 @@ func (o *SourceSubtypeV2Profile) GetId() string {
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SourceSubtypeV2Profile) GetIdOk() (*string, bool) {
+func (o *ConnectorVariantProfile) GetIdOk() (*string, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
@@ -66,7 +74,7 @@ func (o *SourceSubtypeV2Profile) GetIdOk() (*string, bool) {
 }
 
 // HasId returns a boolean if a field has been set.
-func (o *SourceSubtypeV2Profile) HasId() bool {
+func (o *ConnectorVariantProfile) HasId() bool {
 	if o != nil && !IsNil(o.Id) {
 		return true
 	}
@@ -75,12 +83,12 @@ func (o *SourceSubtypeV2Profile) HasId() bool {
 }
 
 // SetId gets a reference to the given string and assigns it to the Id field.
-func (o *SourceSubtypeV2Profile) SetId(v string) {
+func (o *ConnectorVariantProfile) SetId(v string) {
 	o.Id = &v
 }
 
 // GetConnectorType returns the ConnectorType field value if set, zero value otherwise.
-func (o *SourceSubtypeV2Profile) GetConnectorType() string {
+func (o *ConnectorVariantProfile) GetConnectorType() string {
 	if o == nil || IsNil(o.ConnectorType) {
 		var ret string
 		return ret
@@ -90,7 +98,7 @@ func (o *SourceSubtypeV2Profile) GetConnectorType() string {
 
 // GetConnectorTypeOk returns a tuple with the ConnectorType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SourceSubtypeV2Profile) GetConnectorTypeOk() (*string, bool) {
+func (o *ConnectorVariantProfile) GetConnectorTypeOk() (*string, bool) {
 	if o == nil || IsNil(o.ConnectorType) {
 		return nil, false
 	}
@@ -98,7 +106,7 @@ func (o *SourceSubtypeV2Profile) GetConnectorTypeOk() (*string, bool) {
 }
 
 // HasConnectorType returns a boolean if a field has been set.
-func (o *SourceSubtypeV2Profile) HasConnectorType() bool {
+func (o *ConnectorVariantProfile) HasConnectorType() bool {
 	if o != nil && !IsNil(o.ConnectorType) {
 		return true
 	}
@@ -107,12 +115,12 @@ func (o *SourceSubtypeV2Profile) HasConnectorType() bool {
 }
 
 // SetConnectorType gets a reference to the given string and assigns it to the ConnectorType field.
-func (o *SourceSubtypeV2Profile) SetConnectorType(v string) {
+func (o *ConnectorVariantProfile) SetConnectorType(v string) {
 	o.ConnectorType = &v
 }
 
 // GetVariant returns the Variant field value if set, zero value otherwise.
-func (o *SourceSubtypeV2Profile) GetVariant() string {
+func (o *ConnectorVariantProfile) GetVariant() string {
 	if o == nil || IsNil(o.Variant) {
 		var ret string
 		return ret
@@ -122,7 +130,7 @@ func (o *SourceSubtypeV2Profile) GetVariant() string {
 
 // GetVariantOk returns a tuple with the Variant field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SourceSubtypeV2Profile) GetVariantOk() (*string, bool) {
+func (o *ConnectorVariantProfile) GetVariantOk() (*string, bool) {
 	if o == nil || IsNil(o.Variant) {
 		return nil, false
 	}
@@ -130,7 +138,7 @@ func (o *SourceSubtypeV2Profile) GetVariantOk() (*string, bool) {
 }
 
 // HasVariant returns a boolean if a field has been set.
-func (o *SourceSubtypeV2Profile) HasVariant() bool {
+func (o *ConnectorVariantProfile) HasVariant() bool {
 	if o != nil && !IsNil(o.Variant) {
 		return true
 	}
@@ -139,11 +147,11 @@ func (o *SourceSubtypeV2Profile) HasVariant() bool {
 }
 
 // SetVariant gets a reference to the given string and assigns it to the Variant field.
-func (o *SourceSubtypeV2Profile) SetVariant(v string) {
+func (o *ConnectorVariantProfile) SetVariant(v string) {
 	o.Variant = &v
 }
 
-func (o SourceSubtypeV2Profile) MarshalJSON() ([]byte, error) {
+func (o ConnectorVariantProfile) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -151,7 +159,7 @@ func (o SourceSubtypeV2Profile) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o SourceSubtypeV2Profile) ToMap() (map[string]interface{}, error) {
+func (o ConnectorVariantProfile) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
@@ -170,16 +178,16 @@ func (o SourceSubtypeV2Profile) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *SourceSubtypeV2Profile) UnmarshalJSON(data []byte) (err error) {
-	varSourceSubtypeV2Profile := _SourceSubtypeV2Profile{}
+func (o *ConnectorVariantProfile) UnmarshalJSON(data []byte) (err error) {
+	varConnectorVariantProfile := _ConnectorVariantProfile{}
 
-	err = json.Unmarshal(data, &varSourceSubtypeV2Profile)
+	err = json.Unmarshal(data, &varConnectorVariantProfile)
 
 	if err != nil {
 		return err
 	}
 
-	*o = SourceSubtypeV2Profile(varSourceSubtypeV2Profile)
+	*o = ConnectorVariantProfile(varConnectorVariantProfile)
 
 	additionalProperties := make(map[string]interface{})
 
@@ -193,38 +201,38 @@ func (o *SourceSubtypeV2Profile) UnmarshalJSON(data []byte) (err error) {
 	return err
 }
 
-type NullableSourceSubtypeV2Profile struct {
-	value *SourceSubtypeV2Profile
+type NullableConnectorVariantProfile struct {
+	value *ConnectorVariantProfile
 	isSet bool
 }
 
-func (v NullableSourceSubtypeV2Profile) Get() *SourceSubtypeV2Profile {
+func (v NullableConnectorVariantProfile) Get() *ConnectorVariantProfile {
 	return v.value
 }
 
-func (v *NullableSourceSubtypeV2Profile) Set(val *SourceSubtypeV2Profile) {
+func (v *NullableConnectorVariantProfile) Set(val *ConnectorVariantProfile) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableSourceSubtypeV2Profile) IsSet() bool {
+func (v NullableConnectorVariantProfile) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableSourceSubtypeV2Profile) Unset() {
+func (v *NullableConnectorVariantProfile) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableSourceSubtypeV2Profile(val *SourceSubtypeV2Profile) *NullableSourceSubtypeV2Profile {
-	return &NullableSourceSubtypeV2Profile{value: val, isSet: true}
+func NewNullableConnectorVariantProfile(val *ConnectorVariantProfile) *NullableConnectorVariantProfile {
+	return &NullableConnectorVariantProfile{value: val, isSet: true}
 }
 
-func (v NullableSourceSubtypeV2Profile) MarshalJSON() ([]byte, error) {
+func (v NullableConnectorVariantProfile) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableSourceSubtypeV2Profile) UnmarshalJSON(src []byte) error {
+func (v *NullableConnectorVariantProfile) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
