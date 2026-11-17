@@ -99,8 +99,7 @@ Class | Method | HTTP request | Description
 *MachineAccountsAPI* | [**ListMachineAccountsV2**](docs/MachineAccountsAPI.md#listmachineaccountsv2) | **Get** /machine-accounts/v2 | List machine accounts
 *MachineAccountsAPI* | [**PatchMachineAccountSubtypeByTechnicalNameV1**](docs/MachineAccountsAPI.md#patchmachineaccountsubtypebytechnicalnamev1) | **Patch** /sources/v1/{sourceId}/subtypes/{technicalName} | Patch subtype
 *MachineAccountsAPI* | [**ReloadMachineAccountV1**](docs/MachineAccountsAPI.md#reloadmachineaccountv1) | **Post** /machine-accounts/v1/{id}/reload | Reload machine account
-*MachineAccountsAPI* | [**ReloadMachineAccountsInBulkAsyncV1**](docs/MachineAccountsAPI.md#reloadmachineaccountsinbulkasyncv1) | **Post** /machine-accounts/v1/bulk-reload-async | Bulk reload machine accounts asynchronously
-*MachineAccountsAPI* | [**ReloadMachineAccountsInBulkV1**](docs/MachineAccountsAPI.md#reloadmachineaccountsinbulkv1) | **Post** /machine-accounts/v1/bulk-reload | Reload machine accounts in bulk
+*MachineAccountsAPI* | [**ReloadMachineAccountsInBulkAsyncV1**](docs/MachineAccountsAPI.md#reloadmachineaccountsinbulkasyncv1) | **Post** /machine-accounts/v1/bulk-reload-async | Reload machine accounts in bulk
 *MachineAccountsAPI* | [**UnlockMachineAccountV1**](docs/MachineAccountsAPI.md#unlockmachineaccountv1) | **Post** /machine-accounts/v1/{id}/unlock | Unlock machine account
 *MachineAccountsAPI* | [**UpdateMachineAccountV1**](docs/MachineAccountsAPI.md#updatemachineaccountv1) | **Patch** /machine-accounts/v1/{id} | Update machine account details
 *MachineAccountsAPI* | [**UpdateMachineAccountV2**](docs/MachineAccountsAPI.md#updatemachineaccountv2) | **Patch** /machine-accounts/v2/{id} | Update machine account details

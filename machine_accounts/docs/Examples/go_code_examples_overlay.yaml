@@ -797,49 +797,6 @@
           // response from `ReloadMachineAccountsInBulkAsyncV1`: MachineAccountRequestAsyncResult
           fmt.Fprintf(os.Stdout, "Response from `MachineAccountsAPI.ReloadMachineAccountsInBulkAsyncV1`: %v\n", resp)
         }
-- path: /machine-accounts/v1/bulk-reload
-  method: Post
-  xCodeSample:
-    - lang: Go
-      label: SDK_tools/sdk/go/machineaccounts/methods/machine-accounts#reload-machine-accounts-in-bulk-v1
-      source: |
-        package main
-
-        import (
-          "context"
-          "fmt"
-          "os"
-             "encoding/json"
-            machine_accounts "github.com/sailpoint-oss/golang-sdk/v3/machine_accounts"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
-        )
-
-        func main() {
-          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-           machineaccountbulkrequestJson := []byte(`{
-          "ids" : [ "ef38f94347e94562b5bb8424a56397d8", "2c9180835d2e5168015d32f890ca1581" ]
-        }`) // MachineAccountBulkRequest | 
-
-          
-          var machineAccountBulkRequest machine_accounts.MachineAccountBulkRequest
-          if err := json.Unmarshal(machineaccountbulkrequestJson, &machineAccountBulkRequest); err != nil {
-            fmt.Println("Error:", err)
-            return
-          }
-          
-
-
-          configuration := sailpoint.NewDefaultConfiguration()
-          apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.MachineAccountsAPI.ReloadMachineAccountsInBulkV1(context.Background()).XSailPointExperimental(xSailPointExperimental).MachineAccountBulkRequest(machineAccountBulkRequest).Execute()
-          //resp, r, err := apiClient.MachineAccountsAPI.ReloadMachineAccountsInBulkV1(context.Background()).XSailPointExperimental(xSailPointExperimental).MachineAccountBulkRequest(machineAccountBulkRequest).Execute()
-          if err != nil {
-            fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountsAPI.ReloadMachineAccountsInBulkV1``: %v\n", err)
-            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-          }
-          // response from `ReloadMachineAccountsInBulkV1`: []MachineAccountBulkResult
-          fmt.Fprintf(os.Stdout, "Response from `MachineAccountsAPI.ReloadMachineAccountsInBulkV1`: %v\n", resp)
-        }
 - path: /machine-accounts/v1/{id}/unlock
   method: Post
   xCodeSample:

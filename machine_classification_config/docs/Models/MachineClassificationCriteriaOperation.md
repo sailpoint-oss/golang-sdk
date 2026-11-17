@@ -24,8 +24,18 @@ tags: ['SDK', 'Software Development Kit', 'MachineClassificationCriteriaOperatio
 
 * `CONTAINS` (value: `"CONTAINS"`)
 
+* `NOT_CONTAINS` (value: `"NOT_CONTAINS"`)
+
 * `AND` (value: `"AND"`)
 
 * `OR` (value: `"OR"`)
+
+* `EXISTS` (value: `"EXISTS"`)
+
+* `NOT_EXISTS` (value: `"NOT_EXISTS"`)
+
+* `EMPTY` (value: `"EMPTY"`)
+
+* `NOT_EMPTY` (value: `"NOT_EMPTY"`)
 
 

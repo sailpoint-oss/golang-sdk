@@ -4055,7 +4055,7 @@ func (r ApiReloadMachineAccountsInBulkAsyncV1Request) Execute() (*MachineAccount
 }
 
 /*
-ReloadMachineAccountsInBulkAsyncV1 Bulk reload machine accounts asynchronously
+ReloadMachineAccountsInBulkAsyncV1 Reload machine accounts in bulk
 
 Use this API to submit one task that reloads up to 100 machine accounts from their sources, and get the task ID. Machine accounts that can't be reloaded are skipped. When none of the machine accounts can be reloaded, the task completes with an error.
 
@@ -4092,213 +4092,6 @@ func (a *MachineAccountsAPIService) ReloadMachineAccountsInBulkAsyncV1Execute(r 
 	}
 
 	localVarPath := localBasePath + "/machine-accounts/v1/bulk-reload-async"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.machineAccountBulkRequest == nil {
-		return localVarReturnValue, nil, reportError("machineAccountBulkRequest is required and must be specified")
-	}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
-	// body params
-	localVarPostBody = r.machineAccountBulkRequest
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ErrorResponseDto
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListMachineAccountsV1401Response
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v ErrorResponseDto
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 404 {
-			var v ErrorResponseDto
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListMachineAccountsV1429Response
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 500 {
-			var v ErrorResponseDto
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiReloadMachineAccountsInBulkV1Request struct {
-	ctx context.Context
-	ApiService *MachineAccountsAPIService
-	xSailPointExperimental *string
-	machineAccountBulkRequest *MachineAccountBulkRequest
-}
-
-// Use this header to enable this experimental API.
-func (r ApiReloadMachineAccountsInBulkV1Request) XSailPointExperimental(xSailPointExperimental string) ApiReloadMachineAccountsInBulkV1Request {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
-}
-
-func (r ApiReloadMachineAccountsInBulkV1Request) MachineAccountBulkRequest(machineAccountBulkRequest MachineAccountBulkRequest) ApiReloadMachineAccountsInBulkV1Request {
-	r.machineAccountBulkRequest = &machineAccountBulkRequest
-	return r
-}
-
-func (r ApiReloadMachineAccountsInBulkV1Request) Execute() ([]MachineAccountBulkResult, *http.Response, error) {
-	return r.ApiService.ReloadMachineAccountsInBulkV1Execute(r)
-}
-
-/*
-ReloadMachineAccountsInBulkV1 Reload machine accounts in bulk
-
-Use this API to reload up to 100 machine accounts from their sources. The response has one result per requested machine account, in no particular order. Each result has its own HTTP-style `status`: `200` when the reload was queued, or an error status such as `400`, `404` or `500`.
-
-To track the whole reload with a single task instead, use the asynchronous bulk reload API.
-
-The request fails with `400` when `ids` is empty or has more than 100 entries.
-
-A caller who owns the machine accounts can reload them. Other callers need the **idn:mis-account:reload** right. For a caller without the right, machine accounts they do not own get a result with status `404`.
-
-When this capability is not enabled for the tenant, this API returns `403`.
-
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiReloadMachineAccountsInBulkV1Request
-*/
-func (a *MachineAccountsAPIService) ReloadMachineAccountsInBulkV1(ctx context.Context) ApiReloadMachineAccountsInBulkV1Request {
-	return ApiReloadMachineAccountsInBulkV1Request{
-		ApiService: a,
-		ctx: ctx,
-	}
-}
-
-// Execute executes the request
-//  @return []MachineAccountBulkResult
-func (a *MachineAccountsAPIService) ReloadMachineAccountsInBulkV1Execute(r ApiReloadMachineAccountsInBulkV1Request) ([]MachineAccountBulkResult, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []MachineAccountBulkResult
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MachineAccountsAPIService.ReloadMachineAccountsInBulkV1")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/machine-accounts/v1/bulk-reload"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -5069,7 +4862,7 @@ func (r ApiUpdateMachineAccountsInBulkV1Request) Execute() ([]MachineAccountBulk
 /*
 UpdateMachineAccountsInBulkV1 Update machine accounts in bulk
 
-Use this API to apply the same [JSON Patch](https://tools.ietf.org/html/rfc6902) to up to 100 machine accounts. The response has one result per requested machine account, in no particular order. Each result has its own HTTP-style `status`: `200` when the update succeeded, or an error status such as `400` or `404`.
+Use this API to apply the same [JSON Patch](https://tools.ietf.org/html/rfc6902) to up to 100 machine accounts. The response has one result per requested machine account, in no particular order. Each result has its own HTTP-style `status`: `200` when the update succeeded, `404` when the account was not found or is not accessible to the caller, `409` when the same ID appears more than once in the batch, or `400` when that row cannot be updated.
 
 Each patch operation must target one of these top-level fields:
   * description
@@ -5077,7 +4870,10 @@ Each patch operation must target one of these top-level fields:
   * environment
   * machineIdentity
   * ownerIdentity
+  * owners
   * manuallyEdited
+
+`owners` is accepted only when expanded machine account ownership is enabled for the tenant. When it is not, a patch that targets `owners` fails with `400`. `owners` may only be replaced at `/owners`, `/owners/primary`, or `/owners/secondary`. A request that patches both `ownerIdentity` and `owners` fails with `400`.
 
 The request fails with `400` when `ids` is empty or has more than 100 entries, when `jsonPatch` is missing, or when a patch operation targets any other field. A patch that changes `subtype` must only include machine accounts from one source; otherwise every result has status `400`.
 

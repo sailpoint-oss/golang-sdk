@@ -13,6 +13,7 @@ info:
   termsOfService: https://developer.sailpoint.com/discuss/tos
   title: SailPoint Identity Security API - Machine Accounts
   version: v1
+  x-audience: external-public
 servers:
 - description: This is the production API server.
   url: "https://{tenant}.api.identitynow.com"
@@ -30,7 +31,9 @@ security:
 - userAuth:
   - sp:scopes:all
 tags:
-- name: Machine Accounts
+- description: |
+    Use this API to list, view, and update machine accounts, the accounts on connected sources that belong to a machine rather than a person. You can also enable, disable, reload, unlock, and remove machine accounts, and manage the machine account subtypes of a source. Update, enable, disable, and reload are also available in bulk.
+  name: Machine Accounts
 paths:
   /machine-accounts/v1:
     get:
@@ -1689,7 +1692,7 @@ paths:
   /machine-accounts/v1/bulk-update:
     post:
       description: |
-        Use this API to apply the same [JSON Patch](https://tools.ietf.org/html/rfc6902) to up to 100 machine accounts. The response has one result per requested machine account, in no particular order. Each result has its own HTTP-style `status`: `200` when the update succeeded, or an error status such as `400` or `404`.
+        Use this API to apply the same [JSON Patch](https://tools.ietf.org/html/rfc6902) to up to 100 machine accounts. The response has one result per requested machine account, in no particular order. Each result has its own HTTP-style `status`: `200` when the update succeeded, `404` when the account was not found or is not accessible to the caller, `409` when the same ID appears more than once in the batch, or `400` when that row cannot be updated.
 
         Each patch operation must target one of these top-level fields:
           * description
@@ -1697,7 +1700,10 @@ paths:
           * environment
           * machineIdentity
           * ownerIdentity
+          * owners
           * manuallyEdited
+
+        `owners` is accepted only when expanded machine account ownership is enabled for the tenant. When it is not, a patch that targets `owners` fails with `400`. `owners` may only be replaced at `/owners`, `/owners/primary`, or `/owners/secondary`. A request that patches both `ownerIdentity` and `owners` fails with `400`.
 
         The request fails with `400` when `ids` is empty or has more than 100 entries, when `jsonPatch` is missing, or when a patch operation targets any other field. A patch that changes `subtype` must only include machine accounts from one source; otherwise every result has status `400`.
 
@@ -1707,7 +1713,7 @@ paths:
       operationId: updateMachineAccountsInBulkV1
       parameters:
       - description: Use this header to enable this experimental API.
-        example: true
+        example: "true"
         explode: false
         in: header
         name: X-SailPoint-Experimental
@@ -1830,7 +1836,7 @@ paths:
       operationId: enableMachineAccountsInBulkV1
       parameters:
       - description: Use this header to enable this experimental API.
-        example: true
+        example: "true"
         explode: false
         in: header
         name: X-SailPoint-Experimental
@@ -1938,6 +1944,9 @@ paths:
       - ORG_ADMIN
       - SOURCE_ADMIN
       - SOURCE_SUBADMIN
+      x-sailpoint-lint-ignore:
+        path-bulk-operations-must-return-207: This operation runs as a single task
+          and returns the task ID.
   /machine-accounts/v1/bulk-disable:
     post:
       description: |
@@ -1951,7 +1960,7 @@ paths:
       operationId: disableMachineAccountsInBulkV1
       parameters:
       - description: Use this header to enable this experimental API.
-        example: true
+        example: "true"
         explode: false
         in: header
         name: X-SailPoint-Experimental
@@ -2059,131 +2068,9 @@ paths:
       - ORG_ADMIN
       - SOURCE_ADMIN
       - SOURCE_SUBADMIN
-  /machine-accounts/v1/bulk-reload:
-    post:
-      description: |
-        Use this API to reload up to 100 machine accounts from their sources. The response has one result per requested machine account, in no particular order. Each result has its own HTTP-style `status`: `200` when the reload was queued, or an error status such as `400`, `404` or `500`.
-
-        To track the whole reload with a single task instead, use the asynchronous bulk reload API.
-
-        The request fails with `400` when `ids` is empty or has more than 100 entries.
-
-        A caller who owns the machine accounts can reload them. Other callers need the **idn:mis-account:reload** right. For a caller without the right, machine accounts they do not own get a result with status `404`.
-
-        When this capability is not enabled for the tenant, this API returns `403`.
-      operationId: reloadMachineAccountsInBulkV1
-      parameters:
-      - description: Use this header to enable this experimental API.
-        example: true
-        explode: false
-        in: header
-        name: X-SailPoint-Experimental
-        required: true
-        schema:
-          default: "true"
-          type: string
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/MachineAccountBulkRequest'
-        required: true
-      responses:
-        "207":
-          content:
-            application/json:
-              schema:
-                items:
-                  $ref: '#/components/schemas/MachineAccountBulkResult'
-                type: array
-          description: One result per requested machine account.
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponseDto'
-          description: Client Error - Returned if the request body is invalid.
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/listMachineAccountsV1_401_response'
-          description: "Unauthorized - Returned if there is no authorization header,\
-            \ or if the JWT token is expired."
-        "403":
-          content:
-            application/json:
-              examples:
-                "403":
-                  summary: An example of a 403 response object
-                  value:
-                    detailCode: 403 Forbidden
-                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
-                    messages:
-                    - locale: en-US
-                      localeOrigin: DEFAULT
-                      text: The server understood the request but refuses to authorize
-                        it.
-              schema:
-                $ref: '#/components/schemas/ErrorResponseDto'
-          description: "Forbidden - Returned if the user you are running as, doesn't\
-            \ have access to this end-point."
-        "404":
-          content:
-            application/json:
-              examples:
-                "404":
-                  summary: An example of a 404 response object
-                  value:
-                    detailCode: 404 Not found
-                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
-                    messages:
-                    - locale: en-US
-                      localeOrigin: DEFAULT
-                      text: The server did not find a current representation for the
-                        target resource.
-              schema:
-                $ref: '#/components/schemas/ErrorResponseDto'
-          description: Not Found - returned if the request URL refers to a resource
-            or object that does not exist
-        "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/listMachineAccountsV1_429_response'
-          description: Too Many Requests - Returned in response to too many requests
-            in a given period of time - rate limited. The Retry-After header in the
-            response includes how long to wait before trying again.
-        "500":
-          content:
-            application/json:
-              examples:
-                "500":
-                  summary: An example of a 500 response object
-                  value:
-                    detailCode: 500.0 Internal Fault
-                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
-                    messages:
-                    - locale: en-US
-                      localeOrigin: DEFAULT
-                      text: An internal fault occurred.
-              schema:
-                $ref: '#/components/schemas/ErrorResponseDto'
-          description: Internal Server Error - Returned if there is an unexpected
-            error.
-      security:
-      - userAuth:
-        - idn:mis-account-state:manage
-      - applicationAuth:
-        - idn:mis-account-state:manage
-      summary: Reload machine accounts in bulk
-      tags:
-      - Machine Accounts
-      x-sailpoint-userLevels:
-      - ORG_ADMIN
-      - SOURCE_ADMIN
-      - SOURCE_SUBADMIN
+      x-sailpoint-lint-ignore:
+        path-bulk-operations-must-return-207: This operation runs as a single task
+          and returns the task ID.
   /machine-accounts/v1/bulk-reload-async:
     post:
       description: |
@@ -2197,7 +2084,7 @@ paths:
       operationId: reloadMachineAccountsInBulkAsyncV1
       parameters:
       - description: Use this header to enable this experimental API.
-        example: true
+        example: "true"
         explode: false
         in: header
         name: X-SailPoint-Experimental
@@ -2298,13 +2185,16 @@ paths:
         - idn:mis-account-state:manage
       - applicationAuth:
         - idn:mis-account-state:manage
-      summary: Bulk reload machine accounts asynchronously
+      summary: Reload machine accounts in bulk
       tags:
       - Machine Accounts
       x-sailpoint-userLevels:
       - ORG_ADMIN
       - SOURCE_ADMIN
       - SOURCE_SUBADMIN
+      x-sailpoint-lint-ignore:
+        path-bulk-operations-must-return-207: This operation runs as a single task
+          and returns the task ID.
   /machine-accounts/v2:
     get:
       description: |
@@ -4549,7 +4439,11 @@ components:
           description: "[JSON Patch](https://tools.ietf.org/html/rfc6902) operations\
             \ to apply to every machine account in `ids`. Each operation must target\
             \ one of these top-level fields: `description`, `subtype`, `environment`,\
-            \ `machineIdentity`, `ownerIdentity`, `manuallyEdited`."
+            \ `machineIdentity`, `ownerIdentity`, `owners`, or `manuallyEdited`. `owners`\
+            \ is accepted only when expanded machine account ownership is enabled\
+            \ for the tenant, and may only be replaced at `/owners`, `/owners/primary`,\
+            \ or `/owners/secondary`. Do not patch `ownerIdentity` and `owners` in\
+            \ the same request."
           example:
           - op: replace
             path: /environment

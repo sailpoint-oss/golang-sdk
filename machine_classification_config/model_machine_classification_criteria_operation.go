@@ -14,7 +14,7 @@ import (
 	"encoding/json"
 )
 
-// MachineClassificationCriteriaOperation An operation to perform on the classification criteria
+// MachineClassificationCriteriaOperation Operation applied to classification criteria.  `EQUALS`, `NOT_EQUALS`, `STARTS_WITH`, `ENDS_WITH`, `CONTAINS`, and `NOT_CONTAINS` are leaf operators. They require `attribute` and `value`. `NOT_CONTAINS` matches when the attribute value does not contain `value`.  `EXISTS` and `NOT_EXISTS` are presence-only leaf operators. They require `attribute` and do not use `value`. `EXISTS` matches when the attribute is present. `NOT_EXISTS` matches when it is absent.  `EMPTY` and `NOT_EMPTY` are value-less leaf operators. They require `attribute` and do not use `value`. `EMPTY` matches when the attribute is null, blank, or an empty collection. `NOT_EMPTY` matches any other value.  `AND` and `OR` are composite operators. They require `children` and do not use `attribute` or `value`.
 type MachineClassificationCriteriaOperation string
 
 // List of MachineClassificationCriteriaOperation
@@ -24,8 +24,13 @@ const (
 	MACHINECLASSIFICATIONCRITERIAOPERATION_STARTS_WITH MachineClassificationCriteriaOperation = "STARTS_WITH"
 	MACHINECLASSIFICATIONCRITERIAOPERATION_ENDS_WITH MachineClassificationCriteriaOperation = "ENDS_WITH"
 	MACHINECLASSIFICATIONCRITERIAOPERATION_CONTAINS MachineClassificationCriteriaOperation = "CONTAINS"
+	MACHINECLASSIFICATIONCRITERIAOPERATION_NOT_CONTAINS MachineClassificationCriteriaOperation = "NOT_CONTAINS"
 	MACHINECLASSIFICATIONCRITERIAOPERATION_AND MachineClassificationCriteriaOperation = "AND"
 	MACHINECLASSIFICATIONCRITERIAOPERATION_OR MachineClassificationCriteriaOperation = "OR"
+	MACHINECLASSIFICATIONCRITERIAOPERATION_EXISTS MachineClassificationCriteriaOperation = "EXISTS"
+	MACHINECLASSIFICATIONCRITERIAOPERATION_NOT_EXISTS MachineClassificationCriteriaOperation = "NOT_EXISTS"
+	MACHINECLASSIFICATIONCRITERIAOPERATION_EMPTY MachineClassificationCriteriaOperation = "EMPTY"
+	MACHINECLASSIFICATIONCRITERIAOPERATION_NOT_EMPTY MachineClassificationCriteriaOperation = "NOT_EMPTY"
 )
 
 // All allowed values of MachineClassificationCriteriaOperation enum
@@ -35,8 +40,13 @@ var AllowedMachineClassificationCriteriaOperationEnumValues = []MachineClassific
 	"STARTS_WITH",
 	"ENDS_WITH",
 	"CONTAINS",
+	"NOT_CONTAINS",
 	"AND",
 	"OR",
+	"EXISTS",
+	"NOT_EXISTS",
+	"EMPTY",
+	"NOT_EMPTY",
 }
 
 func (v *MachineClassificationCriteriaOperation) UnmarshalJSON(src []byte) error {
