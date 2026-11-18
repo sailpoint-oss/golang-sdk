@@ -5703,6 +5703,25 @@ components:
           type: integer
       title: Machine Identity Discovered Counts
       type: object
+    Machineidentityagentdiscoveredcounts:
+      allOf:
+      - $ref: '#/components/schemas/MachineIdentityDiscoveredCounts'
+      - description: "AI agents discovered within a recent time window, including\
+          \ the start of that window."
+        properties:
+          from:
+            description: "Start of the window, in UTC, and the exact cutoff used for\
+              \ `count`. Identities created at or after this time are included."
+            example: 2026-10-17T09:58:52.985613Z
+            format: date-time
+            nullable: true
+            type: string
+        title: Machine Identity Agent Discovered Counts
+        type: object
+      example:
+        count: 8
+        from: 2026-10-17T09:58:52.985613Z
+        windowDays: 30
     MachineIdentityRiskSeverityCounts:
       description: Number of machine identities in each risk severity. This object
         is `null` when agentic risk scoring is not enabled for the tenant.
@@ -5749,6 +5768,7 @@ components:
       example:
         discovered:
           count: 8
+          from: 2026-10-17T09:58:52.985613Z
           windowDays: 30
         unsanctionedAgentCount: 6
         riskSeverity:
@@ -5773,7 +5793,7 @@ components:
           format: int64
           type: integer
         discovered:
-          $ref: '#/components/schemas/MachineIdentityDiscoveredCounts'
+          $ref: '#/components/schemas/Machineidentityagentdiscoveredcounts'
         riskSeverity:
           $ref: '#/components/schemas/MachineIdentityRiskSeverityCounts'
         ownership:

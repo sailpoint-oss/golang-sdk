@@ -65,6 +65,7 @@ docs/MachineIdentityUserEntitlementResponseEntitlement.md
 docs/MachineIdentityUserEntitlementResponseSource.md
 docs/MachineIdentityV2Risk.md
 docs/MachineIdentityV2Source.md
+docs/Machineidentityagentdiscoveredcounts.md
 docs/Machineidentitycapability.md
 docs/Machineidentityentitlement.md
 docs/Machineidentityv2.md
@@ -139,6 +140,7 @@ model_machine_identity_user_entitlement_response_entitlement.go
 model_machine_identity_user_entitlement_response_source.go
 model_machine_identity_v2_risk.go
 model_machine_identity_v2_source.go
+model_machineidentityagentdiscoveredcounts.go
 model_machineidentitycapability.go
 model_machineidentityentitlement.go
 model_machineidentityv2.go

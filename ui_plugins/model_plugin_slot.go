@@ -22,7 +22,7 @@ var _ MappedNullable = &PluginSlot{}
 type PluginSlot struct {
 	// Identifier referencing an entry in the slot registry
 	SlotId string `json:"slotId"`
-	// ISC capabilities the user must hold (AND logic) to see this plugin in the slot. Empty means unrestricted.
+	// SailPoint Identity Security capabilities the user must hold (AND logic) to see this plugin in the slot. Empty means unrestricted.
 	RequiredCapabilities []string `json:"requiredCapabilities,omitempty"`
 	// User GUIDs (32-char hex) limiting visibility during development. Empty means no user restriction.
 	RestrictToUsers []string `json:"restrictToUsers,omitempty"`

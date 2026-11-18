@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AgentCount** | Pointer to **int64** | Total number of AI agents. | [optional] 
 **UnsanctionedAgentCount** | Pointer to **int64** | Number of AI agents that are not sanctioned. | [optional] 
-**Discovered** | Pointer to [**MachineIdentityDiscoveredCounts**](machine-identity-discovered-counts) |  | [optional] 
+**Discovered** | Pointer to [**Machineidentityagentdiscoveredcounts**](machineidentityagentdiscoveredcounts) |  | [optional] 
 **RiskSeverity** | Pointer to [**NullableMachineIdentityRiskSeverityCounts**](machine-identity-risk-severity-counts) |  | [optional] 
 **Ownership** | Pointer to [**MachineIdentityAgentCountsOwnership**](machine-identity-agent-counts-ownership) |  | [optional] 
 
@@ -92,20 +92,20 @@ HasUnsanctionedAgentCount returns a boolean if a field has been set.
 
 ### GetDiscovered
 
-`func (o *MachineIdentityAgentCounts) GetDiscovered() MachineIdentityDiscoveredCounts`
+`func (o *MachineIdentityAgentCounts) GetDiscovered() Machineidentityagentdiscoveredcounts`
 
 GetDiscovered returns the Discovered field if non-nil, zero value otherwise.
 
 ### GetDiscoveredOk
 
-`func (o *MachineIdentityAgentCounts) GetDiscoveredOk() (*MachineIdentityDiscoveredCounts, bool)`
+`func (o *MachineIdentityAgentCounts) GetDiscoveredOk() (*Machineidentityagentdiscoveredcounts, bool)`
 
 GetDiscoveredOk returns a tuple with the Discovered field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDiscovered
 
-`func (o *MachineIdentityAgentCounts) SetDiscovered(v MachineIdentityDiscoveredCounts)`
+`func (o *MachineIdentityAgentCounts) SetDiscovered(v Machineidentityagentdiscoveredcounts)`
 
 SetDiscovered sets Discovered field to given value.
 

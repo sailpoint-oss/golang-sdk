@@ -16,7 +16,7 @@ tags: ['SDK', 'Software Development Kit', 'PluginSlot', 'V1PluginSlot']
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **SlotId** | **string** | Identifier referencing an entry in the slot registry | 
-**RequiredCapabilities** | Pointer to **[]string** | ISC capabilities the user must hold (AND logic) to see this plugin in the slot. Empty means unrestricted. | [optional] [default to []]
+**RequiredCapabilities** | Pointer to **[]string** | SailPoint Identity Security capabilities the user must hold (AND logic) to see this plugin in the slot. Empty means unrestricted. | [optional] [default to []]
 **RestrictToUsers** | Pointer to **[]string** | User GUIDs (32-char hex) limiting visibility during development. Empty means no user restriction. | [optional] [default to []]
 
 ## Methods

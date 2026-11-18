@@ -171,6 +171,7 @@ Class | Method | HTTP request | Description
  - [MachineIdentityUserEntitlementResponseSource](docs/MachineIdentityUserEntitlementResponseSource.md)
  - [MachineIdentityV2Risk](docs/MachineIdentityV2Risk.md)
  - [MachineIdentityV2Source](docs/MachineIdentityV2Source.md)
+ - [Machineidentityagentdiscoveredcounts](docs/Machineidentityagentdiscoveredcounts.md)
  - [Machineidentitycapability](docs/Machineidentitycapability.md)
  - [Machineidentityentitlement](docs/Machineidentityentitlement.md)
  - [Machineidentityv2](docs/Machineidentityv2.md)

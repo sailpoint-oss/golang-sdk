@@ -23,7 +23,7 @@ type MachineIdentityAgentCounts struct {
 	AgentCount *int64 `json:"agentCount,omitempty"`
 	// Number of AI agents that are not sanctioned.
 	UnsanctionedAgentCount *int64 `json:"unsanctionedAgentCount,omitempty"`
-	Discovered *MachineIdentityDiscoveredCounts `json:"discovered,omitempty"`
+	Discovered *Machineidentityagentdiscoveredcounts `json:"discovered,omitempty"`
 	RiskSeverity NullableMachineIdentityRiskSeverityCounts `json:"riskSeverity,omitempty"`
 	Ownership *MachineIdentityAgentCountsOwnership `json:"ownership,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -113,9 +113,9 @@ func (o *MachineIdentityAgentCounts) SetUnsanctionedAgentCount(v int64) {
 }
 
 // GetDiscovered returns the Discovered field value if set, zero value otherwise.
-func (o *MachineIdentityAgentCounts) GetDiscovered() MachineIdentityDiscoveredCounts {
+func (o *MachineIdentityAgentCounts) GetDiscovered() Machineidentityagentdiscoveredcounts {
 	if o == nil || IsNil(o.Discovered) {
-		var ret MachineIdentityDiscoveredCounts
+		var ret Machineidentityagentdiscoveredcounts
 		return ret
 	}
 	return *o.Discovered
@@ -123,7 +123,7 @@ func (o *MachineIdentityAgentCounts) GetDiscovered() MachineIdentityDiscoveredCo
 
 // GetDiscoveredOk returns a tuple with the Discovered field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *MachineIdentityAgentCounts) GetDiscoveredOk() (*MachineIdentityDiscoveredCounts, bool) {
+func (o *MachineIdentityAgentCounts) GetDiscoveredOk() (*Machineidentityagentdiscoveredcounts, bool) {
 	if o == nil || IsNil(o.Discovered) {
 		return nil, false
 	}
@@ -139,8 +139,8 @@ func (o *MachineIdentityAgentCounts) HasDiscovered() bool {
 	return false
 }
 
-// SetDiscovered gets a reference to the given MachineIdentityDiscoveredCounts and assigns it to the Discovered field.
-func (o *MachineIdentityAgentCounts) SetDiscovered(v MachineIdentityDiscoveredCounts) {
+// SetDiscovered gets a reference to the given Machineidentityagentdiscoveredcounts and assigns it to the Discovered field.
+func (o *MachineIdentityAgentCounts) SetDiscovered(v Machineidentityagentdiscoveredcounts) {
 	o.Discovered = &v
 }
 
