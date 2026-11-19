@@ -79,9 +79,11 @@ All URIs are relative to *https://sailpoint.api.identitynow.com*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*MFAConfigurationAPI* | [**GetMFAClear1ConfigV1**](docs/MFAConfigurationAPI.md#getmfaclear1configv1) | **Get** /mfa/v1/clear1/config | Configuration of CLEAR1 mfa method
 *MFAConfigurationAPI* | [**GetMFADuoConfigV1**](docs/MFAConfigurationAPI.md#getmfaduoconfigv1) | **Get** /mfa/v1/duo-web/config | Configuration of duo mfa method
 *MFAConfigurationAPI* | [**GetMFAKbaConfigV1**](docs/MFAConfigurationAPI.md#getmfakbaconfigv1) | **Get** /mfa/v1/kba/config | Configuration of kba mfa method
 *MFAConfigurationAPI* | [**GetMFAOktaConfigV1**](docs/MFAConfigurationAPI.md#getmfaoktaconfigv1) | **Get** /mfa/v1/okta-verify/config | Configuration of okta mfa method
+*MFAConfigurationAPI* | [**SetMFAClear1ConfigV1**](docs/MFAConfigurationAPI.md#setmfaclear1configv1) | **Put** /mfa/v1/clear1/config | Set CLEAR1 mfa configuration
 *MFAConfigurationAPI* | [**SetMFADuoConfigV1**](docs/MFAConfigurationAPI.md#setmfaduoconfigv1) | **Put** /mfa/v1/duo-web/config | Set duo mfa configuration
 *MFAConfigurationAPI* | [**SetMFAKBAConfigV1**](docs/MFAConfigurationAPI.md#setmfakbaconfigv1) | **Post** /mfa/v1/kba/config/answers | Set mfa kba configuration
 *MFAConfigurationAPI* | [**SetMFAOktaConfigV1**](docs/MFAConfigurationAPI.md#setmfaoktaconfigv1) | **Put** /mfa/v1/okta-verify/config | Set okta mfa configuration
@@ -98,9 +100,13 @@ Class | Method | HTTP request | Description
  - [KbaAnswerResponseItem](docs/KbaAnswerResponseItem.md)
  - [KbaQuestion](docs/KbaQuestion.md)
  - [LocaleOrigin](docs/LocaleOrigin.md)
+ - [MfaClear1Config](docs/MfaClear1Config.md)
  - [MfaConfigTestResponse](docs/MfaConfigTestResponse.md)
  - [MfaDuoConfig](docs/MfaDuoConfig.md)
  - [MfaOktaConfig](docs/MfaOktaConfig.md)
+ - [Mfaclear1establishedidentityflowconfig](docs/Mfaclear1establishedidentityflowconfig.md)
+ - [Mfaclear1knownuserkeyflowconfig](docs/Mfaclear1knownuserkeyflowconfig.md)
+ - [Mfaclear1userprofilematchingattributes](docs/Mfaclear1userprofilematchingattributes.md)
 
 
 ## Documentation For Authorization

@@ -13,6 +13,7 @@ info:
   termsOfService: https://developer.sailpoint.com/discuss/tos
   title: SailPoint Identity Security API - Machine Identities
   version: v1
+  x-audience: external-public
 servers:
 - description: This is the production API server.
   url: "https://{tenant}.api.identitynow.com"
@@ -30,7 +31,9 @@ security:
 - userAuth:
   - sp:scopes:all
 tags:
-- name: Machine Identities
+- description: |
+    Use this API to list, view, create, update, and delete machine identities, the non-human identities that own machine accounts. You can also review their accounts, entitlements, and anomalies, and update or delete machine identities in bulk.
+  name: Machine Identities
 paths:
   /machine-identities/v1:
     get:
@@ -3508,7 +3511,7 @@ paths:
       - SOURCE_ADMIN
       - SOURCE_SUBADMIN
       - HELPDESK
-  /machine-identities/v2/bulk-update:
+  /machine-identities/v1/bulk-update:
     post:
       description: |
         This API applies the same JSON Patch operations to up to 100 machine identities and returns a result for each
@@ -3652,7 +3655,7 @@ paths:
       - Machine Identities
       x-sailpoint-userLevels:
       - ORG_ADMIN
-  /machine-identities/v2/bulk-delete:
+  /machine-identities/v1/bulk-delete:
     post:
       description: |
         This API deletes up to 100 machine identities and returns a result for each requested ID.

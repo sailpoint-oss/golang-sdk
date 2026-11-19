@@ -481,7 +481,7 @@ func (a *MachineIdentitiesAPIService) DeleteMachineIdentitiesInBulkV2Execute(r A
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/machine-identities/v2/bulk-delete"
+	localVarPath := localBasePath + "/machine-identities/v1/bulk-delete"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -6021,7 +6021,7 @@ func (a *MachineIdentitiesAPIService) UpdateMachineIdentitiesInBulkV2Execute(r A
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/machine-identities/v2/bulk-update"
+	localVarPath := localBasePath + "/machine-identities/v1/bulk-update"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

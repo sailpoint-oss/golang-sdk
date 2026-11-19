@@ -18,9 +18,13 @@ docs/LocaleOrigin.md
 docs/MFAConfigurationAPI.md
 docs/MFAConfigurationAPIdeveloperSite_code_examples.yaml
 docs/Methods/Index.md
+docs/MfaClear1Config.md
 docs/MfaConfigTestResponse.md
 docs/MfaDuoConfig.md
 docs/MfaOktaConfig.md
+docs/Mfaclear1establishedidentityflowconfig.md
+docs/Mfaclear1knownuserkeyflowconfig.md
+docs/Mfaclear1userprofilematchingattributes.md
 git_push.sh
 go.mod
 go.sum
@@ -32,9 +36,13 @@ model_kba_answer_request_item.go
 model_kba_answer_response_item.go
 model_kba_question.go
 model_locale_origin.go
+model_mfa_clear1_config.go
 model_mfa_config_test_response.go
 model_mfa_duo_config.go
 model_mfa_okta_config.go
+model_mfaclear1establishedidentityflowconfig.go
+model_mfaclear1knownuserkeyflowconfig.go
+model_mfaclear1userprofilematchingattributes.go
 response.go
 test/api_mfa_configuration_test.go
 utils.go

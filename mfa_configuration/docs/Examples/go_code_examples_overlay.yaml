@@ -1,3 +1,36 @@
+- path: /mfa/v1/clear1/config
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/mfaconfiguration/methods/mfa-configuration#get-mfa-clear1-config-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.MFAConfigurationAPI.GetMFAClear1ConfigV1(context.Background()).Execute()
+          //resp, r, err := apiClient.MFAConfigurationAPI.GetMFAClear1ConfigV1(context.Background()).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `MFAConfigurationAPI.GetMFAClear1ConfigV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetMFAClear1ConfigV1`: MfaClear1Config
+          fmt.Fprintf(os.Stdout, "Response from `MFAConfigurationAPI.GetMFAClear1ConfigV1`: %v\n", resp)
+        }
 - path: /mfa/v1/duo-web/config
   method: Get
   xCodeSample:
@@ -97,6 +130,72 @@
           }
           // response from `GetMFAOktaConfigV1`: MfaOktaConfig
           fmt.Fprintf(os.Stdout, "Response from `MFAConfigurationAPI.GetMFAOktaConfigV1`: %v\n", resp)
+        }
+- path: /mfa/v1/clear1/config
+  method: Put
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/mfaconfiguration/methods/mfa-configuration#set-mfa-clear1-config-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            mfa_configuration "github.com/sailpoint-oss/golang-sdk/v3/mfa_configuration"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+           mfaclear1configJson := []byte(`{
+          "knownUserKeyFlowConfig" : {
+            "projectId" : "projectId",
+            "enabled" : true,
+            "identityAttribute" : "identityAttribute"
+          },
+          "apiKey" : "sk123Y3QlA5UqocYpdU3rEkzrK2D497O",
+          "mfaMethod" : "clear1",
+          "enabled" : true,
+          "establishedIdentityFlowConfig" : {
+            "projectId" : "projectId",
+            "enabled" : true,
+            "userProfileMatchingAttributes" : {
+              "country" : "country",
+              "phone" : "phone",
+              "city" : "city",
+              "dob" : "dob",
+              "last_name" : "last_name",
+              "state" : "state",
+              "postal_code" : "postal_code",
+              "first_name" : "first_name",
+              "line2" : "line2",
+              "email" : "email",
+              "line1" : "line1"
+            }
+          }
+        }`) // MfaClear1Config | 
+
+          
+          var mfaClear1Config mfa_configuration.MfaClear1Config
+          if err := json.Unmarshal(mfaclear1configJson, &mfaClear1Config); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.MFAConfigurationAPI.SetMFAClear1ConfigV1(context.Background()).MfaClear1Config(mfaClear1Config).Execute()
+          //resp, r, err := apiClient.MFAConfigurationAPI.SetMFAClear1ConfigV1(context.Background()).MfaClear1Config(mfaClear1Config).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `MFAConfigurationAPI.SetMFAClear1ConfigV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `SetMFAClear1ConfigV1`: MfaClear1Config
+          fmt.Fprintf(os.Stdout, "Response from `MFAConfigurationAPI.SetMFAClear1ConfigV1`: %v\n", resp)
         }
 - path: /mfa/v1/duo-web/config
   method: Put
@@ -252,7 +351,7 @@
         )
 
         func main() {
-          method := `okta-verify` // string | The name of the MFA method. The currently supported method names are 'okta-verify' and 'duo-web'. # string | The name of the MFA method. The currently supported method names are 'okta-verify' and 'duo-web'.
+          method := `okta-verify` // string | The name of the MFA method. The currently supported method names are 'okta-verify', 'duo-web', and 'clear1'. # string | The name of the MFA method. The currently supported method names are 'okta-verify', 'duo-web', and 'clear1'.
 
           
 

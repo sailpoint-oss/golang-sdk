@@ -17,7 +17,7 @@ import (
 // checks if the OrgConfig type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &OrgConfig{}
 
-// OrgConfig DTO class for OrgConfig data accessible by customer external org admin (\"ORG_ADMIN\") users
+// OrgConfig OrgConfig settings accessible to external customer org admins (`ORG_ADMIN`).  ### Provisioning setting precedence  1. **Source value:** used first when set. When the request spans more than one source, the largest value among those sources wins. 2. **OrgConfig value:** used when no source value is set. 3. **Default:** used when neither is set.  A value outside the allowed range is ignored, and the next level is used.  ### Defaults  * **Retries:** 3 * **Retry interval:** 60 minutes. The actual wait varies by up to 10 percent above or below the interval, so requests that fail together do not retry at the same time. * **Status check interval:** 240 minutes * **Status check limit:** 180 checks  ### Scope  * **Retry count and retry interval:** account enable, disable, unlock, or delete; lifecycle changes that provision accounts; access requests; and RSA token PIN resets. * **Not affected by these settings:** password changes, which use a fixed retry schedule. * **Status check interval and status check limit:** queued provisioning requests. 
 type OrgConfig struct {
 	// The name of the org.
 	OrgName *string `json:"orgName,omitempty"`
@@ -28,7 +28,7 @@ type OrgConfig struct {
 	// ARM Customer ID
 	ArmCustomerId NullableString `json:"armCustomerId,omitempty"`
 	// A list of IDN::sourceId to ARM::systemId mappings.
-	ArmSapSystemIdMappings NullableString `json:"armSapSystemIdMappings,omitempty"`
+	ArmSapSystemIdMappings []IdnSourceToArmSystem `json:"armSapSystemIdMappings,omitempty"`
 	// ARM authentication string
 	ArmAuth NullableString `json:"armAuth,omitempty"`
 	// ARM database name
@@ -38,7 +38,15 @@ type OrgConfig struct {
 	// Flag to determine whether IAI Certification Recommendations are enabled for the current org
 	IaiEnableCertificationRecommendations *bool `json:"iaiEnableCertificationRecommendations,omitempty"`
 	// Org opt-in flag that enables AI Agent delete-at-source lifecycle requests for the current org.
-	AiAgentDeleteRequestEnabled NullableBool `json:"aiAgentDeleteRequestEnabled,omitempty"`
+	AiAgentDeleteRequestEnabled *bool `json:"aiAgentDeleteRequestEnabled,omitempty"`
+	// The number of times a provisioning request is retried.
+	ProvisioningMaxRetries NullableInt32 `json:"provisioningMaxRetries,omitempty"`
+	// The number of minutes between provisioning retries.
+	ProvisioningRetryThreshold NullableInt32 `json:"provisioningRetryThreshold,omitempty"`
+	// The number of minutes between status checks of a queued provisioning request.
+	ProvisioningStatusCheckInterval NullableInt32 `json:"provisioningStatusCheckInterval,omitempty"`
+	// The number of status checks that run before a queued provisioning request times out.
+	ProvisioningMaxStatusChecks NullableInt32 `json:"provisioningMaxStatusChecks,omitempty"`
 	SodReportConfigs []ReportConfigDTO `json:"sodReportConfigs,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -56,7 +64,7 @@ func NewOrgConfig() *OrgConfig {
 	var iaiEnableCertificationRecommendations bool = true
 	this.IaiEnableCertificationRecommendations = &iaiEnableCertificationRecommendations
 	var aiAgentDeleteRequestEnabled bool = false
-	this.AiAgentDeleteRequestEnabled = *NewNullableBool(&aiAgentDeleteRequestEnabled)
+	this.AiAgentDeleteRequestEnabled = &aiAgentDeleteRequestEnabled
 	return &this
 }
 
@@ -70,7 +78,7 @@ func NewOrgConfigWithDefaults() *OrgConfig {
 	var iaiEnableCertificationRecommendations bool = true
 	this.IaiEnableCertificationRecommendations = &iaiEnableCertificationRecommendations
 	var aiAgentDeleteRequestEnabled bool = false
-	this.AiAgentDeleteRequestEnabled = *NewNullableBool(&aiAgentDeleteRequestEnabled)
+	this.AiAgentDeleteRequestEnabled = &aiAgentDeleteRequestEnabled
 	return &this
 }
 
@@ -213,45 +221,36 @@ func (o *OrgConfig) UnsetArmCustomerId() {
 }
 
 // GetArmSapSystemIdMappings returns the ArmSapSystemIdMappings field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *OrgConfig) GetArmSapSystemIdMappings() string {
-	if o == nil || IsNil(o.ArmSapSystemIdMappings.Get()) {
-		var ret string
+func (o *OrgConfig) GetArmSapSystemIdMappings() []IdnSourceToArmSystem {
+	if o == nil {
+		var ret []IdnSourceToArmSystem
 		return ret
 	}
-	return *o.ArmSapSystemIdMappings.Get()
+	return o.ArmSapSystemIdMappings
 }
 
 // GetArmSapSystemIdMappingsOk returns a tuple with the ArmSapSystemIdMappings field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *OrgConfig) GetArmSapSystemIdMappingsOk() (*string, bool) {
-	if o == nil {
+func (o *OrgConfig) GetArmSapSystemIdMappingsOk() ([]IdnSourceToArmSystem, bool) {
+	if o == nil || IsNil(o.ArmSapSystemIdMappings) {
 		return nil, false
 	}
-	return o.ArmSapSystemIdMappings.Get(), o.ArmSapSystemIdMappings.IsSet()
+	return o.ArmSapSystemIdMappings, true
 }
 
 // HasArmSapSystemIdMappings returns a boolean if a field has been set.
 func (o *OrgConfig) HasArmSapSystemIdMappings() bool {
-	if o != nil && o.ArmSapSystemIdMappings.IsSet() {
+	if o != nil && !IsNil(o.ArmSapSystemIdMappings) {
 		return true
 	}
 
 	return false
 }
 
-// SetArmSapSystemIdMappings gets a reference to the given NullableString and assigns it to the ArmSapSystemIdMappings field.
-func (o *OrgConfig) SetArmSapSystemIdMappings(v string) {
-	o.ArmSapSystemIdMappings.Set(&v)
-}
-// SetArmSapSystemIdMappingsNil sets the value for ArmSapSystemIdMappings to be an explicit nil
-func (o *OrgConfig) SetArmSapSystemIdMappingsNil() {
-	o.ArmSapSystemIdMappings.Set(nil)
-}
-
-// UnsetArmSapSystemIdMappings ensures that no value is present for ArmSapSystemIdMappings, not even an explicit nil
-func (o *OrgConfig) UnsetArmSapSystemIdMappings() {
-	o.ArmSapSystemIdMappings.Unset()
+// SetArmSapSystemIdMappings gets a reference to the given []IdnSourceToArmSystem and assigns it to the ArmSapSystemIdMappings field.
+func (o *OrgConfig) SetArmSapSystemIdMappings(v []IdnSourceToArmSystem) {
+	o.ArmSapSystemIdMappings = v
 }
 
 // GetArmAuth returns the ArmAuth field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -412,46 +411,204 @@ func (o *OrgConfig) SetIaiEnableCertificationRecommendations(v bool) {
 	o.IaiEnableCertificationRecommendations = &v
 }
 
-// GetAiAgentDeleteRequestEnabled returns the AiAgentDeleteRequestEnabled field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetAiAgentDeleteRequestEnabled returns the AiAgentDeleteRequestEnabled field value if set, zero value otherwise.
 func (o *OrgConfig) GetAiAgentDeleteRequestEnabled() bool {
-	if o == nil || IsNil(o.AiAgentDeleteRequestEnabled.Get()) {
+	if o == nil || IsNil(o.AiAgentDeleteRequestEnabled) {
 		var ret bool
 		return ret
 	}
-	return *o.AiAgentDeleteRequestEnabled.Get()
+	return *o.AiAgentDeleteRequestEnabled
 }
 
 // GetAiAgentDeleteRequestEnabledOk returns a tuple with the AiAgentDeleteRequestEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OrgConfig) GetAiAgentDeleteRequestEnabledOk() (*bool, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.AiAgentDeleteRequestEnabled) {
 		return nil, false
 	}
-	return o.AiAgentDeleteRequestEnabled.Get(), o.AiAgentDeleteRequestEnabled.IsSet()
+	return o.AiAgentDeleteRequestEnabled, true
 }
 
 // HasAiAgentDeleteRequestEnabled returns a boolean if a field has been set.
 func (o *OrgConfig) HasAiAgentDeleteRequestEnabled() bool {
-	if o != nil && o.AiAgentDeleteRequestEnabled.IsSet() {
+	if o != nil && !IsNil(o.AiAgentDeleteRequestEnabled) {
 		return true
 	}
 
 	return false
 }
 
-// SetAiAgentDeleteRequestEnabled gets a reference to the given NullableBool and assigns it to the AiAgentDeleteRequestEnabled field.
+// SetAiAgentDeleteRequestEnabled gets a reference to the given bool and assigns it to the AiAgentDeleteRequestEnabled field.
 func (o *OrgConfig) SetAiAgentDeleteRequestEnabled(v bool) {
-	o.AiAgentDeleteRequestEnabled.Set(&v)
-}
-// SetAiAgentDeleteRequestEnabledNil sets the value for AiAgentDeleteRequestEnabled to be an explicit nil
-func (o *OrgConfig) SetAiAgentDeleteRequestEnabledNil() {
-	o.AiAgentDeleteRequestEnabled.Set(nil)
+	o.AiAgentDeleteRequestEnabled = &v
 }
 
-// UnsetAiAgentDeleteRequestEnabled ensures that no value is present for AiAgentDeleteRequestEnabled, not even an explicit nil
-func (o *OrgConfig) UnsetAiAgentDeleteRequestEnabled() {
-	o.AiAgentDeleteRequestEnabled.Unset()
+// GetProvisioningMaxRetries returns the ProvisioningMaxRetries field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *OrgConfig) GetProvisioningMaxRetries() int32 {
+	if o == nil || IsNil(o.ProvisioningMaxRetries.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.ProvisioningMaxRetries.Get()
+}
+
+// GetProvisioningMaxRetriesOk returns a tuple with the ProvisioningMaxRetries field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *OrgConfig) GetProvisioningMaxRetriesOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.ProvisioningMaxRetries.Get(), o.ProvisioningMaxRetries.IsSet()
+}
+
+// HasProvisioningMaxRetries returns a boolean if a field has been set.
+func (o *OrgConfig) HasProvisioningMaxRetries() bool {
+	if o != nil && o.ProvisioningMaxRetries.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetProvisioningMaxRetries gets a reference to the given NullableInt32 and assigns it to the ProvisioningMaxRetries field.
+func (o *OrgConfig) SetProvisioningMaxRetries(v int32) {
+	o.ProvisioningMaxRetries.Set(&v)
+}
+// SetProvisioningMaxRetriesNil sets the value for ProvisioningMaxRetries to be an explicit nil
+func (o *OrgConfig) SetProvisioningMaxRetriesNil() {
+	o.ProvisioningMaxRetries.Set(nil)
+}
+
+// UnsetProvisioningMaxRetries ensures that no value is present for ProvisioningMaxRetries, not even an explicit nil
+func (o *OrgConfig) UnsetProvisioningMaxRetries() {
+	o.ProvisioningMaxRetries.Unset()
+}
+
+// GetProvisioningRetryThreshold returns the ProvisioningRetryThreshold field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *OrgConfig) GetProvisioningRetryThreshold() int32 {
+	if o == nil || IsNil(o.ProvisioningRetryThreshold.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.ProvisioningRetryThreshold.Get()
+}
+
+// GetProvisioningRetryThresholdOk returns a tuple with the ProvisioningRetryThreshold field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *OrgConfig) GetProvisioningRetryThresholdOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.ProvisioningRetryThreshold.Get(), o.ProvisioningRetryThreshold.IsSet()
+}
+
+// HasProvisioningRetryThreshold returns a boolean if a field has been set.
+func (o *OrgConfig) HasProvisioningRetryThreshold() bool {
+	if o != nil && o.ProvisioningRetryThreshold.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetProvisioningRetryThreshold gets a reference to the given NullableInt32 and assigns it to the ProvisioningRetryThreshold field.
+func (o *OrgConfig) SetProvisioningRetryThreshold(v int32) {
+	o.ProvisioningRetryThreshold.Set(&v)
+}
+// SetProvisioningRetryThresholdNil sets the value for ProvisioningRetryThreshold to be an explicit nil
+func (o *OrgConfig) SetProvisioningRetryThresholdNil() {
+	o.ProvisioningRetryThreshold.Set(nil)
+}
+
+// UnsetProvisioningRetryThreshold ensures that no value is present for ProvisioningRetryThreshold, not even an explicit nil
+func (o *OrgConfig) UnsetProvisioningRetryThreshold() {
+	o.ProvisioningRetryThreshold.Unset()
+}
+
+// GetProvisioningStatusCheckInterval returns the ProvisioningStatusCheckInterval field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *OrgConfig) GetProvisioningStatusCheckInterval() int32 {
+	if o == nil || IsNil(o.ProvisioningStatusCheckInterval.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.ProvisioningStatusCheckInterval.Get()
+}
+
+// GetProvisioningStatusCheckIntervalOk returns a tuple with the ProvisioningStatusCheckInterval field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *OrgConfig) GetProvisioningStatusCheckIntervalOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.ProvisioningStatusCheckInterval.Get(), o.ProvisioningStatusCheckInterval.IsSet()
+}
+
+// HasProvisioningStatusCheckInterval returns a boolean if a field has been set.
+func (o *OrgConfig) HasProvisioningStatusCheckInterval() bool {
+	if o != nil && o.ProvisioningStatusCheckInterval.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetProvisioningStatusCheckInterval gets a reference to the given NullableInt32 and assigns it to the ProvisioningStatusCheckInterval field.
+func (o *OrgConfig) SetProvisioningStatusCheckInterval(v int32) {
+	o.ProvisioningStatusCheckInterval.Set(&v)
+}
+// SetProvisioningStatusCheckIntervalNil sets the value for ProvisioningStatusCheckInterval to be an explicit nil
+func (o *OrgConfig) SetProvisioningStatusCheckIntervalNil() {
+	o.ProvisioningStatusCheckInterval.Set(nil)
+}
+
+// UnsetProvisioningStatusCheckInterval ensures that no value is present for ProvisioningStatusCheckInterval, not even an explicit nil
+func (o *OrgConfig) UnsetProvisioningStatusCheckInterval() {
+	o.ProvisioningStatusCheckInterval.Unset()
+}
+
+// GetProvisioningMaxStatusChecks returns the ProvisioningMaxStatusChecks field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *OrgConfig) GetProvisioningMaxStatusChecks() int32 {
+	if o == nil || IsNil(o.ProvisioningMaxStatusChecks.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.ProvisioningMaxStatusChecks.Get()
+}
+
+// GetProvisioningMaxStatusChecksOk returns a tuple with the ProvisioningMaxStatusChecks field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *OrgConfig) GetProvisioningMaxStatusChecksOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.ProvisioningMaxStatusChecks.Get(), o.ProvisioningMaxStatusChecks.IsSet()
+}
+
+// HasProvisioningMaxStatusChecks returns a boolean if a field has been set.
+func (o *OrgConfig) HasProvisioningMaxStatusChecks() bool {
+	if o != nil && o.ProvisioningMaxStatusChecks.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetProvisioningMaxStatusChecks gets a reference to the given NullableInt32 and assigns it to the ProvisioningMaxStatusChecks field.
+func (o *OrgConfig) SetProvisioningMaxStatusChecks(v int32) {
+	o.ProvisioningMaxStatusChecks.Set(&v)
+}
+// SetProvisioningMaxStatusChecksNil sets the value for ProvisioningMaxStatusChecks to be an explicit nil
+func (o *OrgConfig) SetProvisioningMaxStatusChecksNil() {
+	o.ProvisioningMaxStatusChecks.Set(nil)
+}
+
+// UnsetProvisioningMaxStatusChecks ensures that no value is present for ProvisioningMaxStatusChecks, not even an explicit nil
+func (o *OrgConfig) UnsetProvisioningMaxStatusChecks() {
+	o.ProvisioningMaxStatusChecks.Unset()
 }
 
 // GetSodReportConfigs returns the SodReportConfigs field value if set, zero value otherwise.
@@ -508,8 +665,8 @@ func (o OrgConfig) ToMap() (map[string]interface{}, error) {
 	if o.ArmCustomerId.IsSet() {
 		toSerialize["armCustomerId"] = o.ArmCustomerId.Get()
 	}
-	if o.ArmSapSystemIdMappings.IsSet() {
-		toSerialize["armSapSystemIdMappings"] = o.ArmSapSystemIdMappings.Get()
+	if o.ArmSapSystemIdMappings != nil {
+		toSerialize["armSapSystemIdMappings"] = o.ArmSapSystemIdMappings
 	}
 	if o.ArmAuth.IsSet() {
 		toSerialize["armAuth"] = o.ArmAuth.Get()
@@ -523,8 +680,20 @@ func (o OrgConfig) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.IaiEnableCertificationRecommendations) {
 		toSerialize["iaiEnableCertificationRecommendations"] = o.IaiEnableCertificationRecommendations
 	}
-	if o.AiAgentDeleteRequestEnabled.IsSet() {
-		toSerialize["aiAgentDeleteRequestEnabled"] = o.AiAgentDeleteRequestEnabled.Get()
+	if !IsNil(o.AiAgentDeleteRequestEnabled) {
+		toSerialize["aiAgentDeleteRequestEnabled"] = o.AiAgentDeleteRequestEnabled
+	}
+	if o.ProvisioningMaxRetries.IsSet() {
+		toSerialize["provisioningMaxRetries"] = o.ProvisioningMaxRetries.Get()
+	}
+	if o.ProvisioningRetryThreshold.IsSet() {
+		toSerialize["provisioningRetryThreshold"] = o.ProvisioningRetryThreshold.Get()
+	}
+	if o.ProvisioningStatusCheckInterval.IsSet() {
+		toSerialize["provisioningStatusCheckInterval"] = o.ProvisioningStatusCheckInterval.Get()
+	}
+	if o.ProvisioningMaxStatusChecks.IsSet() {
+		toSerialize["provisioningMaxStatusChecks"] = o.ProvisioningMaxStatusChecks.Get()
 	}
 	if !IsNil(o.SodReportConfigs) {
 		toSerialize["sodReportConfigs"] = o.SodReportConfigs
@@ -561,6 +730,10 @@ func (o *OrgConfig) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "armSsoUrl")
 		delete(additionalProperties, "iaiEnableCertificationRecommendations")
 		delete(additionalProperties, "aiAgentDeleteRequestEnabled")
+		delete(additionalProperties, "provisioningMaxRetries")
+		delete(additionalProperties, "provisioningRetryThreshold")
+		delete(additionalProperties, "provisioningStatusCheckInterval")
+		delete(additionalProperties, "provisioningMaxStatusChecks")
 		delete(additionalProperties, "sodReportConfigs")
 		o.AdditionalProperties = additionalProperties
 	}

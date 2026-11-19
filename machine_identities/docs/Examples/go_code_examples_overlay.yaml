@@ -191,7 +191,7 @@
           // response from `CreateMachineIdentityV2`: Machineidentityv2
           fmt.Fprintf(os.Stdout, "Response from `MachineIdentitiesAPI.CreateMachineIdentityV2`: %v\n", resp)
         }
-- path: /machine-identities/v2/bulk-delete
+- path: /machine-identities/v1/bulk-delete
   method: Post
   xCodeSample:
     - lang: Go
@@ -1191,7 +1191,7 @@
           // response from `StartMachineIdentityAggregationV1`: MachineIdentityAggregationResponse
           fmt.Fprintf(os.Stdout, "Response from `MachineIdentitiesAPI.StartMachineIdentityAggregationV1`: %v\n", resp)
         }
-- path: /machine-identities/v2/bulk-update
+- path: /machine-identities/v1/bulk-update
   method: Post
   xCodeSample:
     - lang: Go

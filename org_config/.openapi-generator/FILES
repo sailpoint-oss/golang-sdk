@@ -12,6 +12,7 @@ docs/ErrorMessageDto.md
 docs/ErrorResponseDto.md
 docs/GetOrgConfigV1401Response.md
 docs/GetOrgConfigV1429Response.md
+docs/IdnSourceToArmSystem.md
 docs/JsonPatchOperation.md
 docs/JsonPatchOperationValue.md
 docs/LocaleOrigin.md
@@ -28,6 +29,7 @@ model_error_message_dto.go
 model_error_response_dto.go
 model_get_org_config_v1_401_response.go
 model_get_org_config_v1_429_response.go
+model_idn_source_to_arm_system.go
 model_json_patch_operation.go
 model_json_patch_operation_value.go
 model_locale_origin.go

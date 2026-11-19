@@ -19,12 +19,16 @@ Name | Type | Description | Notes
 **TimeZone** | Pointer to **string** | The selected time zone which is to be used for the org.  This directly affects when scheduled tasks are executed.  Valid options can be found at /beta/org-config/valid-time-zones | [optional] 
 **LcsChangeHonorsSourceEnableFeature** | Pointer to **bool** | Flag to determine whether the LCS_CHANGE_HONORS_SOURCE_ENABLE_FEATURE flag is enabled for the current org. | [optional] [default to false]
 **ArmCustomerId** | Pointer to **NullableString** | ARM Customer ID | [optional] 
-**ArmSapSystemIdMappings** | Pointer to **NullableString** | A list of IDN::sourceId to ARM::systemId mappings. | [optional] 
+**ArmSapSystemIdMappings** | Pointer to [**[]IdnSourceToArmSystem**](idn-source-to-arm-system) | A list of IDN::sourceId to ARM::systemId mappings. | [optional] 
 **ArmAuth** | Pointer to **NullableString** | ARM authentication string | [optional] 
 **ArmDb** | Pointer to **NullableString** | ARM database name | [optional] 
 **ArmSsoUrl** | Pointer to **NullableString** | ARM SSO URL | [optional] 
 **IaiEnableCertificationRecommendations** | Pointer to **bool** | Flag to determine whether IAI Certification Recommendations are enabled for the current org | [optional] [default to true]
-**AiAgentDeleteRequestEnabled** | Pointer to **NullableBool** | Org opt-in flag that enables AI Agent delete-at-source lifecycle requests for the current org. | [optional] [default to false]
+**AiAgentDeleteRequestEnabled** | Pointer to **bool** | Org opt-in flag that enables AI Agent delete-at-source lifecycle requests for the current org. | [optional] [default to false]
+**ProvisioningMaxRetries** | Pointer to **NullableInt32** | The number of times a provisioning request is retried. | [optional] 
+**ProvisioningRetryThreshold** | Pointer to **NullableInt32** | The number of minutes between provisioning retries. | [optional] 
+**ProvisioningStatusCheckInterval** | Pointer to **NullableInt32** | The number of minutes between status checks of a queued provisioning request. | [optional] 
+**ProvisioningMaxStatusChecks** | Pointer to **NullableInt32** | The number of status checks that run before a queued provisioning request times out. | [optional] 
 **SodReportConfigs** | Pointer to [**[]ReportConfigDTO**](report-config-dto) |  | [optional] 
 
 ## Methods
@@ -158,20 +162,20 @@ HasArmCustomerId returns a boolean if a field has been set.
 UnsetArmCustomerId ensures that no value is present for ArmCustomerId, not even an explicit nil
 ### GetArmSapSystemIdMappings
 
-`func (o *OrgConfig) GetArmSapSystemIdMappings() string`
+`func (o *OrgConfig) GetArmSapSystemIdMappings() []IdnSourceToArmSystem`
 
 GetArmSapSystemIdMappings returns the ArmSapSystemIdMappings field if non-nil, zero value otherwise.
 
 ### GetArmSapSystemIdMappingsOk
 
-`func (o *OrgConfig) GetArmSapSystemIdMappingsOk() (*string, bool)`
+`func (o *OrgConfig) GetArmSapSystemIdMappingsOk() (*[]IdnSourceToArmSystem, bool)`
 
 GetArmSapSystemIdMappingsOk returns a tuple with the ArmSapSystemIdMappings field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetArmSapSystemIdMappings
 
-`func (o *OrgConfig) SetArmSapSystemIdMappings(v string)`
+`func (o *OrgConfig) SetArmSapSystemIdMappings(v []IdnSourceToArmSystem)`
 
 SetArmSapSystemIdMappings sets ArmSapSystemIdMappings field to given value.
 
@@ -346,16 +350,146 @@ SetAiAgentDeleteRequestEnabled sets AiAgentDeleteRequestEnabled field to given v
 
 HasAiAgentDeleteRequestEnabled returns a boolean if a field has been set.
 
-### SetAiAgentDeleteRequestEnabledNil
+### GetProvisioningMaxRetries
 
-`func (o *OrgConfig) SetAiAgentDeleteRequestEnabledNil(b bool)`
+`func (o *OrgConfig) GetProvisioningMaxRetries() int32`
 
- SetAiAgentDeleteRequestEnabledNil sets the value for AiAgentDeleteRequestEnabled to be an explicit nil
+GetProvisioningMaxRetries returns the ProvisioningMaxRetries field if non-nil, zero value otherwise.
 
-### UnsetAiAgentDeleteRequestEnabled
-`func (o *OrgConfig) UnsetAiAgentDeleteRequestEnabled()`
+### GetProvisioningMaxRetriesOk
 
-UnsetAiAgentDeleteRequestEnabled ensures that no value is present for AiAgentDeleteRequestEnabled, not even an explicit nil
+`func (o *OrgConfig) GetProvisioningMaxRetriesOk() (*int32, bool)`
+
+GetProvisioningMaxRetriesOk returns a tuple with the ProvisioningMaxRetries field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProvisioningMaxRetries
+
+`func (o *OrgConfig) SetProvisioningMaxRetries(v int32)`
+
+SetProvisioningMaxRetries sets ProvisioningMaxRetries field to given value.
+
+### HasProvisioningMaxRetries
+
+`func (o *OrgConfig) HasProvisioningMaxRetries() bool`
+
+HasProvisioningMaxRetries returns a boolean if a field has been set.
+
+### SetProvisioningMaxRetriesNil
+
+`func (o *OrgConfig) SetProvisioningMaxRetriesNil(b bool)`
+
+ SetProvisioningMaxRetriesNil sets the value for ProvisioningMaxRetries to be an explicit nil
+
+### UnsetProvisioningMaxRetries
+`func (o *OrgConfig) UnsetProvisioningMaxRetries()`
+
+UnsetProvisioningMaxRetries ensures that no value is present for ProvisioningMaxRetries, not even an explicit nil
+### GetProvisioningRetryThreshold
+
+`func (o *OrgConfig) GetProvisioningRetryThreshold() int32`
+
+GetProvisioningRetryThreshold returns the ProvisioningRetryThreshold field if non-nil, zero value otherwise.
+
+### GetProvisioningRetryThresholdOk
+
+`func (o *OrgConfig) GetProvisioningRetryThresholdOk() (*int32, bool)`
+
+GetProvisioningRetryThresholdOk returns a tuple with the ProvisioningRetryThreshold field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProvisioningRetryThreshold
+
+`func (o *OrgConfig) SetProvisioningRetryThreshold(v int32)`
+
+SetProvisioningRetryThreshold sets ProvisioningRetryThreshold field to given value.
+
+### HasProvisioningRetryThreshold
+
+`func (o *OrgConfig) HasProvisioningRetryThreshold() bool`
+
+HasProvisioningRetryThreshold returns a boolean if a field has been set.
+
+### SetProvisioningRetryThresholdNil
+
+`func (o *OrgConfig) SetProvisioningRetryThresholdNil(b bool)`
+
+ SetProvisioningRetryThresholdNil sets the value for ProvisioningRetryThreshold to be an explicit nil
+
+### UnsetProvisioningRetryThreshold
+`func (o *OrgConfig) UnsetProvisioningRetryThreshold()`
+
+UnsetProvisioningRetryThreshold ensures that no value is present for ProvisioningRetryThreshold, not even an explicit nil
+### GetProvisioningStatusCheckInterval
+
+`func (o *OrgConfig) GetProvisioningStatusCheckInterval() int32`
+
+GetProvisioningStatusCheckInterval returns the ProvisioningStatusCheckInterval field if non-nil, zero value otherwise.
+
+### GetProvisioningStatusCheckIntervalOk
+
+`func (o *OrgConfig) GetProvisioningStatusCheckIntervalOk() (*int32, bool)`
+
+GetProvisioningStatusCheckIntervalOk returns a tuple with the ProvisioningStatusCheckInterval field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProvisioningStatusCheckInterval
+
+`func (o *OrgConfig) SetProvisioningStatusCheckInterval(v int32)`
+
+SetProvisioningStatusCheckInterval sets ProvisioningStatusCheckInterval field to given value.
+
+### HasProvisioningStatusCheckInterval
+
+`func (o *OrgConfig) HasProvisioningStatusCheckInterval() bool`
+
+HasProvisioningStatusCheckInterval returns a boolean if a field has been set.
+
+### SetProvisioningStatusCheckIntervalNil
+
+`func (o *OrgConfig) SetProvisioningStatusCheckIntervalNil(b bool)`
+
+ SetProvisioningStatusCheckIntervalNil sets the value for ProvisioningStatusCheckInterval to be an explicit nil
+
+### UnsetProvisioningStatusCheckInterval
+`func (o *OrgConfig) UnsetProvisioningStatusCheckInterval()`
+
+UnsetProvisioningStatusCheckInterval ensures that no value is present for ProvisioningStatusCheckInterval, not even an explicit nil
+### GetProvisioningMaxStatusChecks
+
+`func (o *OrgConfig) GetProvisioningMaxStatusChecks() int32`
+
+GetProvisioningMaxStatusChecks returns the ProvisioningMaxStatusChecks field if non-nil, zero value otherwise.
+
+### GetProvisioningMaxStatusChecksOk
+
+`func (o *OrgConfig) GetProvisioningMaxStatusChecksOk() (*int32, bool)`
+
+GetProvisioningMaxStatusChecksOk returns a tuple with the ProvisioningMaxStatusChecks field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProvisioningMaxStatusChecks
+
+`func (o *OrgConfig) SetProvisioningMaxStatusChecks(v int32)`
+
+SetProvisioningMaxStatusChecks sets ProvisioningMaxStatusChecks field to given value.
+
+### HasProvisioningMaxStatusChecks
+
+`func (o *OrgConfig) HasProvisioningMaxStatusChecks() bool`
+
+HasProvisioningMaxStatusChecks returns a boolean if a field has been set.
+
+### SetProvisioningMaxStatusChecksNil
+
+`func (o *OrgConfig) SetProvisioningMaxStatusChecksNil(b bool)`
+
+ SetProvisioningMaxStatusChecksNil sets the value for ProvisioningMaxStatusChecks to be an explicit nil
+
+### UnsetProvisioningMaxStatusChecks
+`func (o *OrgConfig) UnsetProvisioningMaxStatusChecks()`
+
+UnsetProvisioningMaxStatusChecks ensures that no value is present for ProvisioningMaxStatusChecks, not even an explicit nil
 ### GetSodReportConfigs
 
 `func (o *OrgConfig) GetSodReportConfigs() []ReportConfigDTO`

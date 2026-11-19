@@ -10,7 +10,6 @@ configuration.go
 docs/ArrayInner.md
 docs/BaseCommonDto.md
 docs/BaseReferenceDto.md
-docs/CreateMachineAccountSubtypeV1Request.md
 docs/DtoType.md
 docs/ErrorMessageDto.md
 docs/ErrorResponseDto.md
@@ -45,14 +44,12 @@ docs/MachineAccountsAPIdeveloperSite_code_examples.yaml
 docs/MachineAccountsAsyncResult.md
 docs/MachineAccountsSummary.md
 docs/Methods/Index.md
-docs/SourceSubtype.md
 git_push.sh
 go.mod
 go.sum
 model_array_inner.go
 model_base_common_dto.go
 model_base_reference_dto.go
-model_create_machine_account_subtype_v1_request.go
 model_dto_type.go
 model_error_message_dto.go
 model_error_response_dto.go
@@ -84,7 +81,6 @@ model_machine_account_v2_all_of_risk.go
 model_machine_account_v2_all_of_subtype.go
 model_machine_accounts_async_result.go
 model_machine_accounts_summary.go
-model_source_subtype.go
 response.go
 test/api_machine_accounts_test.go
 utils.go

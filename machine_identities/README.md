@@ -81,7 +81,7 @@ Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *MachineIdentitiesAPI* | [**CreateMachineIdentityV1**](docs/MachineIdentitiesAPI.md#createmachineidentityv1) | **Post** /machine-identities/v1 | Create machine identity
 *MachineIdentitiesAPI* | [**CreateMachineIdentityV2**](docs/MachineIdentitiesAPI.md#createmachineidentityv2) | **Post** /machine-identities/v2 | Create machine identity
-*MachineIdentitiesAPI* | [**DeleteMachineIdentitiesInBulkV2**](docs/MachineIdentitiesAPI.md#deletemachineidentitiesinbulkv2) | **Post** /machine-identities/v2/bulk-delete | Bulk delete machine identities
+*MachineIdentitiesAPI* | [**DeleteMachineIdentitiesInBulkV2**](docs/MachineIdentitiesAPI.md#deletemachineidentitiesinbulkv2) | **Post** /machine-identities/v1/bulk-delete | Bulk delete machine identities
 *MachineIdentitiesAPI* | [**DeleteMachineIdentityAsyncV1**](docs/MachineIdentitiesAPI.md#deletemachineidentityasyncv1) | **Delete** /machine-identities/v1/{id}/delete-async | Delete AI agent asynchronously
 *MachineIdentitiesAPI* | [**DeleteMachineIdentityAsyncV2**](docs/MachineIdentitiesAPI.md#deletemachineidentityasyncv2) | **Delete** /machine-identities/v2/{id}/delete-async | Delete AI agent asynchronously
 *MachineIdentitiesAPI* | [**DeleteMachineIdentityV1**](docs/MachineIdentitiesAPI.md#deletemachineidentityv1) | **Delete** /machine-identities/v1/{id} | Delete machine identity
@@ -108,7 +108,7 @@ Class | Method | HTTP request | Description
 *MachineIdentitiesAPI* | [**ListOwnershipCorrelationConfigsV1**](docs/MachineIdentitiesAPI.md#listownershipcorrelationconfigsv1) | **Get** /sources/v1/{sourceId}/resources/{resourceId}/correlation-configs | List ownership correlation configs
 *MachineIdentitiesAPI* | [**PatchOwnershipCorrelationConfigV1**](docs/MachineIdentitiesAPI.md#patchownershipcorrelationconfigv1) | **Patch** /sources/v1/{sourceId}/resources/{resourceId}/correlation-configs/{configId} | Patch ownership correlation config
 *MachineIdentitiesAPI* | [**StartMachineIdentityAggregationV1**](docs/MachineIdentitiesAPI.md#startmachineidentityaggregationv1) | **Post** /sources/v1/{sourceId}/aggregate-agents | Start machine identity aggregation
-*MachineIdentitiesAPI* | [**UpdateMachineIdentitiesInBulkV2**](docs/MachineIdentitiesAPI.md#updatemachineidentitiesinbulkv2) | **Post** /machine-identities/v2/bulk-update | Bulk update machine identities
+*MachineIdentitiesAPI* | [**UpdateMachineIdentitiesInBulkV2**](docs/MachineIdentitiesAPI.md#updatemachineidentitiesinbulkv2) | **Post** /machine-identities/v1/bulk-update | Bulk update machine identities
 *MachineIdentitiesAPI* | [**UpdateMachineIdentityV1**](docs/MachineIdentitiesAPI.md#updatemachineidentityv1) | **Patch** /machine-identities/v1/{id} | Update machine identity details
 *MachineIdentitiesAPI* | [**UpdateMachineIdentityV2**](docs/MachineIdentitiesAPI.md#updatemachineidentityv2) | **Patch** /machine-identities/v2/{id} | Partial update of machine identity
 

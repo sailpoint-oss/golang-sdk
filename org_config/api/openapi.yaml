@@ -13,6 +13,7 @@ info:
   termsOfService: https://developer.sailpoint.com/discuss/tos
   title: SailPoint Identity Security API - Org Config
   version: v1
+  x-audience: external-public
 servers:
 - description: This is the production API server.
   url: "https://{tenant}.api.identitynow.com"
@@ -32,7 +33,7 @@ security:
 tags:
 - description: "Use this API to implement organization configuration functionality.\
     \ \nAdministrators can use this functionality to manage organization settings,\
-    \ such as time zones. \n"
+    \ such as time zones, provisioning retry and status check settings. \n"
   name: Org Config
 paths:
   /org-config/v1:
@@ -499,6 +500,19 @@ components:
             $ref: '#/components/schemas/ErrorResponseDto'
       description: Internal Server Error - Returned if there is an unexpected error.
   schemas:
+    IdnSourceToArmSystem:
+      description: A mapping from an IDN source id to an ARM system id.
+      properties:
+        sourceId:
+          description: The IDN source id.
+          example: 2c91808c791a94e501792388b0d62659
+          type: string
+        systemId:
+          description: The ARM system id.
+          example: "1556"
+          type: string
+      title: IDN Source To ARM System
+      type: object
     ReportConfigDTO:
       example:
         included: false
@@ -534,17 +548,47 @@ components:
       title: Report Config DTO
       type: object
     OrgConfig:
-      description: DTO class for OrgConfig data accessible by customer external org
-        admin ("ORG_ADMIN") users
+      description: |
+        OrgConfig settings accessible to external customer org admins (`ORG_ADMIN`).
+
+        ### Provisioning setting precedence
+
+        1. **Source value:** used first when set. When the request spans more than one source, the largest value among those sources wins.
+        2. **OrgConfig value:** used when no source value is set.
+        3. **Default:** used when neither is set.
+
+        A value outside the allowed range is ignored, and the next level is used.
+
+        ### Defaults
+
+        * **Retries:** 3
+        * **Retry interval:** 60 minutes. The actual wait varies by up to 10 percent above or below the interval, so requests that fail together do not retry at the same time.
+        * **Status check interval:** 240 minutes
+        * **Status check limit:** 180 checks
+
+        ### Scope
+
+        * **Retry count and retry interval:** account enable, disable, unlock, or delete; lifecycle changes that provision accounts; access requests; and RSA token PIN resets.
+        * **Not affected by these settings:** password changes, which use a fixed retry schedule.
+        * **Status check interval and status check limit:** queued provisioning requests.
       example:
         armAuth: epiYNTRYA2S7swisDWk1Zv4VMNgvqEjiBh5_ufuCWsma2m-5XADijqBg0ijXLby5nS6lxZNXabhGnAPGeDGc4V3jQKrhwV-UHypRLs8ZLgOjiQNus9NimS0uPdKomRW6TFWqXyfnYd-znNgbbVuwUy9GyD9ebDVJSntPastxSx7UcyGuWBqfNZYpuxKRWe_7TVY60qL55jUqyz8N4XUbbdcxdbZ0uik6ut-Bv90MKTbZexBW_PR4qcgIkaEs4kIenLyBxnGziYo7AO0tJ8bGHO8FJRkibCpAQIt7PISLo7Gg_Xf9j10dKq2YDgy4pPTvz3fE2ZHYnXCXvXFSA-vVag==
         armCustomerId: DE38E75A-5FF6-4A65-5DC7-08D64426B09E
         aiAgentDeleteRequestEnabled: false
         orgName: acme-solar
-        lcsChangeHonorsSourceEnableFeature: false
-        armDb: EU
         iaiEnableCertificationRecommendations: true
         timeZone: America/Toronto
+        armSapSystemIdMappings:
+        - sourceId: 2c91808c791a94e501792388b0d62659
+          systemId: "1556"
+        - sourceId: 2_2c91808c791a94e501792388b0d62659
+          systemId: "21556"
+        - sourceId: 3_2c91808c791a94e501792388b0d62659
+          systemId: "31556"
+        provisioningRetryThreshold: 60
+        lcsChangeHonorsSourceEnableFeature: false
+        armDb: EU
+        provisioningStatusCheckInterval: 240
         armSsoUrl: https://your-arm-sso-url
         sodReportConfigs:
         - included: false
@@ -555,10 +599,8 @@ components:
           required: true
           columnName: SOD Business Name
           order: 2
-        armSapSystemIdMappings: "[{\"sourceId\":\"2c91808c791a94e501792388b0d62659\"\
-          ,\"systemId\":\"1556\"},{\"sourceId\":\"2_2c91808c791a94e501792388b0d62659\"\
-          ,\"systemId\":21556},{\"sourceId\":\"3_2c91808c791a94e501792388b0d62659\"\
-          ,\"systemId\":31556}]"
+        provisioningMaxRetries: 3
+        provisioningMaxStatusChecks: 180
       properties:
         orgName:
           description: The name of the org.
@@ -583,12 +625,21 @@ components:
           type: string
         armSapSystemIdMappings:
           description: A list of IDN::sourceId to ARM::systemId mappings.
-          example: "[{\"sourceId\":\"2c91808c791a94e501792388b0d62659\",\"systemId\"\
-            :\"1556\"},{\"sourceId\":\"2_2c91808c791a94e501792388b0d62659\",\"systemId\"\
-            :21556},{\"sourceId\":\"3_2c91808c791a94e501792388b0d62659\",\"systemId\"\
-            :31556}]"
+          example:
+          - sourceId: 2c91808c791a94e501792388b0d62659
+            systemId: "1556"
+          - sourceId: 2_2c91808c791a94e501792388b0d62659
+            systemId: "21556"
+          - sourceId: 3_2c91808c791a94e501792388b0d62659
+            systemId: "31556"
+          items:
+            $ref: '#/components/schemas/IdnSourceToArmSystem'
           nullable: true
-          type: string
+          type: array
+          x-sailpoint-lint-ignore:
+            schema-arrays-must-not-be-nullable: Org config returns null for armSapSystemIdMappings
+              when the stored value is absent. An empty array is not what the API
+              returns.
         armAuth:
           description: ARM authentication string
           example: epiYNTRYA2S7swisDWk1Zv4VMNgvqEjiBh5_ufuCWsma2m-5XADijqBg0ijXLby5nS6lxZNXabhGnAPGeDGc4V3jQKrhwV-UHypRLs8ZLgOjiQNus9NimS0uPdKomRW6TFWqXyfnYd-znNgbbVuwUy9GyD9ebDVJSntPastxSx7UcyGuWBqfNZYpuxKRWe_7TVY60qL55jUqyz8N4XUbbdcxdbZ0uik6ut-Bv90MKTbZexBW_PR4qcgIkaEs4kIenLyBxnGziYo7AO0tJ8bGHO8FJRkibCpAQIt7PISLo7Gg_Xf9j10dKq2YDgy4pPTvz3fE2ZHYnXCXvXFSA-vVag==
@@ -602,6 +653,7 @@ components:
         armSsoUrl:
           description: ARM SSO URL
           example: https://your-arm-sso-url
+          format: uri
           nullable: true
           type: string
         iaiEnableCertificationRecommendations:
@@ -615,8 +667,41 @@ components:
           description: Org opt-in flag that enables AI Agent delete-at-source lifecycle
             requests for the current org.
           example: false
-          nullable: true
           type: boolean
+        provisioningMaxRetries:
+          description: The number of times a provisioning request is retried.
+          example: 3
+          format: int32
+          maximum: 24
+          minimum: 0
+          nullable: true
+          type: integer
+        provisioningRetryThreshold:
+          description: The number of minutes between provisioning retries.
+          example: 60
+          format: int32
+          maximum: 1440
+          minimum: 1
+          nullable: true
+          type: integer
+        provisioningStatusCheckInterval:
+          description: The number of minutes between status checks of a queued provisioning
+            request.
+          example: 240
+          format: int32
+          maximum: 1440
+          minimum: 1
+          nullable: true
+          type: integer
+        provisioningMaxStatusChecks:
+          description: The number of status checks that run before a queued provisioning
+            request times out.
+          example: 180
+          format: int32
+          maximum: 1000
+          minimum: 1
+          nullable: true
+          type: integer
         sodReportConfigs:
           items:
             $ref: '#/components/schemas/ReportConfigDTO'
