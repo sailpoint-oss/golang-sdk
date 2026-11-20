@@ -18,11 +18,15 @@ Name | Type | Description | Notes
 **Name** | **string** | name of branding item | 
 **ProductName** | **NullableString** | product name | 
 **ActionButtonColor** | Pointer to **string** | hex value of color for action button | [optional] 
+**DarkActionButtonColor** | Pointer to **string** | hex value of color for action button in dark mode | [optional] 
 **ActiveLinkColor** | Pointer to **string** | hex value of color for link | [optional] 
+**DarkActiveLinkColor** | Pointer to **string** | hex value of color for link in dark mode | [optional] 
 **NavigationColor** | Pointer to **string** | hex value of color for navigation bar | [optional] 
+**DarkNavigationColor** | Pointer to **string** | hex value of color for navigation bar in dark mode | [optional] 
 **EmailFromAddress** | Pointer to **string** | email from address | [optional] 
 **LoginInformationalMessage** | Pointer to **string** | login information message | [optional] 
-**FileStandard** | Pointer to ***os.File** | png file with logo | [optional] 
+**FileStandard** | Pointer to ***os.File** | png file with logo. To remove an existing logo, delete the branding item and create it again. Omitting this field on update keeps the current logo. | [optional] 
+**DarkFileStandard** | Pointer to ***os.File** | png file with dark-mode logo. To remove an existing dark-mode logo, delete the branding item and create it again. Omitting this field on update keeps the current dark-mode logo. | [optional] 
 
 ## Methods
 
@@ -118,6 +122,31 @@ SetActionButtonColor sets ActionButtonColor field to given value.
 
 HasActionButtonColor returns a boolean if a field has been set.
 
+### GetDarkActionButtonColor
+
+`func (o *BrandingItemCreate) GetDarkActionButtonColor() string`
+
+GetDarkActionButtonColor returns the DarkActionButtonColor field if non-nil, zero value otherwise.
+
+### GetDarkActionButtonColorOk
+
+`func (o *BrandingItemCreate) GetDarkActionButtonColorOk() (*string, bool)`
+
+GetDarkActionButtonColorOk returns a tuple with the DarkActionButtonColor field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDarkActionButtonColor
+
+`func (o *BrandingItemCreate) SetDarkActionButtonColor(v string)`
+
+SetDarkActionButtonColor sets DarkActionButtonColor field to given value.
+
+### HasDarkActionButtonColor
+
+`func (o *BrandingItemCreate) HasDarkActionButtonColor() bool`
+
+HasDarkActionButtonColor returns a boolean if a field has been set.
+
 ### GetActiveLinkColor
 
 `func (o *BrandingItemCreate) GetActiveLinkColor() string`
@@ -143,6 +172,31 @@ SetActiveLinkColor sets ActiveLinkColor field to given value.
 
 HasActiveLinkColor returns a boolean if a field has been set.
 
+### GetDarkActiveLinkColor
+
+`func (o *BrandingItemCreate) GetDarkActiveLinkColor() string`
+
+GetDarkActiveLinkColor returns the DarkActiveLinkColor field if non-nil, zero value otherwise.
+
+### GetDarkActiveLinkColorOk
+
+`func (o *BrandingItemCreate) GetDarkActiveLinkColorOk() (*string, bool)`
+
+GetDarkActiveLinkColorOk returns a tuple with the DarkActiveLinkColor field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDarkActiveLinkColor
+
+`func (o *BrandingItemCreate) SetDarkActiveLinkColor(v string)`
+
+SetDarkActiveLinkColor sets DarkActiveLinkColor field to given value.
+
+### HasDarkActiveLinkColor
+
+`func (o *BrandingItemCreate) HasDarkActiveLinkColor() bool`
+
+HasDarkActiveLinkColor returns a boolean if a field has been set.
+
 ### GetNavigationColor
 
 `func (o *BrandingItemCreate) GetNavigationColor() string`
@@ -167,6 +221,31 @@ SetNavigationColor sets NavigationColor field to given value.
 `func (o *BrandingItemCreate) HasNavigationColor() bool`
 
 HasNavigationColor returns a boolean if a field has been set.
+
+### GetDarkNavigationColor
+
+`func (o *BrandingItemCreate) GetDarkNavigationColor() string`
+
+GetDarkNavigationColor returns the DarkNavigationColor field if non-nil, zero value otherwise.
+
+### GetDarkNavigationColorOk
+
+`func (o *BrandingItemCreate) GetDarkNavigationColorOk() (*string, bool)`
+
+GetDarkNavigationColorOk returns a tuple with the DarkNavigationColor field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDarkNavigationColor
+
+`func (o *BrandingItemCreate) SetDarkNavigationColor(v string)`
+
+SetDarkNavigationColor sets DarkNavigationColor field to given value.
+
+### HasDarkNavigationColor
+
+`func (o *BrandingItemCreate) HasDarkNavigationColor() bool`
+
+HasDarkNavigationColor returns a boolean if a field has been set.
 
 ### GetEmailFromAddress
 
@@ -242,5 +321,30 @@ SetFileStandard sets FileStandard field to given value.
 `func (o *BrandingItemCreate) HasFileStandard() bool`
 
 HasFileStandard returns a boolean if a field has been set.
+
+### GetDarkFileStandard
+
+`func (o *BrandingItemCreate) GetDarkFileStandard() *os.File`
+
+GetDarkFileStandard returns the DarkFileStandard field if non-nil, zero value otherwise.
+
+### GetDarkFileStandardOk
+
+`func (o *BrandingItemCreate) GetDarkFileStandardOk() (**os.File, bool)`
+
+GetDarkFileStandardOk returns a tuple with the DarkFileStandard field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDarkFileStandard
+
+`func (o *BrandingItemCreate) SetDarkFileStandard(v *os.File)`
+
+SetDarkFileStandard sets DarkFileStandard field to given value.
+
+### HasDarkFileStandard
+
+`func (o *BrandingItemCreate) HasDarkFileStandard() bool`
+
+HasDarkFileStandard returns a boolean if a field has been set.
 
 

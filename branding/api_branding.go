@@ -30,11 +30,15 @@ type ApiCreateBrandingItemV1Request struct {
 	name *string
 	productName *string
 	actionButtonColor *string
+	darkActionButtonColor *string
 	activeLinkColor *string
+	darkActiveLinkColor *string
 	navigationColor *string
+	darkNavigationColor *string
 	emailFromAddress *string
 	loginInformationalMessage *string
 	fileStandard *os.File
+	darkFileStandard *os.File
 }
 
 // name of branding item
@@ -55,15 +59,33 @@ func (r ApiCreateBrandingItemV1Request) ActionButtonColor(actionButtonColor stri
 	return r
 }
 
+// hex value of color for action button in dark mode
+func (r ApiCreateBrandingItemV1Request) DarkActionButtonColor(darkActionButtonColor string) ApiCreateBrandingItemV1Request {
+	r.darkActionButtonColor = &darkActionButtonColor
+	return r
+}
+
 // hex value of color for link
 func (r ApiCreateBrandingItemV1Request) ActiveLinkColor(activeLinkColor string) ApiCreateBrandingItemV1Request {
 	r.activeLinkColor = &activeLinkColor
 	return r
 }
 
+// hex value of color for link in dark mode
+func (r ApiCreateBrandingItemV1Request) DarkActiveLinkColor(darkActiveLinkColor string) ApiCreateBrandingItemV1Request {
+	r.darkActiveLinkColor = &darkActiveLinkColor
+	return r
+}
+
 // hex value of color for navigation bar
 func (r ApiCreateBrandingItemV1Request) NavigationColor(navigationColor string) ApiCreateBrandingItemV1Request {
 	r.navigationColor = &navigationColor
+	return r
+}
+
+// hex value of color for navigation bar in dark mode
+func (r ApiCreateBrandingItemV1Request) DarkNavigationColor(darkNavigationColor string) ApiCreateBrandingItemV1Request {
+	r.darkNavigationColor = &darkNavigationColor
 	return r
 }
 
@@ -79,9 +101,15 @@ func (r ApiCreateBrandingItemV1Request) LoginInformationalMessage(loginInformati
 	return r
 }
 
-// png file with logo
+// png file with logo. To remove an existing logo, delete the branding item and create it again. Omitting this field on update keeps the current logo.
 func (r ApiCreateBrandingItemV1Request) FileStandard(fileStandard *os.File) ApiCreateBrandingItemV1Request {
 	r.fileStandard = fileStandard
+	return r
+}
+
+// png file with dark-mode logo. To remove an existing dark-mode logo, delete the branding item and create it again. Omitting this field on update keeps the current dark-mode logo.
+func (r ApiCreateBrandingItemV1Request) DarkFileStandard(darkFileStandard *os.File) ApiCreateBrandingItemV1Request {
+	r.darkFileStandard = darkFileStandard
 	return r
 }
 
@@ -153,11 +181,20 @@ func (a *BrandingAPIService) CreateBrandingItemV1Execute(r ApiCreateBrandingItem
 	if r.actionButtonColor != nil {
 		parameterAddToHeaderOrQuery(localVarFormParams, "actionButtonColor", r.actionButtonColor, "", "")
 	}
+	if r.darkActionButtonColor != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "darkActionButtonColor", r.darkActionButtonColor, "", "")
+	}
 	if r.activeLinkColor != nil {
 		parameterAddToHeaderOrQuery(localVarFormParams, "activeLinkColor", r.activeLinkColor, "", "")
 	}
+	if r.darkActiveLinkColor != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "darkActiveLinkColor", r.darkActiveLinkColor, "", "")
+	}
 	if r.navigationColor != nil {
 		parameterAddToHeaderOrQuery(localVarFormParams, "navigationColor", r.navigationColor, "", "")
+	}
+	if r.darkNavigationColor != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "darkNavigationColor", r.darkNavigationColor, "", "")
 	}
 	if r.emailFromAddress != nil {
 		parameterAddToHeaderOrQuery(localVarFormParams, "emailFromAddress", r.emailFromAddress, "", "")
@@ -179,6 +216,21 @@ func (a *BrandingAPIService) CreateBrandingItemV1Execute(r ApiCreateBrandingItem
 		fileStandardLocalVarFileName = fileStandardLocalVarFile.Name()
 		fileStandardLocalVarFile.Close()
 		formFiles = append(formFiles, formFile{fileBytes: fileStandardLocalVarFileBytes, fileName: fileStandardLocalVarFileName, formFileName: fileStandardLocalVarFormFileName})
+	}
+	var darkFileStandardLocalVarFormFileName string
+	var darkFileStandardLocalVarFileName     string
+	var darkFileStandardLocalVarFileBytes    []byte
+
+	darkFileStandardLocalVarFormFileName = "darkFileStandard"
+	darkFileStandardLocalVarFile := r.darkFileStandard
+
+	if darkFileStandardLocalVarFile != nil {
+		fbs, _ := io.ReadAll(darkFileStandardLocalVarFile)
+
+		darkFileStandardLocalVarFileBytes = fbs
+		darkFileStandardLocalVarFileName = darkFileStandardLocalVarFile.Name()
+		darkFileStandardLocalVarFile.Close()
+		formFiles = append(formFiles, formFile{fileBytes: darkFileStandardLocalVarFileBytes, fileName: darkFileStandardLocalVarFileName, formFileName: darkFileStandardLocalVarFormFileName})
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
@@ -391,6 +443,148 @@ func (a *BrandingAPIService) DeleteBrandingV1Execute(r ApiDeleteBrandingV1Reques
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v GetBrandingListV1429Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiDeleteDefaultBrandingV1Request struct {
+	ctx context.Context
+	ApiService *BrandingAPIService
+}
+
+func (r ApiDeleteDefaultBrandingV1Request) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteDefaultBrandingV1Execute(r)
+}
+
+/*
+DeleteDefaultBrandingV1 Clear the default branding item
+
+This API endpoint clears the customizable properties of the default branding item. The default item is kept.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiDeleteDefaultBrandingV1Request
+*/
+func (a *BrandingAPIService) DeleteDefaultBrandingV1(ctx context.Context) ApiDeleteDefaultBrandingV1Request {
+	return ApiDeleteDefaultBrandingV1Request{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+func (a *BrandingAPIService) DeleteDefaultBrandingV1Execute(r ApiDeleteDefaultBrandingV1Request) (*http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BrandingAPIService.DeleteDefaultBrandingV1")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/brandings/v1/default"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v GetBrandingListV1401Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
 			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -756,11 +950,15 @@ type ApiSetBrandingItemV1Request struct {
 	name2 *string
 	productName *string
 	actionButtonColor *string
+	darkActionButtonColor *string
 	activeLinkColor *string
+	darkActiveLinkColor *string
 	navigationColor *string
+	darkNavigationColor *string
 	emailFromAddress *string
 	loginInformationalMessage *string
 	fileStandard *os.File
+	darkFileStandard *os.File
 }
 
 // name of branding item
@@ -781,15 +979,33 @@ func (r ApiSetBrandingItemV1Request) ActionButtonColor(actionButtonColor string)
 	return r
 }
 
+// hex value of color for action button in dark mode
+func (r ApiSetBrandingItemV1Request) DarkActionButtonColor(darkActionButtonColor string) ApiSetBrandingItemV1Request {
+	r.darkActionButtonColor = &darkActionButtonColor
+	return r
+}
+
 // hex value of color for link
 func (r ApiSetBrandingItemV1Request) ActiveLinkColor(activeLinkColor string) ApiSetBrandingItemV1Request {
 	r.activeLinkColor = &activeLinkColor
 	return r
 }
 
+// hex value of color for link in dark mode
+func (r ApiSetBrandingItemV1Request) DarkActiveLinkColor(darkActiveLinkColor string) ApiSetBrandingItemV1Request {
+	r.darkActiveLinkColor = &darkActiveLinkColor
+	return r
+}
+
 // hex value of color for navigation bar
 func (r ApiSetBrandingItemV1Request) NavigationColor(navigationColor string) ApiSetBrandingItemV1Request {
 	r.navigationColor = &navigationColor
+	return r
+}
+
+// hex value of color for navigation bar in dark mode
+func (r ApiSetBrandingItemV1Request) DarkNavigationColor(darkNavigationColor string) ApiSetBrandingItemV1Request {
+	r.darkNavigationColor = &darkNavigationColor
 	return r
 }
 
@@ -805,9 +1021,15 @@ func (r ApiSetBrandingItemV1Request) LoginInformationalMessage(loginInformationa
 	return r
 }
 
-// png file with logo
+// png file with logo. To remove an existing logo, delete the branding item and create it again. Omitting this field on update keeps the current logo.
 func (r ApiSetBrandingItemV1Request) FileStandard(fileStandard *os.File) ApiSetBrandingItemV1Request {
 	r.fileStandard = fileStandard
+	return r
+}
+
+// png file with dark-mode logo. To remove an existing dark-mode logo, delete the branding item and create it again. Omitting this field on update keeps the current dark-mode logo.
+func (r ApiSetBrandingItemV1Request) DarkFileStandard(darkFileStandard *os.File) ApiSetBrandingItemV1Request {
+	r.darkFileStandard = darkFileStandard
 	return r
 }
 
@@ -882,11 +1104,20 @@ func (a *BrandingAPIService) SetBrandingItemV1Execute(r ApiSetBrandingItemV1Requ
 	if r.actionButtonColor != nil {
 		parameterAddToHeaderOrQuery(localVarFormParams, "actionButtonColor", r.actionButtonColor, "", "")
 	}
+	if r.darkActionButtonColor != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "darkActionButtonColor", r.darkActionButtonColor, "", "")
+	}
 	if r.activeLinkColor != nil {
 		parameterAddToHeaderOrQuery(localVarFormParams, "activeLinkColor", r.activeLinkColor, "", "")
 	}
+	if r.darkActiveLinkColor != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "darkActiveLinkColor", r.darkActiveLinkColor, "", "")
+	}
 	if r.navigationColor != nil {
 		parameterAddToHeaderOrQuery(localVarFormParams, "navigationColor", r.navigationColor, "", "")
+	}
+	if r.darkNavigationColor != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "darkNavigationColor", r.darkNavigationColor, "", "")
 	}
 	if r.emailFromAddress != nil {
 		parameterAddToHeaderOrQuery(localVarFormParams, "emailFromAddress", r.emailFromAddress, "", "")
@@ -908,6 +1139,21 @@ func (a *BrandingAPIService) SetBrandingItemV1Execute(r ApiSetBrandingItemV1Requ
 		fileStandardLocalVarFileName = fileStandardLocalVarFile.Name()
 		fileStandardLocalVarFile.Close()
 		formFiles = append(formFiles, formFile{fileBytes: fileStandardLocalVarFileBytes, fileName: fileStandardLocalVarFileName, formFileName: fileStandardLocalVarFormFileName})
+	}
+	var darkFileStandardLocalVarFormFileName string
+	var darkFileStandardLocalVarFileName     string
+	var darkFileStandardLocalVarFileBytes    []byte
+
+	darkFileStandardLocalVarFormFileName = "darkFileStandard"
+	darkFileStandardLocalVarFile := r.darkFileStandard
+
+	if darkFileStandardLocalVarFile != nil {
+		fbs, _ := io.ReadAll(darkFileStandardLocalVarFile)
+
+		darkFileStandardLocalVarFileBytes = fbs
+		darkFileStandardLocalVarFileName = darkFileStandardLocalVarFile.Name()
+		darkFileStandardLocalVarFile.Close()
+		formFiles = append(formFiles, formFile{fileBytes: darkFileStandardLocalVarFileBytes, fileName: darkFileStandardLocalVarFileName, formFileName: darkFileStandardLocalVarFormFileName})
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {

@@ -2497,6 +2497,22 @@
         "ORG_ADMIN"
       ]
     },
+    "deleteDefaultBrandingV1": {
+      "resource": "branding",
+      "tag": "Branding",
+      "sdkName": "DeleteDefaultBrandingV1",
+      "httpMethod": "DELETE",
+      "path": "/brandings/v1/default",
+      "userAuth": [
+        "idn:branding:manage"
+      ],
+      "applicationAuth": [
+        "idn:branding:manage"
+      ],
+      "userLevels": [
+        "ORG_ADMIN"
+      ]
+    },
     "deleteDimensionV1": {
       "resource": "dimensions",
       "tag": "Dimensions",

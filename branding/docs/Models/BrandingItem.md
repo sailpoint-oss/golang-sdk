@@ -18,10 +18,14 @@ Name | Type | Description | Notes
 **Name** | Pointer to **string** | name of branding item | [optional] 
 **ProductName** | Pointer to **NullableString** | product name | [optional] 
 **ActionButtonColor** | Pointer to **NullableString** | hex value of color for action button | [optional] 
+**DarkActionButtonColor** | Pointer to **NullableString** | hex value of color for action button in dark mode | [optional] 
 **ActiveLinkColor** | Pointer to **NullableString** | hex value of color for link | [optional] 
+**DarkActiveLinkColor** | Pointer to **NullableString** | hex value of color for link in dark mode | [optional] 
 **NavigationColor** | Pointer to **NullableString** | hex value of color for navigation bar | [optional] 
+**DarkNavigationColor** | Pointer to **NullableString** | hex value of color for navigation bar in dark mode | [optional] 
 **EmailFromAddress** | Pointer to **NullableString** | email from address | [optional] 
 **StandardLogoURL** | Pointer to **NullableString** | url to standard logo | [optional] 
+**DarkStandardLogoURL** | Pointer to **NullableString** | url to dark-mode logo | [optional] 
 **LoginInformationalMessage** | Pointer to **NullableString** | login information message | [optional] 
 
 ## Methods
@@ -138,6 +142,41 @@ HasActionButtonColor returns a boolean if a field has been set.
 `func (o *BrandingItem) UnsetActionButtonColor()`
 
 UnsetActionButtonColor ensures that no value is present for ActionButtonColor, not even an explicit nil
+### GetDarkActionButtonColor
+
+`func (o *BrandingItem) GetDarkActionButtonColor() string`
+
+GetDarkActionButtonColor returns the DarkActionButtonColor field if non-nil, zero value otherwise.
+
+### GetDarkActionButtonColorOk
+
+`func (o *BrandingItem) GetDarkActionButtonColorOk() (*string, bool)`
+
+GetDarkActionButtonColorOk returns a tuple with the DarkActionButtonColor field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDarkActionButtonColor
+
+`func (o *BrandingItem) SetDarkActionButtonColor(v string)`
+
+SetDarkActionButtonColor sets DarkActionButtonColor field to given value.
+
+### HasDarkActionButtonColor
+
+`func (o *BrandingItem) HasDarkActionButtonColor() bool`
+
+HasDarkActionButtonColor returns a boolean if a field has been set.
+
+### SetDarkActionButtonColorNil
+
+`func (o *BrandingItem) SetDarkActionButtonColorNil(b bool)`
+
+ SetDarkActionButtonColorNil sets the value for DarkActionButtonColor to be an explicit nil
+
+### UnsetDarkActionButtonColor
+`func (o *BrandingItem) UnsetDarkActionButtonColor()`
+
+UnsetDarkActionButtonColor ensures that no value is present for DarkActionButtonColor, not even an explicit nil
 ### GetActiveLinkColor
 
 `func (o *BrandingItem) GetActiveLinkColor() string`
@@ -173,6 +212,41 @@ HasActiveLinkColor returns a boolean if a field has been set.
 `func (o *BrandingItem) UnsetActiveLinkColor()`
 
 UnsetActiveLinkColor ensures that no value is present for ActiveLinkColor, not even an explicit nil
+### GetDarkActiveLinkColor
+
+`func (o *BrandingItem) GetDarkActiveLinkColor() string`
+
+GetDarkActiveLinkColor returns the DarkActiveLinkColor field if non-nil, zero value otherwise.
+
+### GetDarkActiveLinkColorOk
+
+`func (o *BrandingItem) GetDarkActiveLinkColorOk() (*string, bool)`
+
+GetDarkActiveLinkColorOk returns a tuple with the DarkActiveLinkColor field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDarkActiveLinkColor
+
+`func (o *BrandingItem) SetDarkActiveLinkColor(v string)`
+
+SetDarkActiveLinkColor sets DarkActiveLinkColor field to given value.
+
+### HasDarkActiveLinkColor
+
+`func (o *BrandingItem) HasDarkActiveLinkColor() bool`
+
+HasDarkActiveLinkColor returns a boolean if a field has been set.
+
+### SetDarkActiveLinkColorNil
+
+`func (o *BrandingItem) SetDarkActiveLinkColorNil(b bool)`
+
+ SetDarkActiveLinkColorNil sets the value for DarkActiveLinkColor to be an explicit nil
+
+### UnsetDarkActiveLinkColor
+`func (o *BrandingItem) UnsetDarkActiveLinkColor()`
+
+UnsetDarkActiveLinkColor ensures that no value is present for DarkActiveLinkColor, not even an explicit nil
 ### GetNavigationColor
 
 `func (o *BrandingItem) GetNavigationColor() string`
@@ -208,6 +282,41 @@ HasNavigationColor returns a boolean if a field has been set.
 `func (o *BrandingItem) UnsetNavigationColor()`
 
 UnsetNavigationColor ensures that no value is present for NavigationColor, not even an explicit nil
+### GetDarkNavigationColor
+
+`func (o *BrandingItem) GetDarkNavigationColor() string`
+
+GetDarkNavigationColor returns the DarkNavigationColor field if non-nil, zero value otherwise.
+
+### GetDarkNavigationColorOk
+
+`func (o *BrandingItem) GetDarkNavigationColorOk() (*string, bool)`
+
+GetDarkNavigationColorOk returns a tuple with the DarkNavigationColor field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDarkNavigationColor
+
+`func (o *BrandingItem) SetDarkNavigationColor(v string)`
+
+SetDarkNavigationColor sets DarkNavigationColor field to given value.
+
+### HasDarkNavigationColor
+
+`func (o *BrandingItem) HasDarkNavigationColor() bool`
+
+HasDarkNavigationColor returns a boolean if a field has been set.
+
+### SetDarkNavigationColorNil
+
+`func (o *BrandingItem) SetDarkNavigationColorNil(b bool)`
+
+ SetDarkNavigationColorNil sets the value for DarkNavigationColor to be an explicit nil
+
+### UnsetDarkNavigationColor
+`func (o *BrandingItem) UnsetDarkNavigationColor()`
+
+UnsetDarkNavigationColor ensures that no value is present for DarkNavigationColor, not even an explicit nil
 ### GetEmailFromAddress
 
 `func (o *BrandingItem) GetEmailFromAddress() string`
@@ -278,6 +387,41 @@ HasStandardLogoURL returns a boolean if a field has been set.
 `func (o *BrandingItem) UnsetStandardLogoURL()`
 
 UnsetStandardLogoURL ensures that no value is present for StandardLogoURL, not even an explicit nil
+### GetDarkStandardLogoURL
+
+`func (o *BrandingItem) GetDarkStandardLogoURL() string`
+
+GetDarkStandardLogoURL returns the DarkStandardLogoURL field if non-nil, zero value otherwise.
+
+### GetDarkStandardLogoURLOk
+
+`func (o *BrandingItem) GetDarkStandardLogoURLOk() (*string, bool)`
+
+GetDarkStandardLogoURLOk returns a tuple with the DarkStandardLogoURL field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDarkStandardLogoURL
+
+`func (o *BrandingItem) SetDarkStandardLogoURL(v string)`
+
+SetDarkStandardLogoURL sets DarkStandardLogoURL field to given value.
+
+### HasDarkStandardLogoURL
+
+`func (o *BrandingItem) HasDarkStandardLogoURL() bool`
+
+HasDarkStandardLogoURL returns a boolean if a field has been set.
+
+### SetDarkStandardLogoURLNil
+
+`func (o *BrandingItem) SetDarkStandardLogoURLNil(b bool)`
+
+ SetDarkStandardLogoURLNil sets the value for DarkStandardLogoURL to be an explicit nil
+
+### UnsetDarkStandardLogoURL
+`func (o *BrandingItem) UnsetDarkStandardLogoURL()`
+
+UnsetDarkStandardLogoURL ensures that no value is present for DarkStandardLogoURL, not even an explicit nil
 ### GetLoginInformationalMessage
 
 `func (o *BrandingItem) GetLoginInformationalMessage() string`

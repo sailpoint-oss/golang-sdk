@@ -22,6 +22,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**create-branding-item-v1**](#create-branding-item-v1) | **Post** `/brandings/v1` | Create a branding item
 [**delete-branding-v1**](#delete-branding-v1) | **Delete** `/brandings/v1/{name}` | Delete a branding item
+[**delete-default-branding-v1**](#delete-default-branding-v1) | **Delete** `/brandings/v1/default` | Clear the default branding item
 [**get-branding-list-v1**](#get-branding-list-v1) | **Get** `/brandings/v1` | List of branding items
 [**get-branding-v1**](#get-branding-v1) | **Get** `/brandings/v1/{name}` | Get a branding item
 [**set-branding-item-v1**](#set-branding-item-v1) | **Put** `/brandings/v1/{name}` | Update a branding item
@@ -47,11 +48,15 @@ Name | Type | Description  | Notes
  **name** | **string** | name of branding item | 
  **productName** | **string** | product name | 
  **actionButtonColor** | **string** | hex value of color for action button | 
+ **darkActionButtonColor** | **string** | hex value of color for action button in dark mode | 
  **activeLinkColor** | **string** | hex value of color for link | 
+ **darkActiveLinkColor** | **string** | hex value of color for link in dark mode | 
  **navigationColor** | **string** | hex value of color for navigation bar | 
+ **darkNavigationColor** | **string** | hex value of color for navigation bar in dark mode | 
  **emailFromAddress** | **string** | email from address | 
  **loginInformationalMessage** | **string** | login information message | 
- **fileStandard** | ***os.File** | png file with logo | 
+ **fileStandard** | ***os.File** | png file with logo. To remove an existing logo, delete the branding item and create it again. Omitting this field on update keeps the current logo. | 
+ **darkFileStandard** | ***os.File** | png file with dark-mode logo. To remove an existing dark-mode logo, delete the branding item and create it again. Omitting this field on update keeps the current dark-mode logo. | 
 
 ### Return type
 
@@ -80,18 +85,22 @@ func main() {
     name := `name_example` // string | name of branding item # string | name of branding item
     productName := `productName_example` // string | product name # string | product name
     actionButtonColor := `actionButtonColor_example` // string | hex value of color for action button (optional) # string | hex value of color for action button (optional)
+    darkActionButtonColor := `darkActionButtonColor_example` // string | hex value of color for action button in dark mode (optional) # string | hex value of color for action button in dark mode (optional)
     activeLinkColor := `activeLinkColor_example` // string | hex value of color for link (optional) # string | hex value of color for link (optional)
+    darkActiveLinkColor := `darkActiveLinkColor_example` // string | hex value of color for link in dark mode (optional) # string | hex value of color for link in dark mode (optional)
     navigationColor := `navigationColor_example` // string | hex value of color for navigation bar (optional) # string | hex value of color for navigation bar (optional)
+    darkNavigationColor := `darkNavigationColor_example` // string | hex value of color for navigation bar in dark mode (optional) # string | hex value of color for navigation bar in dark mode (optional)
     emailFromAddress := `emailFromAddress_example` // string | email from address (optional) # string | email from address (optional)
     loginInformationalMessage := `loginInformationalMessage_example` // string | login information message (optional) # string | login information message (optional)
-    fileStandard := BINARY_DATA_HERE // *os.File | png file with logo (optional) # *os.File | png file with logo (optional)
+    fileStandard := BINARY_DATA_HERE // *os.File | png file with logo. To remove an existing logo, delete the branding item and create it again. Omitting this field on update keeps the current logo. (optional) # *os.File | png file with logo. To remove an existing logo, delete the branding item and create it again. Omitting this field on update keeps the current logo. (optional)
+    darkFileStandard := BINARY_DATA_HERE // *os.File | png file with dark-mode logo. To remove an existing dark-mode logo, delete the branding item and create it again. Omitting this field on update keeps the current dark-mode logo. (optional) # *os.File | png file with dark-mode logo. To remove an existing dark-mode logo, delete the branding item and create it again. Omitting this field on update keeps the current dark-mode logo. (optional)
 
     
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
     resp, r, err := apiClient.BrandingAPI.CreateBrandingItemV1(context.Background()).Name(name).ProductName(productName).Execute()
-	  //resp, r, err := apiClient.BrandingAPI.CreateBrandingItemV1(context.Background()).Name(name).ProductName(productName).ActionButtonColor(actionButtonColor).ActiveLinkColor(activeLinkColor).NavigationColor(navigationColor).EmailFromAddress(emailFromAddress).LoginInformationalMessage(loginInformationalMessage).FileStandard(fileStandard).Execute()
+	  //resp, r, err := apiClient.BrandingAPI.CreateBrandingItemV1(context.Background()).Name(name).ProductName(productName).ActionButtonColor(actionButtonColor).DarkActionButtonColor(darkActionButtonColor).ActiveLinkColor(activeLinkColor).DarkActiveLinkColor(darkActiveLinkColor).NavigationColor(navigationColor).DarkNavigationColor(darkNavigationColor).EmailFromAddress(emailFromAddress).LoginInformationalMessage(loginInformationalMessage).FileStandard(fileStandard).DarkFileStandard(darkFileStandard).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `BrandingAPI.CreateBrandingItemV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -160,6 +169,62 @@ func main() {
 	  //r, err := apiClient.BrandingAPI.DeleteBrandingV1(context.Background(), name).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `BrandingAPI.DeleteBrandingV1``: %v\n", err)
+	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    
+}
+```
+
+[[Back to top]](#)
+
+## delete-default-branding-v1
+Clear the default branding item
+This API endpoint clears the customizable properties of the default branding item. The default item is kept.
+
+[API Spec](https://developer.sailpoint.com/docs/api/delete-default-branding-v-1)
+
+### Path Parameters
+
+This endpoint does not need any parameter.
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeleteDefaultBrandingV1Request struct via the builder pattern
+
+
+### Return type
+
+ (empty response body)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+  
+    
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+)
+
+func main() {
+
+    
+
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    r, err := apiClient.BrandingAPI.DeleteDefaultBrandingV1(context.Background()).Execute()
+	  //r, err := apiClient.BrandingAPI.DeleteDefaultBrandingV1(context.Background()).Execute()
+    if err != nil {
+	    fmt.Fprintf(os.Stderr, "Error when calling `BrandingAPI.DeleteDefaultBrandingV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     
@@ -316,11 +381,15 @@ Name | Type | Description  | Notes
  **name2** | **string** | name of branding item | 
  **productName** | **string** | product name | 
  **actionButtonColor** | **string** | hex value of color for action button | 
+ **darkActionButtonColor** | **string** | hex value of color for action button in dark mode | 
  **activeLinkColor** | **string** | hex value of color for link | 
+ **darkActiveLinkColor** | **string** | hex value of color for link in dark mode | 
  **navigationColor** | **string** | hex value of color for navigation bar | 
+ **darkNavigationColor** | **string** | hex value of color for navigation bar in dark mode | 
  **emailFromAddress** | **string** | email from address | 
  **loginInformationalMessage** | **string** | login information message | 
- **fileStandard** | ***os.File** | png file with logo | 
+ **fileStandard** | ***os.File** | png file with logo. To remove an existing logo, delete the branding item and create it again. Omitting this field on update keeps the current logo. | 
+ **darkFileStandard** | ***os.File** | png file with dark-mode logo. To remove an existing dark-mode logo, delete the branding item and create it again. Omitting this field on update keeps the current dark-mode logo. | 
 
 ### Return type
 
@@ -350,18 +419,22 @@ func main() {
     name2 := `name_example` // string | name of branding item # string | name of branding item
     productName := `productName_example` // string | product name # string | product name
     actionButtonColor := `actionButtonColor_example` // string | hex value of color for action button (optional) # string | hex value of color for action button (optional)
+    darkActionButtonColor := `darkActionButtonColor_example` // string | hex value of color for action button in dark mode (optional) # string | hex value of color for action button in dark mode (optional)
     activeLinkColor := `activeLinkColor_example` // string | hex value of color for link (optional) # string | hex value of color for link (optional)
+    darkActiveLinkColor := `darkActiveLinkColor_example` // string | hex value of color for link in dark mode (optional) # string | hex value of color for link in dark mode (optional)
     navigationColor := `navigationColor_example` // string | hex value of color for navigation bar (optional) # string | hex value of color for navigation bar (optional)
+    darkNavigationColor := `darkNavigationColor_example` // string | hex value of color for navigation bar in dark mode (optional) # string | hex value of color for navigation bar in dark mode (optional)
     emailFromAddress := `emailFromAddress_example` // string | email from address (optional) # string | email from address (optional)
     loginInformationalMessage := `loginInformationalMessage_example` // string | login information message (optional) # string | login information message (optional)
-    fileStandard := BINARY_DATA_HERE // *os.File | png file with logo (optional) # *os.File | png file with logo (optional)
+    fileStandard := BINARY_DATA_HERE // *os.File | png file with logo. To remove an existing logo, delete the branding item and create it again. Omitting this field on update keeps the current logo. (optional) # *os.File | png file with logo. To remove an existing logo, delete the branding item and create it again. Omitting this field on update keeps the current logo. (optional)
+    darkFileStandard := BINARY_DATA_HERE // *os.File | png file with dark-mode logo. To remove an existing dark-mode logo, delete the branding item and create it again. Omitting this field on update keeps the current dark-mode logo. (optional) # *os.File | png file with dark-mode logo. To remove an existing dark-mode logo, delete the branding item and create it again. Omitting this field on update keeps the current dark-mode logo. (optional)
 
     
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
     resp, r, err := apiClient.BrandingAPI.SetBrandingItemV1(context.Background(), name).Name2(name2).ProductName(productName).Execute()
-	  //resp, r, err := apiClient.BrandingAPI.SetBrandingItemV1(context.Background(), name).Name2(name2).ProductName(productName).ActionButtonColor(actionButtonColor).ActiveLinkColor(activeLinkColor).NavigationColor(navigationColor).EmailFromAddress(emailFromAddress).LoginInformationalMessage(loginInformationalMessage).FileStandard(fileStandard).Execute()
+	  //resp, r, err := apiClient.BrandingAPI.SetBrandingItemV1(context.Background(), name).Name2(name2).ProductName(productName).ActionButtonColor(actionButtonColor).DarkActionButtonColor(darkActionButtonColor).ActiveLinkColor(activeLinkColor).DarkActiveLinkColor(darkActiveLinkColor).NavigationColor(navigationColor).DarkNavigationColor(darkNavigationColor).EmailFromAddress(emailFromAddress).LoginInformationalMessage(loginInformationalMessage).FileStandard(fileStandard).DarkFileStandard(darkFileStandard).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `BrandingAPI.SetBrandingItemV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

@@ -25,14 +25,22 @@ type BrandingItem struct {
 	ProductName NullableString `json:"productName,omitempty"`
 	// hex value of color for action button
 	ActionButtonColor NullableString `json:"actionButtonColor,omitempty"`
+	// hex value of color for action button in dark mode
+	DarkActionButtonColor NullableString `json:"darkActionButtonColor,omitempty"`
 	// hex value of color for link
 	ActiveLinkColor NullableString `json:"activeLinkColor,omitempty"`
+	// hex value of color for link in dark mode
+	DarkActiveLinkColor NullableString `json:"darkActiveLinkColor,omitempty"`
 	// hex value of color for navigation bar
 	NavigationColor NullableString `json:"navigationColor,omitempty"`
+	// hex value of color for navigation bar in dark mode
+	DarkNavigationColor NullableString `json:"darkNavigationColor,omitempty"`
 	// email from address
 	EmailFromAddress NullableString `json:"emailFromAddress,omitempty"`
 	// url to standard logo
 	StandardLogoURL NullableString `json:"standardLogoURL,omitempty"`
+	// url to dark-mode logo
+	DarkStandardLogoURL NullableString `json:"darkStandardLogoURL,omitempty"`
 	// login information message
 	LoginInformationalMessage NullableString `json:"loginInformationalMessage,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -173,6 +181,48 @@ func (o *BrandingItem) UnsetActionButtonColor() {
 	o.ActionButtonColor.Unset()
 }
 
+// GetDarkActionButtonColor returns the DarkActionButtonColor field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *BrandingItem) GetDarkActionButtonColor() string {
+	if o == nil || IsNil(o.DarkActionButtonColor.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.DarkActionButtonColor.Get()
+}
+
+// GetDarkActionButtonColorOk returns a tuple with the DarkActionButtonColor field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *BrandingItem) GetDarkActionButtonColorOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.DarkActionButtonColor.Get(), o.DarkActionButtonColor.IsSet()
+}
+
+// HasDarkActionButtonColor returns a boolean if a field has been set.
+func (o *BrandingItem) HasDarkActionButtonColor() bool {
+	if o != nil && o.DarkActionButtonColor.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetDarkActionButtonColor gets a reference to the given NullableString and assigns it to the DarkActionButtonColor field.
+func (o *BrandingItem) SetDarkActionButtonColor(v string) {
+	o.DarkActionButtonColor.Set(&v)
+}
+// SetDarkActionButtonColorNil sets the value for DarkActionButtonColor to be an explicit nil
+func (o *BrandingItem) SetDarkActionButtonColorNil() {
+	o.DarkActionButtonColor.Set(nil)
+}
+
+// UnsetDarkActionButtonColor ensures that no value is present for DarkActionButtonColor, not even an explicit nil
+func (o *BrandingItem) UnsetDarkActionButtonColor() {
+	o.DarkActionButtonColor.Unset()
+}
+
 // GetActiveLinkColor returns the ActiveLinkColor field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *BrandingItem) GetActiveLinkColor() string {
 	if o == nil || IsNil(o.ActiveLinkColor.Get()) {
@@ -215,6 +265,48 @@ func (o *BrandingItem) UnsetActiveLinkColor() {
 	o.ActiveLinkColor.Unset()
 }
 
+// GetDarkActiveLinkColor returns the DarkActiveLinkColor field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *BrandingItem) GetDarkActiveLinkColor() string {
+	if o == nil || IsNil(o.DarkActiveLinkColor.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.DarkActiveLinkColor.Get()
+}
+
+// GetDarkActiveLinkColorOk returns a tuple with the DarkActiveLinkColor field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *BrandingItem) GetDarkActiveLinkColorOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.DarkActiveLinkColor.Get(), o.DarkActiveLinkColor.IsSet()
+}
+
+// HasDarkActiveLinkColor returns a boolean if a field has been set.
+func (o *BrandingItem) HasDarkActiveLinkColor() bool {
+	if o != nil && o.DarkActiveLinkColor.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetDarkActiveLinkColor gets a reference to the given NullableString and assigns it to the DarkActiveLinkColor field.
+func (o *BrandingItem) SetDarkActiveLinkColor(v string) {
+	o.DarkActiveLinkColor.Set(&v)
+}
+// SetDarkActiveLinkColorNil sets the value for DarkActiveLinkColor to be an explicit nil
+func (o *BrandingItem) SetDarkActiveLinkColorNil() {
+	o.DarkActiveLinkColor.Set(nil)
+}
+
+// UnsetDarkActiveLinkColor ensures that no value is present for DarkActiveLinkColor, not even an explicit nil
+func (o *BrandingItem) UnsetDarkActiveLinkColor() {
+	o.DarkActiveLinkColor.Unset()
+}
+
 // GetNavigationColor returns the NavigationColor field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *BrandingItem) GetNavigationColor() string {
 	if o == nil || IsNil(o.NavigationColor.Get()) {
@@ -255,6 +347,48 @@ func (o *BrandingItem) SetNavigationColorNil() {
 // UnsetNavigationColor ensures that no value is present for NavigationColor, not even an explicit nil
 func (o *BrandingItem) UnsetNavigationColor() {
 	o.NavigationColor.Unset()
+}
+
+// GetDarkNavigationColor returns the DarkNavigationColor field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *BrandingItem) GetDarkNavigationColor() string {
+	if o == nil || IsNil(o.DarkNavigationColor.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.DarkNavigationColor.Get()
+}
+
+// GetDarkNavigationColorOk returns a tuple with the DarkNavigationColor field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *BrandingItem) GetDarkNavigationColorOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.DarkNavigationColor.Get(), o.DarkNavigationColor.IsSet()
+}
+
+// HasDarkNavigationColor returns a boolean if a field has been set.
+func (o *BrandingItem) HasDarkNavigationColor() bool {
+	if o != nil && o.DarkNavigationColor.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetDarkNavigationColor gets a reference to the given NullableString and assigns it to the DarkNavigationColor field.
+func (o *BrandingItem) SetDarkNavigationColor(v string) {
+	o.DarkNavigationColor.Set(&v)
+}
+// SetDarkNavigationColorNil sets the value for DarkNavigationColor to be an explicit nil
+func (o *BrandingItem) SetDarkNavigationColorNil() {
+	o.DarkNavigationColor.Set(nil)
+}
+
+// UnsetDarkNavigationColor ensures that no value is present for DarkNavigationColor, not even an explicit nil
+func (o *BrandingItem) UnsetDarkNavigationColor() {
+	o.DarkNavigationColor.Unset()
 }
 
 // GetEmailFromAddress returns the EmailFromAddress field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -341,6 +475,48 @@ func (o *BrandingItem) UnsetStandardLogoURL() {
 	o.StandardLogoURL.Unset()
 }
 
+// GetDarkStandardLogoURL returns the DarkStandardLogoURL field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *BrandingItem) GetDarkStandardLogoURL() string {
+	if o == nil || IsNil(o.DarkStandardLogoURL.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.DarkStandardLogoURL.Get()
+}
+
+// GetDarkStandardLogoURLOk returns a tuple with the DarkStandardLogoURL field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *BrandingItem) GetDarkStandardLogoURLOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.DarkStandardLogoURL.Get(), o.DarkStandardLogoURL.IsSet()
+}
+
+// HasDarkStandardLogoURL returns a boolean if a field has been set.
+func (o *BrandingItem) HasDarkStandardLogoURL() bool {
+	if o != nil && o.DarkStandardLogoURL.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetDarkStandardLogoURL gets a reference to the given NullableString and assigns it to the DarkStandardLogoURL field.
+func (o *BrandingItem) SetDarkStandardLogoURL(v string) {
+	o.DarkStandardLogoURL.Set(&v)
+}
+// SetDarkStandardLogoURLNil sets the value for DarkStandardLogoURL to be an explicit nil
+func (o *BrandingItem) SetDarkStandardLogoURLNil() {
+	o.DarkStandardLogoURL.Set(nil)
+}
+
+// UnsetDarkStandardLogoURL ensures that no value is present for DarkStandardLogoURL, not even an explicit nil
+func (o *BrandingItem) UnsetDarkStandardLogoURL() {
+	o.DarkStandardLogoURL.Unset()
+}
+
 // GetLoginInformationalMessage returns the LoginInformationalMessage field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *BrandingItem) GetLoginInformationalMessage() string {
 	if o == nil || IsNil(o.LoginInformationalMessage.Get()) {
@@ -402,17 +578,29 @@ func (o BrandingItem) ToMap() (map[string]interface{}, error) {
 	if o.ActionButtonColor.IsSet() {
 		toSerialize["actionButtonColor"] = o.ActionButtonColor.Get()
 	}
+	if o.DarkActionButtonColor.IsSet() {
+		toSerialize["darkActionButtonColor"] = o.DarkActionButtonColor.Get()
+	}
 	if o.ActiveLinkColor.IsSet() {
 		toSerialize["activeLinkColor"] = o.ActiveLinkColor.Get()
 	}
+	if o.DarkActiveLinkColor.IsSet() {
+		toSerialize["darkActiveLinkColor"] = o.DarkActiveLinkColor.Get()
+	}
 	if o.NavigationColor.IsSet() {
 		toSerialize["navigationColor"] = o.NavigationColor.Get()
+	}
+	if o.DarkNavigationColor.IsSet() {
+		toSerialize["darkNavigationColor"] = o.DarkNavigationColor.Get()
 	}
 	if o.EmailFromAddress.IsSet() {
 		toSerialize["emailFromAddress"] = o.EmailFromAddress.Get()
 	}
 	if o.StandardLogoURL.IsSet() {
 		toSerialize["standardLogoURL"] = o.StandardLogoURL.Get()
+	}
+	if o.DarkStandardLogoURL.IsSet() {
+		toSerialize["darkStandardLogoURL"] = o.DarkStandardLogoURL.Get()
 	}
 	if o.LoginInformationalMessage.IsSet() {
 		toSerialize["loginInformationalMessage"] = o.LoginInformationalMessage.Get()
@@ -442,10 +630,14 @@ func (o *BrandingItem) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "productName")
 		delete(additionalProperties, "actionButtonColor")
+		delete(additionalProperties, "darkActionButtonColor")
 		delete(additionalProperties, "activeLinkColor")
+		delete(additionalProperties, "darkActiveLinkColor")
 		delete(additionalProperties, "navigationColor")
+		delete(additionalProperties, "darkNavigationColor")
 		delete(additionalProperties, "emailFromAddress")
 		delete(additionalProperties, "standardLogoURL")
+		delete(additionalProperties, "darkStandardLogoURL")
 		delete(additionalProperties, "loginInformationalMessage")
 		o.AdditionalProperties = additionalProperties
 	}

@@ -13,6 +13,7 @@ info:
   termsOfService: https://developer.sailpoint.com/discuss/tos
   title: SailPoint Identity Security API - Branding
   version: v1
+  x-audience: external-public
 servers:
 - description: This is the production API server.
   url: "https://{tenant}.api.identitynow.com"
@@ -196,6 +197,81 @@ paths:
       - applicationAuth:
         - idn:branding:manage
       summary: Create a branding item
+      tags:
+      - Branding
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+  /brandings/v1/default:
+    delete:
+      description: This API endpoint clears the customizable properties of the default
+        branding item. The default item is kept.
+      operationId: deleteDefaultBrandingV1
+      responses:
+        "204":
+          description: No content - indicates the request was successful but there
+            is no content to be returned in the response.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getBrandingListV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getBrandingListV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:branding:manage
+      - applicationAuth:
+        - idn:branding:manage
+      summary: Clear the default branding item
       tags:
       - Branding
       x-sailpoint-userLevels:
@@ -603,11 +679,15 @@ components:
   schemas:
     BrandingItem:
       example:
-        standardLogoURL: ""
+        darkNavigationColor: 011E69
+        standardLogoURL: https://example.identitynow.com/logos/standard.png
         emailFromAddress: no-reply@sailpoint.com
         actionButtonColor: 0074D9
         name: default
+        darkActionButtonColor: 0074D9
         navigationColor: 011E69
+        darkStandardLogoURL: https://example.identitynow.com/logos/dark.png
+        darkActiveLinkColor: 011E69
         productName: product name
         loginInformationalMessage: ""
         activeLinkColor: 011E69
@@ -626,13 +706,28 @@ components:
           example: 0074D9
           nullable: true
           type: string
+        darkActionButtonColor:
+          description: hex value of color for action button in dark mode
+          example: 0074D9
+          nullable: true
+          type: string
         activeLinkColor:
           description: hex value of color for link
           example: 011E69
           nullable: true
           type: string
+        darkActiveLinkColor:
+          description: hex value of color for link in dark mode
+          example: 011E69
+          nullable: true
+          type: string
         navigationColor:
           description: hex value of color for navigation bar
+          example: 011E69
+          nullable: true
+          type: string
+        darkNavigationColor:
+          description: hex value of color for navigation bar in dark mode
           example: 011E69
           nullable: true
           type: string
@@ -643,7 +738,14 @@ components:
           type: string
         standardLogoURL:
           description: url to standard logo
-          example: ""
+          example: https://example.identitynow.com/logos/standard.png
+          format: uri
+          nullable: true
+          type: string
+        darkStandardLogoURL:
+          description: url to dark-mode logo
+          example: https://example.identitynow.com/logos/dark.png
+          format: uri
           nullable: true
           type: string
         loginInformationalMessage:
@@ -745,12 +847,24 @@ components:
           description: hex value of color for action button
           example: 0074D9
           type: string
+        darkActionButtonColor:
+          description: hex value of color for action button in dark mode
+          example: 0074D9
+          type: string
         activeLinkColor:
           description: hex value of color for link
           example: 011E69
           type: string
+        darkActiveLinkColor:
+          description: hex value of color for link in dark mode
+          example: 011E69
+          type: string
         navigationColor:
           description: hex value of color for navigation bar
+          example: 011E69
+          type: string
+        darkNavigationColor:
+          description: hex value of color for navigation bar in dark mode
           example: 011E69
           type: string
         emailFromAddress:
@@ -762,7 +876,17 @@ components:
           example: ""
           type: string
         fileStandard:
-          description: png file with logo
+          description: "png file with logo. To remove an existing logo, delete the\
+            \ branding item and create it again. Omitting this field on update keeps\
+            \ the current logo."
+          example: !!binary |-
+            XHgwMFx4MDBceDAwXHgwMg==
+          format: binary
+          type: string
+        darkFileStandard:
+          description: "png file with dark-mode logo. To remove an existing dark-mode\
+            \ logo, delete the branding item and create it again. Omitting this field\
+            \ on update keeps the current dark-mode logo."
           example: !!binary |-
             XHgwMFx4MDBceDAwXHgwMg==
           format: binary
@@ -772,6 +896,9 @@ components:
       - productName
       title: Branding Item Create
       type: object
+      x-sailpoint-lint-ignore:
+        schema-optional-properties-must-have-default: Button colors and binary files
+          do not need a default in this context
     getBrandingListV1_401_response:
       example:
         error: "JWT validation failed: JWT is expired"

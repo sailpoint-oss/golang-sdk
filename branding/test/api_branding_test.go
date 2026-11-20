@@ -47,6 +47,17 @@ func Test_branding_BrandingAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test BrandingAPIService DeleteDefaultBrandingV1", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		httpRes, err := apiClient.BrandingAPI.DeleteDefaultBrandingV1(context.Background()).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test BrandingAPIService GetBrandingListV1", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test

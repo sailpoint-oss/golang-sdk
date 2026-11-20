@@ -27,16 +27,24 @@ type BrandingItemCreate struct {
 	ProductName NullableString `json:"productName"`
 	// hex value of color for action button
 	ActionButtonColor *string `json:"actionButtonColor,omitempty"`
+	// hex value of color for action button in dark mode
+	DarkActionButtonColor *string `json:"darkActionButtonColor,omitempty"`
 	// hex value of color for link
 	ActiveLinkColor *string `json:"activeLinkColor,omitempty"`
+	// hex value of color for link in dark mode
+	DarkActiveLinkColor *string `json:"darkActiveLinkColor,omitempty"`
 	// hex value of color for navigation bar
 	NavigationColor *string `json:"navigationColor,omitempty"`
+	// hex value of color for navigation bar in dark mode
+	DarkNavigationColor *string `json:"darkNavigationColor,omitempty"`
 	// email from address
 	EmailFromAddress *string `json:"emailFromAddress,omitempty"`
 	// login information message
 	LoginInformationalMessage *string `json:"loginInformationalMessage,omitempty"`
-	// png file with logo
+	// png file with logo. To remove an existing logo, delete the branding item and create it again. Omitting this field on update keeps the current logo.
 	FileStandard **os.File `json:"fileStandard,omitempty"`
+	// png file with dark-mode logo. To remove an existing dark-mode logo, delete the branding item and create it again. Omitting this field on update keeps the current dark-mode logo.
+	DarkFileStandard **os.File `json:"darkFileStandard,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -143,6 +151,38 @@ func (o *BrandingItemCreate) SetActionButtonColor(v string) {
 	o.ActionButtonColor = &v
 }
 
+// GetDarkActionButtonColor returns the DarkActionButtonColor field value if set, zero value otherwise.
+func (o *BrandingItemCreate) GetDarkActionButtonColor() string {
+	if o == nil || IsNil(o.DarkActionButtonColor) {
+		var ret string
+		return ret
+	}
+	return *o.DarkActionButtonColor
+}
+
+// GetDarkActionButtonColorOk returns a tuple with the DarkActionButtonColor field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BrandingItemCreate) GetDarkActionButtonColorOk() (*string, bool) {
+	if o == nil || IsNil(o.DarkActionButtonColor) {
+		return nil, false
+	}
+	return o.DarkActionButtonColor, true
+}
+
+// HasDarkActionButtonColor returns a boolean if a field has been set.
+func (o *BrandingItemCreate) HasDarkActionButtonColor() bool {
+	if o != nil && !IsNil(o.DarkActionButtonColor) {
+		return true
+	}
+
+	return false
+}
+
+// SetDarkActionButtonColor gets a reference to the given string and assigns it to the DarkActionButtonColor field.
+func (o *BrandingItemCreate) SetDarkActionButtonColor(v string) {
+	o.DarkActionButtonColor = &v
+}
+
 // GetActiveLinkColor returns the ActiveLinkColor field value if set, zero value otherwise.
 func (o *BrandingItemCreate) GetActiveLinkColor() string {
 	if o == nil || IsNil(o.ActiveLinkColor) {
@@ -175,6 +215,38 @@ func (o *BrandingItemCreate) SetActiveLinkColor(v string) {
 	o.ActiveLinkColor = &v
 }
 
+// GetDarkActiveLinkColor returns the DarkActiveLinkColor field value if set, zero value otherwise.
+func (o *BrandingItemCreate) GetDarkActiveLinkColor() string {
+	if o == nil || IsNil(o.DarkActiveLinkColor) {
+		var ret string
+		return ret
+	}
+	return *o.DarkActiveLinkColor
+}
+
+// GetDarkActiveLinkColorOk returns a tuple with the DarkActiveLinkColor field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BrandingItemCreate) GetDarkActiveLinkColorOk() (*string, bool) {
+	if o == nil || IsNil(o.DarkActiveLinkColor) {
+		return nil, false
+	}
+	return o.DarkActiveLinkColor, true
+}
+
+// HasDarkActiveLinkColor returns a boolean if a field has been set.
+func (o *BrandingItemCreate) HasDarkActiveLinkColor() bool {
+	if o != nil && !IsNil(o.DarkActiveLinkColor) {
+		return true
+	}
+
+	return false
+}
+
+// SetDarkActiveLinkColor gets a reference to the given string and assigns it to the DarkActiveLinkColor field.
+func (o *BrandingItemCreate) SetDarkActiveLinkColor(v string) {
+	o.DarkActiveLinkColor = &v
+}
+
 // GetNavigationColor returns the NavigationColor field value if set, zero value otherwise.
 func (o *BrandingItemCreate) GetNavigationColor() string {
 	if o == nil || IsNil(o.NavigationColor) {
@@ -205,6 +277,38 @@ func (o *BrandingItemCreate) HasNavigationColor() bool {
 // SetNavigationColor gets a reference to the given string and assigns it to the NavigationColor field.
 func (o *BrandingItemCreate) SetNavigationColor(v string) {
 	o.NavigationColor = &v
+}
+
+// GetDarkNavigationColor returns the DarkNavigationColor field value if set, zero value otherwise.
+func (o *BrandingItemCreate) GetDarkNavigationColor() string {
+	if o == nil || IsNil(o.DarkNavigationColor) {
+		var ret string
+		return ret
+	}
+	return *o.DarkNavigationColor
+}
+
+// GetDarkNavigationColorOk returns a tuple with the DarkNavigationColor field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BrandingItemCreate) GetDarkNavigationColorOk() (*string, bool) {
+	if o == nil || IsNil(o.DarkNavigationColor) {
+		return nil, false
+	}
+	return o.DarkNavigationColor, true
+}
+
+// HasDarkNavigationColor returns a boolean if a field has been set.
+func (o *BrandingItemCreate) HasDarkNavigationColor() bool {
+	if o != nil && !IsNil(o.DarkNavigationColor) {
+		return true
+	}
+
+	return false
+}
+
+// SetDarkNavigationColor gets a reference to the given string and assigns it to the DarkNavigationColor field.
+func (o *BrandingItemCreate) SetDarkNavigationColor(v string) {
+	o.DarkNavigationColor = &v
 }
 
 // GetEmailFromAddress returns the EmailFromAddress field value if set, zero value otherwise.
@@ -303,6 +407,38 @@ func (o *BrandingItemCreate) SetFileStandard(v *os.File) {
 	o.FileStandard = &v
 }
 
+// GetDarkFileStandard returns the DarkFileStandard field value if set, zero value otherwise.
+func (o *BrandingItemCreate) GetDarkFileStandard() *os.File {
+	if o == nil || IsNil(o.DarkFileStandard) {
+		var ret *os.File
+		return ret
+	}
+	return *o.DarkFileStandard
+}
+
+// GetDarkFileStandardOk returns a tuple with the DarkFileStandard field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BrandingItemCreate) GetDarkFileStandardOk() (**os.File, bool) {
+	if o == nil || IsNil(o.DarkFileStandard) {
+		return nil, false
+	}
+	return o.DarkFileStandard, true
+}
+
+// HasDarkFileStandard returns a boolean if a field has been set.
+func (o *BrandingItemCreate) HasDarkFileStandard() bool {
+	if o != nil && !IsNil(o.DarkFileStandard) {
+		return true
+	}
+
+	return false
+}
+
+// SetDarkFileStandard gets a reference to the given *os.File and assigns it to the DarkFileStandard field.
+func (o *BrandingItemCreate) SetDarkFileStandard(v *os.File) {
+	o.DarkFileStandard = &v
+}
+
 func (o BrandingItemCreate) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -318,11 +454,20 @@ func (o BrandingItemCreate) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ActionButtonColor) {
 		toSerialize["actionButtonColor"] = o.ActionButtonColor
 	}
+	if !IsNil(o.DarkActionButtonColor) {
+		toSerialize["darkActionButtonColor"] = o.DarkActionButtonColor
+	}
 	if !IsNil(o.ActiveLinkColor) {
 		toSerialize["activeLinkColor"] = o.ActiveLinkColor
 	}
+	if !IsNil(o.DarkActiveLinkColor) {
+		toSerialize["darkActiveLinkColor"] = o.DarkActiveLinkColor
+	}
 	if !IsNil(o.NavigationColor) {
 		toSerialize["navigationColor"] = o.NavigationColor
+	}
+	if !IsNil(o.DarkNavigationColor) {
+		toSerialize["darkNavigationColor"] = o.DarkNavigationColor
 	}
 	if !IsNil(o.EmailFromAddress) {
 		toSerialize["emailFromAddress"] = o.EmailFromAddress
@@ -332,6 +477,9 @@ func (o BrandingItemCreate) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.FileStandard) {
 		toSerialize["fileStandard"] = o.FileStandard
+	}
+	if !IsNil(o.DarkFileStandard) {
+		toSerialize["darkFileStandard"] = o.DarkFileStandard
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -380,11 +528,15 @@ func (o *BrandingItemCreate) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "productName")
 		delete(additionalProperties, "actionButtonColor")
+		delete(additionalProperties, "darkActionButtonColor")
 		delete(additionalProperties, "activeLinkColor")
+		delete(additionalProperties, "darkActiveLinkColor")
 		delete(additionalProperties, "navigationColor")
+		delete(additionalProperties, "darkNavigationColor")
 		delete(additionalProperties, "emailFromAddress")
 		delete(additionalProperties, "loginInformationalMessage")
 		delete(additionalProperties, "fileStandard")
+		delete(additionalProperties, "darkFileStandard")
 		o.AdditionalProperties = additionalProperties
 	}
 

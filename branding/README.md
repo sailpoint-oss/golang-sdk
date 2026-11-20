@@ -81,6 +81,7 @@ Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *BrandingAPI* | [**CreateBrandingItemV1**](docs/BrandingAPI.md#createbrandingitemv1) | **Post** /brandings/v1 | Create a branding item
 *BrandingAPI* | [**DeleteBrandingV1**](docs/BrandingAPI.md#deletebrandingv1) | **Delete** /brandings/v1/{name} | Delete a branding item
+*BrandingAPI* | [**DeleteDefaultBrandingV1**](docs/BrandingAPI.md#deletedefaultbrandingv1) | **Delete** /brandings/v1/default | Clear the default branding item
 *BrandingAPI* | [**GetBrandingListV1**](docs/BrandingAPI.md#getbrandinglistv1) | **Get** /brandings/v1 | List of branding items
 *BrandingAPI* | [**GetBrandingV1**](docs/BrandingAPI.md#getbrandingv1) | **Get** /brandings/v1/{name} | Get a branding item
 *BrandingAPI* | [**SetBrandingItemV1**](docs/BrandingAPI.md#setbrandingitemv1) | **Put** /brandings/v1/{name} | Update a branding item
