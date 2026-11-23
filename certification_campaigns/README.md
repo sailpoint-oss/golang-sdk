@@ -86,6 +86,7 @@ Class | Method | HTTP request | Description
 *CertificationCampaignsAPI* | [**DeleteCampaignTemplateV1**](docs/CertificationCampaignsAPI.md#deletecampaigntemplatev1) | **Delete** /campaign-templates/v1/{id} | Delete a campaign template
 *CertificationCampaignsAPI* | [**DeleteCampaignsV1**](docs/CertificationCampaignsAPI.md#deletecampaignsv1) | **Post** /campaigns/v1/delete | Delete campaigns
 *CertificationCampaignsAPI* | [**GetActiveCampaignsV1**](docs/CertificationCampaignsAPI.md#getactivecampaignsv1) | **Get** /campaigns/v1 | List campaigns
+*CertificationCampaignsAPI* | [**GetCampaignReportDownloadUrlV1**](docs/CertificationCampaignsAPI.md#getcampaignreportdownloadurlv1) | **Get** /campaigns/v1/{id}/reports/{taskResultId}/download-url/{reportFormat} | Get campaign report download URL
 *CertificationCampaignsAPI* | [**GetCampaignReportsConfigV1**](docs/CertificationCampaignsAPI.md#getcampaignreportsconfigv1) | **Get** /campaigns/v1/reports-configuration | Get campaign reports configuration
 *CertificationCampaignsAPI* | [**GetCampaignReportsV1**](docs/CertificationCampaignsAPI.md#getcampaignreportsv1) | **Get** /campaigns/v1/{id}/reports | Get campaign reports
 *CertificationCampaignsAPI* | [**GetCampaignTemplateScheduleV1**](docs/CertificationCampaignsAPI.md#getcampaigntemplateschedulev1) | **Get** /campaign-templates/v1/{id}/schedule | Get campaign template schedule
@@ -124,6 +125,7 @@ Class | Method | HTTP request | Description
  - [CampaignCompleteOptions](docs/CampaignCompleteOptions.md)
  - [CampaignReference](docs/CampaignReference.md)
  - [CampaignReport](docs/CampaignReport.md)
+ - [CampaignReportDownload](docs/CampaignReportDownload.md)
  - [CampaignReportsConfig](docs/CampaignReportsConfig.md)
  - [CampaignTemplate](docs/CampaignTemplate.md)
  - [CampaignTemplateOwnerRef](docs/CampaignTemplateOwnerRef.md)

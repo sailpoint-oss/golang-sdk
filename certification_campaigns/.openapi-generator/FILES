@@ -26,6 +26,7 @@ docs/CampaignAlert.md
 docs/CampaignCompleteOptions.md
 docs/CampaignReference.md
 docs/CampaignReport.md
+docs/CampaignReportDownload.md
 docs/CampaignReportsConfig.md
 docs/CampaignTemplate.md
 docs/CampaignTemplateOwnerRef.md
@@ -74,6 +75,7 @@ model_campaign_alert.go
 model_campaign_complete_options.go
 model_campaign_reference.go
 model_campaign_report.go
+model_campaign_report_download.go
 model_campaign_reports_config.go
 model_campaign_template.go
 model_campaign_template_owner_ref.go

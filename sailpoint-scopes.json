@@ -4957,6 +4957,23 @@
       ],
       "applicationAuth": null
     },
+    "getCampaignReportDownloadUrlV1": {
+      "resource": "certification-campaigns",
+      "tag": "Certification Campaigns",
+      "sdkName": "GetCampaignReportDownloadUrlV1",
+      "httpMethod": "GET",
+      "path": "/campaigns/v1/{id}/reports/{taskResultId}/download-url/{reportFormat}",
+      "userAuth": [
+        "idn:campaign-report:read",
+        "idn:campaign-report:manage"
+      ],
+      "applicationAuth": null,
+      "userLevels": [
+        "ORG_ADMIN",
+        "CERT_ADMIN",
+        "REPORT_ADMIN"
+      ]
+    },
     "getCampaignReportsConfigV1": {
       "resource": "certification-campaigns",
       "tag": "Certification Campaigns",

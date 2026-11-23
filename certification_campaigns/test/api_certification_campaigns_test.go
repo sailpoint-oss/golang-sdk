@@ -110,6 +110,22 @@ func Test_certification_campaigns_CertificationCampaignsAPIService(t *testing.T)
 
 	})
 
+	t.Run("Test CertificationCampaignsAPIService GetCampaignReportDownloadUrlV1", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+		var taskResultId string
+		var reportFormat string
+
+		resp, httpRes, err := apiClient.CertificationCampaignsAPI.GetCampaignReportDownloadUrlV1(context.Background(), id, taskResultId, reportFormat).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test CertificationCampaignsAPIService GetCampaignReportsConfigV1", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test

@@ -385,6 +385,43 @@
           // response from `GetActiveCampaignsV1`: []GetActiveCampaignsV1200ResponseInner
           fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignsAPI.GetActiveCampaignsV1`: %v\n", resp)
         }
+- path: /campaigns/v1/{id}/reports/{taskResultId}/download-url/{reportFormat}
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/certificationcampaigns/methods/certification-campaigns#get-campaign-report-download-url-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+          id := `2c91808571bcfcf80171c23e4b4221fc` // string | ID of the campaign whose report is being downloaded. # string | ID of the campaign whose report is being downloaded.
+          taskResultId := `2c91808571bcfcf80171c23e4b4221fc` // string | ID of the campaign task that generated the report. # string | ID of the campaign task that generated the report.
+          reportFormat := `PDF` // string | File format of the report to download. # string | File format of the report to download.
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.CertificationCampaignsAPI.GetCampaignReportDownloadUrlV1(context.Background(), id, taskResultId, reportFormat).XSailPointExperimental(xSailPointExperimental).Execute()
+          //resp, r, err := apiClient.CertificationCampaignsAPI.GetCampaignReportDownloadUrlV1(context.Background(), id, taskResultId, reportFormat).XSailPointExperimental(xSailPointExperimental).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.GetCampaignReportDownloadUrlV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetCampaignReportDownloadUrlV1`: CampaignReportDownload
+          fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignsAPI.GetCampaignReportDownloadUrlV1`: %v\n", resp)
+        }
 - path: /campaigns/v1/reports-configuration
   method: Get
   xCodeSample:

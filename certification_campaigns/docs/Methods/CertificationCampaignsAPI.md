@@ -87,6 +87,7 @@ Method | HTTP request | Description
 [**delete-campaign-template-v1**](#delete-campaign-template-v1) | **Delete** `/campaign-templates/v1/{id}` | Delete a campaign template
 [**delete-campaigns-v1**](#delete-campaigns-v1) | **Post** `/campaigns/v1/delete` | Delete campaigns
 [**get-active-campaigns-v1**](#get-active-campaigns-v1) | **Get** `/campaigns/v1` | List campaigns
+[**get-campaign-report-download-url-v1**](#get-campaign-report-download-url-v1) | **Get** `/campaigns/v1/{id}/reports/{taskResultId}/download-url/{reportFormat}` | Get campaign report download URL
 [**get-campaign-reports-config-v1**](#get-campaign-reports-config-v1) | **Get** `/campaigns/v1/reports-configuration` | Get campaign reports configuration
 [**get-campaign-reports-v1**](#get-campaign-reports-v1) | **Get** `/campaigns/v1/{id}/reports` | Get campaign reports
 [**get-campaign-template-schedule-v1**](#get-campaign-template-schedule-v1) | **Get** `/campaign-templates/v1/{id}/schedule` | Get campaign template schedule
@@ -718,6 +719,92 @@ func main() {
     }
     // response from `GetActiveCampaignsV1`: []GetActiveCampaignsV1200ResponseInner
     fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignsAPI.GetActiveCampaignsV1`: %v\n", resp)
+}
+```
+
+[[Back to top]](#)
+
+## get-campaign-report-download-url-v1
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```go
+   configuration = Configuration()
+   configuration.Experimental = true
+ ```
+:::
+Get campaign report download URL
+Use this API to get a URL for downloading a certification campaign report.
+
+
+[API Spec](https://developer.sailpoint.com/docs/api/get-campaign-report-download-url-v-1)
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | ID of the campaign whose report is being downloaded. | 
+**taskResultId** | **string** | ID of the campaign task that generated the report. | 
+**reportFormat** | **string** | File format of the report to download. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetCampaignReportDownloadUrlV1Request struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
+
+
+
+
+### Return type
+
+[**CampaignReportDownload**](../models/campaign-report-download)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+  
+    
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+)
+
+func main() {
+    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+    id := `2c91808571bcfcf80171c23e4b4221fc` // string | ID of the campaign whose report is being downloaded. # string | ID of the campaign whose report is being downloaded.
+    taskResultId := `2c91808571bcfcf80171c23e4b4221fc` // string | ID of the campaign task that generated the report. # string | ID of the campaign task that generated the report.
+    reportFormat := `PDF` // string | File format of the report to download. # string | File format of the report to download.
+
+    
+
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.CertificationCampaignsAPI.GetCampaignReportDownloadUrlV1(context.Background(), id, taskResultId, reportFormat).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.CertificationCampaignsAPI.GetCampaignReportDownloadUrlV1(context.Background(), id, taskResultId, reportFormat).XSailPointExperimental(xSailPointExperimental).Execute()
+    if err != nil {
+	    fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.GetCampaignReportDownloadUrlV1``: %v\n", err)
+	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetCampaignReportDownloadUrlV1`: CampaignReportDownload
+    fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignsAPI.GetCampaignReportDownloadUrlV1`: %v\n", resp)
 }
 ```
 
