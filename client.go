@@ -61,6 +61,7 @@ import (
 	global_tenant_security_settings "github.com/sailpoint-oss/golang-sdk/v3/global_tenant_security_settings"
 	gov_certification "github.com/sailpoint-oss/golang-sdk/v3/gov_certification"
 	governance_groups "github.com/sailpoint-oss/golang-sdk/v3/governance_groups"
+	human_account_subtypes "github.com/sailpoint-oss/golang-sdk/v3/human_account_subtypes"
 	iai_access_request_recommendations "github.com/sailpoint-oss/golang-sdk/v3/iai_access_request_recommendations"
 	iai_common_access "github.com/sailpoint-oss/golang-sdk/v3/iai_common_access"
 	iai_outliers "github.com/sailpoint-oss/golang-sdk/v3/iai_outliers"
@@ -211,6 +212,7 @@ type APIClient struct {
 	GlobalTenantSecuritySettingsAPI *global_tenant_security_settings.GlobalTenantSecuritySettingsAPIService
 	NextGenerationCertificationCampaignsAPI *gov_certification.NextGenerationCertificationCampaignsAPIService
 	GovernanceGroupsAPI *governance_groups.GovernanceGroupsAPIService
+	HumanAccountSubtypesAPI *human_account_subtypes.HumanAccountSubtypesAPIService
 	IAIAccessRequestRecommendationsAPI *iai_access_request_recommendations.IAIAccessRequestRecommendationsAPIService
 	IAICommonAccessAPI *iai_common_access.IAICommonAccessAPIService
 	IAIOutliersAPI *iai_outliers.IAIOutliersAPIService
@@ -828,6 +830,18 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	)
 	_cfgGovernanceGroups.HTTPClient = cfg.HTTPClient
 	c.GovernanceGroupsAPI = governance_groups.NewAPIClient(_cfgGovernanceGroups).GovernanceGroupsAPI
+
+	_cfgHumanAccountSubtypes := human_account_subtypes.NewConfiguration(
+		cfg.ClientConfiguration.ClientId,
+		cfg.ClientConfiguration.ClientSecret,
+		cfg.ClientConfiguration.BaseURL,
+		cfg.ClientConfiguration.TokenURL,
+		cfg.ClientConfiguration.Token,
+		consumerSuffix,
+		cfg.Experimental,
+	)
+	_cfgHumanAccountSubtypes.HTTPClient = cfg.HTTPClient
+	c.HumanAccountSubtypesAPI = human_account_subtypes.NewAPIClient(_cfgHumanAccountSubtypes).HumanAccountSubtypesAPI
 
 	_cfgIAIAccessRequestRecommendations := iai_access_request_recommendations.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,

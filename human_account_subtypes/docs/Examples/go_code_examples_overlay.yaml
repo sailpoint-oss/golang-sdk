@@ -1,0 +1,276 @@
+- path: /accounts/v2/sources/{sourceId}/subtypes
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/humanaccountsubtypes/methods/human-account-subtypes#create-human-account-subtype-v2
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            human_account_subtypes "github.com/sailpoint-oss/golang-sdk/v3/human_account_subtypes"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          sourceId := `6d0458373bec4b4b80460992b76016da` // string | ID of the source. # string | ID of the source.
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+           humanaccountsubtypecreaterequestJson := []byte(`{
+          "default" : false,
+          "displayName" : "Contractor",
+          "description" : "Contractors with a limited account lifecycle",
+          "technicalName" : "contractor"
+        }`) // HumanAccountSubtypeCreateRequest | 
+
+          
+          var humanAccountSubtypeCreateRequest human_account_subtypes.HumanAccountSubtypeCreateRequest
+          if err := json.Unmarshal(humanaccountsubtypecreaterequestJson, &humanAccountSubtypeCreateRequest); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.HumanAccountSubtypesAPI.CreateHumanAccountSubtypeV2(context.Background(), sourceId).XSailPointExperimental(xSailPointExperimental).HumanAccountSubtypeCreateRequest(humanAccountSubtypeCreateRequest).Execute()
+          //resp, r, err := apiClient.HumanAccountSubtypesAPI.CreateHumanAccountSubtypeV2(context.Background(), sourceId).XSailPointExperimental(xSailPointExperimental).HumanAccountSubtypeCreateRequest(humanAccountSubtypeCreateRequest).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `HumanAccountSubtypesAPI.CreateHumanAccountSubtypeV2``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `CreateHumanAccountSubtypeV2`: HumanAccountSubtype
+          fmt.Fprintf(os.Stdout, "Response from `HumanAccountSubtypesAPI.CreateHumanAccountSubtypeV2`: %v\n", resp)
+        }
+- path: /accounts/v2/sources/{sourceId}/subtypes/{subtypeId}
+  method: Delete
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/humanaccountsubtypes/methods/human-account-subtypes#delete-human-account-subtype-v2
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          sourceId := `6d0458373bec4b4b80460992b76016da` // string | ID of the source. # string | ID of the source.
+          subtypeId := `38453251-6be2-5f8f-df93-5ce19e295838` // string | ID of the human account subtype. # string | ID of the human account subtype.
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          r, err := apiClient.HumanAccountSubtypesAPI.DeleteHumanAccountSubtypeV2(context.Background(), sourceId, subtypeId).XSailPointExperimental(xSailPointExperimental).Execute()
+          //r, err := apiClient.HumanAccountSubtypesAPI.DeleteHumanAccountSubtypeV2(context.Background(), sourceId, subtypeId).XSailPointExperimental(xSailPointExperimental).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `HumanAccountSubtypesAPI.DeleteHumanAccountSubtypeV2``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+        }
+- path: /accounts/v2/source-subtypes/{subtypeId}/human-config
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/humanaccountsubtypes/methods/human-account-subtypes#get-human-account-subtype-config-v2
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          subtypeId := `38453251-6be2-5f8f-df93-5ce19e295838` // string | ID of the human account subtype. # string | ID of the human account subtype.
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.HumanAccountSubtypesAPI.GetHumanAccountSubtypeConfigV2(context.Background(), subtypeId).XSailPointExperimental(xSailPointExperimental).Execute()
+          //resp, r, err := apiClient.HumanAccountSubtypesAPI.GetHumanAccountSubtypeConfigV2(context.Background(), subtypeId).XSailPointExperimental(xSailPointExperimental).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `HumanAccountSubtypesAPI.GetHumanAccountSubtypeConfigV2``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetHumanAccountSubtypeConfigV2`: HumanAccountSubtypeConfig
+          fmt.Fprintf(os.Stdout, "Response from `HumanAccountSubtypesAPI.GetHumanAccountSubtypeConfigV2`: %v\n", resp)
+        }
+- path: /accounts/v2/sources/{sourceId}/subtypes/{subtypeId}
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/humanaccountsubtypes/methods/human-account-subtypes#get-human-account-subtype-v2
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          sourceId := `6d0458373bec4b4b80460992b76016da` // string | ID of the source. # string | ID of the source.
+          subtypeId := `38453251-6be2-5f8f-df93-5ce19e295838` // string | ID of the human account subtype. # string | ID of the human account subtype.
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.HumanAccountSubtypesAPI.GetHumanAccountSubtypeV2(context.Background(), sourceId, subtypeId).XSailPointExperimental(xSailPointExperimental).Execute()
+          //resp, r, err := apiClient.HumanAccountSubtypesAPI.GetHumanAccountSubtypeV2(context.Background(), sourceId, subtypeId).XSailPointExperimental(xSailPointExperimental).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `HumanAccountSubtypesAPI.GetHumanAccountSubtypeV2``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetHumanAccountSubtypeV2`: HumanAccountSubtype
+          fmt.Fprintf(os.Stdout, "Response from `HumanAccountSubtypesAPI.GetHumanAccountSubtypeV2`: %v\n", resp)
+        }
+- path: /accounts/v2/sources/{sourceId}/subtypes
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/humanaccountsubtypes/methods/human-account-subtypes#list-human-account-subtypes-v2
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          sourceId := `6d0458373bec4b4b80460992b76016da` // string | ID of the source. # string | ID of the source.
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+          count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to false) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to false)
+          limit := 250 // int32 | Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          sorters := `sourceId` // string | Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **sourceId** (optional) (default to "") # string | Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **sourceId** (optional) (default to "")
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.HumanAccountSubtypesAPI.ListHumanAccountSubtypesV2(context.Background(), sourceId).XSailPointExperimental(xSailPointExperimental).Execute()
+          //resp, r, err := apiClient.HumanAccountSubtypesAPI.ListHumanAccountSubtypesV2(context.Background(), sourceId).XSailPointExperimental(xSailPointExperimental).Count(count).Limit(limit).Offset(offset).Sorters(sorters).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `HumanAccountSubtypesAPI.ListHumanAccountSubtypesV2``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `ListHumanAccountSubtypesV2`: []HumanAccountSubtype
+          fmt.Fprintf(os.Stdout, "Response from `HumanAccountSubtypesAPI.ListHumanAccountSubtypesV2`: %v\n", resp)
+        }
+- path: /accounts/v2/source-subtypes/{subtypeId}/human-config
+  method: Patch
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/humanaccountsubtypes/methods/human-account-subtypes#update-human-account-subtype-config-v2
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            human_account_subtypes "github.com/sailpoint-oss/golang-sdk/v3/human_account_subtypes"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          subtypeId := `38453251-6be2-5f8f-df93-5ce19e295838` // string | ID of the human account subtype. # string | ID of the human account subtype.
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+          jsonpatchoperationJson := []byte(`[{"op":"replace","path":"/humanAccountCreate/accountCreateEnabled","value":true}]`) // []JsonPatchOperation | JSON Patch operations under `/humanAccountCreate`, as defined by [RFC 6902](https://tools.ietf.org/html/rfc6902).
+
+          
+          var jsonPatchOperation []human_account_subtypes.JsonPatchOperation
+          if err := json.Unmarshal(jsonpatchoperationJson, &jsonPatchOperation); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.HumanAccountSubtypesAPI.UpdateHumanAccountSubtypeConfigV2(context.Background(), subtypeId).XSailPointExperimental(xSailPointExperimental).JsonPatchOperation(jsonPatchOperation).Execute()
+          //resp, r, err := apiClient.HumanAccountSubtypesAPI.UpdateHumanAccountSubtypeConfigV2(context.Background(), subtypeId).XSailPointExperimental(xSailPointExperimental).JsonPatchOperation(jsonPatchOperation).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `HumanAccountSubtypesAPI.UpdateHumanAccountSubtypeConfigV2``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `UpdateHumanAccountSubtypeConfigV2`: HumanAccountSubtypeConfig
+          fmt.Fprintf(os.Stdout, "Response from `HumanAccountSubtypesAPI.UpdateHumanAccountSubtypeConfigV2`: %v\n", resp)
+        }
+- path: /accounts/v2/sources/{sourceId}/subtypes/{subtypeId}
+  method: Patch
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/humanaccountsubtypes/methods/human-account-subtypes#update-human-account-subtype-v2
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            human_account_subtypes "github.com/sailpoint-oss/golang-sdk/v3/human_account_subtypes"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          sourceId := `6d0458373bec4b4b80460992b76016da` // string | ID of the source. # string | ID of the source.
+          subtypeId := `38453251-6be2-5f8f-df93-5ce19e295838` // string | ID of the human account subtype. # string | ID of the human account subtype.
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+          jsonpatchoperationJson := []byte(`[{"op":"replace","path":"/displayName","value":"Senior Contractor"}]`) // []JsonPatchOperation | JSON Patch operations to apply to the subtype, as defined by [RFC 6902](https://tools.ietf.org/html/rfc6902).
+
+          
+          var jsonPatchOperation []human_account_subtypes.JsonPatchOperation
+          if err := json.Unmarshal(jsonpatchoperationJson, &jsonPatchOperation); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.HumanAccountSubtypesAPI.UpdateHumanAccountSubtypeV2(context.Background(), sourceId, subtypeId).XSailPointExperimental(xSailPointExperimental).JsonPatchOperation(jsonPatchOperation).Execute()
+          //resp, r, err := apiClient.HumanAccountSubtypesAPI.UpdateHumanAccountSubtypeV2(context.Background(), sourceId, subtypeId).XSailPointExperimental(xSailPointExperimental).JsonPatchOperation(jsonPatchOperation).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `HumanAccountSubtypesAPI.UpdateHumanAccountSubtypeV2``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `UpdateHumanAccountSubtypeV2`: HumanAccountSubtype
+          fmt.Fprintf(os.Stdout, "Response from `HumanAccountSubtypesAPI.UpdateHumanAccountSubtypeV2`: %v\n", resp)
+        }

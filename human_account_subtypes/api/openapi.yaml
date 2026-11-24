@@ -1,0 +1,1514 @@
+openapi: 3.0.1
+info:
+  contact:
+    name: Developer Relations
+    url: https://developer.sailpoint.com/discuss/api-help
+  description: "Use these APIs to interact with the SailPoint Identity Security platform\
+    \ to achieve repeatable, automated processes with greater scalability. We encourage\
+    \ you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss\
+    \ to connect with other developers using our APIs."
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  termsOfService: https://developer.sailpoint.com/discuss/tos
+  title: SailPoint Identity Security API - Human Account Subtypes
+  version: v1
+  x-audience: external-public
+servers:
+- description: This is the production API server.
+  url: "https://{tenant}.api.identitynow.com"
+  variables:
+    tenant:
+      default: sailpoint
+      description: "This is the name of your tenant, typically your company's name."
+- description: This is the versioned API server.
+  url: "https://{apiUrl}"
+  variables:
+    apiUrl:
+      default: sailpoint.api.identitynow.com
+      description: This is the api url of your tenant
+security:
+- userAuth:
+  - sp:scopes:all
+tags:
+- description: |
+    Use these APIs to get, create, update, and delete human account subtypes for sources, and to get and update
+    the account-create configuration of a human account subtype. These APIs are experimental and require the
+    `X-SailPoint-Experimental` header.
+  name: Human Account Subtypes
+paths:
+  /accounts/v2/sources/{sourceId}/subtypes:
+    get:
+      description: Get the human account subtypes of a source.
+      operationId: listHumanAccountSubtypesV2
+      parameters:
+      - description: ID of the source.
+        example: 6d0458373bec4b4b80460992b76016da
+        explode: false
+        in: path
+        name: sourceId
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listSourcesV1
+      - description: |-
+          If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+          Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        example: true
+        explode: true
+        in: query
+        name: count
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+      - description: |-
+          Max number of results to return.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        example: 250
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          Offset into the full result set. Usually specified with *limit* to paginate through the results.
+          See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        example: 0
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)
+
+          Sorting is supported for the following fields: **sourceId**
+        example: sourceId
+        explode: true
+        in: query
+        name: sorters
+        required: false
+        schema:
+          default: ""
+          format: comma-separated
+          type: string
+        style: form
+      - description: Use this header to enable this experimental API.
+        example: "true"
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                HumanAccountSubtype:
+                  value:
+                  - id: 38453251-6be2-5f8f-df93-5ce19e295838
+                    sourceId: 6d0458373bec4b4b80460992b76016da
+                    technicalName: contractor
+                    displayName: Contractor
+                    description: Contractors with a limited account lifecycle
+                    entityType: ACCOUNT
+                    default: false
+                    systemManaged: false
+                    created: 2026-11-20T10:15:30.123Z
+                    modified: 2026-11-20T10:15:30.123Z
+              schema:
+                items:
+                  $ref: '#/components/schemas/HumanAccountSubtype'
+                type: array
+          description: List of human account subtypes of the source.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listHumanAccountSubtypesV2_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listHumanAccountSubtypesV2_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:source-subtypes:read
+      - applicationAuth:
+        - idn:source-subtypes:read
+      summary: List human account subtypes
+      tags:
+      - Human Account Subtypes
+      x-sailpoint-lint-ignore:
+        path-list-operations-must-return-object: "Shelby returns this page as a JSON\
+          \ array, the same shape as the machine subtype list."
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+    post:
+      description: Create a human account subtype for a source.
+      operationId: createHumanAccountSubtypeV2
+      parameters:
+      - description: ID of the source.
+        example: 6d0458373bec4b4b80460992b76016da
+        explode: false
+        in: path
+        name: sourceId
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listSourcesV1
+      - description: Use this header to enable this experimental API.
+        example: "true"
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            examples:
+              HumanAccountSubtype:
+                value:
+                  technicalName: contractor
+                  displayName: Contractor
+                  description: Contractors with a limited account lifecycle
+                  default: false
+            schema:
+              $ref: '#/components/schemas/HumanAccountSubtypeCreateRequest'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              examples:
+                HumanAccountSubtype:
+                  value:
+                    id: 38453251-6be2-5f8f-df93-5ce19e295838
+                    sourceId: 6d0458373bec4b4b80460992b76016da
+                    technicalName: contractor
+                    displayName: Contractor
+                    description: Contractors with a limited account lifecycle
+                    entityType: ACCOUNT
+                    default: false
+                    systemManaged: false
+                    created: 2026-11-20T10:15:30.123Z
+                    modified: 2026-11-20T10:15:30.123Z
+              schema:
+                $ref: '#/components/schemas/HumanAccountSubtype'
+          description: Created human account subtype.
+          headers:
+            location:
+              description: URL of the created human account subtype.
+              explode: false
+              schema:
+                format: uri
+                type: string
+              style: simple
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listHumanAccountSubtypesV2_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Conflict - Returned if a subtype with the same technical name
+            already exists for the source.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listHumanAccountSubtypesV2_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:source-subtypes:create
+      - applicationAuth:
+        - idn:source-subtypes:create
+      summary: Create a human account subtype
+      tags:
+      - Human Account Subtypes
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+  /accounts/v2/sources/{sourceId}/subtypes/{subtypeId}:
+    delete:
+      description: "Delete a human account subtype of a source, together with its\
+        \ account-create configuration."
+      operationId: deleteHumanAccountSubtypeV2
+      parameters:
+      - description: ID of the source.
+        example: 6d0458373bec4b4b80460992b76016da
+        explode: false
+        in: path
+        name: sourceId
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listSourcesV1
+      - description: ID of the human account subtype.
+        example: 38453251-6be2-5f8f-df93-5ce19e295838
+        explode: false
+        in: path
+        name: subtypeId
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listHumanAccountSubtypesV2
+      - description: Use this header to enable this experimental API.
+        example: "true"
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: Human account subtype deleted.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listHumanAccountSubtypesV2_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Conflict - Returned if the subtype is in use and cannot be
+            deleted.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listHumanAccountSubtypesV2_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:source-subtypes:delete
+      - applicationAuth:
+        - idn:source-subtypes:delete
+      summary: Delete a human account subtype
+      tags:
+      - Human Account Subtypes
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+    get:
+      description: Get a human account subtype of a source by subtype ID.
+      operationId: getHumanAccountSubtypeV2
+      parameters:
+      - description: ID of the source.
+        example: 6d0458373bec4b4b80460992b76016da
+        explode: false
+        in: path
+        name: sourceId
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listSourcesV1
+      - description: ID of the human account subtype.
+        example: 38453251-6be2-5f8f-df93-5ce19e295838
+        explode: false
+        in: path
+        name: subtypeId
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listHumanAccountSubtypesV2
+      - description: Use this header to enable this experimental API.
+        example: "true"
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HumanAccountSubtype'
+          description: Human account subtype.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listHumanAccountSubtypesV2_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listHumanAccountSubtypesV2_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:source-subtypes:read
+      - applicationAuth:
+        - idn:source-subtypes:read
+      summary: Get a human account subtype
+      tags:
+      - Human Account Subtypes
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+    patch:
+      description: Update the display name or description of a human account subtype.
+        Only replace operations on `/displayName` and `/description` are supported.
+      operationId: updateHumanAccountSubtypeV2
+      parameters:
+      - description: ID of the source.
+        example: 6d0458373bec4b4b80460992b76016da
+        explode: false
+        in: path
+        name: sourceId
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listSourcesV1
+      - description: ID of the human account subtype.
+        example: 38453251-6be2-5f8f-df93-5ce19e295838
+        explode: false
+        in: path
+        name: subtypeId
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listHumanAccountSubtypesV2
+      - description: Use this header to enable this experimental API.
+        example: "true"
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json-patch+json:
+            examples:
+              UpdateDisplayName:
+                value:
+                - op: replace
+                  path: /displayName
+                  value: Senior Contractor
+            schema:
+              items:
+                $ref: '#/components/schemas/JsonPatchOperation'
+              type: array
+        description: "JSON Patch operations to apply to the subtype, as defined by\
+          \ [RFC 6902](https://tools.ietf.org/html/rfc6902)."
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HumanAccountSubtype'
+          description: Updated human account subtype.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listHumanAccountSubtypesV2_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listHumanAccountSubtypesV2_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:source-subtypes:update
+      - applicationAuth:
+        - idn:source-subtypes:update
+      summary: Update a human account subtype
+      tags:
+      - Human Account Subtypes
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+  /accounts/v2/source-subtypes/{subtypeId}/human-config:
+    get:
+      description: Get the account-create configuration of a human account subtype
+        by subtype ID. A subtype with no stored configuration returns the default
+        values.
+      operationId: getHumanAccountSubtypeConfigV2
+      parameters:
+      - description: ID of the human account subtype.
+        example: 38453251-6be2-5f8f-df93-5ce19e295838
+        explode: false
+        in: path
+        name: subtypeId
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listHumanAccountSubtypesV2
+      - description: Use this header to enable this experimental API.
+        example: "true"
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HumanAccountSubtypeConfig'
+          description: Account-create configuration of the human account subtype.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listHumanAccountSubtypesV2_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listHumanAccountSubtypesV2_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:source-subtypes:read
+      - applicationAuth:
+        - idn:source-subtypes:read
+      summary: Get human subtype config
+      tags:
+      - Human Account Subtypes
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+    patch:
+      description: Update the account-create configuration of a human account subtype.
+        Only operations under `/humanAccountCreate` are supported.
+      operationId: updateHumanAccountSubtypeConfigV2
+      parameters:
+      - description: ID of the human account subtype.
+        example: 38453251-6be2-5f8f-df93-5ce19e295838
+        explode: false
+        in: path
+        name: subtypeId
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listHumanAccountSubtypesV2
+      - description: Use this header to enable this experimental API.
+        example: "true"
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json-patch+json:
+            examples:
+              EnableAccountCreate:
+                value:
+                - op: replace
+                  path: /humanAccountCreate/accountCreateEnabled
+                  value: true
+            schema:
+              items:
+                $ref: '#/components/schemas/JsonPatchOperation'
+              type: array
+        description: "JSON Patch operations under `/humanAccountCreate`, as defined\
+          \ by [RFC 6902](https://tools.ietf.org/html/rfc6902)."
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                HumanAccountSubtypeConfig:
+                  value:
+                    subtypeId: 38453251-6be2-5f8f-df93-5ce19e295838
+                    humanAccountCreate:
+                      accountCreateEnabled: true
+                      approvalRequired: true
+                      approvalConfig:
+                        approvers: "manager, sourceOwner"
+                        comments: ALL
+                      formId: 4f1bb61b-a0ab-4c0a-b9fb-20f44407b75a
+              schema:
+                $ref: '#/components/schemas/HumanAccountSubtypeConfig'
+          description: Updated account-create configuration of the human account subtype.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listHumanAccountSubtypesV2_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listHumanAccountSubtypesV2_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:source-subtypes:update
+      - applicationAuth:
+        - idn:source-subtypes:update
+      summary: Update human subtype config
+      tags:
+      - Human Account Subtypes
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+components:
+  parameters:
+    count:
+      description: |-
+        If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+        Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+        See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+      example: true
+      explode: true
+      in: query
+      name: count
+      required: false
+      schema:
+        default: false
+        type: boolean
+      style: form
+    limit:
+      description: |-
+        Max number of results to return.
+        See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+      example: 250
+      explode: true
+      in: query
+      name: limit
+      required: false
+      schema:
+        default: 250
+        format: int32
+        maximum: 250
+        minimum: 0
+        type: integer
+      style: form
+    offset:
+      description: |-
+        Offset into the full result set. Usually specified with *limit* to paginate through the results.
+        See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+      example: 0
+      explode: true
+      in: query
+      name: offset
+      required: false
+      schema:
+        default: 0
+        format: int32
+        minimum: 0
+        type: integer
+      style: form
+  responses:
+    "400":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponseDto'
+      description: Client Error - Returned if the request body is invalid.
+    "401":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/listHumanAccountSubtypesV2_401_response'
+      description: "Unauthorized - Returned if there is no authorization header, or\
+        \ if the JWT token is expired."
+    "403":
+      content:
+        application/json:
+          examples:
+            "403":
+              summary: An example of a 403 response object
+              value:
+                detailCode: 403 Forbidden
+                trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                messages:
+                - locale: en-US
+                  localeOrigin: DEFAULT
+                  text: The server understood the request but refuses to authorize
+                    it.
+          schema:
+            $ref: '#/components/schemas/ErrorResponseDto'
+      description: "Forbidden - Returned if the user you are running as, doesn't have\
+        \ access to this end-point."
+    "404":
+      content:
+        application/json:
+          examples:
+            "404":
+              summary: An example of a 404 response object
+              value:
+                detailCode: 404 Not found
+                trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                messages:
+                - locale: en-US
+                  localeOrigin: DEFAULT
+                  text: The server did not find a current representation for the target
+                    resource.
+          schema:
+            $ref: '#/components/schemas/ErrorResponseDto'
+      description: Not Found - returned if the request URL refers to a resource or
+        object that does not exist
+    "429":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/listHumanAccountSubtypesV2_429_response'
+      description: Too Many Requests - Returned in response to too many requests in
+        a given period of time - rate limited. The Retry-After header in the response
+        includes how long to wait before trying again.
+    "500":
+      content:
+        application/json:
+          examples:
+            "500":
+              summary: An example of a 500 response object
+              value:
+                detailCode: 500.0 Internal Fault
+                trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                messages:
+                - locale: en-US
+                  localeOrigin: DEFAULT
+                  text: An internal fault occurred.
+          schema:
+            $ref: '#/components/schemas/ErrorResponseDto'
+      description: Internal Server Error - Returned if there is an unexpected error.
+  schemas:
+    HumanAccountSubtype:
+      description: A human account subtype of a source.
+      example:
+        sourceId: 6d0458373bec4b4b80460992b76016da
+        default: false
+        displayName: Contractor
+        entityType: ACCOUNT
+        created: 2026-11-20T10:15:30.123Z
+        systemManaged: false
+        description: Contractors with a limited account lifecycle
+        modified: 2026-11-20T10:15:30.123Z
+        id: 38453251-6be2-5f8f-df93-5ce19e295838
+        technicalName: contractor
+      properties:
+        id:
+          description: Unique identifier for the subtype.
+          example: 38453251-6be2-5f8f-df93-5ce19e295838
+          format: uuid
+          readOnly: true
+          type: string
+        sourceId:
+          description: The ID of the source the subtype belongs to.
+          example: 6d0458373bec4b4b80460992b76016da
+          readOnly: true
+          type: string
+        technicalName:
+          description: Technical name of the subtype.
+          example: contractor
+          type: string
+        displayName:
+          description: Display name of the subtype.
+          example: Contractor
+          type: string
+        description:
+          description: Description of the subtype.
+          example: Contractors with a limited account lifecycle
+          nullable: true
+          type: string
+        entityType:
+          description: Entity type the subtype applies to. Human account subtypes
+            apply to accounts.
+          example: ACCOUNT
+          readOnly: true
+          type: string
+        default:
+          default: false
+          description: Whether this subtype is the default human account subtype of
+            the source.
+          example: false
+          type: boolean
+        systemManaged:
+          default: false
+          description: Indicates if the subtype is managed by the system. Read-only.
+          example: false
+          readOnly: true
+          type: boolean
+        created:
+          description: Creation timestamp.
+          example: 2026-11-20T10:15:30.123Z
+          format: date-time
+          readOnly: true
+          type: string
+        modified:
+          description: Last modified timestamp.
+          example: 2026-11-20T10:15:30.123Z
+          format: date-time
+          readOnly: true
+          type: string
+      title: Human Account Subtype
+      type: object
+    LocaleOrigin:
+      description: "An indicator of how the locale was selected. *DEFAULT* means the\
+        \ locale is the system default. *REQUEST* means the locale was selected from\
+        \ the request context (i.e., best match based on the *Accept-Language* header).\
+        \ Additional values may be added in the future without notice."
+      enum:
+      - DEFAULT
+      - REQUEST
+      - null
+      example: DEFAULT
+      nullable: true
+      type: string
+    ErrorMessageDto:
+      example:
+        localeOrigin: DEFAULT
+        text: The request was syntactically correct but its content is semantically
+          invalid.
+        locale: en-US
+      properties:
+        locale:
+          description: "The locale for the message text, a BCP 47 language tag."
+          example: en-US
+          nullable: true
+          type: string
+        localeOrigin:
+          $ref: '#/components/schemas/LocaleOrigin'
+        text:
+          description: Actual text of the error message in the indicated locale.
+          example: The request was syntactically correct but its content is semantically
+            invalid.
+          type: string
+      title: Error Message Dto
+      type: object
+    ErrorResponseDto:
+      example:
+        causes:
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        messages:
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        detailCode: 400.1 Bad Request Content
+        trackingId: e7eab60924f64aa284175b9fa3309599
+      properties:
+        detailCode:
+          description: Fine-grained error code providing more detail of the error.
+          example: 400.1 Bad Request Content
+          type: string
+        trackingId:
+          description: Unique tracking id for the error.
+          example: e7eab60924f64aa284175b9fa3309599
+          type: string
+        messages:
+          description: Generic localized reason for error
+          items:
+            $ref: '#/components/schemas/ErrorMessageDto'
+          type: array
+        causes:
+          description: Plain-text descriptive reasons to provide additional detail
+            to the text provided in the messages field
+          items:
+            $ref: '#/components/schemas/ErrorMessageDto'
+          type: array
+      title: Error Response Dto
+      type: object
+    HumanAccountSubtypeCreateRequest:
+      description: Request body to create a human account subtype for a source. The
+        source ID comes from the path.
+      example:
+        default: false
+        displayName: Contractor
+        description: Contractors with a limited account lifecycle
+        technicalName: contractor
+      properties:
+        technicalName:
+          description: Technical name of the subtype.
+          example: contractor
+          type: string
+        displayName:
+          description: Display name of the subtype.
+          example: Contractor
+          type: string
+        description:
+          description: Description of the subtype.
+          example: Contractors with a limited account lifecycle
+          nullable: true
+          type: string
+        default:
+          default: false
+          description: Whether this subtype is the default human account subtype of
+            the source.
+          example: false
+          type: boolean
+      required:
+      - displayName
+      - technicalName
+      title: Human Account Subtype Create Request
+      type: object
+    JsonPatchOperation:
+      description: "A JSONPatch Operation as defined by [RFC 6902 - JSON Patch](https://tools.ietf.org/html/rfc6902)"
+      example:
+        op: replace
+        path: /description
+        value: New description
+      properties:
+        op:
+          description: The operation to be performed
+          enum:
+          - add
+          - remove
+          - replace
+          - move
+          - copy
+          - test
+          example: replace
+          type: string
+        path:
+          description: A string JSON Pointer representing the target path to an element
+            to be affected by the operation
+          example: /description
+          type: string
+        value:
+          $ref: '#/components/schemas/JsonPatchOperation_value'
+      required:
+      - op
+      - path
+      title: Json Patch Operation
+      type: object
+    HumanAccountSubtypeConfig:
+      description: Account-create configuration of a human account subtype.
+      example:
+        humanAccountCreate:
+          formId: 4f1bb61b-a0ab-4c0a-b9fb-20f44407b75a
+          approvalConfig:
+            comments: ALL
+            approvers: "manager, sourceOwner"
+          approvalRequired: true
+          accountCreateEnabled: true
+        subtypeId: 1419fc28-a8ed-4a07-9f5c-0cb5dfad6311
+      properties:
+        subtypeId:
+          description: ID of the human account subtype this configuration belongs
+            to.
+          example: 1419fc28-a8ed-4a07-9f5c-0cb5dfad6311
+          readOnly: true
+          type: string
+        humanAccountCreate:
+          $ref: '#/components/schemas/HumanAccountSubtypeConfig_humanAccountCreate'
+      title: Human Account Subtype Config
+      type: object
+    listHumanAccountSubtypesV2_401_response:
+      example:
+        error: "JWT validation failed: JWT is expired"
+      properties:
+        error:
+          description: A message describing the error
+          example: "JWT validation failed: JWT is expired"
+      type: object
+    listHumanAccountSubtypesV2_429_response:
+      example:
+        message: ' Rate Limit Exceeded '
+      properties:
+        message:
+          description: A message describing the error
+          example: ' Rate Limit Exceeded '
+      type: object
+    array_inner:
+      anyOf:
+      - type: string
+      - type: integer
+      - type: object
+      example:
+      - "001"
+      - "002"
+      - "003"
+    JsonPatchOperation_value:
+      description: "The value to be used for the operation, required for \"add\" and\
+        \ \"replace\" operations"
+      example: New description
+      oneOf:
+      - example: New description
+        title: string
+        type: string
+      - example: true
+        title: boolean
+        type: boolean
+      - example: 300
+        title: integer
+        type: integer
+      - example:
+          attributes:
+            name: philip
+        title: object
+        type: object
+      - items:
+          $ref: '#/components/schemas/array_inner'
+        title: array
+        type: array
+    HumanAccountSubtypeConfig_humanAccountCreate_approvalConfig:
+      description: Approval settings for human account creation requests.
+      example:
+        comments: ALL
+        approvers: "manager, sourceOwner"
+      properties:
+        approvers:
+          description: "Comma-separated approver types, for example `manager, sourceOwner`.\
+            \ Approval requests are assigned in the order the approvers are listed."
+          example: "manager, sourceOwner"
+          type: string
+        comments:
+          description: Comment configuration for the approval request.
+          enum:
+          - ALL
+          - APPROVAL
+          - REJECTION
+          - "OFF"
+          example: ALL
+          type: string
+      type: object
+    HumanAccountSubtypeConfig_humanAccountCreate:
+      description: Account-create settings for the human account subtype.
+      example:
+        formId: 4f1bb61b-a0ab-4c0a-b9fb-20f44407b75a
+        approvalConfig:
+          comments: ALL
+          approvers: "manager, sourceOwner"
+        approvalRequired: true
+        accountCreateEnabled: true
+      properties:
+        accountCreateEnabled:
+          default: false
+          description: Specifies if creation of human accounts is allowed for this
+            subtype.
+          example: true
+          type: boolean
+        approvalRequired:
+          default: false
+          description: Specifies if approval is required for human account creation
+            requests for this subtype.
+          example: true
+          type: boolean
+        approvalConfig:
+          $ref: '#/components/schemas/HumanAccountSubtypeConfig_humanAccountCreate_approvalConfig'
+        formId:
+          description: ID of the form linked to the subtype.
+          example: 4f1bb61b-a0ab-4c0a-b9fb-20f44407b75a
+          nullable: true
+          type: string
+      type: object
