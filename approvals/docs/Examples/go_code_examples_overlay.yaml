@@ -100,8 +100,8 @@
           "context"
           "fmt"
           "os"
-            
-            
+             "encoding/json"
+            approvals "github.com/sailpoint-oss/golang-sdk/v3/approvals"
           sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
@@ -109,14 +109,20 @@
           id := `38453251-6be2-5f8f-df93-5ce19e295837` // string | ID of the approval request to cancel. # string | ID of the approval request to cancel.
            approvalcancelrequestJson := []byte(`{
           "comment" : "Cancelled by administrator"
-        }`) // ApprovalCancelRequest |  (optional)
+        }`) // ApprovalCancelRequest | 
 
+          
+          var approvalCancelRequest approvals.ApprovalCancelRequest
+          if err := json.Unmarshal(approvalcancelrequestJson, &approvalCancelRequest); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
           
 
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          r, err := apiClient.ApprovalsAPI.CancelApprovalByIdV1(context.Background(), id).Execute()
+          r, err := apiClient.ApprovalsAPI.CancelApprovalByIdV1(context.Background(), id).ApprovalCancelRequest(approvalCancelRequest).Execute()
           //r, err := apiClient.ApprovalsAPI.CancelApprovalByIdV1(context.Background(), id).ApprovalCancelRequest(approvalCancelRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `ApprovalsAPI.CancelApprovalByIdV1``: %v\n", err)

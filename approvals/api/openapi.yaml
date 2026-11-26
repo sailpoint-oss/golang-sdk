@@ -323,9 +323,7 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:access-request-approvals:read
-        - idn:access-request-administration:read
-        - idn:access-request-approvals:manage
+        - sp:generic-approval:read
       summary: Get approvals
       tags:
       - Approvals
@@ -336,8 +334,11 @@ paths:
         path-query-parameters-must-be-camel-case: "Hyphenated query flags (count-only,\
           \ include-comments, etc.) are required to match sp-approvals; the gateway\
           \ forwards them unchanged (SailPoint Rule 130)."
+        path-filter-parameter-must-follow-format: "sp-approvals filters on requestedTargetId,\
+          \ requestedTargetName, and requestedTargetRequestType. Those are the query\
+          \ field names the service accepts (SailPoint Rule 324)."
       x-sailpoint-userLevels:
-      - APPROVAL_OWNER
+      - Any
   /generic-approvals/v1/{id}:
     get:
       description: |-
@@ -438,19 +439,17 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:access-request-approvals:read
-        - idn:access-request-administration:read
-        - idn:access-request-approvals:manage
+        - sp:generic-approval:read
       summary: Get an approval
       tags:
       - Approvals
       x-sailpoint-userLevels:
-      - APPROVAL_OWNER
+      - Any
   /generic-approvals/v1/{id}/approve:
     post:
       description: |-
         Approves a specified approval request on behalf of the caller. The approval request must be in a state that allows it to be approved. This endpoint does not support access request IDs.
-        If called by an admin and the admin is not listed as an approver, the approval request will be reassigned from a random approver to the admin user.
+        If called by an admin and the admin is not listed as an approver, the approval request will be reassigned either from overrideApproverID or from a random approver to the admin user.
       operationId: approveApprovalV1
       parameters:
       - description: Approval ID that correlates to an existing approval request that
@@ -553,12 +552,12 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:access-request-approvals:manage
+        - sp:generic-approval:approve
       summary: Post Approvals Approve
       tags:
       - Approvals
       x-sailpoint-userLevels:
-      - APPROVAL_OWNER
+      - Any
   /generic-approvals/v1/{id}/attributes:
     post:
       description: Allows for the edit/addition/removal of the key/value pair additional
@@ -666,12 +665,12 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:access-request-approvals:manage
+        - sp:generic-approval:update
       summary: Post Approvals Attributes
       tags:
       - Approvals
       x-sailpoint-userLevels:
-      - APPROVAL_OWNER
+      - Any
   /generic-approvals/v1/{id}/comments:
     post:
       description: Adds comments to a specified approval request. This endpoint does
@@ -778,12 +777,12 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:access-request-approvals:manage
+        - sp:generic-approval:update
       summary: Post Approvals Comments
       tags:
       - Approvals
       x-sailpoint-userLevels:
-      - APPROVAL_OWNER
+      - Any
   /generic-approvals/v1/{id}/reassign:
     post:
       description: Reassigns an approval request to another identity resulting in
@@ -888,17 +887,17 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:access-request-approvals:manage
+        - sp:generic-approval:reassign
       summary: Post Approvals Reassign
       tags:
       - Approvals
       x-sailpoint-userLevels:
-      - APPROVAL_OWNER
+      - Any
   /generic-approvals/v1/{id}/reject:
     post:
       description: |-
         Rejects a specified approval request on behalf of the caller. This endpoint does not support access request IDs.
-        If called by an admin and the admin is not listed as an approver, the approval request will be reassigned from a random approver to the admin user and approved.
+        If called by an admin and the admin is not listed as an approver, the approval request will be reassigned either from overrideApproverID or from a random approver to the admin user and rejected.
       operationId: rejectApprovalV1
       parameters:
       - description: Approval ID that correlates to an existing approval request that
@@ -998,17 +997,18 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:access-request-approvals:manage
+        - sp:generic-approval:reject
       summary: Post Approvals Reject
       tags:
       - Approvals
       x-sailpoint-userLevels:
-      - APPROVAL_OWNER
+      - Any
   /generic-approvals/v1/{id}/cancel:
     post:
       description: "Cancels a specified approval requests on behalf of the caller.\
-        \ \nNote: This endpoint does not support access request IDs. To cancel access\
-        \ request approvals, please use the following:\n/access-requests/cancel"
+        \ \nNote: This endpoint does not support cancelling Access Request Approvals\
+        \ or accessRequestIDs. To cancel an Access Request Approval, please use: [Cancel\
+        \ Access Request endpoint](https://developer.sailpoint.com/docs/api/cancel-access-request-v-1)."
       operationId: cancelApprovalByIdV1
       parameters:
       - description: ID of the approval request to cancel.
@@ -1026,7 +1026,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/ApprovalCancelRequest'
-        required: false
+        required: true
       responses:
         "204":
           description: No content - indicates the request was successful but there
@@ -1107,12 +1107,12 @@ paths:
             error.
       security:
       - userAuth:
-        - sp:approvals:write
+        - sp:generic-approval:cancel
       summary: Post Approval Cancel
       tags:
       - Approvals
       x-sailpoint-userLevels:
-      - ORG_ADMIN
+      - Any
   /generic-approvals/v1/config/{id}:
     get:
       description: Retrieves a singular approval configuration that matches the given
@@ -1231,12 +1231,20 @@ paths:
             error.
       security:
       - userAuth:
-        - sp:approvals:read
+        - sp:generic-approval-config:read
       summary: Get Approval Config
       tags:
       - Approvals
       x-sailpoint-userLevels:
-      - APPROVAL_OWNER
+      - ORG_ADMIN
+      - ORG_ADMIN_READ_ONLY
+      - ROLE_ADMIN
+      - ROLE_SUBADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+      - API
+      - idn:access-request-administrator
+      - idn:access-request-administrator-read
   /generic-approvals/v1/config/{id}/{scope}:
     delete:
       description: |-
@@ -1393,12 +1401,18 @@ paths:
             error.
       security:
       - userAuth:
-        - sp:approvals:write
+        - sp:generic-approval-config:write
       summary: Delete Approval Configuration
       tags:
       - Approvals
       x-sailpoint-userLevels:
       - ORG_ADMIN
+      - ROLE_ADMIN
+      - ROLE_SUBADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+      - API
+      - idn:access-request-administrator
     put:
       description: "Upserts a singular approval configuration that matches the given\
         \ configID and configScope. \nFor example to update the approval configurations\
@@ -1562,12 +1576,18 @@ paths:
             error.
       security:
       - userAuth:
-        - sp:approvals:write
+        - sp:generic-approval-config:write
       summary: Put Approval Config
       tags:
       - Approvals
       x-sailpoint-userLevels:
       - ORG_ADMIN
+      - ROLE_ADMIN
+      - ROLE_SUBADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+      - API
+      - idn:access-request-administrator
   /generic-approvals/v1/bulk-approve:
     post:
       description: Bulk Approves specified approval requests on behalf of the caller
@@ -1662,12 +1682,18 @@ paths:
             error.
       security:
       - userAuth:
-        - sp:approvals:write
+        - sp:generic-approval-management:write
       summary: Post Bulk Approve Approvals
       tags:
       - Approvals
+      x-sailpoint-lint-ignore:
+        path-bulk-operations-must-return-207: sp-approvals bulkApproveApprovals writes
+          202 Accepted. The documented status must match the service (SailPoint Rule
+          152).
       x-sailpoint-userLevels:
       - ORG_ADMIN
+      - API
+      - idn:access-request-administrator
   /generic-approvals/v1/bulk-reject:
     post:
       description: Bulk reject specified approval requests on behalf of the caller
@@ -1762,12 +1788,18 @@ paths:
             error.
       security:
       - userAuth:
-        - sp:approvals:write
+        - sp:generic-approval-management:write
       summary: Post Bulk Reject Approvals
       tags:
       - Approvals
+      x-sailpoint-lint-ignore:
+        path-bulk-operations-must-return-207: sp-approvals bulkRejectApprovals writes
+          202 Accepted. The documented status must match the service (SailPoint Rule
+          152).
       x-sailpoint-userLevels:
       - ORG_ADMIN
+      - API
+      - idn:access-request-administrator
   /generic-approvals/v1/bulk-cancel:
     post:
       description: "Bulk cancels specified approval requests on behalf of the caller.\
@@ -1864,12 +1896,14 @@ paths:
             error.
       security:
       - userAuth:
-        - sp:approvals:write
+        - sp:generic-approval-management:write
       summary: Post Bulk Cancel Approvals
       tags:
       - Approvals
       x-sailpoint-userLevels:
       - ORG_ADMIN
+      - API
+      - idn:access-request-administrator
   /generic-approvals/v1/bulk-reassign:
     post:
       description: Bulk reassigns specified approval requests on behalf of the caller
@@ -1964,12 +1998,14 @@ paths:
             error.
       security:
       - userAuth:
-        - sp:approvals:write
+        - sp:generic-approval-management:write
       summary: Post Bulk Reassign Approvals
       tags:
       - Approvals
       x-sailpoint-userLevels:
       - ORG_ADMIN
+      - API
+      - idn:access-request-administrator
 components:
   parameters:
     count:
@@ -3678,9 +3714,12 @@ components:
         comment: Cancelled by administrator
       properties:
         comment:
-          description: Optional comment associated with the cancel request.
+          description: Required comment associated with the cancel request.
           example: Cancelled by administrator
+          minLength: 1
           type: string
+      required:
+      - comment
       type: object
     BulkApproveRequestDTO:
       description: BulkApproveRequestDTO is the input struct that represents the request

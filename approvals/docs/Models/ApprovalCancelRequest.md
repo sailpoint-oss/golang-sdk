@@ -15,13 +15,13 @@ tags: ['SDK', 'Software Development Kit', 'ApprovalCancelRequest', 'V1ApprovalCa
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Comment** | Pointer to **string** | Optional comment associated with the cancel request. | [optional] 
+**Comment** | **string** | Required comment associated with the cancel request. | 
 
 ## Methods
 
 ### NewApprovalCancelRequest
 
-`func NewApprovalCancelRequest() *ApprovalCancelRequest`
+`func NewApprovalCancelRequest(comment string, ) *ApprovalCancelRequest`
 
 NewApprovalCancelRequest instantiates a new ApprovalCancelRequest object
 This constructor will assign default values to properties that have it defined,
@@ -55,10 +55,5 @@ and a boolean to check if the value has been set.
 
 SetComment sets Comment field to given value.
 
-### HasComment
-
-`func (o *ApprovalCancelRequest) HasComment() bool`
-
-HasComment returns a boolean if a field has been set.
 
 

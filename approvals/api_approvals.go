@@ -218,7 +218,7 @@ func (r ApiApproveApprovalV1Request) Execute() (*Approval2, *http.Response, erro
 ApproveApprovalV1 Post Approvals Approve
 
 Approves a specified approval request on behalf of the caller. The approval request must be in a state that allows it to be approved. This endpoint does not support access request IDs.
-If called by an admin and the admin is not listed as an approver, the approval request will be reassigned from a random approver to the admin user.
+If called by an admin and the admin is not listed as an approver, the approval request will be reassigned either from overrideApproverID or from a random approver to the admin user.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Approval ID that correlates to an existing approval request that a user wants to approve.
@@ -395,8 +395,7 @@ func (r ApiCancelApprovalByIdV1Request) Execute() (*http.Response, error) {
 CancelApprovalByIdV1 Post Approval Cancel
 
 Cancels a specified approval requests on behalf of the caller. 
-Note: This endpoint does not support access request IDs. To cancel access request approvals, please use the following:
-/access-requests/cancel
+Note: This endpoint does not support cancelling Access Request Approvals or accessRequestIDs. To cancel an Access Request Approval, please use: [Cancel Access Request endpoint](https://developer.sailpoint.com/docs/api/cancel-access-request-v-1).
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id ID of the approval request to cancel.
@@ -429,6 +428,9 @@ func (a *ApprovalsAPIService) CancelApprovalByIdV1Execute(r ApiCancelApprovalByI
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.approvalCancelRequest == nil {
+		return nil, reportError("approvalCancelRequest is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -2103,7 +2105,7 @@ func (r ApiRejectApprovalV1Request) Execute() (*http.Response, error) {
 RejectApprovalV1 Post Approvals Reject
 
 Rejects a specified approval request on behalf of the caller. This endpoint does not support access request IDs.
-If called by an admin and the admin is not listed as an approver, the approval request will be reassigned from a random approver to the admin user and approved.
+If called by an admin and the admin is not listed as an approver, the approval request will be reassigned either from overrideApproverID or from a random approver to the admin user and rejected.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Approval ID that correlates to an existing approval request that a user wants to reject.

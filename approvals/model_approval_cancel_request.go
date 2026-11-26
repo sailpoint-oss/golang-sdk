@@ -12,6 +12,7 @@ package approvals
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the ApprovalCancelRequest type satisfies the MappedNullable interface at compile time
@@ -19,8 +20,8 @@ var _ MappedNullable = &ApprovalCancelRequest{}
 
 // ApprovalCancelRequest Request body for cancelling a single approval request.
 type ApprovalCancelRequest struct {
-	// Optional comment associated with the cancel request.
-	Comment *string `json:"comment,omitempty"`
+	// Required comment associated with the cancel request.
+	Comment string `json:"comment"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -30,8 +31,9 @@ type _ApprovalCancelRequest ApprovalCancelRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewApprovalCancelRequest() *ApprovalCancelRequest {
+func NewApprovalCancelRequest(comment string) *ApprovalCancelRequest {
 	this := ApprovalCancelRequest{}
+	this.Comment = comment
 	return &this
 }
 
@@ -43,36 +45,28 @@ func NewApprovalCancelRequestWithDefaults() *ApprovalCancelRequest {
 	return &this
 }
 
-// GetComment returns the Comment field value if set, zero value otherwise.
+// GetComment returns the Comment field value
 func (o *ApprovalCancelRequest) GetComment() string {
-	if o == nil || IsNil(o.Comment) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Comment
+
+	return o.Comment
 }
 
-// GetCommentOk returns a tuple with the Comment field value if set, nil otherwise
+// GetCommentOk returns a tuple with the Comment field value
 // and a boolean to check if the value has been set.
 func (o *ApprovalCancelRequest) GetCommentOk() (*string, bool) {
-	if o == nil || IsNil(o.Comment) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Comment, true
+	return &o.Comment, true
 }
 
-// HasComment returns a boolean if a field has been set.
-func (o *ApprovalCancelRequest) HasComment() bool {
-	if o != nil && !IsNil(o.Comment) {
-		return true
-	}
-
-	return false
-}
-
-// SetComment gets a reference to the given string and assigns it to the Comment field.
+// SetComment sets field value
 func (o *ApprovalCancelRequest) SetComment(v string) {
-	o.Comment = &v
+	o.Comment = v
 }
 
 func (o ApprovalCancelRequest) MarshalJSON() ([]byte, error) {
@@ -85,9 +79,7 @@ func (o ApprovalCancelRequest) MarshalJSON() ([]byte, error) {
 
 func (o ApprovalCancelRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Comment) {
-		toSerialize["comment"] = o.Comment
-	}
+	toSerialize["comment"] = o.Comment
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -97,6 +89,27 @@ func (o ApprovalCancelRequest) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *ApprovalCancelRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"comment",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
 	varApprovalCancelRequest := _ApprovalCancelRequest{}
 
 	err = json.Unmarshal(data, &varApprovalCancelRequest)
