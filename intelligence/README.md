@@ -83,9 +83,11 @@ Class | Method | HTTP request | Description
 *IntelligenceAPI* | [**GetIdentityIntelligenceV1**](docs/IntelligenceAPI.md#getidentityintelligencev1) | **Get** /intelligence/v1/identities | Get identity by filter
 *IntelligenceAPI* | [**GetIntelIdentityAccessItemHistoryV1**](docs/IntelligenceAPI.md#getintelidentityaccessitemhistoryv1) | **Get** /intelligence/v1/identities/{id}/access-history/access-items | List identity access item history
 *IntelligenceAPI* | [**GetIntelIdentityAccountsV1**](docs/IntelligenceAPI.md#getintelidentityaccountsv1) | **Get** /intelligence/v1/identities/{id}/accounts | List identity accounts
+*IntelligenceAPI* | [**GetIntelIdentityCapabilitiesV1**](docs/IntelligenceAPI.md#getintelidentitycapabilitiesv1) | **Get** /intelligence/v1/identities/{id}/capabilities | List NHI capabilities
 *IntelligenceAPI* | [**GetIntelIdentityCertificationHistoryV1**](docs/IntelligenceAPI.md#getintelidentitycertificationhistoryv1) | **Get** /intelligence/v1/identities/{id}/access-history/certifications | List identity certification history
 *IntelligenceAPI* | [**GetIntelIdentityNonHumanIdentityOwnershipV1**](docs/IntelligenceAPI.md#getintelidentitynonhumanidentityownershipv1) | **Get** /intelligence/v1/identities/{id}/non-human-identity-ownership/{category} | List owned NHI identities
 *IntelligenceAPI* | [**GetIntelIdentityRareAccessV1**](docs/IntelligenceAPI.md#getintelidentityrareaccessv1) | **Get** /intelligence/v1/identities/{id}/outliers/rare-access | List identity rare access
+*IntelligenceAPI* | [**GetIntelIdentityRiskSignalsV1**](docs/IntelligenceAPI.md#getintelidentityrisksignalsv1) | **Get** /intelligence/v1/identities/{id}/risk-signals | List non-human identity risk factors
 *IntelligenceAPI* | [**GetResponseActionStatusV1**](docs/IntelligenceAPI.md#getresponseactionstatusv1) | **Get** /intelligence/v1/response-actions/{id}/status | Get response action status
 
 
@@ -113,6 +115,7 @@ Class | Method | HTTP request | Description
  - [IntelPrivilegedAccessSlice](docs/IntelPrivilegedAccessSlice.md)
  - [IntelRareAccessSlice](docs/IntelRareAccessSlice.md)
  - [Intelblastradiussummary](docs/Intelblastradiussummary.md)
+ - [Intelenrichmentfailurereason](docs/Intelenrichmentfailurereason.md)
  - [Intelidentityambiguousbody](docs/Intelidentityambiguousbody.md)
  - [Intelidentityambiguouscandidate](docs/Intelidentityambiguouscandidate.md)
  - [Intelidentityenvelope](docs/Intelidentityenvelope.md)
@@ -125,6 +128,12 @@ Class | Method | HTTP request | Description
  - [Intelmachineidentityowners](docs/Intelmachineidentityowners.md)
  - [Intelmachinesourcewire](docs/Intelmachinesourcewire.md)
  - [Intelmachineuserentitlement](docs/Intelmachineuserentitlement.md)
+ - [Intelnhicapabilities](docs/Intelnhicapabilities.md)
+ - [Intelnhicapabilitybucket](docs/Intelnhicapabilitybucket.md)
+ - [Intelnhicapabilitywire](docs/Intelnhicapabilitywire.md)
+ - [Intelnhirisk](docs/Intelnhirisk.md)
+ - [Intelnhirisksignals](docs/Intelnhirisksignals.md)
+ - [Intelnhirisksignalwire](docs/Intelnhirisksignalwire.md)
  - [Intelnonhumanidentityownedslice](docs/Intelnonhumanidentityownedslice.md)
  - [Intelnonhumanidentityownership](docs/Intelnonhumanidentityownership.md)
  - [Intelnonhumanidentityownershipcategory](docs/Intelnonhumanidentityownershipcategory.md)
@@ -136,6 +145,7 @@ Class | Method | HTTP request | Description
  - [Responseactioncreaterequest](docs/Responseactioncreaterequest.md)
  - [ResponseactioncreaterequestOneOf](docs/ResponseactioncreaterequestOneOf.md)
  - [ResponseactioncreaterequestOneOf1](docs/ResponseactioncreaterequestOneOf1.md)
+ - [ResponseactioncreaterequestOneOf2](docs/ResponseactioncreaterequestOneOf2.md)
  - [Responseactionstatus](docs/Responseactionstatus.md)
 
 

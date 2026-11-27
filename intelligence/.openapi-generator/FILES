@@ -29,6 +29,7 @@ docs/IntelPrivilegedAccessItemWireSource.md
 docs/IntelPrivilegedAccessSlice.md
 docs/IntelRareAccessSlice.md
 docs/Intelblastradiussummary.md
+docs/Intelenrichmentfailurereason.md
 docs/Intelidentityambiguousbody.md
 docs/Intelidentityambiguouscandidate.md
 docs/Intelidentityenvelope.md
@@ -43,6 +44,12 @@ docs/Intelmachineentityref.md
 docs/Intelmachineidentityowners.md
 docs/Intelmachinesourcewire.md
 docs/Intelmachineuserentitlement.md
+docs/Intelnhicapabilities.md
+docs/Intelnhicapabilitybucket.md
+docs/Intelnhicapabilitywire.md
+docs/Intelnhirisk.md
+docs/Intelnhirisksignals.md
+docs/Intelnhirisksignalwire.md
 docs/Intelnonhumanidentityownedslice.md
 docs/Intelnonhumanidentityownership.md
 docs/Intelnonhumanidentityownershipcategory.md
@@ -55,6 +62,7 @@ docs/Responseactioncontext.md
 docs/Responseactioncreaterequest.md
 docs/ResponseactioncreaterequestOneOf.md
 docs/ResponseactioncreaterequestOneOf1.md
+docs/ResponseactioncreaterequestOneOf2.md
 docs/Responseactionstatus.md
 git_push.sh
 go.mod
@@ -81,6 +89,7 @@ model_intel_privileged_access_item_wire_source.go
 model_intel_privileged_access_slice.go
 model_intel_rare_access_slice.go
 model_intelblastradiussummary.go
+model_intelenrichmentfailurereason.go
 model_intelidentityambiguousbody.go
 model_intelidentityambiguouscandidate.go
 model_intelidentityenvelope.go
@@ -93,6 +102,12 @@ model_intelmachineentityref.go
 model_intelmachineidentityowners.go
 model_intelmachinesourcewire.go
 model_intelmachineuserentitlement.go
+model_intelnhicapabilities.go
+model_intelnhicapabilitybucket.go
+model_intelnhicapabilitywire.go
+model_intelnhirisk.go
+model_intelnhirisksignals.go
+model_intelnhirisksignalwire.go
 model_intelnonhumanidentityownedslice.go
 model_intelnonhumanidentityownership.go
 model_intelnonhumanidentityownershipcategory.go
@@ -104,6 +119,7 @@ model_responseactioncontext.go
 model_responseactioncreaterequest.go
 model_responseactioncreaterequest_one_of.go
 model_responseactioncreaterequest_one_of_1.go
+model_responseactioncreaterequest_one_of_2.go
 model_responseactionstatus.go
 response.go
 test/api_intelligence_test.go

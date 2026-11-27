@@ -40,6 +40,9 @@ type Intelidentitymachineaggregate struct {
 	// Omitted when the tenant lacks the idg:base license.
 	IdentityGraph *Intelidentitygraphlink `json:"identityGraph,omitempty"`
 	Accounts Intelmachineaccountsslice `json:"accounts"`
+	Capabilities Intelnhicapabilities `json:"capabilities"`
+	Risk NullableIntelnhirisk `json:"risk,omitempty"`
+	RiskSignals Intelnhirisksignals `json:"riskSignals"`
 	// Native identifier on the source system.
 	NativeIdentity string `json:"nativeIdentity"`
 	// Dataset identifier from upstream machine-identity services when present.
@@ -67,11 +70,13 @@ type _Intelidentitymachineaggregate Intelidentitymachineaggregate
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewIntelidentitymachineaggregate(id string, type_ string, accounts Intelmachineaccountsslice, nativeIdentity string, owners Intelmachineidentityowners, attributes map[string]interface{}, derived Intelmachinederived) *Intelidentitymachineaggregate {
+func NewIntelidentitymachineaggregate(id string, type_ string, accounts Intelmachineaccountsslice, capabilities Intelnhicapabilities, riskSignals Intelnhirisksignals, nativeIdentity string, owners Intelmachineidentityowners, attributes map[string]interface{}, derived Intelmachinederived) *Intelidentitymachineaggregate {
 	this := Intelidentitymachineaggregate{}
 	this.Id = id
 	this.Type = type_
 	this.Accounts = accounts
+	this.Capabilities = capabilities
+	this.RiskSignals = riskSignals
 	this.NativeIdentity = nativeIdentity
 	var manuallyEdited bool = false
 	this.ManuallyEdited = &manuallyEdited
@@ -409,6 +414,96 @@ func (o *Intelidentitymachineaggregate) GetAccountsOk() (*Intelmachineaccountssl
 // SetAccounts sets field value
 func (o *Intelidentitymachineaggregate) SetAccounts(v Intelmachineaccountsslice) {
 	o.Accounts = v
+}
+
+// GetCapabilities returns the Capabilities field value
+func (o *Intelidentitymachineaggregate) GetCapabilities() Intelnhicapabilities {
+	if o == nil {
+		var ret Intelnhicapabilities
+		return ret
+	}
+
+	return o.Capabilities
+}
+
+// GetCapabilitiesOk returns a tuple with the Capabilities field value
+// and a boolean to check if the value has been set.
+func (o *Intelidentitymachineaggregate) GetCapabilitiesOk() (*Intelnhicapabilities, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Capabilities, true
+}
+
+// SetCapabilities sets field value
+func (o *Intelidentitymachineaggregate) SetCapabilities(v Intelnhicapabilities) {
+	o.Capabilities = v
+}
+
+// GetRisk returns the Risk field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Intelidentitymachineaggregate) GetRisk() Intelnhirisk {
+	if o == nil || IsNil(o.Risk.Get()) {
+		var ret Intelnhirisk
+		return ret
+	}
+	return *o.Risk.Get()
+}
+
+// GetRiskOk returns a tuple with the Risk field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Intelidentitymachineaggregate) GetRiskOk() (*Intelnhirisk, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Risk.Get(), o.Risk.IsSet()
+}
+
+// HasRisk returns a boolean if a field has been set.
+func (o *Intelidentitymachineaggregate) HasRisk() bool {
+	if o != nil && o.Risk.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetRisk gets a reference to the given NullableIntelnhirisk and assigns it to the Risk field.
+func (o *Intelidentitymachineaggregate) SetRisk(v Intelnhirisk) {
+	o.Risk.Set(&v)
+}
+// SetRiskNil sets the value for Risk to be an explicit nil
+func (o *Intelidentitymachineaggregate) SetRiskNil() {
+	o.Risk.Set(nil)
+}
+
+// UnsetRisk ensures that no value is present for Risk, not even an explicit nil
+func (o *Intelidentitymachineaggregate) UnsetRisk() {
+	o.Risk.Unset()
+}
+
+// GetRiskSignals returns the RiskSignals field value
+func (o *Intelidentitymachineaggregate) GetRiskSignals() Intelnhirisksignals {
+	if o == nil {
+		var ret Intelnhirisksignals
+		return ret
+	}
+
+	return o.RiskSignals
+}
+
+// GetRiskSignalsOk returns a tuple with the RiskSignals field value
+// and a boolean to check if the value has been set.
+func (o *Intelidentitymachineaggregate) GetRiskSignalsOk() (*Intelnhirisksignals, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.RiskSignals, true
+}
+
+// SetRiskSignals sets field value
+func (o *Intelidentitymachineaggregate) SetRiskSignals(v Intelnhirisksignals) {
+	o.RiskSignals = v
 }
 
 // GetNativeIdentity returns the NativeIdentity field value
@@ -763,6 +858,11 @@ func (o Intelidentitymachineaggregate) ToMap() (map[string]interface{}, error) {
 		toSerialize["identityGraph"] = o.IdentityGraph
 	}
 	toSerialize["accounts"] = o.Accounts
+	toSerialize["capabilities"] = o.Capabilities
+	if o.Risk.IsSet() {
+		toSerialize["risk"] = o.Risk.Get()
+	}
+	toSerialize["riskSignals"] = o.RiskSignals
 	toSerialize["nativeIdentity"] = o.NativeIdentity
 	if o.DatasetId.IsSet() {
 		toSerialize["datasetId"] = o.DatasetId.Get()
@@ -801,6 +901,8 @@ func (o *Intelidentitymachineaggregate) UnmarshalJSON(data []byte) (err error) {
 		"id",
 		"type",
 		"accounts",
+		"capabilities",
+		"riskSignals",
 		"nativeIdentity",
 		"owners",
 		"attributes",
@@ -844,6 +946,9 @@ func (o *Intelidentitymachineaggregate) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "matchConfidence")
 		delete(additionalProperties, "identityGraph")
 		delete(additionalProperties, "accounts")
+		delete(additionalProperties, "capabilities")
+		delete(additionalProperties, "risk")
+		delete(additionalProperties, "riskSignals")
 		delete(additionalProperties, "nativeIdentity")
 		delete(additionalProperties, "datasetId")
 		delete(additionalProperties, "source")

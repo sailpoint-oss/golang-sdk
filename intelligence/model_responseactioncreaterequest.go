@@ -20,6 +20,7 @@ import (
 type Responseactioncreaterequest struct {
 	ResponseactioncreaterequestOneOf *ResponseactioncreaterequestOneOf
 	ResponseactioncreaterequestOneOf1 *ResponseactioncreaterequestOneOf1
+	ResponseactioncreaterequestOneOf2 *ResponseactioncreaterequestOneOf2
 }
 
 // ResponseactioncreaterequestOneOfAsResponseactioncreaterequest is a convenience function that returns ResponseactioncreaterequestOneOf wrapped in Responseactioncreaterequest
@@ -33,6 +34,13 @@ func ResponseactioncreaterequestOneOfAsResponseactioncreaterequest(v *Responseac
 func ResponseactioncreaterequestOneOf1AsResponseactioncreaterequest(v *ResponseactioncreaterequestOneOf1) Responseactioncreaterequest {
 	return Responseactioncreaterequest{
 		ResponseactioncreaterequestOneOf1: v,
+	}
+}
+
+// ResponseactioncreaterequestOneOf2AsResponseactioncreaterequest is a convenience function that returns ResponseactioncreaterequestOneOf2 wrapped in Responseactioncreaterequest
+func ResponseactioncreaterequestOneOf2AsResponseactioncreaterequest(v *ResponseactioncreaterequestOneOf2) Responseactioncreaterequest {
+	return Responseactioncreaterequest{
+		ResponseactioncreaterequestOneOf2: v,
 	}
 }
 
@@ -75,10 +83,28 @@ func (dst *Responseactioncreaterequest) UnmarshalJSON(data []byte) error {
 		dst.ResponseactioncreaterequestOneOf1 = nil
 	}
 
+	// try to unmarshal data into ResponseactioncreaterequestOneOf2
+	err = newStrictDecoder(data).Decode(&dst.ResponseactioncreaterequestOneOf2)
+	if err == nil {
+		jsonResponseactioncreaterequestOneOf2, _ := json.Marshal(dst.ResponseactioncreaterequestOneOf2)
+		if string(jsonResponseactioncreaterequestOneOf2) == "{}" { // empty struct
+			dst.ResponseactioncreaterequestOneOf2 = nil
+		} else {
+			if err = validator.Validate(dst.ResponseactioncreaterequestOneOf2); err != nil {
+				dst.ResponseactioncreaterequestOneOf2 = nil
+			} else {
+				match++
+			}
+		}
+	} else {
+		dst.ResponseactioncreaterequestOneOf2 = nil
+	}
+
 	if match > 1 { // more than 1 match
 		// reset to nil
 		dst.ResponseactioncreaterequestOneOf = nil
 		dst.ResponseactioncreaterequestOneOf1 = nil
+		dst.ResponseactioncreaterequestOneOf2 = nil
 
 		return fmt.Errorf("data matches more than one schema in oneOf(Responseactioncreaterequest)")
 	} else if match == 1 {
@@ -98,6 +124,10 @@ func (src Responseactioncreaterequest) MarshalJSON() ([]byte, error) {
 		return json.Marshal(&src.ResponseactioncreaterequestOneOf1)
 	}
 
+	if src.ResponseactioncreaterequestOneOf2 != nil {
+		return json.Marshal(&src.ResponseactioncreaterequestOneOf2)
+	}
+
 	return nil, nil // no data in oneOf schemas
 }
 
@@ -114,6 +144,10 @@ func (obj *Responseactioncreaterequest) GetActualInstance() (interface{}) {
 		return obj.ResponseactioncreaterequestOneOf1
 	}
 
+	if obj.ResponseactioncreaterequestOneOf2 != nil {
+		return obj.ResponseactioncreaterequestOneOf2
+	}
+
 	// all schemas are nil
 	return nil
 }
@@ -126,6 +160,10 @@ func (obj Responseactioncreaterequest) GetActualInstanceValue() (interface{}) {
 
 	if obj.ResponseactioncreaterequestOneOf1 != nil {
 		return *obj.ResponseactioncreaterequestOneOf1
+	}
+
+	if obj.ResponseactioncreaterequestOneOf2 != nil {
+		return *obj.ResponseactioncreaterequestOneOf2
 	}
 
 	// all schemas are nil

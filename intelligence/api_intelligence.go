@@ -41,14 +41,16 @@ func (r ApiCreateResponseActionV1Request) Execute() (*Responseactionaccepted, *h
 /*
 CreateResponseActionV1 Create a response action
 
-Requires tenant license idn:response-and-remediation.
-
 Creates a response action: the request is validated, a requestId (the correlation id) is
-minted, the action is recorded as SUBMITTED, and an event is published that triggers the
-correlated workflow(s).
+minted, the action is recorded as SUBMITTED, and an event is published that starts processing.
+
+Human Actions (`DISABLE_IDENTITY`, `DISABLE_ACCOUNT` with `identityType` HUMAN) require tenant
+license idn:response-and-remediation. 
+Deactivating a NHI (`DEACTIVATE_AGENT` with `identityType` NHI) requires idn:response-and-remediation-saf.
 
 Returns HTTP 202 with the requestId, an initial SUBMITTED status, and a statusUrl. Poll
-GET /intelligence/v1/response-actions/{requestId}/status for progress.
+[Get response action status](https://developer.sailpoint.com/docs/api/v1/get-response-action-status-v1)
+for progress.
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -819,6 +821,241 @@ func (a *IntelligenceAPIService) GetIntelIdentityAccountsV1Execute(r ApiGetIntel
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiGetIntelIdentityCapabilitiesV1Request struct {
+	ctx context.Context
+	ApiService *IntelligenceAPIService
+	id string
+	type_ *string
+	limit *int32
+	offset *int32
+	count *bool
+}
+
+// Which kind of linked capability to list. Must be &#x60;mcp&#x60;, &#x60;tool&#x60;, or &#x60;skill&#x60;.
+func (r ApiGetIntelIdentityCapabilitiesV1Request) Type_(type_ string) ApiGetIntelIdentityCapabilitiesV1Request {
+	r.type_ = &type_
+	return r
+}
+
+// Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+func (r ApiGetIntelIdentityCapabilitiesV1Request) Limit(limit int32) ApiGetIntelIdentityCapabilitiesV1Request {
+	r.limit = &limit
+	return r
+}
+
+// Offset into the full result set. Usually specified with *limit* to paginate through the results. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+func (r ApiGetIntelIdentityCapabilitiesV1Request) Offset(offset int32) ApiGetIntelIdentityCapabilitiesV1Request {
+	r.offset = &offset
+	return r
+}
+
+// If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+func (r ApiGetIntelIdentityCapabilitiesV1Request) Count(count bool) ApiGetIntelIdentityCapabilitiesV1Request {
+	r.count = &count
+	return r
+}
+
+func (r ApiGetIntelIdentityCapabilitiesV1Request) Execute() ([]Intelnhicapabilitywire, *http.Response, error) {
+	return r.ApiService.GetIntelIdentityCapabilitiesV1Execute(r)
+}
+
+/*
+GetIntelIdentityCapabilitiesV1 List NHI capabilities
+
+Requires tenant license idn:response-and-remediation.
+
+Lists linked capabilities for one non-human identity (NHI). Required query parameter `type`
+selects the kind: `mcp`, `tool`, or `skill`. Do not send `isNHI`.
+
+Returns one page of capabilities as a JSON array. Each element includes the capability id,
+display name, kind (`MCP`, `TOOL`, or `SKILL`), and source name. An empty array is a valid page.
+
+Send `count=true` to receive the `x-total-count` response header (including `0` on empty pages).
+
+Returns **404** when the identity is unknown or linked capabilities are not available for this identity.
+
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id Non-empty identity id path segment for Intelligence sub-resources.
+ @return ApiGetIntelIdentityCapabilitiesV1Request
+*/
+func (a *IntelligenceAPIService) GetIntelIdentityCapabilitiesV1(ctx context.Context, id string) ApiGetIntelIdentityCapabilitiesV1Request {
+	return ApiGetIntelIdentityCapabilitiesV1Request{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+//  @return []Intelnhicapabilitywire
+func (a *IntelligenceAPIService) GetIntelIdentityCapabilitiesV1Execute(r ApiGetIntelIdentityCapabilitiesV1Request) ([]Intelnhicapabilitywire, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []Intelnhicapabilitywire
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IntelligenceAPIService.GetIntelIdentityCapabilitiesV1")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/intelligence/v1/identities/{id}/capabilities"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if strlen(r.id) < 1 {
+		return localVarReturnValue, nil, reportError("id must have at least 1 elements")
+	}
+	if strlen(r.id) > 128 {
+		return localVarReturnValue, nil, reportError("id must have less than 128 elements")
+	}
+	if r.type_ == nil {
+		return localVarReturnValue, nil, reportError("type_ is required and must be specified")
+	}
+
+	if r.limit != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
+	} else {
+		var defaultValue int32 = 250
+		r.limit = &defaultValue
+	}
+	if r.offset != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
+	}
+	if r.count != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "count", r.count, "form", "")
+	} else {
+		var defaultValue bool = false
+		r.count = &defaultValue
+	}
+	parameterAddToHeaderOrQuery(localVarQueryParams, "type", r.type_, "form", "")
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v GetIdentityIntelligenceV1401Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v GetIdentityIntelligenceV1429Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiGetIntelIdentityCertificationHistoryV1Request struct {
 	ctx context.Context
 	ApiService *IntelligenceAPIService
@@ -1472,6 +1709,230 @@ func (a *IntelligenceAPIService) GetIntelIdentityRareAccessV1Execute(r ApiGetInt
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiGetIntelIdentityRiskSignalsV1Request struct {
+	ctx context.Context
+	ApiService *IntelligenceAPIService
+	id string
+	limit *int32
+	offset *int32
+	count *bool
+}
+
+// Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+func (r ApiGetIntelIdentityRiskSignalsV1Request) Limit(limit int32) ApiGetIntelIdentityRiskSignalsV1Request {
+	r.limit = &limit
+	return r
+}
+
+// Offset into the full result set. Usually specified with *limit* to paginate through the results. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+func (r ApiGetIntelIdentityRiskSignalsV1Request) Offset(offset int32) ApiGetIntelIdentityRiskSignalsV1Request {
+	r.offset = &offset
+	return r
+}
+
+// If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+func (r ApiGetIntelIdentityRiskSignalsV1Request) Count(count bool) ApiGetIntelIdentityRiskSignalsV1Request {
+	r.count = &count
+	return r
+}
+
+func (r ApiGetIntelIdentityRiskSignalsV1Request) Execute() ([]Intelnhirisksignalwire, *http.Response, error) {
+	return r.ApiService.GetIntelIdentityRiskSignalsV1Execute(r)
+}
+
+/*
+GetIntelIdentityRiskSignalsV1 List non-human identity risk factors
+
+Requires tenant license idn:response-and-remediation.
+
+Lists risk factors for one non-human identity (NHI). Do not send `isNHI`.
+
+Returns one page of risk factors as a JSON array, ordered strongest factor first. Each element
+describes a factor (id, name, description, severity, status, and when it was last observed) that
+contributes to the identity risk posture. An empty array is a valid page.
+
+Send `count=true` to receive the `x-total-count` response header (including `0` on empty pages).
+
+Returns **404** when the identity is unknown or risk information is not available for this identity.
+
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id Non-empty identity id path segment for Intelligence sub-resources.
+ @return ApiGetIntelIdentityRiskSignalsV1Request
+*/
+func (a *IntelligenceAPIService) GetIntelIdentityRiskSignalsV1(ctx context.Context, id string) ApiGetIntelIdentityRiskSignalsV1Request {
+	return ApiGetIntelIdentityRiskSignalsV1Request{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+//  @return []Intelnhirisksignalwire
+func (a *IntelligenceAPIService) GetIntelIdentityRiskSignalsV1Execute(r ApiGetIntelIdentityRiskSignalsV1Request) ([]Intelnhirisksignalwire, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []Intelnhirisksignalwire
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IntelligenceAPIService.GetIntelIdentityRiskSignalsV1")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/intelligence/v1/identities/{id}/risk-signals"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if strlen(r.id) < 1 {
+		return localVarReturnValue, nil, reportError("id must have at least 1 elements")
+	}
+	if strlen(r.id) > 128 {
+		return localVarReturnValue, nil, reportError("id must have less than 128 elements")
+	}
+
+	if r.limit != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
+	} else {
+		var defaultValue int32 = 250
+		r.limit = &defaultValue
+	}
+	if r.offset != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
+	}
+	if r.count != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "count", r.count, "form", "")
+	} else {
+		var defaultValue bool = false
+		r.count = &defaultValue
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v GetIdentityIntelligenceV1401Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v GetIdentityIntelligenceV1429Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiGetResponseActionStatusV1Request struct {
 	ctx context.Context
 	ApiService *IntelligenceAPIService
@@ -1485,12 +1946,11 @@ func (r ApiGetResponseActionStatusV1Request) Execute() (*Responseactionstatus, *
 /*
 GetResponseActionStatusV1 Get response action status
 
-Requires tenant license idn:response-and-remediation.
-
 Returns the current aggregate status of a previously submitted response action, identified by
-the requestId returned from POST /intelligence/v1/response-actions.
+the requestId returned from [Create a response action](https://developer.sailpoint.com/docs/api/v1/create-response-action-v1).
 
-Supported actionType values: DISABLE_IDENTITY, DISABLE_ACCOUNT.
+Supported actionType values: DISABLE_IDENTITY, DISABLE_ACCOUNT, DEACTIVATE_AGENT.
+License requirements match the action submitted on create.
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().

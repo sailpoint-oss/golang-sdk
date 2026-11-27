@@ -25,6 +25,9 @@ Name | Type | Description | Notes
 **MatchConfidence** | Pointer to **string** | Match quality for opaque prefix resolution; omitted for direct id eq and exact opaque matches. | [optional] 
 **IdentityGraph** | Pointer to [**Intelidentitygraphlink**](intelidentitygraphlink) | Omitted when the tenant lacks the idg:base license. | [optional] 
 **Accounts** | [**Intelmachineaccountsslice**](intelmachineaccountsslice) |  | 
+**Capabilities** | [**Intelnhicapabilities**](intelnhicapabilities) |  | 
+**Risk** | Pointer to [**NullableIntelnhirisk**](intelnhirisk) |  | [optional] 
+**RiskSignals** | [**Intelnhirisksignals**](intelnhirisksignals) |  | 
 **NativeIdentity** | **string** | Native identifier on the source system. | 
 **DatasetId** | Pointer to **NullableString** | Dataset identifier from upstream machine-identity services when present. | [optional] 
 **Source** | Pointer to [**NullableIntelmachinesourcewire**](intelmachinesourcewire) | Source metadata for the machine identity when present upstream. | [optional] 
@@ -40,7 +43,7 @@ Name | Type | Description | Notes
 
 ### NewIntelidentitymachineaggregate
 
-`func NewIntelidentitymachineaggregate(id string, type_ string, accounts Intelmachineaccountsslice, nativeIdentity string, owners Intelmachineidentityowners, attributes map[string]interface{}, derived Intelmachinederived, ) *Intelidentitymachineaggregate`
+`func NewIntelidentitymachineaggregate(id string, type_ string, accounts Intelmachineaccountsslice, capabilities Intelnhicapabilities, riskSignals Intelnhirisksignals, nativeIdentity string, owners Intelmachineidentityowners, attributes map[string]interface{}, derived Intelmachinederived, ) *Intelidentitymachineaggregate`
 
 NewIntelidentitymachineaggregate instantiates a new Intelidentitymachineaggregate object
 This constructor will assign default values to properties that have it defined,
@@ -308,6 +311,81 @@ and a boolean to check if the value has been set.
 `func (o *Intelidentitymachineaggregate) SetAccounts(v Intelmachineaccountsslice)`
 
 SetAccounts sets Accounts field to given value.
+
+
+### GetCapabilities
+
+`func (o *Intelidentitymachineaggregate) GetCapabilities() Intelnhicapabilities`
+
+GetCapabilities returns the Capabilities field if non-nil, zero value otherwise.
+
+### GetCapabilitiesOk
+
+`func (o *Intelidentitymachineaggregate) GetCapabilitiesOk() (*Intelnhicapabilities, bool)`
+
+GetCapabilitiesOk returns a tuple with the Capabilities field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCapabilities
+
+`func (o *Intelidentitymachineaggregate) SetCapabilities(v Intelnhicapabilities)`
+
+SetCapabilities sets Capabilities field to given value.
+
+
+### GetRisk
+
+`func (o *Intelidentitymachineaggregate) GetRisk() Intelnhirisk`
+
+GetRisk returns the Risk field if non-nil, zero value otherwise.
+
+### GetRiskOk
+
+`func (o *Intelidentitymachineaggregate) GetRiskOk() (*Intelnhirisk, bool)`
+
+GetRiskOk returns a tuple with the Risk field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRisk
+
+`func (o *Intelidentitymachineaggregate) SetRisk(v Intelnhirisk)`
+
+SetRisk sets Risk field to given value.
+
+### HasRisk
+
+`func (o *Intelidentitymachineaggregate) HasRisk() bool`
+
+HasRisk returns a boolean if a field has been set.
+
+### SetRiskNil
+
+`func (o *Intelidentitymachineaggregate) SetRiskNil(b bool)`
+
+ SetRiskNil sets the value for Risk to be an explicit nil
+
+### UnsetRisk
+`func (o *Intelidentitymachineaggregate) UnsetRisk()`
+
+UnsetRisk ensures that no value is present for Risk, not even an explicit nil
+### GetRiskSignals
+
+`func (o *Intelidentitymachineaggregate) GetRiskSignals() Intelnhirisksignals`
+
+GetRiskSignals returns the RiskSignals field if non-nil, zero value otherwise.
+
+### GetRiskSignalsOk
+
+`func (o *Intelidentitymachineaggregate) GetRiskSignalsOk() (*Intelnhirisksignals, bool)`
+
+GetRiskSignalsOk returns a tuple with the RiskSignals field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRiskSignals
+
+`func (o *Intelidentitymachineaggregate) SetRiskSignals(v Intelnhirisksignals)`
+
+SetRiskSignals sets RiskSignals field to given value.
 
 
 ### GetNativeIdentity

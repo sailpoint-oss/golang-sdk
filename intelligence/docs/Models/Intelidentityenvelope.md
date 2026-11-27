@@ -34,6 +34,9 @@ Name | Type | Description | Notes
 **Outliers** | Pointer to [**IntelOutliersSlice**](intel-outliers-slice) | Rare access slice; omitted when the tenant lacks the IDA-outliers license. | [optional] 
 **AccessHistory** | [**IntelAccessHistory**](intel-access-history) | Access-history split into access items and certifications sub-slices. | 
 **MatchConfidence** | Pointer to **string** | Match quality for opaque prefix resolution; omitted for direct id eq and exact opaque matches. | [optional] 
+**Capabilities** | [**Intelnhicapabilities**](intelnhicapabilities) |  | 
+**Risk** | Pointer to [**NullableIntelnhirisk**](intelnhirisk) |  | [optional] 
+**RiskSignals** | [**Intelnhirisksignals**](intelnhirisksignals) |  | 
 **NativeIdentity** | **string** | Native identifier on the source system. | 
 **DatasetId** | Pointer to **NullableString** | Dataset identifier from upstream machine-identity services when present. | [optional] 
 **Source** | Pointer to [**NullableIntelmachinesourcewire**](intelmachinesourcewire) | Source metadata for the machine identity when present upstream. | [optional] 
@@ -48,7 +51,7 @@ Name | Type | Description | Notes
 
 ### NewIntelidentityenvelope
 
-`func NewIntelidentityenvelope(id string, type_ string, attributes map[string]interface{}, accounts Intelmachineaccountsslice, privilegedAccess IntelPrivilegedAccessSlice, accessHistory IntelAccessHistory, nativeIdentity string, owners Intelmachineidentityowners, derived Intelmachinederived, ) *Intelidentityenvelope`
+`func NewIntelidentityenvelope(id string, type_ string, attributes map[string]interface{}, accounts Intelmachineaccountsslice, privilegedAccess IntelPrivilegedAccessSlice, accessHistory IntelAccessHistory, capabilities Intelnhicapabilities, riskSignals Intelnhirisksignals, nativeIdentity string, owners Intelmachineidentityowners, derived Intelmachinederived, ) *Intelidentityenvelope`
 
 NewIntelidentityenvelope instantiates a new Intelidentityenvelope object
 This constructor will assign default values to properties that have it defined,
@@ -527,6 +530,81 @@ SetMatchConfidence sets MatchConfidence field to given value.
 `func (o *Intelidentityenvelope) HasMatchConfidence() bool`
 
 HasMatchConfidence returns a boolean if a field has been set.
+
+### GetCapabilities
+
+`func (o *Intelidentityenvelope) GetCapabilities() Intelnhicapabilities`
+
+GetCapabilities returns the Capabilities field if non-nil, zero value otherwise.
+
+### GetCapabilitiesOk
+
+`func (o *Intelidentityenvelope) GetCapabilitiesOk() (*Intelnhicapabilities, bool)`
+
+GetCapabilitiesOk returns a tuple with the Capabilities field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCapabilities
+
+`func (o *Intelidentityenvelope) SetCapabilities(v Intelnhicapabilities)`
+
+SetCapabilities sets Capabilities field to given value.
+
+
+### GetRisk
+
+`func (o *Intelidentityenvelope) GetRisk() Intelnhirisk`
+
+GetRisk returns the Risk field if non-nil, zero value otherwise.
+
+### GetRiskOk
+
+`func (o *Intelidentityenvelope) GetRiskOk() (*Intelnhirisk, bool)`
+
+GetRiskOk returns a tuple with the Risk field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRisk
+
+`func (o *Intelidentityenvelope) SetRisk(v Intelnhirisk)`
+
+SetRisk sets Risk field to given value.
+
+### HasRisk
+
+`func (o *Intelidentityenvelope) HasRisk() bool`
+
+HasRisk returns a boolean if a field has been set.
+
+### SetRiskNil
+
+`func (o *Intelidentityenvelope) SetRiskNil(b bool)`
+
+ SetRiskNil sets the value for Risk to be an explicit nil
+
+### UnsetRisk
+`func (o *Intelidentityenvelope) UnsetRisk()`
+
+UnsetRisk ensures that no value is present for Risk, not even an explicit nil
+### GetRiskSignals
+
+`func (o *Intelidentityenvelope) GetRiskSignals() Intelnhirisksignals`
+
+GetRiskSignals returns the RiskSignals field if non-nil, zero value otherwise.
+
+### GetRiskSignalsOk
+
+`func (o *Intelidentityenvelope) GetRiskSignalsOk() (*Intelnhirisksignals, bool)`
+
+GetRiskSignalsOk returns a tuple with the RiskSignals field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRiskSignals
+
+`func (o *Intelidentityenvelope) SetRiskSignals(v Intelnhirisksignals)`
+
+SetRiskSignals sets RiskSignals field to given value.
+
 
 ### GetNativeIdentity
 

@@ -51,22 +51,26 @@ Method | HTTP request | Description
 [**get-identity-intelligence-v1**](#get-identity-intelligence-v1) | **Get** `/intelligence/v1/identities` | Get identity by filter
 [**get-intel-identity-access-item-history-v1**](#get-intel-identity-access-item-history-v1) | **Get** `/intelligence/v1/identities/{id}/access-history/access-items` | List identity access item history
 [**get-intel-identity-accounts-v1**](#get-intel-identity-accounts-v1) | **Get** `/intelligence/v1/identities/{id}/accounts` | List identity accounts
+[**get-intel-identity-capabilities-v1**](#get-intel-identity-capabilities-v1) | **Get** `/intelligence/v1/identities/{id}/capabilities` | List NHI capabilities
 [**get-intel-identity-certification-history-v1**](#get-intel-identity-certification-history-v1) | **Get** `/intelligence/v1/identities/{id}/access-history/certifications` | List identity certification history
 [**get-intel-identity-non-human-identity-ownership-v1**](#get-intel-identity-non-human-identity-ownership-v1) | **Get** `/intelligence/v1/identities/{id}/non-human-identity-ownership/{category}` | List owned NHI identities
 [**get-intel-identity-rare-access-v1**](#get-intel-identity-rare-access-v1) | **Get** `/intelligence/v1/identities/{id}/outliers/rare-access` | List identity rare access
+[**get-intel-identity-risk-signals-v1**](#get-intel-identity-risk-signals-v1) | **Get** `/intelligence/v1/identities/{id}/risk-signals` | List non-human identity risk factors
 [**get-response-action-status-v1**](#get-response-action-status-v1) | **Get** `/intelligence/v1/response-actions/{id}/status` | Get response action status
 
 
 ## create-response-action-v1
 Create a response action
-Requires tenant license idn:response-and-remediation.
-
 Creates a response action: the request is validated, a requestId (the correlation id) is
-minted, the action is recorded as SUBMITTED, and an event is published that triggers the
-correlated workflow(s).
+minted, the action is recorded as SUBMITTED, and an event is published that starts processing.
+
+Human Actions (`DISABLE_IDENTITY`, `DISABLE_ACCOUNT` with `identityType` HUMAN) require tenant
+license idn:response-and-remediation. 
+Deactivating a NHI (`DEACTIVATE_AGENT` with `identityType` NHI) requires idn:response-and-remediation-saf.
 
 Returns HTTP 202 with the requestId, an initial SUBMITTED status, and a statusUrl. Poll
-GET /intelligence/v1/response-actions/{requestId}/status for progress.
+[Get response action status](https://developer.sailpoint.com/docs/api/v1/get-response-action-status-v1)
+for progress.
 
 
 [API Spec](https://developer.sailpoint.com/docs/api/create-response-action-v-1)
@@ -372,6 +376,91 @@ func main() {
 
 [[Back to top]](#)
 
+## get-intel-identity-capabilities-v1
+List NHI capabilities
+Requires tenant license idn:response-and-remediation.
+
+Lists linked capabilities for one non-human identity (NHI). Required query parameter `type`
+selects the kind: `mcp`, `tool`, or `skill`. Do not send `isNHI`.
+
+Returns one page of capabilities as a JSON array. Each element includes the capability id,
+display name, kind (`MCP`, `TOOL`, or `SKILL`), and source name. An empty array is a valid page.
+
+Send `count=true` to receive the `x-total-count` response header (including `0` on empty pages).
+
+Returns **404** when the identity is unknown or linked capabilities are not available for this identity.
+
+
+[API Spec](https://developer.sailpoint.com/docs/api/get-intel-identity-capabilities-v-1)
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | Non-empty identity id path segment for Intelligence sub-resources. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetIntelIdentityCapabilitiesV1Request struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **type_** | **string** | Which kind of linked capability to list. Must be &#x60;mcp&#x60;, &#x60;tool&#x60;, or &#x60;skill&#x60;. | 
+ **limit** | **int32** | Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. | [default to 250]
+ **offset** | **int32** | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. | [default to 0]
+ **count** | **bool** | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. | [default to false]
+
+### Return type
+
+[**[]Intelnhicapabilitywire**](../models/intelnhicapabilitywire)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+  
+    
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+)
+
+func main() {
+    id := `ef38f94347e94562b5bb8424a56397d8` // string | Non-empty identity id path segment for Intelligence sub-resources. # string | Non-empty identity id path segment for Intelligence sub-resources.
+    type_ := `tool` // string | Which kind of linked capability to list. Must be `mcp`, `tool`, or `skill`. # string | Which kind of linked capability to list. Must be `mcp`, `tool`, or `skill`.
+    limit := 250 // int32 | Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to 250)
+    offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to 0)
+    count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to false) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to false)
+
+    
+
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.IntelligenceAPI.GetIntelIdentityCapabilitiesV1(context.Background(), id).Type_(type_).Execute()
+	  //resp, r, err := apiClient.IntelligenceAPI.GetIntelIdentityCapabilitiesV1(context.Background(), id).Type_(type_).Limit(limit).Offset(offset).Count(count).Execute()
+    if err != nil {
+	    fmt.Fprintf(os.Stderr, "Error when calling `IntelligenceAPI.GetIntelIdentityCapabilitiesV1``: %v\n", err)
+	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetIntelIdentityCapabilitiesV1`: []Intelnhicapabilitywire
+    fmt.Fprintf(os.Stdout, "Response from `IntelligenceAPI.GetIntelIdentityCapabilitiesV1`: %v\n", resp)
+}
+```
+
+[[Back to top]](#)
+
 ## get-intel-identity-certification-history-v1
 List identity certification history
 Continuation endpoint for the parent response's `accessHistory.certifications.next` link.
@@ -623,14 +712,96 @@ func main() {
 
 [[Back to top]](#)
 
-## get-response-action-status-v1
-Get response action status
+## get-intel-identity-risk-signals-v1
+List non-human identity risk factors
 Requires tenant license idn:response-and-remediation.
 
-Returns the current aggregate status of a previously submitted response action, identified by
-the requestId returned from POST /intelligence/v1/response-actions.
+Lists risk factors for one non-human identity (NHI). Do not send `isNHI`.
 
-Supported actionType values: DISABLE_IDENTITY, DISABLE_ACCOUNT.
+Returns one page of risk factors as a JSON array, ordered strongest factor first. Each element
+describes a factor (id, name, description, severity, status, and when it was last observed) that
+contributes to the identity risk posture. An empty array is a valid page.
+
+Send `count=true` to receive the `x-total-count` response header (including `0` on empty pages).
+
+Returns **404** when the identity is unknown or risk information is not available for this identity.
+
+
+[API Spec](https://developer.sailpoint.com/docs/api/get-intel-identity-risk-signals-v-1)
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | Non-empty identity id path segment for Intelligence sub-resources. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetIntelIdentityRiskSignalsV1Request struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **limit** | **int32** | Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. | [default to 250]
+ **offset** | **int32** | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. | [default to 0]
+ **count** | **bool** | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. | [default to false]
+
+### Return type
+
+[**[]Intelnhirisksignalwire**](../models/intelnhirisksignalwire)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+  
+    
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+)
+
+func main() {
+    id := `ef38f94347e94562b5bb8424a56397d8` // string | Non-empty identity id path segment for Intelligence sub-resources. # string | Non-empty identity id path segment for Intelligence sub-resources.
+    limit := 250 // int32 | Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to 250)
+    offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to 0)
+    count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to false) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to false)
+
+    
+
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.IntelligenceAPI.GetIntelIdentityRiskSignalsV1(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.IntelligenceAPI.GetIntelIdentityRiskSignalsV1(context.Background(), id).Limit(limit).Offset(offset).Count(count).Execute()
+    if err != nil {
+	    fmt.Fprintf(os.Stderr, "Error when calling `IntelligenceAPI.GetIntelIdentityRiskSignalsV1``: %v\n", err)
+	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetIntelIdentityRiskSignalsV1`: []Intelnhirisksignalwire
+    fmt.Fprintf(os.Stdout, "Response from `IntelligenceAPI.GetIntelIdentityRiskSignalsV1`: %v\n", resp)
+}
+```
+
+[[Back to top]](#)
+
+## get-response-action-status-v1
+Get response action status
+Returns the current aggregate status of a previously submitted response action, identified by
+the requestId returned from [Create a response action](https://developer.sailpoint.com/docs/api/v1/create-response-action-v1).
+
+Supported actionType values: DISABLE_IDENTITY, DISABLE_ACCOUNT, DEACTIVATE_AGENT.
+License requirements match the action submitted on create.
 
 
 [API Spec](https://developer.sailpoint.com/docs/api/get-response-action-status-v-1)

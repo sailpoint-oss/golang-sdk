@@ -16,6 +16,7 @@ tags: ['SDK', 'Software Development Kit', 'ResponseactioncreaterequestOneOf', 'V
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ActionType** | Pointer to **string** |  | [optional] 
+**IdentityType** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -60,5 +61,30 @@ SetActionType sets ActionType field to given value.
 `func (o *ResponseactioncreaterequestOneOf) HasActionType() bool`
 
 HasActionType returns a boolean if a field has been set.
+
+### GetIdentityType
+
+`func (o *ResponseactioncreaterequestOneOf) GetIdentityType() string`
+
+GetIdentityType returns the IdentityType field if non-nil, zero value otherwise.
+
+### GetIdentityTypeOk
+
+`func (o *ResponseactioncreaterequestOneOf) GetIdentityTypeOk() (*string, bool)`
+
+GetIdentityTypeOk returns a tuple with the IdentityType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIdentityType
+
+`func (o *ResponseactioncreaterequestOneOf) SetIdentityType(v string)`
+
+SetIdentityType sets IdentityType field to given value.
+
+### HasIdentityType
+
+`func (o *ResponseactioncreaterequestOneOf) HasIdentityType() bool`
+
+HasIdentityType returns a boolean if a field has been set.
 
 

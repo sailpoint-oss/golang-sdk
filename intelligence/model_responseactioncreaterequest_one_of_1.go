@@ -20,6 +20,7 @@ var _ MappedNullable = &ResponseactioncreaterequestOneOf1{}
 // ResponseactioncreaterequestOneOf1 struct for ResponseactioncreaterequestOneOf1
 type ResponseactioncreaterequestOneOf1 struct {
 	ActionType *string `json:"actionType,omitempty"`
+	IdentityType *string `json:"identityType,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -74,6 +75,38 @@ func (o *ResponseactioncreaterequestOneOf1) SetActionType(v string) {
 	o.ActionType = &v
 }
 
+// GetIdentityType returns the IdentityType field value if set, zero value otherwise.
+func (o *ResponseactioncreaterequestOneOf1) GetIdentityType() string {
+	if o == nil || IsNil(o.IdentityType) {
+		var ret string
+		return ret
+	}
+	return *o.IdentityType
+}
+
+// GetIdentityTypeOk returns a tuple with the IdentityType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ResponseactioncreaterequestOneOf1) GetIdentityTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.IdentityType) {
+		return nil, false
+	}
+	return o.IdentityType, true
+}
+
+// HasIdentityType returns a boolean if a field has been set.
+func (o *ResponseactioncreaterequestOneOf1) HasIdentityType() bool {
+	if o != nil && !IsNil(o.IdentityType) {
+		return true
+	}
+
+	return false
+}
+
+// SetIdentityType gets a reference to the given string and assigns it to the IdentityType field.
+func (o *ResponseactioncreaterequestOneOf1) SetIdentityType(v string) {
+	o.IdentityType = &v
+}
+
 func (o ResponseactioncreaterequestOneOf1) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -86,6 +119,9 @@ func (o ResponseactioncreaterequestOneOf1) ToMap() (map[string]interface{}, erro
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.ActionType) {
 		toSerialize["actionType"] = o.ActionType
+	}
+	if !IsNil(o.IdentityType) {
+		toSerialize["identityType"] = o.IdentityType
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -110,6 +146,7 @@ func (o *ResponseactioncreaterequestOneOf1) UnmarshalJSON(data []byte) (err erro
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "actionType")
+		delete(additionalProperties, "identityType")
 		o.AdditionalProperties = additionalProperties
 	}
 

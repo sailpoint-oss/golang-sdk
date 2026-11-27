@@ -74,6 +74,20 @@ func Test_intelligence_IntelligenceAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test IntelligenceAPIService GetIntelIdentityCapabilitiesV1", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+
+		resp, httpRes, err := apiClient.IntelligenceAPI.GetIntelIdentityCapabilitiesV1(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test IntelligenceAPIService GetIntelIdentityCertificationHistoryV1", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -110,6 +124,20 @@ func Test_intelligence_IntelligenceAPIService(t *testing.T) {
 		var id string
 
 		resp, httpRes, err := apiClient.IntelligenceAPI.GetIntelIdentityRareAccessV1(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test IntelligenceAPIService GetIntelIdentityRiskSignalsV1", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+
+		resp, httpRes, err := apiClient.IntelligenceAPI.GetIntelIdentityRiskSignalsV1(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

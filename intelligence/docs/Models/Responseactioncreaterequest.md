@@ -16,9 +16,9 @@ tags: ['SDK', 'Software Development Kit', 'Responseactioncreaterequest', 'V1Resp
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ActionType** | **string** | Which response action to run. | 
-**IdentityType** | **string** | Subject type of the response action. v1 supports HUMAN. | 
+**IdentityType** | **string** | Whether the target is a human identity or a non-human identity (NHI). | 
 **IdentityId** | **string** | SailPoint Identity Security identity id, resolved by the caller from a prior intelligence query. | 
-**AccountIds** | Pointer to **[]string** | One or more account ids. Required for DISABLE_ACCOUNT (1-50 after trim/dedupe); must be omitted for DISABLE_IDENTITY. A single account is sent as a one-element array.  | [optional] 
+**AccountIds** | Pointer to **[]string** | One or more account ids. Required for DISABLE_ACCOUNT (1-50 after trim/dedupe); must be omitted for DISABLE_IDENTITY and DEACTIVATE_AGENT. A single account is sent as a one-element array.  | [optional] 
 **Context** | [**Responseactioncontext**](responseactioncontext) |  | 
 
 ## Methods
